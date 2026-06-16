@@ -1,0 +1,81 @@
+---
+import Base from '../../../layouts/Base.astro';
+
+// Liens à brancher sur Systeme.io (checkout) — placeholders.
+const CHECKOUT_URL = '#'; // TODO: URL de checkout Systeme.io
+
+const points = [
+  { n: '01', h: 'Garvey et la matrice', d: "Marcus Garvey, l'UNIA et la Black Star Line : naissance d'un nationalisme noir de masse." },
+  { n: '02', h: 'La Nation of Islam', d: "Discipline, institutions, économie propre, proto-souveraineté : une contre-société à l'intérieur de l'État." },
+  { n: '03', h: 'Malcolm X', d: "De Detroit Red à La Mecque : trajectoire, rupture avec la Nation of Islam, internationalisation du combat." },
+  { n: '04', h: 'Les Black Panthers', d: "Le contre-gouvernement, les programmes de survie, et la répression du COINTELPRO." },
+  { n: '05', h: 'Héritages', d: "Du Black Power à Black Lives Matter : ce que ces stratégies disent encore aujourd'hui." },
+];
+---
+<Base
+  title="Le nationalisme noir américain — Formation | L'Autre Récit"
+  description="De Marcus Garvey aux Black Panthers : comment une minorité a bâti ses propres institutions face à un État qui ne lui accordait rien. Formation en 5 cours."
+>
+  <!-- HERO -->
+  <section class="hero dark">
+    <div class="container">
+      <p class="eyebrow">Formation · États-Unis · 5 cours</p>
+      <h1 class="hero-h">Le <em>nationalisme noir</em> américain</h1>
+      <p class="lede hero-lede">
+        De Marcus Garvey à la Nation of Islam, de Malcolm X aux Black Panthers :
+        l'histoire d'une minorité qui a refusé d'attendre la permission, et qui a
+        bâti ses propres institutions.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href={CHECKOUT_URL}>Rejoindre la formation →</a>
+        <a class="btn btn-ghost ghost-light" href="/formations/">Toutes les formations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Le programme</p>
+      <h2>Ce que tu vas traverser</h2>
+      <div class="prog">
+        {points.map((p) => (
+          <div class="pt">
+            <span class="pt-n">{p.n}</span>
+            <div>
+              <h3 class="pt-h">{p.h}</h3>
+              <p class="pt-d">{p.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section dark final">
+    <div class="container">
+      <h2 class="final-h">Prêt à découvrir <em>l'autre récit</em>&nbsp;?</h2>
+      <a class="btn btn-gold" href={CHECKOUT_URL}>Rejoindre la formation →</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block: clamp(70px, 11vw, 140px); }
+  .hero-h { font-size: var(--t-hero); max-width: 14ch; }
+  .hero-lede { margin-top: 22px; color: var(--cr3); }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  .ghost-light { color: var(--cr); border-color: rgba(242,237,228,.3); }
+  .ghost-light:hover { color: var(--cr); border-color: var(--or3); }
+
+  .prog { display: flex; flex-direction: column; gap: 4px; margin-top: 36px; }
+  .pt { display: grid; grid-template-columns: 70px 1fr; gap: 22px; align-items: start; padding: 24px 0; border-top: 1px solid var(--cr3); }
+  .pt:last-child { border-bottom: 1px solid var(--cr3); }
+  .pt-n { font-family: var(--serif); font-style: italic; font-weight: 900; font-size: 40px; color: var(--or2); line-height: 1; }
+  .pt-h { margin: 0 0 6px; font-size: 22px; }
+  .pt-d { margin: 0; font-size: 16px; color: var(--ink3); line-height: 1.6; }
+
+  .final { text-align: center; }
+  .final-h { font-size: clamp(28px, 4vw, 48px); max-width: 18ch; margin: 0 auto 30px; }
+</style>

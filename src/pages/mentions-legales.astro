@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Mentions légales — L'Autre Récit" description="Mentions légales du site L'Autre Récit.">
+  <section class="section legal">
+    <div class="container">
+      <p class="eyebrow">Informations légales</p>
+      <h1>Mentions légales</h1>
+      <p class="todo">⚠️ Contenu à finaliser avant le lancement (éditeur, hébergeur, contact). À porter depuis <code>tunnel-vente/deploy/mentions-legales.html</code>.</p>
+
+      <h2>Éditeur du site</h2>
+      <p>L'Autre Récit — [raison sociale / statut] · [adresse] · [email de contact].</p>
+
+      <h2>Hébergement</h2>
+      <p>Site hébergé par Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis.</p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble des contenus (textes, visuels, vidéos, supports de cours) est la propriété exclusive de L'Autre Récit, sauf mention contraire.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .legal .todo { background: var(--cr2); border-left: 3px solid var(--or2); padding: 14px 18px; border-radius: 4px; font-size: 15px; color: var(--ink3); }
+  .legal code { font-family: var(--mono); font-size: 13px; background: var(--cr2); padding: 2px 6px; border-radius: 3px; }
+  .legal h2 { margin-top: 36px; font-size: 24px; }
+  .legal p { font-size: 16px; color: var(--ink3); }
+</style>

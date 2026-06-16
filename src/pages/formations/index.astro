@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import { formations } from '../../data/formations.js';
+---
+<Base
+  title="Formations — L'Autre Récit"
+  description="Le catalogue des formations d'histoire critique : nationalisme noir américain, Algérie coloniale et décoloniale, et plus à venir."
+>
+  <section class="section head">
+    <div class="container">
+      <p class="eyebrow">Le catalogue</p>
+      <h1>Les formations</h1>
+      <p class="lede">
+        Chaque formation part des sources et des penseurs eux-mêmes. On ne
+        survole pas&nbsp;: on donne les outils pour comprendre, et pour raconter
+        autrement.
+      </p>
+    </div>
+  </section>
+
+  <section class="section list-sec">
+    <div class="container list">
+      {formations.map((f) => (
+        <a
+          class:list={['row', { soon: f.status === 'soon' }]}
+          href={f.status === 'available' ? f.href : '#'}
+        >
+          <div class="row-main">
+            <div class="row-top">
+              <span class="row-eyebrow">{f.eyebrow}</span>
+              <span class:list={['badge', f.status]}>
+                {f.status === 'available' ? 'Disponible' : 'Bientôt'}
+              </span>
+            </div>
+            <h2 class="row-h">{f.title}</h2>
+            <p class="row-blurb">{f.blurb}</p>
+          </div>
+          <div class="row-aside">
+            <span class="row-dur">{f.duration}</span>
+            {f.status === 'available' && <span class="row-cta">Découvrir →</span>}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .head { padding-bottom: 0; }
+  .list-sec { padding-top: clamp(32px, 5vw, 56px); }
+  .list { display: flex; flex-direction: column; gap: 18px; }
+  .row {
+    display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center;
+    background: #fff; border: 1px solid var(--cr3); border-radius: var(--radius);
+    padding: clamp(24px, 3vw, 38px); color: var(--ink2);
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+  }
+  .row:hover { transform: translateY(-3px); border-color: var(--or2); box-shadow: 0 24px 48px -28px rgba(0,0,0,.5); color: var(--ink2); }
+  .row.soon { opacity: .72; cursor: default; }
+  .row.soon:hover { transform: none; border-color: var(--cr3); box-shadow: none; }
+  .row-top { display: flex; align-items: center; gap: 14px; }
+  .row-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or2); }
+  .badge { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
+  .badge.available { background: var(--ink); color: var(--cr); }
+  .badge.soon { background: var(--cr2); color: var(--ink3); border: 1px solid var(--cr3); }
+  .row-h { margin: 14px 0 8px; font-size: clamp(24px, 3vw, 34px); }
+  .row-blurb { font-size: 16px; color: var(--ink3); line-height: 1.65; margin: 0; max-width: 70ch; }
+  .row-aside { text-align: right; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .row-dur { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
+  .row-cta { font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--or2); white-space: nowrap; }
+  @media (max-width: 640px) {
+    .row { grid-template-columns: 1fr; }
+    .row-aside { text-align: left; align-items: flex-start; flex-direction: row; gap: 18px; }
+  }
+</style>

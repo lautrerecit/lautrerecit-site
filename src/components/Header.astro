@@ -1,0 +1,46 @@
+---
+const { pathname } = Astro.url;
+const isActive = (href) => pathname === href || (href !== '/' && pathname.startsWith(href));
+const nav = [
+  { href: '/', label: 'Accueil' },
+  { href: '/formations/', label: 'Formations' },
+  { href: '/manifeste/', label: 'Manifeste' },
+];
+---
+<header class="site-header">
+  <div class="container hd-row">
+    <a class="wordmark" href="/">L'Autre&nbsp;Récit</a>
+    <nav class="hd-nav" aria-label="Navigation principale">
+      {nav.map((n) => (
+        <a href={n.href} class:list={['hd-link', { active: isActive(n.href) }]}>{n.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--cr) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(154, 123, 46, 0.18);
+  }
+  .hd-row { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .wordmark {
+    font-family: var(--serif); font-weight: 900; font-style: italic;
+    font-size: 22px; color: var(--ink); letter-spacing: -0.01em;
+  }
+  .wordmark:hover { color: var(--or); }
+  .hd-nav { display: flex; gap: clamp(16px, 3vw, 38px); }
+  .hd-link {
+    font-family: var(--mono); font-size: 12.5px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3);
+    padding-block: 6px; border-bottom: 1.5px solid transparent;
+  }
+  .hd-link:hover { color: var(--ink); }
+  .hd-link.active { color: var(--or2); border-bottom-color: var(--or2); }
+  @media (max-width: 560px) {
+    .wordmark { font-size: 19px; }
+    .hd-link { font-size: 11px; letter-spacing: 0.1em; }
+  }
+</style>

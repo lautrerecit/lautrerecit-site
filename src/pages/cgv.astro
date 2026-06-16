@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="CGV — L'Autre Récit" description="Conditions générales de vente des formations L'Autre Récit.">
+  <section class="section legal">
+    <div class="container">
+      <p class="eyebrow">Conditions générales</p>
+      <h1>Conditions générales de vente</h1>
+      <p class="todo">⚠️ Contenu à finaliser avant le lancement (prix, droit de rétractation, modalités d'accès). À porter depuis <code>tunnel-vente/deploy/cgv.html</code>.</p>
+
+      <h2>Objet</h2>
+      <p>Les présentes conditions régissent la vente des formations en ligne proposées par L'Autre Récit. Le paiement et la livraison des cours sont assurés via la plateforme Systeme.io.</p>
+
+      <h2>Prix et paiement</h2>
+      <p>Les prix sont indiqués en euros, toutes taxes comprises. Le paiement s'effectue en ligne au moment de la commande.</p>
+
+      <h2>Droit de rétractation</h2>
+      <p>Conformément à la réglementation sur les contenus numériques, [préciser les modalités de rétractation et la garantie proposée].</p>
+
+      <h2>Accès à la formation</h2>
+      <p>L'accès est fourni après confirmation du paiement, via un espace membre hébergé sur Systeme.io.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .legal .todo { background: var(--cr2); border-left: 3px solid var(--or2); padding: 14px 18px; border-radius: 4px; font-size: 15px; color: var(--ink3); }
+  .legal code { font-family: var(--mono); font-size: 13px; background: var(--cr2); padding: 2px 6px; border-radius: 3px; }
+  .legal h2 { margin-top: 36px; font-size: 24px; }
+  .legal p { font-size: 16px; color: var(--ink3); }
+</style>

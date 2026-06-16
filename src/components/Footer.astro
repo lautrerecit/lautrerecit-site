@@ -1,0 +1,63 @@
+---
+// Liens externes — à brancher (placeholders pour l'instant).
+const social = [
+  { href: 'https://www.instagram.com/', label: 'Instagram' },
+  { href: 'https://substack.com/', label: 'Substack' },
+];
+const year = 2026;
+---
+<footer class="site-footer dark">
+  <div class="container ft-grid">
+    <div class="ft-brand">
+      <span class="ft-wordmark">L'Autre Récit</span>
+      <p class="ft-tag">Déconstruire les récits dominants. Donner aux minorités les outils de leur propre histoire.</p>
+    </div>
+
+    <nav class="ft-col" aria-label="Pages">
+      <span class="ft-h">Le site</span>
+      <a href="/">Accueil</a>
+      <a href="/formations/">Formations</a>
+      <a href="/manifeste/">Manifeste</a>
+    </nav>
+
+    <nav class="ft-col" aria-label="Réseaux">
+      <span class="ft-h">Suivre</span>
+      {social.map((s) => <a href={s.href} target="_blank" rel="noopener">{s.label}</a>)}
+    </nav>
+
+    <nav class="ft-col" aria-label="Légal">
+      <span class="ft-h">Légal</span>
+      <a href="/mentions-legales/">Mentions légales</a>
+      <a href="/cgv/">CGV</a>
+    </nav>
+  </div>
+
+  <div class="container ft-bottom">
+    <span>© {year} L'Autre Récit. Tous droits réservés.</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer { padding-top: clamp(48px, 7vw, 84px); }
+  .ft-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(24px, 4vw, 56px);
+    padding-bottom: 40px; border-bottom: 1px solid rgba(212, 176, 90, 0.18);
+  }
+  .ft-wordmark { font-family: var(--serif); font-style: italic; font-weight: 900; font-size: 24px; color: var(--cr); }
+  .ft-tag { color: var(--cr3); font-size: 15px; line-height: 1.6; margin-top: 12px; max-width: 38ch; }
+  .ft-col { display: flex; flex-direction: column; gap: 11px; }
+  .ft-h {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--or3); margin-bottom: 4px;
+  }
+  .ft-col a { color: var(--cr3); font-size: 14.5px; }
+  .ft-col a:hover { color: var(--or3); }
+  .ft-bottom {
+    padding-block: 22px; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: 0.1em; color: rgba(242, 237, 228, 0.45);
+  }
+  @media (max-width: 760px) {
+    .ft-grid { grid-template-columns: 1fr 1fr; }
+    .ft-brand { grid-column: 1 / -1; }
+  }
+</style>
