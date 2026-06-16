@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Page introuvable — L'Autre Récit" description="Cette page n'existe pas ou plus.">
+  <section class="nf">
+    <div class="container">
+      <p class="eyebrow">Erreur 404</p>
+      <h1 class="nf-h">Cette page <em>n'existe pas</em>… encore.</h1>
+      <p class="lede">
+        Le lien est peut-être cassé, ou la formation que tu cherches est en
+        préparation. Reviens vers le catalogue.
+      </p>
+      <div class="nf-cta">
+        <a class="btn btn-gold" href="/">Retour à l'accueil</a>
+        <a class="btn btn-ghost" href="/formations/">Voir les formations</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf { min-height: 64vh; display: flex; align-items: center; padding-block: clamp(60px, 10vw, 120px); }
+  .nf-h { font-size: var(--t-hero); max-width: 16ch; }
+  .nf-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+</style>

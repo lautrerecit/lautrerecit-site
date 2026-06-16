@@ -36,7 +36,7 @@ import { formations } from '../data/formations.js';
         {formations.map((f) => (
           <a
             class:list={['card', { soon: f.status === 'soon' }]}
-            href={f.status === 'available' ? f.href : '#'}
+            href={f.status === 'available' ? f.href : undefined}
             aria-disabled={f.status === 'soon'}
           >
             <div class="card-top">

@@ -22,4 +22,15 @@ export const formations = [
     duration: 'Bientôt',
     accent: '#9A7B2E',
   },
+  {
+    slug: 'afrique-colonisation',
+    title: 'Coloniser, décoloniser l’Afrique',
+    eyebrow: 'Grand cours · Afrique',
+    blurb:
+      "Une grande fresque : la conquête, l’exploitation et les indépendances africaines, racontées par les acteurs et les penseurs du continent. Le projet le plus ambitieux de L’Autre Récit.",
+    status: 'soon',
+    href: '/formations/afrique-colonisation/',
+    duration: 'En préparation',
+    accent: '#9A7B2E',
+  },
 ];

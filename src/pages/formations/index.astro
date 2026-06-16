@@ -23,7 +23,7 @@ import { formations } from '../../data/formations.js';
       {formations.map((f) => (
         <a
           class:list={['row', { soon: f.status === 'soon' }]}
-          href={f.status === 'available' ? f.href : '#'}
+          href={f.status === 'available' ? f.href : undefined}
         >
           <div class="row-main">
             <div class="row-top">

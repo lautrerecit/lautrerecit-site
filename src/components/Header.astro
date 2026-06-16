@@ -4,6 +4,7 @@ const isActive = (href) => pathname === href || (href !== '/' && pathname.starts
 const nav = [
   { href: '/', label: 'Accueil' },
   { href: '/formations/', label: 'Formations' },
+  { href: 'https://autrerecit.substack.com', label: 'Articles', external: true },
   { href: '/manifeste/', label: 'Manifeste' },
 ];
 ---
@@ -11,9 +12,13 @@ const nav = [
   <div class="container hd-row">
     <a class="wordmark" href="/">L'Autre&nbsp;Récit</a>
     <nav class="hd-nav" aria-label="Navigation principale">
-      {nav.map((n) => (
-        <a href={n.href} class:list={['hd-link', { active: isActive(n.href) }]}>{n.label}</a>
-      ))}
+      {nav.map((n) =>
+        n.external ? (
+          <a href={n.href} class="hd-link" target="_blank" rel="noopener">{n.label}<span class="ext">↗</span></a>
+        ) : (
+          <a href={n.href} class:list={['hd-link', { active: isActive(n.href) }]}>{n.label}</a>
+        )
+      )}
     </nav>
   </div>
 </header>
@@ -39,6 +44,7 @@ const nav = [
   }
   .hd-link:hover { color: var(--ink); }
   .hd-link.active { color: var(--or2); border-bottom-color: var(--or2); }
+  .hd-link .ext { font-size: 0.8em; margin-left: 3px; opacity: .65; }
   @media (max-width: 560px) {
     .wordmark { font-size: 19px; }
     .hd-link { font-size: 11px; letter-spacing: 0.1em; }
