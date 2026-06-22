@@ -536,8 +536,8 @@ section.lp.dark .lp-sub{color:rgba(255,255,255,.78);}
 /* BILLET COLLECTOR · pricing */
 @keyframes tkcFloat{0%,100%{transform:rotateX(8deg) rotateY(-6deg) translateY(0);}50%{transform:rotateX(8deg) rotateY(-6deg) translateY(-10px);}}
 .tkc-wrap{display:flex;justify-content:center;align-items:center;perspective:2200px;margin-top:48px;}
-.tkc{position:relative;width:620px;max-width:100%;height:280px;transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-6deg);animation:tkcFloat 5.5s ease-in-out infinite;}
-.tkc-body{position:relative;width:100%;height:100%;background:linear-gradient(135deg,#211C16 0%,#0E0C0A 72%,#060403 100%);border:1.5px solid transparent;border-image:linear-gradient(120deg,#9A7B2E,#FFF3C8,#C4A24A,#9A7B2E) 1;box-shadow:0 50px 100px -28px rgba(0,0,0,.85),0 0 70px rgba(212,176,90,.2);display:grid;grid-template-columns:1fr 230px;color:#fff;overflow:hidden;}
+.tkc{position:relative;display:block;width:620px;max-width:100%;height:280px;transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-6deg);animation:tkcFloat 5.5s ease-in-out infinite;text-decoration:none;color:#fff;cursor:pointer;}
+.tkc-body{position:relative;width:100%;height:100%;background:linear-gradient(135deg,#211C16 0%,#0E0C0A 72%,#060403 100%);border:1.5px solid transparent;border-image:linear-gradient(120deg,#9A7B2E,#FFF3C8,#C4A24A,#9A7B2E) 1;box-shadow:0 50px 100px -28px rgba(0,0,0,.85),0 0 70px rgba(212,176,90,.2);display:grid;grid-template-columns:1fr 230px;color:#fff;overflow:hidden;transition:box-shadow .3s ease;}
 @keyframes tkcGlare{0%{transform:translateX(-130%) skewX(-18deg);}55%,100%{transform:translateX(250%) skewX(-18deg);}}
 .tkc-body::before{content:"";position:absolute;top:0;left:0;width:40%;height:100%;z-index:1;background:linear-gradient(90deg,transparent,rgba(255,247,210,.3),transparent);animation:tkcGlare 5.5s ease-in-out infinite;pointer-events:none;}
 .tkc-body::after{display:none;}
@@ -562,6 +562,9 @@ section.lp.dark .lp-sub{color:rgba(255,255,255,.78);}
 .tkc-price-old{font-family:var(--serif);font-style:italic;font-weight:700;font-size:22px;line-height:1;color:rgba(255,243,200,.5);text-decoration:line-through;text-decoration-color:rgba(196,162,74,.85);text-decoration-thickness:1.5px;}
 .tkc-cta{font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);font-weight:700;background:linear-gradient(180deg,var(--or3),var(--or2));padding:11px 22px;text-decoration:none;display:inline-block;box-shadow:0 8px 20px -6px rgba(232,199,122,.5);transition:transform .25s,box-shadow .25s;border:none;cursor:pointer;white-space:nowrap;}
 .tkc-cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -6px rgba(232,199,122,.7);}
+.tkc:hover .tkc-cta{transform:translateY(-2px);box-shadow:0 14px 28px -6px rgba(232,199,122,.7);}
+.tkc:hover .tkc-body{box-shadow:0 60px 120px -28px rgba(0,0,0,.9),0 0 95px rgba(212,176,90,.34);}
+.tkc:focus-visible{outline:2px solid var(--or3);outline-offset:6px;}
 .tkc-amt-sub{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,199,122,.6);font-weight:700;margin-top:8px;}
 .tkc-value{max-width:680px;margin:34px auto 0;display:flex;gap:14px;align-items:flex-start;justify-content:flex-start;text-align:left;padding:20px 26px;background:linear-gradient(180deg,rgba(196,162,74,.09),rgba(196,162,74,.03));border:1px solid rgba(196,162,74,.3);border-radius:5px;}
 .tkc-value-star{font-family:var(--serif);font-size:24px;color:var(--or2);line-height:1.25;flex-shrink:0;}
@@ -1129,7 +1132,7 @@ section.lp.dark .lp-sub{color:rgba(255,255,255,.78);}
     <p class="lp-sub">Pas de plan amputé, pas d'upsell&nbsp;: une seule offre, tout compris. La formation se déploie semaine après semaine et reste à vous à vie — cinq cours, trente-huit modules, à un prix qui rémunère le travail sans en faire un produit de luxe.</p>
 
     <div class="tkc-wrap">
-      <div class="tkc">
+      <a class="tkc" href="https://cours.lautrerecit.com/commande" aria-label="Rejoindre la formation — accéder au bon de commande">
         <div class="tkc-body">
           <div class="tkc-notch tkc-notch-l"></div>
           <div class="tkc-notch tkc-notch-r"></div>
@@ -1154,11 +1157,11 @@ section.lp.dark .lp-sub{color:rgba(255,255,255,.78);}
             <div class="tkc-right-l">Tarif de lancement</div>
             <div class="tkc-price-old">119,99&nbsp;€</div>
             <div class="tkc-price foil"><sup>€</sup>79,99</div>
-            <a class="tkc-cta" href="https://cours.lautrerecit.com/commande">Rejoindre →</a>
+            <span class="tkc-cta">Rejoindre →</span>
             <div class="tkc-amt-sub">Paiement 1× ou 3×</div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
 
     <div class="tkc-value">
@@ -1365,7 +1368,7 @@ section.lp.dark .lp-sub{color:rgba(255,255,255,.78);}
     <div class="lp-finalcta-rule"></div>
     <p class="lp-finalcta-sub">Cinq heures qui changent la manière dont vous lirez les cinquante prochaines années de débats raciaux. Aux États-Unis comme en France.</p>
     <div class="btn-cluster" style="justify-content:center;">
-      <a class="btn btn-on-dark btn-lg btn-price" href="#pricing"><span>Rejoindre la formation — <s class="btn-old">119,99&nbsp;€</s> 79,99&nbsp;€</span></a>
+      <a class="btn btn-on-dark btn-lg btn-price" href="https://cours.lautrerecit.com/commande"><span>Rejoindre la formation — <s class="btn-old">119,99&nbsp;€</s> 79,99&nbsp;€</span></a>
       <a class="btn btn-outline-dark btn-lg" href="#programme">Revoir le programme</a>
     </div>
     <div class="lp-finalcta-reassure">★ Cours introductif gratuit · Paiement 3× sans frais · Accès à vie</div>
