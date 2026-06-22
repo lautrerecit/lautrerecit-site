@@ -1,6 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { formations } from '../../data/formations.js';
+import FormationFeature from '../../components/FormationFeature.astro';
+
+// Seule la formation disponible est présentée pour l'instant.
+const featured = formations.find((f) => f.status === 'available');
 ---
 <Base
   title="Formations — L'Autre Récit"
@@ -11,42 +15,29 @@ import { formations } from '../../data/formations.js';
       <p class="eyebrow">Le catalogue</p>
       <h1>Les formations</h1>
       <p class="lede">
-        Chaque formation part des sources et des penseurs eux-mêmes. On ne
-        survole pas&nbsp;: on donne les outils pour comprendre, et pour raconter
-        autrement.
+        Chaque formation part des sources et des penseurs eux-mêmes. On y prend
+        le temps&nbsp;: les outils pour comprendre, et de quoi raconter autrement.
       </p>
     </div>
   </section>
 
   <section class="section list-sec">
-    <div class="container list">
-      {formations.map((f) => (
-        <a
-          class:list={['row', { soon: f.status === 'soon' }]}
-          href={f.status === 'available' ? f.href : undefined}
-        >
-          <div class="row-main">
-            <div class="row-top">
-              <span class="row-eyebrow">{f.eyebrow}</span>
-              <span class:list={['badge', f.status]}>
-                {f.status === 'available' ? 'Disponible' : 'Bientôt'}
-              </span>
-            </div>
-            <h2 class="row-h">{f.title}</h2>
-            <p class="row-blurb">{f.blurb}</p>
-          </div>
-          <div class="row-aside">
-            <span class="row-dur">{f.duration}</span>
-            {f.status === 'available' && <span class="row-cta">Découvrir →</span>}
-          </div>
-        </a>
-      ))}
+    <div class="container">
+      <FormationFeature
+        title={featured.title}
+        eyebrow={featured.eyebrow}
+        blurb={featured.blurb}
+        href={featured.href}
+        duration={featured.duration}
+        status={featured.status}
+        image="/formations/nationalisme-noir.jpg"
+      />
     </div>
   </section>
 </Base>
 
 <style>
-  .head { padding-bottom: 0; }
+  .head { padding-top: clamp(88px, 11vw, 120px); padding-bottom: 0; }
   .list-sec { padding-top: clamp(32px, 5vw, 56px); }
   .list { display: flex; flex-direction: column; gap: 18px; }
   .row {

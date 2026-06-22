@@ -1,0 +1,316 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ============================================================
+// L'ARCHITECTURE — la boussole islamique. Réaxée sur la pensée islamique.
+// ALTERNANCE STRICTE bloc par bloc : D-C-D-C-D-C-D-C-D-C (+ footer D).
+// Cards : sombres sur crème · claires sur sombre.
+// ============================================================
+
+const engage = [
+  { k: '01', t: 'Quelles questions', d: "Le prisme islamique choisit d'abord ce qui mérite d'être posé, avant même de chercher comment y répondre." },
+  { k: '02', t: 'Quelle responsabilité', d: "Il tient ensemble deux exigences : agir contre l'injustice du dehors, et réformer ce qui vient de soi." },
+  { k: '03', t: 'Quelles conclusions', d: "Il pense la civilisation comme un projet moral, et juge à cette aune ce qui compte vraiment comme progrès." },
+];
+
+const figures = [
+  { d: 'IXe siècle', a: 'Bagdad', t: 'Bayt al-Ḥikma', x: "La Maison de la sagesse : un État qui finance la traduction et le prolongement des savoirs grecs, persans, indiens." },
+  { d: 'XIe siècle', a: 'Asie centrale', t: 'Al-Bīrūnī', x: "Mesure le rayon de la Terre avec une précision stupéfiante, des siècles avant l'Europe." },
+  { d: 'XIIe siècle', a: 'Cordoue', t: 'Ibn Rushd', x: "Ses commentaires d'Aristote nourrissent la scolastique européenne : l'Occident relit les Grecs à travers lui." },
+  { d: 'XIVe siècle', a: 'Tunis · Le Caire', t: 'Ibn Khaldūn', x: "Pose, dans la Muqaddima, les bases de ce qu'on appellera bien plus tard la sociologie." },
+];
+
+const preuve = [
+  { q: "Chrétienne de gauche, cette page me nourrit énormément. Des analyses d'une grande finesse, qui décalent le regard et reposent les bonnes questions.", n: 'Madeleine' },
+  { q: "Un travail de recherche solide, des références sérieuses en sciences humaines. L'Autre Récit vulgarise le travail scientifique là où les premiers concernés sont souvent absents du débat.", n: 'Chaïmae' },
+  { q: "Une vision plus éclairée de l'actualité, de l'histoire et de la société. J'y retrouve même les auteurs que j'étudie en cours.", n: 'Lina' },
+];
+---
+<Base
+  title="L'architecture — L'Autre Récit"
+  description="Le socle de L'Autre Récit : la boussole islamique. Pourquoi l'islam pose les questions, commence par la réforme de soi, et parle pourtant à tout le monde."
+  noVerset={true}
+>
+  <div class="ar-page">
+    <!-- 1 · HERO (sombre) -->
+    <section class="ar-sec ar-hero band-dark">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="eyebrow">Le socle · L'Autre Récit</p>
+        <h1 class="ar-h1">L'<span class="gold-grad">architecture</span></h1>
+        <p class="ar-lede">Toute analyse part d'un endroit, même quand elle prétend ne partir de nulle part. Voici d'où part la nôtre — et ce que ça change à ce qu'on voit.</p>
+        <span class="ar-scroll" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <!-- 2 · LE PROBLÈME (crème) -->
+    <section class="ar-sec">
+      <div class="container ar-narrow">
+        <p class="ar-kicker reveal">Le problème de l'époque</p>
+        <h2 class="ar-h2 reveal">Une grille se donne toujours pour <span class="gold-grad">l'évidence même</span>.</h2>
+        <div class="ar-prose reveal">
+          <p>Chaque cadre d'analyse se présente comme neutre, universel, allant de soi. C'est sa force : ce qui passe pour évident n'a plus à se justifier. Dans ce paysage, l'islam est le plus souvent convoqué comme une variable — une spiritualité qu'on tente de loger dans des systèmes ayant déjà posé leurs axiomes sans lui. On lui demande de prouver sa compatibilité. Rarement de poser lui-même les questions.</p>
+        </div>
+        <blockquote class="ar-pull reveal">
+          <span class="ar-pull-mark" aria-hidden="true">«</span>
+          <p>L'islam pose les questions avant que les autres disciplines n'aient décidé lesquelles méritaient d'être posées.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 3 · ROMPRE AVEC LA FAUSSE NEUTRALITÉ (sombre) -->
+    <section class="ar-sec band-dark">
+      <div class="grain"></div>
+      <div class="container ar-narrow">
+        <p class="ar-kicker reveal">Rompre avec la fausse neutralité</p>
+        <h2 class="ar-h2 reveal">Assumer une position, <span class="gold-grad">parler à tous</span>.</h2>
+        <div class="ar-prose reveal">
+          <p>Aucun regard n'est neutre. L'homme est un acteur social&nbsp;: son milieu — social, politique, économique — façonne ce qu'il voit, et ce qu'il passe sous silence. Revendiquer la neutralité, c'est surtout dissimuler son point de départ.</p>
+          <p>L'Autre Récit <strong>assume son ancrage islamique</strong>&nbsp;: une identité, une boussole. Dire d'où l'on parle est la condition d'une analyse honnête — et cet ancrage parle, justement, à tout le monde.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · LA PREUVE / COMMUNAUTÉ (crème) -->
+    <section class="ar-sec">
+      <div class="container">
+        <p class="ar-kicker center reveal">La preuve · la communauté</p>
+        <p class="ar-proof-intro reveal">Une communauté qui dépasse les appartenances — croyants et non-croyants, de tous horizons — s'y reconnaît.</p>
+        <div class="ar-proof reveal">
+          {preuve.map((p) => (
+            <figure class="ar-proof-card">
+              <span class="ar-proof-mark" aria-hidden="true">«</span>
+              <blockquote class="ar-proof-q">{p.q}</blockquote>
+              <figcaption class="ar-proof-n">{p.n} · Retour communauté</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · LA BOUSSOLE / VERSET (sombre) -->
+    <section class="ar-sec ar-compass band-dark">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="ar-kicker center reveal">La boussole</p>
+        <p class="ar-compass-intro reveal">Avant de choisir une méthode, il faut savoir ce qu'on cherche. C'est ce que l'islam apporte&nbsp;: une direction, une boussole.</p>
+        <figure class="ar-verse reveal">
+          <div class="ar-verse-halo" aria-hidden="true"></div>
+          <p class="ar-ar" lang="ar" dir="rtl">إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنْفُسِهِمْ</p>
+          <hr class="ar-verse-rule" />
+          <figcaption class="ar-fr">«&nbsp;Allah ne modifie pas l'état d'<em>un peuple</em> tant que les individus qui le composent ne modifient pas ce qui est <em>en eux-mêmes</em>.&nbsp;»</figcaption>
+          <p class="ar-ref">Sourate Ar-Ra'd · 13 · 11</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 6 · RESPONSABILITÉ (crème) -->
+    <section class="ar-sec">
+      <div class="container ar-narrow">
+        <p class="ar-kicker reveal">Une éthique de responsabilité</p>
+        <h2 class="ar-h2 reveal">D'abord se réformer <span class="gold-grad">soi</span>. Ensuite le <span class="gold-grad">monde</span>.</h2>
+        <p class="ar-resp-lead reveal">C'est tout le sens du verset&nbsp;: rien ne change dans un peuple tant que rien n'a changé dans les cœurs. L'islam renverse l'ordre des priorités — il commence par l'intérieur.</p>
+        <div class="ar-resp reveal">
+          <div class="ar-resp-side">
+            <span class="ar-resp-tag">D'abord · vers soi</span>
+            <p>L'islam cherche avant tout à réformer l'individu. Avant de vouloir changer l'ordre du monde, on se corrige soi-même&nbsp;: une religion de justice envers soi, de réforme intérieure.</p>
+          </div>
+          <div class="ar-resp-node" aria-hidden="true"><span></span></div>
+          <div class="ar-resp-side">
+            <span class="ar-resp-tag">Ensuite · vers le monde</span>
+            <p>De ce cœur réformé naît l'exigence de justice. L'islam s'élève contre l'oppression, défend l'opprimé, refuse la domination et dit le vrai face au pouvoir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 · LE PRISME ISLAMIQUE (sombre · cards claires) -->
+    <section class="ar-sec band-dark">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="ar-kicker center reveal">Comprendre à travers le prisme islamique</p>
+        <h2 class="ar-h2 center reveal">Une grille de lecture, <span class="gold-grad">ouverte à tous</span>.</h2>
+        <p class="ar-prism-lead reveal">On peut l'emprunter sans en partager la croyance. Le prisme islamique oriente trois choses.</p>
+        <div class="ar-engage reveal">
+          {engage.map((e) => (
+            <article class="ar-eng-card">
+              <span class="ar-eng-k" aria-hidden="true">{e.k}</span>
+              <h3 class="ar-eng-t">{e.t}</h3>
+              <p class="ar-eng-d">{e.d}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · LES ĠURABĀ' (crème · carte sombre) -->
+    <section class="ar-sec ar-ghuraba">
+      <div class="container">
+        <figure class="ar-gh reveal">
+          <p class="ar-kicker center">Les ġurabā' · الغرباء</p>
+          <p class="ar-gh-ar" lang="ar" dir="rtl">بَدَأَ الإِسْلَامُ غَرِيبًا وَسَيَعُودُ غَرِيبًا كَمَا بَدَأَ، فَطُوبَىٰ لِلْغُرَبَاءِ</p>
+          <figcaption class="ar-gh-fr">«&nbsp;L'islam a commencé <em>étranger</em> et redeviendra étranger comme il a commencé&nbsp;: heureux les <em>étrangers</em>.&nbsp;»</figcaption>
+          <p class="ar-gh-gloss">Les étrangers ne fuient pas le monde. Quand tout se délite autour d'eux, ils tiennent encore un cadre cohérent — et réparent ce que les autres laissent se corrompre.</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 9 · اقرأ / SAVOIR (sombre · cards claires) -->
+    <section class="ar-sec ar-iqra-sec band-dark">
+      <div class="grain"></div>
+      <div class="container">
+        <div class="ar-iqra reveal">
+          <p class="ar-iqra-word foil" lang="ar" dir="rtl">اقْرَأْ</p>
+          <p class="ar-iqra-tr">«&nbsp;Lis, au nom de ton Seigneur qui a créé.&nbsp;»</p>
+          <p class="ar-iqra-ref">Le tout premier mot révélé · Sourate Al-'Alaq · 96 · 1</p>
+        </div>
+        <p class="ar-iqra-lead reveal">La toute première injonction révélée est un ordre de lire. L'islam s'est pensé comme une civilisation du savoir — et l'a prouvé pendant des siècles.</p>
+        <ol class="ar-figs reveal">
+          {figures.map((f) => (
+            <li class="ar-fig">
+              <span class="ar-fig-d">{f.d}</span>
+              <h3 class="ar-fig-t">{f.t}</h3>
+              <span class="ar-fig-a">{f.a}</span>
+              <p class="ar-fig-x">{f.x}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- 10 · CTA (crème) -->
+    <section class="ar-sec ar-cta-sec">
+      <div class="container">
+        <p class="ar-cta-line reveal">Voilà d'où l'on parle. Le reste, ce sont les analyses et les formations.</p>
+        <div class="ar-cta reveal">
+          <a class="btn btn-or" href="/formations/">Voir les formations <span class="ar">→</span></a>
+          <a class="btn btn-oc" href="/grille-de-lecture/">La grille de lecture <span class="ar">→</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  /* ===== BASE : crème dominant + bandes sombres ===== */
+  .ar-page { position: relative; color: var(--ink2); background: var(--cr); }
+  .ar-narrow { max-width: 760px; }
+  .ar-sec { padding-block: clamp(50px, 7vw, 96px); }
+
+  .band-dark { position: relative; overflow: hidden; color: var(--cr); background-color: #0C0A07; background-image: radial-gradient(130% 80% at 50% 0%, #1A1714 0%, #0E0C0A 52%, #0A0807 100%); }
+  .band-dark .grain { position: absolute; inset: 0; pointer-events: none; opacity: .05; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .band-dark .container { position: relative; z-index: 1; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .ar-kicker { font-family: var(--mono); font-size: 11.5px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--or2); margin: 0 0 14px; }
+  .band-dark .ar-kicker { color: var(--or3); }
+  .ar-kicker.center { text-align: center; }
+  .ar-h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(29px, 4.2vw, 50px); line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin: 0; }
+  .band-dark .ar-h2 { color: #fff; }
+  .ar-h2.center { text-align: center; }
+  .ar-h2 .gold-grad { font-style: italic; }
+
+  /* ===== HERO ===== */
+  .ar-hero { text-align: center; padding-block: clamp(76px, 11vw, 134px) clamp(34px, 5vw, 56px); }
+  .ar-hero .eyebrow { color: var(--or3); }
+  .ar-h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(54px, 11vw, 128px); line-height: .9; letter-spacing: -0.03em; color: #fff; margin: 14px 0 0; }
+  .ar-h1 .gold-grad { font-style: italic; }
+  .ar-lede { max-width: 56ch; margin: 24px auto 0; font-weight: 300; font-size: clamp(16.5px, 1.8vw, 20px); line-height: 1.6; color: rgba(242,237,228,.78); }
+  .ar-scroll { display: block; width: 1px; height: clamp(34px, 5vw, 54px); margin: clamp(26px, 4vw, 42px) auto 0; background: linear-gradient(180deg, var(--or2), transparent); }
+
+  /* prose — s'adapte au fond */
+  .ar-prose p { font-family: var(--sans); font-weight: 400; font-size: clamp(16.5px, 1.6vw, 19px); line-height: 1.72; margin: 20px 0 0; color: var(--ink3); }
+  .band-dark .ar-prose p { font-weight: 300; color: rgba(242,237,228,.82); }
+  .ar-prose strong { color: var(--ink); font-weight: 700; }
+  .band-dark .ar-prose strong { color: #fff; }
+
+  /* pull-quote (crème) */
+  .ar-pull { position: relative; margin: clamp(30px, 4vw, 44px) 0 0; padding: 4px 0 4px 30px; border-left: 2px solid var(--or2); }
+  .ar-pull-mark { position: absolute; left: 16px; top: -16px; font-family: var(--serif); font-style: italic; font-weight: 900; font-size: 58px; line-height: 1; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; opacity: .55; }
+  .ar-pull p { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(20px, 2.5vw, 29px); line-height: 1.4; color: var(--ink); margin: 0; }
+
+  /* ===== PREUVE (cartes sombres sur crème) ===== */
+  .ar-proof-intro { text-align: center; max-width: 56ch; margin: 0 auto clamp(28px, 4vw, 40px); font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(17px, 1.9vw, 22px); line-height: 1.5; color: var(--ink2); }
+  .ar-proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .ar-proof-card { position: relative; background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border: 1px solid rgba(196,162,74,.4); border-top: 2px solid var(--or2); border-radius: 14px; padding: 22px 26px; box-shadow: 0 30px 64px -34px rgba(14,12,10,.5); transition: transform .45s var(--ease), border-color .4s, box-shadow .45s; }
+  .ar-proof-card:hover { transform: translateY(-5px); box-shadow: 0 46px 92px -36px rgba(14,12,10,.55), 0 0 40px -14px rgba(196,162,74,.4); }
+  .ar-proof-mark { display: block; font-family: var(--serif); font-style: italic; font-weight: 900; font-size: 44px; line-height: .5; height: .46em; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; }
+  .ar-proof-q { font-family: var(--serif); font-style: normal; font-weight: 400; font-size: 15.5px; line-height: 1.6; color: rgba(242,237,228,.88); margin: 8px 0 0; }
+  .ar-proof-n { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid rgba(212,176,90,.2); font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--or2); }
+
+  /* ===== BOUSSOLE / VERSET (sombre) ===== */
+  .ar-compass { text-align: center; }
+  .ar-compass-intro { max-width: 52ch; margin: 0 auto clamp(34px, 5vw, 52px); font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(18px, 2vw, 24px); line-height: 1.5; color: rgba(242,237,228,.86); }
+  .ar-verse { position: relative; max-width: 880px; margin: 0 auto; padding: clamp(20px, 3vw, 36px) clamp(20px, 4vw, 40px); }
+  .ar-verse-halo { position: absolute; left: 50%; top: 46%; width: min(760px, 96%); height: 300px; transform: translate(-50%,-50%); pointer-events: none; background: radial-gradient(closest-side, rgba(196,162,74,.18), rgba(196,162,74,.05) 55%, transparent 75%); animation: halo 6s ease-in-out infinite; }
+  @keyframes halo { 0%,100% { opacity: .65; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 1; transform: translate(-50%,-50%) scale(1.08); } }
+  .ar-ar { position: relative; font-family: 'Amiri', 'Times New Roman', serif; font-weight: 400; font-size: clamp(28px, 4.6vw, 56px); line-height: 1.7; color: #F8F3E9; direction: rtl; margin: 0 auto; text-shadow: 0 0 38px rgba(255,255,255,.12); }
+  .ar-verse-rule { position: relative; width: 120px; margin: clamp(20px, 3vw, 32px) auto; border: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--or2), transparent); }
+  .ar-fr { position: relative; font-family: var(--serif); font-style: normal; font-weight: 400; font-size: clamp(17px, 1.9vw, 23px); line-height: 1.5; color: rgba(242,237,228,.92); max-width: 54ch; margin: 0 auto; }
+  .ar-fr em { font-style: italic; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; }
+  .ar-ref { position: relative; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--or3); margin: 24px 0 0; }
+
+  /* ===== RESPONSABILITÉ (crème · cartes sombres) ===== */
+  .ar-resp-lead { max-width: 60ch; margin: 18px 0 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(18px, 2vw, 24px); line-height: 1.45; color: var(--ink); }
+  .ar-resp { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(18px, 2.5vw, 34px); align-items: center; margin-top: clamp(28px, 4vw, 44px); }
+  .ar-resp-side { background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border: 1px solid rgba(196,162,74,.4); border-top: 2px solid var(--or2); border-radius: 14px; padding: clamp(22px, 3vw, 30px); box-shadow: 0 30px 64px -34px rgba(14,12,10,.5); }
+  .ar-resp-tag { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--or2); }
+  .ar-resp-side p { font-family: var(--sans); font-weight: 300; font-size: 15.5px; line-height: 1.64; color: rgba(242,237,228,.82); margin: 12px 0 0; }
+  .ar-resp-node { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--or2); background: radial-gradient(circle, rgba(196,162,74,.18), transparent 70%); box-shadow: 0 0 26px -6px rgba(196,162,74,.45); }
+  .ar-resp-node span { width: 11px; height: 11px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px rgba(196,162,74,.7); }
+  @media (max-width: 720px) { .ar-resp { grid-template-columns: 1fr; } .ar-resp-node { transform: rotate(90deg); margin: -4px auto; } }
+
+  /* ===== PRISME (sombre · cartes CLAIRES) ===== */
+  .ar-prism-lead { max-width: 56ch; margin: 16px auto clamp(34px, 4.5vw, 48px); text-align: center; font-family: var(--sans); font-weight: 300; font-size: clamp(16px, 1.6vw, 18.5px); line-height: 1.7; color: rgba(242,237,228,.78); }
+  .ar-engage { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
+  .ar-eng-card { position: relative; overflow: hidden; background: linear-gradient(160deg, #fff 0%, var(--cr) 74%, var(--cr2) 100%); border: 1px solid rgba(154,123,46,.3); border-top: 2px solid var(--or2); border-radius: 14px; padding: 28px 26px 24px; box-shadow: 0 30px 64px -30px rgba(0,0,0,.6); transition: transform .45s var(--ease), box-shadow .45s, border-color .4s; }
+  .ar-eng-card:hover { transform: translateY(-6px); border-color: var(--or2); box-shadow: 0 50px 100px -30px rgba(0,0,0,.7), 0 0 44px -16px rgba(196,162,74,.4); }
+  .ar-eng-k { font-family: var(--serif); font-style: italic; font-weight: 900; font-size: 30px; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; }
+  .ar-eng-t { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--ink); margin: 8px 0 10px; letter-spacing: -0.01em; }
+  .ar-eng-d { font-family: var(--sans); font-weight: 400; font-size: 15px; line-height: 1.64; color: var(--ink3); margin: 0; }
+
+  /* ===== ĠURABĀ' (crème · carte sombre) ===== */
+  .ar-ghuraba .ar-gh { max-width: 820px; margin: 0 auto; text-align: center; padding: clamp(30px, 4.5vw, 54px) clamp(22px, 4vw, 48px); border-radius: 18px; background: radial-gradient(120% 120% at 50% 0%, #1A140C, #0C0A07 72%); border: 1px solid; border-image: linear-gradient(180deg, rgba(196,162,74,.6), rgba(196,162,74,.12) 60%, transparent) 1; box-shadow: 0 44px 100px -50px rgba(14,12,10,.55); }
+  .ar-ghuraba .ar-kicker { color: var(--or3); }
+  .ar-gh-ar { font-family: 'Amiri', serif; font-weight: 400; font-size: clamp(24px, 3.8vw, 44px); line-height: 1.7; color: #F8F3E9; direction: rtl; margin: 16px auto 0; text-shadow: 0 0 30px rgba(255,255,255,.1); }
+  .ar-gh-fr { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(18px, 2vw, 25px); line-height: 1.45; color: #fff; max-width: 48ch; margin: 22px auto 0; }
+  .ar-gh-fr em { font-style: italic; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; }
+  .ar-gh-gloss { font-family: var(--sans); font-weight: 300; font-size: clamp(15px, 1.5vw, 17px); line-height: 1.7; color: rgba(242,237,228,.72); max-width: 56ch; margin: 20px auto 0; }
+
+  /* ===== IQRA / SAVOIR (sombre · cartes CLAIRES) ===== */
+  .ar-iqra { text-align: center; }
+  .ar-iqra-word { font-family: 'Amiri', serif; font-weight: 700; font-size: clamp(76px, 15vw, 176px); line-height: 1; direction: rtl; margin: 0; }
+  .ar-iqra-tr { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(19px, 2.2vw, 27px); color: #fff; margin: 14px auto 0; }
+  .ar-iqra-ref { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--or3); margin: 14px 0 0; }
+  .ar-iqra-lead { max-width: 58ch; margin: clamp(30px, 4vw, 44px) auto clamp(34px, 5vw, 50px); text-align: center; font-family: var(--sans); font-weight: 300; font-size: clamp(16px, 1.6vw, 18.5px); line-height: 1.7; color: rgba(242,237,228,.8); }
+  .ar-figs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .ar-fig { position: relative; background: linear-gradient(160deg, #fff, var(--cr) 82%); border: 1px solid rgba(154,123,46,.3); border-top: 2px solid var(--or2); border-radius: 14px; padding: 24px; box-shadow: 0 30px 64px -30px rgba(0,0,0,.6); transition: transform .45s var(--ease), box-shadow .45s; }
+  .ar-fig:hover { transform: translateY(-5px); box-shadow: 0 50px 100px -30px rgba(0,0,0,.7), 0 0 38px -16px rgba(196,162,74,.4); }
+  .ar-fig-d { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--or); }
+  .ar-fig-t { font-family: var(--serif); font-weight: 700; font-size: 23px; color: var(--ink); margin: 10px 0 2px; }
+  .ar-fig-a { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
+  .ar-fig-x { font-family: var(--sans); font-weight: 400; font-size: 14.5px; line-height: 1.64; color: var(--ink3); margin: 14px 0 0; }
+
+  /* ===== CTA (crème) ===== */
+  .ar-cta-sec { text-align: center; padding-block: clamp(48px, 6.5vw, 86px) clamp(64px, 9vw, 110px); }
+  .ar-cta-line { font-family: var(--serif); font-weight: 700; font-size: clamp(22px, 3vw, 36px); letter-spacing: -0.02em; color: var(--ink); max-width: 24ch; margin: 0 auto; line-height: 1.2; }
+  .ar-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 30px; }
+
+  @media (prefers-reduced-motion: reduce) { .ar-verse-halo { animation: none; } .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var els = document.querySelectorAll('.ar-page .reveal');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.14 });
+    els.forEach(function (el) { obs.observe(el); });
+  })();
+</script>

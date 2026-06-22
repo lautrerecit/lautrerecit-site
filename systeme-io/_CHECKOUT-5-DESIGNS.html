@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Autre Récit — Bon de commande · 5 designs premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#080706;font-family:'League Spartan',system-ui,sans-serif;color:#F2EDE4}
+  .bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:rgba(14,12,10,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,162,74,.28);padding:13px clamp(16px,4vw,40px)}
+  .wm{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#F2EDE4;margin-right:auto}
+  .wm b{color:#C4A24A;font-weight:700;font-style:normal}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .tab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#bcae93;background:transparent;border:1px solid rgba(196,162,74,.3);border-radius:7px;padding:9px 13px;cursor:pointer;transition:.2s}
+  .tab:hover{color:#F2EDE4;border-color:#C4A24A}
+  .tab.on{color:#0E0C0A;background:linear-gradient(180deg,#EBCB70,#C9A24C,#A9863A);border-color:transparent;font-weight:700}
+  .cap{background:#0b0a08;border-bottom:1px solid rgba(196,162,74,.14);padding:13px clamp(16px,4vw,40px);font-size:13px;line-height:1.5;color:#9a8f7e}
+  .cap b{color:#C4A24A;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:15px;margin-right:8px}
+  .cap .note{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5f5a50;float:right}
+  .alt{display:none}.alt.on{display:block}
+  .serif{font-family:'Playfair Display',Georgia,serif}
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* shared form atoms (rendus cibles ; en réel = champs natifs Systeme stylés) */
+  .lbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 7px;display:block}
+  .pm{display:flex;gap:10px;margin:0 0 16px}
+  .pm .opt{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:10px;font-size:13.5px;cursor:pointer;font-weight:500}
+  .pay{display:block;width:100%;border:0;border-radius:10px;padding:18px;font-family:'League Spartan',sans-serif;font-weight:700;font-size:15px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);color:#0E0C0A;box-shadow:0 14px 32px -12px rgba(196,162,74,.6)}
+  .trust{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+
+  /* ===== 01 · SPLIT (récap sombre + form crème) ===== */
+  .ck1{background:#0E0C0A;padding:clamp(34px,5vw,64px) clamp(20px,4vw,56px)}
+  .ck1 .wrap{max-width:1020px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:0;border-radius:20px;overflow:hidden;box-shadow:0 40px 90px -50px rgba(0,0,0,.8)}
+  .ck1 .recap{background:linear-gradient(160deg,#181410,#0E0C0A);padding:clamp(30px,3.6vw,46px);color:#F2EDE4}
+  .ck1 .ey{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#C4A24A;margin:0 0 16px}
+  .ck1 .recap h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,2.8vw,34px);line-height:1.1;margin:0 0 8px}
+  .ck1 .recap h2 em{font-style:italic;color:#C4A24A}
+  .ck1 .price{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:46px;color:#C4A24A;margin:14px 0 4px}
+  .ck1 .price span{font-family:'JetBrains Mono',monospace;font-style:normal;font-size:10.5px;letter-spacing:.16em;color:#9a8f7e;margin-left:8px}
+  .ck1 ul{list-style:none;margin:20px 0 0;padding:18px 0 0;border-top:1px solid rgba(196,162,74,.18);display:grid;gap:11px}
+  .ck1 li{position:relative;padding-left:24px;font-size:14px;color:#d9d0c2;line-height:1.45}
+  .ck1 li:before{content:"\2713";position:absolute;left:0;color:#C4A24A;font-weight:700}
+  .ck1 .form{background:#FBF8F2;padding:clamp(30px,3.6vw,46px);color:#1A1714}
+  .ck1 .form .h{font-family:'Playfair Display',serif;font-size:20px;margin:0 0 22px;color:#15120E}
+  .ck1 .lbl{color:#6b6253}
+  .ck1 .inp{width:100%;border:1px solid #DDD2BE;background:#fff;border-radius:10px;padding:14px;font-family:'League Spartan',sans-serif;font-size:15px;color:#1A1714;margin:0 0 16px}
+  .ck1 .pm .opt{border:1px solid #DDD2BE;background:#fff;color:#3D3730}
+  .ck1 .pm .opt.on{border-color:#C4A24A;background:#FBF3DF;color:#15120E;box-shadow:0 0 0 1px #C4A24A inset}
+  .ck1 .trust{color:#9a8f7e}
+  .ck1 .trust b{color:#9A7B2E}
+  @media(max-width:760px){.ck1 .wrap{grid-template-columns:1fr}}
+
+  /* ===== 02 · CRÈME CENTRÉ ÉDITORIAL ===== */
+  .ck2{background:radial-gradient(120% 130% at 50% 0%,#FBF8F2,#EFE8DA 70%);padding:clamp(34px,5vw,70px) clamp(20px,4vw,56px)}
+  .ck2 .card{max-width:600px;margin:0 auto;background:#fff;border:1px solid #E6DDCB;border-radius:20px;padding:clamp(30px,4.4vw,52px);box-shadow:0 40px 90px -52px rgba(60,50,30,.45);text-align:center}
+  .ck2 .ey{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9A7B2E;margin:0 0 12px}
+  .ck2 h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,3.4vw,34px);line-height:1.12;color:#15120E;margin:0 0 10px}
+  .ck2 h2 em{font-style:italic;color:#C4A24A}
+  .ck2 .price{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:42px;color:#C4A24A;margin:6px 0}
+  .ck2 .chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0 24px}
+  .ck2 .chip{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#6b6253;border:1px solid #E0D6C2;border-radius:30px;padding:7px 13px}
+  .ck2 .rule{height:1px;background:linear-gradient(90deg,transparent,#C4A24A,transparent);margin:0 0 24px}
+  .ck2 .field{text-align:left;margin:0 0 16px}
+  .ck2 .lbl{color:#6b6253}
+  .ck2 .inp{width:100%;border:0;border-bottom:1.5px solid #DDD2BE;background:transparent;padding:11px 2px;font-family:'League Spartan',sans-serif;font-size:16px;color:#1A1714}
+  .ck2 .pm{justify-content:center}
+  .ck2 .pm .opt{border:1px solid #DDD2BE;background:#FBF8F2;color:#3D3730;max-width:160px}
+  .ck2 .pm .opt.on{border-color:#C4A24A;background:#FBF3DF;color:#15120E}
+  .ck2 .trust{color:#9a8f7e}.ck2 .trust b{color:#9A7B2E}
+
+  /* ===== 03 · INK MONOLITHE ===== */
+  .ck3{background:#0E0C0A;padding:clamp(34px,5vw,70px) clamp(20px,4vw,56px)}
+  .ck3 .card{max-width:580px;margin:0 auto;text-align:center}
+  .ck3 .ey{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#C4A24A;margin:0 0 14px}
+  .ck3 h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(26px,3.6vw,40px);line-height:1.08;color:#F2EDE4;margin:0 0 6px}
+  .ck3 h2 em{font-style:italic;color:#C4A24A}
+  .ck3 .price{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:50px;line-height:1;margin:16px 0 24px;background:linear-gradient(110deg,#9A863A,#EBCB70 40%,#C9A24C 60%,#9A7B2E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .ck3 .glass{background:rgba(255,255,255,.03);border:1px solid rgba(196,162,74,.25);border-radius:16px;padding:clamp(24px,3vw,34px);text-align:left}
+  .ck3 .lbl{color:#bcae93}
+  .ck3 .inp{width:100%;border:1px solid rgba(196,162,74,.28);background:rgba(255,255,255,.02);border-radius:10px;padding:14px;font-family:'League Spartan',sans-serif;font-size:15px;color:#F2EDE4;margin:0 0 16px}
+  .ck3 .inp::placeholder{color:#7a7163}
+  .ck3 .pm .opt{border:1px solid rgba(196,162,74,.28);background:rgba(255,255,255,.02);color:#cbbfa8}
+  .ck3 .pm .opt.on{border-color:#C4A24A;background:rgba(196,162,74,.12);color:#F2EDE4}
+  .ck3 .trust{color:#7a7163}.ck3 .trust b{color:#C4A24A}
+
+  /* ===== 04 · FORM-FIRST (conversion) ===== */
+  .ck4{background:#0E0C0A;padding:0 0 clamp(34px,5vw,64px)}
+  .ck4 .hd{background:linear-gradient(180deg,#181410,#0E0C0A);padding:clamp(24px,3.4vw,40px) clamp(20px,4vw,56px);text-align:center;border-bottom:1px solid rgba(196,162,74,.2)}
+  .ck4 .hd .ey{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#C4A24A;margin:0 0 10px}
+  .ck4 .hd h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(22px,3vw,32px);color:#F2EDE4;margin:0 0 10px}
+  .ck4 .hd h2 em{font-style:italic;color:#C4A24A}
+  .ck4 .meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#cbbfa8}
+  .ck4 .meta b{color:#C4A24A;font-size:15px;font-family:'Playfair Display',serif;font-style:italic}
+  .ck4 .card{max-width:520px;margin:clamp(-20px,-2vw,-28px) auto 0;position:relative;background:#FBF8F2;border:1px solid #E6DDCB;border-radius:18px;padding:clamp(28px,3.4vw,42px);box-shadow:0 40px 90px -50px rgba(0,0,0,.6);color:#1A1714}
+  .ck4 .card .h{font-family:'Playfair Display',serif;font-size:19px;margin:0 0 20px;text-align:center;color:#15120E}
+  .ck4 .lbl{color:#6b6253}
+  .ck4 .inp{width:100%;border:1px solid #DDD2BE;background:#fff;border-radius:10px;padding:15px;font-family:'League Spartan',sans-serif;font-size:15px;color:#1A1714;margin:0 0 16px}
+  .ck4 .pm .opt{border:1px solid #DDD2BE;background:#fff;color:#3D3730}
+  .ck4 .pm .opt.on{border-color:#C4A24A;background:#FBF3DF;color:#15120E;box-shadow:0 0 0 1px #C4A24A inset}
+  .ck4 .rea{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0 0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#9a8f7e}
+  .ck4 .rea b{color:#9A7B2E}
+
+  /* ===== 05 · DIPTYQUE LUXE (visuel + form) ===== */
+  .ck5{background:#0E0C0A;padding:clamp(34px,5vw,64px) clamp(20px,4vw,56px)}
+  .ck5 .wrap{max-width:1020px;margin:0 auto;display:grid;grid-template-columns:1fr .9fr;gap:0;border-radius:20px;overflow:hidden;box-shadow:0 40px 90px -50px rgba(0,0,0,.8)}
+  .ck5 .vis{position:relative;background:radial-gradient(130% 100% at 20% 10%,#241d12,#0E0C0A 70%);padding:clamp(30px,3.4vw,46px);color:#F2EDE4;display:flex;flex-direction:column;justify-content:space-between;min-height:420px}
+  .ck5 .vis:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 90%,rgba(196,162,74,.14),transparent 60%);pointer-events:none}
+  .ck5 .ey{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#C4A24A;margin:0 0 14px;position:relative}
+  .ck5 .vis h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(26px,3vw,38px);line-height:1.08;margin:0;position:relative}
+  .ck5 .vis h2 em{font-style:italic;color:#C4A24A}
+  .ck5 .vis ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;position:relative}
+  .ck5 .vis li{position:relative;padding-left:22px;font-size:13.5px;color:#d9d0c2}
+  .ck5 .vis li:before{content:"\2713";position:absolute;left:0;color:#C4A24A;font-weight:700}
+  .ck5 .vis .price{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:44px;color:#C4A24A;position:relative;margin-top:18px}
+  .ck5 .form{background:#FBF8F2;padding:clamp(30px,3.4vw,44px);color:#1A1714}
+  .ck5 .form .h{font-family:'Playfair Display',serif;font-size:19px;margin:0 0 20px;color:#15120E}
+  .ck5 .lbl{color:#6b6253}
+  .ck5 .inp{width:100%;border:1px solid #DDD2BE;background:#fff;border-radius:10px;padding:14px;font-family:'League Spartan',sans-serif;font-size:15px;color:#1A1714;margin:0 0 16px}
+  .ck5 .pm .opt{border:1px solid #DDD2BE;background:#fff;color:#3D3730}
+  .ck5 .pm .opt.on{border-color:#C4A24A;background:#FBF3DF;color:#15120E;box-shadow:0 0 0 1px #C4A24A inset}
+  .ck5 .trust{color:#9a8f7e}.ck5 .trust b{color:#9A7B2E}
+  @media(max-width:760px){.ck5 .wrap{grid-template-columns:1fr}.ck5 .vis{min-height:0}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wm">L'<b>Autre</b> Récit · Bon de commande</div>
+  <div class="tabs">
+    <button class="tab on" data-i="0">01 · Split</button>
+    <button class="tab" data-i="1">02 · Crème centré</button>
+    <button class="tab" data-i="2">03 · Ink monolithe</button>
+    <button class="tab" data-i="3">04 · Form-first</button>
+    <button class="tab" data-i="4">05 · Diptyque luxe</button>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="alt on">
+  <div class="cap"><b>01 · Split</b> Récap sombre à gauche · formulaire crème à droite. Standard e-commerce premium, lisible, rassurant. <span class="note">champs = natifs Systeme stylés</span></div>
+  <section class="ck1"><div class="wrap">
+    <div class="recap">
+      <p class="ey">Votre commande</p>
+      <h2>Le nationalisme noir <em>américain</em></h2>
+      <div class="price">79,99 €<span>PAIEMENT UNIQUE</span></div>
+      <ul>
+        <li>Un cours introductif + les 5 cours</li>
+        <li>L'interlude Malcolm × King</li>
+        <li>Accès à vie + mises à jour</li>
+        <li>Garantie 14 jours, remboursé sans condition</li>
+      </ul>
+    </div>
+    <div class="form">
+      <p class="h">Finalise ta commande</p>
+      <label class="lbl">Prénom</label><input class="inp" placeholder="Ton prénom">
+      <label class="lbl">E-mail</label><input class="inp" placeholder="ton@email.com">
+      <label class="lbl">Paiement</label>
+      <div class="pm"><div class="opt on">Carte bancaire</div><div class="opt">PayPal</div></div>
+      <input class="inp" placeholder="Numéro de carte  ·  MM/AA  ·  CVC">
+      <button class="pay">Payer 79,99 € →</button>
+      <div class="trust"><span><b>✓</b> Paiement sécurisé</span><span><b>✓</b> Accès immédiat</span><span><b>✓</b> Garantie 14 j</span></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- 02 -->
+<div class="alt">
+  <div class="cap"><b>02 · Crème centré</b> Une carte claire centrée, épurée, champs soulignés. Luxe « papier », très lisible. <span class="note">champs = natifs Systeme stylés</span></div>
+  <section class="ck2"><div class="card">
+    <p class="ey">Votre commande</p>
+    <h2>Le nationalisme noir <em>américain</em></h2>
+    <div class="price">79,99 €</div>
+    <div class="chips"><span class="chip">Intro + 5 cours</span><span class="chip">Interlude</span><span class="chip">Accès à vie</span><span class="chip">Garantie 14 j</span></div>
+    <div class="rule"></div>
+    <div class="field"><label class="lbl">Prénom</label><input class="inp" placeholder="Ton prénom"></div>
+    <div class="field"><label class="lbl">E-mail</label><input class="inp" placeholder="ton@email.com"></div>
+    <div class="pm"><div class="opt on">Carte bancaire</div><div class="opt">PayPal</div></div>
+    <button class="pay">Payer 79,99 € →</button>
+    <div class="trust"><span><b>✓</b> Sécurisé</span><span><b>✓</b> Accès immédiat</span></div>
+  </div></section>
+</div>
+
+<!-- 03 -->
+<div class="alt">
+  <div class="cap"><b>03 · Ink monolithe</b> Tout sombre, prix en or foil, formulaire en carte verre. Cohérent avec le tunnel, premium « nuit ». <span class="note">champs = natifs Systeme stylés</span></div>
+  <section class="ck3"><div class="card">
+    <p class="ey">Votre commande</p>
+    <h2>Le nationalisme noir <em>américain</em></h2>
+    <div class="price">79,99 €</div>
+    <div class="glass">
+      <label class="lbl">Prénom</label><input class="inp" placeholder="Ton prénom">
+      <label class="lbl">E-mail</label><input class="inp" placeholder="ton@email.com">
+      <label class="lbl">Paiement</label>
+      <div class="pm"><div class="opt on">Carte bancaire</div><div class="opt">PayPal</div></div>
+      <input class="inp" placeholder="Numéro de carte  ·  MM/AA  ·  CVC">
+      <button class="pay">Payer 79,99 € →</button>
+      <div class="trust"><span><b>✓</b> Paiement sécurisé</span><span><b>✓</b> Garantie 14 j</span></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- 04 -->
+<div class="alt">
+  <div class="cap"><b>04 · Form-first</b> Bandeau produit compact en haut, le formulaire est la star (carte qui chevauche). Orienté conversion. <span class="note">champs = natifs Systeme stylés</span></div>
+  <section class="ck4">
+    <div class="hd">
+      <p class="ey">Votre commande</p>
+      <h2>Le nationalisme noir <em>américain</em></h2>
+      <div class="meta"><span><b>79,99 €</b> paiement unique</span><span>Accès à vie</span><span>Garantie 14 jours</span></div>
+    </div>
+    <div class="card">
+      <p class="h">Finalise ta commande</p>
+      <label class="lbl">Prénom</label><input class="inp" placeholder="Ton prénom">
+      <label class="lbl">E-mail</label><input class="inp" placeholder="ton@email.com">
+      <div class="pm"><div class="opt on">Carte bancaire</div><div class="opt">PayPal</div></div>
+      <input class="inp" placeholder="Numéro de carte  ·  MM/AA  ·  CVC">
+      <button class="pay">Payer 79,99 € →</button>
+      <div class="rea"><span><b>✓</b> Paiement sécurisé SSL</span><span><b>✓</b> Accès immédiat</span><span><b>✓</b> Remboursé 14 j</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- 05 -->
+<div class="alt">
+  <div class="cap"><b>05 · Diptyque luxe</b> Volet « valeur » sombre+or à gauche, formulaire crème compact à droite. Le plus « produit haut de gamme ». <span class="note">champs = natifs Systeme stylés</span></div>
+  <section class="ck5"><div class="wrap">
+    <div class="vis">
+      <div>
+        <p class="ey">Formation premium</p>
+        <h2>Le nationalisme noir <em>américain</em></h2>
+        <ul>
+          <li>Un cours introductif + les 5 cours</li>
+          <li>L'interlude Malcolm × King</li>
+          <li>Accès à vie + mises à jour</li>
+          <li>Citations sourcées & fiches</li>
+        </ul>
+      </div>
+      <div class="price">79,99 €</div>
+    </div>
+    <div class="form">
+      <p class="h">Finalise ta commande</p>
+      <label class="lbl">Prénom</label><input class="inp" placeholder="Ton prénom">
+      <label class="lbl">E-mail</label><input class="inp" placeholder="ton@email.com">
+      <div class="pm"><div class="opt on">Carte bancaire</div><div class="opt">PayPal</div></div>
+      <button class="pay">Payer 79,99 € →</button>
+      <div class="trust"><span><b>✓</b> Sécurisé</span><span><b>✓</b> Accès immédiat</span></div>
+    </div>
+  </div></section>
+</div>
+
+<script>
+  var tabs=[].slice.call(document.querySelectorAll('.tab')),alts=[].slice.call(document.querySelectorAll('.alt'));
+  function go(i){tabs.forEach(function(t,k){t.classList.toggle('on',k===i)});alts.forEach(function(a,k){a.classList.toggle('on',k===i)});window.scrollTo({top:0,behavior:'smooth'})}
+  tabs.forEach(function(t){t.addEventListener('click',function(){go(+t.dataset.i)})});
+  document.querySelectorAll('.pm').forEach(function(g){g.querySelectorAll('.opt').forEach(function(o){o.addEventListener('click',function(){g.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on')})})});
+</script>
+</body>
+</html>

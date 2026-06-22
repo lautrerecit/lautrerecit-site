@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Autre Récit — Modèle de référence · fiche leçon (crème + noir, centré)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0}
+  body{background:#0b0a08;font-family:'League Spartan',system-ui,sans-serif}
+  .ref-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a8f7e;
+    text-align:center;padding:22px 16px 8px}
+  .ref-lbl b{color:#C4A24A}
+
+  /* ============================================================
+     MODÈLE DE RÉFÉRENCE — fiche de présentation de module
+     Deux variantes, MÊME structure, texte CENTRÉ.
+     A · CRÈME  (modules impairs : 1·3·5)  → carte claire + pied sombre
+     B · NOIR   (modules pairs  : 2·4·6)  → carte sombre + pied crème
+     ============================================================ */
+  .lrf{--or2:#C4A24A;--or3:#D4B05A;--or:#9A7B2E;--cr:#F2EDE4}
+  .lrf,.lrf *{box-sizing:border-box}
+
+  /* ---- tronc commun (centrage + tailles, identiques aux 2 variantes) ---- */
+  .lrf{font-family:'League Spartan',system-ui,sans-serif;text-align:center;
+    padding:clamp(40px,6vw,84px) clamp(20px,4vw,64px)}
+  .lrf .lrf-card{max-width:760px;margin:0 auto;border-radius:20px;overflow:hidden}
+  .lrf .lrf-bd{padding:clamp(34px,4.8vw,62px) clamp(28px,4.4vw,60px)}
+  .lrf .lrf-top{display:flex;justify-content:center;align-items:center;gap:12px;margin:0 0 22px}
+  .lrf .lrf-n{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:900;font-size:30px;color:var(--or2);line-height:1}
+  .lrf .lrf-dot{width:4px;height:4px;border-radius:50%;background:var(--or2);opacity:.55}
+  .lrf .lrf-ey{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+  .lrf h2{font-family:'Playfair Display',Georgia,serif;font-weight:700;
+    font-size:clamp(28px,4vw,44px);line-height:1.12;letter-spacing:-.015em;margin:0 auto 22px;max-width:20ch}
+  .lrf h2 em{font-style:italic;color:var(--or2)}
+  .lrf .lrf-rl{height:2px;width:56px;margin:0 auto 26px;border:0;border-radius:2px;
+    background:linear-gradient(90deg,transparent,#C4A24A,transparent)}
+  .lrf p{font-size:16.5px;line-height:1.8;margin:0 auto 1.05em;max-width:54ch}
+  .lrf p:last-child{margin-bottom:0}
+  .lrf .lrf-learn{padding:clamp(26px,3.4vw,40px) clamp(28px,4.4vw,56px)}
+  .lrf .lrf-learn .lrf-k{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;
+    text-transform:uppercase;margin:0 0 18px}
+  .lrf .lrf-learn ul{list-style:none;margin:0;padding:0;display:grid;gap:13px;justify-items:center}
+  .lrf .lrf-learn li{font-size:14.5px;line-height:1.55;max-width:46ch}
+  .lrf .lrf-learn li:before{content:"\2713";color:var(--or2);font-weight:700;margin-right:9px}
+
+  /* ---- A · CRÈME ---- */
+  .lrf-cream{background:radial-gradient(120% 130% at 50% 0%,#FBF8F2,#F2EDE4 62%)}
+  .lrf-cream .lrf-card{background:#fff;border:1px solid #E6DDCB;box-shadow:0 34px 80px -46px rgba(60,50,30,.42)}
+  .lrf-cream .lrf-ey{color:var(--or)}
+  .lrf-cream h2{color:#15120E}
+  .lrf-cream p{color:#3D3730}
+  .lrf-cream .lrf-learn{background:#0E0C0A}
+  .lrf-cream .lrf-learn .lrf-k{color:var(--or3)}
+  .lrf-cream .lrf-learn li{color:#E3D9C6}
+
+  /* ---- B · NOIR (inverse) ---- */
+  .lrf-dark{background:radial-gradient(120% 130% at 50% 0%,#14110C,#080706 62%)}
+  .lrf-dark .lrf-card{background:#17130E;border:1px solid rgba(196,162,74,.26);box-shadow:0 34px 80px -46px rgba(0,0,0,.85)}
+  .lrf-dark .lrf-ey{color:var(--or2)}
+  .lrf-dark h2{color:#F4EEE3}
+  .lrf-dark p{color:#D9D0C2}
+  .lrf-dark .lrf-learn{background:#F4EEE3}
+  .lrf-dark .lrf-learn .lrf-k{color:var(--or)}
+  .lrf-dark .lrf-learn li{color:#3D3730}
+</style>
+</head>
+<body>
+
+<div class="ref-lbl">Modèle <b>A · crème</b> — modules impairs (1 · 3 · 5)</div>
+<div class="lrf lrf-cream">
+  <div class="lrf-card">
+    <div class="lrf-bd">
+      <div class="lrf-top"><span class="lrf-n">01</span><span class="lrf-dot"></span><span class="lrf-ey">Introduction</span></div>
+      <h2>La question que vous n'osiez pas <em>poser</em></h2>
+      <hr class="lrf-rl">
+      <p>Pourquoi des Noirs américains ont-ils réclamé une nation à eux, un territoire séparé, parfois un retour en Afrique ? La question met mal à l'aise parce qu'elle heurte l'idéal d'intégration qu'on tient pour évident.</p>
+      <p>Ce module ouvre la formation en posant le vrai sujet : le nationalisme noir comme réponse politique à une promesse d'égalité jamais tenue. On apprend d'abord à regarder cette histoire sans la juger d'avance.</p>
+    </div>
+    <div class="lrf-learn">
+      <p class="lrf-k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Pourquoi le nationalisme noir est une réponse politique cohérente</li>
+        <li>Ce que l'idéal d'intégration empêche de voir</li>
+        <li>La promesse d'égalité d'où part toute la formation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="ref-lbl">Modèle <b>B · noir</b> — modules pairs (2 · 4 · 6)</div>
+<div class="lrf lrf-dark">
+  <div class="lrf-card">
+    <div class="lrf-bd">
+      <div class="lrf-top"><span class="lrf-n">02</span><span class="lrf-dot"></span><span class="lrf-ey">Introduction</span></div>
+      <h2>Pourquoi cette histoire est mal connue en <em>France</em></h2>
+      <hr class="lrf-rl">
+      <p>Malcolm X, les Black Panthers, Garvey : des noms familiers, une histoire pourtant survolée et déformée de ce côté de l'Atlantique.</p>
+      <p>Le récit français bute sur ses angles morts — l'universalisme républicain, le tabou de la race, l'habitude de lire les États-Unis par la seule lutte pour les droits civiques. Ce module explique d'où vient ce flou.</p>
+    </div>
+    <div class="lrf-learn">
+      <p class="lrf-k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Les angles morts français face à la question raciale</li>
+        <li>Pourquoi les droits civiques masquent le reste de l'histoire</li>
+        <li>Ce que l'universalisme républicain rend difficile à penser</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

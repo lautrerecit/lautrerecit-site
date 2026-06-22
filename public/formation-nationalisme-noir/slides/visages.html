@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C5 · M3 — Les Black Panthers · contre-gouverner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>/* === TOKENS TYPO CANONIQUES === */
+:root{
+  --t-cover:clamp(48px,6.8vw,94px);
+  --t-question:clamp(38px,4.8vw,64px);
+  --t-section:clamp(30px,3.8vw,48px);
+  --t-mini:clamp(22px,2.8vw,34px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--cr:#F2EDE4;--cr2:#EAE3D8;--cr3:#D4C9B8;--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--ink:#0E0C0A;--ink2:#1A1714;--ink3:#3D3730;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',sans-serif;--mono:'JetBrains Mono',monospace;--callout:'Source Serif 4',Georgia,serif;--quote:'DM Serif Display',Georgia,serif;}
+html,body{width:100%;height:100%;background:var(--ink);overflow:hidden;font-family:var(--sans);-webkit-font-smoothing:antialiased;user-select:none;}
+*{cursor:none!important;}
+#cur{position:fixed;z-index:9999;width:8px;height:8px;background:var(--or2);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:width .18s,height .18s;mix-blend-mode:difference;}
+#cur.big{width:38px;height:38px;background:rgba(196,162,74,.25);border:1.5px solid var(--or2);mix-blend-mode:normal;}
+/* Chrome bas · Variant B Minimal · barre or au bas + watermark mono + numéro page Playfair italique or */
+#prog{position:fixed;bottom:0;left:36px;height:2px;z-index:200;background:linear-gradient(90deg,var(--or2),var(--or3));transition:width .6s cubic-bezier(.22,1,.36,1);border-radius:1px;}
+#prog::after{content:"";position:fixed;bottom:0;left:36px;right:36px;height:1px;background:rgba(212,176,90,.16);z-index:199;}
+#wm{position:fixed;bottom:24px;left:36px;z-index:200;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:rgba(212,176,90,.5);}
+#wm strong{color:var(--or2);font-weight:700;}
+#wm #wm-brand{font:inherit;color:inherit;letter-spacing:inherit;}
+#wm #wm-sep{margin:0 6px;color:rgba(212,176,90,.28);font:inherit;letter-spacing:inherit;}
+#wm #wm-loc{font:inherit;color:var(--or2);font-weight:700;letter-spacing:inherit;}
+#counter{position:fixed;bottom:14px;right:36px;z-index:200;font-family:var(--serif);font-style:italic;font-weight:900;font-size:30px;color:var(--or2);line-height:1;letter-spacing:-.02em;}
+#counter sup{font-family:var(--mono);font-size:10px;font-weight:700;color:rgba(212,176,90,.45);letter-spacing:.2em;font-style:normal;margin-left:6px;vertical-align:top;line-height:1.2;}
+#dots,.dot,.dot.on{display:none!important;}
+#deck{width:100vw;height:100vh;position:relative;}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .04s;}
+.slide.on{opacity:1;pointer-events:all;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes lineGrow{from{width:0}to{width:60px}}
+@keyframes arrPulse{0%,100%{transform:translateX(4px);opacity:.4}50%{transform:translateX(8px);opacity:1}}
+@keyframes unfold{from{transform:perspective(1400px) rotateX(-90deg);opacity:0}to{transform:perspective(1400px) rotateX(0deg);opacity:1}}
+@keyframes isoRise{from{opacity:0;transform:translate3d(-8px,16px,0) rotateX(35deg) rotateZ(-25deg)}to{opacity:1;transform:translate3d(0,0,0) rotateX(35deg) rotateZ(-25deg)}}
+@keyframes countUp{from{opacity:0;transform:translateY(20px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
+.kw-or{font-weight:700;font-style:italic;color:var(--or2);}
+.kw-gold{font-weight:900;font-style:italic;color:var(--or2);}
+/* S1 COVER */
+#s1{background:var(--cr);overflow:hidden;}
+.s1-grain{position:absolute;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");}
+.s1-wm{position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:clamp(280px,30vw,440px);font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(154,123,46,.07);line-height:1;pointer-events:none;opacity:0;animation:fadeIn 1.2s .1s forwards;}
+.s1-rv{position:absolute;left:72px;top:0;bottom:0;width:1.5px;background:linear-gradient(180deg,transparent 8%,var(--or) 28%,var(--or2) 72%,transparent 92%);}
+.s1-badge{position:absolute;top:52px;left:112px;display:flex;align-items:center;gap:16px;opacity:0;animation:fadeUp .6s .3s forwards;}
+.s1-badge-num{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--or2);letter-spacing:.12em;}
+.s1-badge-div{width:28px;height:1px;background:var(--or2);opacity:.4;}
+.s1-badge-txt{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--ink3);}
+.s1-body{position:relative;z-index:2;padding:0 80px 0 112px;max-width:880px;width:100%;}
+.s1-eyebrow{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--or2);opacity:0;animation:fadeUp .5s .55s forwards;}
+.s1-h{font-family:var(--serif);font-size:clamp(40px,5vw,68px);font-weight:900;line-height:1.04;color:var(--ink);margin-top:16px;opacity:0;animation:fadeUp .85s .7s forwards;max-width:600px;}
+.s1-h em{display:block;font-style:italic;font-weight:900;color:var(--or2);}
+.s1-rule{display:flex;align-items:center;gap:20px;margin:28px 0;opacity:0;animation:fadeIn .6s 1.05s forwards;}
+.s1-rule-line{flex:1;max-width:64px;height:1px;background:linear-gradient(90deg,var(--or),transparent);}
+.s1-rule-dot{width:4px;height:4px;border-radius:50%;background:var(--or2);}
+.s1-sub{font-size:17px;font-weight:300;color:var(--ink3);line-height:1.65;max-width:580px;opacity:0;animation:fadeUp .65s 1.15s forwards;}
+.s1-sub strong{font-weight:700;color:var(--or2);}
+.s1-meta{display:flex;gap:0;margin-top:38px;opacity:0;animation:fadeUp .6s 1.3s forwards;}
+.s1-m{padding-right:40px;border-right:1px solid rgba(154,123,46,.18);}
+.s1-m+.s1-m{padding-left:40px;padding-right:0;border-right:none;}
+.s1-m label{display:block;font-size:10px;font-weight:700;letter-spacing:.28em;color:var(--or2);text-transform:uppercase;}
+.s1-m span{display:block;font-size:15px;font-weight:300;color:var(--ink3);margin-top:6px;}
+/* S2 QUESTION */
+#s2{background:var(--cr);}
+.s2-body{max-width:920px;width:100%;padding:0 88px;}
+.s2-tag{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--or2);opacity:0;font-family:var(--mono);}
+.on .s2-tag{animation:fadeIn .5s .15s forwards;}
+.s2-tag::before,.s2-tag::after{content:'—';margin:0 12px;opacity:.4;}
+.s2-q{font-family:var(--serif);font-size:var(--t-question);font-weight:900;color:var(--ink);line-height:1.16;margin-top:44px;opacity:0;}
+.on .s2-q{animation:fadeUp .9s .35s forwards;}
+.s2-q em{font-style:italic;color:var(--or2);}
+.s2-q strong{font-weight:900;font-style:italic;color:var(--or2);}
+.s2-divider{display:flex;align-items:center;gap:16px;margin:36px 0;opacity:0;}
+.on .s2-divider{animation:fadeIn .7s .85s forwards;}
+.s2-divider-line{width:48px;height:1px;background:rgba(154,123,46,.4);}
+.s2-divider-text{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--or2);font-family:var(--mono);}
+.s2-rep{font-size:19px;font-weight:300;color:var(--ink3);line-height:1.75;max-width:760px;opacity:0;}
+.on .s2-rep{animation:fadeUp .65s 1.0s forwards;}
+.s2-rep strong{font-weight:700;font-style:italic;color:var(--or2);}
+/* ══ S3 · PATTERN L — Photo + chiffre monumental ══ */
+#s3{background:var(--ink);overflow:hidden;padding:48px 56px 80px;}
+.s3-top{position:absolute;top:48px;left:56px;right:56px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;opacity:0;z-index:5;}
+#s3.on .s3-top{animation:fadeUp .55s .15s forwards;}
+.s3-tag{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.3em;color:var(--or2);text-transform:uppercase;}
+.s3-h{font-family:var(--serif);font-size:clamp(26px,3.2vw,40px);font-weight:900;font-style:italic;color:#FFFFFF;line-height:1.1;letter-spacing:-.01em;margin-top:6px;max-width:780px;}
+.s3-h em{font-style:italic;color:var(--or2);}
+.s3-foot{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:rgba(212,176,90,.55);text-transform:uppercase;text-align:right;line-height:1.6;}
+.s3-foot strong{color:var(--or2);}
+.s3-L{position:absolute;left:56px;right:56px;top:160px;bottom:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--ink);border:1px solid rgba(212,176,90,.12);}
+.s3-L-card{position:relative;overflow:hidden;background:var(--ink2);border-right:1px solid rgba(212,176,90,.12);cursor:pointer!important;transition:transform .6s cubic-bezier(.34,1.56,.64,1),z-index 0s .6s;opacity:0;transform:translateY(18px);}
+.s3-L-card:last-child{border-right:none;}
+#s3.on .s3-L-card{opacity:1;transform:translateY(0);transition:transform .7s cubic-bezier(.34,1.56,.64,1),opacity .7s,z-index 0s .6s;}
+#s3.on .s3-L-card:nth-child(1){transition-delay:.4s,.4s,.6s;}
+#s3.on .s3-L-card:nth-child(2){transition-delay:.55s,.55s,.6s;}
+#s3.on .s3-L-card:nth-child(3){transition-delay:.7s,.7s,.6s;}
+.s3-L-card:hover{transform:scale(1.03) !important;z-index:5;transition:transform .55s cubic-bezier(.34,1.56,.64,1),z-index 0s 0s;}
+.s3-L-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;filter:grayscale(1) contrast(.95) brightness(.78);transition:filter .6s,transform .8s;}
+.s3-L-card:hover img{filter:grayscale(.35) contrast(1.05) brightness(.92);transform:scale(1.06);}
+.s3-L-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,12,10,.38) 0%,rgba(14,12,10,.88) 100%);pointer-events:none;transition:opacity .5s;}
+.s3-L-card:hover::after{opacity:.92;}
+.s3-L-content{position:absolute;inset:0;padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;z-index:2;}
+.s3-L-top{display:flex;flex-direction:column;}
+.s3-L-eyebrow{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.22em;color:var(--or2);text-transform:uppercase;opacity:.85;}
+.s3-L-num{font-family:var(--serif);font-style:italic;font-weight:900;font-size:clamp(64px,7.4vw,108px);line-height:.9;color:#FFFFFF;margin-top:8px;letter-spacing:-.04em;text-shadow:0 4px 24px rgba(0,0,0,.6);transition:color .4s,transform .55s cubic-bezier(.34,1.56,.64,1);}
+.s3-L-num sup{font-size:.32em;vertical-align:super;color:var(--or2);font-weight:700;letter-spacing:0;margin-left:2px;}
+.s3-L-num em{font-style:italic;font-size:.42em;vertical-align:0;color:var(--or2);font-weight:700;margin-left:2px;}
+.s3-L-card:hover .s3-L-num{color:var(--or2);transform:translateY(-4px);}
+.s3-L-bottom{display:flex;flex-direction:column;}
+.s3-L-rule{width:32px;height:1.5px;background:var(--or2);margin-bottom:14px;}
+.s3-L-label{font-family:var(--serif);font-weight:700;font-size:22px;line-height:1.22;color:#FFFFFF;letter-spacing:-.005em;}
+.s3-L-label em{font-style:italic;color:var(--or2);}
+.s3-L-source{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:rgba(212,176,90,.62);text-transform:uppercase;margin-top:10px;line-height:1.5;}
+/* ══ S4 · PATTERN G — Mosaïque actions historiques BPP ══ */
+#s4{background:var(--cr);overflow:hidden;}
+.s4G-head{position:absolute;top:48px;left:56px;right:56px;z-index:5;}
+.s4G-tag{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.3em;color:var(--or2);text-transform:uppercase;opacity:0;}
+#s4.on .s4G-tag{animation:fadeUp .5s .15s forwards;}
+.s4G-h{font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.2vw,40px);line-height:1.08;letter-spacing:-.01em;color:var(--ink);margin-top:8px;max-width:880px;opacity:0;}
+#s4.on .s4G-h{animation:fadeUp .65s .3s forwards;}
+.s4G-h em{font-style:italic;color:var(--or2);}
+.s4G-rule{width:48px;height:1.5px;background:var(--or2);margin-top:14px;opacity:0;}
+#s4.on .s4G-rule{animation:fadeIn .4s .55s forwards;}
+.s4G-stage{position:absolute;left:56px;right:56px;top:180px;bottom:74px;perspective:1900px;perspective-origin:50% 45%;}
+.s4G-mosaic{position:relative;width:100%;height:100%;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,1fr);gap:12px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.22,1,.36,1);}
+.s4G-frame{position:relative;background:var(--ink2);border:1px solid var(--cr3);overflow:hidden;cursor:pointer!important;transform-style:preserve-3d;transform:translateZ(0) scale(1);transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .38s,filter .38s,box-shadow .38s,border-color .3s;will-change:transform,opacity;opacity:0;backface-visibility:hidden;}
+#s4.on .s4G-frame{opacity:1;transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .38s,filter .38s,box-shadow .38s,border-color .3s;}
+#s4.on .s4G-frame:nth-child(1){transition-delay:.5s;}
+#s4.on .s4G-frame:nth-child(2){transition-delay:.58s;}
+#s4.on .s4G-frame:nth-child(3){transition-delay:.66s;}
+#s4.on .s4G-frame:nth-child(4){transition-delay:.74s;}
+#s4.on .s4G-frame:nth-child(5){transition-delay:.82s;}
+#s4.on .s4G-frame:nth-child(6){transition-delay:.9s;}
+#s4.on .s4G-frame:nth-child(7){transition-delay:.98s;}
+#s4.on .s4G-frame:nth-child(8){transition-delay:1.06s;}
+#s4.on .s4G-frame:nth-child(9){transition-delay:1.14s;}
+#s4.on .s4G-frame:nth-child(10){transition-delay:1.22s;}
+.s4G-frame img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(1) brightness(.85);transition:filter .55s,transform .8s ease-out;}
+.s4G-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(14,12,10,.92));pointer-events:none;transition:opacity .4s;}
+.s4G-frame:hover{transform:translateZ(28px) scale(1.04);box-shadow:0 22px 52px -16px rgba(14,12,10,.55);border-color:var(--or2);z-index:3;}
+.s4G-frame:hover img{filter:grayscale(.4) brightness(.95);}
+.s4G-frame-num{position:absolute;top:8px;left:10px;font-family:var(--serif);font-style:italic;font-weight:900;font-size:14px;color:var(--or2);z-index:2;letter-spacing:-.02em;}
+.s4G-frame-name{position:absolute;left:10px;right:10px;bottom:8px;font-family:var(--serif);font-style:italic;font-weight:700;font-size:13.5px;color:#FFFFFF;line-height:1.1;letter-spacing:-.01em;z-index:2;}
+.s4G-frame-name em{color:var(--or2);font-style:normal;}
+.s4G-frame-tag{position:absolute;left:10px;bottom:30px;font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:rgba(212,176,90,.78);z-index:2;text-transform:uppercase;}
+.s4G-foot{position:absolute;left:56px;right:56px;bottom:46px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase;opacity:0;}
+#s4.on .s4G-foot{animation:fadeIn .5s 1.4s forwards;}
+.s4G-foot .arr{color:var(--or2);animation:arrPulse 1.8s infinite;}
+.s4G-mosaic.has-focus{transform:translateZ(-30px);transition:transform .7s cubic-bezier(.16,1,.3,1);}
+.s4G-mosaic.has-focus .s4G-frame:not(.focused){transform:translateZ(-180px) scale(.84);opacity:.14;filter:blur(2.6px);pointer-events:none;border-color:transparent;transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .55s ease-out,filter .55s ease-out;}
+/* Focused card : reste à sa place naturelle dans la mosaïque, lift Z subtil · cachée derrière le panel central qui a fond ink solide */
+.s4G-mosaic.has-focus .s4G-frame.focused{box-shadow:0 50px 90px -25px rgba(14,12,10,.88),0 0 0 2px var(--or2),0 0 80px rgba(196,162,74,.22);border-color:var(--or2);z-index:10;transition:transform .7s cubic-bezier(.16,1,.3,1),box-shadow .5s ease-out,border-color .4s,opacity .5s ease-out;transform:translateZ(80px) scale(1.05);opacity:.4;}
+.s4G-mosaic.has-focus .s4G-frame.focused.panel-side-right,
+.s4G-mosaic.has-focus .s4G-frame.focused.panel-side-left{transform:translateZ(80px) scale(1.05);}
+.s4G-mosaic.has-focus .s4G-frame.focused img{filter:grayscale(.15) contrast(1.06) brightness(.98);}
+.s4G-mosaic.has-focus .s4G-frame.focused::after{opacity:0;}
+.s4G-mosaic.has-focus .s4G-frame.focused .s4G-frame-name,.s4G-mosaic.has-focus .s4G-frame.focused .s4G-frame-tag{opacity:0;}
+/* Panel centré dans l'axe (plus axé) · plus large · animation smooth premium */
+.s4G-panel{position:absolute;top:50%;left:50%;width:min(540px,52vw);background:var(--ink);border:1px solid var(--or2);padding:42px 46px 36px;border-radius:5px;opacity:0;pointer-events:none;z-index:20;box-shadow:0 40px 100px -25px rgba(14,12,10,.85),0 0 0 1px rgba(196,162,74,.12);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.s4G-panel.panel-right{transform:translate(calc(-50% + 24px),calc(-50% + 18px)) scale(.94);}
+.s4G-panel.panel-left{transform:translate(calc(-50% - 24px),calc(-50% + 18px)) scale(.94);}
+.s4G-panel.panel-right.show,.s4G-panel.panel-left.show{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:all;}
+.s4G-panel::before{content:"";position:absolute;left:0;top:0;width:100%;height:1.5px;background:linear-gradient(90deg,transparent,var(--or3),transparent);}
+.s4G-panel-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;color:var(--or2);text-transform:uppercase;font-weight:700;}
+.s4G-panel-name{font-family:var(--serif);font-style:italic;font-weight:900;font-size:38px;color:#FFFFFF;line-height:1.05;margin-top:8px;letter-spacing:-.015em;}
+.s4G-panel-name em{color:var(--or2);}
+.s4G-panel-date{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--or2);margin-top:14px;text-transform:uppercase;font-weight:700;}
+.s4G-panel-rule{width:42px;height:1.5px;background:var(--or2);margin:22px 0 18px;}
+.s4G-panel-body{font-size:16px;font-weight:300;color:rgba(255,255,255,.92);line-height:1.7;}
+.s4G-panel-body strong{color:var(--or2);font-weight:700;}
+.s4G-panel-foot{margin-top:22px;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:rgba(212,176,90,.6);text-transform:uppercase;font-weight:700;}
+.s4G-close{position:absolute;top:14px;right:16px;width:26px;height:26px;border:1px solid rgba(212,176,90,.4);background:transparent;border-radius:50%;cursor:pointer!important;color:var(--or2);font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .25s;}
+.s4G-close:hover{border-color:var(--or2);background:rgba(196,162,74,.12);transform:scale(1.08);}
+#s4.focused-state .s4G-h,#s4.focused-state .s4G-foot{opacity:.35;}
+/* ══ S5 · PATTERN I — Carrousel 3D infini · figures-clés BPP ══ */
+#s5{background:var(--ink);overflow:hidden;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;}
+.s5I-head{position:relative;padding:48px 56px 0;z-index:5;}
+.s5I-tag{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.3em;color:var(--or2);text-transform:uppercase;opacity:0;}
+#s5.on .s5I-tag{animation:fadeUp .5s .15s forwards;}
+.s5I-h{font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.2vw,40px);line-height:1.08;letter-spacing:-.01em;color:#FFFFFF;margin-top:8px;max-width:880px;opacity:0;}
+#s5.on .s5I-h{animation:fadeUp .65s .3s forwards;}
+.s5I-h em{font-style:italic;color:var(--or2);}
+.s5I-rule{width:48px;height:1.5px;background:var(--or2);margin-top:14px;opacity:0;}
+#s5.on .s5I-rule{animation:fadeIn .4s .55s forwards;}
+.s5I-stage{position:relative;flex:1;display:flex;align-items:center;perspective:1900px;perspective-origin:50% 50%;}
+.s5I-rail-wrap{position:relative;width:100%;height:100%;display:flex;align-items:center;overflow:hidden;opacity:0;}
+#s5.on .s5I-rail-wrap{animation:fadeIn .6s .55s forwards;}
+.s5I-rail-wrap::before,.s5I-rail-wrap::after{content:"";position:absolute;top:0;bottom:0;width:160px;z-index:5;pointer-events:none;}
+.s5I-rail-wrap::before{left:0;background:linear-gradient(90deg,var(--ink) 0%,rgba(14,12,10,.6) 50%,transparent 100%);}
+.s5I-rail-wrap::after{right:0;background:linear-gradient(270deg,var(--ink) 0%,rgba(14,12,10,.6) 50%,transparent 100%);}
+.s5I-rail{display:flex;gap:36px;animation:s5IScroll 32s linear infinite;transform-style:preserve-3d;will-change:transform;padding:28px 80px;}
+.s5I-rail-wrap:hover .s5I-rail,.s5I-rail-wrap.paused .s5I-rail{animation-play-state:paused;}
+@keyframes s5IScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.s5I-card{flex-shrink:0;width:270px;height:360px;position:relative;overflow:hidden;border:1px solid rgba(212,176,90,.32);transform-style:preserve-3d;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .25s,filter .35s ease-out,opacity .35s ease-out;cursor:pointer!important;background:var(--ink2);}
+/* Transition smooth UNIQUEMENT pour le focus (état stable) — hover reste réactif */
+#s5.s5-has-focus .s5I-card{transition:transform .65s cubic-bezier(.16,1,.3,1),box-shadow .55s cubic-bezier(.16,1,.3,1),border-color .35s,filter .55s ease-out,opacity .55s ease-out;}
+/* Toutes les cards à translateZ(0) — fini le bug une-sur-deux (odd cards en retrait que les even interceptaient au hit-test 3D) */
+.s5I-card:nth-child(odd){transform:rotateY(-5deg) translateZ(0);}
+.s5I-card:nth-child(even){transform:rotateY(5deg) translateZ(0);}
+.s5I-card:hover{transform:rotateY(0) translateZ(60px) scale(1.05);border-color:var(--or2);box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 0 0 2px var(--or2),0 0 40px rgba(196,162,74,.35);z-index:10;}
+.s5I-card img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(1);transition:filter .42s;}
+.s5I-card:hover img{filter:grayscale(.3) contrast(1.05);}
+.s5I-card .s5I-mono{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-weight:900;font-size:74px;color:var(--or2);background:linear-gradient(160deg,var(--ink2) 0%,var(--ink) 100%);letter-spacing:-.02em;}
+.s5I-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(14,12,10,.92));pointer-events:none;transition:opacity .4s;}
+.s5I-card-name{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;font-family:var(--serif);font-style:italic;font-weight:700;font-size:17.5px;color:#FFFFFF;line-height:1.08;letter-spacing:-.01em;}
+.s5I-card-life{position:absolute;left:16px;bottom:44px;z-index:2;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--or2);text-transform:uppercase;}
+.s5I-foot{padding:0 56px 38px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:rgba(212,176,90,.55);text-transform:uppercase;opacity:0;}
+#s5.on .s5I-foot{animation:fadeIn .5s 1.5s forwards;}
+.s5I-foot .arr{color:var(--or2);animation:arrPulse 1.8s infinite;}
+/* État focus · card cliquée passe au premier plan et le rail s'arrête */
+#s5.s5-has-focus .s5I-rail-wrap::before,#s5.s5-has-focus .s5I-rail-wrap::after{opacity:.4;}
+#s5.s5-has-focus .s5I-card:not(.s5I-focused){opacity:.18;filter:blur(2.2px);pointer-events:none;}
+.s5I-card.s5I-focused{transform:rotateY(0) translateZ(80px) scale(1.18) !important;border-color:var(--or2);box-shadow:0 50px 90px -25px rgba(14,12,10,.88),0 0 0 2px var(--or2),0 0 80px rgba(196,162,74,.25);z-index:25;}
+.s5I-card.s5I-focused img{filter:grayscale(.12) contrast(1.06);}
+.s5I-card.s5I-focused::after{opacity:0;}
+.s5I-card.s5I-focused .s5I-card-name,.s5I-card.s5I-focused .s5I-card-life{opacity:0;}
+/* Panel info · plus large + animation premium smooth · slide-in vertical doux + scale */
+.s5I-panel{position:absolute;left:50%;top:50%;transform:translate(-50%,calc(-50% + 30px)) scale(.94);width:min(900px,92%);background:#0A0908;border:1px solid var(--or2);padding:46px 52px 40px;border-radius:5px;opacity:0;pointer-events:none;z-index:30;box-shadow:0 40px 100px -25px rgba(14,12,10,.92),0 0 0 1px rgba(196,162,74,.12);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.s5I-panel.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:all;}
+.s5I-panel::before{content:"";position:absolute;left:0;top:0;width:100%;height:1.5px;background:linear-gradient(90deg,transparent,var(--or3),transparent);}
+.s5I-panel-head{display:flex;gap:28px;align-items:flex-start;}
+.s5I-panel-photo{width:130px;height:160px;flex-shrink:0;overflow:hidden;border:1px solid rgba(196,162,74,.3);background:var(--ink2);}
+.s5I-panel-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(.2) contrast(1.05);}
+.s5I-panel-photo .s5I-panel-mono{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-weight:900;font-size:48px;color:var(--or2);}
+.s5I-panel-headtxt{flex:1;min-width:0;}
+.s5I-panel-tag{font-family:var(--mono);font-size:11px;letter-spacing:.26em;color:var(--or2);text-transform:uppercase;font-weight:700;}
+.s5I-panel-name{font-family:var(--serif);font-style:italic;font-weight:900;font-size:42px;color:#FFFFFF;line-height:1.04;margin-top:10px;letter-spacing:-.015em;}
+.s5I-panel-name em{color:var(--or2);font-style:normal;}
+.s5I-panel-life{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--or2);margin-top:12px;text-transform:uppercase;font-weight:700;}
+.s5I-panel-rule{width:48px;height:1.5px;background:var(--or2);margin:24px 0 18px;}
+.s5I-panel-body{font-family:var(--sans);font-size:16.5px;font-weight:300;color:rgba(255,255,255,.92);line-height:1.7;}
+.s5I-panel-body strong{color:var(--or2);font-weight:700;}
+.s5I-panel-foot{margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:rgba(212,176,90,.6);text-transform:uppercase;font-weight:700;}
+.s5I-close{position:absolute;top:18px;right:20px;width:32px;height:32px;border:1px solid rgba(212,176,90,.4);background:transparent;border-radius:50%;cursor:pointer!important;color:var(--or2);font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.16,1,.3,1);}
+.s5I-close:hover{border-color:var(--or2);background:rgba(196,162,74,.12);transform:scale(1.1) rotate(90deg);}
+#s5.s5-has-focus .s5I-h,#s5.s5-has-focus .s5I-tag,#s5.s5-has-focus .s5I-foot{opacity:.35;}
+/* ══ S6 · PATTERN 05 — Audio capsule waveform ══ */
+#s6{background:radial-gradient(ellipse at 50% 50%,#1A1714 0%,#0E0C0A 70%);overflow:hidden;}
+#s6::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(196,162,74,.08),transparent 60%);pointer-events:none;}
+.s6-wav{position:relative;width:100%;max-width:1080px;padding:0 64px;z-index:2;}
+.s6-wav-tag{font-family:var(--mono);font-size:11px;letter-spacing:.32em;color:var(--or2);text-transform:uppercase;font-weight:700;display:flex;align-items:center;gap:14px;opacity:0;}
+#s6.on .s6-wav-tag{animation:fadeUp .55s .2s forwards;}
+.s6-wav-tag::before{content:"";width:38px;height:1px;background:var(--or2);}
+.s6-wav-tag .live{color:#D44A4A;}
+.s6-wav-tag .live::before{content:"●";margin-right:6px;animation:blink 1.4s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.s6-wav-quote{font-family:var(--quote);font-style:italic;font-weight:400;font-size:var(--t-section);color:#FFFFFF;line-height:1.25;letter-spacing:-.015em;max-width:920px;margin-top:28px;opacity:0;}
+#s6.on .s6-wav-quote{animation:fadeUp .8s .4s forwards;}
+.s6-wav-quote::before{content:"«";font-family:var(--serif);font-style:italic;font-weight:900;font-size:64px;color:var(--or2);line-height:.5;margin-right:6px;vertical-align:-.04em;}
+.s6-wav-quote::after{content:"»";font-family:var(--serif);font-style:italic;font-weight:900;font-size:64px;color:var(--or2);line-height:.5;margin-left:4px;vertical-align:-.04em;}
+.s6-wav-quote strong{font-weight:900;color:var(--or2);font-style:normal;}
+.s6-wav-attr{font-family:var(--mono);font-size:11px;letter-spacing:.26em;color:var(--or2);text-transform:uppercase;font-weight:700;margin-top:26px;display:flex;align-items:center;gap:14px;opacity:0;}
+#s6.on .s6-wav-attr{animation:fadeUp .55s .7s forwards;}
+.s6-wav-attr::before{content:"";width:32px;height:1px;background:var(--or2);}
+.s6-wav-player{margin-top:36px;display:flex;align-items:center;gap:22px;padding:18px 22px;border:1px solid rgba(196,162,74,.32);border-radius:6px;background:rgba(255,255,255,.025);opacity:0;}
+#s6.on .s6-wav-player{animation:fadeUp .6s .9s forwards;}
+/* v86o · variante décorative · pas de play · waveform = signature visuelle de l'extrait */
+.s6-wav-player--decor{cursor:default;}
+.s6-wav-marker{flex-shrink:0;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--or2);padding-right:18px;border-right:1px solid rgba(196,162,74,.28);}
+.s6-wav-marker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--or2);box-shadow:0 0 12px rgba(212,176,90,.6);}
+.s6-wav-form{flex:1;display:flex;align-items:center;gap:3px;height:46px;}
+.s6-wav-bar{width:3px;background:linear-gradient(180deg,var(--or3),var(--or));border-radius:2px;animation:s6Wave 1.4s ease-in-out infinite;}
+.s6-wav-bar.played{background:linear-gradient(180deg,#FFFFFF,var(--or3));}
+@keyframes s6Wave{0%,100%{height:var(--h,30%);}50%{height:calc(var(--h,30%) + 28%);}}
+.s6-wav-time{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--or2);font-weight:700;}
+.s6-wav-meta{position:absolute;bottom:38px;right:64px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:rgba(212,176,90,.55);text-transform:uppercase;font-weight:700;text-align:right;line-height:1.6;opacity:0;}
+#s6.on .s6-wav-meta{animation:fadeIn .6s 1.15s forwards;}
+.s6-wav-meta strong{color:var(--or2);}
+.s6-wav-context{margin-top:28px;font-family:var(--sans);font-size:14px;font-weight:300;color:rgba(255,255,255,.7);line-height:1.65;max-width:760px;opacity:0;}
+#s6.on .s6-wav-context{animation:fadeUp .55s 1.1s forwards;}
+.s6-wav-context strong{color:var(--or2);font-weight:700;}
+/* S7 SYNTHÈSE · fond crème, cards noires intactes (Variant A canonique) */
+#s7{background:var(--cr);}
+.s7-body{max-width:1000px;width:100%;padding:0 88px;}
+.s7-tag{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--or2);opacity:0;font-family:var(--mono);}
+.on .s7-tag{animation:fadeIn .5s .15s forwards;}
+.s7-h{font-family:var(--serif);font-size:var(--t-section);font-weight:900;font-style:italic;letter-spacing:-.015em;color:var(--ink);line-height:1.15;margin-top:24px;opacity:0;}
+.on .s7-h{animation:fadeUp .75s .3s forwards;}
+.s7-h .kw-gold{font-style:normal;color:var(--or2);}
+.s7-h strong{color:var(--or2);font-weight:900;}
+.s7-rule{width:0;height:1px;background:rgba(154,123,46,.35);margin:28px 0;}
+.on .s7-rule{animation:lineGrow .6s .76s forwards;}
+.s7-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.s7-card{position:relative;background:linear-gradient(180deg,#FBF7EC 0%,#EAE3D8 100%);border:1px solid rgba(154,123,46,.4);color:var(--ink);padding:32px 28px;text-align:left;opacity:0;transform:translateY(22px);transition:opacity .65s,transform .65s cubic-bezier(.34,1.56,.64,1),border-color .4s,box-shadow .45s;cursor:pointer!important;pointer-events:none;min-height:280px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 22px 50px -16px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.7);}
+.s7-card.revealed{pointer-events:auto;opacity:1!important;transform:translateY(0)!important;border-color:var(--or2);box-shadow:0 36px 80px -22px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.8);}
+.s7-card.revealed::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or),transparent);z-index:3;}
+.s7-card.revealed::after{content:"";position:absolute;top:-50%;left:-50%;width:60%;height:200%;background:linear-gradient(115deg,transparent 35%,rgba(232,199,122,.4) 45%,rgba(255,242,210,.6) 50%,rgba(232,199,122,.4) 55%,transparent 65%);transform:translateX(-100%);animation:e5Scan 5s ease-in-out infinite;pointer-events:none;z-index:1;mix-blend-mode:overlay;}
+@keyframes e5Scan{0%{transform:translateX(-50%);opacity:0}15%{opacity:1}50%{transform:translateX(180%);opacity:1}65%{opacity:0}100%{transform:translateX(180%);opacity:0}}
+.s7-card-emoji{position:relative;font-size:56px;line-height:1;filter:drop-shadow(0 3px 10px rgba(154,123,46,.5)) drop-shadow(0 2px 4px rgba(0,0,0,.25));z-index:2;margin-bottom:8px;}
+.s7-card-tag{position:relative;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.24em;color:var(--or2);text-transform:uppercase;z-index:2;}
+.s7-card-h{position:relative;font-family:var(--serif);font-style:italic;font-weight:700;font-size:23px;color:var(--ink);line-height:1.2;letter-spacing:-.01em;margin-top:10px;z-index:2;}
+.s7-card-h em{color:var(--or2);font-style:italic;}
+.s7-card-rule{width:36px;height:1.5px;background:var(--or2);margin:14px 0;position:relative;z-index:2;}
+.s7-card-d{position:relative;font-family:var(--sans);font-size:17px;color:var(--ink3);line-height:1.7;font-weight:300;z-index:2;}
+.s7-card-d strong{color:var(--or2);font-weight:700;}
+.s7-next{margin-top:32px;display:flex;align-items:center;gap:14px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--or2);opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s;font-family:var(--mono);}
+.s7-next.revealed{opacity:1!important;transform:translateY(0)!important;}
+.s7-next .arr{animation:arrPulse 1.8s infinite;}
+.s7-next-label{color:var(--ink);}
+.s7-hint{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(154,123,46,.55);margin-top:24px;display:flex;align-items:center;gap:10px;font-family:var(--mono);}
+.s7-hint .h-arr{animation:arrPulse 1.8s infinite;}
+/* ── NAV BUTTONS (prev/next explicites) ── */
+.nav-btn{position:fixed;top:50%;transform:translateY(-50%);z-index:201;width:54px;height:54px;border-radius:50%;background:rgba(20,18,15,.55);border:1px solid rgba(196,162,74,.35);display:flex;align-items:center;justify-content:center;cursor:pointer!important;transition:all .28s cubic-bezier(.34,1.56,.64,1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.55;}
+.nav-btn:hover{opacity:1;background:rgba(154,123,46,.22);border-color:var(--or2);transform:translateY(-50%) scale(1.08);box-shadow:0 4px 24px -6px rgba(196,162,74,.35);}
+.nav-btn svg{width:20px;height:20px;stroke:var(--or2);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s;}
+.nav-btn:hover svg{stroke:var(--or3);}
+.nav-prev{left:22px;}
+.nav-next{right:22px;}
+/* === v82 · S6b · Newton vs Cleaver · fracture doctrinale === */
+#s6b{background:linear-gradient(180deg,#FBF7EC 0%,var(--cr) 100%);overflow:hidden;}
+#s6b::before{content:"";position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.55'/%3E%3C/svg%3E");pointer-events:none;mix-blend-mode:multiply;z-index:0;}
+#s6b .s6b-body{position:relative;z-index:2;max-width:1240px;width:100%;padding:0 64px;display:flex;flex-direction:column;justify-content:flex-start;align-self:flex-start;margin-top:48px;}
+#s6b .s6b-top{text-align:center;margin-bottom:72px;opacity:0;}
+.on#s6b .s6b-top,#s6b.on .s6b-top{animation:fadeUp .55s .15s forwards;}
+#s6b .s6b-tag{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or2);font-weight:700;}
+#s6b .s6b-h{font-family:var(--serif);font-size:var(--t-section);font-weight:700;color:var(--ink);margin-top:14px;line-height:1.1;}
+#s6b .s6b-h em{color:var(--or2);font-style:italic;}
+#s6b .s6b-stage{display:grid;grid-template-columns:1fr 80px 1fr;gap:0;align-items:stretch;}
+#s6b .s6b-card{position:relative;background:var(--ink);padding:54px 44px 44px;border:1px solid rgba(196,162,74,.3);min-height:340px;opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.34,1.56,.64,1),transform .7s cubic-bezier(.34,1.56,.64,1),border-color .35s,box-shadow .35s;pointer-events:none;}
+#s6b .s6b-card.shown{opacity:1;transform:translateY(0);border-color:var(--or2);box-shadow:0 22px 50px -22px rgba(0,0,0,.7),0 0 40px rgba(196,162,74,.18),inset 0 0 0 1px rgba(196,162,74,.18);pointer-events:auto;}
+#s6b .s6b-card-medallion{position:absolute;top:-44px;right:-22px;width:108px;height:108px;border-radius:50%;overflow:hidden;background:#1A1714;border:2px solid var(--or2);box-shadow:0 0 0 5px var(--cr),0 0 28px rgba(196,162,74,.45),0 8px 20px rgba(0,0,0,.4);z-index:3;}
+#s6b .s6b-card-medallion img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(1) contrast(1.05);}
+#s6b .s6b-card-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--or2);text-transform:uppercase;margin-bottom:18px;font-weight:700;}
+#s6b .s6b-card-h{font-family:var(--serif);font-size:30px;font-weight:900;color:#FFFFFF;font-style:italic;margin-bottom:20px;line-height:1.1;}
+#s6b .s6b-card-h span.kw{color:var(--or2);}
+#s6b .s6b-card-d{font-size:17px;font-weight:300;color:rgba(255,255,255,.88);line-height:1.7;}
+#s6b .s6b-card-d strong{color:var(--or2);font-weight:700;}
+#s6b .s6b-vs{display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;}
+.on#s6b .s6b-vs,#s6b.on .s6b-vs{animation:fadeIn .5s .25s forwards;}
+#s6b .s6b-vs-label{font-family:var(--serif);font-size:46px;font-style:italic;font-weight:900;color:var(--or2);}
+#s6b .s6b-vs-line{width:1px;height:160px;background:linear-gradient(180deg,transparent,var(--or2),transparent);margin:14px auto;}
+#s6b .s6b-coda{margin-top:44px;text-align:center;font-size:17px;font-style:italic;font-family:var(--callout,'Source Serif 4',Georgia,serif);color:var(--ink3);line-height:1.65;max-width:880px;margin-left:auto;margin-right:auto;opacity:0;transform:translateY(14px);transition:opacity .65s,transform .65s cubic-bezier(.34,1.56,.64,1);}
+#s6b .s6b-coda.shown{opacity:1;transform:translateY(0);}
+#s6b .s6b-coda strong{color:var(--or2);font-weight:700;font-style:italic;}
+#s6b .s6b-hint{margin-top:30px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--or2);text-transform:uppercase;font-weight:700;opacity:0;}
+.on#s6b .s6b-hint,#s6b.on .s6b-hint{animation:fadeIn .5s .6s forwards;}
+#s6b .s6b-hint.hidden{opacity:0!important;}
+#s6b .s6b-hint .arr{animation:arrPulse 1.8s infinite;color:var(--or2);margin-left:10px;}
+/* === END v82 === */</style>
+<style id="lar-components">
+/* ═══════════════════════════════════════════════════════════
+   LAR-COMPONENTS · Système encadrés unifié cross-cours
+   (injecté · documentation: cours/intro/encadres-audit.html)
+═══════════════════════════════════════════════════════════ */
+
+/* .lar-callout-cons — Conséquence analytique légère
+   Usage: <div class="lar-callout-cons" data-label="Effet">
+            <span class="lar-callout-cons-text">…</span>
+          </div>
+   Labels: Conséquence (défaut) · Effet · Levier · Tension · Limite · Pont · Source · Méthode */
+.lar-callout-cons{margin-top:22px;padding-top:18px;border-top:1px solid rgba(154,123,46,.45);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+.lar-callout-cons::before{content:"Conséquence";flex-shrink:0;font-family:var(--mono,'JetBrains Mono',monospace);font-size:10.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--or2);padding:6px 11px;border:1px solid rgba(212,176,90,.55);background:rgba(196,162,74,.08);}
+.lar-callout-cons[data-label="Effet"]::before{content:"Effet";}
+.lar-callout-cons[data-label="Levier"]::before{content:"Levier";}
+.lar-callout-cons[data-label="Tension"]::before{content:"Tension";}
+.lar-callout-cons[data-label="Limite"]::before{content:"Limite";}
+.lar-callout-cons[data-label="Pont"]::before{content:"Pont";}
+.lar-callout-cons[data-label="Source"]::before{content:"Source";}
+.lar-callout-cons[data-label="Méthode"]::before{content:"Méthode";}
+.lar-callout-cons[data-label="Bilan"]::before{content:"Bilan";}
+.lar-callout-cons[data-label="Stratégie"]::before{content:"Stratégie";}
+.lar-callout-cons[data-label="Coût"]::before{content:"Coût";}
+.lar-callout-cons-text{flex:1;min-width:280px;font-family:var(--callout,'Source Serif 4',Georgia,serif);font-style:italic;font-size:17px;color:var(--ink,#0E0C0A);line-height:1.55;}
+.on-dark .lar-callout-cons-text,[data-tone="dark"] .lar-callout-cons-text{color:rgba(255,255,255,.92);}
+.lar-callout-cons-text strong{color:var(--or2,#C4A24A);font-weight:700;font-style:normal;}
+.lar-callout-cons-text em{color:var(--or2,#C4A24A);font-style:italic;font-weight:700;}
+
+/* .lar-quote-attr — Citation attribuée premium
+   Variante .no-paper = sobre barre verticale or (académique)
+   Usage:
+     <div class="lar-quote-attr [no-paper]">
+       <div class="lar-quote-attr-mark">Verbatim · …</div>
+       <p class="lar-quote-attr-text">« … »</p>
+       <div class="lar-quote-attr-attr">Auteur · <strong>Source · Année</strong></div>
+     </div>
+*/
+.lar-quote-attr{position:relative;background:linear-gradient(180deg,#F4ECD8 0%,#E8DEC4 100%);padding:30px 30px 24px;box-shadow:0 22px 50px -18px rgba(0,0,0,.55),0 4px 14px -2px rgba(0,0,0,.3);border-radius:2px;}
+.lar-quote-attr::after{content:"\00AB";font-family:var(--quote,'DM Serif Display',Georgia,serif);font-style:italic;font-weight:700;font-size:100px;line-height:.5;color:var(--or,#9A7B2E);opacity:.16;position:absolute;top:26px;left:12px;pointer-events:none;}
+.lar-quote-attr.no-paper{background:transparent;box-shadow:none;padding:16px 0 16px 28px;border-radius:0;}
+.lar-quote-attr.no-paper::after{display:none;}
+.lar-quote-attr.no-paper::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:2.5px;background:var(--or2,#C4A24A);border-radius:2px;}
+.lar-quote-attr-mark{position:relative;font-family:var(--mono,'JetBrains Mono',monospace);font-size:10px;font-weight:700;letter-spacing:.26em;color:var(--or,#9A7B2E);text-transform:uppercase;z-index:2;}
+.lar-quote-attr-text{position:relative;font-family:var(--quote,'DM Serif Display',Georgia,serif);font-style:italic;font-size:17px;color:#1A1410;line-height:1.5;margin-top:10px;z-index:2;}
+.lar-quote-attr.no-paper .lar-quote-attr-text{color:var(--ink,#0E0C0A);}
+.on-dark .lar-quote-attr.no-paper .lar-quote-attr-text,[data-tone="dark"] .lar-quote-attr.no-paper .lar-quote-attr-text{color:#FFFFFF;}
+.lar-quote-attr-text strong{color:var(--or,#9A7B2E);font-weight:700;font-style:normal;}
+.lar-quote-attr-text em{color:var(--or,#9A7B2E);font-style:italic;}
+.lar-quote-attr-attr{position:relative;margin-top:14px;padding-top:12px;border-top:1px solid rgba(154,123,46,.45);font-family:var(--mono,'JetBrains Mono',monospace);font-size:9.5px;font-weight:700;letter-spacing:.22em;color:var(--or,#9A7B2E);text-transform:uppercase;z-index:2;}
+.lar-quote-attr-attr strong{color:var(--ink,#0E0C0A);}
+.on-dark .lar-quote-attr.no-paper .lar-quote-attr-attr strong,[data-tone="dark"] .lar-quote-attr.no-paper .lar-quote-attr-attr strong{color:var(--or3,#D4B05A);}
+
+/* .lar-source-note — Note bibliographique discrète
+   Usage: <div class="lar-source-note">Auteur · <em>Titre</em> · Année</div>
+   Le label « Source · » est automatique. Pour un autre label utiliser :
+     data-prefix="Archives" ou data-prefix="Méthode" */
+.lar-source-note{margin-top:14px;padding-top:14px;border-top:1px solid rgba(154,123,46,.35);font-family:var(--mono,'JetBrains Mono',monospace);font-size:10px;letter-spacing:.2em;color:var(--or,#9A7B2E);text-transform:uppercase;font-weight:700;line-height:1.6;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.lar-source-note::before{content:"Source";flex-shrink:0;color:rgba(154,123,46,.6);}
+.lar-source-note[data-prefix="Archives"]::before{content:"Archives";}
+.lar-source-note[data-prefix="Méthode"]::before{content:"Méthode";}
+.lar-source-note[data-prefix="Référence"]::before{content:"Référence";}
+.lar-source-note[data-prefix="Bibliographie"]::before{content:"Bibliographie";}
+.on-dark .lar-source-note,[data-tone="dark"] .lar-source-note{color:rgba(212,176,90,.85);}
+.on-dark .lar-source-note::before,[data-tone="dark"] .lar-source-note::before{color:rgba(212,176,90,.5);}
+.lar-source-note em{font-style:italic;text-transform:none;letter-spacing:.05em;font-family:var(--serif,'Playfair Display',Georgia,serif);font-weight:400;color:inherit;}
+.lar-source-note strong{color:var(--or2,#C4A24A);font-weight:700;}
+/* === END LAR-COMPONENTS === */
+</style>
+
+</head>
+<body>
+<div id="cur"></div>
+<div id="prog"></div>
+<div id="counter">01<sup>/ 01</sup></div>
+<div id="wm"><span id="wm-brand">L'Autre Récit</span><span id="wm-sep">·</span><span id="wm-loc">Cours 5 · Module 3</span></div>
+<div id="dots"></div>
+<button class="nav-btn nav-prev" id="navPrev" aria-label="Précédente"><svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"/></svg></button>
+<button class="nav-btn nav-next" id="navNext" aria-label="Suivante"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+<div id="deck">
+
+<div class="slide on" id="s1">
+  <div class="s1-grain"></div>
+  <div class="s1-wm">03</div>
+  <div class="s1-rv"></div>
+  <div class="s1-badge"><span class="s1-badge-num">C5 · M3</span><span class="s1-badge-div"></span><span class="s1-badge-txt">Les Black Panthers</span></div>
+  <div style="position:absolute;right:0;top:0;bottom:0;width:32%;overflow:hidden;background:#1A1714;z-index:1;">
+    <img src="assets/scenes/panthers6.jpg" alt="Black Panthers · Oakland 1968" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.onerror=null;this.src='assets/scenes/blackpanthers.jpg';this.onerror=function(){this.style.display='none';};};" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(1) contrast(1.05);opacity:.94;">
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(242,237,228,.98) 0%,rgba(242,237,228,.5) 14%,transparent 30%);pointer-events:none;"></div>
+    <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--or2) 28%,var(--or3) 50%,var(--or2) 72%,transparent);"></div>
+    <div style="position:absolute;right:24px;bottom:72px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:rgba(212,176,90,.85);text-transform:uppercase;text-align:right;line-height:1.5;font-weight:700;">Black Panther Party<br>Oakland · 1966 →</div>
+  </div>
+  <div class="s1-body" style="max-width:58%;">
+    <div class="s1-eyebrow">Cours 5 · Module 3</div>
+    <h1 class="s1-h">Quand on cesse<em>de demander.</em></h1>
+    <div class="s1-rule"><div class="s1-rule-line"></div><div class="s1-rule-dot"></div></div>
+    <p class="s1-sub">Oakland, octobre 1966. Newton et Seale fondent le <strong>Black Panther Party for Self-Defense</strong>. Du suivi des patrouilles aux <strong>petits-déjeuners gratuits</strong> pour 20 000 enfants par semaine&nbsp;: le contre-gouvernement local en pratique.</p>
+    <div class="s1-meta">
+      <div class="s1-m"><label>Période</label><span>1966 — fin années 1970</span></div>
+      <div class="s1-m"><label>Référence</label><span>Bloom &amp; Martin Jr · Black Against Empire (2013)</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s2">
+  <div class="lar-photo-frame" style="position:absolute;right:0;top:0;bottom:0;width:32%;overflow:hidden;background:#1A1714;z-index:1;">
+    <img src="assets/scenes/photoqstchild.jpg.avif" alt="Free Breakfast for Children · BPP" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(1);opacity:.92;">
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,var(--cr) 0%,rgba(242,237,228,.55) 12%,transparent 26%);z-index:2;pointer-events:none;"></div>
+    <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--or) 28%,var(--or2) 50%,var(--or) 72%,transparent);z-index:3;"></div>
+    <div style="position:absolute;right:24px;bottom:72px;font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.85);text-transform:uppercase;text-align:right;line-height:1.4;z-index:3;text-shadow:0 1px 2px rgba(0,0,0,.6);">Free Breakfast · BPP<br>Oakland · 1969</div>
+  </div>
+  <div class="s2-body" style="position:relative;z-index:3;max-width:62%!important;padding-right:48px!important;margin-left:64px!important;margin-right:auto!important;">
+    <div class="s2-tag">Question centrale</div>
+    <div class="s2-q">Pourquoi <em>nourrir des enfants</em> et <em>soigner des malades</em> devient-il un acte <em>politique radical</em>&nbsp;?</div>
+    <div class="s2-divider"><div class="s2-divider-line"></div><div class="s2-divider-text">L'hypothèse</div><div class="s2-divider-line"></div></div>
+    <p class="s2-rep">Quand une organisation <strong>exerce concrètement</strong> les fonctions de gouvernement, elle <strong>démontre qu'une autre norme est possible</strong>. L'État ne tolère pas cette démonstration.</p>
+  </div>
+</div>
+
+<!-- ════ S3 · PATTERN L — Chiffres monumentaux BPP ════ -->
+<div class="slide" id="s3">
+  <div class="s3-top">
+    <div>
+      <div class="s3-tag">Le contre-gouvernement, en chiffres</div>
+      <div class="s3-h">Trois ordres de grandeur qui expliquent pourquoi l'État <em>n'a pas pu laisser faire</em>.</div>
+    </div>
+    <div class="s3-foot">Survival Programs<br><strong>1968 — 1972</strong></div>
+  </div>
+  <div class="s3-L">
+    <div class="s3-L-card">
+      <img src="assets/scenes/childpanthers.jpg" alt="Free Breakfast for Children" onerror="this.onerror=null;this.src='assets/scenes/kidspanthers.jpeg';this.onerror=function(){this.onerror=null;this.src='assets/scenes/childrenpanthers.jpg';this.onerror=function(){this.style.display='none';};};">
+      <div class="s3-L-content">
+        <div class="s3-L-top">
+          <div class="s3-L-eyebrow">Free Breakfast · à l'apogée</div>
+          <div class="s3-L-num">20<em>k</em></div>
+        </div>
+        <div class="s3-L-bottom">
+          <div class="s3-L-rule"></div>
+          <div class="s3-L-label">Enfants <em>nourris</em><br>chaque semaine</div>
+          <div class="s3-L-source">1969 — 1971 · BPP archives<br>Bloom &amp; Martin · Black Against Empire</div>
+        </div>
+      </div>
+    </div>
+    <div class="s3-L-card">
+      <img src="assets/scenes/blackpanthers.jpg" alt="Programmes de survie" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.style.display='none';};">
+      <div class="s3-L-content">
+        <div class="s3-L-top">
+          <div class="s3-L-eyebrow">Survival Programs · catalogue</div>
+          <div class="s3-L-num">35<em>+</em></div>
+        </div>
+        <div class="s3-L-bottom">
+          <div class="s3-L-rule"></div>
+          <div class="s3-L-label">Programmes <em>communautaires</em><br>déployés en parallèle</div>
+          <div class="s3-L-source">Bobby Seale · Seize the Time<br>The Black Panther newspaper</div>
+        </div>
+      </div>
+    </div>
+    <div class="s3-L-card">
+      <img src="assets/scenes/panthers2.jpg" alt="Sections nationales BPP" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.style.display='none';};">
+      <div class="s3-L-content">
+        <div class="s3-L-top">
+          <div class="s3-L-eyebrow">Sections actives · États-Unis</div>
+          <div class="s3-L-num">40<em>+</em></div>
+        </div>
+        <div class="s3-L-bottom">
+          <div class="s3-L-rule"></div>
+          <div class="s3-L-label">Villes <em>avec une section</em><br>du parti à son pic</div>
+          <div class="s3-L-source">1970 · Stanford BPP Research<br>FBI internal estimates</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ S4 · PATTERN G — Mosaïque actions historiques ════ -->
+<div class="slide" id="s4">
+  <div class="s4G-head">
+    <div class="s4G-tag">Cours 5 · Module 3 · Architecture des programmes de survie</div>
+    <div class="s4G-h">Dix actions concrètes qui <em>fabriquent</em> un contre-gouvernement local.</div>
+    <div class="s4G-rule"></div>
+  </div>
+  <div class="s4G-stage">
+    <div class="s4G-mosaic" id="s4Mosaic">
+      <div class="s4G-frame"
+           data-name="Free Breakfast|for Children"
+           data-tag="Programme phare · alimentation"
+           data-date="Lancé à Oakland · janv. 1969"
+           data-body="Petits-déjeuners servis avant l'école dans des églises et des centres communautaires. <strong>20 000 enfants/semaine</strong> au pic, dans plus de 19 villes. J. Edgar Hoover qualifie le programme de <strong>«&nbsp;plus grande menace pour la sécurité intérieure&nbsp;»</strong> dans une note du FBI de mai 1969."
+           data-foot="St. Augustine's · Oakland · janv. 1969">
+        <img src="assets/scenes/childpanthers.jpg" alt="Free Breakfast" onerror="this.onerror=null;this.src='assets/scenes/kidspanthers.jpeg';this.onerror=function(){this.style.display='none';};">
+        <div class="s4G-frame-num">01</div>
+        <div class="s4G-frame-tag">Alimentation · 1969</div>
+        <div class="s4G-frame-name">Free <em>Breakfast</em></div>
+      </div>
+      <div class="s4G-frame"
+           data-name="Oakland|Community School"
+           data-tag="Éducation · école primaire"
+           data-date="1973 — 1982 · Oakland, CA"
+           data-body="École primaire indépendante dirigée par <strong>Ericka Huggins</strong>. Pédagogie centrée sur l'histoire afro-américaine, la pensée critique, les mathématiques avancées. Récompensée en <strong>1977</strong> par l'<em>Outstanding Achievement Award</em> du gouverneur de Californie."
+           data-foot="61st Street · East Oakland">
+        <img src="assets/scenes/education.png" alt="Oakland Community School" onerror="this.style.display='none';">
+        <div class="s4G-frame-num">02</div>
+        <div class="s4G-frame-tag">Éducation · 1973</div>
+        <div class="s4G-frame-name">Oakland <em>School</em></div>
+      </div>
+      <div class="s4G-frame"
+           data-name="People's Free|Medical Centers"
+           data-tag="Santé · cliniques communautaires"
+           data-date="1969 — fin années 1970"
+           data-body="Cliniques gratuites ouvertes dans une dizaine de villes (Chicago, Los Angeles, Seattle, Philadelphia, Boston, Cleveland, New Haven, Kansas City). Médecins et infirmiers bénévoles. Soins de premier recours, vaccinations, suivi obstétrique. <strong>Première infrastructure de santé gratuite</strong> de cette ampleur portée par une organisation noire."
+           data-foot="Chicago · Los Angeles · Seattle">
+        <img src="assets/scenes/blackpanthers.jpg" alt="People's Free Medical" onerror="this.style.display='none';">
+        <div class="s4G-frame-num">03</div>
+        <div class="s4G-frame-tag">Santé · 1969</div>
+        <div class="s4G-frame-name">People's <em>Medical</em></div>
+      </div>
+      <div class="s4G-frame"
+           data-name="Sickle Cell|Anemia Research"
+           data-tag="Recherche médicale · prévention"
+           data-date="1971 · campagne nationale"
+           data-body="La <strong>drépanocytose</strong> touche massivement la population noire et reste ignorée par la recherche fédérale. Les Panthers lancent une campagne de <strong>dépistage de masse</strong> et de sensibilisation. Sous pression directe, Nixon signe le <em>Sickle Cell Anemia Control Act</em> en mai 1972."
+           data-foot="Loi fédérale · mai 1972">
+        <img src="assets/scenes/E08asicklecell.png.webp" alt="Sickle Cell Research" onerror="this.style.display='none';">
+        <div class="s4G-frame-num">04</div>
+        <div class="s4G-frame-tag">Recherche · 1971</div>
+        <div class="s4G-frame-name">Sickle Cell <em>Research</em></div>
+      </div>
+      <div class="s4G-frame"
+           data-name="Free Busing|to Prisons"
+           data-tag="Solidarité carcérale · familles"
+           data-date="1969 — années 1970"
+           data-body="Bus affrétés gratuitement pour conduire les <strong>familles des détenu·es noir·es</strong> jusqu'aux prisons souvent situées à plusieurs heures de leurs quartiers. Le programme matérialise la doctrine&nbsp;: <em>l'incarcération de masse frappe les familles entières, au-delà des seuls individus.</em>"
+           data-foot="Bay Area · New York · Chicago">
+        <img src="assets/scenes/panthers2.jpg" alt="Free Busing to Prisons" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.style.display='none';};">
+        <div class="s4G-frame-num">05</div>
+        <div class="s4G-frame-tag">Familles · 1969</div>
+        <div class="s4G-frame-name">Free <em>Busing</em></div>
+      </div>
+      <div class="s4G-frame"
+           data-name="Liberation|Schools"
+           data-tag="Éducation politique · enfants"
+           data-date="Été 1969 · plusieurs villes"
+           data-body="Cours d'été gratuits prolongeant le Free Breakfast. Histoire afro-américaine, lutte anticoloniale, alphabétisation politique. Modèle direct des <em>Freedom Schools</em> du SNCC de 1964. <strong>Une école par section</strong> à l'apogée du programme."
+           data-foot="Berkeley · Chicago · New York">
+        <img src="assets/scenes/womenchildrenpanthers.jpg" alt="Liberation Schools" onerror="this.onerror=null;this.src='assets/scenes/kidspanthers.jpeg';this.onerror=function(){this.style.display='none';};">
+        <div class="s4G-frame-num">06</div>
+        <div class="s4G-frame-tag">Éducation · 1969</div>
+        <div class="s4G-frame-name">Liberation <em>Schools</em></div>
+      </div>
+      <div class="s4G-frame"
+           data-name="Free Clothing|&amp; Shoes"
+           data-tag="Vêtements · enfants pauvres"
+           data-date="1969 — 1972 · plusieurs villes"
+           data-body="Boutiques de distribution gratuite ouvertes dans les ghettos, alimentées par <strong>cotisations militantes</strong> et dons. Le slogan officiel est simple&nbsp;: <em>«&nbsp;Aucun enfant ne devrait avoir à choisir entre aller à l'école et avoir des chaussures.&nbsp;»</em>"
+           data-foot="Free Clothing Program · 1969">
+        <img src="assets/scenes/panthers.jpg" alt="Free Clothing" onerror="this.onerror=null;this.src='assets/scenes/blackpanthers.jpg';this.onerror=function(){this.style.display='none';};">
+        <div class="s4G-frame-num">07</div>
+        <div class="s4G-frame-tag">Distribution · 1969</div>
+        <div class="s4G-frame-name">Free <em>Clothing</em></div>
+      </div>
+      <div class="s4G-frame"
+           data-name="People's Free|Ambulance Service"
+           data-tag="Urgences · ambulances communautaires"
+           data-date="1971 · Winston-Salem, NC"
+           data-body="Service d'ambulance gratuit dans les quartiers noirs où les urgences municipales <strong>refusaient d'entrer</strong>. Personnel formé sur place. <em>Démontrer qu'on peut faire mieux, avec rien.</em>"
+           data-foot="Winston-Salem · Caroline du Nord">
+        <img src="assets/scenes/panthers5.jpg" alt="Ambulance" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.style.display='none';};">
+        <div class="s4G-frame-num">08</div>
+        <div class="s4G-frame-tag">Urgences · 1971</div>
+        <div class="s4G-frame-name">Free <em>Ambulance</em></div>
+      </div>
+      <div class="s4G-frame"
+           data-name="Pest Control|Program"
+           data-tag="Habitat · santé publique"
+           data-date="1971 — 1972 · Oakland"
+           data-body="Équipes dératiseuses dépêchées gratuitement dans les logements insalubres que les propriétaires refusaient de traiter. <strong>Un service que la municipalité d'Oakland ne fournissait pas</strong> à la population noire. Forme la plus prosaïque de contre-gouvernement&nbsp;: tuer les rats, point."
+           data-foot="Oakland · 1971">
+        <img src="assets/scenes/panthers4.jpg" alt="Pest Control" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.style.display='none';};">
+        <div class="s4G-frame-num">09</div>
+        <div class="s4G-frame-tag">Habitat · 1971</div>
+        <div class="s4G-frame-name">Pest <em>Control</em></div>
+      </div>
+      <div class="s4G-frame"
+           data-name="Intercommunal|News Service"
+           data-tag="Presse · journal national"
+           data-date="1967 — 1980 · The Black Panther"
+           data-body="L'hebdomadaire <em>The Black Panther</em> atteint un tirage déclaré de <strong>150 000 à 250 000 exemplaires</strong>. Articles politiques, dessins d'Emory Douglas, coordination nationale du parti, contre-narratif face à la presse blanche. Vendu dans tous les chapitres."
+           data-foot="The Black Panther · 1967">
+        <img src="assets/scenes/HHCFreeHuey.jpg" alt="The Black Panther newspaper" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.style.display='none';};">
+        <div class="s4G-frame-num">10</div>
+        <div class="s4G-frame-tag">Presse · 1967</div>
+        <div class="s4G-frame-name">The Black <em>Panther</em></div>
+      </div>
+    </div>
+    <aside class="s4G-panel" id="s4Panel">
+      <button class="s4G-close" id="s4Close" aria-label="Fermer">×</button>
+      <div class="s4G-panel-tag" id="s4PanelTag"></div>
+      <div class="s4G-panel-name" id="s4PanelName"></div>
+      <div class="s4G-panel-date" id="s4PanelDate"></div>
+      <div class="s4G-panel-rule"></div>
+      <div class="s4G-panel-body" id="s4PanelBody"></div>
+      <div class="s4G-panel-foot" id="s4PanelFoot"></div>
+    </aside>
+  </div>
+  <div class="s4G-foot"></div>
+</div>
+
+<!-- ════ S5 · PATTERN I — Carrousel 3D infini · figures-clés BPP ════ -->
+<div class="slide" id="s5">
+  <div class="s5I-head">
+    <div class="s5I-tag">Cours 5 · Module 3 · Les visages de l'organisation</div>
+    <div class="s5I-h">Huit <em>figures</em> qui ont fait tenir l'architecture, en quelques années.</div>
+    <div class="s5I-rule"></div>
+  </div>
+  <div class="s5I-stage">
+    <div class="s5I-rail-wrap" id="s5RailWrap">
+      <div class="s5I-rail" id="s5Rail">
+        <div class="s5I-card"
+             data-name="Huey P.|Newton" data-life="1942 — 1989 · Oakland"
+             data-tag="Cofondateur · théoricien" data-photo="assets/figures/newton.jpg" data-mono="HN"
+             data-body="Étudiant en droit à Merritt College, lecteur de Fanon et de Mao. Auteur du <strong>Ten-Point Program</strong> avec Seale en octobre 1966. Incarcéré pour le meurtre contesté de l'officier John Frey de 1967 à 1970. Théoricien de l'<em>«&nbsp;intercommunalisme révolutionnaire&nbsp;»</em> à partir de 1970."
+             data-foot="Minister of Defense · BPP">
+          <img src="assets/figures/newton.jpg" alt="Huey P. Newton" onerror="this.parentElement.innerHTML='<div class=&quot;s5I-mono&quot;>HN</div>'+this.parentElement.querySelector('.s5I-card-life').outerHTML+this.parentElement.querySelector('.s5I-card-name').outerHTML;">
+          <div class="s5I-card-life">1942 — 1989</div>
+          <div class="s5I-card-name">Huey P. Newton</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Bobby|Seale" data-life="né en 1936 · Liberty, TX"
+             data-tag="Cofondateur · président" data-photo="assets/figures/seale.jpg" data-mono="BS"
+             data-body="Ingénieur de formation, cofondateur du BPP avec Newton. Inculpé dans le procès des <strong>Chicago Seven</strong> en 1969, bâillonné et enchaîné dans la salle d'audience. Auteur de <em>Seize the Time</em> en 1970. Candidat à la mairie d'Oakland en 1973&nbsp;: <strong>40&nbsp;% des voix au second tour</strong>."
+             data-foot="Chairman · BPP">
+          <img src="assets/figures/seale.jpg" alt="Bobby Seale" onerror="this.onerror=null;this.src='assets/figures/seale2.jpg';this.onerror=function(){this.style.display='none';};">
+          <div class="s5I-card-life">né en 1936</div>
+          <div class="s5I-card-name">Bobby Seale</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Fred|Hampton" data-life="1948 — 1969 · Chicago"
+             data-tag="Président · Illinois · 21 ans" data-photo="assets/figures/hampton2.jpg" data-mono="FH"
+             data-body="Bâtissait la <strong>Rainbow Coalition</strong>&nbsp;: alliance entre Black Panthers, Young Lords portoricains et Young Patriots blancs des Appalaches. <strong>Assassiné dans son sommeil</strong> par la police de Chicago et le FBI le 4 décembre 1969, à 21 ans, en pleine montée organisationnelle."
+             data-foot="COINTELPRO · 4 décembre 1969">
+          <img src="assets/figures/hampton2.jpg" alt="Fred Hampton" onerror="this.style.display='none';">
+          <div class="s5I-card-life">1948 — 1969</div>
+          <div class="s5I-card-name">Fred Hampton</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Eldridge|Cleaver" data-life="1935 — 1998 · Arkansas"
+             data-tag="Ministre de l'information" data-photo="assets/scenes/Eldridge_Cleaver_.jpg" data-mono="EC"
+             data-body="Auteur de <em>Soul on Ice</em> (1968), écrit en prison. Candidat à la présidentielle américaine en <strong>1968</strong> pour le <em>Peace and Freedom Party</em>. Exilé à Alger puis Paris après la fusillade d'Oakland d'avril 1968. Sa rupture violente avec Newton en 1971 marquera la fracture interne du parti."
+             data-foot="Soul on Ice · 1968">
+          <img src="assets/scenes/Eldridge_Cleaver_.jpg" alt="Eldridge Cleaver" onerror="this.onerror=null;this.src='assets/figures/cleaver.jpg';this.onerror=function(){this.style.display='none';};">
+          <div class="s5I-card-life">1935 — 1998</div>
+          <div class="s5I-card-name">Eldridge Cleaver</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Angela|Davis" data-life="née en 1944 · Birmingham, AL"
+             data-tag="Philosophe · militante" data-photo="assets/figures/davis2.jpg" data-mono="AD"
+             data-body="Philosophe formée à Francfort sous Adorno. Proche du BPP sans en être membre formelle. <strong>Sur la liste des dix fugitifs les plus recherchés du FBI</strong> en 1970, après l'affaire Marin County. Acquittée en 1972. Théoricienne majeure du complexe carcéral américain&nbsp;: <em>Are Prisons Obsolete?</em> (2003)."
+             data-foot="UCLA · prison · théorie">
+          <img src="assets/figures/davis2.jpg" alt="Angela Davis" onerror="this.style.display='none';">
+          <div class="s5I-card-life">née en 1944</div>
+          <div class="s5I-card-name">Angela Davis</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Elaine|Brown" data-life="née en 1943 · Philadelphia"
+             data-tag="Présidente du parti · 1974 — 1977" data-photo="assets/figures/brown.jpg" data-mono="EB"
+             data-body="Première et unique femme à <strong>diriger le BPP</strong>, de 1974 à 1977, pendant que Newton est exilé à Cuba. Réorientation stratégique vers la <em>politique électorale locale</em> à Oakland&nbsp;: les Panthers font élire Lionel Wilson, premier maire noir d'Oakland, en 1977. Auteure de <em>A Taste of Power</em> (1992)."
+             data-foot="Chairwoman · 1974 — 1977">
+          <img src="assets/figures/brown.jpg" alt="Elaine Brown" onerror="this.style.display='none';">
+          <div class="s5I-card-life">née en 1943</div>
+          <div class="s5I-card-name">Elaine Brown</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Kathleen|Cleaver" data-life="née en 1945 · Memphis"
+             data-tag="Communication · SNCC puis BPP" data-photo="assets/scenes/kathleen_cleaver.png.webp" data-mono="KC"
+             data-body="Première femme au <strong>Central Committee</strong> du BPP. Responsable communication, organisatrice des campagnes <em>«&nbsp;Free Huey&nbsp;»</em> (1968). Exilée à Alger puis Paris avec Eldridge. Aujourd'hui professeure de droit à Emory&nbsp;: travaille sur les libertés civiles et les <em>cold cases</em> du mouvement noir."
+             data-foot="Communications Secretary">
+          <img src="assets/scenes/kathleen_cleaver.png.webp" alt="Kathleen Cleaver" onerror="this.style.display='none';">
+          <div class="s5I-card-life">née en 1945</div>
+          <div class="s5I-card-name">Kathleen Cleaver</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Stokely|Carmichael" data-life="1941 — 1998 · Trinidad"
+             data-tag="SNCC · Honorary Prime Minister BPP" data-photo="assets/figures/Carmichael2.jpg" data-mono="SC"
+             data-body="Inventeur du slogan <strong>Black Power</strong> à Greenwood, Mississippi, en juin 1966. Brièvement <em>«&nbsp;Honorary Prime Minister&nbsp;»</em> du BPP en 1968. Rupture avec le parti dès 1969 sur la question des <strong>alliances avec la gauche blanche</strong>&nbsp;: pour Carmichael, le BPP s'écarte du panafricanisme. Part vivre en Guinée."
+             data-foot="SNCC chairman · 1966">
+          <img src="assets/figures/Carmichael2.jpg" alt="Stokely Carmichael" onerror="this.onerror=null;this.src='assets/figures/carmichael3jpg.jpg';this.onerror=function(){this.style.display='none';};">
+          <div class="s5I-card-life">1941 — 1998</div>
+          <div class="s5I-card-name">Stokely Carmichael</div>
+        </div>
+        <!-- Duplication pour boucle infinie sans saut -->
+        <div class="s5I-card"
+             data-name="Huey P.|Newton" data-life="1942 — 1989 · Oakland"
+             data-tag="Cofondateur · théoricien" data-photo="assets/figures/newton.jpg" data-mono="HN"
+             data-body="Étudiant en droit à Merritt College, lecteur de Fanon et de Mao. Auteur du <strong>Ten-Point Program</strong> avec Seale en octobre 1966. Incarcéré pour le meurtre contesté de l'officier John Frey de 1967 à 1970. Théoricien de l'<em>«&nbsp;intercommunalisme révolutionnaire&nbsp;»</em> à partir de 1970."
+             data-foot="Minister of Defense · BPP">
+          <img src="assets/figures/newton.jpg" alt="Huey P. Newton" onerror="this.style.display='none';">
+          <div class="s5I-card-life">1942 — 1989</div>
+          <div class="s5I-card-name">Huey P. Newton</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Bobby|Seale" data-life="né en 1936 · Liberty, TX"
+             data-tag="Cofondateur · président" data-photo="assets/figures/seale.jpg" data-mono="BS"
+             data-body="Ingénieur de formation, cofondateur du BPP avec Newton. Inculpé dans le procès des <strong>Chicago Seven</strong> en 1969, bâillonné et enchaîné dans la salle d'audience. Auteur de <em>Seize the Time</em> en 1970. Candidat à la mairie d'Oakland en 1973&nbsp;: <strong>40&nbsp;% des voix au second tour</strong>."
+             data-foot="Chairman · BPP">
+          <img src="assets/figures/seale.jpg" alt="Bobby Seale" onerror="this.onerror=null;this.src='assets/figures/seale2.jpg';this.onerror=function(){this.style.display='none';};">
+          <div class="s5I-card-life">né en 1936</div>
+          <div class="s5I-card-name">Bobby Seale</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Fred|Hampton" data-life="1948 — 1969 · Chicago"
+             data-tag="Président · Illinois · 21 ans" data-photo="assets/figures/hampton2.jpg" data-mono="FH"
+             data-body="Bâtissait la <strong>Rainbow Coalition</strong>&nbsp;: alliance entre Black Panthers, Young Lords portoricains et Young Patriots blancs des Appalaches. <strong>Assassiné dans son sommeil</strong> par la police de Chicago et le FBI le 4 décembre 1969, à 21 ans, en pleine montée organisationnelle."
+             data-foot="COINTELPRO · 4 décembre 1969">
+          <img src="assets/figures/hampton2.jpg" alt="Fred Hampton" onerror="this.style.display='none';">
+          <div class="s5I-card-life">1948 — 1969</div>
+          <div class="s5I-card-name">Fred Hampton</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Eldridge|Cleaver" data-life="1935 — 1998 · Arkansas"
+             data-tag="Ministre de l'information" data-photo="assets/scenes/Eldridge_Cleaver_.jpg" data-mono="EC"
+             data-body="Auteur de <em>Soul on Ice</em> (1968), écrit en prison. Candidat à la présidentielle américaine en <strong>1968</strong> pour le <em>Peace and Freedom Party</em>. Exilé à Alger puis Paris après la fusillade d'Oakland d'avril 1968. Sa rupture violente avec Newton en 1971 marquera la fracture interne du parti."
+             data-foot="Soul on Ice · 1968">
+          <img src="assets/scenes/Eldridge_Cleaver_.jpg" alt="Eldridge Cleaver" onerror="this.onerror=null;this.src='assets/figures/cleaver.jpg';this.onerror=function(){this.style.display='none';};">
+          <div class="s5I-card-life">1935 — 1998</div>
+          <div class="s5I-card-name">Eldridge Cleaver</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Angela|Davis" data-life="née en 1944 · Birmingham, AL"
+             data-tag="Philosophe · militante" data-photo="assets/figures/davis2.jpg" data-mono="AD"
+             data-body="Philosophe formée à Francfort sous Adorno. Proche du BPP sans en être membre formelle. <strong>Sur la liste des dix fugitifs les plus recherchés du FBI</strong> en 1970, après l'affaire Marin County. Acquittée en 1972. Théoricienne majeure du complexe carcéral américain&nbsp;: <em>Are Prisons Obsolete?</em> (2003)."
+             data-foot="UCLA · prison · théorie">
+          <img src="assets/figures/davis2.jpg" alt="Angela Davis" onerror="this.style.display='none';">
+          <div class="s5I-card-life">née en 1944</div>
+          <div class="s5I-card-name">Angela Davis</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Elaine|Brown" data-life="née en 1943 · Philadelphia"
+             data-tag="Présidente du parti · 1974 — 1977" data-photo="assets/figures/brown.jpg" data-mono="EB"
+             data-body="Première et unique femme à <strong>diriger le BPP</strong>, de 1974 à 1977, pendant que Newton est exilé à Cuba. Réorientation stratégique vers la <em>politique électorale locale</em> à Oakland&nbsp;: les Panthers font élire Lionel Wilson, premier maire noir d'Oakland, en 1977. Auteure de <em>A Taste of Power</em> (1992)."
+             data-foot="Chairwoman · 1974 — 1977">
+          <img src="assets/figures/brown.jpg" alt="Elaine Brown" onerror="this.style.display='none';">
+          <div class="s5I-card-life">née en 1943</div>
+          <div class="s5I-card-name">Elaine Brown</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Kathleen|Cleaver" data-life="née en 1945 · Memphis"
+             data-tag="Communication · SNCC puis BPP" data-photo="assets/scenes/kathleen_cleaver.png.webp" data-mono="KC"
+             data-body="Première femme au <strong>Central Committee</strong> du BPP. Responsable communication, organisatrice des campagnes <em>«&nbsp;Free Huey&nbsp;»</em> (1968). Exilée à Alger puis Paris avec Eldridge. Aujourd'hui professeure de droit à Emory&nbsp;: travaille sur les libertés civiles et les <em>cold cases</em> du mouvement noir."
+             data-foot="Communications Secretary">
+          <img src="assets/scenes/kathleen_cleaver.png.webp" alt="Kathleen Cleaver" onerror="this.style.display='none';">
+          <div class="s5I-card-life">née en 1945</div>
+          <div class="s5I-card-name">Kathleen Cleaver</div>
+        </div>
+        <div class="s5I-card"
+             data-name="Stokely|Carmichael" data-life="1941 — 1998 · Trinidad"
+             data-tag="SNCC · Honorary Prime Minister BPP" data-photo="assets/figures/Carmichael2.jpg" data-mono="SC"
+             data-body="Inventeur du slogan <strong>Black Power</strong> à Greenwood, Mississippi, en juin 1966. Brièvement <em>«&nbsp;Honorary Prime Minister&nbsp;»</em> du BPP en 1968. Rupture avec le parti dès 1969 sur la question des <strong>alliances avec la gauche blanche</strong>&nbsp;: pour Carmichael, le BPP s'écarte du panafricanisme. Part vivre en Guinée."
+             data-foot="SNCC chairman · 1966">
+          <img src="assets/figures/Carmichael2.jpg" alt="Stokely Carmichael" onerror="this.onerror=null;this.src='assets/figures/carmichael3jpg.jpg';this.onerror=function(){this.style.display='none';};">
+          <div class="s5I-card-life">1941 — 1998</div>
+          <div class="s5I-card-name">Stokely Carmichael</div>
+        </div>
+      </div>
+    </div>
+    <aside class="s5I-panel" id="s5Panel">
+      <button class="s5I-close" id="s5Close" aria-label="Fermer">×</button>
+      <div class="s5I-panel-head">
+        <div class="s5I-panel-photo" id="s5PanelPhoto"></div>
+        <div class="s5I-panel-headtxt">
+          <div class="s5I-panel-tag" id="s5PanelTag"></div>
+          <div class="s5I-panel-name" id="s5PanelName"></div>
+          <div class="s5I-panel-life" id="s5PanelLife"></div>
+        </div>
+      </div>
+      <div class="s5I-panel-rule"></div>
+      <div class="s5I-panel-body" id="s5PanelBody"></div>
+      <div class="s5I-panel-foot" id="s5PanelFoot"></div>
+      <div class="s5I-tapclose" id="s5TapClose">↵ Toucher pour fermer</div>
+    </aside>
+  </div>
+  <div class="s5I-foot"><span>Survol = pause · clic sur une carte = fiche</span><span class="arr">→</span></div>
+</div>
+
+<!-- ════ S6 · PATTERN 05 — Audio capsule waveform ════ -->
+<div class="slide" id="s6">
+  <div class="s6-wav">
+    <div class="s6-wav-tag"><span>Discours · Chicago</span><span>Verbatim · 28 sec</span></div>
+    <p class="s6-wav-quote">On ne combat pas le racisme avec du racisme&nbsp;: on combat le racisme avec la <strong>solidarité</strong>. On ne combat pas le capitalisme avec un capitalisme noir&nbsp;: on combat le capitalisme avec le <strong>socialisme</strong>.</p>
+    <div class="s6-wav-attr">Fred Hampton · Chicago · été 1969</div>
+    <!-- v86o · audio retiré (fichier non disponible) · waveform conservée en élément décoratif + tag transcription -->
+    <div class="s6-wav-player s6-wav-player--decor" id="s6WavPlayer" aria-hidden="true">
+      <div class="s6-wav-marker"><span>Transcription</span></div>
+      <div class="s6-wav-form" id="s6WavForm">
+        <span class="s6-wav-bar" style="--h:25%;animation-delay:0s;height:25%;"></span>
+        <span class="s6-wav-bar" style="--h:55%;animation-delay:.08s;height:55%;"></span>
+        <span class="s6-wav-bar" style="--h:75%;animation-delay:.16s;height:75%;"></span>
+        <span class="s6-wav-bar" style="--h:45%;animation-delay:.24s;height:45%;"></span>
+        <span class="s6-wav-bar" style="--h:85%;animation-delay:.32s;height:85%;"></span>
+        <span class="s6-wav-bar" style="--h:65%;animation-delay:.4s;height:65%;"></span>
+        <span class="s6-wav-bar" style="--h:90%;animation-delay:.48s;height:90%;"></span>
+        <span class="s6-wav-bar" style="--h:50%;animation-delay:.56s;height:50%;"></span>
+        <span class="s6-wav-bar" style="--h:78%;animation-delay:.64s;height:78%;"></span>
+        <span class="s6-wav-bar" style="--h:42%;animation-delay:.72s;height:42%;"></span>
+        <span class="s6-wav-bar" style="--h:62%;animation-delay:.8s;height:62%;"></span>
+        <span class="s6-wav-bar" style="--h:34%;animation-delay:.88s;height:34%;"></span>
+        <span class="s6-wav-bar" style="--h:72%;animation-delay:.96s;height:72%;"></span>
+        <span class="s6-wav-bar" style="--h:48%;animation-delay:1.04s;height:48%;"></span>
+        <span class="s6-wav-bar" style="--h:82%;animation-delay:1.12s;height:82%;"></span>
+        <span class="s6-wav-bar" style="--h:56%;animation-delay:1.2s;height:56%;"></span>
+        <span class="s6-wav-bar" style="--h:68%;animation-delay:1.28s;height:68%;"></span>
+        <span class="s6-wav-bar" style="--h:38%;animation-delay:1.36s;height:38%;"></span>
+        <span class="s6-wav-bar" style="--h:76%;animation-delay:1.44s;height:76%;"></span>
+        <span class="s6-wav-bar" style="--h:52%;animation-delay:1.52s;height:52%;"></span>
+        <span class="s6-wav-bar" style="--h:64%;animation-delay:1.6s;height:64%;"></span>
+        <span class="s6-wav-bar" style="--h:46%;animation-delay:1.68s;height:46%;"></span>
+        <span class="s6-wav-bar" style="--h:80%;animation-delay:1.76s;height:80%;"></span>
+        <span class="s6-wav-bar" style="--h:36%;animation-delay:1.84s;height:36%;"></span>
+        <span class="s6-wav-bar" style="--h:60%;animation-delay:1.92s;height:60%;"></span>
+      </div>
+      <div class="s6-wav-time">28 sec · extrait</div>
+    </div>
+    <p class="s6-wav-context">Hampton parle ici de la <strong>Rainbow Coalition</strong>&nbsp;: l'alliance qu'il est en train de construire entre Panthers, Young Lords portoricains et Young Patriots blancs. Six mois plus tard, il est tué dans son sommeil. La phrase explique pourquoi.</p>
+    <div class="s6-wav-meta">Discours « Power Anywhere Where There's People »<br><strong>Olivet Baptist Church · Chicago · 1969</strong></div>
+  </div>
+</div>
+
+<!-- ════ S6b · NEWTON vs CLEAVER · fracture doctrinale (v82.1 · médaillons + reveal progressif) ════ -->
+
+<style>/* auto: s6a clones #s3 layout */
+#s6a{background:var(--ink);overflow:hidden;padding:48px 56px 80px;}
+#s6a.on .s3-top{animation:fadeUp .55s .15s forwards;}
+#s6a.on .s3-L-card{opacity:1;transform:translateY(0);transition:transform .7s cubic-bezier(.34,1.56,.64,1),opacity .7s,z-index 0s .6s;}
+#s6a.on .s3-L-card:nth-child(1){transition-delay:.4s,.4s,.6s;}
+#s6a.on .s3-L-card:nth-child(2){transition-delay:.55s,.55s,.6s;}
+#s6a.on .s3-L-card:nth-child(3){transition-delay:.7s,.7s,.6s;}
+</style>
+<!-- ════ S6a · PATTERN L — Assassinat de Fred Hampton (4 décembre 1969) ════ -->
+<div class="slide" id="s6a">
+  <div class="s3-top">
+    <div>
+      <div class="s3-tag">COINTELPRO · la cible n'est pas le plus armé</div>
+      <div class="s3-h">Celui qu'on tue en premier, c'est le <em>coalisateur le plus efficace</em>.</div>
+    </div>
+    <div class="s3-foot">2337 West Monroe St · Chicago<br><strong>4 décembre 1969 · 4h45</strong></div>
+  </div>
+  <div class="s3-L">
+    <div class="s3-L-card">
+      <img src="assets/figures/hampton2.jpg" alt="Fred Hampton" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.style.display='none';};">
+      <div class="s3-L-content">
+        <div class="s3-L-top">
+          <div class="s3-L-eyebrow">Le raid · avant l'aube</div>
+          <div class="s3-L-num">14</div>
+        </div>
+        <div class="s3-L-bottom">
+          <div class="s3-L-rule"></div>
+          <div class="s3-L-label">Agents de Chicago <em>défoncent</em><br>la porte à 4h45</div>
+          <div class="s3-L-source">Bureau du procureur Hanrahan + FBI<br>2337 West Monroe St · Chicago</div>
+        </div>
+      </div>
+    </div>
+    <div class="s3-L-card">
+      <img src="assets/scenes/panthers2.jpg" alt="Black Panther Party" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.style.display='none';};">
+      <div class="s3-L-content">
+        <div class="s3-L-top">
+          <div class="s3-L-eyebrow">Hampton · tué dans son lit</div>
+          <div class="s3-L-num">21<em>ans</em></div>
+        </div>
+        <div class="s3-L-bottom">
+          <div class="s3-L-rule"></div>
+          <div class="s3-L-label"><em>2 balles</em> à bout portant<br>Mark Clark tué aussi · 22 ans</div>
+          <div class="s3-L-source">Deborah Johnson à ses côtés, enceinte de 8 mois<br>Commission Church · 1976</div>
+        </div>
+      </div>
+    </div>
+    <div class="s3-L-card">
+      <img src="assets/scenes/blackpanthers.jpg" alt="COINTELPRO" onerror="this.onerror=null;this.src='assets/scenes/panthers.jpg';this.onerror=function(){this.style.display='none';};">
+      <div class="s3-L-content">
+        <div class="s3-L-top">
+          <div class="s3-L-eyebrow">L'indic du FBI · plan de l'appartement</div>
+          <div class="s3-L-num">200<em>$</em></div>
+        </div>
+        <div class="s3-L-bottom">
+          <div class="s3-L-rule"></div>
+          <div class="s3-L-label">Payés <em>par mois</em><br>à William O'Neal, infiltré</div>
+          <div class="s3-L-source">Chapitre Illinois depuis 1968 · COINTELPRO<br>Plan de l'appartement fourni au FBI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s6b">
+  <div class="s6b-body">
+    <div class="s6b-top">
+      <div class="s6b-tag">Tension interne · 1967–1971</div>
+      <h2 class="s6b-h">Newton contre Cleaver&nbsp;: <em>la fracture doctrinale.</em></h2>
+    </div>
+    <div class="s6b-stage">
+      <div class="s6b-card left" id="s6bCardL">
+        <div class="s6b-card-medallion"><img src="assets/figures/newton.jpg" alt="Huey Newton" onerror="this.style.display='none'"></div>
+        <div class="s6b-card-tag">Huey Newton · 1966–71</div>
+        <div class="s6b-card-h"><span class="kw">Contre-gouvernement</span> local</div>
+        <p class="s6b-card-d">Ancrer les Panthers dans les quartiers. Nourrir les enfants, surveiller la police, soigner la communauté. Le <strong>pouvoir réel</strong> se construit ici, maintenant, par les services. La révolution globale attendra.</p>
+      </div>
+      <div class="s6b-vs">
+        <div class="s6b-vs-label">vs</div>
+        <div class="s6b-vs-line"></div>
+      </div>
+      <div class="s6b-card right" id="s6bCardR">
+        <div class="s6b-card-medallion"><img src="assets/scenes/Eldridge_Cleaver_.jpg" alt="Eldridge Cleaver" onerror="this.style.display='none'"></div>
+        <div class="s6b-card-tag">Eldridge Cleaver · 1967–71</div>
+        <div class="s6b-card-h"><span class="kw">Révolution globale</span> armée</div>
+        <p class="s6b-card-d">Alliance avec les groupes révolutionnaires blancs, solidarité internationale, confrontation armée avec l'État. Les services deviennent des <strong>outils de recrutement</strong> au service de la guerre. Le combat d'abord.</p>
+      </div>
+    </div>
+    <p class="s6b-coda" id="s6bCoda">La fracture éclate en 1971. Newton expulse Cleaver de l'organisation depuis l'exil. C'est aussi la preuve que <strong>le vide doctrinal du Black Power habite les Panthers eux-mêmes.</strong></p>
+    <div class="s6b-hint" id="s6bHint">Cliquer pour révéler la fracture<span class="arr">→</span></div>
+  </div>
+</div>
+
+<div class="slide" id="s7">
+  <div class="s7-body">
+    <div class="s7-tag">Synthèse · Module 3</div>
+    <div class="s7-h">Les <strong>Panthers</strong> <strong>démontrent</strong> qu'un <strong>collectif</strong> peut <span class="kw-gold">exercer des fonctions de gouvernement</span>. C'est ce qui les rend <strong>ingérables</strong>.</div>
+    <div class="s7-rule"></div>
+    <div class="s7-grid">
+      <div class="s7-card" id="sc1">
+        <div class="s7-card-emoji">🍳</div>
+        <div class="s7-card-tag">Free Breakfast</div>
+        <h3 class="s7-card-h"><em>20 000</em> enfants/semaine</h3>
+        <div class="s7-card-rule"></div>
+        <p class="s7-card-d">Le <strong>Free Breakfast</strong> à 20 000 enfants/semaine. Hoover le qualifie de <strong>«&nbsp;plus grande menace pour la sécurité intérieure&nbsp;»</strong> dès mai 1969. Le chiffre dit pourquoi.</p>
+      </div>
+      <div class="s7-card" id="sc2">
+        <div class="s7-card-emoji">🏥</div>
+        <div class="s7-card-tag">35+ programmes · 40+ villes</div>
+        <h3 class="s7-card-h">Une <em>architecture</em> d'État parallèle</h3>
+        <div class="s7-card-rule"></div>
+        <p class="s7-card-d">Cliniques, écoles, ambulances, journal, dépistage drépanocytose, dératisation. Les Panthers <strong>exercent les fonctions</strong> que l'État refuse d'assurer dans les quartiers noirs.</p>
+      </div>
+      <div class="s7-card" id="sc3">
+        <div class="s7-card-emoji">🚨</div>
+        <div class="s7-card-tag">Démonstration politique</div>
+        <h3 class="s7-card-h">L'État ne <em>tolère pas</em></h3>
+        <div class="s7-card-rule"></div>
+        <p class="s7-card-d">Une organisation noire qui prouve qu'<strong>une autre norme de gouvernement est possible</strong> devient ingérable. La réponse étatique (COINTELPRO, Hampton) suit la démonstration. Jamais l'inverse.</p>
+      </div>
+    </div>
+    <div class="s7-hint" id="s7hint"></div>
+    <div class="s7-next" id="s7next"><span>Module suivant</span><span class="arr">→</span><span class="s7-next-label">Le dilemme du genre chez les Panthers</span></div>
+  </div>
+</div>
+
+</div>
+<script>
+const cur=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+const slides=Array.from(document.querySelectorAll('.slide'));
+const N=slides.length;let ci=0;
+const dotsEl=document.getElementById('dots');
+slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');d.addEventListener('click',e=>{e.stopPropagation();goSlide(i);});d.addEventListener('mouseenter',()=>cur.classList.add('big'));d.addEventListener('mouseleave',()=>cur.classList.remove('big'));dotsEl.appendChild(d);});
+function updateChrome(){document.getElementById('counter').innerHTML=String(ci+1).padStart(2,'0')+'<sup>/ '+String(N).padStart(2,'0')+'</sup>';document.getElementById('prog').style.width=((ci+1)/N*100)+'%';dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===ci));}
+
+let s7step=0;const S7=['sc1','sc2','sc3','s7next'];
+function resetS7(){s7step=0;['sc1','sc2','sc3'].forEach(id=>{const el=document.getElementById(id);if(el){el.style.transition='none';el.classList.remove('revealed');void el.offsetWidth;el.style.transition='';}});(()=>{const _e_s7next=document.getElementById('s7next');if(_e_s7next){_e_s7next.style.transition='none';_e_s7next.classList.remove('revealed');void _e_s7next.offsetWidth;_e_s7next.style.transition='';}})();document.getElementById('s7hint').style.opacity='1';}
+function revealS7(){if(s7step<S7.length){document.getElementById(S7[s7step]).classList.add('revealed');s7step++;if(s7step===1)document.getElementById('s7hint').style.opacity='0';return true;}return false;}
+
+/* ══ Pattern G — Mosaïque interactive (S4 actions, S5 figures) ══
+   Panel position dynamique : cards à gauche → panel à droite, cards à droite → panel à gauche
+   La card focalisée translate dans la direction opposée pour éviter tout chevauchement */
+function buildMosaic(slideEl, mosaicId, panelId, closeId, fields, cols){
+  const mosaic=document.getElementById(mosaicId);
+  const panel=document.getElementById(panelId);
+  const closeBtn=document.getElementById(closeId);
+  if(!mosaic||!panel)return null;
+  const NCOLS=cols||5;
+  function focusFrame(frame){
+    const frames=Array.from(mosaic.children).filter(c=>c.classList.contains(frame.classList[0]));
+    frames.forEach(f=>{f.classList.remove('focused','panel-side-right','panel-side-left');});
+    const idx=frames.indexOf(frame);
+    const col=idx%NCOLS;
+    // Cards en colonnes 0,1 (gauche) → panel droite · cards 2,3,4 (centre+droite) → panel gauche
+    const panelLeft=col>=Math.ceil(NCOLS/2);
+    frame.classList.add('focused', panelLeft?'panel-side-left':'panel-side-right');
+    mosaic.classList.add('has-focus');
+    slideEl.classList.add('focused-state');
+    panel.classList.remove('panel-right','panel-left');
+    panel.classList.add(panelLeft?'panel-left':'panel-right');
+    const name=(frame.dataset.name||'').split('|');
+    document.getElementById(fields.name).innerHTML=name[0]+(name[1]?'<br><em>'+name[1]+'</em>':'');
+    document.getElementById(fields.tag).textContent=frame.dataset.tag||'';
+    const dateEl=document.getElementById(fields.date);if(dateEl)dateEl.textContent=frame.dataset.date||frame.dataset.life||'';
+    document.getElementById(fields.body).innerHTML=frame.dataset.body||'';
+    document.getElementById(fields.foot).textContent=frame.dataset.foot||'';
+    panel.classList.add('show');
+  }
+  function unfocus(){
+    mosaic.querySelectorAll('.focused').forEach(f=>f.classList.remove('focused','panel-side-right','panel-side-left'));
+    mosaic.classList.remove('has-focus');
+    slideEl.classList.remove('focused-state');
+    panel.classList.remove('show');
+  }
+  mosaic.querySelectorAll(':scope > div').forEach(frame=>{
+    frame.addEventListener('click',e=>{e.stopPropagation();if(frame.classList.contains('focused'))unfocus();else focusFrame(frame);});
+    frame.addEventListener('mouseenter',()=>cur.classList.add('big'));
+    frame.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+  });
+  closeBtn&&closeBtn.addEventListener('click',e=>{e.stopPropagation();unfocus();});
+  return {unfocus};
+}
+const s4Ctl=buildMosaic(document.getElementById('s4'),'s4Mosaic','s4Panel','s4Close',{name:'s4PanelName',tag:'s4PanelTag',date:'s4PanelDate',body:'s4PanelBody',foot:'s4PanelFoot'},5);
+
+/* ══ S5 · Pattern I — Carrousel 3D infini · click révèle panel ══ */
+const s5Slide=document.getElementById('s5');
+const s5RailWrap=document.getElementById('s5RailWrap');
+const s5Panel=document.getElementById('s5Panel');
+const s5Close=document.getElementById('s5Close');
+function s5Focus(card){
+  s5Slide.querySelectorAll('.s5I-card.s5I-focused').forEach(c=>c.classList.remove('s5I-focused'));
+  card.classList.add('s5I-focused');
+  s5Slide.classList.add('s5-has-focus');
+  s5RailWrap.classList.add('paused');
+  const name=(card.dataset.name||'').split('|');
+  document.getElementById('s5PanelName').innerHTML=name[0]+(name[1]?' <em>'+name[1]+'</em>':'');
+  document.getElementById('s5PanelTag').textContent=card.dataset.tag||'';
+  document.getElementById('s5PanelLife').textContent=card.dataset.life||'';
+  document.getElementById('s5PanelBody').innerHTML=card.dataset.body||'';
+  document.getElementById('s5PanelFoot').textContent=card.dataset.foot||'';
+  const photoEl=document.getElementById('s5PanelPhoto');
+  const src=card.dataset.photo||'';const mono=card.dataset.mono||'';
+  if(src){photoEl.innerHTML='<img src="'+src+'" alt="" onerror="this.parentElement.innerHTML=\'<div class=&quot;s5I-panel-mono&quot;>'+mono+'</div>\'">';}
+  else{photoEl.innerHTML='<div class="s5I-panel-mono">'+mono+'</div>';}
+  s5Panel.classList.add('show');
+}
+function s5Unfocus(){
+  s5Slide.querySelectorAll('.s5I-card.s5I-focused').forEach(c=>c.classList.remove('s5I-focused'));
+  s5Slide.classList.remove('s5-has-focus');
+  s5RailWrap.classList.remove('paused');
+  s5Panel.classList.remove('show');
+}
+document.querySelectorAll('#s5 .s5I-card').forEach(card=>{
+  card.addEventListener('click',e=>{e.stopPropagation();if(card.classList.contains('s5I-focused'))s5Unfocus();else s5Focus(card);});
+  card.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  card.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+});
+s5Close.addEventListener('click',e=>{e.stopPropagation();s5Unfocus();});
+s5Panel.addEventListener('click',e=>e.stopPropagation());
+
+/* v86o · S6 audio retiré · waveform = décor pur, plus de play button */
+
+/* v82 · indices décalés suite à insertion s6b Newton vs Cleaver (ajout éditorial v2) */
+/* v82.1 · S6b reveal progressif : card gauche → card droite → coda */
+let s6bstep=0;const S6B=['s6bCardL','s6bCardR','s6bCoda'];
+function resetS6b(){s6bstep=0;S6B.forEach(id=>{const el=document.getElementById(id);if(el){el.style.transition='none';el.classList.remove('shown');void el.offsetWidth;el.style.transition='';}});const h=document.getElementById('s6bHint');if(h)h.classList.remove('hidden');}
+function revealS6b(){if(s6bstep<S6B.length){const el=document.getElementById(S6B[s6bstep]);if(el)el.classList.add('shown');s6bstep++;if(s6bstep===1){const h=document.getElementById('s6bHint');if(h)h.classList.add('hidden');}return true;}return false;}
+
+function goSlide(n){const t=Math.max(0,Math.min(n,N-1));if(t===ci)return;slides[ci].classList.remove('on');ci=t;slides[ci].classList.add('on');if(s4Ctl)s4Ctl.unfocus();s5Unfocus();if(ci===6)resetS6b();if(ci===7)resetS7();updateChrome();}
+function handleNext(){if(ci===6){if(revealS6b())return;}if(ci===7){if(!revealS7())goSlide(ci+1);return;}goSlide(ci+1);}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();handleNext();}
+  else if(e.key==='ArrowLeft'){e.preventDefault();goSlide(ci-1);}
+  else if(e.key==='Home'){e.preventDefault();goSlide(0);}
+  else if(e.key==='End'){e.preventDefault();goSlide(N-1);}
+  else if(e.key==='Escape'){if(s4Ctl)s4Ctl.unfocus();s5Unfocus();}
+  else if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement){document.documentElement.requestFullscreen();}else{document.exitFullscreen();}}
+});
+document.getElementById('navPrev').addEventListener('click',e=>{e.stopPropagation();goSlide(ci-1);});
+document.getElementById('navNext').addEventListener('click',e=>{e.stopPropagation();handleNext();});
+document.getElementById('deck').addEventListener('click',e=>{
+  if(e.target.closest('.dot')||e.target.closest('.nav-btn'))return;
+  if(e.target.closest('.s4G-frame')||e.target.closest('.s4G-panel')||e.target.closest('.s5I-card')||e.target.closest('.s5I-panel'))return;
+  if(e.target.closest('.s3-L-card'))return;
+  /* Si un panel S4 ou S5 est ouvert, click ailleurs ferme le panel · ne navigue PAS */
+  if(document.querySelector('#s4 .s4G-mosaic.has-focus')){if(s4Ctl)s4Ctl.unfocus();return;}
+  if(document.querySelector('#s5.s5-has-focus')){s5Unfocus();return;}
+  handleNext();
+});
+
+document.querySelectorAll('.s7-card,.s3-L-card').forEach(c=>{c.addEventListener('mouseenter',()=>cur.classList.add('big'));c.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
+updateChrome();
+</script>
+<style id="kiosk-style">
+  #cur,#prog,#counter,#wm,#dots,#navPrev,#navNext{display:none!important;}
+  html,body{overflow:hidden;}
+  /* the deck hides the native cursor (*{cursor:none}); restore it inside the embed */
+  *{cursor:default!important;}
+  .s5I-card,.s5I-card *,.s5I-close,.s5I-tapclose{cursor:pointer!important;}
+  .s5I-panel,.s5I-panel *{cursor:default!important;}
+  /* fiche open: clicking the dimmed background closes it -> show that affordance */
+  #s5.s5-has-focus .s5I-stage,#s5.s5-has-focus .s5I-rail-wrap{cursor:zoom-out!important;}
+  /* parent freezes the embed when off-screen / tab hidden -> stop the carousel */
+  body.sg-frozen .s5I-rail{animation-play-state:paused!important;}
+  @media (prefers-reduced-motion:reduce){ .s5I-rail{animation:none!important;} }
+  /* touch: freeze the rail so the cards are tappable, and enlarge the close target */
+  @media (hover:none),(pointer:coarse){
+    .s5I-rail{animation-play-state:paused!important;}
+    #s5 .s5I-close{width:44px;height:44px;top:12px;right:12px;font-size:20px;}
+  }
+  /* full-width tap-to-close bar, touch only (the 32px × is untappable once scaled down) */
+  .s5I-tapclose{display:none;}
+  @media (hover:none),(pointer:coarse){
+    #s5.s5-has-focus .s5I-tapclose{display:block;margin-top:22px;padding:15px;text-align:center;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--or2);border-top:1px solid rgba(212,176,90,.28);}
+  }
+</style>
+<script id="kiosk-lock">
+(function(){
+  function rail(){ return document.getElementById('s5RailWrap'); }
+  function frz(on){ var r=rail(); if(r) r.classList.toggle('paused', on); document.body.classList.toggle('sg-frozen', on); }
+  function unfocus(){ try{ if(typeof s5Unfocus==='function') s5Unfocus(); }catch(e){} }
+  /* bridge registered EARLY so parent enter/leave/close are never missed */
+  window.addEventListener('message', function(ev){
+    var d=ev&&ev.data; if(!d||!d.sg) return;
+    if(d.sg==='leave'){ unfocus(); frz(true); }
+    else if(d.sg==='enter'){ frz(false); }
+    else if(d.sg==='close'){ unfocus(); }
+  });
+  document.addEventListener('visibilitychange', function(){ document.body.classList.toggle('sg-frozen', document.hidden); });
+  function start(){
+    var slides=[].slice.call(document.querySelectorAll('.slide'));
+    var t=document.getElementById('s5'); var i=slides.indexOf(t);
+    try{ if(typeof goSlide==='function' && i>=0) goSlide(i); }catch(e){}
+    slides.forEach(function(s){ s.classList.toggle('on', s===t); });
+    var tc=document.getElementById('s5TapClose');
+    if(tc) tc.addEventListener('click', function(e){ e.stopPropagation(); unfocus(); });
+    /* lock navigation, keep card -> fiche interactions */
+    try{ window.handleNext=function(){}; window.goSlide=function(){}; }catch(e){}
+  }
+  if(document.readyState==='complete') start(); else window.addEventListener('load', start);
+})();
+</script>
+</body>
+</html>

@@ -1,95 +1,266 @@
 ---
 import Base from '../layouts/Base.astro';
 import { formations } from '../data/formations.js';
+import { articles } from '../data/articles.js';
+import FormationFeature from '../components/FormationFeature.astro';
+
+// Pour l'instant on ne met en avant QUE la formation disponible (les deux autres en réflexion).
+const featured = formations.find((f) => f.status === 'available');
+
+// Hero : alternance stricte photo d'auteur → citation fond noir (Sankara inclus).
+const cites = [
+  { src: '/citations/cit-1.png', alt: 'Citation — Aimé Césaire (photo)' },
+  { src: '/citations/cit-2.png', alt: 'Citation — Malcolm X (fond noir)' },
+  { src: '/citations/cit-3.png', alt: 'Citation — Antonio Gramsci (photo)' },
+  { src: '/citations/cit-4.png', alt: 'Citation — Frantz Fanon (fond noir)' },
+  { src: '/citations/cit-5.png', alt: 'Citation — Ibn Badis (photo)' },
+  { src: '/citations/cit-6.png', alt: 'Citation — Thomas Sankara (fond noir)' },
+];
+const marquee = [...cites, ...cites];
+
+const IG = 'https://www.instagram.com/lautrerecit/';
+
+// ===== TÉMOIGNAGES — avis réels de la communauté sur le média (questionnaire, juin 2026).
+// Repris du tunnel de vente. Les avis spécifiques à la formation viendront avec ses premiers élèves.
+const temoignages = [
+  { src: 'Retour communauté', n: 'Rayan',     q: "Une analyse de l'actualité très juste, un regard éveillé dans un vocabulaire prenant. Des récits qui poussent à la réflexion, à l'introspection et à l'action. <strong>Un média alternatif qui doit devenir une référence.</strong>" },
+  { src: 'Retour communauté', n: 'Madeleine', q: "Chrétienne de gauche, cette page me nourrit énormément. Des analyses d'une grande finesse, qui décalent le regard et reposent les bonnes questions. <strong>Quelle respiration&nbsp;!</strong>" },
+  { src: 'Retour communauté', n: 'Chaïmae',   q: "Un travail de recherche solide, des références sérieuses en sciences humaines. L'Autre Récit <strong>vulgarise le travail scientifique</strong> là où les premiers concernés sont souvent absents du débat." },
+  { src: 'Retour communauté', n: 'Soumaya',   q: "Un média pertinent et sourcé, qui mobilise les sciences sociales pour décortiquer l'actualité. <strong>Indépendant, nécessaire et incontournable.</strong>" },
+  { src: 'Retour communauté', n: 'Inès',      q: "Enfin un média qui nous instruit réellement et donne de vraies clés de compréhension du monde. <strong>Le média qui nous manquait.</strong>" },
+  { src: 'Retour communauté', n: 'Lina',      q: "Une vision plus éclairée de l'actualité, de l'histoire et de la société. J'y retrouve même <strong>les auteurs que j'étudie en cours</strong> — ça m'aide vraiment." },
+  { src: 'Retour communauté', n: 'Anonyme',   q: "Les ouvertures à la fin des posts nous poussent à nous remettre en question, à ne plus être seulement des consommateurs. Une très belle façon d'écrire et de synthétiser&nbsp;: vous rendez Instagram <strong>un peu moins superflu</strong>." },
+  { src: 'Retour communauté', n: 'Maëva',     q: "Un vent de fraîcheur&nbsp;: enfin un point de vue qui nous ressemble, <strong>basé sur les faits, pas sur l'émotion</strong>." },
+  { src: 'Retour communauté', n: 'Insaf',     q: "Explorer des <strong>grilles de lecture alternatives</strong> aux représentations dominantes, et très bien amené. Un compte qui aide à prendre du recul et à voir le monde autrement." },
+  { src: 'Retour communauté', n: 'Julie',     q: "Des analyses qualitatives qui citent leurs sources et invitent à la réflexion. <strong>Le seul média qui me permet de me sentir impliquée sans me démoraliser.</strong>" },
+  { src: 'Retour communauté', n: 'Anonyme',   q: "Comprendre le monde dans sa complexité, en <strong>croisant sciences sociales et religion</strong>. Une portée qui pousse vraiment à réfléchir." },
+  { src: 'Retour communauté', n: 'Anonyme',   q: "Un contenu différent de ce qu'on voit d'habitude, qui pousse à <strong>voir certains sujets sous un autre angle</strong>." },
+  { src: 'Retour communauté', n: 'Anonyme',   q: "Une grille d'analyse pour mieux comprendre l'actualité, à travers le prisme des <strong>inégalités sociales, raciales et religieuses</strong>." },
+  { src: 'Retour communauté', n: 'Anonyme',   q: "Une rédaction claire, détaillée, sourcée et intelligente. <strong>À lire pour ressortir grandi.</strong>" },
+];
+
+// Ordre = grille du profil Instagram (récents en tête), rythme photo / fond noir / photo.
+// url = permalien du post exact (fournis par Rany).
+const posts = [
+  { src: '/posts/post-10.png', cap: "17 octobre 1961 : la police de Paris jette des Algériens dans la Seine. « Ici on noie les Algériens » — puis on noie le souvenir.", url: 'https://www.instagram.com/p/DP4nj0rAuRB/' },
+  { src: '/posts/post-11.png', cap: "Consommer est devenu une identité. Comment le marché a fait d'une spiritualité de la sobriété une cible marketing.", url: 'https://www.instagram.com/p/DT8zP4Bgmxr/' },
+  { src: '/posts/post-12.png', cap: "« Sauver les femmes » : derrière la formule, un récit occidental qui parle à leur place. Les Iraniennes valent mieux que ça.", url: 'https://www.instagram.com/p/DVo7baiApvW/' },
+  { src: '/posts/post-1.png', cap: "Le foot n'a jamais été apolitique — la Coupe du Monde aux États-Unis le rappelle à ceux qui l'avaient oublié.", url: 'https://www.instagram.com/p/DZf26Khguy9/' },
+  { src: '/posts/post-2.png', cap: "Le mythe du « self-made » appliqué à Attal : ce que cache le récit du mérite quand on naît déjà du bon côté.", url: 'https://www.instagram.com/p/DZTIuLrAqwL/' },
+  { src: '/posts/post-3.png', cap: "Pouvoir dire « arrêtez de tout politiser », c'est déjà un privilège : celui que la politique n'inquiète pas.", url: 'https://www.instagram.com/p/DZGSq6OAmXU/' },
+  { src: '/posts/post-4.png', cap: "La vie est une lutte. La vraie question : avec quels outils on s'y arme — ou on la subit.", url: 'https://www.instagram.com/p/DY0EX69Am_b/' },
+  { src: '/posts/post-5.png', cap: "8 mai 1945 : pendant qu'on fête la victoire, la France massacre à Sétif, Guelma et Kherrata. L'autre mémoire de cette date.", url: 'https://www.instagram.com/p/DYDSRncAvDs/' },
+  { src: '/posts/post-6.png', cap: "Qu'est devenue la communauté du juste milieu et de la modération ? Retour sur un idéal qu'on invoque plus qu'on ne vit.", url: 'https://www.instagram.com/p/DXz3GSjAiEt/' },
+  { src: '/posts/post-7.png', cap: "« C'est toujours la faute des Arabes » : anatomie de l'inversion accusatoire, ce réflexe hérité de la grammaire coloniale.", url: 'https://www.instagram.com/p/DXKhfykglYn/' },
+  { src: '/posts/post-9.png', cap: "Al-Aqsa sous verrou. La vraie question que ça nous pose : sommes-nous encore dignes de notre héritage ?", url: 'https://www.instagram.com/p/DWSJA-JlGQ4/' },
+  { src: '/posts/fastfood.png', cap: "La halalisation des fast-foods : quand la ummā devient une cible marketing.", url: 'https://www.instagram.com/p/DTdxRmCAuhL/?img_index=1' },
+];
 ---
 <Base
-  title="L'Autre Récit — Formations d'histoire critique"
-  description="Des formations pour déconstruire les récits dominants et redonner aux minorités les outils de leur propre histoire."
+  title="L'Autre Récit — Média d'analyse critique"
+  description="Un média qui déconstruit les récits dominants et rend aux minorités les outils de leur propre histoire — analyses, articles et formations."
 >
-  <!-- HERO -->
-  <section class="hero">
+  <!-- ===== BLOC SOMBRE : HERO + CITATIONS ===== -->
+  <div class="top-dark">
+    <div class="grain"></div>
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-h">
+          <span class="hh-1">L'Autre&nbsp;Récit</span>
+          <span class="hh-2 gold-grad">commence ici.</span>
+        </h1>
+        <p class="hero-accroche">«&nbsp;Reprendre le contrôle du <em>récit</em>, c'est <em>arracher la plume</em> à ceux qui l'ont confisquée.&nbsp;»</p>
+        <p class="hero-lede">
+          Le monde ne se donne jamais brut&nbsp;: il est raconté par ceux qui ont le pouvoir
+          de le dire. L'Autre Récit s'attaque à ce cadrage — d'où il vient, ce qu'il rend
+          invisible, à qui il profite.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-or hero-scroll" href="#decouvrir">Entrer dans le récit <span class="ar ar-down">↓</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cites" aria-label="Citations">
+      <div class="cite-track">
+        {marquee.map((c) => (
+          <a class="cite-card" href="/grille-de-lecture/" aria-label="Découvrir la grille de lecture">
+            <img src={c.src} alt={c.alt} loading="lazy" width="1080" height="1440" />
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== LA VISION ===== -->
+  <section class="section dark vision" id="decouvrir">
     <div class="container">
-      <p class="eyebrow">Histoire critique · Formations en ligne</p>
-      <h1 class="hero-h">
-        Et si on racontait <em>l'autre récit</em> de l'histoire&nbsp;?
-      </h1>
-      <p class="lede hero-lede">
-        Des formations exigeantes qui rendent aux minorités les outils de leur
-        propre histoire — sources, concepts et grilles de lecture, loin des
-        clichés et des raccourcis.
-      </p>
-      <div class="hero-cta">
-        <a class="btn btn-gold" href="/formations/">Voir les formations →</a>
-        <a class="btn btn-ghost" href="/manifeste/">Lire le manifeste</a>
+      <p class="eyebrow">Le projet</p>
+      <h2 class="vision-h">La <span class="gold-grad">vision</span></h2>
+      <div class="vision-body reveal">
+        <p>Les récits dominants fixent ce qui passe pour normal, vrai, évident — jusque dans la tête de ceux qu'ils visent.</p>
+        <p><em>L'Autre Récit</em> reprend ce travail à la racine, avec deux outils&nbsp;: la rigueur de la science politique, et une exigence de responsabilité qui commence par soi.</p>
+      </div>
+      <a class="btn btn-or" href="/a-propos/">En savoir plus <span class="ar">→</span></a>
+    </div>
+  </section>
+
+  <!-- ===== FORMATION (vedette — uniquement la dispo pour l'instant) ===== -->
+  <section class="section formations">
+    <div class="container">
+      <p class="eyebrow">Le catalogue</p>
+      <h2>La <em class="gold-grad-d">formation</em></h2>
+      <div class="feature-wrap reveal">
+        <FormationFeature
+          title={featured.title}
+          eyebrow={featured.eyebrow}
+          blurb={featured.blurb}
+          href={featured.href}
+          duration={featured.duration}
+          status={featured.status}
+          image="/formations/nationalisme-noir.jpg"
+        />
       </div>
     </div>
   </section>
 
-  <hr class="rule container" />
+  <!-- ===== ARTICLES (Substack) · dernier article + lien vers le journal ===== -->
+  <section class="section artf">
+    <div class="container artf-head">
+      <p class="eyebrow">Le journal</p>
+      <h2 class="artf-title">Le dernier <em class="gold-grad">article</em></h2>
+      <p class="artf-intro">La dernière analyse en date. Retrouvez toutes les autres dans le journal.</p>
+    </div>
+    <div class="artf-list">
+      {articles.slice(0, 1).map((a) => (
+        <a class="artf-band reveal" href={a.url} target="_blank" rel="noopener" aria-label={a.t}>
+          <div class="artf-ph"><img src={a.cover} alt={a.t} loading="lazy" /></div>
+          <div class="artf-tx">
+            <div class="artf-meta">{a.cat} · {a.date}</div>
+            <h3 class="artf-bh">{a.t}</h3>
+            <p class="artf-d">{a.d}</p>
+            <span class="artf-lk"><i></i><b>Lire sur Substack</b></span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="artf-cta">
+      <a class="btn btn-or" href="/articles/">Voir tous les articles <span class="ar">→</span></a>
+    </div>
+  </section>
 
-  <!-- FORMATIONS -->
-  <section class="section">
+  <!-- ===== TÉMOIGNAGES (communauté — média) · clôture avant la signature ===== -->
+  <section class="section temoignages">
     <div class="container">
-      <p class="eyebrow">Le catalogue</p>
-      <h2>Les formations</h2>
-      <div class="cards">
-        {formations.map((f) => (
-          <a
-            class:list={['card', { soon: f.status === 'soon' }]}
-            href={f.status === 'available' ? f.href : undefined}
-            aria-disabled={f.status === 'soon'}
-          >
-            <div class="card-top">
-              <span class="card-eyebrow">{f.eyebrow}</span>
-              <span class:list={['badge', f.status]}>
-                {f.status === 'available' ? 'Disponible' : 'Bientôt'}
-              </span>
-            </div>
-            <h3 class="card-h">{f.title}</h3>
-            <p class="card-blurb">{f.blurb}</p>
-            <span class="card-foot">
-              {f.duration}
-              <span class="card-arrow">{f.status === 'available' ? '→' : ''}</span>
-            </span>
-          </a>
+      <p class="eyebrow">Les retours</p>
+      <h2 class="tm-h">Une communauté <em class="gold-grad-d">engagée</em>.</h2>
+      <p class="tm-intro">Des retours d'une communauté engagée — récoltés cette année.</p>
+    </div>
+    <div class="tm-marquee" aria-label="Témoignages de la communauté">
+      <div class="tm-track">
+        {[...temoignages, ...temoignages].map((t, i) => (
+          <figure class="tm-card" aria-hidden={i >= temoignages.length ? 'true' : undefined}>
+            <div class="tm-mark" aria-hidden="true">«</div>
+            <blockquote class="tm-q" set:html={t.q}></blockquote>
+            <figcaption class="tm-attr">
+              <span class="tm-src">{t.src}</span>
+              <span class="tm-dot"></span>
+              <span class="tm-n">{t.n}</span>
+            </figcaption>
+          </figure>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- MANIFESTE TEASER -->
-  <section class="section dark teaser">
+  <!-- ===== INSTAGRAM ===== -->
+  <section class="section insta">
     <div class="container">
-      <p class="eyebrow">Pourquoi L'Autre Récit</p>
-      <p class="teaser-q">
-        « L'histoire est écrite par les vainqueurs. »
-        <span>Ces formations rendent la plume aux autres.</span>
-      </p>
-      <a class="btn btn-gold" href="/manifeste/">Découvrir la démarche →</a>
+      <p class="eyebrow">Instagram</p>
+      <h2 class="insta-h">Rejoins-nous sur <em class="gold-grad">Instagram</em></h2>
+      <div class="insta-grid reveal">
+        {posts.map((p) => (
+          <a class="insta-card" href={p.url} target="_blank" rel="noopener" aria-label="Voir le post sur Instagram">
+            <div class="insta-img">
+              <img src={p.src} alt={p.cap} loading="lazy" width="1080" height="1440" />
+              <span class="insta-view"><svg class="ig-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>Voir le post</span>
+            </div>
+            <p class="insta-cap">{p.cap}</p>
+            <span class="insta-ig">
+              <svg class="ig-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+              @lautrerecit
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="insta-cta">
+        <a class="insta-follow" href={IG} target="_blank" rel="noopener">
+          <svg class="ig-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+          <span class="if-handle">@lautrerecit</span>
+          <span class="if-sep"></span>
+          <span class="if-label">Suivre</span>
+        </a>
+      </div>
     </div>
   </section>
+
+  <!-- ===== NEWSLETTER (Substack) ===== -->
+  <section class="section nl">
+    <div class="container nl-in reveal">
+      <p class="eyebrow">La newsletter</p>
+      <h2 class="nl-h">Recevez <em>L'Autre&nbsp;Récit</em></h2>
+      <p class="nl-sub">Chaque nouvelle analyse, en avant-première dans votre boîte.</p>
+      <form class="nl-form" action="https://autrerecit.substack.com/subscribe" method="get" target="_blank" rel="noopener">
+        <input class="nl-input" type="email" name="email" placeholder="votre@email.com" required aria-label="Votre adresse e-mail" />
+        <button class="btn btn-or nl-btn" type="submit">S'abonner <span class="ar">→</span></button>
+      </form>
+      <p class="nl-fine">Un clic pour se désabonner, à tout moment.</p>
+    </div>
+  </section>
+
 </Base>
 
 <style>
-  .hero { padding-block: clamp(64px, 12vw, 150px) clamp(40px, 7vw, 90px); }
-  .hero-h { font-size: var(--t-hero); max-width: 16ch; }
-  .hero-lede { margin-top: 22px; }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+  /* ===== BLOC SOMBRE (hero + citations) ===== */
+  .top-dark { position: relative; background: radial-gradient(120% 90% at 50% -10%, #1A1714 0%, #0E0C0A 55%, #0A0807 100%); color: #fff; overflow: hidden; }
+  /* halo doré flou sous les cartes — casse l'aplat noir avant la Vision */
+  .top-dark::after { content: ""; position: absolute; left: 50%; bottom: -10px; transform: translateX(-50%); width: min(1100px, 94%); height: 320px; background: radial-gradient(ellipse 62% 100% at 50% 100%, rgba(196,162,74,.20), rgba(196,162,74,.07) 45%, transparent 72%); filter: blur(10px); pointer-events: none; z-index: 0; }
+  .top-dark .grain { position: absolute; inset: 0; pointer-events: none; opacity: .05; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
-  .cards {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px; margin-top: 36px;
-  }
-  .card {
-    display: flex; flex-direction: column;
-    background: #fff; border: 1px solid var(--cr3); border-radius: var(--radius);
-    padding: 30px 30px 26px; color: var(--ink2);
-    transition: transform .3s, box-shadow .3s, border-color .3s;
-    box-shadow: 0 12px 30px -22px rgba(0,0,0,.4);
-  }
-  .card:hover { transform: translateY(-4px); border-color: var(--or2); box-shadow: 0 26px 50px -28px rgba(0,0,0,.5); color: var(--ink2); }
-  .card.soon { opacity: .72; cursor: default; }
-  .card.soon:hover { transform: none; border-color: var(--cr3); box-shadow: 0 12px 30px -22px rgba(0,0,0,.4); }
+  .hero { position: relative; z-index: 1; padding-block: clamp(74px, 12vw, 152px) clamp(38px, 6vw, 72px); text-align: center; }
+  .hero .eyebrow { color: var(--or3); }
+  .hero-h { display: flex; flex-direction: column; align-items: center; margin: 16px 0 0; }
+  .hh-1 { font-family: var(--serif); font-weight: 700; color: #fff; font-size: clamp(46px, 8vw, 110px); line-height: .92; letter-spacing: -0.028em; }
+  .hh-2 { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: clamp(34px, 5.6vw, 78px); line-height: .96; letter-spacing: -0.02em; margin-top: -0.02em; }
+  .hero-accroche { font-family: var(--serif); font-style: normal; font-weight: 400; font-size: clamp(22px, 2.7vw, 36px); line-height: 1.4; color: var(--cr); max-width: 42ch; margin: 26px auto 0; letter-spacing: -0.01em; }
+  .hero-accroche em { font-style: italic; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; }
+  .hero-lede { font-size: clamp(16px, 1.7vw, 19px); color: rgba(255,255,255,.74); line-height: 1.6; max-width: 52ch; margin: 18px auto 0; font-weight: 300; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 38px; }
+
+  .cites { position: relative; z-index: 1; padding-bottom: clamp(48px, 7vw, 92px); -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+  .cite-track { display: flex; gap: 20px; width: max-content; animation: citeScroll 32s linear infinite; }
+  .cites:hover .cite-track { animation-play-state: paused; }
+  @keyframes citeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  /* Cards citations — survol « glow + scale léger » (effet 10) ; le curseur signale le clic */
+  .cite-card { position: relative; display: block; width: 272px; flex-shrink: 0; margin: 0; aspect-ratio: 3 / 4; border-radius: 12px; overflow: hidden; border: 1px solid rgba(212,176,90,.22); box-shadow: 0 28px 54px -28px rgba(0,0,0,.85); cursor: pointer; transition: transform .45s cubic-bezier(.22,1,.36,1), border-color .4s, box-shadow .45s; }
+  .cite-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cite-card:hover { transform: scale(1.035); border-color: var(--or2); box-shadow: 0 30px 60px -28px rgba(0,0,0,.85), 0 0 40px -8px rgba(196,162,74,.4); }
+
+  /* ===== VISION ===== */
+  .vision { text-align: center; }
+  .vision-h { font-family: var(--serif); font-size: clamp(34px, 4.6vw, 62px); color: var(--cr); margin: 8px 0 0; letter-spacing: -0.025em; font-weight: 700; }
+  .vision-h .gold-grad { font-style: italic; }
+  .vision-body { max-width: 60ch; margin: 20px auto 32px; }
+  .vision-body p { color: rgba(255,255,255,.82); font-size: clamp(17px, 1.8vw, 21px); line-height: 1.6; font-weight: 300; margin: 0 auto 1em; }
+  .vision-body em { color: var(--or2); }
+
+  /* ===== FORMATION (vedette) ===== */
+  .formations h2 em { font-style: italic; }
+  .feature-wrap { margin-top: 40px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px; margin-top: 40px; perspective: 1600px; perspective-origin: 50% 40%; }
+  .card { display: flex; flex-direction: column; background: linear-gradient(160deg, #fff 0%, var(--cr) 70%, var(--cr2) 100%); border: 1px solid rgba(154,123,46,.28); border-radius: var(--radius); padding: 32px 30px 26px; color: var(--ink2); overflow: hidden; transform-style: preserve-3d; will-change: transform; box-shadow: 0 28px 60px -28px rgba(14,12,10,.45), inset 0 1px 0 rgba(255,255,255,.5); transition: transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .45s, border-color .4s; transform: translateZ(0); }
+  .card:hover { transform: translateZ(36px) translateY(-6px); box-shadow: 0 56px 110px -28px rgba(14,12,10,.5), 0 0 0 1px var(--or2), 0 0 60px rgba(196,162,74,.3); border-color: var(--or2); z-index: 2; color: var(--ink2); }
+  .card.soon { opacity: .92; }
   .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .card-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or2); }
   .badge { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
@@ -97,16 +268,131 @@ import { formations } from '../data/formations.js';
   .badge.soon { background: var(--cr2); color: var(--ink3); border: 1px solid var(--cr3); }
   .card-h { margin-top: 18px; font-size: var(--t-card); }
   .card-blurb { font-size: 15.5px; color: var(--ink3); line-height: 1.65; }
-  .card-foot {
-    margin-top: auto; padding-top: 18px; display: flex; align-items: center; justify-content: space-between;
-    font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3);
-  }
+  .card-foot { margin-top: auto; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
   .card-arrow { color: var(--or2); font-size: 18px; }
 
-  .teaser { text-align: center; }
-  .teaser-q {
-    font-family: var(--serif); font-style: italic; font-size: clamp(26px, 3.4vw, 42px);
-    color: var(--cr); line-height: 1.3; max-width: 24ch; margin: 10px auto 32px;
+  /* capture email (cartes à venir) — Netlify Forms */
+  .card-form { margin-top: auto; padding-top: 18px; }
+  .card-form .hp { position: absolute; left: -9999px; }
+  .card-form-label { display: block; font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--or2); margin-bottom: 10px; }
+  .card-form-row { display: flex; gap: 8px; }
+  .card-form input[type="email"] { flex: 1; min-width: 0; padding: 11px 14px; border: 1px solid var(--cr3); border-radius: 8px; background: #fff; font-family: var(--sans); font-size: 14px; color: var(--ink); }
+  .card-form input[type="email"]:focus { outline: none; border-color: var(--or2); box-shadow: 0 0 0 3px rgba(196,162,74,.18); }
+  .card-form button { flex-shrink: 0; width: 46px; border: none; border-radius: 8px; background: linear-gradient(180deg, var(--or2), var(--or)); color: var(--ink); font-size: 17px; font-weight: 700; cursor: pointer; transition: transform .25s, box-shadow .25s; }
+  .card-form button:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(196,162,74,.6); }
+
+  /* ===== INSTAGRAM ===== */
+  .insta { background: radial-gradient(120% 120% at 50% 0%, #15110C 0%, #0E0C0A 60%, #0A0807 100%); }
+  .insta-h { text-align: center; font-family: var(--serif); font-size: clamp(30px, 4vw, 56px); color: var(--cr); margin: 8px 0 0; letter-spacing: -0.025em; font-weight: 700; }
+  .insta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px; margin-top: 44px; }
+  .insta-card { display: flex; flex-direction: column; gap: 12px; color: var(--cr); }
+  .insta-img { position: relative; aspect-ratio: 3 / 4; border-radius: 12px; overflow: hidden; border: 1px solid rgba(212,176,90,.2); box-shadow: 0 26px 50px -28px rgba(0,0,0,.85); transition: transform .4s cubic-bezier(.22,1,.36,1), border-color .4s, box-shadow .4s; }
+  .insta-card:hover .insta-img { transform: translateY(-6px); border-color: var(--or2); box-shadow: 0 40px 70px -28px rgba(0,0,0,.9), 0 0 40px rgba(196,162,74,.18); }
+  .insta-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+  .insta-card:hover .insta-img img { transform: scale(1.05); }
+  .insta-view { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(11,9,7,.5); color: #fff; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0; transition: opacity .35s; }
+  .insta-view .ig-ico { width: 16px; height: 16px; }
+  .insta-card:hover .insta-view { opacity: 1; }
+  .insta-cap { font-family: var(--sans); font-size: 13.5px; color: rgba(255,255,255,.72); line-height: 1.5; margin: 0; }
+  .insta-ig { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--or2); }
+  .ig-ico { width: 15px; height: 15px; }
+  .insta-cta { text-align: center; margin-top: 44px; }
+  /* CTA suivre — chip doré avec glyphe Instagram + handle (cohérent Pack 1, radius 5px) */
+  .insta-follow { display: inline-flex; align-items: center; gap: 11px; padding: 13px 24px; border-radius: 5px; background: var(--gold); color: var(--ink); font-family: var(--sans); font-weight: 700; box-shadow: 0 12px 28px -10px rgba(196,162,74,.55); transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .35s, background .3s; }
+  .insta-follow .ig-ico { width: 19px; height: 19px; }
+  .insta-follow .if-handle { font-size: 15px; letter-spacing: 0.01em; }
+  .insta-follow .if-sep { width: 1px; height: 16px; background: rgba(14,12,10,.32); }
+  .insta-follow .if-label { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .insta-follow:hover { transform: translateY(-2px); background: var(--gold-hi); box-shadow: 0 18px 40px -10px rgba(196,162,74,.72); }
+
+  /* ===== TÉMOIGNAGES — section crème, cartes Encre & or (jeu de couleur) ===== */
+  .temoignages { background: var(--cr); }
+  .tm-h { text-align: center; font-family: var(--serif); font-size: clamp(30px, 4vw, 56px); color: var(--ink); margin: 8px 0 0; letter-spacing: -0.025em; font-weight: 700; }
+  .tm-h em { font-style: italic; }
+  .tm-intro { text-align: center; max-width: 52ch; margin: 14px auto 0; color: var(--ink3); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.6; }
+  .tm-marquee { margin-top: 44px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+  .tm-track { display: flex; gap: 22px; width: max-content; padding-inline: 22px; align-items: stretch; animation: tmScroll 64s linear infinite; }
+  .tm-marquee:hover .tm-track { animation-play-state: paused; }
+  @keyframes tmScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .tm-card { position: relative; flex: 0 0 clamp(290px, 80vw, 360px); width: clamp(290px, 80vw, 360px); display: flex; flex-direction: column; background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border: 1px solid rgba(196,162,74,.4); border-top: 2px solid var(--or2); border-radius: 12px; padding: 23px 26px 22px; box-shadow: 0 34px 70px -36px rgba(0,0,0,.85); transition: transform .45s cubic-bezier(.22,1,.36,1), border-color .4s, box-shadow .45s; }
+  .tm-card:hover { transform: translateY(-5px); border-color: var(--or2); box-shadow: 0 50px 100px -34px rgba(0,0,0,.8), 0 0 0 1px var(--or2), 0 0 42px -14px rgba(196,162,74,.3); }
+  .tm-mark { font-family: var(--serif); font-style: italic; font-weight: 900; font-size: 50px; line-height: .7; height: .42em; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; margin-bottom: 6px; }
+  .tm-q { font-family: var(--serif); font-style: normal; font-weight: 400; font-size: 16.5px; line-height: 1.6; color: rgba(242,237,228,.86); margin: 0; padding: 0; border: 0; }
+  .tm-q :global(strong) { font-style: italic; color: var(--or3); font-weight: 700; }
+  .tm-attr { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(212,176,90,.18); display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .tm-src { color: var(--or2); }
+  .tm-n { color: rgba(242,237,228,.6); }
+  .tm-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(212,176,90,.4); }
+
+  /* ===== NEWSLETTER ===== */
+  .nl { background: var(--cr); }
+  .nl-in { max-width: 620px; margin: 0 auto; text-align: center; }
+  .nl-h { font-family: var(--serif); font-weight: 700; font-size: clamp(28px, 3.6vw, 48px); color: var(--ink); margin: 8px 0 0; letter-spacing: -0.025em; }
+  .nl-h em { font-style: italic; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; }
+  .nl-sub { color: var(--ink3); font-size: clamp(16px, 1.5vw, 18px); line-height: 1.6; margin: 14px auto 0; max-width: 46ch; }
+  .nl-form { display: flex; gap: 10px; max-width: 480px; margin: 30px auto 0; }
+  .nl-input { flex: 1; min-width: 0; padding: 15px 18px; border: 1px solid var(--cr3); border-radius: 6px; background: #fff; font-family: var(--sans); font-size: 15px; color: var(--ink); transition: border-color .25s, box-shadow .25s; }
+  .nl-input::placeholder { color: #a99e87; }
+  .nl-input:focus { outline: none; border-color: var(--or2); box-shadow: 0 0 0 3px rgba(196,162,74,.18); }
+  .nl-btn { flex-shrink: 0; }
+  .nl-fine { margin: 16px 0 0; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; color: #9c8f78; }
+  @media (max-width: 520px) { .nl-form { flex-direction: column; } }
+
+  /* ===== ARTICLES (Substack) · feuilleton portrait — sombre, photos alternées ===== */
+  .artf { background: radial-gradient(120% 100% at 50% 0%, #15110C 0%, #0E0C0A 60%, #0A0807 100%); }
+  .artf-head { text-align: center; }
+  .artf-title { font-family: var(--serif); font-weight: 700; font-size: clamp(30px, 4vw, 56px); color: var(--cr); margin: 8px 0 0; letter-spacing: -0.025em; }
+  .artf-title em { font-style: italic; }
+  .artf-intro { max-width: 54ch; margin: 16px auto 0; color: rgba(242,237,228,.6); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.6; }
+  .artf-list { margin-top: clamp(40px, 5vw, 56px); }
+  .artf-band { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; min-height: 470px; padding: 24px 0; text-decoration: none; color: var(--cr); }
+  .artf-band:nth-child(even) { grid-template-columns: .85fr 1.15fr; }
+  .artf-band:nth-child(even) .artf-ph { order: 2; }
+  /* PHOTO — hauteur fixe = uniformité */
+  .artf-ph { position: relative; height: 400px; margin-inline: clamp(18px, 4vw, 40px); border-radius: 14px; overflow: hidden; border: 1px solid rgba(212,176,90,.18); }
+  .artf-ph img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) brightness(.86) contrast(1.06); transition: transform 1s cubic-bezier(.22,1,.36,1), filter .8s; }
+  .artf-band:hover .artf-ph img { transform: scale(1.05); filter: grayscale(1) brightness(1) contrast(1.06); }
+  /* PANNEAU flottant — taille fixe = uniformité, chevauche la photo */
+  .artf-tx { position: relative; z-index: 2; min-height: 300px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border: 1px solid rgba(212,176,90,.34); border-top: 2px solid var(--or2); border-radius: 14px; padding: clamp(28px, 3vw, 40px); box-shadow: 0 44px 90px -44px #000; }
+  .artf-band:nth-child(odd) .artf-tx { margin-left: clamp(-96px, -7vw, -44px); }
+  .artf-band:nth-child(even) .artf-tx { margin-right: clamp(-96px, -7vw, -44px); }
+  .artf-meta { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--or2); margin-bottom: 14px; }
+  .artf-bh { font-family: var(--serif); font-weight: 700; font-size: clamp(21px, 2.2vw, 31px); line-height: 1.14; letter-spacing: -0.015em; color: #fff; margin: 0 0 12px; }
+  .artf-d { font-family: var(--sans); font-weight: 300; font-size: clamp(14.5px, 1.4vw, 17px); line-height: 1.55; color: rgba(242,237,228,.74); margin: 0 0 20px; }
+  .artf-lk { display: inline-flex; align-items: center; gap: 11px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cr); }
+  .artf-lk i { display: inline-block; width: 26px; height: 1px; background: var(--or2); transition: width .35s cubic-bezier(.22,1,.36,1); }
+  .artf-band:hover .artf-lk i { width: 48px; }
+  .artf-lk b { color: var(--or3); font-weight: 700; }
+  .artf-cta { text-align: center; margin-top: clamp(44px, 6vw, 60px); }
+  @media (max-width: 820px) {
+    .artf-band, .artf-band:nth-child(even) { grid-template-columns: 1fr; padding: 0 0 14px; min-height: 0; }
+    .artf-band:nth-child(even) .artf-ph { order: 0; }
+    .artf-ph { height: 230px; margin-inline: 18px; }
+    .artf-tx, .artf-band:nth-child(odd) .artf-tx, .artf-band:nth-child(even) .artf-tx { margin: -56px 18px 0; min-height: 0; }
   }
-  .teaser-q span { display: block; color: var(--or3); font-style: normal; font-size: 0.6em; font-family: var(--sans); margin-top: 16px; letter-spacing: 0.01em; }
+
+  /* hero — flèche scroll vers le bas */
+  .hero-scroll:hover .ar-down { transform: translateY(4px); }
+
+  /* scroll-reveal (home) */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) { .cite-track, .tm-track { animation: none; } .tm-marquee { overflow-x: auto; } .reveal { opacity: 1; transform: none; transition: none; } }
+  @media (max-width: 640px) { .card:hover { transform: translateY(-4px); } }
 </style>
+
+<script is:inline>
+  // Révélation au scroll (fade-up). is:inline → marche aussi en ouverture directe.
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.16 });
+    els.forEach(function (el) { obs.observe(el); });
+  })();
+</script>

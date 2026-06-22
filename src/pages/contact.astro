@@ -1,0 +1,212 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ============================================================
+// Page Contact — formulaire prénom / email / message.
+// Envoi via WEB3FORMS (api.web3forms.com) : compatible hébergement statique (Cloudflare Pages).
+// Les messages arrivent par e-mail selon la clé Web3Forms. Filtre anti-abus sur le prénom (BANNED).
+// Clé Web3Forms configurée (liée à la boîte choisie sur web3forms.com). La clé est publique côté client — c'est normal (elle n'autorise que l'envoi vers ta boîte).
+// Le JS ajoute un « Merci » sans recharger ; sans JS, l'action POST web3forms gère l'envoi.
+// ============================================================
+---
+<Base
+  title="Contact — L'Autre Récit"
+  description="Une question, une idée, une proposition ? Écrivez à L'Autre Récit. On lit tout."
+>
+  <!-- ===== HERO ===== -->
+  <div class="ct-top">
+    <div class="grain"></div>
+    <section class="ct-hero">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1 class="ct-h1">Écrivez-<span class="gold-grad">nous</span>.</h1>
+        <p class="ct-lede">Le média se nourrit aussi des échanges. Une remarque, une question, un sujet à proposer&nbsp;? Écrivez, on lit tout.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== FORMULAIRE ===== -->
+  <section class="section ct-stage">
+    <div class="container">
+      <div class="ct-card">
+        <form
+          class="ct-form"
+          id="ctForm"
+          method="POST"
+          action="https://api.web3forms.com/submit"
+        >
+          <input type="hidden" name="access_key" value="e4ae1287-1ccf-4d2f-b439-4ff6eab0d3c5" />
+          <input type="hidden" name="subject" value="Nouveau message · Contact L'Autre Récit" />
+          <input type="hidden" name="from_name" value="Contact L'Autre Récit" />
+          <input type="checkbox" name="botcheck" class="ct-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="ct-field">
+            <label class="ct-label" for="ct-prenom">Prénom</label>
+            <input class="ct-input" id="ct-prenom" name="prenom" type="text" required maxlength="60" autocomplete="given-name" placeholder="Votre prénom" />
+          </div>
+
+          <div class="ct-field">
+            <label class="ct-label" for="ct-email">Adresse e-mail</label>
+            <input class="ct-input" id="ct-email" name="email" type="email" required maxlength="120" autocomplete="email" placeholder="votre@email.com" />
+          </div>
+
+          <div class="ct-field">
+            <label class="ct-label" for="ct-message">Message</label>
+            <textarea class="ct-input ct-textarea" id="ct-message" name="message" required maxlength="3000" rows="6" placeholder="Votre message…"></textarea>
+          </div>
+
+          <button class="btn btn-or ct-submit" id="ctSubmit" type="submit">Envoyer <span class="ar">→</span></button>
+          <p class="ct-err" id="ctErr" hidden>Un souci à l'envoi. Réessayez, ou écrivez-nous directement à <a href="mailto:lautrerecit@gmail.com">lautrerecit@gmail.com</a>.</p>
+          <p class="ct-err" id="ctNameErr" hidden>Merci d'indiquer un prénom valide pour qu'on puisse vous répondre.</p>
+        </form>
+
+        <div class="ct-success" id="ctSuccess" hidden>
+          <div class="ct-check" aria-hidden="true">✓</div>
+          <h2 class="ct-success-h">Message reçu<span id="ctName"></span>.</h2>
+          <p class="ct-success-d">Merci de nous avoir écrit. On revient vers vous au plus vite.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ===== HERO ===== */
+  .ct-top { position: relative; overflow: hidden; background: radial-gradient(120% 90% at 50% -10%, #1A1714 0%, #0E0C0A 55%, #0A0807 100%); color: var(--cr); }
+  .ct-top .grain { position: absolute; inset: 0; pointer-events: none; opacity: .05; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .ct-hero { position: relative; z-index: 1; text-align: center; padding-block: clamp(72px, 11vw, 130px) clamp(40px, 6vw, 64px); }
+  .ct-hero .eyebrow { color: var(--or3); max-width: none; }
+  .ct-h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(44px, 7.5vw, 92px); color: #fff; letter-spacing: -0.028em; line-height: .95; margin: 12px 0 0; }
+  .ct-h1 .gold-grad { font-style: italic; }
+  .ct-lede { max-width: 48ch; margin: 22px auto 0; color: rgba(242,237,228,.74); font-weight: 300; font-size: clamp(16px, 1.7vw, 19px); line-height: 1.6; }
+
+  /* ===== STAGE / CARTE ===== */
+  .ct-stage { background: #0A0807; }
+  .ct-card { position: relative; overflow: hidden; max-width: 620px; margin: 0 auto; background: linear-gradient(158deg, #1C160F 0%, #12100B 62%, #0C0A07 100%); border: 1px solid rgba(196,162,74,.34); border-top: 2px solid var(--or2); border-radius: 16px; padding: clamp(28px, 4vw, 48px); box-shadow: 0 48px 110px -50px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.04); }
+  .ct-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: 16px; background: radial-gradient(100% 50% at 82% -8%, rgba(196,162,74,.12), transparent 60%); }
+  .ct-card > * { position: relative; z-index: 1; }
+
+  .ct-form { display: flex; flex-direction: column; gap: 20px; }
+  .ct-form[hidden] { display: none; }
+  .ct-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .ct-field { display: flex; flex-direction: column; gap: 8px; }
+  .ct-label { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--or2); }
+  .ct-input { width: 100%; padding: 14px 16px; border: 1px solid rgba(196,162,74,.28); border-radius: 8px; background: rgba(246,240,232,.04); font-family: var(--sans); font-size: 15.5px; color: var(--cr); transition: border-color .25s, box-shadow .25s, background .25s; }
+  .ct-input::placeholder { color: rgba(242,237,228,.4); }
+  .ct-input:focus { outline: none; border-color: var(--or2); box-shadow: 0 0 0 3px rgba(196,162,74,.18); }
+  .ct-textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+  .ct-submit { align-self: flex-start; margin-top: 4px; }
+  .ct-submit[disabled] { opacity: .6; cursor: default; }
+  .ct-err { font-family: var(--sans); font-size: 14px; color: #E0876B; margin: 0; }
+  .ct-err a { color: #E0876B; text-decoration: underline; }
+
+  /* ===== SUCCÈS ===== */
+  .ct-success { text-align: center; padding: clamp(16px, 3vw, 32px) 0; animation: ctIn .5s var(--ease); }
+  @keyframes ctIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .ct-check { width: 64px; height: 64px; margin: 0 auto 22px; border-radius: 50%; display: grid; place-items: center; font-size: 30px; font-weight: 700; color: var(--ink); background: var(--gold); box-shadow: 0 16px 36px -12px rgba(196,162,74,.6); }
+  .ct-success-h { font-family: var(--serif); font-weight: 700; font-size: clamp(26px, 3.2vw, 38px); color: #fff; letter-spacing: -0.02em; margin: 0; }
+  .ct-success-d { color: rgba(242,237,228,.66); font-size: 16.5px; line-height: 1.7; max-width: 42ch; margin: 14px auto 0; }
+</style>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('ctForm');
+    if (!form) return;
+    var btn = document.getElementById('ctSubmit'),
+        err = document.getElementById('ctErr'),
+        nameErr = document.getElementById('ctNameErr'),
+        success = document.getElementById('ctSuccess'),
+        nameOut = document.getElementById('ctName'),
+        prenomEl = document.getElementById('ct-prenom');
+
+    // ── Filtre anti-abus sur le PRÉNOM (réaffiché dans la confirmation) ──
+    // Liste éditable : ajoute / retire des termes ci-dessous (insultes & slurs only,
+    // en minuscules sans accent). On NE filtre PAS le message : un message légitime
+    // peut citer ces mots dans un cadre académique (le sujet s'y prête).
+    var BANNED = new Set([
+      // ── Insultes FR ──
+      'con','cons','conard','conards','connard','connards','connasse','conne','connes','ducon',
+      'salope','salopes','salopard','pute','putes','putain','putains','pd','pede','tapette',
+      'encule','encules','enculer','merde','merdes','batard','batards','salaud','salauds',
+      'nique','niquer','ntm','fdp','couille','couilles','bite','bites','chatte','ordure','facho',
+      // ── Slurs racistes ──
+      'negro','negros','negre','negres','bougnoule','bougnoules','bamboula','youpin','youpins',
+      'raton','ratons','bicot','bicots',
+      'nigger','niggers','nigga','niggas','coon','coons',
+      // ── Insultes EN ──
+      'fag','faggot','fags','bitch','bitches','cunt','fuck','fucker','shit','asshole',
+      'retard','retards','whore','slut','dick','pussy','rapist','kkk',
+      // ── Dictateurs & figures / idéologies de haine ──
+      'hitler','nazi','nazis','nazisme','fuhrer','reich','gestapo','goebbels','himmler',
+      'eichmann','mengele','duce','mussolini','staline','stalin','pinochet','polpot',
+      'ceausescu','kadhafi','gaddafi','khadafi','milosevic','petain','daesh','daech',
+      'fascisme','fasciste','fascistes','suprematiste','suprematistes','negrier','negriers',
+      // ── Haine / blasphème / déshumanisation (INSULTES uniquement — jamais les noms sacrés) ──
+      'satan','satanique','antechrist','antichrist','porc','porcs','pourceau',
+      'pedophile','pedophiles','pedo','terroriste','terroristes','violeur','violeurs',
+      // Blasphème — le nom de Dieu employé comme prénom (laisse passer Abdallah, Nasrallah… = un seul token)
+      'allah','alah'
+    ]);
+    // Noms COMPLETS de dictateurs (prénom entier, séparateurs ignorés) : laisse passer
+    // les prénoms isolés légitimes (Bachar, Mao, Assad, Kim…), bloque le nom complet « obvious ».
+    var BANNED_PHRASES = new Set([
+      'adolfhitler','adolphitler','benitomussolini',
+      'josephstaline','josefstalin','josephstalin',
+      'maozedong','maozhedong','maotsetoung','maotsetung',
+      'bacharalassad','basharalassad','bacharelassad','basharelassad','hafezalassad','hafizalassad',
+      'saddamhussein','muammarkadhafi','mouammarkadhafi','kimjongun','kimjongil','kimilsung',
+      'augustopinochet','franciscofranco','slobodanmilosevic','idiamin','idiamindada'
+    ]);
+    function norm(s) {
+      return (s || '').toLowerCase()
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')        // accents
+        .replace(/[0@]/g, 'o').replace(/[1!|]/g, 'i').replace(/3/g, 'e')   // leet
+        .replace(/4/g, 'a').replace(/[5$]/g, 's').replace(/7/g, 't');
+    }
+    function squash(t) { return t.replace(/(.)\1+/g, '$1'); }              // « coon » → « con »
+    function isBanned(s) {
+      var n = norm(s);
+      var toks = n.split(/[^a-z]+/).filter(Boolean);                       // mot par mot
+      for (var i = 0; i < toks.length; i++) {
+        if (BANNED.has(toks[i]) || BANNED.has(squash(toks[i]))) return true;
+      }
+      var joined = n.replace(/[^a-z]/g, '');                               // « c-o-n » → « con »
+      if (BANNED.has(joined) || BANNED.has(squash(joined))) return true;
+      return BANNED_PHRASES.has(joined);                                   // nom complet de dictateur
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.hidden = true;
+      if (nameErr) nameErr.hidden = true;
+
+      var fd = new FormData(form);
+      var prenom = (fd.get('prenom') || '').trim();
+
+      // Bloque un prénom offensant AVANT tout envoi (rien n'est posté ni affiché)
+      if (isBanned(prenom)) {
+        if (nameErr) nameErr.hidden = false;
+        if (prenomEl) prenomEl.focus();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.firstChild.textContent = 'Envoi… ';
+
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (!data || !data.success) throw new Error('web3forms');
+          nameOut.textContent = prenom ? ', ' + prenom : '';
+          form.hidden = true;
+          success.hidden = false;
+          try { success.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e2) {}
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.firstChild.textContent = 'Envoyer ';
+          err.hidden = false;
+        });
+    });
+  })();
+</script>

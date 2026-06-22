@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guide pédagogique · Édition de lancement (Intro · Cours 1 · Cours 2) — L'Autre Récit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--orgrad:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);
+    --ink:#15120E;--ink2:#3D3730;--cr:#F2EDE4;--paper:#FBF8F2;--line:#E6DDCB;
+    --serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#0b0a08;font-family:var(--sans);color:var(--ink2);-webkit-font-smoothing:antialiased}
+  .doc{max-width:840px;margin:0 auto;background:var(--paper);
+    background-image:radial-gradient(120% 80% at 50% 0%,#FFFDF8,var(--paper) 60%);
+    box-shadow:0 40px 120px -50px rgba(0,0,0,.7)}
+  .pad{padding:clamp(30px,6vw,76px)}
+
+  /* chrome */
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--or)}
+  .rule{height:2px;width:60px;border:0;border-radius:2px;background:var(--orgrad);margin:18px 0 0}
+  .wm{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink)}
+  .wm b{color:var(--or2);font-style:normal;font-weight:700}
+
+  /* cover */
+  .cover{text-align:center;padding:clamp(54px,9vw,110px) clamp(28px,6vw,76px) clamp(40px,6vw,64px);
+    background:radial-gradient(120% 120% at 50% 0%,#1A1611,#0E0C0A 70%);color:var(--cr)}
+  .cover .eyebrow{color:var(--or3)}
+  .cover h1{font-family:var(--serif);font-weight:700;font-size:clamp(34px,6vw,60px);line-height:1.06;letter-spacing:-.02em;color:#fff;margin:18px auto 0;max-width:18ch}
+  .cover h1 em{font-style:italic;color:var(--or2)}
+  .cover .sub{font-family:var(--serif);font-style:italic;font-size:clamp(17px,2.6vw,22px);color:#E9DFCB;margin:16px auto 0;max-width:40ch;line-height:1.45}
+  .cover .rule{margin:26px auto 0}
+  .cover .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:#B7A98C;margin-top:26px;line-height:2}
+  .cover .badge{display:inline-block;margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#15120E;background:var(--or2);padding:7px 16px;border-radius:3px}
+
+  /* table of contents */
+  .toc{background:var(--ink);color:var(--cr);padding:clamp(26px,4vw,40px) clamp(28px,6vw,76px)}
+  .toc .eyebrow{color:var(--or3)}
+  .toc h2{font-family:var(--serif);font-size:24px;color:#fff;margin:8px 0 18px;font-weight:700}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;display:flex;gap:14px;align-items:baseline;padding:9px 0;border-bottom:1px solid rgba(196,162,74,.16);font-size:15px;color:#E3D9C6}
+  .toc li:last-child{border-bottom:0}
+  .toc li::before{content:counter(t,decimal-leading-zero);font-family:var(--serif);font-style:italic;font-weight:900;color:var(--or2);font-size:16px;min-width:30px}
+
+  /* sections */
+  section{padding:clamp(34px,5.5vw,64px) clamp(28px,6vw,76px);border-bottom:1px solid var(--line)}
+  .fiche-h{display:flex;align-items:baseline;gap:14px;margin:0 0 6px}
+  .fiche-n{font-family:var(--serif);font-style:italic;font-weight:900;font-size:40px;color:var(--or2);line-height:.9}
+  .fiche-k{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or)}
+  h2.fiche-t{font-family:var(--serif);font-weight:700;font-size:clamp(25px,3.6vw,36px);line-height:1.12;letter-spacing:-.015em;color:var(--ink);margin:2px 0 0}
+  h2.fiche-t em{font-style:italic;color:var(--or2)}
+  .lede{font-size:16px;line-height:1.7;color:var(--ink2);max-width:62ch;margin:16px 0 28px}
+  .lede.it{font-family:var(--serif);font-style:italic;color:#5d5446}
+
+  /* glossary */
+  .term{padding:16px 0;border-top:1px solid var(--line)}
+  .term:first-of-type{border-top:0}
+  .term-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+  .term-n{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--ink)}
+  .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--or);border:1px solid var(--line);border-radius:3px;padding:2px 8px;background:#fff}
+  .term-d{font-size:15.5px;line-height:1.7;color:var(--ink2);margin:7px 0 0;max-width:64ch}
+
+  /* timeline */
+  .tl{position:relative;margin:6px 0 0;padding-left:30px}
+  .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--or2),rgba(196,162,74,.25))}
+  .tl-row{position:relative;padding:11px 0}
+  .tl-row::before{content:"";position:absolute;left:-27px;top:17px;width:10px;height:10px;border-radius:50%;background:var(--or2);box-shadow:0 0 0 3px var(--paper)}
+  .tl-y{font-family:var(--serif);font-style:italic;font-weight:900;color:var(--or2);font-size:18px;margin-right:10px}
+  .tl-t{font-size:15px;line-height:1.6;color:var(--ink2)}
+  .tl-c{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:#A9966F;margin-left:6px}
+
+  /* strategy / limit cards */
+  .cards{display:grid;gap:16px;margin-top:6px}
+  .card{background:#fff;border:1px solid var(--line);border-left:3px solid var(--or2);border-radius:8px;padding:20px 22px}
+  .card-n{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
+  .card-t{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--ink);margin:5px 0 8px}
+  .card-t em{font-style:italic;color:var(--or2)}
+  .card p{font-size:14.5px;line-height:1.65;color:var(--ink2);margin:6px 0 0}
+  .card .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--or);font-weight:700}
+
+  /* figures */
+  .figs{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+  .fig{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .fig-ph{flex:0 0 88px;width:88px;height:108px;border-radius:6px;overflow:hidden;background:#EFE7D7;border:1px solid var(--or2);position:relative}
+  .fig-ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.04)}
+  .fig-ph::after{content:"photo";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#B9A87E;z-index:-1}
+  .fig-n{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink);line-height:1.15}
+  .fig-dt{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--or);margin:3px 0 7px}
+  .fig-b{font-size:13.5px;line-height:1.55;color:var(--ink2)}
+  .subhead{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin:26px 0 12px;padding-top:6px}
+
+  /* quiz */
+  .quiz-c{background:var(--ink);color:var(--cr);border-radius:12px;padding:clamp(22px,3.4vw,34px);margin-top:8px}
+  .quiz-c + .quiz-c{margin-top:22px}
+  .quiz-eb{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3)}
+  .quiz-t{font-family:var(--serif);font-weight:700;font-size:22px;color:#fff;margin:5px 0 0}
+  .quiz-t em{font-style:italic;color:var(--or2)}
+  .q{margin-top:22px;padding-top:20px;border-top:1px solid rgba(196,162,74,.2)}
+  .q-q{font-size:15.5px;font-weight:600;color:#F4ECDC;line-height:1.5}
+  .opt{font-size:14px;color:#CDC2AE;margin:8px 0 0;padding-left:24px;position:relative;line-height:1.5}
+  .opt .ltr{position:absolute;left:0;font-family:var(--mono);color:#9b8e74}
+  .ans{margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--or2);font-weight:700}
+  .exp{font-size:13.5px;line-height:1.6;color:#BBB09A;margin:7px 0 0;font-style:italic}
+  .open{margin-top:18px;background:rgba(196,162,74,.08);border:1px solid rgba(196,162,74,.28);border-radius:8px;padding:16px 18px}
+  .open-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--or3)}
+  .open p{font-size:14px;line-height:1.6;color:#D7CDB8;margin:8px 0 0}
+  .open ul{margin:8px 0 0;padding-left:18px}
+  .open li{font-size:13.5px;line-height:1.55;color:#BFB39C;margin:4px 0}
+
+  /* footer */
+  .foot{background:var(--ink);color:#9a8f7e;text-align:center;padding:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+  .foot b{color:var(--or2)}
+
+  @media(max-width:680px){.figs{grid-template-columns:1fr}}
+  @media print{
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    @page{margin:0}
+    body{background:#fff}.doc{box-shadow:none;max-width:none}
+    section,.cover,.toc{page-break-inside:avoid}
+    .fig,.card,.quiz-c,.term,.tl-row{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- COUVERTURE -->
+  <header class="cover">
+    <div class="eyebrow">L'Autre Récit · Formation</div>
+    <h1>Guide <em>pédagogique</em></h1>
+    <p class="sub">Stratégies d'émancipation : race, pouvoir et institutions aux États-Unis</p>
+    <hr class="rule">
+    <div class="meta">
+      Fiches concepts · Chronologie · Boussole analytique · Quiz corrigés<br>
+      États-Unis · 1865 – 1959 · Niveau universitaire
+    </div>
+    <div class="badge">Édition de lancement · Introduction · Cours 1 · Cours 2</div>
+  </header>
+
+  <!-- SOMMAIRE -->
+  <nav class="toc">
+    <div class="eyebrow">Ce guide contient</div>
+    <h2>Sommaire</h2>
+    <ol>
+      <li>Glossaire des concepts-clés (introduction, Cours 1 &amp; 2)</li>
+      <li>Chronologie commentée (1865 – 1959)</li>
+      <li>La boussole : trois manières de produire du pouvoir</li>
+      <li>Les quatre limites structurelles</li>
+      <li>Figures &amp; organisations clés</li>
+      <li>Quiz corrigés — Cours 1 &amp; Cours 2</li>
+    </ol>
+  </nav>
+
+  <!-- FICHE 1 — GLOSSAIRE -->
+  <section>
+    <div class="fiche-h"><span class="fiche-n">01</span><span class="fiche-k">Fiche</span></div>
+    <h2 class="fiche-t">Glossaire des <em>concepts-clés</em></h2>
+    <p class="lede">Les concepts de l'introduction et des deux premiers cours, définis avec précision et localisés là où ils apparaissent.</p>
+
+    <div class="term"><div class="term-h"><span class="term-n">Nationalisme noir</span><span class="tag">Introduction</span></div>
+      <p class="term-d">Famille de stratégies politiques fondées sur l'autodéfinition, la solidarité de groupe et la construction d'institutions propres, en réponse à une promesse d'égalité jamais tenue. À analyser comme réponse rationnelle à une contrainte — pas comme une posture.</p></div>
+
+    <div class="term"><div class="term-h"><span class="term-n">Race</span><span class="tag">Introduction</span></div>
+      <p class="term-d">Construction sociale et historique, sans fondement biologique, mais aux effets matériels bien réels. Les sociétés esclavagistes l'ont produite pour justifier des hiérarchies.</p></div>
+
+    <div class="term"><div class="term-h"><span class="term-n">Racisme structurel</span><span class="tag">Introduction / C1</span></div>
+      <p class="term-d">Inégalités raciales produites par des institutions et des politiques, sans qu'aucune intention raciste individuelle soit nécessaire. Exemple : le <em>redlining</em> interdit les prêts hypothécaires dans les quartiers noirs sans qu'aucun agent ne soit personnellement raciste.</p></div>
+
+    <div class="term"><div class="term-h"><span class="term-n">Double conscience</span><span class="tag">Cours 1</span></div>
+      <p class="term-d">Concept de W.E.B. Du Bois : se voir simultanément de son propre point de vue et à travers le regard dominant qui vous définit comme inférieur. Effet structurel de la domination — pas une fragilité psychologique.</p></div>
+
+    <div class="term"><div class="term-h"><span class="term-n">Citoyenneté conditionnelle</span><span class="tag">Cours 1</span></div>
+      <p class="term-d">Citoyenneté accordée dans les textes mais refusée dans les faits. Différée (toujours « en cours »), conditionnelle (suspendue à une bonne conduite définie par les dominants), instrumentalisée (sert à légitimer l'ordre qu'elle prétend transformer).</p></div>
+
+    <div class="term"><div class="term-h"><span class="term-n">Institution totale</span><span class="tag">Cours 2</span></div>
+      <p class="term-d">Cadre (d'après Erving Goffman) qui prend en charge la totalité de l'existence de ses membres — travail, école, normes, discipline. Appliqué à un mouvement, il transforme une promesse de dignité en monde quotidien complet.</p></div>
+
+    <div class="term"><div class="term-h"><span class="term-n">Proto-souveraineté</span><span class="tag">Cours 2</span></div>
+      <p class="term-d">Capacité à exercer des fonctions de gouvernement — protection, distribution économique, éducation, production de normes — à l'intérieur d'un État existant, sans territoire propre ni souveraineté juridique.</p></div>
+  </section>
+
+  <!-- FICHE 2 — CHRONOLOGIE -->
+  <section>
+    <div class="fiche-h"><span class="fiche-n">02</span><span class="fiche-k">Fiche</span></div>
+    <h2 class="fiche-t">Chronologie <em>commentée</em> · 1865 – 1959</h2>
+    <p class="lede">Les dates essentielles, avec leur signification analytique — pas seulement factuelle.</p>
+    <div class="tl">
+      <div class="tl-row"><span class="tl-y">1865</span><span class="tl-t">Abolition de l'esclavage (13e amendement). Début de la Reconstruction — une démocratie multiraciale brièvement possible.<span class="tl-c">[C1]</span></span></div>
+      <div class="tl-row"><span class="tl-y">1877</span><span class="tl-t">Retrait des troupes fédérales du Sud (compromis Hayes-Tilden). Fin de la Reconstruction, début du démantèlement des acquis.<span class="tl-c">[C1]</span></span></div>
+      <div class="tl-row"><span class="tl-y">1896</span><span class="tl-t">Plessy v. Ferguson : la Cour suprême valide la ségrégation (« séparé mais égal »). 60 ans de domination légale s'ouvrent.<span class="tl-c">[C1]</span></span></div>
+      <div class="tl-row"><span class="tl-y">1903</span><span class="tl-t">Du Bois publie <em>The Souls of Black Folk</em> — la double conscience devient un concept fondateur.<span class="tl-c">[C1]</span></span></div>
+      <div class="tl-row"><span class="tl-y">1909</span><span class="tl-t">Fondation de la NAACP — stratégie réformiste et juridique.<span class="tl-c">[C1]</span></span></div>
+      <div class="tl-row"><span class="tl-y">1920s</span><span class="tl-t">Garveyisme à son sommet — 2 à 6 millions de membres de l'UNIA. Un autonomisme nationaliste de masse.<span class="tl-c">[C1]</span></span></div>
+      <div class="tl-row"><span class="tl-y">1934</span><span class="tl-t">Clara Muhammad fonde les premières écoles autonomes noires à Detroit. Naissance de la contre-société.<span class="tl-c">[C2]</span></span></div>
+      <div class="tl-row"><span class="tl-y">1959</span><span class="tl-t">Le documentaire <em>The Hate That Hate Produced</em> projette la Nation of Islam dans l'espace médiatique national.<span class="tl-c">[C2]</span></span></div>
+    </div>
+  </section>
+
+  <!-- FICHE 3 — BOUSSOLE -->
+  <section>
+    <div class="fiche-h"><span class="fiche-n">03</span><span class="fiche-k">Fiche</span></div>
+    <h2 class="fiche-t">La <em>boussole</em> : trois manières de produire du pouvoir</h2>
+    <p class="lede">La grille centrale de la formation, posée dès l'introduction. Trois réponses à une même question : comment produire du pouvoir réel quand la citoyenneté est conditionnelle ? La suite de la formation les éprouvera, une à une, sur des figures précises.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-n">Stratégie 1</div>
+        <div class="card-t">L'<em>arbitrage</em></div>
+        <p><span class="lbl">Hypothèse — </span>l'État libéral est fracturé. On peut le forcer à arbitrer contre ses périphéries racistes en provoquant une crise publique, visible et disciplinée.</p>
+        <p><span class="lbl">Conditions — </span>une cible claire, une violence adverse visible et attribuable, un coût de l'inaction (réputation, géopolitique).</p>
+        <p><span class="lbl">Limite — </span>l'État concède sans se transformer ; la coalition se fragmente dès que l'enjeu devient matériel.</p>
+      </div>
+      <div class="card">
+        <div class="card-n">Stratégie 2</div>
+        <div class="card-t">Le <em>changement d'arène</em></div>
+        <p><span class="lbl">Hypothèse — </span>dans l'arène intérieure, l'État est juge et partie. Il faut changer de tribunal : passer des droits civiques (scène domestique) aux droits humains (scène internationale).</p>
+        <p><span class="lbl">Conditions — </span>une scène internationale réceptive, une capacité à nouer des alliances au-delà des frontières.</p>
+        <p><span class="lbl">Limite — </span>exige une infrastructure pour exister durablement sur cette scène.</p>
+      </div>
+      <div class="card">
+        <div class="card-n">Stratégie 3</div>
+        <div class="card-t">Le <em>contre-gouvernement</em></div>
+        <p><span class="lbl">Hypothèse — </span>ne rien demander à l'État : exercer directement les fonctions qu'il refuse d'assurer — protection, distribution, éducation, légitimité locale.</p>
+        <p><span class="lbl">Déjà rencontré — </span>la Nation of Islam (Cours 2) en est l'exemple le plus abouti de cette première partie.</p>
+        <p><span class="lbl">Limite — </span>déclenche la réponse répressive la plus intense ; l'infrastructure devient la cible ; la discipline glisse vers la conformité ; le genre reste l'angle mort.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FICHE 4 — LIMITES -->
+  <section>
+    <div class="fiche-h"><span class="fiche-n">04</span><span class="fiche-k">Fiche</span></div>
+    <h2 class="fiche-t">Les quatre <em>limites structurelles</em></h2>
+    <p class="lede it">Ces limites ne sont pas des échecs moraux. Ce sont des contraintes inscrites dans la nature même du problème — elles réapparaissent à chaque génération, sous de nouvelles formes.</p>
+    <div class="cards">
+      <div class="card"><div class="card-t">1 — L'État concède sans se <em>transformer</em></div>
+        <p>Un État peut accorder des droits formels tout en laissant intacts les mécanismes de domination dans l'économie, le logement, la police. Chaque concession restaure sa légitimité sans redistribuer ses fonctions. La bonne question : où la décision a-t-elle réellement bougé — dans les discours, ou dans les budgets et les procédures ?</p>
+        <p><span class="lbl">Exemple (C1) — </span>la Reconstruction (1865-1877) : des droits inscrits, puis abandonnés dès que l'intérêt politique a changé.</p>
+      </div>
+      <div class="card"><div class="card-t">2 — La coalition se fragmente sur le <em>matériel</em></div>
+        <p>Les alliances tiennent sur des principes abstraits. Elles se fissurent dès que les revendications touchent aux intérêts matériels des alliés — emplois, budgets, valeur immobilière. La solidarité résiste mieux aux principes qu'aux politiques concrètes.</p>
+        <p><span class="lbl">Exemple (C1) — </span>la coalition de la Reconstruction : le Nord républicain lâche les affranchis quand le compromis de 1877 sert ses intérêts.</p>
+      </div>
+      <div class="card"><div class="card-t">3 — L'infrastructure qui produit la puissance devient la <em>cible</em></div>
+        <p>Un mouvement d'idées est difficile à démanteler. Un mouvement doté de lieux, de finances, de réseaux et de leaders identifiables peut être infiltré, étranglé, décapité. Plus l'organisation est puissante, plus elle est vulnérable.</p>
+        <p><span class="lbl">Exemples (C1-C2) — </span>la Black Star Line de Garvey ; le réseau d'institutions de la Nation of Islam.</p>
+      </div>
+      <div class="card"><div class="card-t">4 — Le genre reste l'<em>angle mort</em></div>
+        <p>Dans chaque organisation, les femmes portent l'essentiel du travail d'organisation mais sont marginalisées dans les récits et les hiérarchies. Ce biais prive les mouvements d'une partie de leur analyse et nourrit des tensions internes.</p>
+        <p><span class="lbl">Exemple (C2) — </span>Clara Muhammad, fondatrice du réseau scolaire de la Nation of Islam, longtemps effacée des récits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FICHE 5 — FIGURES -->
+  <section>
+    <div class="fiche-h"><span class="fiche-n">05</span><span class="fiche-k">Fiche</span></div>
+    <h2 class="fiche-t">Figures &amp; <em>organisations</em> clés</h2>
+    <p class="lede">Les acteurs rencontrés dans cette première partie. À lire comme des stratèges rationnels dans des contraintes données — pas comme des héros ou des traîtres.</p>
+
+    <div class="subhead">Le débat fondateur &amp; les penseurs</div>
+    <div class="figs">
+      <div class="fig"><div class="fig-ph"><img src="assets/washington.jpg" alt="Booker T. Washington"></div>
+        <div><div class="fig-n">Booker T. Washington</div><div class="fig-dt">1856 – 1915 · C1</div>
+        <p class="fig-b">Stratégie de l'élévation graduelle par le travail et l'économie. Le « compromis d'Atlanta » : accepter la séparation pour gagner du temps et des moyens.</p></div></div>
+
+      <div class="fig"><div class="fig-ph"><img src="assets/dubois.jpg" alt="W.E.B. Du Bois"></div>
+        <div><div class="fig-n">W.E.B. Du Bois</div><div class="fig-dt">1868 – 1963 · C1</div>
+        <p class="fig-b">Sociologue, cofondateur de la NAACP. Théoricien de la double conscience et de l'intégration critique. Parie sur la réforme de l'intérieur.</p></div></div>
+
+      <div class="fig"><div class="fig-ph"><img src="assets/wells.jpg" alt="Ida B. Wells"></div>
+        <div><div class="fig-n">Ida B. Wells</div><div class="fig-dt">1862 – 1931 · C1</div>
+        <p class="fig-b">Journaliste d'enquête. Démontre, chiffres à l'appui, que le lynchage n'est pas une passion incontrôlable mais un instrument de régulation économique et politique.</p></div></div>
+
+      <div class="fig"><div class="fig-ph"><img src="assets/garvey.jpg" alt="Marcus Garvey"></div>
+        <div><div class="fig-n">Marcus Garvey</div><div class="fig-dt">1887 – 1940 · C1</div>
+        <p class="fig-b">Fondateur de l'UNIA, plus grand mouvement noir de masse de l'histoire américaine. La Black Star Line comme projet d'économie autonome. Parie sur l'autonomie, pas sur la réforme.</p></div></div>
+    </div>
+
+    <div class="subhead">La contre-société &amp; les figures à restituer</div>
+    <div class="figs">
+      <div class="fig"><div class="fig-ph"><img src="assets/elijah.jpg" alt="Elijah Muhammad"></div>
+        <div><div class="fig-n">Elijah Muhammad</div><div class="fig-dt">1897 – 1975 · C2</div>
+        <p class="fig-b">Chef de la Nation of Islam de 1934 à 1975. Architecte de la contre-société : discipline, institutions, économie propre, journal.</p></div></div>
+
+      <div class="fig"><div class="fig-ph"><img src="assets/clara.jpg" alt="Clara Muhammad"></div>
+        <div><div class="fig-n">Clara Muhammad</div><div class="fig-dt">1899 – 1972 · C2</div>
+        <p class="fig-b">Fonde dès 1934 les premières écoles autonomes noires à Detroit — à l'origine du réseau Sister Clara Muhammad Schools. Pilier effacé de la contre-société.</p></div></div>
+    </div>
+  </section>
+
+  <!-- QUIZ CORRIGÉS -->
+  <section>
+    <div class="fiche-h"><span class="fiche-n">06</span><span class="fiche-k">Quiz corrigés</span></div>
+    <h2 class="fiche-t">Vérifiez votre <em>compréhension</em></h2>
+    <p class="lede">3 questions de vérification + 1 question ouverte par cours. Répondez sans relire, puis vérifiez. La bonne réponse est souvent la plus contre-intuitive.</p>
+
+    <div class="quiz-c">
+      <div class="quiz-eb">Cours 1</div>
+      <div class="quiz-t">Aux <em>origines</em> du nationalisme afro-américain</div>
+
+      <div class="q"><div class="q-q">Q1. Qu'est-ce que le compromis Hayes-Tilden (1877) produit directement ?</div>
+        <div class="opt"><span class="ltr">A.</span> L'abolition des lois Jim Crow dans le Sud</div>
+        <div class="opt"><span class="ltr">B.</span> Le retrait des troupes fédérales du Sud, mettant fin à la Reconstruction</div>
+        <div class="opt"><span class="ltr">C.</span> L'adoption du 15e amendement sur le droit de vote</div>
+        <div class="ans">✓ Réponse : B</div>
+        <div class="exp">Le retrait des troupes met fin à la démocratie multiraciale de la Reconstruction et ouvre la voie au démantèlement des droits noirs.</div></div>
+
+      <div class="q"><div class="q-q">Q2. Quelle est la thèse centrale d'Ida B. Wells sur les lynchages ?</div>
+        <div class="opt"><span class="ltr">A.</span> Ils sont motivés par une haine raciale incontrôlable</div>
+        <div class="opt"><span class="ltr">B.</span> Le prétexte du viol est fictif — la vraie cible est le concurrent économique noir</div>
+        <div class="opt"><span class="ltr">C.</span> Ils sont provoqués par la délinquance dans les communautés noires</div>
+        <div class="ans">✓ Réponse : B</div>
+        <div class="exp">Wells démontre statistiquement que le lynchage est un instrument de régulation économique et politique, pas une réaction passionnelle.</div></div>
+
+      <div class="q"><div class="q-q">Q3. Quelle est la différence stratégique fondamentale entre Du Bois et Garvey ?</div>
+        <div class="opt"><span class="ltr">A.</span> Du Bois est pour la violence, Garvey pour la paix</div>
+        <div class="opt"><span class="ltr">B.</span> Du Bois parie sur la réforme de l'intérieur, Garvey sur la construction de l'autonomie</div>
+        <div class="opt"><span class="ltr">C.</span> Du Bois veut retourner en Afrique, Garvey veut s'intégrer aux États-Unis</div>
+        <div class="ans">✓ Réponse : B</div>
+        <div class="exp">Deux diagnostics sur une même réalité : l'État peut-il être réformé ? Du Bois dit oui, Garvey dit non.</div></div>
+
+      <div class="open"><div class="open-h">Question ouverte · ~10 min</div>
+        <p>En vous appuyant sur le cours, expliquez pourquoi la citoyenneté afro-américaine après 1865 est qualifiée de « conditionnelle ». Donnez deux exemples concrets (un au Sud, un au Nord).</p>
+        <ul>
+          <li>Citoyenneté conditionnelle = accordée formellement, refusée structurellement ; suspendue à une « bonne conduite » définie par les dominants.</li>
+          <li>Sud : tests d'alphabétisation arbitraires — l'électorat noir du Mississippi chute de 190 000 à 8 600 en deux ans.</li>
+          <li>Nord : le redlining — l'État fédéral refuse d'assurer les prêts dans les quartiers noirs, bloquant l'accès à la propriété.</li>
+          <li>Le point-clé : l'égalité formelle peut coexister avec l'inégalité structurelle — et servir à la légitimer.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quiz-c">
+      <div class="quiz-eb">Cours 2</div>
+      <div class="quiz-t">La <em>Nation of Islam</em></div>
+
+      <div class="q"><div class="q-q">Q1. Pourquoi la discipline de la Nation of Islam est-elle qualifiée de « technologie politique » plutôt que de simple conviction religieuse ?</div>
+        <div class="opt"><span class="ltr">A.</span> Parce qu'elle répond à un besoin de contrôle hiérarchique interne</div>
+        <div class="opt"><span class="ltr">B.</span> Parce qu'elle répond à une contrainte politique : contredire le stigmate du désordre racialisé</div>
+        <div class="opt"><span class="ltr">C.</span> Parce qu'elle est une expression authentique de la foi</div>
+        <div class="ans">✓ Réponse : B</div>
+        <div class="exp">La discipline est un outil stratégique : si le système vous définit comme désordre, vous devenez l'ordre incarné — indépendamment des croyances individuelles.</div></div>
+
+      <div class="q"><div class="q-q">Q2. Qui pose les fondations éducatives de la Nation of Islam à Detroit en 1934, et dont le rôle est systématiquement effacé ?</div>
+        <div class="opt"><span class="ltr">A.</span> Elijah Muhammad</div>
+        <div class="opt"><span class="ltr">B.</span> W.E.B. Du Bois</div>
+        <div class="opt"><span class="ltr">C.</span> Clara Muhammad</div>
+        <div class="ans">✓ Réponse : C</div>
+        <div class="exp">Clara Muhammad instruit ses enfants à la maison et refuse le système scolaire ségrégué — geste fondateur du réseau Sister Clara Muhammad Schools.</div></div>
+
+      <div class="q"><div class="q-q">Q3. Que désigne le concept de « proto-souveraineté » dans le contexte de la Nation of Islam ?</div>
+        <div class="opt"><span class="ltr">A.</span> Exercer des fonctions de gouvernement sans territoire propre ni souveraineté formelle</div>
+        <div class="opt"><span class="ltr">B.</span> Revendiquer un État noir indépendant avec un territoire délimité</div>
+        <div class="opt"><span class="ltr">C.</span> Refuser toute relation institutionnelle avec l'État américain</div>
+        <div class="ans">✓ Réponse : A</div>
+        <div class="exp">La Nation of Islam assure protection, éducation et distribution économique — des fonctions régaliennes — à l'intérieur de l'État existant, sans territoire ni souveraineté juridique.</div></div>
+
+      <div class="open"><div class="open-h">Question ouverte · ~10 min</div>
+        <p>Expliquez le « dilemme fondamental » de la Nation of Islam : comment le mécanisme même qui produit sa puissance produit aussi ses contradictions ?</p>
+        <ul>
+          <li>La discipline produit coordination et image collective — mais glisse vers la conformité quand la critique devient déviance.</li>
+          <li>La séparation produit une communauté forte — au prix d'une influence nationale très limitée.</li>
+          <li>L'infrastructure (mosquées, entreprises, journal) rend l'organisation puissante — et précisément vulnérable.</li>
+          <li>Le sacré légitime la discipline — et peut se retourner en cage quand quelqu'un conteste la gouvernance.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">Guide pédagogique · <b>L'Autre Récit</b> · Édition de lancement — Introduction, Cours 1 &amp; 2</div>
+
+</div>
+</body>
+</html>

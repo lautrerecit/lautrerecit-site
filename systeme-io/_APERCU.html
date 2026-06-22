@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Autre Récit — Pages Systeme.io · aperçu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cr:#F2EDE4;--cr2:#EAE3D8;--cr3:#D4C9B8;
+  --or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;
+  --ink:#0E0C0A;--ink2:#1A1714;--ink3:#3D3730;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'League Spartan',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --gold:linear-gradient(180deg,#EBCB70 0%,#C9A24C 52%,#A9863A 100%);
+  --gold-hi:linear-gradient(180deg,#F6DE94 0%,#D9B45C 52%,#C4A24A 100%);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:#15120e;color:var(--ink2);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--serif);line-height:1.12;letter-spacing:-.02em;margin:0 0 .5em;font-weight:700}
+em{font-style:italic;color:var(--or2);font-family:var(--serif);font-weight:700}
+.gg{background:var(--gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--or2);margin:0 0 14px}
+.rule{height:1px;border:0;background:linear-gradient(90deg,transparent,var(--or2) 20%,var(--or3) 50%,var(--or2) 80%,transparent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:13.5px;letter-spacing:.13em;text-transform:uppercase;line-height:1;padding:15px 30px;border-radius:5px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;transition:transform .3s var(--ease),box-shadow .35s}
+.btn-or{background:var(--gold);color:var(--ink);box-shadow:0 12px 28px -10px rgba(196,162,74,.55)}
+.btn-or:hover{transform:translateY(-2px)}
+.btn-oc{background:transparent;color:var(--or2);border-color:rgba(196,162,74,.6)}
+.btn-lg{padding:18px 38px;font-size:15px}
+
+/* ---- shell aperçu ---- */
+.head{max-width:1200px;margin:0 auto;padding:40px 28px 8px}
+.head .kik{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or3)}
+.head h1{color:#fff;font-size:clamp(28px,4vw,44px);margin:.3em 0 .1em}
+.head h1 em{color:var(--or2)}
+.head p{color:#bdb2a2;max-width:70ch;font-size:15px}
+.tabs{position:sticky;top:0;z-index:20;background:rgba(21,18,14,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,162,74,.22);padding:12px 28px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.tab{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#9a8f7e;background:transparent;border:1px solid rgba(196,162,74,.25);padding:9px 15px;border-radius:4px;cursor:pointer;transition:.25s}
+.tab:hover{color:var(--cr);border-color:rgba(196,162,74,.55)}
+.tab.on{color:var(--ink);background:var(--gold);border-color:transparent;font-weight:700}
+.stage{max-width:1200px;margin:0 auto;padding:26px 28px 70px}
+.panel{display:none;animation:fade .4s var(--ease)}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* faux navigateur */
+.win{border-radius:12px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(196,162,74,.16);background:var(--cr)}
+.winbar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#211c16;border-bottom:1px solid rgba(196,162,74,.18)}
+.dot{width:11px;height:11px;border-radius:50%;background:#4a423a}
+.url{margin-left:14px;font-family:var(--mono);font-size:12px;color:#cbbfa8;background:#15120e;padding:6px 14px;border-radius:6px;border:1px solid rgba(196,162,74,.18);letter-spacing:.02em}
+.url b{color:var(--or3);font-weight:400}
+.note{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#8f8472;text-align:center;margin:14px auto 0;max-width:60ch}
+.note b{color:var(--or3);font-weight:400}
+
+/* ====== bandeau de marque commun ====== */
+.brandband{display:flex;align-items:center;justify-content:space-between;padding:14px 30px;background:var(--ink);border-bottom:1px solid rgba(196,162,74,.25)}
+.wm{font-family:var(--serif);font-style:italic;font-weight:700;color:var(--cr);font-size:19px;letter-spacing:.01em}
+.wm b{color:var(--or2)}
+.secure{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or3);display:flex;align-items:center;gap:7px}
+
+/* ====== PAGE 1 — commande ====== */
+.p-body{background:var(--cr);padding:clamp(28px,4vw,52px)}
+.ord{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;max-width:980px;margin:0 auto}
+.card{background:#fff;border:1px solid var(--cr3);border-radius:12px;padding:30px 30px 32px;box-shadow:0 24px 60px -34px rgba(14,12,10,.4)}
+.card h2{color:var(--ink);font-size:27px}
+.meta{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
+.price{display:flex;align-items:baseline;gap:12px;margin:6px 0 4px}
+.price .big{font-family:var(--serif);font-size:46px;font-weight:900;line-height:1}
+.price .u{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.inc{list-style:none;padding:0;margin:20px 0 0}
+.inc li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;font-size:15.5px;color:var(--ink2);border-bottom:1px solid var(--cr2)}
+.inc li:last-child{border-bottom:0}
+.inc .ck{color:var(--or2);font-weight:700;flex:0 0 auto;margin-top:1px}
+.gar{display:flex;gap:11px;align-items:center;margin-top:18px;padding:13px 16px;background:var(--cr);border:1px dashed var(--cr3);border-radius:9px;font-size:13.5px;color:var(--ink3)}
+.gar b{color:var(--ink)}
+/* form mock */
+.formcard{background:var(--ink);color:var(--cr);border-radius:12px;padding:30px;border:1px solid rgba(196,162,74,.3)}
+.formcard h3{color:var(--cr);font-size:21px;margin-bottom:4px}
+.formcard .sub{font-size:13px;color:#b7ac9a;margin-bottom:22px;font-family:var(--mono);letter-spacing:.04em}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or3);margin-bottom:7px}
+.inp{height:46px;border-radius:8px;background:#0a0907;border:1px solid rgba(196,162,74,.28);display:flex;align-items:center;padding:0 14px;color:#9a8f7e;font-size:14px}
+.bump{margin:18px 0;padding:14px;border:1.5px dashed var(--or2);border-radius:10px;background:rgba(196,162,74,.07);display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--cr)}
+.bump .bx{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--or2);flex:0 0 auto;margin-top:1px}
+.bump b{color:var(--or2)}
+.trust{display:flex;gap:18px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.trust span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8f8472;display:flex;align-items:center;gap:6px}
+.testi{max-width:980px;margin:26px auto 0;text-align:center;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink3)}
+.testi b{color:var(--or);font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:8px;font-weight:400}
+
+/* ====== PAGE 2 — merci ====== */
+.thx{background:var(--ink);color:var(--cr);padding:clamp(40px,6vw,76px) clamp(24px,5vw,60px);text-align:center;position:relative;overflow:hidden}
+.thx::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% -10%,rgba(196,162,74,.16),transparent 60%);pointer-events:none}
+.thx .in{position:relative;max-width:760px;margin:0 auto}
+.thx h1{color:var(--cr);font-size:clamp(34px,5.4vw,60px)}
+.thx .lede{color:#cbbfa8;font-size:clamp(17px,2vw,21px);max-width:48ch;margin:0 auto 8px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:36px 0 34px;text-align:left}
+.step{background:linear-gradient(180deg,#1c1810,#121009);border:1px solid rgba(196,162,74,.28);border-radius:12px;padding:22px 20px}
+.step .n{font-family:var(--serif);font-style:italic;font-size:30px;font-weight:900;line-height:1}
+.step h4{color:var(--cr);font-size:17px;margin:10px 0 6px}
+.step p{color:#a99e8c;font-size:13.5px;margin:0}
+.thx .ps{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#8f8472;margin-top:26px}
+.thx .ps b{color:var(--or3);font-weight:400}
+
+/* ====== PAGE 3 — espace ====== */
+.esp{background:var(--cr);padding:0 0 clamp(30px,4vw,50px)}
+.esp-hero{background:var(--ink);color:var(--cr);padding:clamp(30px,4vw,46px) clamp(24px,5vw,54px) clamp(36px,5vw,54px)}
+.esp-hero h1{color:var(--cr);font-size:clamp(28px,4vw,42px);margin-bottom:6px}
+.esp-hero h1 em{color:var(--or2)}
+.esp-hero .sub{color:#b7ac9a;font-size:15px}
+.prog{margin-top:20px;max-width:440px}
+.prog .bar{height:7px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.prog .bar i{display:block;height:100%;width:42%;background:var(--gold)}
+.prog .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--or3);margin-top:8px}
+.modwrap{max-width:880px;margin:-26px auto 0;padding:0 clamp(20px,5vw,40px);position:relative}
+.resume{background:#fff;border:1px solid var(--cr3);border-left:4px solid var(--or2);border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 24px 60px -34px rgba(14,12,10,.45);margin-bottom:26px}
+.resume .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:5px}
+.resume h3{margin:0;color:var(--ink);font-size:21px}
+.mods{display:flex;flex-direction:column;gap:11px}
+.mod{display:flex;align-items:center;gap:18px;background:#fff;border:1px solid var(--cr3);border-radius:11px;padding:16px 20px;transition:.25s}
+.mod:hover{border-color:var(--or2);transform:translateX(3px)}
+.mod .idx{font-family:var(--serif);font-style:italic;font-weight:900;font-size:22px;color:var(--or2);flex:0 0 38px}
+.mod .ti{flex:1}
+.mod .ti b{font-family:var(--serif);font-size:18px;color:var(--ink);font-weight:700;display:block}
+.mod .ti span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink3)}
+.mod .st{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:99px}
+.st.done{color:#5a7d4a;background:#eaf0e4}
+.st.cur{color:var(--ink);background:var(--or3)}
+.st.todo{color:var(--ink3);background:var(--cr2)}
+
+/* ====== PAGE 4 — leçon ====== */
+.lec{display:grid;grid-template-columns:260px 1fr;background:var(--cr);min-height:520px}
+.side{background:var(--ink2);color:var(--cr);padding:24px 18px}
+.side .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--or3);margin:0 0 14px}
+.side a{display:block;padding:10px 12px;border-radius:8px;font-size:13.5px;color:#b7ac9a;text-decoration:none;margin-bottom:3px;border-left:2px solid transparent}
+.side a.on{color:var(--cr);background:rgba(196,162,74,.12);border-left-color:var(--or2)}
+.side a.ok{color:#7d9a6e}
+.main{padding:clamp(24px,3.5vw,42px)}
+.crumb{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--or);margin-bottom:10px}
+.main h1{color:var(--ink);font-size:clamp(24px,3vw,34px)}
+.player{aspect-ratio:16/9;border-radius:12px;background:linear-gradient(135deg,#1c1810,#0a0907);border:1px solid rgba(196,162,74,.25);display:flex;align-items:center;justify-content:center;margin:18px 0 22px;position:relative}
+.play{width:64px;height:64px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 40px -10px rgba(196,162,74,.6)}
+.play::after{content:"";border-left:18px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+.res{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink3);border:1px solid var(--cr3);background:#fff;padding:9px 14px;border-radius:8px;display:flex;gap:8px;align-items:center}
+.chip b{color:var(--or)}
+.lecnav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;padding-top:22px;border-top:1px solid var(--cr3)}
+
+/* ====== PAGE 5 — connexion ====== */
+.log{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
+.log-l{background:var(--ink);color:var(--cr);padding:clamp(34px,4vw,54px);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.log-l::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 20% 10%,rgba(196,162,74,.14),transparent 55%)}
+.log-l .z{position:relative}
+.log-l .big{font-family:var(--serif);font-style:italic;font-weight:900;font-size:clamp(30px,3.6vw,46px);color:var(--cr);line-height:1.1}
+.log-l .big b{color:var(--or2)}
+.log-l .tag{font-family:var(--serif);font-style:italic;font-size:19px;color:#cbbfa8;max-width:30ch;line-height:1.5}
+.log-l .tag em{color:var(--or2)}
+.log-l .foot{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--or3);position:relative}
+.log-r{background:var(--cr);padding:clamp(34px,4vw,54px);display:flex;flex-direction:column;justify-content:center}
+.log-r h2{color:var(--ink);font-size:30px;margin-bottom:4px}
+.log-r .hi{color:var(--ink3);font-size:14.5px;margin-bottom:26px}
+.log-r .inp{background:#fff;border:1px solid var(--cr3);color:var(--ink3)}
+.log-r .lk{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--or);text-align:right;margin-top:-6px}
+.log-r .alt{margin-top:24px;padding-top:20px;border-top:1px solid var(--cr3);font-size:13.5px;color:var(--ink3)}
+.log-r .alt a{color:var(--or2);font-weight:700;text-decoration:none}
+
+@media(max-width:760px){
+  .ord,.steps,.lec,.log{grid-template-columns:1fr}
+  .side{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="kik">L'Autre Récit · Plateforme de cours</div>
+  <h1>Les pages <em>Systeme.io</em></h1>
+  <p>Aperçu des 5 pages du tunnel + espace membre, dans l'ADN de la vitrine (crème · doré · encre · Playfair / League Spartan). Chaque page se construit sur Systeme.io avec un bloc HTML de marque + les éléments natifs (paiement, vidéo, connexion) restylés. Onglets ci-dessous.</p>
+</div>
+
+<div class="tabs">
+  <button class="tab on" data-p="1">01 · Bon de commande</button>
+  <button class="tab" data-p="2">02 · Merci / Confirmation</button>
+  <button class="tab" data-p="3">03 · Espace membre</button>
+  <button class="tab" data-p="4">04 · Leçon</button>
+  <button class="tab" data-p="5">05 · Connexion</button>
+</div>
+
+<div class="stage">
+
+  <!-- ============ PAGE 1 ============ -->
+  <section class="panel on" data-p="1">
+    <div class="win">
+      <div class="winbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">cours.lautrerecit.com<b>/commander</b></span></div>
+      <div class="brandband"><span class="wm">L'<b>Autre</b> Récit</span><span class="secure">🔒 Paiement 100% sécurisé</span></div>
+      <div class="p-body">
+        <div class="ord">
+          <div class="card">
+            <p class="eyebrow">Votre commande</p>
+            <h2>Le nationalisme noir américain</h2>
+            <p class="meta">Introduction + 5 cours + interlude · accès à vie</p>
+            <div class="price"><span class="big gg">79,99 €</span><span class="u">paiement unique</span></div>
+            <hr class="rule" style="margin:18px 0">
+            <ul class="inc">
+              <li><span class="ck">✓</span> Un cours introductif + les 5 cours, d'<em>Aux origines</em> au <em>Black Power</em></li>
+              <li><span class="ck">✓</span> L'interlude <em>Malcolm × King</em>, pièce maîtresse</li>
+              <li><span class="ck">✓</span> Accès à vie + mises à jour gratuites</li>
+              <li><span class="ck">✓</span> Citations sourcées & ressources de lecture</li>
+              <li><span class="ck">✓</span> Slides interactives et fiches de synthèse</li>
+            </ul>
+            <div class="gar">↩&nbsp; <span><b>Garantie 14 jours</b> — remboursé sans condition si la formation ne te convient pas.</span></div>
+          </div>
+
+          <div class="formcard">
+            <h3>Finalise ton accès</h3>
+            <p class="sub">Paiement chiffré · accès immédiat</p>
+            <div class="fld"><label>Adresse e-mail</label><div class="inp">ton@email.com</div></div>
+            <div class="fld"><label>Carte bancaire</label><div class="inp">•••• •••• •••• 4242</div></div>
+            <div class="fld"><label>Pays</label><div class="inp">France</div></div>
+            <a class="btn btn-or btn-lg" style="width:100%" href="#">Payer 79,99 € →</a>
+            <div class="trust"><span>🔒 Stripe</span><span>↩ 14 jours</span><span>✉ Accès immédiat</span></div>
+          </div>
+        </div>
+        <p class="testi">« Une clarté rare sur un sujet qu'on croit connaître. »<b>— Retour d'élève</b></p>
+      </div>
+    </div>
+    <p class="note">Bloc de marque (gauche) = <b>HTML collé</b> dans Systeme · Formulaire (droite) = <b>élément natif Systeme</b> restylé via brand.css.</p>
+  </section>
+
+  <!-- ============ PAGE 2 ============ -->
+  <section class="panel" data-p="2">
+    <div class="win">
+      <div class="winbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">cours.lautrerecit.com<b>/merci</b></span></div>
+      <div class="thx">
+        <div class="in">
+          <p class="eyebrow" style="justify-content:center">Paiement confirmé</p>
+          <h1>Bienvenue dans <em>L'Autre Récit</em>.</h1>
+          <p class="lede">Ton accès à la formation est ouvert. Voici les trois étapes pour commencer.</p>
+          <div class="steps">
+            <div class="step"><div class="n gg">1</div><h4>Ouvre ta boîte mail</h4><p>Tes identifiants de connexion viennent de t'être envoyés (vérifie les spams).</p></div>
+            <div class="step"><div class="n gg">2</div><h4>Connecte-toi</h4><p>Accède à ton espace membre avec ton e-mail et ton mot de passe.</p></div>
+            <div class="step"><div class="n gg">3</div><h4>Commence par l'introduction</h4><p>Tout part de là. La formation se suit dans l'ordre, à ton rythme.</p></div>
+          </div>
+          <a class="btn btn-or btn-lg" href="#">Accéder à mon espace →</a>
+          <p class="ps">Un e-mail de confirmation t'a été envoyé. Une question ? <b>lautrerecit@gmail.com</b></p>
+        </div>
+      </div>
+    </div>
+    <p class="note">Page <b>100% HTML collé</b> (aucun élément natif requis) — sauf le bouton qui pointe vers <b>/connexion</b>.</p>
+  </section>
+
+  <!-- ============ PAGE 3 ============ -->
+  <section class="panel" data-p="3">
+    <div class="win">
+      <div class="winbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">cours.lautrerecit.com<b>/formation</b></span></div>
+      <div class="brandband"><span class="wm">L'<b>Autre</b> Récit</span><span class="secure">Mon espace · Rany</span></div>
+      <div class="esp">
+        <div class="esp-hero">
+          <p class="eyebrow">Ta formation</p>
+          <h1>Bonjour, <em>Rany</em>.</h1>
+          <p class="sub">Reprends là où tu t'es arrêté — tout est à ton rythme.</p>
+          <div class="prog"><div class="bar"><i></i></div><div class="lab">Cours 2 terminé</div></div>
+        </div>
+        <div class="modwrap">
+          <div class="resume">
+            <div><div class="k">▶ Reprendre</div><h3>Cours 3 · Malcolm X · Module 4 — Désaffiliation stratégique</h3></div>
+            <a class="btn btn-or" href="#">Continuer →</a>
+          </div>
+          <div class="mods">
+            <div class="mod"><span class="idx">0</span><span class="ti"><b>Introduction</b><span>Cours introductif · ~26 min</span></span><span class="st done">Terminé</span></div>
+            <div class="mod"><span class="idx">1</span><span class="ti"><b>Cours 1 · Aux origines</b><span>~41 min</span></span><span class="st done">Terminé</span></div>
+            <div class="mod"><span class="idx">2</span><span class="ti"><b>Cours 2 · Nation of Islam</b><span>~42 min</span></span><span class="st done">Terminé</span></div>
+            <div class="mod"><span class="idx">3</span><span class="ti"><b>Cours 3 · Malcolm X</b><span>~48 min</span></span><span class="st cur">En cours</span></div>
+            <div class="mod"><span class="idx">★</span><span class="ti"><b>Interlude · Malcolm × King</b><span>La pièce maîtresse · ~10 min</span></span><span class="st todo">À venir</span></div>
+            <div class="mod"><span class="idx">4</span><span class="ti"><b>Cours 4 · King stratège</b><span>~43 min</span></span><span class="st todo">À venir</span></div>
+            <div class="mod"><span class="idx">5</span><span class="ti"><b>Cours 5 · Black Power</b><span>~52 min</span></span><span class="st todo">À venir</span></div>
+            <div class="mod"><span class="idx">✦</span><span class="ti"><b>Conclusion générale</b><span>La boussole & les quatre limites</span></span><span class="st todo">À venir</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note">Structure native du <b>module « Cours » Systeme.io</b>. Le hero + la carte « Reprendre » + les lignes = <b>HTML collé</b> en haut de la page d'accueil du cours.</p>
+  </section>
+
+  <!-- ============ PAGE 4 ============ -->
+  <section class="panel" data-p="4">
+    <div class="win">
+      <div class="winbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">cours.lautrerecit.com<b>/formation/c3-m4</b></span></div>
+      <div class="lec">
+        <aside class="side">
+          <p class="k">Cours 3 · Malcolm X</p>
+          <a class="ok" href="#">✓ M1 · Lire Malcolm comme trajectoire</a>
+          <a class="ok" href="#">✓ M2 · Apprendre l'État par le corps</a>
+          <a class="ok" href="#">✓ M3 · La NOI comme école et cage</a>
+          <a class="on" href="#">▶ M4 · Désaffiliation stratégique</a>
+          <a href="#">M5 · Civil rights vs Human rights</a>
+          <a href="#">M6 · L'héritage stratégique</a>
+        </aside>
+        <div class="main">
+          <p class="crumb">Cours 3 · Malcolm X · Module 4</p>
+          <h1>Désaffiliation stratégique</h1>
+          <div class="player"><div class="play"></div></div>
+          <p>Malcolm rompt avec la Nation of Islam, puis accomplit le pèlerinage à La Mecque. Il ne quitte pas une structure pour le vide : il se <em>désaffilie pour refonder</em>. Une rupture pensée comme un calcul politique.</p>
+          <div class="res">
+            <span class="chip"><b>PDF</b> Fiche de synthèse</span>
+            <span class="chip"><b>↗</b> Slides interactives</span>
+            <span class="chip"><b>≡</b> Citations du module</span>
+          </div>
+          <div class="lecnav">
+            <a class="btn btn-oc" href="#">← Module précédent</a>
+            <a class="btn btn-or" href="#">Marquer terminé · suivant →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note">Lecteur vidéo + navigation = <b>natifs Systeme</b>. Fil d'Ariane + titre + description + chips ressources = <b>gabarit HTML</b> réutilisé à chaque leçon.</p>
+  </section>
+
+  <!-- ============ PAGE 5 ============ -->
+  <section class="panel" data-p="5">
+    <div class="win">
+      <div class="winbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="url">cours.lautrerecit.com<b>/connexion</b></span></div>
+      <div class="log">
+        <div class="log-l">
+          <div class="z"><span class="wm" style="font-size:22px">L'<b style="color:var(--or2)">Autre</b> Récit</span></div>
+          <div class="z"><p class="tag">Reprendre la <em>plume</em> à ceux qui <em>écrivent</em> notre histoire à <em>notre place</em>.</p></div>
+          <div class="z foot">L'espace des élèves</div>
+        </div>
+        <div class="log-r">
+          <h2>Connexion</h2>
+          <p class="hi">Accède à ta formation et reprends où tu t'es arrêté.</p>
+          <div class="fld"><label style="color:var(--or);">Adresse e-mail</label><div class="inp">ton@email.com</div></div>
+          <div class="fld"><label style="color:var(--or);">Mot de passe</label><div class="inp">••••••••</div></div>
+          <p class="lk">Mot de passe oublié ?</p>
+          <a class="btn btn-or btn-lg" style="width:100%;margin-top:8px" href="#">Se connecter →</a>
+          <p class="alt">Pas encore inscrit ? <a href="#">Découvrir la formation →</a></p>
+        </div>
+      </div>
+    </div>
+    <p class="note">Volet de marque (gauche) = <b>HTML collé</b> · Formulaire de connexion (droite) = <b>système d'authentification natif Systeme</b> restylé.</p>
+  </section>
+
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    var p=t.getAttribute('data-p');
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x===t)});
+    document.querySelectorAll('.panel').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-p')===p)});
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

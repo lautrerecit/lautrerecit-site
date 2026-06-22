@@ -7,7 +7,8 @@ export const formations = [
     blurb:
       "De Marcus Garvey à la Nation of Islam et aux Black Panthers : comment une minorité a bâti, brique par brique, ses propres institutions face à un État qui ne lui accordait rien.",
     status: 'available', // 'available' | 'soon'
-    href: '/formations/nationalisme-noir/',
+    href: '/formations/nationalisme-noir/', // → page pédagogique du site (elle-même renvoie au tunnel de vente). Le menu « Découvrir la formation » pointe directement sur le tunnel.
+
     duration: '5 cours',
     accent: '#C4A24A',
   },

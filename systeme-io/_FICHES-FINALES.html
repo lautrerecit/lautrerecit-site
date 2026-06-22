@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Autre Récit — Fiches leçon · 2 fiches alternées</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#080706;font-family:'League Spartan',system-ui,sans-serif;color:#F2EDE4}
+  .bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    background:rgba(14,12,10,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,162,74,.28);padding:13px clamp(16px,4vw,40px)}
+  .wm{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#F2EDE4;margin-right:auto}
+  .wm b{color:#C4A24A;font-weight:700;font-style:normal}
+  .bar .hint{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#9a8f7e}
+  .cap{background:#0b0a08;border-bottom:1px solid rgba(196,162,74,.14);padding:13px clamp(16px,4vw,40px);font-size:13px;line-height:1.5;color:#9a8f7e}
+  .cap b{color:#C4A24A;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:15px;margin-right:8px}
+  .cap .note{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5f5a50;float:right}
+
+  /* ============ FICHE A · CRÈME + encadré NOIR ============ */
+  .fa{--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:radial-gradient(120% 130% at 50% 0%,#FBF8F2,#F2EDE4 62%);font-family:var(--sans);padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px)}
+  .fa .card{max-width:880px;margin:0 auto;background:#fff;border:1px solid #E6DDCB;border-radius:18px;overflow:hidden;box-shadow:0 34px 80px -46px rgba(60,50,30,.4)}
+  .fa .body{padding:clamp(32px,4.6vw,56px)}
+  .fa .top{display:flex;align-items:center;gap:14px;margin:0 0 20px}
+  .fa .num{font-family:var(--serif);font-style:italic;font-weight:900;font-size:34px;color:var(--or2);line-height:1}
+  .fa .ey{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
+  .fa h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4.2vw,46px);line-height:1.1;letter-spacing:-.02em;color:#15120E;margin:0 0 20px}
+  .fa h2 em{font-style:italic;color:var(--or2)}
+  .fa .rule{height:1px;background:linear-gradient(90deg,#C4A24A,transparent);margin:0 0 24px}
+  .fa p{font-size:17px;line-height:1.78;color:#3D3730;max-width:60ch;margin:0 0 1.1em}
+  .fa p:last-child{margin-bottom:0}
+  .fa .learn{background:#0E0C0A;color:#F2EDE4;padding:clamp(26px,3.4vw,38px) clamp(32px,4.6vw,56px)}
+  .fa .learn .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--or3);margin:0 0 18px;display:flex;align-items:center;gap:9px}
+  .fa .learn ul{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+  .fa .learn li{position:relative;padding-left:26px;font-size:15px;line-height:1.5;color:#e3d9c6}
+  .fa .learn li:before{content:"\2713";position:absolute;left:0;top:1px;color:var(--or2);font-weight:700}
+
+  /* ============ FICHE B · SOMBRE + encadré CRÈME ============ */
+  .fb{--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--cr:#F2EDE4;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:#0E0C0A;color:var(--cr);font-family:var(--sans);padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px);position:relative;overflow:hidden}
+  .fb .glow{position:absolute;top:-25%;left:-8%;width:380px;height:380px;background:radial-gradient(circle,rgba(196,162,74,.09),transparent 70%);pointer-events:none}
+  .fb .grid{position:relative;max-width:980px;margin:0 auto;display:grid;grid-template-columns:1.45fr .92fr;gap:clamp(28px,4vw,52px);align-items:start}
+  .fb .top{display:flex;align-items:center;gap:14px;margin:0 0 18px}
+  .fb .num{font-family:var(--serif);font-style:italic;font-weight:900;font-size:34px;color:var(--or2);line-height:1}
+  .fb .ey{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--or2)}
+  .fb h2{font-family:var(--serif);font-weight:700;font-size:clamp(27px,3.7vw,44px);line-height:1.1;letter-spacing:-.02em;color:var(--cr);margin:0 0 20px}
+  .fb h2 em{font-style:italic;color:var(--or2)}
+  .fb .rule{height:1px;width:60px;background:linear-gradient(90deg,#EBCB70,#A9863A);margin:0 0 22px}
+  .fb p{font-size:16.5px;line-height:1.76;color:#d9d0c2;max-width:54ch;margin:0 0 1em}
+  .fb p:last-child{margin-bottom:0}
+  .fb .learn{background:#F4EEE3;border:1px solid rgba(196,162,74,.3);border-radius:14px;padding:24px 22px}
+  .fb .learn .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--or);margin:0 0 18px;display:flex;align-items:center;gap:9px}
+  .fb .learn ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .fb .learn li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.5;color:#3D3730}
+  .fb .learn li:before{content:"\2713";position:absolute;left:0;top:1px;color:var(--or2);font-weight:700}
+  @media(max-width:760px){.fb .grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wm">L'<b>Autre</b> Récit · Fiches leçon</div>
+  <div class="hint">2 fiches alternées · 1 module sur 2</div>
+</div>
+
+<!-- ====== FICHE A (modules impairs) ====== -->
+<div class="cap"><b>Module 1 · Fiche crème</b> Claire, magazine. Encadré objectifs <b style="font-size:13px;font-style:normal;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;color:#F2EDE4;background:#0E0C0A;padding:2px 8px;border-radius:4px;margin:0">NOIR</b> en pied de carte. <span class="note">modules 1 · 3 · 5</span></div>
+<section class="fa">
+  <div class="card">
+    <div class="body">
+      <div class="top">
+        <span class="num">01</span>
+        <span class="ey">Cours 2 · Nation of Islam</span>
+      </div>
+      <h2>Pourquoi le <em>sacré</em> ?</h2>
+      <div class="rule"></div>
+      <p>Pourquoi un mouvement de libération politique prend-il la forme d'une religion ? La Nation of Islam répond à l'humiliation raciale par le sacré : une nouvelle origine, une nouvelle dignité, un nouveau nom.</p>
+      <p>Ce module pose la question centrale du cours — ce que le religieux rend possible en politique, là où le seul discours militant échoue. On entre dans la logique avant de juger la doctrine.</p>
+    </div>
+    <div class="learn">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Ce que le sacré apporte qu'un discours politique seul n'a pas</li>
+        <li>La promesse en 3 temps : nouvelle origine, dignité, nom</li>
+        <li>Pourquoi entrer dans la logique avant de juger la doctrine</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FICHE B (modules pairs) ====== -->
+<div class="cap"><b>Module 2 · Fiche sombre</b> Diptyque sur fond noir. Encadré objectifs <b style="font-size:13px;font-style:normal;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;color:#15120E;background:#F4EEE3;padding:2px 8px;border-radius:4px;margin:0">CRÈME</b> à droite. <span class="note">modules 2 · 4 · 6</span></div>
+<section class="fb">
+  <div class="glow"></div>
+  <div class="grid">
+    <div>
+      <div class="top">
+        <span class="num">02</span>
+        <span class="ey">Cours 2 · Nation of Islam</span>
+      </div>
+      <h2>La machine <em>contre-société</em></h2>
+      <div class="rule"></div>
+      <p>La Nation of Islam bâtit un monde à part : écoles, commerces, fermes, un journal, une police interne — un véritable État dans l'État.</p>
+      <p>Ce module décortique cette contre-société, ses 5 domaines, et le concept d'institution totale. On comprend ici comment un mouvement transforme une promesse de dignité en infrastructure concrète, palpable, quotidienne.</p>
+    </div>
+    <aside class="learn">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Les 5 domaines où la NOI bâtit un monde parallèle</li>
+        <li>Le concept d'institution totale appliqué à un mouvement</li>
+        <li>Comment une promesse de dignité devient infrastructure</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+</body>
+</html>

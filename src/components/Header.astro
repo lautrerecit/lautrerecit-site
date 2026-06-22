@@ -3,50 +3,117 @@ const { pathname } = Astro.url;
 const isActive = (href) => pathname === href || (href !== '/' && pathname.startsWith(href));
 const nav = [
   { href: '/', label: 'Accueil' },
+  { href: '/a-propos/', label: 'À propos', children: [
+    { href: '/vision/', label: 'La vision' },
+    { href: '/grille-de-lecture/', label: 'La grille de lecture' },
+    { href: '/architecture/', label: "L'architecture" },
+  ] },
   { href: '/formations/', label: 'Formations' },
-  { href: 'https://autrerecit.substack.com', label: 'Articles', external: true },
-  { href: '/manifeste/', label: 'Manifeste' },
+  { href: '/articles/', label: 'Articles' },
+  { href: '/contact/', label: 'Contact' },
 ];
+const TUNNEL = '/formation-nationalisme-noir/index.html'; // page de vente (index.html explicite = OK dev + prod + snapshot)
+const SYSTEME_LOGIN = 'https://systeme.io/login'; // TODO: remplacer par l'URL de l'espace membre Systeme.io
 ---
-<header class="site-header">
-  <div class="container hd-row">
-    <a class="wordmark" href="/">L'Autre&nbsp;Récit</a>
-    <nav class="hd-nav" aria-label="Navigation principale">
+<!-- Menu 08 · Encadré filet or (double filet doré, verre sombre) + CTA -->
+<div class="lr-header-wrap">
+  <header class="lr-header">
+    <a class="lr-wordmark" href="/">L'Autre&nbsp;Récit</a>
+    <nav class="lr-nav" aria-label="Navigation principale">
       {nav.map((n) =>
-        n.external ? (
-          <a href={n.href} class="hd-link" target="_blank" rel="noopener">{n.label}<span class="ext">↗</span></a>
+        n.children ? (
+          <div class="lr-has-sub">
+            <a href={n.href} class:list={['lr-link', 'lr-link-sub', { active: isActive(n.href) }]}>{n.label}<span class="lr-caret" aria-hidden="true">▾</span></a>
+            <div class="lr-sub">
+              {n.children.map((c) => (
+                <a href={c.href} class:list={['lr-sublink', { active: isActive(c.href) }]}>{c.label}</a>
+              ))}
+            </div>
+          </div>
+        ) : n.external ? (
+          <a href={n.href} class="lr-link" target="_blank" rel="noopener">{n.label}<span class="ext">↗</span></a>
         ) : (
-          <a href={n.href} class:list={['hd-link', { active: isActive(n.href) }]}>{n.label}</a>
+          <a href={n.href} class:list={['lr-link', { active: isActive(n.href) }]}>{n.label}</a>
         )
       )}
     </nav>
-  </div>
-</header>
+    <div class="lr-actions">
+      <a class="btn btn-oc lr-navbtn lr-navbtn-2nd" href={SYSTEME_LOGIN} target="_blank" rel="noopener">Se connecter</a>
+      <a class="btn btn-or lr-navbtn" href={TUNNEL}>Découvrir la formation <span class="ar">→</span></a>
+    </div>
+  </header>
+</div>
 
 <style>
-  .site-header {
-    position: sticky; top: 0; z-index: 50;
-    background: color-mix(in srgb, var(--cr) 88%, transparent);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(154, 123, 46, 0.18);
+  .lr-header-wrap {
+    position: fixed; top: 12px; left: 0; right: 0; z-index: 60;
+    padding-inline: var(--gutter);
+    margin-inline: auto; max-width: var(--maxw); width: 100%;
+    pointer-events: none;
   }
-  .hd-row { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .wordmark {
-    font-family: var(--serif); font-weight: 900; font-style: italic;
-    font-size: 22px; color: var(--ink); letter-spacing: -0.01em;
+  .lr-header { pointer-events: auto; }
+  /* Design 08 « Encadré filet or » — DOUBLE FILET doré (haut + bas), verre sombre */
+  .lr-header {
+    display: flex; align-items: center; gap: 22px;
+    height: 58px; padding: 0 14px 0 26px;
+    background: rgba(14,12,10,.82);
+    backdrop-filter: blur(8px) saturate(130%);
+    -webkit-backdrop-filter: blur(8px) saturate(130%);
+    will-change: transform; transform: translateZ(0);
+    border-top: 1.5px solid; border-bottom: 1.5px solid;
+    border-left: 0; border-right: 0;
+    border-image: linear-gradient(90deg, transparent, var(--or2) 16%, var(--or3) 50%, var(--or2) 84%, transparent) 1;
+    box-shadow: 0 18px 44px -26px rgba(0,0,0,.6);
   }
-  .wordmark:hover { color: var(--or); }
-  .hd-nav { display: flex; gap: clamp(16px, 3vw, 38px); }
-  .hd-link {
-    font-family: var(--mono); font-size: 12.5px; font-weight: 500;
-    letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3);
-    padding-block: 6px; border-bottom: 1.5px solid transparent;
+  .lr-wordmark {
+    font-family: var(--serif); font-weight: 700; font-style: italic;
+    font-size: 21px; color: #fff; letter-spacing: -0.01em; white-space: nowrap;
+    transition: color .25s;
   }
-  .hd-link:hover { color: var(--ink); }
-  .hd-link.active { color: var(--or2); border-bottom-color: var(--or2); }
-  .hd-link .ext { font-size: 0.8em; margin-left: 3px; opacity: .65; }
-  @media (max-width: 560px) {
-    .wordmark { font-size: 19px; }
-    .hd-link { font-size: 11px; letter-spacing: 0.1em; }
+  .lr-wordmark:hover { color: var(--or3); }
+  .lr-nav { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 28px); margin-left: auto; }
+  .lr-link {
+    font-family: var(--sans); font-size: 15px; font-weight: 500;
+    color: rgba(255,255,255,.74); white-space: nowrap;
+    padding-block: 6px; position: relative; transition: color .25s;
+  }
+  .lr-link:hover { color: #fff; }
+  .lr-link.active { color: var(--or2); font-weight: 600; }
+  .lr-link .ext { font-size: 0.78em; margin-left: 3px; opacity: .65; }
+
+  /* ===== Dropdown « À propos » ===== */
+  .lr-has-sub { position: relative; display: flex; align-items: center; }
+  .lr-link-sub { display: inline-flex; align-items: center; gap: 5px; }
+  .lr-caret { font-size: 9px; opacity: .6; transition: transform .25s; }
+  .lr-has-sub:hover .lr-caret, .lr-has-sub:focus-within .lr-caret { transform: rotate(180deg); }
+  .lr-has-sub::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
+  .lr-sub {
+    position: absolute; top: calc(100% + 12px); left: 50%;
+    display: flex; flex-direction: column; min-width: 224px; padding: 8px;
+    background: rgba(14,12,10,.96); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid; border-image: linear-gradient(120deg, rgba(196,162,74,.3), rgba(212,176,90,.6), rgba(196,162,74,.3)) 1;
+    border-radius: 10px; box-shadow: 0 24px 50px -20px rgba(0,0,0,.7);
+    opacity: 0; visibility: hidden; pointer-events: none; transform: translateX(-50%) translateY(6px);
+    transition: opacity .25s, transform .25s, visibility .25s;
+  }
+  .lr-has-sub:hover .lr-sub, .lr-has-sub:focus-within .lr-sub { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .lr-sublink { font-family: var(--sans); font-size: 14px; font-weight: 500; color: rgba(255,255,255,.78); padding: 10px 14px; border-radius: 7px; white-space: nowrap; transition: background .2s, color .2s; }
+  .lr-sublink:hover { background: rgba(196,162,74,.12); color: #fff; }
+  .lr-sublink.active { color: var(--or2); }
+
+  /* actions : Se connecter (B · or contour) + Découvrir la formation (A · or plein) */
+  /* → vrais boutons du design system (.btn .btn-or / .btn .btn-oc de global.css), taille « nav » */
+  .lr-actions { display: flex; align-items: center; gap: 12px; }
+  .lr-navbtn { padding: 11px 20px; font-size: 12px; letter-spacing: 0.1em; }
+
+  @media (max-width: 860px) {
+    .lr-header { padding: 0 10px 0 16px; gap: 12px; }
+    .lr-wordmark { font-size: 18px; }
+    .lr-nav { margin-left: 0; flex: 1; min-width: 0; gap: 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .lr-nav::-webkit-scrollbar { display: none; }
+    .lr-link { font-size: 13.5px; }
+    .lr-navbtn-2nd { display: none; }          /* « Se connecter » masqué sur mobile */
+    .lr-sub, .lr-caret { display: none; }      /* dropdown désactivé sur mobile → À propos ouvre la page */
+    .lr-navbtn { padding: 9px 13px; font-size: 11px; letter-spacing: 0.06em; }
   }
 </style>

@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Autre Récit — 10 héros tunnel · Nationalisme noir américain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cr:#F2EDE4; --cr2:#EAE3D8; --cr3:#D4C9B8;
+  --or:#9A7B2E; --or2:#C4A24A; --or3:#D4B05A;
+  --ink:#0E0C0A; --ink2:#1A1714; --ink3:#3D3730;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'League Spartan',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --gold:linear-gradient(180deg,#EBCB70 0%,#C9A24C 52%,#A9863A 100%);
+  --gold-hi:linear-gradient(180deg,#F6DE94 0%,#D9B45C 52%,#C4A24A 100%);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--cr);background:#0a0807;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+
+.topbar{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,#0a0807,rgba(10,8,7,.86) 70%,transparent);backdrop-filter:blur(8px);padding:20px 18px 14px}
+.tb-in{max-width:1280px;margin:0 auto;text-align:center}
+.tb-eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--or2);margin:0 0 7px}
+.tb-title{font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(20px,2.8vw,32px);color:#fff;margin:0 0 4px}
+.tb-title b{color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text;font-style:italic}
+.tb-sub{color:rgba(242,237,228,.55);font-size:13px;max-width:66ch;margin:0 auto 14px;line-height:1.6}
+.tabs{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.tab{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.6);background:rgba(255,255,255,.04);border:1px solid rgba(212,176,90,.22);border-radius:40px;padding:8px 13px;cursor:pointer;transition:all .25s var(--ease);white-space:nowrap}
+.tab:hover{color:#fff;border-color:rgba(212,176,90,.5)}
+.tab.on{color:var(--ink);background:var(--gold);border-color:transparent;font-weight:700}
+
+.cap{max-width:1280px;margin:0 auto;padding:18px 28px 4px;text-align:center}
+.cap .nm{font-family:var(--serif);font-style:italic;font-weight:700;font-size:20px;color:#fff}
+.cap p{margin:5px 0 0;color:rgba(242,237,228,.6);font-size:13px;line-height:1.6}
+.stage{max-width:1280px;margin:0 auto;padding:14px 28px 80px}
+.case{display:none}
+.case.show{display:block;animation:rise .5s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* frame */
+.hero{position:relative;border-radius:18px;overflow:hidden;min-height:600px;display:flex;box-shadow:0 50px 100px -50px #000;background:#0c0a08}
+.h-bg{position:absolute;inset:0;overflow:hidden}
+.h-bg img{width:100%;height:100%;object-fit:cover}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--or3);margin:0 0 16px}
+.h1{font-family:var(--serif);font-weight:700;font-size:clamp(36px,5.2vw,72px);line-height:1;letter-spacing:-.025em;color:#fff;margin:0}
+.h1 em{font-style:italic;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text}
+.sub{font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:rgba(242,237,228,.82);font-weight:300;margin:18px 0 0;max-width:46ch}
+.meta{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or2);margin:22px 0 0}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-family:var(--sans);font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:16px 30px;border-radius:6px;box-shadow:0 14px 34px -12px rgba(196,162,74,.6);transition:transform .3s var(--ease),box-shadow .35s,background .3s;cursor:pointer}
+.cta:hover{transform:translateY(-2px);background:var(--gold-hi);box-shadow:0 22px 48px -12px rgba(196,162,74,.75)}
+.cta .ar{transition:transform .3s var(--ease)} .cta:hover .ar{transform:translateX(4px)}
+
+/* ============ H1 · CINÉMATIQUE (1 photo plein cadre) ============ */
+.cine .h-bg img{filter:grayscale(.45) contrast(1.08) brightness(.62)}
+.cine .h-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,6,5,.9) 18%,rgba(8,6,5,.5) 52%,transparent 80%),linear-gradient(0deg,rgba(8,6,5,.85),transparent 45%)}
+.cine .in{position:relative;z-index:2;align-self:flex-end;padding:clamp(34px,5vw,66px);max-width:660px}
+
+/* ============ H2 · BANDEAU 5 FIGURES ============ */
+.band{flex-direction:column}
+.band .strip{display:grid;grid-template-columns:repeat(5,1fr);height:300px}
+.band .strip figure{margin:0;position:relative;overflow:hidden;border-right:1px solid rgba(212,176,90,.25)}
+.band .strip img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.8);transition:filter .5s,transform .6s var(--ease)}
+.band .strip figure:hover img{filter:grayscale(0) brightness(.95);transform:scale(1.04)}
+.band .strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cr);background:linear-gradient(0deg,rgba(8,6,5,.9),transparent)}
+.band .in{padding:clamp(34px,4.5vw,60px);text-align:center;align-self:center;width:100%}
+.band .sub,.band .meta{margin-left:auto;margin-right:auto}
+
+/* ============ H3 · DIPTYQUE SPLIT ============ */
+.dip{align-items:stretch}
+.dip .ph{flex:0 0 44%;position:relative;overflow:hidden;border-right:2px solid var(--or2)}
+.dip .ph img{width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:grayscale(.3) contrast(1.06) brightness(.82)}
+.dip .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(12,10,8,.6))}
+.dip .in{flex:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(34px,4.5vw,64px);background:radial-gradient(120% 100% at 0% 50%,#17120c,#0c0a08)}
+
+/* ============ H4 · MOSAÏQUE VOILÉE ============ */
+.mos .grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:6px;padding:6px}
+.mos .grid img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.5) contrast(1.05)}
+.mos .grid .big{grid-column:span 2;grid-row:span 2}
+.mos .veil{position:absolute;inset:0;background:radial-gradient(80% 80% at 50% 45%,rgba(10,8,7,.6),rgba(8,6,5,.92))}
+.mos .in{position:relative;z-index:2;align-self:center;text-align:center;width:100%;padding:clamp(34px,5vw,60px)}
+.mos .sub,.mos .meta{margin-left:auto;margin-right:auto}
+
+/* ============ H5 · DUOTONE OR ============ */
+.duo .h-bg{background:var(--ink)}
+.duo .h-bg img{filter:grayscale(1) contrast(1.15) brightness(.5);mix-blend-mode:luminosity;opacity:.9}
+.duo .h-bg::before{content:"";position:absolute;inset:0;background:linear-gradient(125deg,#1a1206,#0c0a08 60%);z-index:-1}
+.duo .h-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 78% 30%,rgba(196,162,74,.35),transparent 60%);mix-blend-mode:overlay}
+.duo .in{position:relative;z-index:2;align-self:center;padding:clamp(34px,5vw,66px);max-width:620px}
+
+/* ============ H6 · MÉDAILLON ============ */
+.med .h-bg img{filter:grayscale(.6) brightness(.5) contrast(1.05)}
+.med .h-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,6,5,.9),rgba(8,6,5,.4) 70%)}
+.med .in{position:relative;z-index:2;align-self:center;padding:clamp(34px,5vw,66px);max-width:600px}
+.med .coin{position:absolute;right:clamp(28px,5vw,72px);top:50%;transform:translateY(-50%);z-index:2;width:clamp(150px,20vw,260px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:2px solid var(--or2);box-shadow:0 30px 70px -28px #000,0 0 50px -12px rgba(196,162,74,.5)}
+.med .coin img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(.2) contrast(1.05)}
+@media(max-width:780px){.med .coin{display:none}}
+
+/* ============ H7 · FRISE CHRONOLOGIQUE ============ */
+.tl{flex-direction:column;background:radial-gradient(120% 100% at 50% 0%,#16110b,#0a0807 70%)}
+.tl .in{padding:clamp(34px,4.5vw,56px) clamp(28px,4vw,56px) 6px;text-align:center}
+.tl .sub{margin:14px auto 0}
+.tl .frise{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:0;padding:30px clamp(20px,4vw,56px) clamp(30px,4vw,52px);margin-top:18px}
+.tl .frise::before{content:"";position:absolute;left:8%;right:8%;top:54px;height:1px;background:linear-gradient(90deg,transparent,var(--or2),var(--or2),transparent)}
+.tl .node{position:relative;text-align:center}
+.tl .node .dot{width:11px;height:11px;border-radius:50%;background:var(--or2);margin:0 auto;box-shadow:0 0 0 5px #0c0a08,0 0 18px rgba(196,162,74,.7);position:relative;z-index:2}
+.tl .node .yr{font-family:var(--serif);font-style:italic;font-weight:700;font-size:15px;color:var(--or3);margin-top:14px}
+.tl .node figure{margin:12px auto 0;width:84px;height:84px;border-radius:50%;overflow:hidden;border:1px solid rgba(212,176,90,.4)}
+.tl .node img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.85);transition:filter .4s}
+.tl .node:hover img{filter:grayscale(0)}
+.tl .node .nm{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.7);margin-top:9px}
+.tl .cta{margin-bottom:6px}
+
+/* ============ H8 · MARQUEE DE PORTRAITS ============ */
+.mq{flex-direction:column;justify-content:center;background:radial-gradient(120% 100% at 50% 50%,#15110b,#0a0807 70%)}
+.mq .in{padding:clamp(36px,5vw,56px) clamp(28px,4vw,56px) 24px;text-align:center}
+.mq .sub{margin:14px auto 0}
+.mq-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);padding-bottom:30px}
+.mq-track{display:flex;gap:16px;width:max-content;padding-inline:16px;animation:mqScroll 30s linear infinite}
+.mq:hover .mq-track{animation-play-state:paused}
+@keyframes mqScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-track figure{margin:0;flex:0 0 150px;height:190px;border-radius:12px;overflow:hidden;border:1px solid rgba(212,176,90,.3);position:relative}
+.mq-track img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.82);transition:filter .4s}
+.mq-track figure:hover img{filter:grayscale(0)}
+.mq-track figcaption{position:absolute;left:0;right:0;bottom:0;padding:8px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cr);background:linear-gradient(0deg,rgba(8,6,5,.92),transparent)}
+
+/* ============ H9 · STACK 3D / ÉVENTAIL ============ */
+.stk{align-items:center;background:radial-gradient(120% 110% at 75% 40%,#17120c,#0a0807 65%);perspective:1400px}
+.stk .in{flex:1;padding:clamp(34px,5vw,72px);z-index:3}
+.stk .fan{flex:0 0 46%;position:relative;height:480px;align-self:center;transform-style:preserve-3d}
+.stk .fan figure{position:absolute;top:50%;left:50%;width:230px;height:320px;margin:-160px 0 0 -115px;border-radius:14px;overflow:hidden;border:1px solid rgba(212,176,90,.35);box-shadow:0 40px 80px -30px #000;transition:transform .5s var(--ease)}
+.stk .fan img{width:100%;height:100%;object-fit:cover;filter:grayscale(.55) brightness(.85) contrast(1.05)}
+.stk .fan figure:nth-child(1){transform:translateX(-150px) rotate(-9deg) scale(.92);z-index:1}
+.stk .fan figure:nth-child(2){transform:translateX(0) rotate(0deg);z-index:3}
+.stk .fan figure:nth-child(3){transform:translateX(150px) rotate(9deg) scale(.92);z-index:1}
+.stk .fan:hover figure:nth-child(1){transform:translateX(-190px) rotate(-13deg) scale(.94)}
+.stk .fan:hover figure:nth-child(3){transform:translateX(190px) rotate(13deg) scale(.94)}
+@media(max-width:820px){.stk{flex-direction:column}.stk .fan{flex-basis:auto;height:360px;width:100%}}
+
+/* ============ H10 · MINIMAL ÉDITORIAL ============ */
+.min{align-items:center;background:radial-gradient(120% 100% at 30% 40%,#16110b,#0a0807 70%)}
+.min .in{flex:1;padding:clamp(40px,6vw,86px);z-index:2}
+.min .h1{font-size:clamp(40px,6vw,84px)}
+.min .frame{flex:0 0 32%;align-self:center;margin-right:clamp(30px,5vw,80px);position:relative}
+.min .frame figure{margin:0;aspect-ratio:3/4;border-radius:10px;overflow:hidden;border:1px solid rgba(212,176,90,.45);box-shadow:0 40px 90px -34px #000}
+.min .frame img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(.25) contrast(1.06)}
+.min .frame::after{content:"⸻";position:absolute;top:-26px;left:0;color:var(--or2);font-size:20px;letter-spacing:-2px}
+@media(max-width:820px){.min{flex-direction:column}.min .frame{flex-basis:auto;width:60%;margin:0 0 8px}}
+
+.foot-note{max-width:1280px;margin:0 auto;padding:8px 28px 56px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:rgba(242,237,228,.32);line-height:1.7}
+@media(max-width:760px){.dip,.med .in{flex-direction:column}.dip .ph{flex-basis:280px;border-right:0;border-bottom:2px solid var(--or2)}.band .strip{grid-template-columns:repeat(5,1fr);height:180px}.hero{min-height:0}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="tb-in">
+  <p class="tb-eyebrow">Tunnel · Nationalisme noir américain</p>
+  <h1 class="tb-title">Dix <b>héros</b> — single, multi, frise, duotone, stack…</h1>
+  <p class="tb-sub">Même promesse, dix dispositions de photos &amp; effets. Tantôt une figure, tantôt le mouvement pluriel (Garvey, Du Bois, Malcolm, King, Panthers). Survolez. Choisis-en un pour le tunnel.</p>
+  <nav class="tabs" id="tabs">
+    <button class="tab" data-t="h1">01 · Cinématique</button>
+    <button class="tab" data-t="h2">02 · Bandeau 5</button>
+    <button class="tab" data-t="h3">03 · Diptyque</button>
+    <button class="tab" data-t="h4">04 · Mosaïque</button>
+    <button class="tab" data-t="h5">05 · Duotone or</button>
+    <button class="tab" data-t="h6">06 · Médaillon</button>
+    <button class="tab" data-t="h7">07 · Frise</button>
+    <button class="tab" data-t="h8">08 · Marquee</button>
+    <button class="tab" data-t="h9">09 · Stack 3D</button>
+    <button class="tab" data-t="h10">10 · Minimal</button>
+  </nav>
+</div></div>
+
+<div class="cap" id="cap"></div>
+<div class="stage">
+
+  <section class="case" data-id="h1"><div class="hero cine">
+    <div class="h-bg"><img src="/demo/panthers.jpg" alt=""></div>
+    <div class="in">
+      <p class="eyebrow">Formation premium · L'Autre Récit</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">De Marcus Garvey à la Nation of Islam, de Malcolm X au Black Power — un siècle de luttes, lu avec une grille de science politique.</p>
+      <p class="meta">5 cours · 38 modules · accès à vie</p>
+      <span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span>
+    </div>
+  </div></section>
+
+  <section class="case" data-id="h2"><div class="hero band">
+    <div class="strip">
+      <figure><img src="/demo/garvey.jpg" alt=""><figcaption>Garvey</figcaption></figure>
+      <figure><img src="/demo/dubois.jpg" alt=""><figcaption>Du Bois</figcaption></figure>
+      <figure><img src="/demo/malcolmx.jpg" alt=""><figcaption>Malcolm X</figcaption></figure>
+      <figure><img src="/demo/mlk.jpg" alt=""><figcaption>M.L. King</figcaption></figure>
+      <figure><img src="/demo/panthers6.jpg" alt=""><figcaption>Black Panthers</figcaption></figure>
+    </div>
+    <div class="in">
+      <p class="eyebrow">Un mouvement pluriel</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">Cinq trajectoires, un même diagnostic. La formation qui relie Garvey, Du Bois, Malcolm, King et les Panthers.</p>
+      <span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span>
+    </div>
+  </div></section>
+
+  <section class="case" data-id="h3"><div class="hero dip">
+    <div class="ph"><img src="/demo/malcolmx.jpg" alt=""></div>
+    <div class="in">
+      <p class="eyebrow">Formation premium</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">Civil rights contre human rights, intégration contre autodétermination. Les stratégies d'un siècle de luttes, décodées.</p>
+      <p class="meta">5 cours · 38 modules · accès à vie</p>
+      <span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span>
+    </div>
+  </div></section>
+
+  <section class="case" data-id="h4"><div class="hero mos">
+    <div class="grid">
+      <img class="big" src="/demo/panthers.jpg" alt="">
+      <img src="/demo/garvey.jpg" alt=""><img src="/demo/malcolmx.jpg" alt="">
+      <img src="/demo/dubois.jpg" alt=""><img src="/demo/mlk.jpg" alt="">
+      <img src="/demo/selma.jpg" alt=""><img src="/demo/carmichael.jpg" alt="">
+      <img src="/demo/migration.jpg" alt=""><img src="/demo/women-bpp.jpg" alt="">
+    </div>
+    <div class="veil"></div>
+    <div class="in">
+      <p class="eyebrow">Formation premium · L'Autre Récit</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">Garvey, Du Bois, Malcolm, King, les Panthers — toutes les pièces d'un même puzzle politique.</p>
+      <p class="meta">5 cours · 38 modules · accès à vie</p>
+      <span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span>
+    </div>
+  </div></section>
+
+  <section class="case" data-id="h5"><div class="hero duo">
+    <div class="h-bg"><img src="/demo/garvey.jpg" alt=""></div>
+    <div class="in">
+      <p class="eyebrow">Formation premium</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">« Up, you mighty race. » De la fierté garveyiste à la révolution panthère — l'histoire d'une autodétermination.</p>
+      <p class="meta">5 cours · 38 modules · accès à vie</p>
+      <span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span>
+    </div>
+  </div></section>
+
+  <section class="case" data-id="h6"><div class="hero med">
+    <div class="h-bg"><img src="/demo/selma.jpg" alt=""></div>
+    <div class="in">
+      <p class="eyebrow">Formation premium · L'Autre Récit</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">De la marche de Selma aux tribunes de Harlem — comment une minorité a bâti ses propres institutions.</p>
+      <p class="meta">5 cours · 38 modules · accès à vie</p>
+      <span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span>
+    </div>
+    <div class="coin"><img src="/demo/malcolmx.jpg" alt=""></div>
+  </div></section>
+
+  <section class="case" data-id="h7"><div class="hero tl">
+    <div class="in">
+      <p class="eyebrow">Un mouvement pluriel · 1916 → 1966</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">Un demi-siècle, cinq figures, une grille de lecture continue.</p>
+    </div>
+    <div class="frise">
+      <div class="node"><div class="dot"></div><div class="yr">1916</div><figure><img src="/demo/garvey.jpg" alt=""></figure><div class="nm">Garvey</div></div>
+      <div class="node"><div class="dot"></div><div class="yr">1903</div><figure><img src="/demo/dubois.jpg" alt=""></figure><div class="nm">Du Bois</div></div>
+      <div class="node"><div class="dot"></div><div class="yr">1964</div><figure><img src="/demo/malcolmx.jpg" alt=""></figure><div class="nm">Malcolm X</div></div>
+      <div class="node"><div class="dot"></div><div class="yr">1963</div><figure><img src="/demo/mlk.jpg" alt=""></figure><div class="nm">King</div></div>
+      <div class="node"><div class="dot"></div><div class="yr">1966</div><figure><img src="/demo/panthers6.jpg" alt=""></figure><div class="nm">Panthers</div></div>
+    </div>
+    <div style="text-align:center"><span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span></div>
+  </div></section>
+
+  <section class="case" data-id="h8"><div class="hero mq">
+    <div class="in">
+      <p class="eyebrow">Un mouvement pluriel</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">Cinq trajectoires qui se répondent. La formation qui les relie.</p>
+    </div>
+    <div class="mq-track-wrap"><div class="mq-track">
+      <figure><img src="/demo/garvey.jpg" alt=""><figcaption>Garvey</figcaption></figure>
+      <figure><img src="/demo/dubois.jpg" alt=""><figcaption>Du Bois</figcaption></figure>
+      <figure><img src="/demo/malcolmx.jpg" alt=""><figcaption>Malcolm X</figcaption></figure>
+      <figure><img src="/demo/mlk.jpg" alt=""><figcaption>King</figcaption></figure>
+      <figure><img src="/demo/panthers6.jpg" alt=""><figcaption>Panthers</figcaption></figure>
+      <figure><img src="/demo/carmichael.jpg" alt=""><figcaption>Carmichael</figcaption></figure>
+      <figure><img src="/demo/garvey.jpg" alt=""><figcaption>Garvey</figcaption></figure>
+      <figure><img src="/demo/dubois.jpg" alt=""><figcaption>Du Bois</figcaption></figure>
+      <figure><img src="/demo/malcolmx.jpg" alt=""><figcaption>Malcolm X</figcaption></figure>
+      <figure><img src="/demo/mlk.jpg" alt=""><figcaption>King</figcaption></figure>
+      <figure><img src="/demo/panthers6.jpg" alt=""><figcaption>Panthers</figcaption></figure>
+      <figure><img src="/demo/carmichael.jpg" alt=""><figcaption>Carmichael</figcaption></figure>
+    </div></div>
+    <div style="text-align:center;padding-bottom:34px"><span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span></div>
+  </div></section>
+
+  <section class="case" data-id="h9"><div class="hero stk">
+    <div class="in">
+      <p class="eyebrow">Formation premium</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">Des figures qui se superposent et se répondent — survolez pour les déployer.</p>
+      <p class="meta">5 cours · 38 modules · accès à vie</p>
+      <span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span>
+    </div>
+    <div class="fan">
+      <figure><img src="/demo/garvey.jpg" alt=""></figure>
+      <figure><img src="/demo/malcolmx.jpg" alt=""></figure>
+      <figure><img src="/demo/mlk.jpg" alt=""></figure>
+    </div>
+  </div></section>
+
+  <section class="case" data-id="h10"><div class="hero min">
+    <div class="frame"><figure><img src="/demo/malcolmx.jpg" alt=""></figure></div>
+    <div class="in">
+      <p class="eyebrow">Formation premium · L'Autre Récit</p>
+      <h2 class="h1">Le nationalisme noir <em>américain</em></h2>
+      <p class="sub">De Marcus Garvey au Black Power. Une grille de science politique pour lire un siècle de luttes — et la transposer.</p>
+      <p class="meta">5 cours · 38 modules · accès à vie</p>
+      <span class="cta">Rejoindre — 79,99 € <span class="ar">→</span></span>
+    </div>
+  </div></section>
+
+</div>
+<p class="foot-note">L'Autre Récit — 10 héros tunnel · or #C4A24A · Playfair / League Spartan / JetBrains Mono · photos de la formation</p>
+
+<script>
+(function(){
+  var CAPS={
+    h1:["Cinématique","Une seule photo plein cadre (les Panthers), voile sombre en diagonale, titre + CTA en bas. Le plus « beau, dans le récit »."],
+    h2:["Bandeau 5 figures","La rangée des cinq — Garvey, Du Bois, Malcolm, King, Panthers. Le mouvement pluriel, assumé d'entrée."],
+    h3:["Diptyque","Moitié photo (Malcolm) / moitié texte, couture dorée. Éditorial, frontal."],
+    h4:["Mosaïque voilée","Grille de figures derrière un voile sombre + vignette dorée. Texture, profondeur, pluralité."],
+    h5:["Duotone or","Une figure (Garvey) en bichromie or/noir, halo doré. Graphique, fort."],
+    h6:["Médaillon","Grande scène (Selma) + portrait en médaillon doré (Malcolm). Le collectif et la figure."],
+    h7:["Frise","Les cinq sur une ligne de temps dorée, avec dates. Raconte l'arc 1916 → 1966."],
+    h8:["Marquee","Les portraits défilent lentement sous le titre. Le « mouvement » au sens propre."],
+    h9:["Stack 3D","Trois figures en éventail 3D qui se déploient au survol. Dimensionnel."],
+    h10:["Minimal éditorial","Titre géant, un seul portrait encadré d'or, beaucoup d'air. Premium par la retenue."]
+  };
+  var cap=document.getElementById('cap');
+  var tabs=document.querySelectorAll('.tab'), cases=document.querySelectorAll('.case');
+  function show(id){
+    tabs.forEach(function(t){t.classList.toggle('on',t.dataset.t===id);});
+    cases.forEach(function(c){c.classList.toggle('show',c.dataset.id===id);});
+    cap.innerHTML='<span class="nm">'+CAPS[id][0]+'</span><p>'+CAPS[id][1]+'</p>';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.t);});});
+  show('h1');
+})();
+</script>
+</body>
+</html>

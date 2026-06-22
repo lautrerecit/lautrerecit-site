@@ -1,0 +1,128 @@
+<meta charset="utf-8">
+<!-- ============================================================
+     L'AUTRE RÉCIT — Page Bon de commande · BANDEAU OFFRE premium NOIR (plein cadre)
+     OÙ : page Bon de commande → élément « Code HTML » EN HAUT, pleine largeur.
+     Le formulaire de paiement natif Systeme se place EN DESSOUS (restylé par brand.css).
+     Mets aussi la SECTION en fond noir (#0E0C0A) pour le plein cadre.
+     À AJUSTER : le prix (cherche « 79,99 ») · tarif solidaire (cherche « 49 »).
+     ⚠ Le tarif solidaire = créer un CODE PROMO « SOLIDAIRE » dans Systeme (-30,99 € → 49 €),
+       à envoyer sur demande par email. Cette page ne fait que l'annoncer.
+     ============================================================ -->
+<div class="lr-sys lr-ord">
+  <style>
+  .lr-ord{--cr:#F2EDE4;--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--ink:#0E0C0A;
+    --serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:#0E0C0A;color:var(--cr);font-family:var(--sans);line-height:1.6;
+    padding:clamp(46px,7vw,92px) clamp(22px,5vw,56px);position:relative;overflow:hidden}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=League+Spartan:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+  .lr-ord *{box-sizing:border-box}
+  .lr-ord::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 70% at 50% -8%,rgba(196,162,74,.16),transparent 58%);pointer-events:none}
+  .lr-ord .wrap{position:relative;max-width:1020px;margin:0 auto;text-align:center}
+
+  .lr-ord .eye{display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--or2);margin:0 0 18px}
+  .lr-ord .eye::before,.lr-ord .eye::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--or2))}
+  .lr-ord .eye::after{background:linear-gradient(90deg,var(--or2),transparent)}
+  .lr-ord h1{font-family:var(--serif);font-weight:700;color:var(--cr);font-size:clamp(34px,5.2vw,58px);line-height:1.08;letter-spacing:-.015em;margin:0 0 18px}
+  .lr-ord h1 em{font-style:italic;font-weight:900;background:linear-gradient(180deg,#F6DE94,#D9B45C 52%,#C4A24A);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .lr-ord .lede{color:#b7ac9a;font-size:clamp(16px,1.7vw,19px);max-width:62ch;margin:0 auto;line-height:1.7}
+  .lr-ord .lede em{font-style:italic;color:var(--or3);font-family:var(--serif);font-weight:700}
+  .lr-ord .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(180deg,#EBCB70,#A9863A);margin:34px auto;box-shadow:0 0 0 1px rgba(196,162,74,.5),0 0 0 7px rgba(196,162,74,.12)}
+
+  .lr-ord .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,44px);text-align:left;align-items:stretch}
+
+  .lr-ord .inc-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--or);margin:0 0 14px}
+  .lr-ord .inc{list-style:none;padding:0;margin:0}
+  .lr-ord .inc li{display:flex;gap:14px;align-items:flex-start;padding:14px 0;font-size:16px;line-height:1.5;color:var(--cr);border-bottom:1px solid rgba(196,162,74,.14)}
+  .lr-ord .inc li:last-child{border-bottom:0}
+  .lr-ord .inc .ck{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--ink);background:linear-gradient(180deg,#EBCB70,#C9A24C);margin-top:1px}
+  .lr-ord .inc em{font-style:italic;color:var(--or2);font-family:var(--serif);font-weight:700}
+
+  .lr-ord .card{position:relative;background:linear-gradient(180deg,#1a160f,#100d09);border:1px solid rgba(196,162,74,.32);border-top:3px solid var(--or2);border-radius:16px;padding:clamp(26px,3vw,38px);box-shadow:0 30px 70px -40px rgba(0,0,0,.85),inset 0 1px 0 rgba(212,176,90,.1);display:flex;flex-direction:column}
+  .lr-ord .card .seal{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:var(--or3);font-size:15px;border:1px solid rgba(196,162,74,.4);background:rgba(196,162,74,.08)}
+  .lr-ord .card .ph{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3);margin:0 0 12px}
+  .lr-ord .card .price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .lr-ord .card .price s.old{font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(20px,2.4vw,26px);color:#8f8472;text-decoration:line-through;text-decoration-color:rgba(196,162,74,.7)}
+  .lr-ord .card .price b{font-family:var(--serif);font-weight:900;font-size:clamp(46px,5.5vw,62px);line-height:1;background:linear-gradient(180deg,#F6DE94,#D9B45C 50%,#C4A24A);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .lr-ord .card .psub{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#b7ac9a;margin:8px 0 0}
+  .lr-ord .card .psub b{color:var(--or2);font-weight:700}
+  .lr-ord .evo{margin-top:20px;background:rgba(196,162,74,.08);border:1px solid rgba(196,162,74,.26);border-radius:11px;padding:16px 18px}
+  .lr-ord .evo .pill{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);background:linear-gradient(180deg,#EBCB70,#C9A24C);padding:5px 12px;border-radius:99px;margin:0 0 10px}
+  .lr-ord .evo p{font-size:14px;line-height:1.55;color:#d8cdb8;margin:0}
+  .lr-ord .evo p b{color:var(--or2);font-weight:700}
+  .lr-ord .card .rule{height:1px;border:0;background:linear-gradient(90deg,rgba(196,162,74,.4),transparent);margin:20px 0}
+  .lr-ord .card .gar{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;color:#cbbfa8;line-height:1.55;margin:0}
+  .lr-ord .card .gar b{color:var(--cr);font-weight:700}
+
+  .lr-ord .founders{display:flex;gap:clamp(18px,3vw,30px);align-items:center;text-align:left;margin:clamp(26px,4vw,40px) 0 0;background:linear-gradient(120deg,rgba(196,162,74,.12),rgba(196,162,74,.03));border:1px solid rgba(196,162,74,.3);border-radius:16px;padding:clamp(22px,3vw,32px)}
+  .lr-ord .founders .fseal{flex:none;width:96px;height:96px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:radial-gradient(120% 120% at 50% 0%,#211c14,#0e0c0a);border:1px solid rgba(196,162,74,.4);box-shadow:inset 0 1px 0 rgba(212,176,90,.2)}
+  .lr-ord .founders .fseal .st{font-size:22px;color:var(--or3)}
+  .lr-ord .founders .fseal .lb{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or2);text-align:center;line-height:1.3}
+  .lr-ord .founders .fk{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--or3);margin:0 0 7px}
+  .lr-ord .founders h3{font-family:var(--serif);font-weight:700;font-size:clamp(20px,2.5vw,26px);color:var(--cr);margin:0 0 9px;line-height:1.2}
+  .lr-ord .founders h3 em{font-style:italic;color:var(--or2)}
+  .lr-ord .founders .fd{font-size:14.5px;line-height:1.65;color:#c3b8a4;margin:0}
+  .lr-ord .founders .fd b{color:var(--or2);font-weight:700}
+
+  .lr-ord .soli{font-size:13.5px;line-height:1.6;color:#9c9079;margin:clamp(22px,3vw,30px) auto 0;max-width:62ch}
+  .lr-ord .soli b{color:var(--or2);font-weight:700}
+  .lr-ord .soli a{color:var(--or3);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+  .lr-ord .trust{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:clamp(26px,4vw,40px);padding-top:24px;border-top:1px solid rgba(196,162,74,.14)}
+  .lr-ord .trust span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8f8472}
+  .lr-ord .trust b{color:var(--or2);font-weight:400}
+
+  @media(max-width:680px){
+    .lr-ord .grid{grid-template-columns:1fr}
+    .lr-ord .founders{flex-direction:column;text-align:center;align-items:center}
+    .lr-ord .founders .fk{text-align:center}
+  }
+  </style>
+  <div class="wrap">
+    <p class="eye">Votre commande</p>
+    <h1>Le nationalisme noir <em>américain</em></h1>
+    <p class="lede">Une formation de référence — un cours introductif, <em>cinq cours</em> et l'interlude <em>Malcolm × King</em>. Des racines à l'héritage contemporain, accès à vie.</p>
+    <div class="dot"></div>
+
+    <div class="grid">
+      <div>
+        <p class="inc-k">Ce qui est inclus</p>
+        <ul class="inc">
+          <li><span class="ck">&#10003;</span><span>Un cours introductif + les 5 cours, d'<em>Aux origines</em> au <em>Black Power</em></span></li>
+          <li><span class="ck">&#10003;</span><span>L'interlude <em>Malcolm × King</em> — le discours inachevé</span></li>
+          <li><span class="ck">&#10003;</span><span>Accès à vie : slides interactives &amp; fiches de synthèse</span></li>
+          <li><span class="ck">&#10003;</span><span>Un quiz à chaque module et à chaque cours</span></li>
+          <li><span class="ck">&#10003;</span><span>Citations sourcées &amp; ressources de lecture</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="seal">&#9733;</div>
+        <p class="ph">Tarif de lancement</p>
+        <div class="price"><s class="old">119,99&nbsp;&euro;</s><b>79,99&nbsp;&euro;</b></div>
+        <p class="psub">Paiement unique <b>ou en 3×</b> · accès immédiat</p>
+        <div class="evo">
+          <span class="pill">Formation évolutive</span>
+          <p>Votre prix de lancement est <b>gelé à 79,99 €</b>. La formation continue de grandir — de nouveaux cours s'ajouteront, et vous y accéderez sans jamais payer plus.</p>
+        </div>
+        <hr class="rule">
+        <p class="gar">&#8617; <span><b>Garantie 7 jours</b> — remboursé sans condition si la formation ne te convient pas.</span></p>
+      </div>
+    </div>
+
+    <div class="founders">
+      <div class="fseal"><span class="st">&#9733;</span><span class="lb">Édition<br>Fondateurs</span></div>
+      <div>
+        <p class="fk">Avantage Fondateurs · 30 places</p>
+        <h3>Réservé aux <em>30 premiers</em> acheteurs.</h3>
+        <p class="fd"><b>Tarif de lancement conservé à vie</b> sur toutes mes prochaines formations — quel que soit le moment où vous les achetez — un <b>accès exclusif à des cours réservés</b>, et bien plus encore.</p>
+      </div>
+    </div>
+
+    <p class="soli">Tarif solidaire — <b>49 €</b> · étudiants, sans emploi ou autre situation complexe. Écrivez-moi pour expliquer votre situation à <a href="mailto:lautrerecit@gmail.com">lautrerecit@gmail.com</a>.</p>
+
+    <div class="trust">
+      <span>&#128274; <b>Paiement sécurisé</b> Stripe</span>
+      <span>&#9993; <b>Accès</b> immédiat</span>
+      <span>&#8617; <b>Garantie</b> 7 jours</span>
+    </div>
+  </div>
+</div>

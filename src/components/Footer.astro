@@ -15,9 +15,10 @@ const year = 2026;
     <nav class="ft-col" aria-label="Pages">
       <span class="ft-h">Le site</span>
       <a href="/">Accueil</a>
-      <a href="/formations/">Formations</a>
-      <a href="https://autrerecit.substack.com" target="_blank" rel="noopener">Articles ↗</a>
-      <a href="/manifeste/">Manifeste</a>
+      <a href="/a-propos/">À propos</a>
+      <a href="/vision/">Vision</a>
+      <a href="/articles/">Articles</a>
+      <a href="/contact/">Contact</a>
     </nav>
 
     <nav class="ft-col" aria-label="Réseaux">
@@ -39,6 +40,17 @@ const year = 2026;
 
 <style>
   .site-footer { padding-top: clamp(48px, 7vw, 84px); }
+  /* newsletter band */
+  .ft-news { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; padding-bottom: 36px; margin-bottom: 38px; border-bottom: 1px solid rgba(212,176,90,.18); }
+  .ft-news-tx { display: flex; flex-direction: column; gap: 5px; }
+  .ft-news-h { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: clamp(20px, 2.2vw, 28px); color: var(--cr); }
+  .ft-news-h em { font-style: italic; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; }
+  .ft-news-sub { font-family: var(--sans); font-size: 13.5px; color: var(--cr3); }
+  .ft-news-form { display: flex; gap: 10px; flex: 0 1 460px; }
+  .ft-news-input { flex: 1; min-width: 0; padding: 13px 16px; border: 1px solid rgba(212,176,90,.3); border-radius: 6px; background: rgba(255,255,255,.05); font-family: var(--sans); font-size: 14.5px; color: var(--cr); transition: border-color .25s, box-shadow .25s; }
+  .ft-news-input::placeholder { color: rgba(242,237,228,.42); }
+  .ft-news-input:focus { outline: none; border-color: var(--or2); box-shadow: 0 0 0 3px rgba(196,162,74,.18); }
+  @media (max-width: 600px) { .ft-news-form { flex-basis: 100%; } }
   .ft-grid {
     display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(24px, 4vw, 56px);
     padding-bottom: 40px; border-bottom: 1px solid rgba(212, 176, 90, 0.18);

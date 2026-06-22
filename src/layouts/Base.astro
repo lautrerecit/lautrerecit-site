@@ -2,13 +2,16 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Cursor from '../components/Cursor.astro';
+import Verset from '../components/Verset.astro';
 
 const {
-  title = "L'Autre Récit — Formations d'histoire critique",
-  description = "Des formations pour déconstruire les récits dominants et redonner aux minorités les outils de leur propre histoire.",
+  title = "L'Autre Récit — Média d'analyse critique",
+  description = "Un média qui déconstruit les récits dominants et rend aux minorités les outils de leur propre histoire — analyses, articles et formations.",
   image = '/og-default.jpg',
   noHeader = false,
   noFooter = false,
+  noVerset = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -19,7 +22,18 @@ const ogImage = new URL(image, Astro.site).href;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0E0C0A" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="L'Autre Récit" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -35,11 +49,24 @@ const ogImage = new URL(image, Astro.site).href;
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- SEO — données structurées Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "L'Autre Récit",
+      "url": Astro.site?.href,
+      "description": "Un média qui déconstruit les récits dominants et rend aux minorités les outils de leur propre histoire.",
+      "sameAs": [
+        "https://www.instagram.com/lautrerecit/",
+        "https://autrerecit.substack.com"
+      ]
+    })} />
+
     <!-- Polices de marque -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Amiri:wght@400;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -48,6 +75,21 @@ const ogImage = new URL(image, Astro.site).href;
     <main>
       <slot />
     </main>
+    {!noVerset && <Verset />}
     {!noFooter && <Footer />}
+    <Cursor />
+    <script is:inline>
+      // PWA — enregistre le service worker (installable + hors-ligne) en PROD uniquement.
+      // En local (dev), on l'évite : son cache servirait des assets périmés et masquerait les modifs.
+      (function () {
+        var host = location.hostname;
+        var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '' || host.endsWith('.local');
+        if ('serviceWorker' in navigator && !isLocal) {
+          window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/sw.js').catch(function () {});
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

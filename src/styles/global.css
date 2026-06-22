@@ -37,11 +37,16 @@
   --t-card:    23px;
   --t-body:    17px;
   --t-eyebrow: 12px;
+
+  /* Doré canonique premium (un seul dégradé, identique partout) */
+  --gold:    linear-gradient(180deg, #EBCB70 0%, #C9A24C 52%, #A9863A 100%);
+  --gold-hi: linear-gradient(180deg, #F6DE94 0%, #D9B45C 52%, #C4A24A 100%);
+  --ease:    cubic-bezier(.22, 1, .36, 1);
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
   margin: 0;
@@ -58,10 +63,10 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--serif);
   color: var(--ink);
-  line-height: 1.12;
-  letter-spacing: -0.012em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin: 0 0 0.5em;
-  font-weight: 900;
+  font-weight: 700; /* raffiné — moins « gras/garage » (réf. tunnel) */
 }
 h1 { font-size: var(--t-section); }
 h2 { font-size: var(--t-section); }
@@ -93,20 +98,47 @@ img { max-width: 100%; display: block; }
 
 .lede { font-size: clamp(18px, 2vw, 22px); color: var(--ink3); max-width: 60ch; }
 
-/* ---- boutons ---- */
+/* ---- boutons — système canonique (cohérent site + tunnel) ----
+   A .btn-or = or plein (PRIMAIRE) · B .btn-oc = or contour (SECONDAIRE)
+   D .btn-gh = fantôme (crème) · E .btn-ik = ink filet or (sombre raffiné)
+   C .btn-cr = crème plein (sur sombre, optionnel) · .btn-lg = gros CTA
+   Règle d'usage : sur SOMBRE → A, B, E ; sur CRÈME → A (plein) + D (fantôme). */
 .btn {
-  display: inline-flex; align-items: center; gap: .5em;
-  font-family: var(--mono); font-weight: 700; font-size: 13px;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 14px 26px; border-radius: var(--radius);
-  cursor: pointer; border: 1px solid transparent; transition: transform .25s, box-shadow .25s, background .25s, color .25s;
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--sans); font-weight: 700; font-size: 13.5px;
+  letter-spacing: 0.13em; text-transform: uppercase; line-height: 1; white-space: nowrap;
+  padding: 15px 30px; border-radius: 5px; cursor: pointer;
+  border: 1.5px solid transparent; text-decoration: none;
+  transition: transform .3s var(--ease), box-shadow .35s, background .3s, color .25s, border-color .3s;
 }
-.btn-primary { background: var(--ink); color: var(--cr); }
-.btn-primary:hover { background: var(--ink2); color: var(--cr); transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(0,0,0,.5); }
-.btn-gold { background: linear-gradient(180deg, var(--or3), var(--or2)); color: var(--ink); }
-.btn-gold:hover { color: var(--ink); transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(154,123,46,.6); }
-.btn-ghost { background: transparent; color: var(--ink); border-color: rgba(14,12,10,.25); }
-.btn-ghost:hover { color: var(--ink); border-color: var(--or2); }
+.btn .ar { transition: transform .3s var(--ease); }
+.btn:hover .ar { transform: translateX(5px); }
+
+/* A · Or plein — PRIMAIRE (flèche qui glisse + lift) */
+.btn-or { background: var(--gold); color: var(--ink); box-shadow: 0 12px 28px -10px rgba(196,162,74,.55); }
+.btn-or:hover { background: var(--gold-hi); color: var(--ink); transform: translateY(-2px); box-shadow: 0 18px 40px -10px rgba(196,162,74,.72); }
+
+/* B · Or contour — SECONDAIRE (remplissage doré qui balaie au survol) */
+.btn-oc { background: transparent; color: var(--or2); border-color: rgba(196,162,74,.6); }
+.btn-oc::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease); }
+.btn-oc:hover { border-color: var(--or2); color: var(--ink); transform: translateY(-2px); box-shadow: 0 16px 34px -12px rgba(196,162,74,.4); }
+.btn-oc:hover::before { transform: scaleX(1); }
+
+/* D · Fantôme (crème) */
+.btn-gh { background: transparent; color: var(--ink3); border-color: rgba(14,12,10,.22); }
+.btn-gh:hover { color: var(--ink); border-color: var(--or2); transform: translateY(-2px); }
+
+/* E · Ink filet or (sombre raffiné — flèche jamais dorée) */
+.btn-ik { background: linear-gradient(180deg,#211b14,#0E0C0A); color: var(--cr); border: 1px solid rgba(212,176,90,.4); border-top-width: 2px; border-top-color: var(--or2); }
+.btn-ik:hover { color: var(--cr); border-color: var(--or2); transform: translateY(-2px); box-shadow: 0 16px 38px -14px rgba(0,0,0,.7), 0 0 34px -10px rgba(196,162,74,.4); }
+
+/* C · Crème plein (sur sombre, optionnel) */
+.btn-cr { background: var(--cr); color: var(--ink); box-shadow: 0 12px 28px -12px rgba(0,0,0,.6); }
+.btn-cr:hover { background: #fff; color: var(--ink); transform: translateY(-2px); box-shadow: 0 18px 40px -12px rgba(0,0,0,.7); }
+
+/* large (gros CTA / page de vente) */
+.btn-lg { padding: 18px 38px; font-size: 15px; }
 
 /* ---- filet doré ---- */
 .rule { height: 1px; border: 0; background: linear-gradient(90deg, transparent, var(--or2) 20%, var(--or3) 50%, var(--or2) 80%, transparent); margin: 0; }
@@ -120,6 +152,15 @@ img { max-width: 100%; display: block; }
 /* ---- accessibilité ---- */
 :focus-visible { outline: 2px solid var(--or2); outline-offset: 3px; }
 
+/* ---- doré premium HARMONISÉ : même sheen métallique partout, décliné selon le fond ---- */
+/* DORÉ CANONIQUE — un seul dégradé, identique sur TOUS les fonds (cohérence totale du site) */
+.gold-grad, .gold-grad-d { background: linear-gradient(180deg,#EBCB70 0%,#C9A24C 52%,#A9863A 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+
+/* ---- foil or animé (rare : 1 mot-clé) ---- */
+@keyframes foilFlow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+.foil { background: linear-gradient(100deg,#9A7B2E,#D4B05A 16%,#FFF6CE 30%,#C4A24A 44%,#8A6A22 56%,#D4B05A 70%,#FFF6CE 82%,#C4A24A 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; animation: foilFlow 5.5s linear infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto; }
+  .foil { animation: none; }
 }

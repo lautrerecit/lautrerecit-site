@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Autre Récit — Fiches leçon · 5 designs</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#080706;font-family:'League Spartan',system-ui,sans-serif;color:#F2EDE4}
+  /* ---- chrome du showcase (pas dans les blocs collés) ---- */
+  .bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    background:rgba(14,12,10,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,162,74,.28);
+    padding:13px clamp(16px,4vw,40px)}
+  .wm{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#F2EDE4;margin-right:auto}
+  .wm b{color:#C4A24A;font-weight:700;font-style:normal}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .tab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:#bcae93;background:transparent;border:1px solid rgba(196,162,74,.3);border-radius:7px;padding:9px 13px;cursor:pointer;transition:.2s}
+  .tab:hover{color:#F2EDE4;border-color:#C4A24A}
+  .tab.on{color:#0E0C0A;background:linear-gradient(180deg,#EBCB70,#C9A24C,#A9863A);border-color:transparent;font-weight:700}
+  .cap{background:#0b0a08;border-bottom:1px solid rgba(196,162,74,.14);padding:13px clamp(16px,4vw,40px);
+    font-size:13px;line-height:1.5;color:#9a8f7e}
+  .cap b{color:#C4A24A;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:15px;margin-right:8px}
+  .cap .note{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5f5a50;float:right}
+  .alt{display:none}
+  .alt.on{display:block}
+
+  /* ============ ALT 1 · PLAQUE NOIRE ============ */
+  .lrf1{--cr:#F2EDE4;--or2:#C4A24A;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:#0E0C0A;color:var(--cr);font-family:var(--sans);padding:clamp(44px,6vw,84px) clamp(24px,5vw,72px);position:relative;overflow:hidden}
+  .lrf1 .wrap{max-width:880px;margin:0 auto;position:relative}
+  .lrf1 .ey{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or2);margin:0 0 20px}
+  .lrf1 h2{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4.6vw,52px);line-height:1.08;letter-spacing:-.02em;color:var(--cr);margin:0 0 22px}
+  .lrf1 h2 em{font-style:italic;color:var(--or2)}
+  .lrf1 .rule{height:2px;width:64px;background:linear-gradient(90deg,#EBCB70,#C9A24C,#A9863A);border-radius:2px;margin:0 0 26px}
+  .lrf1 p{font-size:17px;line-height:1.78;color:#d9d0c2;max-width:62ch;margin:0 0 1.1em}
+  .lrf1 .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+  .lrf1 .chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#cbbfa8;border:1px solid rgba(196,162,74,.3);background:rgba(255,255,255,.02);padding:11px 16px;border-radius:9px;display:inline-flex;gap:8px;text-decoration:none;transition:.2s}
+  .lrf1 .chip:hover{border-color:var(--or2);color:var(--cr)}
+  .lrf1 .chip b{color:var(--or2)}
+  .lrf1 .glow{position:absolute;top:-30%;right:-8%;width:380px;height:380px;background:radial-gradient(circle,rgba(196,162,74,.10),transparent 70%);pointer-events:none}
+
+  /* ============ ALT 2 · FICHE CRÈME ============ */
+  .lrf2{--or2:#C4A24A;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:radial-gradient(120% 130% at 50% 0%,#FBF8F2,#F2EDE4 62%);color:#1A1714;font-family:var(--sans);padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px)}
+  .lrf2 .card{max-width:840px;margin:0 auto;background:#fff;border:1px solid #E6DDCB;border-radius:18px;padding:clamp(32px,4.6vw,58px);box-shadow:0 34px 80px -46px rgba(60,50,30,.4)}
+  .lrf2 .top{display:flex;align-items:center;gap:14px;margin:0 0 22px}
+  .lrf2 .num{font-family:var(--serif);font-style:italic;font-weight:900;font-size:34px;color:var(--or2);line-height:1}
+  .lrf2 .ey{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9A7B2E}
+  .lrf2 h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4.2vw,46px);line-height:1.1;letter-spacing:-.02em;color:#15120E;margin:0 0 20px}
+  .lrf2 h2 em{font-style:italic;color:var(--or2)}
+  .lrf2 .rule{height:1px;background:linear-gradient(90deg,#C4A24A,transparent);margin:0 0 24px}
+  .lrf2 p{font-size:17px;line-height:1.78;color:#3D3730;max-width:60ch;margin:0 0 1.1em}
+  .lrf2 .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  .lrf2 .chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#6b6253;border:1px solid #E0D6C2;background:#FBF8F2;padding:11px 16px;border-radius:9px;display:inline-flex;gap:8px;text-decoration:none;transition:.2s}
+  .lrf2 .chip:hover{border-color:var(--or2);color:#15120E}
+  .lrf2 .chip b{color:var(--or2)}
+
+  /* ============ ALT 3 · NUMÉRO GÉANT (foil) ============ */
+  .lrf3{--cr:#F2EDE4;--or2:#C4A24A;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:#0E0C0A;color:var(--cr);font-family:var(--sans);padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px);overflow:hidden}
+  .lrf3 .grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,5vw,58px);align-items:center}
+  .lrf3 .big{font-family:var(--serif);font-style:italic;font-weight:900;font-size:clamp(120px,20vw,250px);line-height:.78;letter-spacing:-.04em;
+    background:linear-gradient(110deg,#9A863A 0%,#EBCB70 24%,#FFF4CE 38%,#C9A24C 54%,#A9863A 74%,#EBCB70 100%);background-size:220% auto;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:lrfoil 6.5s linear infinite}
+  @keyframes lrfoil{to{background-position:220% center}}
+  .lrf3 .ey{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or2);margin:0 0 14px}
+  .lrf3 h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4vw,46px);line-height:1.1;letter-spacing:-.02em;color:var(--cr);margin:0 0 18px}
+  .lrf3 h2 em{font-style:italic;color:var(--or2)}
+  .lrf3 p{font-size:16.5px;line-height:1.75;color:#d9d0c2;max-width:54ch;margin:0 0 1em}
+  .lrf3 .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+  .lrf3 .chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#cbbfa8;border:1px solid rgba(196,162,74,.3);background:rgba(255,255,255,.02);padding:11px 16px;border-radius:9px;display:inline-flex;gap:8px;text-decoration:none;transition:.2s}
+  .lrf3 .chip:hover{border-color:var(--or2);color:var(--cr)}
+  .lrf3 .chip b{color:var(--or2)}
+  @media(max-width:680px){.lrf3 .grid{grid-template-columns:1fr}.lrf3 .big{font-size:clamp(96px,30vw,150px)}}
+
+  /* ============ ALT 4 · ACCROCHE EN EXERGUE ============ */
+  .lrf4{--cr:#F2EDE4;--or2:#C4A24A;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:linear-gradient(180deg,#13110D,#0E0C0A 70%);color:var(--cr);font-family:var(--sans);padding:clamp(48px,6.5vw,90px) clamp(24px,5vw,72px)}
+  .lrf4 .wrap{max-width:880px;margin:0 auto}
+  .lrf4 .ey{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or2);margin:0 0 28px}
+  .lrf4 .hook{font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(27px,3.9vw,46px);line-height:1.22;color:var(--or2);
+    border-left:3px solid var(--or2);padding-left:clamp(18px,3vw,32px);margin:0 0 32px;max-width:23ch}
+  .lrf4 p{font-size:17px;line-height:1.78;color:#d9d0c2;max-width:62ch;margin:0 0 1.1em}
+  .lrf4 .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+  .lrf4 .chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#cbbfa8;border:1px solid rgba(196,162,74,.3);background:rgba(255,255,255,.02);padding:11px 16px;border-radius:9px;display:inline-flex;gap:8px;text-decoration:none;transition:.2s}
+  .lrf4 .chip:hover{border-color:var(--or2);color:var(--cr)}
+  .lrf4 .chip b{color:var(--or2)}
+
+  /* ============ ALT 5 · DIPTYQUE PÉDAGOGIQUE ============ */
+  .lrf5{--cr:#F2EDE4;--or2:#C4A24A;--or3:#D4B05A;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:#0E0C0A;color:var(--cr);font-family:var(--sans);padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px)}
+  .lrf5 .grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1.45fr .92fr;gap:clamp(28px,4vw,52px);align-items:start}
+  .lrf5 .ey{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or2);margin:0 0 16px}
+  .lrf5 h2{font-family:var(--serif);font-weight:700;font-size:clamp(27px,3.7vw,44px);line-height:1.1;letter-spacing:-.02em;color:var(--cr);margin:0 0 20px}
+  .lrf5 h2 em{font-style:italic;color:var(--or2)}
+  .lrf5 p{font-size:16.5px;line-height:1.76;color:#d9d0c2;max-width:54ch;margin:0 0 1em}
+  .lrf5 .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+  .lrf5 .chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#cbbfa8;border:1px solid rgba(196,162,74,.3);background:rgba(255,255,255,.02);padding:11px 16px;border-radius:9px;display:inline-flex;gap:8px;text-decoration:none;transition:.2s}
+  .lrf5 .chip:hover{border-color:var(--or2);color:var(--cr)}
+  .lrf5 .chip b{color:var(--or2)}
+  .lrf5 .box{background:rgba(255,255,255,.025);border:1px solid rgba(196,162,74,.22);border-radius:14px;padding:24px 22px}
+  .lrf5 .box .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--or3);margin:0 0 18px}
+  .lrf5 .box ul{list-style:none;margin:0;padding:0}
+  .lrf5 .box li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.5;color:#cdc3b2;margin-bottom:15px}
+  .lrf5 .box li:last-child{margin-bottom:0}
+  .lrf5 .box li:before{content:"\2713";position:absolute;left:0;top:1px;color:var(--or2);font-weight:700}
+  @media(max-width:760px){.lrf5 .grid{grid-template-columns:1fr}}
+
+  /* ============ ALT 3b · NUMÉRO GÉANT CRÈME ============ */
+  .lrf3b{--or:#9A7B2E;--or2:#C4A24A;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:radial-gradient(120% 130% at 50% 0%,#FBF8F2,#F2EDE4 62%);color:#1A1714;font-family:var(--sans);padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px);overflow:hidden}
+  .lrf3b .grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,5vw,58px);align-items:center}
+  .lrf3b .big{font-family:var(--serif);font-style:italic;font-weight:900;font-size:clamp(120px,20vw,250px);line-height:.78;letter-spacing:-.04em;
+    background:linear-gradient(115deg,#8A6A22 0%,#B98F33 26%,#EBCB70 46%,#C9A24C 62%,#9A7B2E 100%);background-size:220% auto;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:lrfoil 6.5s linear infinite}
+  .lrf3b .ey{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin:0 0 14px}
+  .lrf3b h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4vw,46px);line-height:1.1;letter-spacing:-.02em;color:#15120E;margin:0 0 18px}
+  .lrf3b h2 em{font-style:italic;color:var(--or2)}
+  .lrf3b p{font-size:16.5px;line-height:1.75;color:#3D3730;max-width:54ch;margin:0 0 1em}
+  .lrf3b .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+  .lrf3b .chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#6b6253;border:1px solid #E0D6C2;background:#FBF8F2;padding:11px 16px;border-radius:9px;display:inline-flex;gap:8px;text-decoration:none;transition:.2s}
+  .lrf3b .chip:hover{border-color:var(--or2);color:#15120E}
+  .lrf3b .chip b{color:var(--or2)}
+  @media(max-width:680px){.lrf3b .grid{grid-template-columns:1fr}.lrf3b .big{font-size:clamp(96px,30vw,150px)}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wm">L'<b>Autre</b> Récit · Fiches leçon</div>
+  <div class="tabs">
+    <button class="tab on" data-i="0">01 · Plaque noire</button>
+    <button class="tab" data-i="1">02 · Fiche crème</button>
+    <button class="tab" data-i="2">03 · Numéro géant</button>
+    <button class="tab" data-i="5">03b · Numéro crème</button>
+    <button class="tab" data-i="3">04 · Accroche</button>
+    <button class="tab" data-i="4">05 · Diptyque</button>
+  </div>
+</div>
+
+<!-- ====== ALT 1 ====== -->
+<div class="alt on">
+  <div class="cap"><b>01 · Plaque noire</b> Sobre, éditorial. Le gabarit actuel épuré — sans sidebar ni préc/suivant (Systeme les gère déjà). Le plus discret, le plus sûr. <span class="note">sous la vidéo</span></div>
+  <section class="lrf1">
+    <div class="glow"></div>
+    <div class="wrap">
+      <p class="ey">Cours 2 · Nation of Islam — Module 1</p>
+      <h2>Pourquoi le <em>sacré</em> ?</h2>
+      <div class="rule"></div>
+      <p>Pourquoi un mouvement de libération politique prend-il la forme d'une religion ? La Nation of Islam répond à l'humiliation raciale par le sacré : une nouvelle origine, une nouvelle dignité, un nouveau nom.</p>
+      <p>Ce module pose la question centrale du cours — ce que le religieux rend possible en politique, là où le seul discours militant échoue. On entre dans la logique avant de juger la doctrine.</p>
+      <div class="chips">
+        <a class="chip" href="#"><b>PDF</b> Fiche de synthèse</a>
+        <a class="chip" href="#"><b>&#8599;</b> Slides interactives</a>
+        <a class="chip" href="#"><b>&#8801;</b> Citations du module</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ====== ALT 2 ====== -->
+<div class="alt">
+  <div class="cap"><b>02 · Fiche crème</b> Carte papier premium, claire. Sert l'alternance crème/sombre du site. Chaleureux, « magazine de sciences sociales ». <span class="note">sous la vidéo</span></div>
+  <section class="lrf2">
+    <div class="card">
+      <div class="top">
+        <span class="num">01</span>
+        <span class="ey">Cours 2 · Nation of Islam</span>
+      </div>
+      <h2>Pourquoi le <em>sacré</em> ?</h2>
+      <div class="rule"></div>
+      <p>Pourquoi un mouvement de libération politique prend-il la forme d'une religion ? La Nation of Islam répond à l'humiliation raciale par le sacré : une nouvelle origine, une nouvelle dignité, un nouveau nom.</p>
+      <p>Ce module pose la question centrale du cours — ce que le religieux rend possible en politique, là où le seul discours militant échoue. On entre dans la logique avant de juger la doctrine.</p>
+      <div class="chips">
+        <a class="chip" href="#"><b>PDF</b> Fiche de synthèse</a>
+        <a class="chip" href="#"><b>&#8599;</b> Slides interactives</a>
+        <a class="chip" href="#"><b>&#8801;</b> Citations du module</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ====== ALT 3 ====== -->
+<div class="alt">
+  <div class="cap"><b>03 · Numéro géant</b> Index premium : gros chiffre de module en or animé (foil). Effet « waouh » à l'ouverture de chaque leçon. <span class="note">1 seul foil — réservé au n°</span></div>
+  <section class="lrf3">
+    <div class="grid">
+      <div class="big">01</div>
+      <div>
+        <p class="ey">Cours 2 · Nation of Islam — Module</p>
+        <h2>Pourquoi le <em>sacré</em> ?</h2>
+        <p>Pourquoi un mouvement de libération politique prend-il la forme d'une religion ? La Nation of Islam répond à l'humiliation raciale par le sacré : une nouvelle origine, une nouvelle dignité, un nouveau nom.</p>
+        <p>Ce module pose la question centrale du cours — ce que le religieux rend possible en politique, là où le seul discours militant échoue.</p>
+        <div class="chips">
+          <a class="chip" href="#"><b>PDF</b> Fiche de synthèse</a>
+          <a class="chip" href="#"><b>&#8599;</b> Slides interactives</a>
+          <a class="chip" href="#"><b>&#8801;</b> Citations</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ====== ALT 4 ====== -->
+<div class="alt">
+  <div class="cap"><b>04 · Accroche en exergue</b> La question d'abord, en gros italique or. L'ADN éditorial L'Autre Récit (la rupture cognitive avant l'explication). <span class="note">le plus « signature »</span></div>
+  <section class="lrf4">
+    <div class="wrap">
+      <p class="ey">Cours 2 · Nation of Islam — Module 1 · Pourquoi le sacré ?</p>
+      <p class="hook">Pourquoi un mouvement de libération prend-il la forme d'une religion ?</p>
+      <p>La Nation of Islam répond à l'humiliation raciale par le sacré : une nouvelle origine, une nouvelle dignité, un nouveau nom. Le religieux devient une infrastructure politique.</p>
+      <p>Ce module pose la question centrale du cours — ce que le sacré rend possible là où le seul discours militant échoue. On entre dans la logique avant de juger la doctrine.</p>
+      <div class="chips">
+        <a class="chip" href="#"><b>PDF</b> Fiche de synthèse</a>
+        <a class="chip" href="#"><b>&#8599;</b> Slides interactives</a>
+        <a class="chip" href="#"><b>&#8801;</b> Citations du module</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ====== ALT 5 ====== -->
+<div class="alt">
+  <div class="cap"><b>05 · Diptyque pédagogique</b> Description + encadré « ce module en bref ». Donne de la valeur de cours, justifie le prix premium. <span class="note">le plus « formation »</span></div>
+  <section class="lrf5">
+    <div class="grid">
+      <div>
+        <p class="ey">Cours 2 · Nation of Islam — Module 1</p>
+        <h2>Pourquoi le <em>sacré</em> ?</h2>
+        <p>Pourquoi un mouvement de libération politique prend-il la forme d'une religion ? La Nation of Islam répond à l'humiliation raciale par le sacré : une nouvelle origine, une nouvelle dignité, un nouveau nom.</p>
+        <p>Ce module pose la question centrale du cours — ce que le religieux rend possible en politique, là où le seul discours militant échoue. On entre dans la logique avant de juger la doctrine.</p>
+        <div class="chips">
+          <a class="chip" href="#"><b>PDF</b> Fiche de synthèse</a>
+          <a class="chip" href="#"><b>&#8599;</b> Slides interactives</a>
+          <a class="chip" href="#"><b>&#8801;</b> Citations</a>
+        </div>
+      </div>
+      <aside class="box">
+        <p class="k">Ce que vous saurez</p>
+        <ul>
+          <li>Ce que le sacré apporte qu'un discours politique seul n'a pas</li>
+          <li>La promesse en 3 temps : nouvelle origine, dignité, nom</li>
+          <li>Pourquoi entrer dans la logique avant de juger la doctrine</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<!-- ====== ALT 3b ====== -->
+<div class="alt">
+  <div class="cap"><b>03b · Numéro crème</b> Le 03 que tu aimes, version claire : même gros n° en or, sur papier crème. Tue le « trop de noir » et tranche avec la vidéo sombre au-dessus. <span class="note">ma reco</span></div>
+  <section class="lrf3b">
+    <div class="grid">
+      <div class="big">01</div>
+      <div>
+        <p class="ey">Cours 2 · Nation of Islam — Module</p>
+        <h2>Pourquoi le <em>sacré</em> ?</h2>
+        <p>Pourquoi un mouvement de libération politique prend-il la forme d'une religion ? La Nation of Islam répond à l'humiliation raciale par le sacré : une nouvelle origine, une nouvelle dignité, un nouveau nom.</p>
+        <p>Ce module pose la question centrale du cours — ce que le religieux rend possible en politique, là où le seul discours militant échoue.</p>
+        <div class="chips">
+          <a class="chip" href="#"><b>PDF</b> Fiche de synthèse</a>
+          <a class="chip" href="#"><b>&#8599;</b> Slides interactives</a>
+          <a class="chip" href="#"><b>&#8801;</b> Citations</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var alts=[].slice.call(document.querySelectorAll('.alt'));
+  function go(i){
+    tabs.forEach(function(t,k){t.classList.toggle('on',k===i)});
+    alts.forEach(function(a,k){a.classList.toggle('on',k===i)});
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){go(+t.dataset.i)})});
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Autre Récit — Citations animées</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=League+Spartan:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--cr:#F2EDE4;--or2:#C4A24A;--or3:#D4B05A;--ink:#0E0C0A;--serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box}body{margin:0;background:#0E0C0A;color:var(--cr);font-family:var(--sans)}
+.lbl{max-width:1000px;margin:0 auto;padding:48px 24px 0;text-align:center}
+.lbl .n{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--or2)}
+.lbl h2{font-family:var(--serif);font-weight:700;font-size:clamp(22px,3vw,30px);margin:8px 0 4px;color:#fff}
+.lbl h2 em{font-style:italic;color:var(--or2)}
+.lbl p{font-size:14px;color:#8f8472;margin:0 auto;max-width:60ch;line-height:1.5}
+.sec{position:relative;padding:30px 0 70px;border-bottom:1px solid rgba(196,162,74,.12)}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--or3);text-align:center;margin:0 0 6px}
+.htitle{font-family:var(--serif);font-weight:700;font-size:clamp(24px,3.4vw,38px);text-align:center;color:#fff;margin:0 0 26px}
+.htitle em{font-style:italic;color:var(--or2)}
+
+/* stage commun */
+.stage{position:relative;height:430px;perspective:1700px;overflow:hidden}
+.stage .c{position:absolute;left:50%;top:50%;width:240px;aspect-ratio:4/5;border-radius:10px;overflow:hidden;border:1px solid rgba(196,162,74,.25);box-shadow:0 30px 70px -30px rgba(0,0,0,.9);transition:transform .75s cubic-bezier(.22,1,.36,1),opacity .6s,filter .6s,border-color .5s;transform-style:preserve-3d;will-change:transform}
+.stage .c img{width:100%;height:100%;object-fit:cover;display:block}
+.stage .c.mid{border-width:1.5px;border-image:linear-gradient(140deg,#9A7B2E,#F6DE94,#C4A24A) 1;box-shadow:0 44px 100px -30px rgba(0,0,0,.95),0 0 60px rgba(196,162,74,.25)}
+/* nav */
+.nav{display:flex;gap:16px;justify-content:center;align-items:center;margin-top:24px}
+.nav button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(196,162,74,.45);background:rgba(196,162,74,.06);color:var(--or2);font-size:18px;cursor:pointer;transition:.25s}
+.nav button:hover{background:var(--or2);color:#0E0C0A;transform:translateY(-2px)}
+.dots{display:flex;gap:8px;align-items:center}
+.dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);transition:.3s;cursor:pointer}
+.dots i.on{background:linear-gradient(180deg,#EBCB70,#A9863A);width:22px;border-radius:6px}
+.hint{text-align:center;margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#5f574a}
+</style></head>
+<body>
+
+<div class="lbl"><span class="n">Design 3 · ANIMÉ</span><h2>Coverflow 3D — <em>en mouvement</em></h2><p>Tourne tout seul (et avec les flèches / les points). C'est le mouvement qui fait le charme : les cartes pivotent en profondeur, la centrale passe en doré.</p></div>
+<section class="sec">
+  <p class="eyebrow">Paroles qui éclairent</p>
+  <h2 class="htitle">Tournez les <em>pages</em>.</h2>
+  <div class="stage" id="cf"></div>
+  <div class="nav"><button data-d="-1">‹</button><div class="dots" id="cfdots"></div><button data-d="1">›</button></div>
+  <p class="hint">défile automatiquement · survol = pause</p>
+</section>
+
+<div class="lbl"><span class="n">Design 1 · ANIMÉ</span><h2>Cinémathèque — <em>en fondu</em></h2><p>La citation centrale change toute seule en douceur, les voisines restent en retrait. Plus calme, plus « galerie ».</p></div>
+<section class="sec">
+  <p class="eyebrow">Paroles qui éclairent</p>
+  <h2 class="htitle">Ils ont <em>pensé</em> la domination.</h2>
+  <div class="stage" id="cm"></div>
+  <div class="nav"><button data-d="-1">‹</button><div class="dots" id="cmdots"></div><button data-d="1">›</button></div>
+  <p class="hint">défile automatiquement · survol = pause</p>
+</section>
+
+<script>
+const IMGS=['cit-1.png','cit-2.png','cit-3.png','cit-4.png','cit-5.png','cit-6.png'].map(f=>'citations/'+f);
+
+function build(stageId,dotsId,opts){
+  const stage=document.getElementById(stageId), dotsWrap=document.getElementById(dotsId);
+  const N=IMGS.length; let active=0, timer=null;
+  const cards=IMGS.map((src,i)=>{const a=document.createElement('div');a.className='c';a.innerHTML='<img src="'+src+'" alt="">';stage.appendChild(a);return a;});
+  const dots=IMGS.map((_,i)=>{const d=document.createElement('i');d.onclick=()=>{active=i;render();reset();};dotsWrap.appendChild(d);return d;});
+  function render(){
+    cards.forEach((card,i)=>{
+      let off=i-active; if(off>N/2)off-=N; if(off<-N/2)off+=N;
+      const abs=Math.abs(off);
+      card.classList.toggle('mid',abs===0);
+      if(abs>opts.max){card.style.opacity=0;card.style.pointerEvents='none';card.style.transform='translate(-50%,-50%) translateX('+(off>0?1:-1)*640+'px)';return;}
+      card.style.pointerEvents='auto';
+      card.style.opacity = abs===0?1:(abs===1?.9:.6);
+      card.style.zIndex = 20-abs;
+      const tx=off*opts.tx, rot=off*opts.rot, tz=-abs*opts.tz, sc=abs===0?opts.midScale:(opts.sideScale-(abs-1)*.08);
+      card.style.transform='translate(-50%,-50%) translateX('+tx+'px) translateZ('+tz+'px) rotateY('+rot+'deg) scale('+sc+')';
+      card.style.filter = abs===0?'none':'brightness('+(abs===1?.72:.45)+')';
+      card.onclick=()=>{active=i;render();reset();};
+    });
+    dots.forEach((d,i)=>d.classList.toggle('on',i===active));
+  }
+  function go(d){active=(active+d+N)%N;render();}
+  function reset(){clearInterval(timer);timer=setInterval(()=>go(1),opts.delay);}
+  stage.closest('.sec').querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{go(+b.dataset.d);reset();});
+  stage.addEventListener('mouseenter',()=>clearInterval(timer));
+  stage.addEventListener('mouseleave',reset);
+  render(); reset();
+}
+// Coverflow : forte rotation 3D, écartement large
+build('cf','cfdots',{tx:135,rot:-26,tz:90,midScale:1.05,sideScale:.9,max:2,delay:2800});
+// Cinémathèque : pas de rotation, voisines en retrait (fondu/profondeur)
+build('cm','cmdots',{tx:115,rot:0,tz:120,midScale:1.08,sideScale:.82,max:2,delay:3400});
+</script>
+</body></html>

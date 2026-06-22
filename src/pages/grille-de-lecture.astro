@@ -1,0 +1,165 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ============================================================
+// LA GRILLE DE LECTURE — 6 penseurs, épine dorée zigzag.
+// Crème dominant + cards sombres (contraste sur crème). Hero = bande sombre.
+// ============================================================
+const auteurs = [
+  { n: '1', a: 'Malek Bennabi', tag: 'Colonisabilité', q: "On ne cesse d'être colonisé qu'en cessant d'être colonisable.", d: "Bennabi déplace le regard du colonisateur vers le colonisé. La colonisabilité, c'est cet état de réceptivité intérieure à la domination. Libérer un territoire ne suffit pas : tant que les structures mentales tiennent, la domination se perpétue sous d'autres formes." },
+  { n: '2', a: 'Ibn Badis', tag: 'Transmission', q: "Si tu enseignes à une fille, tu as enseigné à une nation tout entière.", d: "L'éducation comme arme de relèvement collectif — formulée sous l'occupation française, en 1930. Ce que reçoit une génération, elle le transmet à la suivante : la culture est le terrain premier de la souveraineté." },
+  { n: '3', a: 'Frantz Fanon', tag: 'Aliénation', q: "D'un homme, on exigeait une conduite d'homme. De moi, une conduite d'homme noir.", d: "Le regard de l'autre fabrique une conscience scindée. Décoloniser, c'est aussi se réapproprier le regard qu'on porte sur soi." },
+  { n: '4', a: 'Aimé Césaire', tag: 'Civilisation', q: "Une civilisation incapable de résoudre les problèmes que suscite son fonctionnement est une civilisation décadente.", d: "Le procès est structurel : on juge une civilisation à sa capacité d'affronter ce qu'elle produit elle-même." },
+  { n: '5', a: 'Antonio Gramsci', tag: 'Hégémonie', q: "L'indifférence est le poids mort de l'histoire.", d: "La domination s'appuie sur le consentement autant que sur la force : c'est l'hégémonie culturelle. Ce qui passe pour « neutre » ou « évident » est ce qui n'a plus besoin de se justifier." },
+  { n: '6', a: 'Malcolm X', tag: 'Récit', q: "Si vous n'y prenez pas garde, les médias vont vous faire haïr les opprimés et aimer ceux qui les oppriment.", d: "Qui tient le récit tient la perception. Le travail commence là : reconnaître le cadre avant d'en débattre, et refuser de se laisser raconter par d'autres." },
+];
+---
+<Base
+  title="La grille de lecture — L'Autre Récit"
+  description="Six penseurs, une façon de lire le monde : Bennabi, Ibn Badis, Fanon, Césaire, Gramsci, Malcolm X. Les outils derrière chaque analyse de L'Autre Récit."
+>
+  <div class="gr-page">
+    <!-- ===== HERO (sombre) ===== -->
+    <section class="gr-hero band-dark">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="eyebrow">La grille de lecture</p>
+        <h1 class="gr-h1">Des outils pour <span class="gold-grad">lire le monde</span>.</h1>
+        <p class="gr-lede">Des concepts qui servent de base à l'analyse — la colonisabilité, l'hégémonie, l'aliénation… Une sélection de figures et d'idées, jamais une liste fermée.</p>
+      </div>
+    </section>
+
+    <!-- ===== ÉPINE DORÉE (crème, cards sombres) ===== -->
+    <section class="gr-sec">
+      <div class="container">
+        <div class="grille-spine-wrap">
+          <div class="grille-spine" aria-hidden="true"><span class="grille-spine-fill"></span></div>
+          <ol class="grille-list">
+            {auteurs.map((au, i) => (
+              <li class="g-item" data-side={i % 2 === 0 ? 'left' : 'right'}>
+                <div class="g-node"><span>{au.n}</span></div>
+                <article class="g-card">
+                  <span class="g-tag">{au.tag}</span>
+                  <blockquote class="g-q">«&nbsp;{au.q}&nbsp;»</blockquote>
+                  <p class="g-a">{au.a}</p>
+                  <p class="g-d">{au.d}</p>
+                </article>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA (crème) ===== -->
+    <section class="gr-cta-sec">
+      <div class="container">
+        <p class="gr-cta-line reveal">Ces outils, mis au travail sur l'histoire.</p>
+        <div class="gr-cta reveal">
+          <a class="btn btn-or" href="/formations/">Voir les formations <span class="ar">→</span></a>
+          <a class="btn btn-oc" href="/architecture/">L'architecture <span class="ar">→</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .gr-page { background: var(--cr); color: var(--ink2); }
+
+  .band-dark { position: relative; overflow: hidden; color: var(--cr); background: radial-gradient(130% 80% at 50% 0%, #1A1714 0%, #0E0C0A 52%, #0A0807 100%); }
+  .band-dark .grain { position: absolute; inset: 0; pointer-events: none; opacity: .05; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .band-dark .container { position: relative; z-index: 1; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ===== HERO ===== */
+  .gr-hero { text-align: center; padding-block: clamp(74px, 11vw, 132px) clamp(56px, 8vw, 96px); }
+  .gr-hero .eyebrow { color: var(--or3); }
+  .gr-h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 6vw, 78px); line-height: 1.0; letter-spacing: -0.028em; color: #fff; margin: 14px auto 0; max-width: 18ch; }
+  .gr-h1 .gold-grad { font-style: italic; }
+  .gr-lede { max-width: 58ch; margin: 22px auto 0; font-weight: 300; font-size: clamp(16px, 1.7vw, 19px); line-height: 1.6; color: rgba(242,237,228,.78); }
+
+  /* ===== ÉPINE / ZIGZAG (crème) ===== */
+  .gr-sec { padding-block: clamp(54px, 8vw, 96px); }
+  .grille-spine-wrap { position: relative; margin: 0 auto; max-width: 980px; }
+  .grille-spine { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); background: rgba(154,123,46,.24); border-radius: 2px; }
+  .grille-spine-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0; border-radius: 2px; background: linear-gradient(180deg, var(--or3), var(--or2) 60%, var(--or)); box-shadow: 0 0 16px rgba(196,162,74,.55); transition: height .25s linear; }
+
+  .grille-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: clamp(26px, 4vw, 48px); }
+  .g-item { position: relative; display: grid; grid-template-columns: 1fr 60px 1fr; align-items: center; }
+
+  .g-node { grid-column: 2; justify-self: center; z-index: 2; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(160deg, #1F1914, #0E0C0A); border: 1.5px solid var(--or2); box-shadow: 0 0 0 5px var(--cr), 0 0 26px -6px rgba(212,176,90,.5); opacity: 0; transform: scale(.55); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+  .g-node span { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 21px; color: var(--or2); }
+  .g-item.in .g-node { opacity: 1; transform: scale(1); }
+
+  .g-item[data-side="left"]  .g-card { grid-column: 1; margin-right: 14px; }
+  .g-item[data-side="right"] .g-card { grid-column: 3; margin-left: 14px; }
+  .g-card {
+    position: relative; background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%);
+    border: 1px solid rgba(196,162,74,.36); border-top: 2px solid var(--or2); border-radius: 14px; padding: 24px 26px;
+    box-shadow: 0 32px 70px -38px rgba(14,12,10,.5);
+    opacity: 0; transition: opacity .7s var(--ease), transform .7s var(--ease), box-shadow .45s, border-color .4s;
+  }
+  .g-item[data-side="left"]  .g-card { transform: translateX(-46px); }
+  .g-item[data-side="right"] .g-card { transform: translateX(46px); }
+  .g-item.in .g-card { opacity: 1; transform: none; }
+  .g-card:hover { border-color: var(--or2); transform: translateY(-4px); box-shadow: 0 52px 100px -38px rgba(14,12,10,.55), 0 0 0 1px var(--or2), 0 0 46px -14px rgba(196,162,74,.34); }
+  .g-card::after { content: ""; position: absolute; top: 26px; width: 13px; height: 13px; background: #15110B; border: 1px solid rgba(196,162,74,.36); }
+  .g-item[data-side="left"]  .g-card::after { right: -7px; border-left: 0; border-bottom: 0; transform: rotate(45deg); }
+  .g-item[data-side="right"] .g-card::after { left: -7px; border-right: 0; border-top: 0; transform: rotate(45deg); }
+
+  .g-tag { display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--or2); border: 1px solid rgba(212,176,90,.4); padding: 4px 10px; border-radius: 100px; }
+  .g-q { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(18px, 1.9vw, 24px); line-height: 1.34; color: #fff; margin: 14px 0 0; }
+  .g-a { font-family: var(--mono); font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--or3); margin: 12px 0 0; }
+  .g-d { font-size: 14.5px; line-height: 1.65; color: rgba(242,237,228,.74); margin: 10px 0 0; font-weight: 300; }
+
+  @media (max-width: 720px) {
+    .grille-spine { left: 23px; }
+    .g-item { grid-template-columns: 46px 1fr; gap: 16px; align-items: start; }
+    .g-node { grid-column: 1; }
+    .g-item[data-side="left"] .g-card, .g-item[data-side="right"] .g-card { grid-column: 2; margin: 0; transform: translateX(34px); }
+    .g-item.in .g-card { transform: none; }
+    .g-item[data-side="left"] .g-card::after, .g-item[data-side="right"] .g-card::after { left: -7px; right: auto; border: 1px solid rgba(196,162,74,.36); border-right: 0; border-top: 0; }
+  }
+
+  /* ===== CTA ===== */
+  .gr-cta-sec { text-align: center; padding-block: clamp(40px, 6vw, 76px) clamp(60px, 9vw, 104px); }
+  .gr-cta-line { font-family: var(--serif); font-weight: 700; font-size: clamp(22px, 3vw, 36px); letter-spacing: -0.02em; color: var(--ink); margin: 0 auto; }
+  .gr-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 28px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .g-card, .g-node { opacity: 1 !important; transform: none !important; transition: none; }
+    .grille-spine-fill { height: 100% !important; transition: none; }
+    .g-card:hover { transform: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.18 });
+    document.querySelectorAll('.reveal, .g-item').forEach(function (el) { obs.observe(el); });
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var wrap = document.querySelector('.grille-spine-wrap');
+    var fill = document.querySelector('.grille-spine-fill');
+    if (wrap && fill && !reduce) {
+      var ticking = false;
+      var update = function () {
+        ticking = false;
+        var r = wrap.getBoundingClientRect();
+        var mid = window.innerHeight * 0.55;
+        var p = (mid - r.top) / r.height;
+        p = Math.max(0, Math.min(1, p));
+        fill.style.height = (p * 100) + '%';
+      };
+      var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+    } else if (fill) { fill.style.height = '100%'; }
+  })();
+</script>

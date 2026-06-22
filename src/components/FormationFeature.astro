@@ -1,0 +1,64 @@
+---
+// Présentation « vedette » d'une formation (design C — premium noir/doré, photo plein cadre).
+const {
+  title,
+  eyebrow,
+  blurb,
+  href,
+  duration,
+  image,
+  status = 'available',
+  cta = 'Découvrir la formation',
+} = Astro.props;
+const isAvailable = status === 'available';
+const Tag = isAvailable ? 'a' : 'div';
+---
+<Tag class:list={['feat', { soon: !isAvailable }]} href={isAvailable ? href : undefined}>
+  <div class="feat-ph">
+    {image && <img src={image} alt={title} loading="lazy" width="1600" height="900" />}
+    <span class="feat-glow"></span>
+  </div>
+  <div class="feat-in">
+    <span class:list={['feat-badge', { soon: !isAvailable }]}>
+      {isAvailable ? `Disponible · ${duration}` : 'Bientôt'}
+    </span>
+    <p class="feat-eyebrow">{eyebrow}</p>
+    <h3 class="feat-title">{title}</h3>
+    <p class="feat-blurb">{blurb}</p>
+    {isAvailable && <span class="feat-cta">{cta} <span class="ar">→</span></span>}
+  </div>
+</Tag>
+
+<style>
+  .feat {
+    position: relative; display: flex; align-items: flex-end;
+    min-height: clamp(380px, 52vw, 520px); border-radius: 18px; overflow: hidden;
+    border: 1px solid rgba(212,176,90,.28); background: #0B0907; color: var(--cr);
+    box-shadow: 0 40px 90px -50px #000; text-decoration: none;
+    transition: transform .55s var(--ease, cubic-bezier(.22,1,.36,1)), box-shadow .5s, border-color .45s;
+  }
+  .feat:hover { transform: translateY(-6px); border-color: var(--or2); box-shadow: 0 70px 130px -50px #000, 0 0 0 1px var(--or2), 0 0 70px -22px rgba(196,162,74,.4); color: var(--cr); }
+
+  .feat-ph { position: absolute; inset: 0; overflow: hidden; }
+  .feat-ph img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; filter: grayscale(.4) contrast(1.06) sepia(.22) saturate(1.35) brightness(.74); transition: transform .8s var(--ease, cubic-bezier(.22,1,.36,1)), filter .7s; }
+  .feat:hover .feat-ph img { transform: scale(1.05); filter: grayscale(0) contrast(1.06) sepia(.1) saturate(1.5) brightness(.9); }
+  .feat-ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,9,7,.55) 0%, rgba(11,9,7,.15) 32%, rgba(11,9,7,.55) 64%, rgba(11,9,7,.92) 100%), linear-gradient(90deg, rgba(11,9,7,.7), transparent 70%); }
+  .feat-glow { position: absolute; inset: 0; background: radial-gradient(70% 60% at 75% 0%, rgba(196,162,74,.28), transparent 60%); mix-blend-mode: screen; opacity: 0; transition: opacity .6s; }
+  .feat:hover .feat-glow { opacity: 1; }
+
+  .feat-in { position: relative; z-index: 2; padding: clamp(28px, 4vw, 48px); max-width: 680px; }
+  .feat-badge { display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 13px; border-radius: 100px; background: linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A); color: var(--ink); margin-bottom: 18px; }
+  .feat-badge.soon { background: rgba(255,255,255,.08); color: var(--or3); border: 1px solid rgba(212,176,90,.4); }
+  .feat-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or3); margin: 0 0 10px; }
+  .feat-title { font-family: var(--serif); font-weight: 700; color: #fff; font-size: clamp(30px, 4.4vw, 54px); line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 14px; }
+  .feat-blurb { font-size: clamp(15px, 1.5vw, 17px); color: rgba(242,237,228,.82); font-weight: 300; line-height: 1.6; max-width: 52ch; margin: 0; }
+  .feat-cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; font-family: var(--sans); font-weight: 700; font-size: 13px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink); background: linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A); padding: 15px 28px; border-radius: 5px; box-shadow: 0 12px 28px -10px rgba(196,162,74,.55); transition: transform .3s var(--ease, cubic-bezier(.22,1,.36,1)), box-shadow .35s, background .3s; }
+  .feat-cta .ar { transition: transform .3s var(--ease, cubic-bezier(.22,1,.36,1)); }
+  .feat:hover .feat-cta { background: linear-gradient(180deg,#F6DE94,#D9B45C 52%,#C4A24A); box-shadow: 0 20px 44px -10px rgba(196,162,74,.72); }
+  .feat:hover .feat-cta .ar { transform: translateX(5px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .feat:hover { transform: none; }
+    .feat:hover .feat-ph img { transform: none; }
+  }
+</style>

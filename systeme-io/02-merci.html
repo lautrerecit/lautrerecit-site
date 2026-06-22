@@ -1,0 +1,50 @@
+<meta charset="utf-8">
+<!-- ============================================================
+     L'AUTRE RÉCIT — Page « Merci / Confirmation » (post-paiement)
+     OÙ : étape « Page de confirmation » du tunnel → 1 élément « Code HTML brut » pleine largeur.
+     À AJUSTER : le lien du bouton (href) → ton URL d'espace membre / connexion Systeme.
+     ============================================================ -->
+<div class="lr-sys lr-thx">
+  <style>
+  .lr-thx{--cr:#F2EDE4;--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--ink:#0E0C0A;
+    --serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:#0E0C0A;color:var(--cr);font-family:var(--sans);text-align:center;
+    padding:clamp(46px,6vw,84px) clamp(22px,5vw,60px);border-radius:14px;position:relative;overflow:hidden}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=League+Spartan:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+  .lr-thx *{box-sizing:border-box}
+  .lr-thx::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% -10%,rgba(196,162,74,.16),transparent 60%);pointer-events:none}
+  .lr-thx .in{position:relative;max-width:780px;margin:0 auto}
+  .lr-thx .eye{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--or2);margin:0 0 14px}
+  .lr-thx h1{font-family:var(--serif);color:var(--cr);font-size:clamp(34px,5.4vw,60px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px;font-weight:700}
+  .lr-thx h1 em{font-style:italic;color:var(--or2)}
+  .lr-thx .lede{color:#cbbfa8;font-size:clamp(17px,2vw,21px);max-width:48ch;margin:0 auto}
+  .lr-thx .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:38px 0 36px;text-align:left}
+  .lr-thx .step{background:linear-gradient(180deg,#1c1810,#121009);border:1px solid rgba(196,162,74,.28);border-radius:12px;padding:24px 22px}
+  .lr-thx .step .n{font-family:var(--serif);font-style:italic;font-weight:900;font-size:32px;line-height:1;background:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .lr-thx .step h4{font-family:var(--serif);color:var(--cr);font-size:18px;margin:12px 0 7px;font-weight:700}
+  .lr-thx .step p{color:#a99e8c;font-size:14px;margin:0;line-height:1.55}
+  .lr-thx .cta{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.13em;text-transform:uppercase;line-height:1;
+    padding:18px 40px;border-radius:5px;text-decoration:none;color:var(--ink);background:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);box-shadow:0 14px 34px -10px rgba(196,162,74,.6);transition:transform .3s}
+  .lr-thx .cta:hover{transform:translateY(-2px)}
+  .lr-thx .ps{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#8f8472;margin-top:28px}
+  .lr-thx .ps b{color:var(--or3);font-weight:400}
+  @media(max-width:640px){.lr-thx .steps{grid-template-columns:1fr}}
+  </style>
+
+  <div class="in">
+    <p class="eye">Paiement confirmé</p>
+    <h1>Bienvenue dans <em>L'Autre Récit</em>.</h1>
+    <p class="lede">Ton accès à la formation est ouvert. Trois étapes pour commencer.</p>
+
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>Ouvre ta boîte mail</h4><p>Tes identifiants de connexion viennent de t'être envoyés. Pense à vérifier les spams.</p></div>
+      <div class="step"><div class="n">2</div><h4>Connecte-toi</h4><p>Accède à ton espace avec ton e-mail et ton mot de passe.</p></div>
+      <div class="step"><div class="n">3</div><h4>Commence par l'introduction</h4><p>Tout part de là. La formation se suit dans l'ordre, à ton rythme.</p></div>
+    </div>
+
+    <!-- href → ton URL d'espace membre / connexion Systeme -->
+    <a class="cta" href="#">Accéder à mon espace &rarr;</a>
+
+    <p class="ps">Un e-mail de confirmation t'a été envoyé. Une question ? <b>lautrerecit@gmail.com</b></p>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ============================================================
+// LA VISION — lettre du fondateur + 4 repères « Ce qu'il faut savoir ».
+// Crème dominant + cards sombres. Hero = bande sombre.
+// ============================================================
+const reperes = [
+  { n: '01', t: 'Une simple page. Puis un projet.', d: "Né dans les stories Instagram, en réaction à l'actualité. Depuis 2023, L'Autre Récit s'est structuré et légitimé par la confiance d'une communauté engagée." },
+  { n: '02', t: "Parler depuis l'intérieur.", d: "Trop longtemps, les minorités ont été analysées, représentées, nommées par d'autres. Ici, l'analyse part de l'intérieur et choisit son propre cadre." },
+  { n: '03', t: "Une indépendance assumée.", d: "Sans actionnaire, sans mécène, sans affiliation partisane. Cette indépendance a un coût — et c'est pour ça qu'elle vaut quelque chose." },
+  { n: '04', t: 'Une communauté engagée.', d: "Une audience construite au fil des années, par des analyses poussées et des opinions affirmées, sans compromis éditorial. L'analyse, remise au centre." },
+];
+---
+<Base
+  title="La vision — L'Autre Récit"
+  description="La vision de L'Autre Récit : une lettre du fondateur, et ce qu'il faut savoir d'un média d'analyse critique né en 2023, indépendant et exigeant."
+>
+  <div class="vi-page">
+    <!-- ===== HERO (sombre) ===== -->
+    <section class="vi-hero band-dark">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="eyebrow">La vision</p>
+        <h1 class="vi-h1">Une <span class="gold-grad">lettre</span> du fondateur.</h1>
+        <p class="vi-lede">Pourquoi ce média existe, d'où il vient, et ce qui le tient.</p>
+      </div>
+    </section>
+
+    <!-- ===== LETTRE (crème) ===== -->
+    <section class="vi-sec">
+      <div class="container vi-narrow">
+        <div class="vi-letter reveal">
+          <p>L'Autre Récit naît en septembre 2023 d'une conviction simple&nbsp;: comment, en tant que minorités, faire face à nos problématiques sociales et politiques sans les comprendre&nbsp;?</p>
+          <p>Son fondateur, <strong>Rany</strong>, est titulaire d'un bac+5 en science politique — enjeux coloniaux et postcoloniaux, géopolitique, sociologie politique et de l'action publique. Son travail de recherche, en 2021, portait sur la construction du hijab comme <em>problème politico-médiatique</em>. Sa spécialisation en master, gestion de projet en coopération internationale, fait le pont entre la théorie et le terrain — lire le monde et agir dedans.</p>
+        </div>
+
+        <p class="vi-sub eyebrow reveal">Ce qu'il faut savoir</p>
+        <div class="vi-grid4">
+          {reperes.map((r) => (
+            <article class="vi-card reveal">
+              <div class="vi-card-n gold-grad">{r.n}</div>
+              <h3 class="vi-card-t">{r.t}</h3>
+              <p class="vi-card-d">{r.d}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA (crème) ===== -->
+    <section class="vi-cta-sec">
+      <div class="container">
+        <p class="vi-cta-line reveal">D'où l'on parle, avec quels outils.</p>
+        <div class="vi-cta reveal">
+          <a class="btn btn-or" href="/architecture/">L'architecture <span class="ar">→</span></a>
+          <a class="btn btn-oc" href="/grille-de-lecture/">La grille de lecture <span class="ar">→</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .vi-page { background: var(--cr); color: var(--ink2); }
+  .vi-narrow { max-width: 880px; }
+
+  .band-dark { position: relative; overflow: hidden; color: var(--cr); background: radial-gradient(130% 80% at 50% 0%, #1A1714 0%, #0E0C0A 52%, #0A0807 100%); }
+  .band-dark .grain { position: absolute; inset: 0; pointer-events: none; opacity: .05; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .band-dark .container { position: relative; z-index: 1; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ===== HERO ===== */
+  .vi-hero { text-align: center; padding-block: clamp(74px, 11vw, 132px) clamp(56px, 8vw, 92px); }
+  .vi-hero .eyebrow { color: var(--or3); }
+  .vi-h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(40px, 6.4vw, 86px); line-height: .98; letter-spacing: -0.03em; color: #fff; margin: 14px auto 0; max-width: 16ch; }
+  .vi-h1 .gold-grad { font-style: italic; }
+  .vi-lede { max-width: 50ch; margin: 22px auto 0; font-weight: 300; font-size: clamp(16px, 1.7vw, 19px); line-height: 1.6; color: rgba(242,237,228,.78); }
+
+  /* ===== LETTRE ===== */
+  .vi-sec { padding-block: clamp(48px, 7vw, 86px); }
+  .vi-letter { max-width: 68ch; margin: 0; }
+  .vi-letter p { font-family: var(--sans); font-size: clamp(16.5px, 1.5vw, 19px); line-height: 1.75; color: var(--ink2); margin: 0 0 1.1em; }
+  .vi-letter strong { color: var(--ink); font-weight: 700; }
+  .vi-letter em { color: var(--or2); font-style: italic; }
+  .vi-sub { margin-top: clamp(40px, 5vw, 64px); }
+
+  /* repères — cartes sombres sur crème */
+  .vi-grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 18px; }
+  .vi-card { position: relative; background: linear-gradient(158deg, #1C160F 0%, #12100B 55%, #0C0A07 100%); border: 1px solid rgba(196,162,74,.4); border-top: 2px solid var(--or2); border-radius: 12px; padding: 28px 26px; box-shadow: 0 30px 64px -34px rgba(14,12,10,.5); transition: transform .5s var(--ease), box-shadow .45s, border-color .4s; }
+  .vi-card:hover { transform: translateY(-5px); border-color: var(--or2); box-shadow: 0 52px 104px -36px rgba(14,12,10,.55), 0 0 48px -14px rgba(196,162,74,.34); }
+  .vi-card-n { font-family: var(--serif); font-style: italic; font-weight: 900; font-size: 42px; line-height: 1; }
+  .vi-card-t { font-family: var(--serif); font-weight: 700; font-size: 20px; color: #fff; margin: 12px 0 9px; letter-spacing: -0.01em; }
+  .vi-card-d { font-family: var(--sans); font-weight: 300; font-size: 14.5px; line-height: 1.62; color: rgba(242,237,228,.76); margin: 0; }
+
+  /* ===== CTA ===== */
+  .vi-cta-sec { text-align: center; padding-block: clamp(40px, 6vw, 72px) clamp(60px, 9vw, 104px); }
+  .vi-cta-line { font-family: var(--serif); font-weight: 700; font-size: clamp(22px, 3vw, 36px); letter-spacing: -0.02em; color: var(--ink); margin: 0 auto; }
+  .vi-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 28px; }
+
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .vi-card:hover { transform: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.16 });
+    document.querySelectorAll('.vi-page .reveal').forEach(function (el) { obs.observe(el); });
+  })();
+</script>

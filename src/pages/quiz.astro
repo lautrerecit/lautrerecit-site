@@ -1,0 +1,397 @@
+---
+import Base from '../layouts/Base.astro';
+import { quizzes } from '../data/quizzes.js';
+
+// ============================================================
+// HUB de quiz — premium, immersif (sombre + or, identité L'Autre Récit).
+// Données : src/data/quizzes.js · moteur is:inline · classement localStorage (démo).
+// ============================================================
+---
+<Base
+  title="Quiz — L'Autre Récit"
+  description="Testez vos connaissances : nationalisme noir, sciences sociales, grilles de lecture. Quiz corrigés et sourcés, classement à la clé."
+>
+  <script type="application/json" id="quiz-data" set:html={JSON.stringify(quizzes)}></script>
+
+  <div class="qz-page">
+    <div class="grain"></div>
+
+    <!-- ===== HERO ===== -->
+    <section class="qz-hero">
+      <div class="container">
+        <p class="eyebrow">Tester ses connaissances · L'Autre Récit</p>
+        <h1 class="qz-h1">Les <span class="gold-grad">quiz</span></h1>
+        <p class="qz-lede">Éprouvez votre lecture du monde. Chaque réponse est corrigée et sourcée — et votre score entre au classement.</p>
+        <hr class="rule qz-hr" />
+      </div>
+    </section>
+
+    <!-- ===== HUB ===== -->
+    <section class="qz-stage" id="qzStage">
+      <div class="container">
+        <div class="qz-hub" id="qzHub">
+          {quizzes.map((q, i) => (
+            <button class="qh-card" type="button" data-slug={q.slug}>
+              <span class="qh-ix" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <p class="qh-eyebrow">{q.eyebrow}</p>
+              <h3 class="qh-title" set:html={q.title}></h3>
+              <p class="qh-blurb">{q.blurb}</p>
+              <div class="qh-foot">
+                <span class="qh-meta">{q.meta}</span>
+                <span class="qh-go">Commencer <span class="ar">→</span></span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <!-- ===== APP (moteur) ===== -->
+        <div class="qz-card" id="qzApp" hidden>
+          <div class="qz-appbar">
+            <button class="qz-back" id="qzBack" type="button"><span class="ar-l">←</span> Tous les quiz</button>
+            <span class="qz-active" id="qzActive"></span>
+          </div>
+
+          <!-- QUESTION -->
+          <div class="qz-screen on" data-screen="play">
+            <div class="qz-prog">
+              <span class="qz-count" id="qzCount"></span>
+              <div class="qz-bar"><span class="qz-bar-fill" id="qzBar"></span></div>
+            </div>
+            <h2 class="qz-q" id="qzQ"></h2>
+            <div class="qz-opts" id="qzOpts" role="group" aria-label="Réponses"></div>
+            <div class="qz-exp" id="qzExp" aria-live="polite">
+              <p class="qz-exp-verdict" id="qzVerdict"></p>
+              <p class="qz-exp-text" id="qzExpText"></p>
+              <blockquote class="qz-exp-cite" id="qzCite"></blockquote>
+              <div class="qz-next-row">
+                <button class="btn btn-or qz-next-btn" id="qzNext" type="button">Suivant <span class="ar">→</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULT -->
+          <div class="qz-screen" data-screen="result">
+            <p class="qz-kick">Résultat</p>
+            <div class="qz-score"><span class="foil" id="qzScore">0</span><i id="qzTotal">/0</i></div>
+            <div class="qz-meter" aria-hidden="true"><span class="qz-meter-fill" id="qzMeter"></span></div>
+            <h2 class="qz-tier" id="qzTier"></h2>
+            <p class="qz-tier-d" id="qzTierD"></p>
+
+            <!-- CLASSEMENT -->
+            <div class="lb" id="qzLb">
+              <div class="lb-head"><span class="lb-line"></span><span class="lb-h">Classement</span><span class="lb-line"></span></div>
+              <form class="lb-form" id="lbForm">
+                <input class="lb-input" id="lbName" type="text" maxlength="22" placeholder="Ton pseudo" aria-label="Ton pseudo" autocomplete="off" />
+                <button class="btn btn-or" type="submit">M'ajouter <span class="ar">→</span></button>
+              </form>
+              <ol class="lb-list" id="lbList"></ol>
+              <p class="lb-note" id="lbNote">Classement local à cet appareil — bientôt mondial.</p>
+            </div>
+
+            <div class="qz-res-actions">
+              <a class="btn btn-or" id="qzCta" href="#">Continuer <span class="ar">→</span></a>
+              <button class="btn btn-oc qz-replay" id="qzReplay" type="button">Rejouer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  /* ===== PAGE immersive sombre ===== */
+  .qz-page { position: relative; overflow: hidden; background:
+      radial-gradient(120% 70% at 50% -8%, #1A1714 0%, #0E0C0A 50%, #0A0807 100%); color: var(--cr); }
+  .qz-page .grain { position: absolute; inset: 0; pointer-events: none; opacity: .05; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  /* ===== HERO ===== */
+  .qz-hero { position: relative; z-index: 1; text-align: center; padding-block: clamp(72px, 11vw, 130px) clamp(8px, 2vw, 18px); }
+  .qz-hero .eyebrow { color: var(--or3); }
+  .qz-h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(46px, 8vw, 98px); color: #fff; letter-spacing: -0.028em; line-height: .95; margin: 12px 0 0; }
+  .qz-h1 .gold-grad { font-style: italic; }
+  .qz-lede { max-width: 54ch; margin: 22px auto 0; color: rgba(242,237,228,.74); font-weight: 300; font-size: clamp(16px, 1.7vw, 19px); line-height: 1.6; }
+  .qz-hr { max-width: 220px; margin: clamp(30px, 5vw, 48px) auto 0; opacity: .8; }
+
+  .qz-stage { position: relative; z-index: 1; padding-block: clamp(40px, 6vw, 70px) clamp(64px, 9vw, 120px); }
+
+  /* ===== HUB (cartes Encre & or premium) ===== */
+  .qz-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 26px; max-width: 880px; margin: 0 auto; }
+  .qz-hub[hidden] { display: none; }
+  .qh-card { position: relative; text-align: left; display: flex; flex-direction: column; gap: 13px; overflow: hidden;
+    background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%);
+    border: 1px solid rgba(196,162,74,.34); border-top: 2px solid var(--or2); border-radius: 16px;
+    padding: clamp(28px, 3.2vw, 40px); cursor: pointer;
+    box-shadow: 0 36px 80px -44px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.04);
+    transition: transform .5s var(--ease), box-shadow .5s, border-color .4s; }
+  .qh-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: 16px;
+    background: radial-gradient(120% 70% at 85% -10%, rgba(196,162,74,.16), transparent 58%); opacity: .8; transition: opacity .5s; }
+  .qh-card:hover { transform: translateY(-7px); border-color: var(--or2);
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,.9), 0 0 0 1px var(--or2), 0 0 60px -14px rgba(196,162,74,.5); }
+  .qh-card:hover::after { opacity: 1; }
+  .qh-ix { position: absolute; top: 12px; right: 20px; font-family: var(--serif); font-weight: 900; font-style: italic;
+    font-size: clamp(56px, 7vw, 86px); line-height: 1; color: transparent; background: var(--gold);
+    -webkit-background-clip: text; background-clip: text; opacity: .14; transition: opacity .5s; pointer-events: none; }
+  .qh-card:hover .qh-ix { opacity: .26; }
+  .qh-eyebrow { position: relative; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or2); margin: 0; }
+  .qh-title { position: relative; font-family: var(--serif); font-weight: 700; font-size: clamp(25px, 2.9vw, 34px); color: #fff; letter-spacing: -0.02em; line-height: 1.08; margin: 0; max-width: 16ch; }
+  .qh-title :global(em) { font-style: italic; color: transparent; background: var(--gold); -webkit-background-clip: text; background-clip: text; }
+  .qh-blurb { position: relative; color: rgba(242,237,228,.7); font-size: 15px; line-height: 1.6; margin: 0; }
+  .qh-foot { position: relative; margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(212,176,90,.16); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .qh-meta { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,228,.55); }
+  .qh-go { font-family: var(--sans); font-weight: 700; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--or2); display: inline-flex; align-items: center; gap: 8px; }
+  .qh-go .ar { transition: transform .3s var(--ease); }
+  .qh-card:hover .qh-go .ar { transform: translateX(5px); }
+
+  /* ===== APP (carte moteur) ===== */
+  .qz-card { position: relative; max-width: 760px; margin: 0 auto; min-height: 460px; overflow: hidden;
+    background: linear-gradient(158deg, #1C160F 0%, #12100B 62%, #0C0A07 100%);
+    border: 1px solid rgba(196,162,74,.34); border-top: 2px solid var(--or2); border-radius: 18px;
+    padding: clamp(26px, 4vw, 50px);
+    box-shadow: 0 48px 110px -50px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.04); }
+  .qz-card[hidden] { display: none; }
+  .qz-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: 18px;
+    background: radial-gradient(100% 50% at 80% -8%, rgba(196,162,74,.12), transparent 60%); }
+  .qz-appbar { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid rgba(212,176,90,.18); }
+  .qz-back { background: none; border: 0; cursor: pointer; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(242,237,228,.6); display: inline-flex; align-items: center; gap: 8px; transition: color .25s; }
+  .qz-back:hover { color: var(--or2); }
+  .qz-back .ar-l { transition: transform .3s var(--ease); }
+  .qz-back:hover .ar-l { transform: translateX(-4px); }
+  .qz-active { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--or2); text-align: right; }
+
+  .qz-kick { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--or2); margin: 0 0 14px; }
+  .qz-screen { position: relative; display: none; }
+  .qz-screen.on { display: block; animation: qzIn .55s var(--ease); }
+  @keyframes qzIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+  /* PROGRESS */
+  .qz-prog { display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; }
+  .qz-count { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--or2); }
+  .qz-bar { height: 5px; border-radius: 100px; background: rgba(255,255,255,.08); overflow: hidden; }
+  .qz-bar-fill { display: block; height: 100%; width: 0; border-radius: 100px; background: var(--gold); box-shadow: 0 0 14px rgba(196,162,74,.6); transition: width .5s var(--ease); }
+
+  /* QUESTION */
+  .qz-q { font-family: var(--serif); font-weight: 700; font-size: clamp(23px, 2.8vw, 33px); color: #fff; line-height: 1.22; letter-spacing: -0.015em; margin: 0 0 28px; }
+  .qz-opts { display: grid; gap: 12px; }
+  /* options créées en JS → :global (sinon le scope Astro ne les matche pas) */
+  .qz-opts :global(.qz-opt) { position: relative; overflow: hidden; display: flex; align-items: center; gap: 15px; text-align: left; width: 100%;
+    font-family: var(--sans); font-weight: 500; font-size: 16px; color: var(--cr);
+    background: rgba(246,240,232,.035); border: 1px solid rgba(196,162,74,.26); border-radius: 11px;
+    padding: 15px 18px; cursor: pointer; transition: border-color .25s, background .25s, transform .2s, box-shadow .25s; }
+  .qz-opts :global(.qz-opt)::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, rgba(196,162,74,.16), rgba(196,162,74,.04)); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease); }
+  .qz-opts :global(.qz-opt) > * { position: relative; z-index: 1; }
+  .qz-opts :global(.qz-opt:hover:not(.locked)) { border-color: var(--or2); transform: translateY(-1px); box-shadow: 0 10px 26px -14px rgba(196,162,74,.5); }
+  .qz-opts :global(.qz-opt:hover:not(.locked))::before { transform: scaleX(1); }
+  .qz-opts :global(.qz-ix) { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--or2); border: 1.5px solid rgba(196,162,74,.5); transition: background .25s, color .25s, border-color .25s; }
+  .qz-opts :global(.qz-opt:hover:not(.locked) .qz-ix) { background: var(--gold); color: var(--ink); border-color: transparent; }
+  .qz-opts :global(.qz-opt-tx) { flex: 1; }
+  .qz-opts :global(.qz-mark) { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 700; opacity: 0; transform: scale(.4); transition: opacity .3s, transform .3s var(--ease); }
+  .qz-opts :global(.qz-opt.locked) { cursor: default; }
+  .qz-opts :global(.qz-opt.is-correct) { border-color: rgba(111,191,142,.65); background: rgba(60,140,90,.16); }
+  .qz-opts :global(.qz-opt.is-correct .qz-ix) { background: #6FBF8E; color: #08210f; border-color: transparent; }
+  .qz-opts :global(.qz-opt.is-correct .qz-mark) { opacity: 1; transform: scale(1); background: #6FBF8E; color: #08210f; }
+  .qz-opts :global(.qz-opt.is-wrong) { border-color: rgba(224,132,102,.6); background: rgba(200,90,60,.16); }
+  .qz-opts :global(.qz-opt.is-wrong .qz-ix) { background: #E08466; color: #2a0f08; border-color: transparent; }
+  .qz-opts :global(.qz-opt.is-wrong .qz-mark) { opacity: 1; transform: scale(1); background: #E08466; color: #2a0f08; }
+  .qz-opts :global(.qz-opt.dim) { opacity: .42; }
+
+  /* EXPLICATION */
+  .qz-exp { display: none; margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(212,176,90,.18); }
+  .qz-exp.on { display: block; animation: qzIn .45s var(--ease); }
+  .qz-exp-verdict { font-family: var(--mono); font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 10px; }
+  .qz-exp-verdict.ok { color: #6FBF8E; }
+  .qz-exp-verdict.no { color: #E08466; }
+  .qz-exp-text { color: rgba(242,237,228,.82); font-size: 16px; line-height: 1.7; margin: 0; }
+  .qz-exp-cite { margin: 16px 0 0; padding: 14px 18px; border-left: 2px solid var(--or2); background: rgba(196,162,74,.08); border-radius: 0 10px 10px 0; font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.55; color: rgba(242,237,228,.9); display: none; }
+  .qz-exp-cite.on { display: block; }
+  .qz-exp-cite cite { display: block; margin-top: 8px; font-style: normal; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--or2); }
+  .qz-next-row { margin-top: 24px; }
+
+  /* RESULT */
+  .qz-screen[data-screen="result"] { text-align: center; }
+  .qz-score { font-family: var(--serif); font-weight: 900; font-size: clamp(70px, 13vw, 124px); line-height: 1; margin: 6px 0 0; }
+  .qz-score i { font-style: normal; font-size: .4em; color: rgba(242,237,228,.5); margin-left: 6px; }
+  .qz-meter { max-width: 290px; height: 6px; margin: 24px auto 0; border-radius: 100px; background: rgba(255,255,255,.08); overflow: hidden; }
+  .qz-meter-fill { display: block; height: 100%; width: 0; border-radius: 100px; background: var(--gold); box-shadow: 0 0 16px rgba(196,162,74,.6); transition: width .9s var(--ease); }
+  .qz-tier { font-family: var(--serif); font-weight: 700; font-size: clamp(27px, 3.6vw, 42px); color: #fff; letter-spacing: -0.02em; margin: 24px 0 0; }
+  .qz-tier-d { color: rgba(242,237,228,.66); font-size: 16.5px; line-height: 1.7; max-width: 50ch; margin: 14px auto 0; }
+
+  /* CLASSEMENT */
+  .lb { max-width: 460px; margin: clamp(34px, 5vw, 48px) auto 0; text-align: left; }
+  .lb-head { display: flex; align-items: center; gap: 14px; justify-content: center; margin-bottom: 18px; }
+  .lb-line { height: 1px; flex: 1; max-width: 70px; background: linear-gradient(90deg, transparent, var(--or2)); }
+  .lb-head .lb-line:last-child { background: linear-gradient(90deg, var(--or2), transparent); }
+  .lb-h { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--or2); }
+  .lb-form { display: flex; gap: 10px; margin-bottom: 18px; }
+  .lb-input { flex: 1; min-width: 0; padding: 13px 16px; border-radius: 8px; border: 1px solid rgba(196,162,74,.34); background: rgba(246,240,232,.04); color: var(--cr); font-family: var(--sans); font-size: 15px; }
+  .lb-input::placeholder { color: rgba(242,237,228,.4); }
+  .lb-input:focus { outline: none; border-color: var(--or2); box-shadow: 0 0 0 3px rgba(196,162,74,.18); }
+  .lb-form .btn { flex-shrink: 0; }
+  .lb-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  /* lignes créées en JS → :global */
+  .lb-list :global(.lb-row) { display: flex; align-items: center; gap: 14px; padding: 11px 16px; border-radius: 9px; background: rgba(246,240,232,.035); border: 1px solid rgba(212,176,90,.12); }
+  .lb-list :global(.lb-row.me) { border-color: var(--or2); background: rgba(196,162,74,.12); box-shadow: 0 0 28px -12px rgba(196,162,74,.5); }
+  .lb-list :global(.lb-row.gap) { background: none; border: none; justify-content: center; padding: 2px; color: rgba(242,237,228,.4); }
+  .lb-list :global(.lb-rank) { font-family: var(--serif); font-style: italic; font-weight: 900; font-size: 19px; color: var(--or2); min-width: 30px; }
+  .lb-list :global(.lb-row:nth-child(1) .lb-rank) { color: var(--or3); }
+  .lb-list :global(.lb-name) { flex: 1; font-family: var(--sans); font-weight: 500; font-size: 15px; color: var(--cr); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lb-list :global(.lb-sc) { font-family: var(--mono); font-size: 13px; font-weight: 700; color: rgba(242,237,228,.82); }
+  .lb-note { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; color: rgba(242,237,228,.38); margin: 16px 0 0; text-align: center; }
+
+  .qz-res-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 34px; }
+
+  @media (max-width: 560px) { .qz-res-actions { flex-direction: column; } .qz-res-actions .btn { width: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .qz-screen.on, .qz-exp.on { animation: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var app = document.getElementById('qzApp');
+    var hub = document.getElementById('qzHub');
+    if (!app || !hub) return;
+    var QUIZZES = JSON.parse(document.getElementById('quiz-data').textContent);
+
+    var quiz = null, idx = 0, score = 0, answered = false, myTs = 0;
+
+    var screens = {};
+    app.querySelectorAll('.qz-screen').forEach(function (s) { screens[s.dataset.screen] = s; });
+    function showScreen(n) { Object.keys(screens).forEach(function (k) { screens[k].classList.toggle('on', k === n); }); }
+    function toStage() { try { window.scrollTo({ top: document.getElementById('qzStage').getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); } catch (e) {} }
+
+    var elQ = document.getElementById('qzQ'), elOpts = document.getElementById('qzOpts'),
+        elCount = document.getElementById('qzCount'), elBar = document.getElementById('qzBar'),
+        elExp = document.getElementById('qzExp'), elVerdict = document.getElementById('qzVerdict'),
+        elExpText = document.getElementById('qzExpText'), elCite = document.getElementById('qzCite'),
+        elNext = document.getElementById('qzNext'), elActive = document.getElementById('qzActive');
+
+    function render() {
+      answered = false;
+      var N = quiz.questions.length, item = quiz.questions[idx];
+      elCount.textContent = 'Question ' + (idx + 1) + ' / ' + N;
+      elBar.style.width = (idx / N * 100) + '%';
+      elQ.textContent = item.q;
+      elExp.classList.remove('on');
+      elOpts.innerHTML = '';
+      item.options.forEach(function (opt, i) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'qz-opt';
+        b.innerHTML = '<span class="qz-ix">' + String.fromCharCode(65 + i) + '</span><span class="qz-opt-tx"></span><span class="qz-mark"></span>';
+        b.querySelector('.qz-opt-tx').textContent = opt;
+        b.addEventListener('click', function () { choose(i); });
+        elOpts.appendChild(b);
+      });
+      elNext.firstChild.textContent = (idx === N - 1) ? 'Voir le résultat ' : 'Suivant ';
+    }
+
+    function choose(i) {
+      if (answered) return;
+      answered = true;
+      var item = quiz.questions[idx], ok = (i === item.correct);
+      if (ok) score++;
+      elOpts.querySelectorAll('.qz-opt').forEach(function (b, bi) {
+        b.classList.add('locked');
+        var m = b.querySelector('.qz-mark');
+        if (bi === item.correct) { b.classList.add('is-correct'); m.textContent = '✓'; }
+        else if (bi === i) { b.classList.add('is-wrong'); m.textContent = '✕'; }
+        else { b.classList.add('dim'); }
+      });
+      elVerdict.textContent = ok ? 'Bonne réponse' : 'Pas tout à fait';
+      elVerdict.className = 'qz-exp-verdict ' + (ok ? 'ok' : 'no');
+      elExpText.textContent = item.exp;
+      if (item.cite) { elCite.innerHTML = '« ' + item.cite + ' »<cite>' + (item.citeAuthor || '') + '</cite>'; elCite.classList.add('on'); }
+      else { elCite.classList.remove('on'); elCite.innerHTML = ''; }
+      elBar.style.width = ((idx + 1) / quiz.questions.length * 100) + '%';
+      elExp.classList.add('on');
+    }
+
+    function tierFor(pct) {
+      if (pct >= 100) return { t: 'Sans faute.', d: "Maîtrise complète du sujet. La formation va chercher les angles morts du roman national." };
+      if (pct >= 70) return { t: 'Solide. La grille est là.', d: "Les repères sont en place. Restent les nuances et les points qui font débat." };
+      if (pct >= 40) return { t: 'Le fil est saisi.', d: "Vous voyez les grandes lignes. La formation relie les figures et les idées entre elles." };
+      return { t: 'Terrain neuf.', d: "C'est pour ça que ce travail existe : reprendre le sujet à la racine, avec ses outils." };
+    }
+
+    // ---- Classement (localStorage — démo ; à remplacer par Supabase pour le global) ----
+    function lbKey() { return 'lar_lb_' + quiz.slug; }
+    function lbLoad() { try { return JSON.parse(localStorage.getItem(lbKey()) || '[]'); } catch (e) { return []; } }
+    function lbSave(a) { try { localStorage.setItem(lbKey(), JSON.stringify(a)); } catch (e) {} }
+    function lbSort(a) { a.sort(function (x, y) { return (y.pct - x.pct) || (y.score - x.score) || (x.ts - y.ts); }); return a; }
+
+    function renderLb() {
+      var rows = lbSort(lbLoad());
+      var list = document.getElementById('lbList');
+      list.innerHTML = '';
+      var top = rows.slice(0, 7);
+      var meRank = -1;
+      rows.forEach(function (r, i) { if (r.ts === myTs) meRank = i; });
+      top.forEach(function (r, i) { list.appendChild(lbRow(r, i + 1)); });
+      if (meRank >= 7) {
+        var gap = document.createElement('li'); gap.className = 'lb-row gap'; gap.textContent = '···'; list.appendChild(gap);
+        list.appendChild(lbRow(rows[meRank], meRank + 1));
+      }
+      if (!rows.length) { list.innerHTML = '<li class="lb-row gap">Sois le premier au classement.</li>'; }
+    }
+    function lbRow(r, rank) {
+      var li = document.createElement('li');
+      li.className = 'lb-row' + (r.ts === myTs ? ' me' : '');
+      var name = document.createElement('span'); name.className = 'lb-name'; name.textContent = r.name;
+      li.innerHTML = '<span class="lb-rank">' + rank + '</span>';
+      li.appendChild(name);
+      var sc = document.createElement('span'); sc.className = 'lb-sc'; sc.textContent = r.score + '/' + r.total;
+      li.appendChild(sc);
+      return li;
+    }
+
+    var lbForm = document.getElementById('lbForm'), lbName = document.getElementById('lbName');
+    lbForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = (lbName.value || '').trim().slice(0, 22) || 'Anonyme';
+      var N = quiz.questions.length;
+      myTs = Date.now();
+      var rows = lbLoad();
+      rows.push({ name: name, score: score, total: N, pct: Math.round(score / N * 100), ts: myTs });
+      lbSave(rows);
+      lbForm.style.display = 'none';
+      renderLb();
+    });
+
+    function finish() {
+      var N = quiz.questions.length, pct = score / N * 100;
+      document.getElementById('qzScore').textContent = score;
+      document.getElementById('qzTotal').textContent = '/' + N;
+      var tier = tierFor(pct);
+      document.getElementById('qzTier').textContent = tier.t;
+      document.getElementById('qzTierD').textContent = tier.d;
+      var cta = document.getElementById('qzCta');
+      cta.setAttribute('href', quiz.cta.href);
+      cta.firstChild.textContent = quiz.cta.label + ' ';
+      myTs = 0; lbForm.style.display = '';
+      lbName.value = '';
+      renderLb();
+      showScreen('result');
+      toStage();
+      setTimeout(function () { document.getElementById('qzMeter').style.width = pct + '%'; }, 120);
+    }
+
+    function nextQ() {
+      if (!answered) return;
+      if (idx === quiz.questions.length - 1) { finish(); return; }
+      idx++; render(); showScreen('play'); toStage();
+    }
+
+    function start(slug) {
+      quiz = QUIZZES.find(function (q) { return q.slug === slug; });
+      if (!quiz) return;
+      idx = 0; score = 0;
+      elActive.innerHTML = quiz.title.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ');
+      hub.setAttribute('hidden', '');
+      app.removeAttribute('hidden');
+      render(); showScreen('play'); toStage();
+    }
+
+    hub.querySelectorAll('.qh-card').forEach(function (c) { c.addEventListener('click', function () { start(c.dataset.slug); }); });
+    elNext.addEventListener('click', nextQ);
+    document.getElementById('qzBack').addEventListener('click', function () { app.setAttribute('hidden', ''); hub.removeAttribute('hidden'); toStage(); });
+    document.getElementById('qzReplay').addEventListener('click', function () { idx = 0; score = 0; render(); showScreen('play'); toStage(); });
+  })();
+</script>

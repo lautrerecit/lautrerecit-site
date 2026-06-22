@@ -1,0 +1,155 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Autre Récit — Audit premium · propositions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--cr:#F2EDE4;--cr2:#E9E0D0;--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--ink:#0E0C0A;--ink3:#3D3730;
+  --serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+  --gold:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);}
+*{box-sizing:border-box}body{margin:0;background:#0E0C0A;color:var(--cr);font-family:var(--sans)}
+.lbl{max-width:1100px;margin:0 auto;padding:50px 24px 0}
+.lbl .n{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--or2)}
+.lbl h2{font-family:var(--serif);font-weight:700;font-size:clamp(22px,3vw,30px);margin:8px 0 4px;color:#fff}
+.lbl h2 em{font-style:italic;color:var(--or2)}
+.lbl p{font-size:14px;color:#8f8472;margin:0;max-width:66ch;line-height:1.5}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.gg{font-style:italic;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text}
+
+/* ===== A · HERO V2 ===== */
+.hero{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 50% -10%,#1A1714,#0E0C0A 55%,#0A0807);text-align:center;padding:clamp(70px,11vw,140px) 24px clamp(60px,8vw,100px)}
+.hero .mk{position:absolute;top:-.18em;left:50%;transform:translateX(-50%);font-family:var(--serif);font-style:italic;font-weight:900;font-size:min(46vw,640px);line-height:1;color:rgba(196,162,74,.05);pointer-events:none;user-select:none}
+.hero .in{position:relative;z-index:2;max-width:880px;margin:0 auto}
+.hero .eye{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--or3);margin:0 0 22px;display:inline-flex;gap:12px;align-items:center}
+.hero .eye::before,.hero .eye::after{content:"";width:26px;height:1px;background:linear-gradient(90deg,transparent,var(--or2))}
+.hero .eye::after{background:linear-gradient(90deg,var(--or2),transparent)}
+.hero h1{margin:0;font-family:var(--serif);font-weight:700;color:#fff;font-size:clamp(48px,8.5vw,116px);line-height:.9;letter-spacing:-.03em}
+.hero h1 .it{display:block;font-style:italic;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text;font-size:.62em;margin-top:.04em}
+.hero .acc{font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);line-height:1.4;color:var(--cr);max-width:40ch;margin:26px auto 0}
+.hero .acc em{font-style:italic;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text}
+.hero .rule{width:54px;height:2px;margin:28px auto;border-radius:2px;background:linear-gradient(90deg,transparent,var(--or2),transparent)}
+.hero .trust{display:flex;gap:10px 22px;justify-content:center;flex-wrap:wrap;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#b7ac9a}
+.hero .trust b{color:var(--or2);font-weight:700}
+.hero .trust i{color:#5f574a;font-style:normal}
+.hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.btn{font-family:var(--sans);font-weight:700;font-size:14px;letter-spacing:.06em;padding:15px 30px;border-radius:6px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;border:1.5px solid transparent;cursor:pointer}
+.btn-or{background:var(--gold);color:var(--ink);box-shadow:0 14px 30px -10px rgba(196,162,74,.5)}
+.btn-gh{background:transparent;border-color:rgba(212,176,90,.5);color:var(--cr)}
+
+/* ===== B · BANDE MANIFESTE ===== */
+.mani{position:relative;overflow:hidden;background:linear-gradient(160deg,#15110b,#0b0907);padding:clamp(70px,10vw,130px) 24px;text-align:center;border-block:1px solid rgba(196,162,74,.16)}
+.mani::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 90% at 50% 50%,rgba(196,162,74,.12),transparent 62%);pointer-events:none}
+.mani .in{position:relative;z-index:2;max-width:1000px;margin:0 auto}
+.mani .eye{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--or3);margin:0 0 26px}
+.mani q{quotes:none}
+.mani .stmt{font-family:var(--serif);font-weight:700;font-size:clamp(28px,5vw,62px);line-height:1.14;letter-spacing:-.02em;color:var(--cr);margin:0}
+.mani .stmt em{font-style:italic;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text}
+.mani .sig{margin-top:30px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8f8472}
+.mani .lk{margin-top:24px;display:inline-flex;gap:10px;align-items:center;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--or2);text-decoration:none}
+.mani .lk i{width:26px;height:1px;background:var(--or2);transition:width .35s}
+.mani .lk:hover i{width:46px}
+
+/* ===== C · TÉMOIGNAGES V2 (vedette + grille) ===== */
+.tm{background:var(--cr);color:var(--ink);padding:clamp(56px,7vw,90px) 24px}
+.tm .head{text-align:center;max-width:60ch;margin:0 auto clamp(36px,5vw,52px)}
+.tm .eye{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--or);margin:0 0 10px}
+.tm .head h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4vw,50px);margin:0;letter-spacing:-.02em}
+.tm .head h2 em{font-style:italic;color:var(--or2)}
+.tm .head p{color:var(--ink3);font-size:15px;margin:12px 0 0}
+.tm .wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
+.tm .card{background:linear-gradient(158deg,#1C160F,#12100B 60%,#0C0A07);border:1px solid rgba(196,162,74,.4);border-top:2px solid var(--or2);border-radius:14px;padding:30px 32px;box-shadow:0 34px 70px -36px rgba(0,0,0,.6);display:flex;flex-direction:column}
+.tm .feat{justify-content:center}
+.tm .feat .mk{font-family:var(--serif);font-style:italic;font-weight:900;font-size:64px;line-height:.5;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text;margin-bottom:14px}
+.tm .feat .q{font-family:var(--serif);font-size:clamp(20px,2.2vw,27px);line-height:1.45;color:#F2EDE4;margin:0}
+.tm .feat .q em{font-style:italic;color:var(--or3)}
+.tm .feat .at{margin-top:22px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or2)}
+.tm .grid{display:grid;grid-template-rows:1fr 1fr;gap:24px}
+.tm .mini{padding:22px 24px}
+.tm .mini .q{font-family:var(--serif);font-size:15.5px;line-height:1.55;color:rgba(242,237,228,.86);margin:0}
+.tm .mini .q em{font-style:italic;color:var(--or3);font-weight:700}
+.tm .mini .at{margin-top:14px;padding-top:13px;border-top:1px solid rgba(212,176,90,.18);font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or2)}
+.tm .mini .at span{color:rgba(242,237,228,.55)}
+@media(max-width:760px){.tm .wrap{grid-template-columns:1fr}}
+
+/* ===== D · NEWSLETTER V2 (preuve sociale) ===== */
+.nl{position:relative;overflow:hidden;background:radial-gradient(120% 120% at 50% 0,#15110C,#0E0C0A 60%);padding:clamp(60px,8vw,104px) 24px;text-align:center}
+.nl .in{position:relative;z-index:2;max-width:600px;margin:0 auto}
+.nl .eye{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--or3);margin:0 0 14px}
+.nl h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4vw,50px);color:#fff;margin:0;letter-spacing:-.02em}
+.nl h2 em{font-style:italic;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text}
+.nl .proof{display:inline-flex;align-items:center;gap:12px;margin:22px 0 4px}
+.nl .dots{display:flex}
+.nl .dots i{width:30px;height:30px;border-radius:50%;border:2px solid #15110C;margin-left:-10px;background:linear-gradient(140deg,#3a2f1c,#1a160f)}
+.nl .dots i:first-child{margin-left:0}
+.nl .proof b{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#b7ac9a}
+.nl .proof b strong{color:var(--or2)}
+.nl .sub{color:#bcb09c;font-size:16px;line-height:1.6;margin:14px auto 0;max-width:44ch}
+.nl form{display:flex;gap:10px;max-width:480px;margin:28px auto 0}
+.nl input{flex:1;min-width:0;padding:15px 18px;border:1px solid rgba(212,176,90,.3);border-radius:6px;background:rgba(255,255,255,.04);color:var(--cr);font-family:var(--sans);font-size:15px}
+.nl input::placeholder{color:#8f8472}
+.nl .fine{margin:16px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#8f8472}
+@media(max-width:520px){.nl form{flex-direction:column}}
+</style></head>
+<body>
+
+<!-- A -->
+<div class="lbl"><span class="n">Proposition A</span><h2>Hero V2 — <em>autorité + point focal</em></h2><p>Ajout : œilleton « depuis 2023 », barre de confiance (16 000+ lecteurs · science politique), 2e bouton vers la formation, guillemet géant en filigrane doré. Plus premium, plus crédible dès la 1re seconde.</p></div>
+<section class="hero">
+  <div class="grain"></div>
+  <div class="mk">“</div>
+  <div class="in">
+    <p class="eye">Média d'analyse critique · depuis 2023</p>
+    <h1>L'Autre&nbsp;Récit<span class="it">commence ici.</span></h1>
+    <p class="acc">«&nbsp;Reprendre la <em>plume</em> à ceux qui écrivent notre <em>histoire</em> à notre place.&nbsp;»</p>
+    <div class="rule"></div>
+    <div class="trust"><span><b>16 000+</b> lecteurs</span><i>·</i><span>Science politique</span><i>·</i><span>Indépendant</span></div>
+    <div class="cta"><a class="btn btn-or" href="#">Entrer dans le récit ↓</a><a class="btn btn-gh" href="#">Découvrir la formation</a></div>
+  </div>
+</section>
+
+<!-- B -->
+<div class="lbl"><span class="n">Proposition B</span><h2>Bande Manifeste — <em>respiration éditoriale</em></h2><p>Une bande pleine largeur qui pose ta phrase fondatrice en grand, comme un moment de design. À glisser entre deux sections (ex. après la Vision). Donne du souffle + ancre la marque.</p></div>
+<section class="mani">
+  <div class="in">
+    <p class="eye">Le manifeste</p>
+    <p class="stmt">«&nbsp;Le monde ne se donne jamais brut. Il est <em>raconté</em> par ceux qui ont le pouvoir de le dire — <em>nous reprenons la plume</em>.&nbsp;»</p>
+    <p class="sig">L'Autre Récit · Rany Wahdan, fondateur</p>
+    <a class="lk" href="#">Lire le manifeste <i></i>→</a>
+  </div>
+</section>
+
+<!-- C -->
+<div class="lbl"><span class="n">Proposition C</span><h2>Témoignages V2 — <em>vedette + grille</em></h2><p>Un avis « vedette » en grand à gauche + une grille d'avis courts à droite. Plus curé et crédible qu'un simple marquee qui défile (qu'on peut garder en dessous pour « voir tous les retours »).</p></div>
+<section class="tm">
+  <div class="head">
+    <p class="eye">La communauté</p>
+    <h2>Ils en <em>parlent</em>.</h2>
+    <p>Retours récoltés auprès de la communauté — cette année.</p>
+  </div>
+  <div class="wrap">
+    <figure class="card feat">
+      <div class="mk">«</div>
+      <blockquote class="q">Enfin un média qui nous instruit réellement et donne de vraies clés de compréhension du monde. <em>Le média qui nous manquait.</em></blockquote>
+      <figcaption class="at">Retour communauté · Inès</figcaption>
+    </figure>
+    <div class="grid">
+      <figure class="card mini"><blockquote class="q">Un travail de recherche solide, des références sérieuses. <em>Vulgarise le travail scientifique</em> là où les premiers concernés sont absents du débat.</blockquote><figcaption class="at">Chaïmae <span>· communauté</span></figcaption></figure>
+      <figure class="card mini"><blockquote class="q">Des analyses d'une grande finesse, qui décalent le regard. <em>Quelle respiration&nbsp;!</em></blockquote><figcaption class="at">Madeleine <span>· communauté</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- D -->
+<div class="lbl"><span class="n">Proposition D</span><h2>Newsletter V2 — <em>preuve sociale</em></h2><p>Ajout de la preuve sociale (« rejoignez 16 000+ lecteurs » + pastilles) et d'un cadre premium sombre. Plus convaincant que le formulaire nu actuel.</p></div>
+<section class="nl">
+  <div class="grain"></div>
+  <div class="in">
+    <p class="eye">La newsletter</p>
+    <h2>Recevez <em>L'Autre&nbsp;Récit</em></h2>
+    <div class="proof"><span class="dots"><i></i><i></i><i></i><i></i><i></i></span><b>Rejoignez <strong>16 000+</strong> lecteurs</b></div>
+    <p class="sub">Chaque nouvelle analyse, en avant-première dans votre boîte. Gratuit.</p>
+    <form><input type="email" placeholder="votre@email.com"><a class="btn btn-or" href="#">S'abonner →</a></form>
+    <p class="fine">Un clic pour se désabonner, à tout moment.</p>
+  </div>
+</section>
+
+</body></html>

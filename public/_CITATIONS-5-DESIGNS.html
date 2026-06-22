@@ -1,0 +1,153 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Autre Récit — Citations · 5 designs premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--cr:#F2EDE4;--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--ink:#0E0C0A;
+  --serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;}
+*{box-sizing:border-box}
+body{margin:0;background:#0E0C0A;color:var(--cr);font-family:var(--sans)}
+.lbl{max-width:1100px;margin:0 auto;padding:54px 24px 0}
+.lbl .n{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--or2)}
+.lbl h2{font-family:var(--serif);font-weight:700;font-size:clamp(22px,3vw,30px);margin:8px 0 4px;color:#fff}
+.lbl h2 em{font-style:italic;color:var(--or2)}
+.lbl p{font-size:14px;color:#8f8472;margin:0;max-width:60ch;line-height:1.5}
+.sec{position:relative;padding:34px 0 64px;border-bottom:1px solid rgba(196,162,74,.12);overflow:hidden}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--or3);text-align:center;margin:0 0 8px}
+.htitle{font-family:var(--serif);font-weight:700;font-size:clamp(24px,3.4vw,38px);text-align:center;color:#fff;margin:0 0 30px;letter-spacing:-.01em}
+.htitle em{font-style:italic;color:var(--or2)}
+
+/* ============ D1 · CINÉMATHÈQUE (featured) ============ */
+.d1{position:relative}
+.d1::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% -5%,rgba(196,162,74,.18),transparent 60%);pointer-events:none}
+.d1-stage{position:relative;display:flex;align-items:center;justify-content:center;gap:0;min-height:440px}
+.d1-card{border-radius:10px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.9);border:1px solid rgba(196,162,74,.25)}
+.d1-card img{display:block;width:100%;height:100%;object-fit:cover}
+.d1-side{width:200px;filter:brightness(.5) saturate(.85);transform:scale(.82);opacity:.8;position:relative;z-index:1}
+.d1-side.l{margin-right:-50px;rotate:-4deg}
+.d1-side.r{margin-left:-50px;rotate:4deg}
+.d1-main{width:300px;position:relative;z-index:3;border:1.5px solid transparent;border-image:linear-gradient(140deg,#9A7B2E,#F6DE94,#C4A24A) 1;box-shadow:0 40px 90px -30px rgba(0,0,0,.95),0 0 60px rgba(196,162,74,.22)}
+.d1-dots{display:flex;gap:9px;justify-content:center;margin-top:26px}
+.d1-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18)}
+.d1-dots i.on{background:linear-gradient(180deg,#EBCB70,#A9863A);box-shadow:0 0 0 4px rgba(196,162,74,.15)}
+
+/* ============ D2 · MUR DE MUSÉE (grille) ============ */
+.d2{background:radial-gradient(120% 50% at 50% 0,rgba(196,162,74,.08),transparent 55%)}
+.d2-grid{max-width:1040px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px 34px}
+.d2-card{position:relative;border-radius:8px;overflow:hidden;border:1px solid rgba(196,162,74,.28);box-shadow:0 20px 50px -28px rgba(0,0,0,.85);transition:transform .35s,box-shadow .35s,border-color .35s}
+.d2-card::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,243,200,.06);pointer-events:none}
+.d2-card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.d2-card:hover{transform:translateY(-6px);border-color:rgba(212,176,90,.7);box-shadow:0 36px 70px -28px rgba(0,0,0,.95),0 0 40px rgba(196,162,74,.2)}
+@media(max-width:780px){.d2-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ============ D3 · COVERFLOW 3D ============ */
+.d3-wrap{perspective:1600px;overflow:hidden}
+.d3-row{display:flex;align-items:center;justify-content:center;gap:0;min-height:460px;transform-style:preserve-3d}
+.d3 .c{width:250px;flex:0 0 auto;border-radius:10px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.9);border:1px solid rgba(196,162,74,.25);transition:.4s}
+.d3 .c img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.d3 .c.f1{transform:rotateY(38deg) translateZ(-60px) scale(.8);filter:brightness(.45);margin-right:-70px;opacity:.85}
+.d3 .c.f2{transform:rotateY(20deg) translateZ(-20px) scale(.9);filter:brightness(.7);margin-right:-50px;z-index:2}
+.d3 .c.mid{transform:translateZ(40px);z-index:5;border-image:linear-gradient(140deg,#9A7B2E,#F6DE94,#C4A24A) 1;border-width:1.5px;box-shadow:0 44px 100px -30px rgba(0,0,0,.95),0 0 60px rgba(196,162,74,.25)}
+.d3 .c.b2{transform:rotateY(-20deg) translateZ(-20px) scale(.9);filter:brightness(.7);margin-left:-50px;z-index:2}
+.d3 .c.b1{transform:rotateY(-38deg) translateZ(-60px) scale(.8);filter:brightness(.45);margin-left:-70px;opacity:.85}
+
+/* ============ D4 · PELLICULE CINÉMA ============ */
+.d4-strip{position:relative;background:linear-gradient(180deg,#171310,#0d0a08);border-top:1px solid rgba(196,162,74,.2);border-bottom:1px solid rgba(196,162,74,.2);padding:30px 0;overflow:hidden}
+.d4-perf{position:absolute;left:0;right:0;height:16px;display:flex;gap:26px;padding:0 20px;align-items:center}
+.d4-perf.t{top:6px}.d4-perf.b{bottom:6px}
+.d4-perf i{width:18px;height:9px;border-radius:2px;background:rgba(196,162,74,.32);flex:0 0 auto}
+.d4-track{display:flex;gap:18px;justify-content:center;padding:14px 24px}
+.d4 .c{width:215px;flex:0 0 auto;border-radius:4px;overflow:hidden;border:1px solid rgba(196,162,74,.3);box-shadow:0 18px 44px -26px #000}
+.d4 .c img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.d4 .c:nth-child(2){transform:scale(1.06);border-color:rgba(212,176,90,.7);z-index:2;box-shadow:0 30px 60px -26px #000,0 0 40px rgba(196,162,74,.2)}
+
+/* ============ D5 · CARTES COLLECTOR (éventail) ============ */
+.d5-fan{position:relative;height:430px;display:flex;align-items:center;justify-content:center}
+.d5 .c{position:absolute;width:230px;border-radius:10px;overflow:hidden;border:1px solid rgba(196,162,74,.3);box-shadow:0 26px 60px -28px rgba(0,0,0,.9);transition:.4s;transform-origin:bottom center}
+.d5 .c img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.d5 .c1{transform:rotate(-16deg) translate(-220px,18px);filter:brightness(.6)}
+.d5 .c2{transform:rotate(-8deg) translate(-110px,4px);filter:brightness(.78)}
+.d5 .c3{transform:rotate(0deg);z-index:5;border-image:linear-gradient(140deg,#9A7B2E,#F6DE94,#C4A24A) 1;border-width:1.5px;box-shadow:0 44px 90px -28px rgba(0,0,0,.95),0 0 60px rgba(196,162,74,.25)}
+.d5 .c4{transform:rotate(8deg) translate(110px,4px);filter:brightness(.78)}
+.d5 .c5{transform:rotate(16deg) translate(220px,18px);filter:brightness(.6)}
+.d5-cta{text-align:center;margin-top:8px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3)}
+</style></head>
+<body>
+
+<!-- D1 -->
+<div class="lbl"><span class="n">Design 1</span><h2>Cinémathèque — <em>une citation en vedette</em></h2><p>Une pensée mise en lumière au centre (cadre doré + halo), les autres en retrait. Focus, prestige. Flèches/auto pour faire défiler.</p></div>
+<section class="sec d1">
+  <div style="position:relative;z-index:2">
+    <p class="eyebrow">Paroles qui éclairent</p>
+    <h2 class="htitle">Ils ont <em>pensé</em> la domination.</h2>
+    <div class="d1-stage">
+      <div class="d1-card d1-side l"><img src="citations/cit-3.png" alt=""></div>
+      <div class="d1-card d1-main"><img src="citations/cit-1.png" alt=""></div>
+      <div class="d1-card d1-side r"><img src="citations/cit-5.png" alt=""></div>
+    </div>
+    <div class="d1-dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- D2 -->
+<div class="lbl"><span class="n">Design 2</span><h2>Mur de musée — <em>grille curatée</em></h2><p>Toutes les citations en grille, cadres dorés fins, éclairage du haut. On lit le « mur » d'un coup. Survol = la carte se soulève.</p></div>
+<section class="sec d2">
+  <p class="eyebrow">La galerie</p>
+  <h2 class="htitle">Un <em>mur</em> de pensées.</h2>
+  <div class="d2-grid">
+    <div class="d2-card"><img src="citations/cit-1.png" alt=""></div>
+    <div class="d2-card"><img src="citations/cit-2.png" alt=""></div>
+    <div class="d2-card"><img src="citations/cit-3.png" alt=""></div>
+    <div class="d2-card"><img src="citations/cit-4.png" alt=""></div>
+    <div class="d2-card"><img src="citations/cit-5.png" alt=""></div>
+    <div class="d2-card"><img src="citations/cit-6.png" alt=""></div>
+  </div>
+</section>
+
+<!-- D3 -->
+<div class="lbl"><span class="n">Design 3</span><h2>Coverflow 3D — <em>profondeur</em></h2><p>Les cartes en perspective : celle du centre droite et nette, les voisines inclinées et assombries. Effet « waouh », très premium en mouvement.</p></div>
+<section class="sec d3">
+  <p class="eyebrow">Paroles qui éclairent</p>
+  <h2 class="htitle">Tournez les <em>pages</em>.</h2>
+  <div class="d3-wrap"><div class="d3-row">
+    <div class="c f1"><img src="citations/cit-2.png" alt=""></div>
+    <div class="c f2"><img src="citations/cit-3.png" alt=""></div>
+    <div class="c mid"><img src="citations/cit-1.png" alt=""></div>
+    <div class="c b2"><img src="citations/cit-5.png" alt=""></div>
+    <div class="c b1"><img src="citations/cit-6.png" alt=""></div>
+  </div></div>
+</section>
+
+<!-- D4 -->
+<div class="lbl"><span class="n">Design 4</span><h2>Pellicule cinéma — <em>la bobine</em></h2><p>Bande de film (perforations dorées), les citations comme des photogrammes. Évoque l'archive, le documentaire. Défile en continu.</p></div>
+<section class="sec d4">
+  <p class="eyebrow">Bobine</p>
+  <h2 class="htitle">Le <em>récit</em>, image par image.</h2>
+  <div class="d4-strip">
+    <div class="d4-perf t"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="d4-track d4">
+      <div class="c"><img src="citations/cit-4.png" alt=""></div>
+      <div class="c"><img src="citations/cit-1.png" alt=""></div>
+      <div class="c"><img src="citations/cit-5.png" alt=""></div>
+      <div class="c"><img src="citations/cit-3.png" alt=""></div>
+    </div>
+    <div class="d4-perf b"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- D5 -->
+<div class="lbl"><span class="n">Design 5</span><h2>Cartes collector — <em>l'éventail</em></h2><p>Les citations comme des cartes de collection, en éventail, dorées sur les bords. Ludique + précieux. « Pioche une pensée ».</p></div>
+<section class="sec d5">
+  <p class="eyebrow">Édition collector</p>
+  <h2 class="htitle">Cinq <em>cartes</em>, cinq pensées.</h2>
+  <div class="d5-fan d5">
+    <div class="c c1"><img src="citations/cit-2.png" alt=""></div>
+    <div class="c c2"><img src="citations/cit-3.png" alt=""></div>
+    <div class="c c3"><img src="citations/cit-1.png" alt=""></div>
+    <div class="c c4"><img src="citations/cit-5.png" alt=""></div>
+    <div class="c c5"><img src="citations/cit-6.png" alt=""></div>
+  </div>
+  <p class="d5-cta">↺ Pioche une pensée</p>
+</section>
+
+</body></html>

@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Autre Récit — 18 blocs leçon (Intro · C1 · C2)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#080706;font-family:'League Spartan',system-ui,sans-serif}
+  .bar{position:sticky;top:0;z-index:20;background:rgba(14,12,10,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,162,74,.28);padding:13px clamp(16px,4vw,40px)}
+  .bar .wm{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#F2EDE4}
+  .bar .wm b{color:#C4A24A;font-weight:700;font-style:normal}
+  .bar .h{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#9a8f7e;margin-top:5px}
+  .lbl{background:#0b0a08;border-bottom:1px solid rgba(196,162,74,.14);border-top:1px solid rgba(196,162,74,.14);padding:11px clamp(16px,4vw,40px);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#C4A24A}
+  .lbl span{color:#5f5a50;float:right;letter-spacing:.06em}
+
+  /* ====== styles des fiches (= ce qui ira dans brand.css / <head> du cours) ====== */
+  .la{--or2:#C4A24A;--or3:#D4B05A;--or:#9A7B2E;font-family:'League Spartan',system-ui,sans-serif;background:radial-gradient(120% 130% at 50% 0%,#FBF8F2,#F2EDE4 62%);padding:clamp(36px,5vw,72px) clamp(20px,4vw,64px)}
+  .la .card{max-width:880px;margin:0 auto;background:#fff;border:1px solid #E6DDCB;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px -44px rgba(60,50,30,.4)}
+  .la .bd{padding:clamp(30px,4.4vw,54px)}
+  .la .top{display:flex;align-items:center;gap:13px;margin:0 0 18px}
+  .la .n{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:900;font-size:32px;color:var(--or2);line-height:1}
+  .la .ey{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
+  .la h2{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(27px,4vw,44px);line-height:1.1;letter-spacing:-.02em;color:#15120E;margin:0 0 18px}
+  .la h2 em{font-style:italic;color:var(--or2)}
+  .la .rl{height:1px;background:linear-gradient(90deg,#C4A24A,transparent);margin:0 0 22px;border:0}
+  .la p{font-size:16.5px;line-height:1.78;color:#3D3730;max-width:60ch;margin:0 0 1.05em}
+  .la p:last-child{margin:0}
+  .la .lr{background:#0E0C0A;color:#F2EDE4;padding:clamp(24px,3.2vw,36px) clamp(30px,4.4vw,54px)}
+  .la .lr .k{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--or3);margin:0 0 16px}
+  .la .lr ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .la .lr li{position:relative;padding-left:25px;font-size:14.5px;line-height:1.5;color:#e3d9c6}
+  .la .lr li:before{content:"\2713";position:absolute;left:0;top:1px;color:var(--or2);font-weight:700}
+
+  .lb{--or2:#C4A24A;--or3:#D4B05A;--or:#9A7B2E;--cr:#F2EDE4;font-family:'League Spartan',system-ui,sans-serif;background:#0E0C0A;color:var(--cr);padding:clamp(36px,5vw,72px) clamp(20px,4vw,64px);position:relative;overflow:hidden}
+  .lb .gl{position:absolute;top:-25%;left:-8%;width:360px;height:360px;background:radial-gradient(circle,rgba(196,162,74,.09),transparent 70%);pointer-events:none}
+  .lb .gr{position:relative;max-width:980px;margin:0 auto;display:grid;grid-template-columns:1.45fr .92fr;gap:clamp(26px,4vw,50px);align-items:start}
+  .lb .top{display:flex;align-items:center;gap:13px;margin:0 0 16px}
+  .lb .n{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:900;font-size:32px;color:var(--or2);line-height:1}
+  .lb .ey{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--or2)}
+  .lb h2{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(26px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;color:var(--cr);margin:0 0 18px}
+  .lb h2 em{font-style:italic;color:var(--or2)}
+  .lb .rl{height:1px;width:58px;background:linear-gradient(90deg,#EBCB70,#A9863A);margin:0 0 20px;border:0}
+  .lb p{font-size:16px;line-height:1.76;color:#d9d0c2;max-width:54ch;margin:0 0 .95em}
+  .lb p:last-child{margin:0}
+  .lb .lr{background:#F4EEE3;border:1px solid rgba(196,162,74,.3);border-radius:14px;padding:22px 20px}
+  .lb .lr .k{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--or);margin:0 0 16px}
+  .lb .lr ul{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+  .lb .lr li{position:relative;padding-left:23px;font-size:14px;line-height:1.5;color:#3D3730}
+  .lb .lr li:before{content:"\2713";position:absolute;left:0;top:1px;color:var(--or2);font-weight:700}
+  @media(max-width:760px){.lb .gr{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wm">L'<b>Autre</b> Récit · 18 blocs leçon</div>
+  <div class="h">Intro · Cours 1 · Cours 2 — styles dans brand.css (head du cours) · copier le markup entre les repères</div>
+</div>
+
+<!-- ════════════ INTRODUCTION ════════════ -->
+
+<div class="lbl">Introduction · M1 <span>fiche crème</span></div>
+<div class="la">
+  <div class="card">
+    <div class="bd">
+      <div class="top"><span class="n">01</span><span class="ey">Introduction</span></div>
+      <h2>La question que vous n'osiez pas <em>poser</em></h2>
+      <hr class="rl">
+      <p>Pourquoi des Noirs américains ont-ils réclamé une nation à eux, un territoire séparé, parfois un retour en Afrique ? La question met mal à l'aise parce qu'elle heurte l'idéal d'intégration qu'on tient pour évident.</p>
+      <p>Ce module ouvre la formation en posant le vrai sujet : le nationalisme noir comme réponse politique à une promesse d'égalité jamais tenue. On apprend d'abord à regarder cette histoire sans la juger d'avance.</p>
+    </div>
+    <div class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Pourquoi le nationalisme noir est une réponse politique cohérente</li>
+        <li>Ce que l'idéal d'intégration empêche de voir</li>
+        <li>La promesse d'égalité d'où part toute la formation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lbl">Introduction · M2 <span>fiche sombre</span></div>
+<div class="lb">
+  <div class="gl"></div>
+  <div class="gr">
+    <div>
+      <div class="top"><span class="n">02</span><span class="ey">Introduction</span></div>
+      <h2>Pourquoi cette histoire est mal connue en <em>France</em></h2>
+      <hr class="rl">
+      <p>Malcolm X, les Black Panthers, Garvey : des noms familiers, une histoire pourtant survolée et déformée de ce côté de l'Atlantique.</p>
+      <p>Le récit français bute sur ses angles morts — l'universalisme républicain, le tabou de la race, l'habitude de lire les États-Unis par la seule lutte pour les droits civiques. Ce module explique d'où vient ce flou.</p>
+    </div>
+    <aside class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Les angles morts français face à la question raciale</li>
+        <li>Pourquoi les droits civiques masquent le reste de l'histoire</li>
+        <li>Ce que l'universalisme républicain rend difficile à penser</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<div class="lbl">Introduction · M3 <span>fiche crème</span></div>
+<div class="la">
+  <div class="card">
+    <div class="bd">
+      <div class="top"><span class="n">03</span><span class="ey">Introduction</span></div>
+      <h2>Race et <em>racisme</em></h2>
+      <hr class="rl">
+      <p>Avant d'analyser, il faut des outils précis. Ce module installe les deux concepts qui structurent tout le reste.</p>
+      <p>La race comme construction sociale et historique ; le racisme comme système — institutions, droit, économie — qui opère au-delà des intentions individuelles. Sans cette base, l'histoire qui suit reste illisible.</p>
+    </div>
+    <div class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>La race comme construction sociale et historique</li>
+        <li>Le racisme comme système, au-delà des intentions individuelles</li>
+        <li>Pourquoi ces deux outils conditionnent toute la lecture</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lbl">Introduction · M4 <span>fiche sombre</span></div>
+<div class="lb">
+  <div class="gl"></div>
+  <div class="gr">
+    <div>
+      <div class="top"><span class="n">04</span><span class="ey">Introduction</span></div>
+      <h2>La domination en <em>pratique</em></h2>
+      <hr class="rl">
+      <p>Un système ne se décrète pas, il s'incarne dans des lois, des espaces, des gestes quotidiens.</p>
+      <p>Ce module montre comment la domination raciale fonctionne concrètement : où l'on habite, ce qu'on gagne, comment on est policé, jugé, soigné. On passe de la théorie au mécanisme réel que les militants noirs ont dû affronter.</p>
+    </div>
+    <aside class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Les domaines concrets où la domination s'exerce</li>
+        <li>Le passage du principe abstrait au mécanisme quotidien</li>
+        <li>Ce que les militants noirs avaient réellement en face d'eux</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<div class="lbl">Introduction · M5 <span>fiche crème</span></div>
+<div class="la">
+  <div class="card">
+    <div class="bd">
+      <div class="top"><span class="n">05</span><span class="ey">Introduction</span></div>
+      <h2>La <em>boussole</em> analytique</h2>
+      <hr class="rl">
+      <p>Comment lire une figure, un mouvement, une stratégie sans se perdre ? Ce module donne la boussole qui servira toute la formation.</p>
+      <p>Une grille pour situer chaque acteur selon son rapport au pouvoir, à la violence, à l'intégration, à l'autodétermination. Un outil simple, réutilisable, qu'on appliquera de Du Bois à Black Lives Matter.</p>
+    </div>
+    <div class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Les axes qui situent n'importe quel acteur politique</li>
+        <li>Comment comparer des stratégies sans les juger d'avance</li>
+        <li>Un outil réutilisable jusqu'à Black Lives Matter</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lbl">Introduction · M6 <span>fiche sombre</span></div>
+<div class="lb">
+  <div class="gl"></div>
+  <div class="gr">
+    <div>
+      <div class="top"><span class="n">06</span><span class="ey">Introduction</span></div>
+      <h2>Les cinq <em>tensions</em></h2>
+      <hr class="rl">
+      <p>Toute l'histoire qui suit se joue dans 5 tensions qui ne se résolvent jamais vraiment : s'intégrer ou se séparer, réformer le système ou le renverser, viser la reconnaissance ou conquérir le pouvoir.</p>
+      <p>Ce module en fait la colonne vertébrale de la formation. Chaque cours reviendra les éprouver sur une figure et un moment précis.</p>
+    </div>
+    <aside class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Les 5 tensions qui structurent toute la formation</li>
+        <li>Pourquoi aucune ne se résout définitivement</li>
+        <li>Comment elles servent de fil rouge d'un cours à l'autre</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<!-- ════════════ COURS 1 — AUX ORIGINES ════════════ -->
+
+<div class="lbl">Cours 1 · M1 <span>fiche crème</span></div>
+<div class="la">
+  <div class="card">
+    <div class="bd">
+      <div class="top"><span class="n">01</span><span class="ey">Cours 1 · Aux origines</span></div>
+      <h2>La <em>promesse</em> non tenue</h2>
+      <hr class="rl">
+      <p>En 1865 l'esclavage est aboli ; 3 amendements promettent aux affranchis la citoyenneté et le droit de vote. 10 ans plus tard, la promesse est enterrée.</p>
+      <p>Ce module raconte la Reconstruction et sa trahison, ce moment fondateur où l'Amérique noire découvre qu'une égalité inscrite dans la loi ne devient pas réelle pour autant. C'est de cette déception que tout naît.</p>
+    </div>
+    <div class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Ce que les 3 amendements promettaient vraiment</li>
+        <li>Comment la Reconstruction a été défaite</li>
+        <li>Pourquoi ce moment fonde tout le nationalisme noir</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lbl">Cours 1 · M2 <span>fiche sombre</span></div>
+<div class="lb">
+  <div class="gl"></div>
+  <div class="gr">
+    <div>
+      <div class="top"><span class="n">02</span><span class="ey">Cours 1 · Aux origines</span></div>
+      <h2>Jim Crow : chiffres, corps, <em>terreur</em></h2>
+      <hr class="rl">
+      <p>Après la Reconstruction vient l'ordre Jim Crow : ségrégation légale, codifiée, tenue par la violence.</p>
+      <p>Ce module en restitue la réalité matérielle — les lois, les chiffres de la ségrégation, le lynchage comme instrument de contrôle social. On regarde en face ce que ce régime faisait aux corps.</p>
+    </div>
+    <aside class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Comment la ségrégation était inscrite dans la loi</li>
+        <li>Le lynchage comme instrument politique</li>
+        <li>Pourquoi ce réel rend les réponses nationalistes intelligibles</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<div class="lbl">Cours 1 · M3 <span>fiche crème</span></div>
+<div class="la">
+  <div class="card">
+    <div class="bd">
+      <div class="top"><span class="n">03</span><span class="ey">Cours 1 · Aux origines</span></div>
+      <h2>Le <em>Nord</em> n'est pas mieux</h2>
+      <hr class="rl">
+      <p>Des millions de Noirs fuient le Sud vers les villes du Nord, en quête de travail et de dignité. Ils y trouvent une autre forme de domination.</p>
+      <p>Ghettos, discrimination à l'embauche et au logement, violences policières. Ce module démonte le mythe d'un Nord libérateur et explique pourquoi les mouvements les plus radicaux naîtront là — Harlem, Detroit, Chicago.</p>
+    </div>
+    <div class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Pourquoi la Grande Migration déçoit ses espoirs</li>
+        <li>La domination raciale hors du cadre légal du Sud</li>
+        <li>Pourquoi le radicalisme noir naît dans les villes du Nord</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lbl">Cours 1 · M4 <span>fiche sombre</span></div>
+<div class="lb">
+  <div class="gl"></div>
+  <div class="gr">
+    <div>
+      <div class="top"><span class="n">04</span><span class="ey">Cours 1 · Aux origines</span></div>
+      <h2>Du Bois et la <em>double conscience</em></h2>
+      <hr class="rl">
+      <p>W.E.B. Du Bois donne à l'expérience noire son concept le plus puissant : la double conscience, ce sentiment de se voir en permanence à travers les yeux d'une société qui vous méprise.</p>
+      <p>Ce module explore l'idée, son auteur, et le voile qui sépare deux Amériques. Une clé de lecture qu'on retrouvera chez Malcolm comme chez les penseurs d'aujourd'hui.</p>
+    </div>
+    <aside class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Ce que recouvre la double conscience</li>
+        <li>L'image du voile et ce qu'elle décrit</li>
+        <li>Pourquoi ce concept traverse tout le 20e siècle noir</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<div class="lbl">Cours 1 · M5 <span>fiche crème</span></div>
+<div class="la">
+  <div class="card">
+    <div class="bd">
+      <div class="top"><span class="n">05</span><span class="ey">Cours 1 · Aux origines</span></div>
+      <h2>Garvey et la mobilisation de <em>masse</em></h2>
+      <hr class="rl">
+      <p>Dans les années 1920, Marcus Garvey bâtit le plus grand mouvement noir de masse de l'histoire américaine : des millions de membres, un journal, une compagnie maritime, le rêve d'un retour en Afrique.</p>
+      <p>Ce module raconte cette ambition démesurée, sa chute, et son héritage. Sans Garvey, ni la Nation of Islam ni le Black Power n'auraient eu la même forme.</p>
+    </div>
+    <div class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Comment Garvey a mobilisé des millions de personnes</li>
+        <li>Ce que le projet de retour en Afrique visait vraiment</li>
+        <li>L'héritage de Garvey sur la NOI et le Black Power</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lbl">Cours 1 · M6 <span>fiche sombre</span></div>
+<div class="lb">
+  <div class="gl"></div>
+  <div class="gr">
+    <div>
+      <div class="top"><span class="n">06</span><span class="ey">Cours 1 · Aux origines</span></div>
+      <h2>Le <em>débat</em> fondateur</h2>
+      <hr class="rl">
+      <p>Comment libérer un peuple opprimé : par l'intégration patiente, l'élévation par le travail, ou la séparation et l'autonomie ?</p>
+      <p>Booker T. Washington, Du Bois et Garvey incarnent 3 réponses inconciliables. Ce module met ce débat à plat, parce que toutes les figures de la formation se positionneront, sans toujours le savoir, par rapport à lui.</p>
+    </div>
+    <aside class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Les 3 grandes réponses à la question de la libération</li>
+        <li>Ce qui oppose Washington, Du Bois et Garvey</li>
+        <li>Pourquoi ce débat structure tout ce qui suit</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<!-- ════════════ COURS 2 — NATION OF ISLAM ════════════ -->
+
+<div class="lbl">Cours 2 · M1 <span>fiche crème</span></div>
+<div class="la">
+  <div class="card">
+    <div class="bd">
+      <div class="top"><span class="n">01</span><span class="ey">Cours 2 · Nation of Islam</span></div>
+      <h2>Pourquoi le <em>sacré</em> ?</h2>
+      <hr class="rl">
+      <p>Pourquoi un mouvement de libération politique prend-il la forme d'une religion ? La Nation of Islam répond à l'humiliation raciale par le sacré : une nouvelle origine, une nouvelle dignité, un nouveau nom.</p>
+      <p>Ce module pose la question centrale du cours — ce que le religieux rend possible en politique, là où le seul discours militant échoue. On entre dans la logique avant de juger la doctrine.</p>
+    </div>
+    <div class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Ce que le sacré apporte qu'un discours politique seul n'a pas</li>
+        <li>La promesse en 3 temps : nouvelle origine, dignité, nom</li>
+        <li>Pourquoi entrer dans la logique avant de juger la doctrine</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lbl">Cours 2 · M2 <span>fiche sombre</span></div>
+<div class="lb">
+  <div class="gl"></div>
+  <div class="gr">
+    <div>
+      <div class="top"><span class="n">02</span><span class="ey">Cours 2 · Nation of Islam</span></div>
+      <h2>La machine <em>contre-société</em></h2>
+      <hr class="rl">
+      <p>La Nation of Islam bâtit un monde à part : écoles, commerces, fermes, un journal, une police interne — un véritable État dans l'État.</p>
+      <p>Ce module décortique cette contre-société, ses 5 domaines, et le concept d'institution totale. On comprend ici comment un mouvement transforme une promesse de dignité en infrastructure concrète, palpable, quotidienne.</p>
+    </div>
+    <aside class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Les 5 domaines où la NOI bâtit un monde parallèle</li>
+        <li>Le concept d'institution totale appliqué à un mouvement</li>
+        <li>Comment une promesse de dignité devient infrastructure</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<div class="lbl">Cours 2 · M3 <span>fiche crème</span></div>
+<div class="la">
+  <div class="card">
+    <div class="bd">
+      <div class="top"><span class="n">03</span><span class="ey">Cours 2 · Nation of Islam</span></div>
+      <h2>La doctrine comme <em>arme</em> politique</h2>
+      <hr class="rl">
+      <p>La théologie de la Nation of Islam déconcerte : un mythe des origines, une inversion radicale du rapport blanc/noir, une fin des temps annoncée.</p>
+      <p>Ce module montre comment cette doctrine fonctionne en arme politique — elle renverse la honte en fierté et arme psychologiquement une communauté méprisée. On analyse l'usage stratégique du récit sacré, en restant lucide sur son contenu.</p>
+    </div>
+    <div class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Comment un mythe d'origine renverse la honte en fierté</li>
+        <li>L'usage stratégique de la doctrine, au-delà de son contenu</li>
+        <li>Ce que la théologie produit politiquement</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lbl">Cours 2 · M4 <span>fiche sombre</span></div>
+<div class="lb">
+  <div class="gl"></div>
+  <div class="gr">
+    <div>
+      <div class="top"><span class="n">04</span><span class="ey">Cours 2 · Nation of Islam</span></div>
+      <h2>Le prix de la <em>visibilité</em></h2>
+      <hr class="rl">
+      <p>En 1959, un reportage télévisé, « The Hate That Hate Produced », jette brutalement la Nation of Islam dans la lumière.</p>
+      <p>La notoriété explose, et avec elle la surveillance, l'hostilité, la répression. Ce module analyse le prix de la visibilité médiatique pour un mouvement noir radical : ce que le projecteur donne, et ce qu'il coûte.</p>
+    </div>
+    <aside class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Comment un reportage transforme un mouvement en 1959</li>
+        <li>Ce que la visibilité médiatique apporte et coûte</li>
+        <li>Un cas d'école sur médias et contestation</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<div class="lbl">Cours 2 · M5 <span>fiche crème</span></div>
+<div class="la">
+  <div class="card">
+    <div class="bd">
+      <div class="top"><span class="n">05</span><span class="ey">Cours 2 · Nation of Islam</span></div>
+      <h2>Femmes de la NOI · le <em>silence</em> comme architecture</h2>
+      <hr class="rl">
+      <p>Que faisaient les femmes dans la Nation of Islam, et pourquoi l'histoire les a-t-elle effacées ? Ce module rend visible leur rôle réel et interroge le silence organisé autour d'elles.</p>
+      <p>La féminité y était définie par et pour les hommes, encadrée jusque dans le corps féminin de l'organisation. On regarde comment un mouvement d'émancipation raciale a pu reconduire une domination de genre.</p>
+    </div>
+    <div class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Le rôle réel des femmes, longtemps invisibilisé</li>
+        <li>Comment la féminité était définie par et pour les hommes</li>
+        <li>Pourquoi un mouvement d'émancipation reconduit une domination de genre</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lbl">Cours 2 · M6 <span>fiche sombre</span></div>
+<div class="lb">
+  <div class="gl"></div>
+  <div class="gr">
+    <div>
+      <div class="top"><span class="n">06</span><span class="ey">Cours 2 · Nation of Islam</span></div>
+      <h2>Protéger sans <em>gouverner</em> ?</h2>
+      <hr class="rl">
+      <p>La Nation of Islam offre à ses membres un refuge réel : un cadre strict, une fierté retrouvée, une discipline qui met à l'abri.</p>
+      <p>Elle ne cherche pourtant jamais à conquérir le pouvoir politique ni à gouverner la cité. Ce module met cette frontière au jour — celle qui poussera Malcolm X à partir, et qui ouvre tout le cours suivant.</p>
+    </div>
+    <aside class="lr">
+      <p class="k">Ce que vous saurez après cette leçon</p>
+      <ul>
+        <li>Ce que la NOI protège et structure réellement</li>
+        <li>La limite : un refuge qui ne gouverne pas la cité</li>
+        <li>Pourquoi cette frontière mène à la rupture de Malcolm X</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+</body>
+</html>

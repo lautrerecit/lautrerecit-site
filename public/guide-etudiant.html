@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide d'étude · L'Autre Récit · Nationalisme noir américain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cr:#F2EDE4;--cr2:#EAE3D8;--cr3:#D4C9B8;--cr4:#F7F1E5;
+  --or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--or-deep:#5A3A0A;
+  --ink:#0E0C0A;--ink2:#1A1714;--ink3:#3D3730;
+  --red:#B5232A;--green:#1A6B3A;--blue:#3D6B8E;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'League Spartan',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --quote:'Cormorant Garamond',Georgia,serif;
+  --callout:'Source Serif 4',Georgia,serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cr);font-family:var(--sans);font-weight:400;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+::selection{background:var(--or2);color:var(--ink);}
+
+/* Grain global */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");}
+
+/* Layout magazine : sidebar + contenu */
+.app{display:grid;grid-template-columns:280px 1fr;min-height:100vh;}
+@media (max-width:900px){.app{grid-template-columns:1fr;}}
+
+/* SIDEBAR sticky avec table des matières */
+.toc{position:sticky;top:0;height:100vh;background:linear-gradient(180deg,var(--ink) 0%,var(--ink2) 100%);color:var(--cr);padding:42px 28px 32px;overflow-y:auto;border-right:1px solid var(--or);z-index:10;}
+.toc-brand{font-size:10px;font-weight:700;letter-spacing:.32em;color:var(--or3);text-transform:uppercase;margin-bottom:6px;}
+.toc-title{font-family:var(--serif);font-style:italic;font-weight:900;font-size:22px;color:#FFFFFF;line-height:1.1;letter-spacing:-.012em;margin-bottom:6px;}
+.toc-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:rgba(212,176,90,.65);text-transform:uppercase;margin-bottom:32px;}
+.toc-rule{height:1px;background:linear-gradient(90deg,var(--or),transparent);margin-bottom:24px;}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px;}
+.toc-list a{display:block;padding:8px 12px;color:rgba(255,255,255,.72);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:.02em;border-left:2px solid transparent;transition:all .25s;}
+.toc-list a:hover{color:var(--or3);border-left-color:var(--or2);background:rgba(196,162,74,.08);}
+.toc-list a.section-h{color:var(--or3);font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin:18px 0 4px;padding-left:0;border-left:none;pointer-events:none;}
+.toc-list a.section-h:hover{background:transparent;}
+.toc-foot{margin-top:32px;padding-top:18px;border-top:1px solid rgba(212,176,90,.18);font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:rgba(212,176,90,.5);text-transform:uppercase;}
+
+/* MAIN CONTENT */
+.main{position:relative;z-index:2;padding:0;max-width:none;}
+.section{padding:90px 80px;border-bottom:1px solid var(--cr3);position:relative;}
+.section-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.32em;color:var(--or2);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.section-tag::before{content:"";width:36px;height:1px;background:var(--or);}
+.section-h{font-family:var(--serif);font-size:clamp(42px,5.6vw,72px);font-weight:700;line-height:1.04;color:var(--ink);letter-spacing:-.02em;margin-bottom:18px;}
+.section-h em{font-style:italic;font-weight:900;color:var(--or2);}
+.section-sub{font-size:19px;font-weight:300;color:var(--ink3);max-width:740px;line-height:1.7;margin-bottom:48px;}
+.section-sub strong{font-weight:700;color:var(--or2);}
+.body{max-width:920px;}
+.body p{font-size:17px;line-height:1.78;color:var(--ink2);margin-bottom:18px;}
+.body p strong{font-weight:700;color:var(--or2);font-style:italic;}
+.body p em{font-style:italic;color:var(--ink3);}
+
+/* COVER plein écran */
+#cover{padding:0;background:linear-gradient(180deg,var(--ink) 0%,var(--ink2) 60%,var(--ink) 100%);color:var(--cr);min-height:100vh;display:flex;align-items:center;justify-content:flex-start;position:relative;overflow:hidden;}
+#cover::before{content:"";position:absolute;left:-30%;top:30%;width:80%;height:80%;background:radial-gradient(circle,rgba(212,176,90,.18),transparent 60%);filter:blur(40px);pointer-events:none;}
+.cover-watermark{position:absolute;right:-3%;top:50%;transform:translateY(-50%);font-family:var(--serif);font-style:italic;font-size:clamp(280px,34vw,520px);font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(212,176,90,.08);line-height:.85;pointer-events:none;letter-spacing:-.05em;}
+.cover-body{position:relative;z-index:3;padding:0 80px;max-width:920px;}
+.cover-tag{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.36em;color:var(--or3);text-transform:uppercase;margin-bottom:16px;}
+.cover-h{font-family:var(--serif);font-size:clamp(64px,8.4vw,128px);font-weight:700;line-height:.96;color:#FFFFFF;letter-spacing:-.025em;}
+.cover-h em{display:block;font-style:italic;font-weight:900;color:var(--or3);}
+.cover-rule{width:120px;height:1.5px;background:linear-gradient(90deg,var(--or),var(--or2));margin:36px 0;}
+.cover-sub{font-family:var(--serif);font-style:italic;font-size:24px;color:rgba(255,255,255,.95);max-width:680px;line-height:1.45;margin-bottom:48px;}
+.cover-meta{display:flex;gap:0;}
+.cover-meta-item{padding:0 32px;border-right:1px solid rgba(212,176,90,.25);}
+.cover-meta-item:first-child{padding-left:0;}
+.cover-meta-item:last-child{border-right:none;}
+.cover-meta-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--or3);text-transform:uppercase;font-weight:700;}
+.cover-meta-val{font-family:var(--serif);font-style:italic;font-weight:700;font-size:18px;color:#FFFFFF;margin-top:6px;}
+
+/* INTRO USAGE */
+#usage{background:var(--cr2);}
+.usage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px;}
+.usage-card{padding:28px 26px;background:var(--cr);border:1px solid rgba(154,123,46,.22);position:relative;}
+.usage-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--or),transparent);}
+.usage-num{font-family:var(--serif);font-style:italic;font-weight:900;font-size:32px;color:var(--or2);line-height:1;letter-spacing:-.02em;}
+.usage-h{font-family:var(--serif);font-style:italic;font-weight:700;font-size:18px;color:var(--ink);margin:6px 0 10px;line-height:1.25;}
+.usage-d{font-family:var(--callout);font-size:16px;color:var(--ink2);line-height:1.55;}
+.usage-d strong{color:var(--or2);font-weight:700;}
+
+/* BOUSSOLE — 3 questions clés */
+#boussole{background:var(--ink);color:var(--cr);}
+#boussole .section-h{color:#FFFFFF;}
+#boussole .section-h em{color:var(--or3);}
+#boussole .section-sub{color:rgba(255,255,255,.95);}
+#boussole .section-tag{color:var(--or3);}
+#boussole .section-tag::before{background:var(--or3);}
+.boussole-wrap{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:center;margin-top:40px;}
+@media (max-width:1100px){.boussole-wrap{grid-template-columns:1fr;}}
+.boussole-svg{position:relative;}
+.boussole-svg svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 50px rgba(196,162,74,.25));}
+@keyframes boussoleRotate{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.boussole-needle{transform-origin:center;animation:boussoleRotate 30s linear infinite;}
+.boussole-questions{display:flex;flex-direction:column;gap:18px;}
+.boussole-q{padding:24px 28px;background:rgba(255,255,255,.025);border-left:3px solid var(--or2);border-radius:0;}
+.boussole-q-num{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.28em;color:var(--or3);text-transform:uppercase;}
+.boussole-q-h{font-family:var(--serif);font-style:italic;font-weight:900;font-size:26px;color:#FFFFFF;line-height:1.18;margin:8px 0;letter-spacing:-.012em;}
+.boussole-q-h em{color:var(--or3);}
+.boussole-q-d{font-family:var(--callout);font-size:17px;color:rgba(255,255,255,.95);line-height:1.55;}
+.boussole-q-d strong{color:var(--or3);font-weight:700;}
+
+/* TENSIONS — 5 axes */
+.tensions-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px;}
+.tension{padding:22px 26px;background:var(--cr);border:1px solid rgba(154,123,46,.22);position:relative;display:flex;flex-direction:column;gap:8px;}
+.tension::before{content:"";position:absolute;top:0;left:0;width:48px;height:2px;background:var(--or2);}
+.tension-num{font-family:var(--serif);font-style:italic;font-weight:900;font-size:24px;color:var(--or2);line-height:1;}
+.tension-h{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--ink);line-height:1.2;}
+.tension-h em{font-style:italic;color:var(--or2);}
+.tension-vs{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--or2);text-transform:uppercase;font-weight:700;}
+.tension-vs span:nth-child(2){color:var(--ink3);font-weight:400;font-size:9px;}
+.tension-d{font-family:var(--callout);font-size:16px;color:var(--ink2);line-height:1.55;}
+.tension-d strong{color:var(--or2);font-weight:700;}
+
+/* FRISE chronologique */
+#frise{background:var(--cr2);}
+.frise-wrap{margin-top:38px;position:relative;}
+.frise-line{position:absolute;left:30px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent 0%,var(--or) 4%,var(--or2) 50%,var(--or) 96%,transparent 100%);}
+.frise-event{position:relative;padding-left:74px;padding-bottom:32px;display:grid;grid-template-columns:1fr;gap:6px;}
+.frise-event::before{content:"";position:absolute;left:25px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--or2);border:2px solid var(--cr2);box-shadow:0 0 0 1px var(--or);}
+.frise-event.major::before{width:16px;height:16px;left:23px;background:var(--ink);border:2px solid var(--or3);}
+.frise-event.major .frise-year{color:var(--ink);font-weight:900;font-size:24px;}
+.frise-year{font-family:var(--serif);font-style:italic;font-weight:900;font-size:20px;color:var(--or2);letter-spacing:-.01em;line-height:1;}
+.frise-h{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink);line-height:1.25;}
+.frise-h em{font-style:italic;color:var(--or2);}
+.frise-d{font-family:var(--quote);font-size:16px;color:var(--ink2);line-height:1.55;max-width:680px;}
+.frise-d strong{color:var(--or2);font-weight:700;}
+.frise-tag{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--or2);text-transform:uppercase;font-weight:700;display:inline-block;background:rgba(196,162,74,.12);padding:2px 8px;border:1px solid rgba(196,162,74,.3);margin-top:4px;align-self:flex-start;}
+
+/* COURS · cards récapitulatives */
+#cours{background:var(--cr);}
+.cours-list{display:flex;flex-direction:column;gap:24px;margin-top:38px;}
+.cours{background:linear-gradient(180deg,var(--cr) 0%,var(--cr4) 100%);border:1px solid rgba(154,123,46,.25);padding:38px 40px;position:relative;display:grid;grid-template-columns:120px 1fr;gap:36px;align-items:start;}
+.cours::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--or2),var(--or));}
+.cours-num{font-family:var(--serif);font-style:italic;font-weight:900;font-size:88px;color:var(--or2);line-height:.85;letter-spacing:-.04em;}
+.cours-num-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--or2);text-transform:uppercase;font-weight:700;margin-top:4px;}
+.cours-body{display:flex;flex-direction:column;gap:14px;}
+.cours-h{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--ink);line-height:1.12;letter-spacing:-.012em;}
+.cours-h em{font-style:italic;color:var(--or2);}
+.cours-pb{padding:14px 20px;background:rgba(196,162,74,.06);border-left:2px solid var(--or2);font-family:var(--callout);font-style:italic;font-size:17px;color:var(--ink);line-height:1.55;}
+.cours-pb strong{font-style:normal;color:var(--or2);font-weight:700;}
+.cours-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px;}
+.cours-block-h{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--or2);text-transform:uppercase;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.cours-block-h::after{content:"";flex:1;height:1px;background:rgba(154,123,46,.25);}
+.cours-block-list{display:flex;flex-direction:column;gap:4px;font-size:13.5px;line-height:1.55;color:var(--ink2);}
+.cours-block-list span{display:flex;gap:6px;}
+.cours-block-list span::before{content:"·";color:var(--or2);font-weight:900;flex-shrink:0;}
+.cours-block-list b{color:var(--or2);font-weight:700;}
+
+/* GLOSSAIRE concepts */
+#glossaire{background:var(--cr2);}
+.gloss-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:38px;}
+@media (max-width:900px){.gloss-grid{grid-template-columns:1fr;}}
+.gloss{padding:22px 24px;background:var(--cr);border:1px solid rgba(154,123,46,.2);position:relative;display:flex;flex-direction:column;gap:8px;transition:all .3s;}
+.gloss:hover{border-color:var(--or2);box-shadow:0 8px 28px -16px rgba(154,123,46,.4);transform:translateY(-2px);}
+.gloss-h{font-family:var(--serif);font-style:italic;font-weight:900;font-size:22px;color:var(--ink);line-height:1.18;letter-spacing:-.01em;}
+.gloss-h em{color:var(--or2);font-style:italic;}
+.gloss-meta{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--or2);text-transform:uppercase;font-weight:700;}
+.gloss-d{font-family:var(--quote);font-size:16px;color:var(--ink2);line-height:1.55;}
+.gloss-d strong{color:var(--or2);font-weight:700;}
+.gloss-ref{font-family:var(--mono);font-size:10px;color:rgba(154,123,46,.6);letter-spacing:.1em;border-top:1px dashed rgba(154,123,46,.25);padding-top:8px;margin-top:auto;text-transform:uppercase;}
+
+/* AUTEURS · galerie */
+#auteurs{background:var(--cr);}
+.auteurs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:38px;}
+.auteur{padding:18px 20px;background:var(--cr2);border:1px solid rgba(154,123,46,.2);display:flex;flex-direction:column;gap:6px;position:relative;}
+
+.auteur-icon img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:grayscale(1) contrast(1.04);display:block}
+.auteur-icon{width:48px;height:48px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--ink),var(--ink2));border:1.5px solid var(--or2);display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+.auteur-icon svg{width:32px;height:32px;}
+.auteur-name{font-family:var(--serif);font-style:italic;font-weight:900;font-size:16px;color:var(--ink);line-height:1.18;}
+.auteur-dates{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--or2);font-weight:700;}
+.auteur-d{font-size:12px;color:var(--ink3);line-height:1.5;}
+.auteur-d strong{color:var(--or2);font-weight:700;}
+
+/* BIBLIO */
+#biblio{background:var(--ink);color:var(--cr);}
+#biblio .section-h{color:#FFFFFF;}
+#biblio .section-h em{color:var(--or3);}
+#biblio .section-sub{color:rgba(255,255,255,.95);}
+#biblio .section-tag{color:var(--or3);}
+#biblio .section-tag::before{background:var(--or3);}
+.biblio-cours{margin-top:32px;display:flex;flex-direction:column;gap:24px;}
+.biblio-block{padding:24px 28px;background:rgba(255,255,255,.025);border-left:2px solid var(--or2);}
+.biblio-block-h{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.28em;color:var(--or3);text-transform:uppercase;margin-bottom:14px;}
+.biblio-list{display:flex;flex-direction:column;gap:8px;font-family:var(--quote);font-size:16px;line-height:1.55;color:rgba(255,255,255,.95);}
+.biblio-list b{font-family:var(--serif);font-style:italic;font-weight:900;color:var(--or3);}
+.biblio-list em{color:rgba(255,255,255,.95);font-style:italic;}
+
+/* MÉTHODE — la grille */
+#methode{background:var(--cr);}
+.methode-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px;}
+@media (max-width:900px){.methode-steps{grid-template-columns:1fr 1fr;}}
+.methode-step{padding:26px 24px;background:linear-gradient(180deg,var(--cr2) 0%,var(--cr) 100%);border:1px solid rgba(154,123,46,.22);position:relative;}
+.methode-step::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--or),var(--or3));}
+.methode-step-num{font-family:var(--serif);font-style:italic;font-weight:900;font-size:42px;color:var(--or2);line-height:.85;letter-spacing:-.03em;}
+.methode-step-h{font-family:var(--serif);font-style:italic;font-weight:700;font-size:17px;color:var(--ink);margin:8px 0 8px;line-height:1.25;}
+.methode-step-d{font-family:var(--callout);font-size:15px;color:var(--ink2);line-height:1.55;}
+.methode-step-d strong{color:var(--or2);font-weight:700;}
+
+/* FOOTER */
+.foot{background:var(--ink);color:var(--cr);padding:48px 80px;border-top:2px solid var(--or);}
+.foot-brand{font-family:var(--serif);font-style:italic;font-weight:900;font-size:22px;color:#FFFFFF;}
+.foot-brand em{color:var(--or3);}
+.foot-d{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px;font-family:var(--mono);letter-spacing:.1em;}
+
+/* CHROME BAS — Variant B Minimal (formation pattern) */
+#wm{position:fixed;left:24px;bottom:18px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.28em;color:rgba(154,123,46,.78);text-transform:uppercase;z-index:50;pointer-events:none;mix-blend-mode:multiply;}
+#counter{position:fixed;right:24px;bottom:14px;font-family:var(--serif);font-style:italic;font-weight:700;font-size:30px;color:var(--or2);z-index:50;pointer-events:none;letter-spacing:-.01em;line-height:1;text-shadow:0 1px 0 rgba(242,237,228,.5);}
+#prog{position:fixed;left:0;bottom:0;height:2px;width:0%;background:linear-gradient(90deg,var(--or),var(--or2));z-index:51;pointer-events:none;transition:width .12s linear;}
+@media (max-width:900px){#wm{left:14px;font-size:9px;letter-spacing:.22em;}#counter{right:14px;font-size:22px;}}
+
+/* Responsive */
+@media (max-width:900px){
+  .toc{position:relative;height:auto;}
+  .section{padding:60px 32px;}
+  .cover-body{padding:0 32px;}
+  .cours{grid-template-columns:1fr;}
+  .tensions-grid,.usage-grid{grid-template-columns:1fr;}
+}
+
+/* ════════ CONTRASTE V2 · noir/crème, cadres noirs, grands portraits (révision juin 2026) ════════ */
+
+/* Corps : poids relevé + encre franche (lisibilité sur crème grainée) */
+.section-sub{font-weight:400;color:var(--ink2);}
+
+/* Sur fond CRÈME, l'emphase de corps passe en NOIR franc — fini le doré-sur-crème.
+   Le doré reste réservé aux gros accents : titres em, numéros, tags, filets, fonds sombres. */
+.section-sub strong,
+.usage-d strong,.tension-d strong,
+.cours-pb strong,.cours-block-list b,
+.methode-step-d strong,.auteur-d strong{color:var(--ink);}
+/* CORRECTIF lisibilité : sur fonds SOMBRES, l'emphase reste DORÉE (sinon noir-sur-noir, illisible) */
+#boussole .section-sub strong,#biblio .section-sub strong{color:var(--or3);font-style:italic;}
+
+/* CADRES NOIRS sur les cartes posées sur crème */
+.usage-card,.tension,.cours,.methode-step,.auteur{border:1.5px solid var(--ink);}
+.usage-card::before,.tension::before,.methode-step::before{background:var(--ink);}
+
+/* ─── ALTERNANCE : frise + glossaire passent en NOIR (damier avec cover/boussole/biblio) ─── */
+#frise,#glossaire{background:var(--ink);color:var(--cr);}
+#frise .section-h,#glossaire .section-h{color:#FFFFFF;}
+#frise .section-h em,#glossaire .section-h em{color:var(--or3);}
+#frise .section-sub,#glossaire .section-sub{color:rgba(255,255,255,.92);}
+#frise .section-sub strong,#glossaire .section-sub strong{color:var(--or3);}
+#frise .section-tag,#glossaire .section-tag{color:var(--or3);}
+#frise .section-tag::before,#glossaire .section-tag::before{background:var(--or3);}
+
+/* Frise sur noir */
+#frise .frise-h{color:#FFFFFF;}
+#frise .frise-h em{color:var(--or3);}
+#frise .frise-d{color:rgba(255,255,255,.9);font-size:17px;}
+#frise .frise-d strong{color:var(--or3);}
+#frise .frise-year{color:var(--or3);}
+#frise .frise-event.major .frise-year{color:#FFFFFF;}
+#frise .frise-event::before{border-color:var(--ink);}
+#frise .frise-event.major::before{background:var(--or3);border-color:#FFFFFF;}
+#frise .frise-tag{color:var(--or3);background:rgba(212,176,90,.14);border-color:rgba(212,176,90,.42);}
+
+/* Glossaire sur noir : cartes « verre » */
+#glossaire .gloss{background:rgba(255,255,255,.035);border:1px solid rgba(212,176,90,.42);}
+#glossaire .gloss:hover{border-color:var(--or3);box-shadow:0 10px 32px -16px rgba(0,0,0,.6);transform:translateY(-2px);}
+#glossaire .gloss-h{color:#FFFFFF;}
+#glossaire .gloss-h em{color:var(--or3);}
+#glossaire .gloss-meta{color:var(--or3);}
+#glossaire .gloss-d{color:rgba(255,255,255,.85);}
+#glossaire .gloss-d strong{color:var(--or3);}
+#glossaire .gloss-ref{color:rgba(212,176,90,.6);border-top-color:rgba(212,176,90,.22);}
+
+/* ─── GALERIE FIGURES : grands portraits (on voit les visages) ─── */
+.auteurs-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
+.auteur{padding:0;overflow:hidden;display:flex;flex-direction:column;gap:0;}
+.auteur-photo{width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--ink2);border-bottom:1.5px solid var(--ink);}
+.auteur-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(1) contrast(1.08);display:block;transition:filter .45s ease,transform .45s ease;}
+.auteur:hover .auteur-photo img{filter:grayscale(0) contrast(1.04);transform:scale(1.035);}
+.auteur-body{padding:15px 18px 18px;display:flex;flex-direction:column;gap:5px;}
+.auteur-name{font-size:18px;}
+.auteur-dates{font-size:10.5px;}
+.auteur-d{font-size:12.5px;color:var(--ink2);}
+
+/* ════════ CARDS PREMIUM V3 · profondeur, passe-partout, micro-interactions ════════ */
+
+/* Cartes de contenu sur CRÈME : papier maté + ombre douce en couches */
+.usage-card,.tension,.cours,.methode-step{
+  background:linear-gradient(168deg,var(--cr4) 0%,var(--cr2) 100%);
+  box-shadow:0 2px 3px -2px rgba(14,12,10,.10),0 18px 38px -26px rgba(14,12,10,.30),inset 0 0 0 1px rgba(247,241,229,.55);
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease,border-color .35s ease;
+}
+.usage-card:hover,.tension:hover,.cours:hover,.methode-step:hover{
+  transform:translateY(-4px);
+  box-shadow:0 4px 6px -3px rgba(14,12,10,.14),0 30px 56px -28px rgba(14,12,10,.40),inset 0 0 0 1px rgba(247,241,229,.6);
+}
+/* filet intérieur — effet passe-partout encadré (détail premium discret) */
+.usage-card::after,.tension::after,.cours::after,.methode-step::after{
+  content:"";position:absolute;inset:7px;border:1px solid rgba(14,12,10,.13);pointer-events:none;
+}
+/* accent doré court en tête (remplace la barre pleine) */
+.usage-card::before,.tension::before,.methode-step::before{
+  top:-1px;left:26px;width:30px;height:2px;
+  background:linear-gradient(90deg,var(--or2),rgba(196,162,74,0));
+}
+/* numéros : léger relief gravé */
+.usage-num,.tension-num,.methode-step-num,.cours-num{text-shadow:0 1px 0 rgba(247,241,229,.7);}
+
+/* Cartes sur NOIR : verre profond + lueur dorée au survol */
+#glossaire .gloss{
+  background:linear-gradient(168deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  box-shadow:0 20px 44px -26px rgba(0,0,0,.75),inset 0 0 0 1px rgba(212,176,90,.07);
+}
+#glossaire .gloss:hover{
+  box-shadow:0 0 0 1px rgba(212,176,90,.45),0 26px 52px -24px rgba(0,0,0,.85),inset 0 0 0 1px rgba(212,176,90,.12);
+}
+.biblio-block,.boussole-q{
+  background:linear-gradient(168deg,rgba(255,255,255,.05),rgba(255,255,255,.012));
+  box-shadow:0 16px 38px -26px rgba(0,0,0,.6);
+}
+
+/* Galerie figures : carte encadrée premium */
+.auteur{
+  background:var(--cr4);
+  box-shadow:0 3px 5px -3px rgba(14,12,10,.16),0 22px 46px -26px rgba(14,12,10,.34);
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease;
+}
+.auteur:hover{transform:translateY(-4px);box-shadow:0 6px 9px -4px rgba(14,12,10,.2),0 34px 62px -28px rgba(14,12,10,.44);}
+
+/* ════════ CARTES FORMATION V4 · premium 3D (s8-card), contraste tonal, mots-clés dorés gravés ════════ */
+
+/* Profondeur 3D : perspective sur les conteneurs */
+.usage-grid,.tensions-grid,.cours-list,.gloss-grid,.auteurs-grid,.methode-steps,.boussole-questions,.biblio-cours{perspective:1600px;perspective-origin:50% 0%;}
+
+/* Base premium commune */
+.usage-card,.tension,.cours,.methode-step,.auteur,.gloss,.boussole-q,.biblio-block{
+  border-radius:7px;transform-style:preserve-3d;
+  transition:transform .5s cubic-bezier(.34,1.4,.5,1),box-shadow .5s ease,border-color .4s ease;
+}
+.usage-card:hover,.tension:hover,.cours:hover,.methode-step:hover,.auteur:hover,
+#glossaire .gloss:hover,#boussole .boussole-q:hover{transform:translateY(-6px) rotateX(2.4deg);}
+
+/* ─── CARTES CRÈME sur sections SOMBRES (boussole · glossaire · biblio) = look du site ─── */
+#glossaire .gloss,#boussole .boussole-q,#biblio .biblio-block{
+  background:linear-gradient(180deg,#FBF7EC 0%,#E8E0D1 100%);
+  border:1px solid var(--or2);border-left:1px solid var(--or2);
+  box-shadow:0 26px 56px -18px rgba(0,0,0,.72),inset 0 1px 0 rgba(255,255,255,.78);
+  color:var(--ink);
+}
+#glossaire .gloss::before,#boussole .boussole-q::before,#biblio .biblio-block::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--or2),transparent);
+}
+#glossaire .gloss:hover,#boussole .boussole-q:hover,#biblio .biblio-block:hover{
+  border-color:var(--or3);box-shadow:0 40px 84px -22px rgba(0,0,0,.82),inset 0 1px 0 rgba(255,255,255,.88);
+}
+#glossaire .gloss-h,#boussole .boussole-q-h{color:var(--ink);}
+#glossaire .gloss-h em,#boussole .boussole-q-h em{color:var(--or2);}
+#glossaire .gloss-meta,#boussole .boussole-q-num,#biblio .biblio-block-h{color:var(--or2);}
+#glossaire .gloss-d,#boussole .boussole-q-d,#biblio .biblio-list{color:var(--ink2);}
+#glossaire .gloss-d strong,#boussole .boussole-q-d strong,#biblio .biblio-list b{color:var(--or2);text-shadow:0 1px 0 rgba(255,255,255,.6);}
+#biblio .biblio-list em{color:var(--ink3);}
+#glossaire .gloss-ref{color:var(--or);border-top-color:rgba(154,123,46,.3);}
+
+/* ─── CARTES INK sur sections CRÈME (usage · tensions · cours · figures · méthode) = contraste inverse ─── */
+.usage-card,.tension,.cours,.methode-step,.auteur{
+  background:linear-gradient(165deg,#231E17 0%,#0E0C0A 100%);
+  border:1px solid rgba(196,162,74,.5);
+  box-shadow:0 26px 54px -18px rgba(14,12,10,.5),inset 0 1px 0 rgba(255,255,255,.08);
+  color:#F2EDE4;
+}
+.usage-card::after,.tension::after,.cours::after,.methode-step::after{display:none;}
+.usage-card::before,.tension::before,.methode-step::before{
+  top:0;left:0;right:0;width:auto;height:2px;
+  background:linear-gradient(90deg,transparent,var(--or2),transparent);
+}
+.usage-card:hover,.tension:hover,.cours:hover,.methode-step:hover,.auteur:hover{
+  border-color:var(--or3);box-shadow:0 40px 82px -22px rgba(14,12,10,.64),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.usage-h,.tension-h,.cours-h,.methode-step-h{color:#FFFFFF;}
+.tension-h em,.cours-h em{color:var(--or3);}
+.usage-num,.tension-num,.cours-num,.cours-num-label,.methode-step-num,.cours-block-h{color:var(--or3);text-shadow:0 1px 2px rgba(0,0,0,.55);}
+.usage-d,.tension-d,.methode-step-d,.cours-block-list,.auteur-d{color:rgba(242,237,228,.84);}
+.usage-d strong,.tension-d strong,.methode-step-d strong,.cours-block-list b,.cours-pb strong,.auteur-d strong{color:var(--or3);text-shadow:0 1px 1px rgba(0,0,0,.45);}
+.tension-vs{color:var(--or3);}
+.tension-vs span:nth-child(2){color:rgba(242,237,228,.5);}
+.cours-pb{background:rgba(196,162,74,.13);color:#F2EDE4;border-left-color:var(--or3);}
+.cours-block-h::after{background:rgba(196,162,74,.32);}
+.cours-block-list span::before{color:var(--or3);}
+.auteur-name{color:#FFFFFF;}
+.auteur-dates{color:var(--or3);}
+.auteur-photo{border-bottom:1px solid rgba(196,162,74,.42);}
+
+/* PRINT — PDF paysage A4 + page de sommaire cliquable */
+@media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  @page{size:A4 landscape;margin:12mm;}
+  html,body{background:var(--cr) !important;color:var(--ink) !important;}
+  body::before{display:none !important;}
+  .app{display:block !important;}
+  /* chrome flottant masqué */
+  .sg-side,#wm,#counter,#prog{display:none !important;}
+  .foot{display:none !important;}
+
+  /* ── TABLE DES MATIÈRES = page de sommaire dédiée (1re page, liens cliquables) ── */
+  .toc{position:static !important;height:auto !important;width:100% !important;overflow:visible !important;
+       page-break-after:always;break-after:page;
+       background:var(--cr) !important;color:var(--ink) !important;border-right:none !important;
+       padding:6mm 4mm !important;display:block !important;}
+  .toc-brand{color:var(--or) !important;}
+  .toc-title{color:var(--ink) !important;}
+  .toc-sub{color:var(--or) !important;}
+  .toc-rule{background:linear-gradient(90deg,var(--or),transparent) !important;}
+  .toc-list{display:block !important;column-count:2;column-gap:14mm;}
+  .toc-list li{break-inside:avoid;}
+  .toc-list a{color:var(--ink2) !important;border-left-color:var(--cr3) !important;}
+  .toc-list a.section-h{color:var(--or) !important;border-left:none !important;}
+  .toc-foot{color:var(--or) !important;border-top-color:var(--cr3) !important;}
+
+  /* ── CONTENU ── */
+  .main{display:block !important;width:100% !important;max-width:none !important;padding:0 !important;}
+  .section{padding:9mm 4mm 7mm !important;border-bottom:1px solid var(--cr3) !important;}
+  #cover{page-break-after:always;break-after:page;min-height:auto !important;color:var(--ink) !important;background:var(--cr) !important;}
+  #cover .cover-h,#cover .cover-h em,#cover .cover-tag,#cover .cover-sub,#cover .cover-meta-val,#cover .cover-meta-label{color:var(--ink) !important;}
+  #cover .cover-watermark{display:none !important;}
+  #boussole,#biblio{background:var(--cr) !important;color:var(--ink) !important;}
+  #boussole .section-h,#biblio .section-h,#boussole .section-h em,#biblio .section-h em{color:var(--ink) !important;}
+  #boussole .section-tag{color:var(--or) !important;}
+  #boussole .section-sub,#biblio .section-sub,.boussole-q-d,.boussole-q-num,.biblio-list,.biblio-list em{color:var(--ink2) !important;}
+  #boussole .boussole-q-h,#boussole .boussole-q-h em{color:var(--ink) !important;}
+  .biblio-block,.boussole-q{background:rgba(196,162,74,.06) !important;}
+  .cours,.gloss,.tension,.usage-card,.methode-step,.auteur,.frise-event,.boussole-q,.biblio-block{break-inside:avoid;page-break-inside:avoid;}
+  .section-tag,.section-h,.section-sub,.cours-block-h,.biblio-block-h{break-after:avoid;page-break-after:avoid;}
+  a{text-decoration:none;}
+}
+
+@media print{
+  .section{padding:8mm 6mm 6mm !important;}
+  .section-h{font-size:34px !important;margin-bottom:7px !important;}
+  .boussole-wrap{display:grid !important;grid-template-columns:300px 1fr !important;gap:36px !important;align-items:start !important;margin-top:14px !important;}
+  .boussole-svg{max-width:300px !important;}
+  .boussole-svg svg{width:300px !important;height:auto !important;max-height:80mm !important;}
+  .boussole-questions{gap:12px !important;}
+  #cover{display:block !important;padding:26mm 4mm !important;}
+  .frise-event{padding-bottom:18px !important;}
+}
+
+/* PRINT V2 — frise + glossaire redeviennent crème à l'impression/PDF */
+@media print{
+  #frise,#glossaire{background:var(--cr) !important;color:var(--ink) !important;}
+  #frise .section-h,#glossaire .section-h,
+  #frise .frise-h,#glossaire .gloss-h,
+  #frise .frise-d,#glossaire .gloss-d{color:var(--ink2) !important;}
+  #frise .section-h em,#glossaire .section-h em,
+  #frise .frise-h em,#glossaire .gloss-h em,
+  #frise .frise-d strong,#glossaire .gloss-d strong,
+  #frise .frise-year,#glossaire .gloss-meta,
+  #frise .section-tag,#glossaire .section-tag{color:var(--or) !important;}
+  #frise .frise-event.major .frise-year{color:var(--ink) !important;}
+  #frise .frise-event.major::before{background:var(--ink) !important;border-color:var(--or3) !important;}
+  #glossaire .gloss{background:rgba(196,162,74,.06) !important;border-color:var(--cr3) !important;}
+  .auteur-photo{aspect-ratio:auto !important;height:130px !important;}
+}
+
+/* PRINT V3 — cartes ink redeviennent claires pour l'impression/PDF */
+@media print{
+  .usage-card,.tension,.cours,.methode-step,.auteur,
+  #glossaire .gloss,#boussole .boussole-q,#biblio .biblio-block{
+    background:#FFFFFF !important;border:1px solid var(--cr3) !important;box-shadow:none !important;color:var(--ink) !important;border-radius:4px !important;}
+  .usage-h,.tension-h,.cours-h,.methode-step-h,.auteur-name,
+  #glossaire .gloss-h,#boussole .boussole-q-h{color:var(--ink) !important;}
+  .usage-d,.tension-d,.methode-step-d,.cours-block-list,.auteur-d,
+  #glossaire .gloss-d,#boussole .boussole-q-d,#biblio .biblio-list{color:var(--ink2) !important;}
+  .usage-num,.tension-num,.cours-num,.cours-num-label,.cours-block-h,.methode-step-num,.auteur-dates,
+  .tension-h em,.cours-h em,
+  .usage-d strong,.tension-d strong,.methode-step-d strong,.cours-block-list b,.cours-pb strong,.auteur-d strong,
+  #glossaire .gloss-d strong,#boussole .boussole-q-d strong,#biblio .biblio-list b,
+  #glossaire .gloss-meta,#boussole .boussole-q-num,#biblio .biblio-block-h{color:var(--or) !important;text-shadow:none !important;}
+  .cours-pb{background:rgba(196,162,74,.06) !important;color:var(--ink) !important;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ════════════════════════════════════════════════════
+     TABLE DES MATIÈRES (sticky sidebar)
+═════════════════════════════════════════════════════ -->
+<aside class="toc">
+  <div class="toc-brand">L'Autre Récit</div>
+  <h1 class="toc-title">Guide d'étude</h1>
+  <div class="toc-sub">Nationalisme noir américain · Intro + Cours 1 &amp; 2</div>
+  <div class="toc-rule"></div>
+
+  <ul class="toc-list">
+    <li><a class="section-h">Pour bien commencer</a></li>
+    <li><a href="#cover">⤿ Couverture</a></li>
+    <li><a href="#usage">⤿ Comment utiliser ce guide</a></li>
+    <li><a href="#boussole">⤿ La boussole analytique</a></li>
+    <li><a href="#tensions">⤿ Les 5 tensions</a></li>
+
+    <li><a class="section-h">Repères dans le temps</a></li>
+    <li><a href="#frise">⤿ Frise · 1865 → 1969</a></li>
+
+    <li><a class="section-h">Les cours</a></li>
+    <li><a href="#cours">⤿ Synthèse des cours</a></li>
+
+    <li><a class="section-h">Outils de référence</a></li>
+    <li><a href="#glossaire">⤿ Glossaire des concepts</a></li>
+    <li><a href="#auteurs">⤿ Galerie des figures</a></li>
+    <li><a href="#biblio">⤿ Bibliographie</a></li>
+    <li><a href="#methode">⤿ Méthode d'analyse</a></li>
+  </ul>
+
+  <div class="toc-foot">v1 · mai 2026</div>
+</aside>
+
+<!-- ════════════════════════════════════════════════════
+     CONTENU PRINCIPAL
+═════════════════════════════════════════════════════ -->
+<main class="main">
+
+<!-- ─── COVER ─── -->
+<section class="section" id="cover">
+  <div class="cover-watermark">Récit</div>
+  <div class="cover-body">
+    <div class="cover-tag">Guide d'étude · L'Autre Récit</div>
+    <h1 class="cover-h">Nationalisme<em>noir américain.</em></h1>
+    <div class="cover-rule"></div>
+    <p class="cover-sub">L'<strong>aide-mémoire complet</strong> pour suivre la formation&nbsp;: <strong>concepts</strong>, <strong>dates clés</strong>, <strong>figures historiques</strong>, <strong>problématiques</strong>, <strong>méthode d'analyse</strong>.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Cours</div>
+        <div class="cover-meta-val">Intro · Cours 1 · Cours 2</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Période</div>
+        <div class="cover-meta-val">1865 — 1969</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Niveau</div>
+        <div class="cover-meta-val">Universitaire</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMMENT UTILISER ─── -->
+<section class="section" id="usage">
+  <div class="section-tag">Préambule</div>
+  <h2 class="section-h">Comment <em>utiliser</em> ce guide.</h2>
+  <p class="section-sub">Ce document accompagne la formation. Il n'est pas fait pour la remplacer&nbsp;: il sert <strong>d'index</strong> pour retrouver un concept, <strong>de carte</strong> pour situer une figure, et <strong>de boussole</strong> quand un cours mobilise une notion vue plus tôt.</p>
+
+  <div class="usage-grid">
+    <div class="usage-card">
+      <div class="usage-num">01</div>
+      <h3 class="usage-h">Avant un cours</h3>
+      <p class="usage-d">Repère sur la <strong>frise chronologique</strong> la période traitée. Lis la <strong>fiche cours</strong> pour avoir la problématique en tête.</p>
+    </div>
+    <div class="usage-card">
+      <div class="usage-num">02</div>
+      <h3 class="usage-h">Pendant le cours</h3>
+      <p class="usage-d">Si un <strong>concept</strong> n'est pas clair, ouvre le <strong>glossaire</strong>. Si un <strong>nom</strong> ne te dit rien, va dans la <strong>galerie des figures</strong>.</p>
+    </div>
+    <div class="usage-card">
+      <div class="usage-num">03</div>
+      <h3 class="usage-h">Après le cours</h3>
+      <p class="usage-d">Applique la <strong>boussole analytique</strong> et la <strong>méthode</strong> à un cas contemporain. C'est là que la formation devient un outil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOUSSOLE ─── -->
+<section class="section" id="boussole">
+  <div class="section-tag">Outil principal</div>
+  <h2 class="section-h">La <em>boussole</em> analytique.</h2>
+  <p class="section-sub">Trois questions à poser à tout mouvement, toute organisation, toute revendication. Si une seule des trois est traitée et les deux autres ignorées, on rate l'analyse politique.</p>
+
+  <div class="boussole-wrap">
+    <div class="boussole-svg">
+      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bouCenter" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="var(--or3)"/>
+            <stop offset="100%" stop-color="var(--or)"/>
+          </radialGradient>
+        </defs>
+        <!-- Anneau extérieur -->
+        <circle cx="160" cy="160" r="148" fill="none" stroke="rgba(212,176,90,.4)" stroke-width="1.5"/>
+        <circle cx="160" cy="160" r="138" fill="none" stroke="rgba(212,176,90,.18)" stroke-width=".8"/>
+        <!-- Graduations -->
+        <g stroke="rgba(212,176,90,.5)" stroke-width="1">
+          <line x1="160" y1="12" x2="160" y2="28"/>
+          <line x1="308" y1="160" x2="292" y2="160"/>
+          <line x1="160" y1="308" x2="160" y2="292"/>
+          <line x1="12" y1="160" x2="28" y2="160"/>
+        </g>
+        <g stroke="rgba(212,176,90,.25)" stroke-width=".5">
+          <line x1="237" y1="36" x2="232" y2="46" transform="rotate(0,160,160)"/>
+          <line x1="284" y1="83" x2="274" y2="88"/>
+          <line x1="284" y1="237" x2="274" y2="232"/>
+          <line x1="237" y1="284" x2="232" y2="274"/>
+          <line x1="83" y1="284" x2="88" y2="274"/>
+          <line x1="36" y1="237" x2="46" y2="232"/>
+          <line x1="36" y1="83" x2="46" y2="88"/>
+          <line x1="83" y1="36" x2="88" y2="46"/>
+        </g>
+        <!-- Lettres cardinales -->
+        <text x="160" y="50" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic" font-weight="900" font-size="20" fill="var(--or3)">QUI</text>
+        <text x="284" y="167" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic" font-weight="900" font-size="20" fill="var(--or3)">POUR</text>
+        <text x="160" y="282" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic" font-weight="900" font-size="20" fill="var(--or3)">MOYENS</text>
+        <text x="36" y="167" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic" font-weight="900" font-size="20" fill="rgba(212,176,90,.4)">·</text>
+        <!-- Aiguille -->
+        <g class="boussole-needle">
+          <polygon points="160,32 152,160 160,168 168,160" fill="#B5232A" stroke="#7A1A20" stroke-width="1"/>
+          <polygon points="160,288 152,160 160,152 168,160" fill="#1A1714" stroke="#3D3730" stroke-width="1"/>
+        </g>
+        <!-- Centre -->
+        <circle cx="160" cy="160" r="14" fill="url(#bouCenter)" stroke="#5A3A0A" stroke-width="1.5"/>
+        <circle cx="160" cy="160" r="5" fill="#1A1714"/>
+        <!-- Fleur de lys subtile -->
+        <text x="160" y="165" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic" font-weight="900" font-size="10" fill="var(--or3)">L'AR</text>
+      </svg>
+    </div>
+
+    <div class="boussole-questions">
+      <div class="boussole-q">
+        <div class="boussole-q-num">Question 01</div>
+        <h3 class="boussole-q-h">Qui <em>décide</em>&nbsp;?</h3>
+        <p class="boussole-q-d">Quelles <strong>institutions, quels acteurs</strong> ont l'autorité réelle&nbsp;? La gouvernance formelle (lois, élus) ou la gouvernance pratique (police, banques, médias) ne se recouvrent jamais parfaitement.</p>
+      </div>
+      <div class="boussole-q">
+        <div class="boussole-q-num">Question 02</div>
+        <h3 class="boussole-q-h">Pour <em>qui</em>&nbsp;?</h3>
+        <p class="boussole-q-d">Qui <strong>bénéficie matériellement</strong> de la décision&nbsp;? Pas seulement en intention — qui voit son patrimoine, sa sécurité, ses opportunités augmenter ou diminuer.</p>
+      </div>
+      <div class="boussole-q">
+        <div class="boussole-q-num">Question 03</div>
+        <h3 class="boussole-q-h">Avec quels <em>moyens</em>&nbsp;?</h3>
+        <p class="boussole-q-d">La <strong>force, le droit, l'économie, la culture</strong>&nbsp;? Une politique de droits civiques sans levier économique reste symbolique. Une force sans légitimité s'épuise vite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 5 TENSIONS ─── -->
+<section class="section" id="tensions">
+  <div class="section-tag">Cadre transversal</div>
+  <h2 class="section-h">Les <em>cinq tensions</em> qui traversent la formation.</h2>
+  <p class="section-sub">Toutes les organisations étudiées affrontent ces tensions. Aucune ne les résout&nbsp;: elles font des <strong>choix stratégiques</strong> qui éclairent ou obscurcissent leur action politique.</p>
+
+  <div class="tensions-grid">
+    <div class="tension">
+      <div class="tension-num">01</div>
+      <div class="tension-vs"><span>Intégration</span><span>vs</span><span>Séparation</span></div>
+      <h3 class="tension-h">Intégration <em>conflictuelle</em> ou <em>autonomie</em>&nbsp;?</h3>
+      <p class="tension-d">Réformer le système américain de l'intérieur (King, NAACP) ou construire des <strong>institutions noires autonomes</strong> (Garvey, NOI, Panthers). Plessy 1896, Garvey 1916, Carmichael 1966.</p>
+    </div>
+    <div class="tension">
+      <div class="tension-num">02</div>
+      <div class="tension-vs"><span>Universel</span><span>vs</span><span>Particulier</span></div>
+      <h3 class="tension-h">Cause <em>universelle</em> ou identité <em>spécifique</em>&nbsp;?</h3>
+      <p class="tension-d">Lutte de classe (Reed, Randolph) qui dilue la spécificité raciale, ou affirmation d'une <strong>histoire propre</strong> (Du Bois) qui isole politiquement.</p>
+    </div>
+    <div class="tension">
+      <div class="tension-num">03</div>
+      <div class="tension-vs"><span>Réforme</span><span>vs</span><span>Rupture</span></div>
+      <h3 class="tension-h">Concession <em>arrachée</em> ou <em>changement d'arène</em>&nbsp;?</h3>
+      <p class="tension-d">Civil rights (King 1963-65) obtient des lois fédérales. Human rights (Malcolm 1964) cherche un <strong>tribunal mondial</strong> à l'ONU&nbsp;: l'État américain devient l'accusé.</p>
+    </div>
+    <div class="tension">
+      <div class="tension-num">04</div>
+      <div class="tension-vs"><span>Centralisation</span><span>vs</span><span>Décentralisation</span></div>
+      <h3 class="tension-h">Leader <em>charismatique</em> ou organisation <em>horizontale</em>&nbsp;?</h3>
+      <p class="tension-d">King-figure unique vs Ella Baker SNCC démocratie participative. Newton-Seale au sommet vs Hampton Rainbow Coalition local. <strong>Centraliser</strong> permet d'agir vite mais offre une <strong>cible unique</strong>.</p>
+    </div>
+    <div class="tension">
+      <div class="tension-num">05</div>
+      <div class="tension-vs"><span>Race</span><span>vs</span><span>Genre / Classe</span></div>
+      <h3 class="tension-h">Le <em>genre</em> et la <em>classe</em> dans la lutte raciale.</h3>
+      <p class="tension-d">NOI&nbsp;: <strong>autorité masculine restaurée</strong> au prix du statut des femmes. Panthers&nbsp;: 60% femmes, leadership masculin (Cleaver puis Brown). Combahee River Collective 1981&nbsp;: cadre intersectionnel.</p>
+    </div>
+    <div class="tension">
+      <div class="tension-num">★</div>
+      <div class="tension-vs"><span>Bonus</span><span>·</span><span>Concept fil rouge</span></div>
+      <h3 class="tension-h">Le <em>pouvoir réel</em> · concept fil rouge.</h3>
+      <p class="tension-d">Capacité d'agir sur 4 fonctions concrètes&nbsp;: <strong>protection · ressources · contrôle des espaces · production de normes pratiques</strong>. Construit progressivement de C1 à C5.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FRISE CHRONOLOGIQUE ─── -->
+<section class="section" id="frise">
+  <div class="section-tag">Repères temporels</div>
+  <h2 class="section-h"><em>1865 → 1969</em>. Les dates qui structurent.</h2>
+  <p class="section-sub">Les événements en gras sont des <strong>charnières</strong>&nbsp;: ils ouvrent ou ferment une séquence stratégique. Mémorise ces dates — elles reviennent dans plusieurs cours.</p>
+
+  <div class="frise-wrap">
+    <div class="frise-line"></div>
+
+    <div class="frise-event major">
+      <div class="frise-year">1865</div>
+      <h3 class="frise-h">13<sup>e</sup> amendement · <em>abolition</em> de l'esclavage</h3>
+      <p class="frise-d">Fin officielle de la <strong>servitude</strong> aux États-Unis. Les amendements 14 (citoyenneté, 1868) et 15 (droit de vote, 1870) suivront.</p>
+      <span class="frise-tag">Cours 1</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1877</div>
+      <h3 class="frise-h">Compromise of 1877 · fin de la <em>Reconstruction</em></h3>
+      <p class="frise-d">Retrait des troupes fédérales du Sud. Les États sudistes regagnent le contrôle politique. Début de la <strong>contre-révolution Jim Crow</strong>.</p>
+      <span class="frise-tag">Cours 1</span>
+    </div>
+
+    <div class="frise-event major">
+      <div class="frise-year">1896</div>
+      <h3 class="frise-h">Plessy v. Ferguson · «&nbsp;<em>séparé mais égal</em>&nbsp;»</h3>
+      <p class="frise-d">La Cour suprême valide la ségrégation légale. Le 14<sup>e</sup> amendement est <strong>vidé de sa substance</strong>. La promesse non tenue se cristallise pour 60 ans.</p>
+      <span class="frise-tag">Cours 1 · Doc. vivant</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1903</div>
+      <h3 class="frise-h"><em>The Souls of Black Folk</em> · Du Bois</h3>
+      <p class="frise-d">Concept de <strong>double conscience</strong>. Naissance de l'analyse politique noire moderne.</p>
+      <span class="frise-tag">Cours 1</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1909</div>
+      <h3 class="frise-h">Fondation de la <em>NAACP</em></h3>
+      <p class="frise-d">Stratégie réformiste&nbsp;: tribunaux fédéraux, élite éduquée. Du Bois en est l'un des fondateurs.</p>
+      <span class="frise-tag">Cours 1</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1916</div>
+      <h3 class="frise-h">Garvey arrive à Harlem · fonde l'<em>UNIA</em></h3>
+      <p class="frise-d">Universal Negro Improvement Association. <strong>Première mobilisation de masse</strong> noire (2 à 6 millions de membres, 40 pays).</p>
+      <span class="frise-tag">Cours 1</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1919</div>
+      <h3 class="frise-h"><em>Black Star Line</em> · compagnie maritime UNIA</h3>
+      <p class="frise-d">3 navires (Yarmouth, Shadyside, Kanawha), 750 000 $ levés en actions par des actionnaires noirs.</p>
+      <span class="frise-tag">Cours 1</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1930</div>
+      <h3 class="frise-h">Fondation de la <em>NOI</em> · Detroit</h3>
+      <p class="frise-d">Wallace Fard puis Elijah Muhammad. Une <strong>contre-société</strong> à l'intérieur de l'État américain hostile.</p>
+      <span class="frise-tag">Cours 2</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1934</div>
+      <h3 class="frise-h">Sister <em>Clara Muhammad</em> Schools</h3>
+      <p class="frise-d">Réseau d'écoles autonomes&nbsp;: matières classiques + histoire africaine + langue arabe.</p>
+      <span class="frise-tag">Cours 2</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1937→68</div>
+      <h3 class="frise-h">Redlining · cartographie raciale du <em>crédit</em></h3>
+      <p class="frise-d">HOLC classe les quartiers en 4 grades (A vert · B bleu · C jaune · D rouge «&nbsp;hazardous&nbsp;»). Les zones D = quartiers noirs, prêts refusés. <strong>Origine de l'écart de patrimoine</strong>.</p>
+      <span class="frise-tag">Intro · Cours 4</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1947</div>
+      <h3 class="frise-h">Du Bois · <em>An Appeal to the World</em></h3>
+      <p class="frise-d">Pétition NAACP à l'ONU. <strong>Première tentative</strong> d'internationaliser la question raciale américaine.</p>
+      <span class="frise-tag">Cours 3 · Précédent Malcolm</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1954</div>
+      <h3 class="frise-h"><em>Brown v. Board</em> · ségrégation scolaire jugée inconstitutionnelle</h3>
+      <p class="frise-d">La NAACP gagne. Mais l'application sur le terrain est <strong>sabotée pendant 15 ans</strong>.</p>
+      <span class="frise-tag">Cours 1</span>
+    </div>
+
+    <div class="frise-event major">
+      <div class="frise-year">1955</div>
+      <h3 class="frise-h">Boycott de <em>Montgomery</em> · 381 jours</h3>
+      <p class="frise-d">Rosa Parks (NAACP de longue date), Jo Ann Robinson, Martin Luther King. <strong>Prototype de la crise gouvernable</strong>.</p>
+      <span class="frise-tag">Cours 4</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1956→71</div>
+      <h3 class="frise-h"><em>COINTELPRO</em> · FBI</h3>
+      <p class="frise-d">Counter Intelligence Program. Infiltration, désorganisation, élimination ciblée. <strong>Toutes</strong> les organisations noires radicales sont visées.</p>
+      <span class="frise-tag">Cours 5</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1959</div>
+      <h3 class="frise-h"><em>The Hate That Hate Produced</em> · WNTA-TV</h3>
+      <p class="frise-d">Documentaire Mike Wallace. Première exposition de masse de la NOI&nbsp;: la <strong>visibilité</strong> attire l'attention du FBI.</p>
+      <span class="frise-tag">Cours 2</span>
+    </div>
+
+    <div class="frise-event major">
+      <div class="frise-year">1963</div>
+      <h3 class="frise-h">Marche sur Washington · Lettre de <em>Birmingham</em></h3>
+      <p class="frise-d">28 août, 250 000 personnes. King écrit la lettre depuis sa cellule (16 avril). <strong>Trois unes opposées</strong> dans la presse&nbsp;: NYT, Pittsburgh Courier, Muhammad Speaks.</p>
+      <span class="frise-tag">Cours 4 · Doc. vivant</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1963</div>
+      <h3 class="frise-h">Malcolm · <em>«&nbsp;Les poulets rentrent au poulailler&nbsp;»</em></h3>
+      <p class="frise-d">Sanction Elijah Muhammad&nbsp;: <strong>silencieux 90 jours</strong>. La gouvernance de la parole précipite le départ.</p>
+      <span class="frise-tag">Cours 3</span>
+    </div>
+
+    <div class="frise-event major">
+      <div class="frise-year">1964</div>
+      <h3 class="frise-h">Civil Rights Act · Hajj de Malcolm · fondation de l'<em>OAAU</em></h3>
+      <p class="frise-d">Loi fédérale signée par Johnson. Malcolm pèlerinage à La Mecque puis tournée africaine. <strong>Civil rights → Human rights</strong>.</p>
+      <span class="frise-tag">Cours 3 · Cours 4</span>
+    </div>
+
+    <div class="frise-event major">
+      <div class="frise-year">1965</div>
+      <h3 class="frise-h">Voting Rights Act · <em>Watts</em> · assassinat de Malcolm</h3>
+      <p class="frise-d">5 août&nbsp;: loi votée. 11 août&nbsp;: Watts s'embrase, 6 jours d'émeutes. <strong>La loi a changé. La vie ne change pas.</strong> 21 février&nbsp;: Malcolm assassiné.</p>
+      <span class="frise-tag">Cours 4 · Cours 5</span>
+    </div>
+
+    <div class="frise-event major">
+      <div class="frise-year">1966</div>
+      <h3 class="frise-h">Carmichael · «&nbsp;<em>Black Power</em>&nbsp;» · fondation BPP Oakland</h3>
+      <p class="frise-d">Greenwood, juin&nbsp;: Stokely Carmichael lance le slogan. Octobre&nbsp;: Newton et Seale fondent le Black Panther Party. <strong>Ten-Point Program</strong>.</p>
+      <span class="frise-tag">Cours 5</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1966</div>
+      <h3 class="frise-h">King à <em>Marquette Park</em> · caillassé</h3>
+      <p class="frise-d">Chicago, campagne logement. Le Nord urbain est plus hostile que le Deep South. <strong>La méthode de King perd prise</strong>.</p>
+      <span class="frise-tag">Cours 4</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1967</div>
+      <h3 class="frise-h">King · <em>Beyond Vietnam</em></h3>
+      <p class="frise-d">Discours à Riverside Church. King relie racisme, pauvreté, militarisme. <strong>Bascule radicale</strong>. Les alliés libéraux le lâchent.</p>
+      <span class="frise-tag">Cours 4</span>
+    </div>
+
+    <div class="frise-event major">
+      <div class="frise-year">1968</div>
+      <h3 class="frise-h">Assassinat de <em>King</em> · Memphis</h3>
+      <p class="frise-d">4 avril, Lorraine Motel. King soutenait une grève des éboueurs noirs. <strong>L'icône morale</strong> bascule définitivement.</p>
+      <span class="frise-tag">Cours 4</span>
+    </div>
+
+    <div class="frise-event">
+      <div class="frise-year">1969</div>
+      <h3 class="frise-h">Assassinat de <em>Fred Hampton</em> · Chicago</h3>
+      <p class="frise-d">4 décembre, raid FBI/police. 21 ans, <strong>chairman Illinois BPP</strong>, architecte de la Rainbow Coalition. Tué dans son sommeil.</p>
+      <span class="frise-tag">Cours 5</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 5 COURS ─── -->
+<section class="section" id="cours">
+  <div class="section-tag">Synthèse</div>
+  <h2 class="section-h">Les <em>cours</em> en une page chacun.</h2>
+  <p class="section-sub">Pour chaque cours&nbsp;: la <strong>problématique</strong> centrale, les <strong>concepts clés</strong> à maîtriser, les <strong>auteurs</strong> à connaître, et les <strong>dates charnières</strong>.</p>
+
+  <div class="cours-list">
+
+    <!-- COURS 1 -->
+    <article class="cours">
+      <div>
+        <div class="cours-num">01</div>
+        <div class="cours-num-label">Aux origines</div>
+      </div>
+      <div class="cours-body">
+        <h3 class="cours-h">Que faire quand l'<em>intégration échoue</em>&nbsp;?</h3>
+        <div class="cours-pb"><strong>Problématique&nbsp;:</strong> face à une citoyenneté proclamée mais structurellement refusée, le nationalisme noir émerge comme <strong>réponse politique rationnelle</strong> — pas comme excès idéologique.</div>
+        <div class="cours-grid">
+          <div>
+            <div class="cours-block-h">Concepts clés</div>
+            <div class="cours-block-list">
+              <span><b>Promesse non tenue</b> · Reconstruction 1865-77</span>
+              <span><b>Jim Crow</b> · ségrégation légale</span>
+              <span><b>Double conscience</b> · Du Bois 1903</span>
+              <span><b>Talented Tenth</b> · stratégie élitaire</span>
+              <span><b>Dilemme fondateur</b> · réformer/construire/transformer</span>
+            </div>
+          </div>
+          <div>
+            <div class="cours-block-h">Figures · dates</div>
+            <div class="cours-block-list">
+              <span><b>1865-77</b> · Reconstruction</span>
+              <span><b>1896</b> · Plessy v. Ferguson</span>
+              <span><b>1903</b> · Du Bois · <em>The Souls of Black Folk</em></span>
+              <span><b>1909</b> · NAACP fondée</span>
+              <span><b>1916-22</b> · Garvey · UNIA · Black Star Line</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- COURS 2 -->
+    <article class="cours">
+      <div>
+        <div class="cours-num">02</div>
+        <div class="cours-num-label">Nation of Islam</div>
+      </div>
+      <div class="cours-body">
+        <h3 class="cours-h">Religion, séparatisme et <em>reconstruction morale</em>.</h3>
+        <div class="cours-pb"><strong>Problématique&nbsp;:</strong> comment la NOI transforme le sacré en pouvoir collectif pour des dominés, et pourquoi ce mécanisme génère aussi des coûts internes (hiérarchie, genre) et externes (isolement, surveillance)&nbsp;?</div>
+        <div class="cours-grid">
+          <div>
+            <div class="cours-block-h">Concepts clés</div>
+            <div class="cours-block-list">
+              <span><b>Proto-souveraineté</b> · État dans l'État</span>
+              <span><b>Do for Self</b> · compter sur soi</span>
+              <span><b>Fonction sociale vs contenu</b> · Dawson</span>
+              <span><b>Promesse d'autorité masculine</b> · coût interne (genre)</span>
+              <span><b>Visibilité = surveillance</b> · 1959</span>
+            </div>
+          </div>
+          <div>
+            <div class="cours-block-h">Figures · dates</div>
+            <div class="cours-block-list">
+              <span><b>1930</b> · Fondation NOI · Detroit</span>
+              <span><b>1934</b> · Sister Clara Muhammad Schools</span>
+              <span><b>1959</b> · <em>The Hate That Hate Produced</em></span>
+              <span><b>Elijah Muhammad</b> · 1897-1975</span>
+              <span><b>Clara Muhammad</b> · 1899-1972</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ─── GLOSSAIRE ─── -->
+<section class="section" id="glossaire">
+  <div class="section-tag">Aide-mémoire</div>
+  <h2 class="section-h">Glossaire des <em>concepts clés</em>.</h2>
+  <p class="section-sub">Les notions centrales de la formation, classées par ordre alphabétique. Pour chaque concept&nbsp;: <strong>auteur</strong>, <strong>date d'apparition</strong>, <strong>définition</strong>, et le <strong>cours où il apparaît</strong>.</p>
+
+  <div class="gloss-grid">
+
+    <div class="gloss">
+      <div class="gloss-meta">Concept · NOI · 1930s</div>
+      <h3 class="gloss-h"><em>Do for Self</em></h3>
+      <p class="gloss-d">«&nbsp;Compter sur soi.&nbsp;» Doctrine économique de la NOI&nbsp;: <strong>retenir dans la communauté la valeur produite</strong> (boulangeries, fermes, restaurants Salaam, Sister Clara Muhammad Schools).</p>
+      <div class="gloss-ref">Cours 2 · M2</div>
+    </div>
+
+    <div class="gloss">
+      <div class="gloss-meta">Concept · Du Bois · 1903</div>
+      <h3 class="gloss-h"><em>Double conscience</em></h3>
+      <p class="gloss-d">Se voir <strong>à la fois</strong> de son propre point de vue (aspirations, dignité) <strong>et à travers le regard</strong> de ceux qui dominent. La fiction raciale devient une réalité psychologique incorporée.</p>
+      <div class="gloss-ref">Cours 1 · M4</div>
+    </div>
+
+    <div class="gloss">
+      <div class="gloss-meta">Cadre · Combahee River Collective · 1977</div>
+      <h3 class="gloss-h">Cadre <em>intersectionnel</em></h3>
+      <p class="gloss-d">Race, classe, genre, sexualité <strong>se croisent</strong> dans l'expérience des femmes noires. Une analyse qui ne tiendrait qu'un seul axe rate les autres. Combahee River Collective Statement, 1977.</p>
+      <div class="gloss-ref">Cours 2 · M5</div>
+    </div>
+
+    <div class="gloss">
+      <div class="gloss-meta">Système · États du Sud · 1877-1965</div>
+      <h3 class="gloss-h"><em>Jim Crow</em></h3>
+      <p class="gloss-d">Lois et coutumes de <strong>ségrégation raciale</strong> dans le Sud post-Reconstruction. Vidé par Plessy v. Ferguson (1896), démantelé par le Civil Rights Act (1964) et le Voting Rights Act (1965).</p>
+      <div class="gloss-ref">Cours 1 · M1-M2</div>
+    </div>
+
+    <div class="gloss">
+      <div class="gloss-meta">Décision Cour suprême · 1896</div>
+      <h3 class="gloss-h"><em>Plessy v. Ferguson</em></h3>
+      <p class="gloss-d">«&nbsp;Séparé mais égal.&nbsp;» Validation par la Cour suprême de la <strong>ségrégation</strong>. Le 14<sup>e</sup> amendement (citoyenneté égale) est <strong>vidé de sa substance</strong> pendant 60 ans.</p>
+      <div class="gloss-ref">Cours 1</div>
+    </div>
+
+    <div class="gloss">
+      <div class="gloss-meta">Concept fil rouge · dès le Cours 1</div>
+      <h3 class="gloss-h"><em>Pouvoir réel</em></h3>
+      <p class="gloss-d">Capacité d'agir sur 4 fonctions concrètes&nbsp;: <strong>protection · ressources · contrôle des espaces · production de normes pratiques</strong>. Le <strong>concept-clé</strong> de la formation, construit progressivement.</p>
+      <div class="gloss-ref">Fil rouge · dès le Cours 1</div>
+    </div>
+
+    <div class="gloss">
+      <div class="gloss-meta">Concept · NOI · 1930-1970s</div>
+      <h3 class="gloss-h"><em>Promesse d'autorité masculine</em></h3>
+      <p class="gloss-d">La NOI promet aux hommes noirs de <strong>récupérer une autorité, un statut, une capacité de protection</strong> que la domination raciale leur a confisqués. Outil de recrutement à coût élevé pour les femmes.</p>
+      <div class="gloss-ref">Cours 2 · M5</div>
+    </div>
+
+    <div class="gloss">
+      <div class="gloss-meta">Concept · NOI · 1930-1970s</div>
+      <h3 class="gloss-h"><em>Proto-souveraineté</em></h3>
+      <p class="gloss-d">Souveraineté <strong>partielle</strong> à l'intérieur d'un État hostile. La NOI construit institutions (Mosque #7), école (Clara Muhammad), presse (Muhammad Speaks), économie (Salaam), sécurité (Fruit of Islam).</p>
+      <div class="gloss-ref">Cours 2 · M2</div>
+    </div>
+
+    <div class="gloss">
+      <div class="gloss-meta">Politique · HOLC · 1937-1968</div>
+      <h3 class="gloss-h"><em>Redlining</em></h3>
+      <p class="gloss-d">Cartographie raciale du crédit. La Home Owners' Loan Corporation classe les quartiers en 4 grades. Les <strong>zones D «&nbsp;hazardous&nbsp;»</strong> (rouges) = quartiers noirs, prêts refusés. Origine de l'écart de patrimoine encore mesurable aujourd'hui.</p>
+      <div class="gloss-ref">Intro · M3</div>
+    </div>
+
+    <div class="gloss">
+      <div class="gloss-meta">Concept · Du Bois · 1903</div>
+      <h3 class="gloss-h"><em>Talented Tenth</em></h3>
+      <p class="gloss-d">«&nbsp;Le dixième talentueux.&nbsp;» Stratégie de Du Bois&nbsp;: former une <strong>élite éduquée</strong> qui tirera la communauté. Pari sur la respectabilité — limite que Du Bois reconnaîtra lui-même tardivement.</p>
+      <div class="gloss-ref">Cours 1 · M4</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── GALERIE FIGURES ─── -->
+<section class="section" id="auteurs">
+  <div class="section-tag">Galerie</div>
+  <h2 class="section-h">Les <em>figures</em> de la formation.</h2>
+  <p class="section-sub">Un portrait + dates + accroche. Pour situer rapidement qui est qui dans le récit.</p>
+
+  <div class="auteurs-grid">
+
+    <div class="auteur">
+      <div class="auteur-photo"><img src="assets/guide/dubois.jpg" alt="W.E.B. Du Bois"></div>
+      <div class="auteur-body">
+        <div class="auteur-name">W.E.B. Du Bois</div>
+        <div class="auteur-dates">1868 — 1963</div>
+        <p class="auteur-d">Sociologue, historien, militant. <strong>Double conscience</strong>, <em>The Souls of Black Folk</em> (1903), co-fondateur NAACP.</p>
+      </div>
+    </div>
+
+    <div class="auteur">
+      <div class="auteur-photo"><img src="assets/guide/garvey.jpg" alt="Marcus Garvey" style="transform:scale(1.45);transform-origin:50% 16%"></div>
+      <div class="auteur-body">
+        <div class="auteur-name">Marcus Garvey</div>
+        <div class="auteur-dates">1887 — 1940</div>
+        <p class="auteur-d">Fondateur de l'<strong>UNIA</strong> et de la <strong>Black Star Line</strong>. Première mobilisation de masse noire (jusqu'à 6M de membres).</p>
+      </div>
+    </div>
+
+    <div class="auteur">
+      <div class="auteur-photo"><img src="assets/guide/wells.jpg" alt="Ida B. Wells"></div>
+      <div class="auteur-body">
+        <div class="auteur-name">Ida B. Wells</div>
+        <div class="auteur-dates">1862 — 1931</div>
+        <p class="auteur-d">Première à produire une <strong>enquête statistique</strong> sur les lynchages. Co-fondatrice NAACP.</p>
+      </div>
+    </div>
+
+    <div class="auteur">
+      <div class="auteur-photo"><img src="assets/guide/washington.jpg" alt="Booker T. Washington"></div>
+      <div class="auteur-body">
+        <div class="auteur-name">Booker T. Washington</div>
+        <div class="auteur-dates">1856 — 1915</div>
+        <p class="auteur-d">Tuskegee Institute. Stratégie d'<strong>accommodation</strong>&nbsp;: éducation pratique, négociation avec l'élite blanche. Adversaire intellectuel de Du Bois.</p>
+      </div>
+    </div>
+
+    <div class="auteur">
+      <div class="auteur-photo"><img src="assets/guide/elijah.jpg" alt="Elijah Muhammad"></div>
+      <div class="auteur-body">
+        <div class="auteur-name">Elijah Muhammad</div>
+        <div class="auteur-dates">1897 — 1975</div>
+        <p class="auteur-d">La doctrine le présente comme l’envoyé de Fard. Dirige la <strong>Nation of Islam</strong> de 1934 à 1975. Architecte de la proto-souveraineté NOI.</p>
+      </div>
+    </div>
+
+    <div class="auteur">
+      <div class="auteur-photo"><img src="assets/guide/clara.jpg" alt="Clara Muhammad"></div>
+      <div class="auteur-body">
+        <div class="auteur-name">Clara Muhammad</div>
+        <div class="auteur-dates">1899 — 1972</div>
+        <p class="auteur-d">Architecte des <strong>Sister Clara Muhammad Schools</strong> (dès 1934). Infrastructure éducative la plus durable du mouvement noir américain.</p>
+      </div>
+    </div>
+
+    <div class="auteur">
+      <div class="auteur-photo"><img src="assets/guide/malcolm.jpg" alt="Malcolm X"></div>
+      <div class="auteur-body">
+        <div class="auteur-name">Malcolm X</div>
+        <div class="auteur-dates">1925 — 1965</div>
+        <p class="auteur-d">Ministre NOI (Mosque #7), puis sunnite après le hajj 1964. Tente d'<strong>internationaliser</strong> la question raciale via l'ONU.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── BIBLIOGRAPHIE ─── -->
+<section class="section" id="biblio">
+  <div class="section-tag">Pour aller plus loin</div>
+  <h2 class="section-h"><em>Bibliographie</em> par cours.</h2>
+  <p class="section-sub">Les œuvres centrales mobilisées dans la formation. Les <strong>en gras italiques</strong> sont des références majeures à connaître.</p>
+
+  <div class="biblio-cours">
+
+    <div class="biblio-block">
+      <div class="biblio-block-h">Cours 1 · Aux origines</div>
+      <div class="biblio-list">
+        <span><b>The Souls of Black Folk</b> · W.E.B. Du Bois · 1903 — texte fondateur, double conscience.</span>
+        <span><b>Up From Slavery</b> · Booker T. Washington · 1901 — autobiographie, stratégie d'accommodation.</span>
+        <span>Plessy v. Ferguson · décision Cour suprême · 1896 — séparé mais égal.</span>
+        <span>Negro World · journal UNIA · 1918-33 — 200 000 lecteurs, 40 pays.</span>
+        <span>The Mis-Education of the Negro · Carter G. Woodson · 1933.</span>
+      </div>
+    </div>
+
+    <div class="biblio-block">
+      <div class="biblio-block-h">Cours 2 · Nation of Islam</div>
+      <div class="biblio-list">
+        <span><b>The Black Muslims in America</b> · C. Eric Lincoln · 1961 — première étude académique de la NOI.</span>
+        <span><b>Black Visions: The Roots of Contemporary African-American Political Ideologies</b> · Michael C. Dawson · 2001.</span>
+        <span>Message to the Blackman in America · Elijah Muhammad · 1965.</span>
+        <span><em>The Hate That Hate Produced</em> · documentaire Mike Wallace, WNTA-TV · juillet 1959.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── MÉTHODE ─── -->
+<section class="section" id="methode">
+  <div class="section-tag">Application</div>
+  <h2 class="section-h">La <em>méthode</em> en 4 étapes.</h2>
+  <p class="section-sub">Quand tu rencontres un événement politique contemporain mobilisant la question raciale (un mouvement, une loi, une polémique), <strong>applique cette grille</strong>. Elle est le produit synthétisé de la formation.</p>
+
+  <div class="methode-steps">
+    <div class="methode-step">
+      <div class="methode-step-num">01</div>
+      <h3 class="methode-step-h">Situer dans le temps</h3>
+      <p class="methode-step-d">Quel <strong>cycle stratégique</strong>&nbsp;? Reconstruction (1865-77), Jim Crow (1877-1954), Civil Rights (1954-65), Black Power (1965-71). Le contexte <strong>fait la moitié du sens</strong>.</p>
+    </div>
+    <div class="methode-step">
+      <div class="methode-step-num">02</div>
+      <h3 class="methode-step-h">Appliquer la boussole</h3>
+      <p class="methode-step-d">Trois questions&nbsp;: <strong>Qui décide</strong> (institutions réelles), <strong>pour qui</strong> (bénéficiaires matériels), <strong>avec quels moyens</strong> (force, droit, économie, culture). Si une réponse manque, l'analyse est incomplète.</p>
+    </div>
+    <div class="methode-step">
+      <div class="methode-step-num">03</div>
+      <h3 class="methode-step-h">Identifier les tensions</h3>
+      <p class="methode-step-d">Quelles tensions sont activées&nbsp;? Intégration vs séparation&nbsp;? Reconnaissance vs redistribution&nbsp;? Centralisation vs décentralisation&nbsp;? Race seule vs intersection&nbsp;? <strong>Aucun choix n'est neutre</strong>.</p>
+    </div>
+    <div class="methode-step">
+      <div class="methode-step-num">04</div>
+      <h3 class="methode-step-h">Mesurer le pouvoir réel</h3>
+      <p class="methode-step-d">Sur 4 fonctions&nbsp;: <strong>protection · ressources · contrôle des espaces · production de normes pratiques</strong>. Une victoire qui n'en déplace aucune est une <strong>concession symbolique</strong>.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<!-- CHROME BAS — Variant B Minimal -->
+<div id="wm">L'Autre Récit · GUIDE ÉTUDIANT</div>
+<div id="counter">§ 1 / 10</div>
+<div id="prog"></div>
+
+<script>
+// Smooth scroll + highlight active section in TOC
+const links = document.querySelectorAll('.toc-list a[href^="#"]');
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      links.forEach(l => l.style.color = '');
+      const active = document.querySelector(`.toc-list a[href="#${id}"]`);
+      if (active) active.style.color = 'var(--or3)';
+      // Update counter chrome
+      const idx = Array.prototype.indexOf.call(sections, entry.target) + 1;
+      const counter = document.getElementById('counter');
+      if (counter) counter.textContent = '§ ' + idx + ' / ' + sections.length;
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// Progress bar
+const prog = document.getElementById('prog');
+function updateProg(){
+  const h = document.documentElement;
+  const scrolled = h.scrollTop || document.body.scrollTop;
+  const max = (h.scrollHeight - h.clientHeight) || 1;
+  prog.style.width = (Math.min(1, scrolled / max) * 100) + '%';
+}
+window.addEventListener('scroll', updateProg, {passive:true});
+window.addEventListener('resize', updateProg);
+updateProg();
+</script>
+</body>
+</html>

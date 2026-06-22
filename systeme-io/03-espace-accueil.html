@@ -1,0 +1,45 @@
+<meta charset="utf-8">
+<!-- ============================================================
+     L'AUTRE RÉCIT — En-tête « Espace membre » · PREMIUM NOIR (plein cadre)
+     OÙ : leçon « Accueil / Ton espace » (1re leçon) → élément « Code HTML ». Section fond noir #0E0C0A.
+     EN DESSOUS : le MENU NATIF de Systeme (modules + barre de progression) = la vraie navigation.
+     Ce bloc = HERO d'accueil de marque uniquement (pas de menu dupliqué, pas de fausse progression).
+     ============================================================ -->
+<div class="lr-sys lr-esp">
+  <style>
+  .lr-esp{--cr:#F2EDE4;--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--ink:#0E0C0A;
+    --serif:'Playfair Display',Georgia,serif;--sans:'League Spartan',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+    background:#0E0C0A;color:var(--cr);font-family:var(--sans);line-height:1.6;
+    padding:clamp(46px,6vw,84px) clamp(22px,5vw,56px);position:relative;overflow:hidden}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=League+Spartan:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+  .lr-esp *{box-sizing:border-box}
+  .lr-esp::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 75% at 50% -10%,rgba(196,162,74,.16),transparent 60%);pointer-events:none}
+  .lr-esp .wrap{position:relative;max-width:760px;margin:0 auto;text-align:center}
+
+  .lr-esp .eye{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--or2);margin:0 0 16px}
+  .lr-esp h1{font-family:var(--serif);font-weight:700;color:#fff;font-size:clamp(32px,4.6vw,54px);line-height:1.08;letter-spacing:-.015em;margin:0 0 14px}
+  .lr-esp h1 em{font-style:italic;font-weight:900;background:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .lr-esp .sub{color:#b7ac9a;font-size:clamp(15px,1.7vw,18.5px);max-width:50ch;margin:0 auto 24px;line-height:1.65}
+  .lr-esp .stats{display:flex;gap:10px 22px;justify-content:center;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--or3);font-weight:700}
+  .lr-esp .stats i{font-style:normal;color:#5f574a}
+  .lr-esp .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(180deg,#EBCB70,#A9863A);margin:34px auto;box-shadow:0 0 0 1px rgba(196,162,74,.5),0 0 0 7px rgba(196,162,74,.12)}
+
+  .lr-esp .start{max-width:620px;margin:0 auto;background:linear-gradient(120deg,rgba(196,162,74,.11),rgba(196,162,74,.03));border:1px solid rgba(196,162,74,.3);border-radius:14px;padding:24px 28px}
+  .lr-esp .start-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--or3);margin:0 0 9px}
+  .lr-esp .start-d{font-size:15.5px;line-height:1.65;color:#cdc2ac;margin:0}
+  .lr-esp .start-d em{font-style:italic;color:var(--or2);font-family:var(--serif);font-weight:700}
+  </style>
+  <div class="wrap">
+    <p class="eye">Ton espace</p>
+    <h1>Bienvenue dans <em>ta formation</em>.</h1>
+    <p class="sub">Cinq cours, un siècle de pensée et de luttes. Tout est ici, à ton rythme — et ça reste à toi à vie.</p>
+    <div class="stats">38 modules <i>·</i> ~5 h de contenu <i>·</i> accès à vie</div>
+
+    <div class="dot"></div>
+
+    <div class="start">
+      <p class="start-k">Par où commencer</p>
+      <p class="start-d">Déroule le menu juste en dessous &#128071; et lance l'<em>Introduction</em> — elle pose la boussole analytique qui éclaire les cinq cours. Ta progression s'enregistre toute seule.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Autre Récit — 5 directions e-mail premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cr:#F2EDE4; --cr2:#EAE3D8; --cr3:#D4C9B8; --paper:#F5F0E7;
+  --or:#9A7B2E; --or2:#C4A24A; --or3:#D4B05A;
+  --ink:#0E0C0A; --ink2:#1A1714; --ink3:#3D3730;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'League Spartan',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --gold:linear-gradient(180deg,#EBCB70 0%,#C9A24C 52%,#A9863A 100%);
+  --gold-hi:linear-gradient(180deg,#F6DE94 0%,#D9B45C 52%,#C4A24A 100%);
+  --rule:linear-gradient(90deg,transparent,var(--or2) 20%,var(--or3) 50%,var(--or2) 80%,transparent);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:var(--sans); color:var(--cr);
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(196,162,74,.16), transparent 60%),
+    linear-gradient(180deg,#100d0a 0%, #15110c 40%, #0b0907 100%);
+  background-attachment:fixed;
+  min-height:100vh; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+
+/* ============ SHOWCASE CHROME ============ */
+.shell{max-width:780px;margin:0 auto;padding:56px 20px 100px}
+.intro{text-align:center;margin-bottom:30px}
+.intro .eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--or2);margin:0 0 16px
+}
+.intro h1{
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(30px,5.4vw,50px);line-height:1.08;letter-spacing:-.02em;
+  margin:0 0 14px;color:#fff
+}
+.intro h1 em{font-style:italic;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text}
+.intro p{
+  max-width:54ch;margin:0 auto;color:rgba(242,237,228,.6);
+  font-size:15.5px;line-height:1.7;font-weight:400
+}
+.frule{height:1px;border:0;background:var(--rule);max-width:380px;margin:28px auto}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 8px;position:sticky;top:0;z-index:40;
+  padding:14px 0;background:linear-gradient(180deg,rgba(16,13,10,.96),rgba(16,13,10,.72) 70%,transparent);
+  backdrop-filter:blur(6px)}
+.tab{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+  color:rgba(242,237,228,.62);background:rgba(255,255,255,.04);
+  border:1px solid rgba(212,176,90,.22);border-radius:40px;padding:9px 15px;cursor:pointer;
+  transition:all .25s var(--ease);white-space:nowrap
+}
+.tab:hover{color:#fff;border-color:rgba(212,176,90,.5)}
+.tab.on{color:var(--ink);background:var(--gold);border-color:transparent;font-weight:700;box-shadow:0 8px 22px -10px rgba(196,162,74,.6)}
+
+/* case block */
+.case{margin-top:48px;animation:rise .5s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.caption{max-width:600px;margin:0 auto 16px;padding:0 4px}
+.caption .chip{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10.5px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--or3);margin-bottom:10px
+}
+.caption .chip b{
+  display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;
+  background:var(--gold);color:var(--ink);font-family:var(--serif);font-style:italic;font-weight:900;font-size:12px
+}
+.caption h2{font-family:var(--serif);font-style:italic;font-weight:700;font-size:24px;color:#fff;margin:0 0 6px}
+.caption p{margin:0;color:rgba(242,237,228,.55);font-size:13.5px;line-height:1.6;font-weight:400}
+.caption .use{color:var(--or2)}
+
+/* inbox preview row */
+.inbox{max-width:600px;margin:0 auto;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
+  border-radius:12px 12px 0 0;border-bottom:0;padding:14px 18px;display:flex;gap:13px;align-items:flex-start}
+.inbox .av{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:var(--gold);
+  display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-weight:900;color:var(--ink);font-size:17px;
+  box-shadow:0 4px 14px -4px rgba(196,162,74,.5)}
+.inbox .ix{flex:1;min-width:0}
+.inbox .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.inbox .from{font-weight:700;color:#fff;font-size:14.5px}
+.inbox .time{font-family:var(--mono);font-size:10.5px;color:rgba(242,237,228,.4);white-space:nowrap}
+.inbox .subj{color:rgba(242,237,228,.92);font-size:13.5px;font-weight:600;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inbox .pre{color:rgba(242,237,228,.42);font-size:12.5px;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* email frame */
+.frame{max-width:600px;margin:0 auto;border-radius:0 0 14px 14px;overflow:hidden;
+  box-shadow:0 50px 90px -40px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.05)}
+.eml{width:100%;font-family:var(--sans);font-size:16px;line-height:1.65}
+.eml a{text-decoration:none}
+
+/* shared email atoms */
+.e-rule{height:1px;background:var(--rule);border:0;margin:0}
+.e-eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+.e-btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.12em;
+  text-transform:uppercase;padding:15px 30px;border-radius:5px}
+.e-btn-gold{background:var(--gold);color:var(--ink)!important;box-shadow:0 12px 26px -12px rgba(196,162,74,.6)}
+.e-foot-mono{font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+
+/* ====== D1 · LA LETTRE (crème éditorial) ====== */
+.d-letter{background:#F4EFE6;color:var(--ink2);padding:0}
+.d-letter .hd{text-align:center;padding:40px 48px 0}
+.d-letter .wm{font-family:var(--serif);font-style:italic;font-weight:700;font-size:23px;color:var(--ink);letter-spacing:-.01em}
+.d-letter .hd .e-rule{max-width:120px;margin:18px auto 0}
+.d-letter .bd{padding:34px 48px 8px}
+.d-letter .e-eyebrow{color:var(--or);text-align:center;display:block;margin-bottom:20px}
+.d-letter h3{font-family:var(--serif);font-weight:700;font-size:31px;line-height:1.14;color:var(--ink);margin:0 0 22px;letter-spacing:-.01em}
+.d-letter p{margin:0 0 18px;color:#403a31;font-size:16px;line-height:1.72}
+.d-letter .quote{margin:26px 0;padding:6px 0 6px 22px;border-left:2px solid var(--or2);
+  font-family:var(--serif);font-style:italic;font-weight:400;font-size:19px;line-height:1.5;color:var(--or)}
+.d-letter .quote cite{display:block;margin-top:10px;font-style:normal;font-family:var(--mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:#9c8f78}
+.d-letter .cta{text-align:center;padding:14px 48px 4px}
+.d-letter .sig{padding:30px 48px 6px;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink)}
+.d-letter .sig small{display:block;font-family:var(--mono);font-style:normal;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:#9c8f78;margin-top:4px}
+.d-letter .ft{padding:26px 48px 34px;text-align:center;color:#9c8f78}
+.d-letter .ft .e-rule{margin-bottom:20px;opacity:.7}
+.d-letter .ft a{color:var(--or);font-weight:600}
+
+/* ====== D2 · L'ENCRE (ink luxe) ====== */
+.d-ink{background:linear-gradient(180deg,#16110b 0%,#0E0C0A 60%,#070605 100%);color:var(--cr);padding:0}
+.d-ink .hd{text-align:center;padding:34px 44px 30px;border-top:2px solid var(--or2);
+  border-bottom:1px solid rgba(212,176,90,.25);
+  border-image:var(--rule) 1}
+.d-ink .wm{font-family:var(--serif);font-style:italic;font-weight:700;font-size:22px;
+  background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.d-ink .bd{padding:46px 44px 40px;text-align:center}
+.d-ink .e-eyebrow{color:var(--or3);display:block;margin-bottom:22px}
+.d-ink h3{font-family:var(--serif);font-weight:700;font-size:38px;line-height:1.1;color:#fff;margin:0 0 18px;letter-spacing:-.015em}
+.d-ink h3 em{font-style:italic;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text}
+.d-ink .sub{color:rgba(242,237,228,.7);font-size:16px;line-height:1.65;max-width:44ch;margin:0 auto 30px}
+.d-ink .date{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--or2);padding:14px 0;margin:0 0 30px;border-top:1px solid rgba(212,176,90,.18);border-bottom:1px solid rgba(212,176,90,.18)}
+.d-ink .ft{padding:24px 44px 34px;text-align:center;color:rgba(242,237,228,.45);
+  border-top:1px solid rgba(212,176,90,.14)}
+.d-ink .ft a{color:var(--or3);font-weight:600}
+
+/* ====== D3 · LE SOMMAIRE (crème magazine) ====== */
+.d-mag{background:var(--cr);color:var(--ink2);padding:0}
+.d-mag .mast{padding:30px 44px 22px;display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2px solid var(--ink)}
+.d-mag .wm{font-family:var(--serif);font-style:italic;font-weight:900;font-size:25px;color:var(--ink);line-height:1}
+.d-mag .iss{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--or);text-align:right;line-height:1.7}
+.d-mag .intro2{padding:24px 44px 6px;font-family:var(--serif);font-style:italic;font-size:18px;color:#403a31;line-height:1.5}
+.d-mag .art{display:block;padding:22px 44px;border-bottom:1px solid var(--cr3);color:inherit;transition:background .2s}
+.d-mag .art:hover{background:var(--cr2)}
+.d-mag .art .row{display:flex;gap:18px;align-items:flex-start}
+.d-mag .num{font-family:var(--serif);font-style:italic;font-weight:900;font-size:34px;line-height:.9;
+  color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text;flex:0 0 auto;width:46px}
+.d-mag .art h4{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.2;color:var(--ink);margin:2px 0 5px}
+.d-mag .art .dek{color:#6a6354;font-size:14px;line-height:1.5;margin:0}
+.d-mag .art .more{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-top:8px;display:inline-block}
+.d-mag .cta{padding:30px 44px;text-align:center}
+.d-mag .ft{padding:8px 44px 32px;text-align:center;color:#9c8f78}
+.d-mag .ft .e-rule{margin-bottom:18px;opacity:.7}
+.d-mag .ft a{color:var(--or);font-weight:600}
+
+/* ====== D4 · LE MANIFESTE (crème minimal) ====== */
+.d-mani{background:#F6F1E8;color:var(--ink);padding:0;text-align:center}
+.d-mani .in{padding:64px 50px 56px}
+.d-mani .e-eyebrow{color:var(--or2);display:block;margin-bottom:40px}
+.d-mani h3{font-family:var(--serif);font-weight:700;font-size:40px;line-height:1.12;letter-spacing:-.02em;
+  color:var(--ink);margin:0 auto 34px;max-width:14ch}
+.d-mani h3 em{font-style:italic;color:transparent;background:var(--gold);-webkit-background-clip:text;background-clip:text}
+.d-mani .lede{color:#5a5346;font-size:16px;line-height:1.7;max-width:40ch;margin:0 auto 38px}
+.d-mani .cta a{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--or);border-bottom:1px solid var(--or2);padding-bottom:5px}
+.d-mani .ft{padding:34px 50px 40px;color:#a99e87}
+.d-mani .ft .e-rule{max-width:200px;margin:0 auto 18px;opacity:.6}
+
+/* ====== D5 · LA CARTE (lancement / conversion) ====== */
+.d-card{background:var(--cr);color:var(--ink2);padding:0}
+.d-card .hero{background:linear-gradient(180deg,#16110b,#0E0C0A);color:var(--cr);padding:36px 40px 38px;text-align:center;
+  border-bottom:2px solid var(--or2)}
+.d-card .wm{font-family:var(--serif);font-style:italic;font-weight:700;font-size:18px;
+  background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:26px;display:block}
+.d-card .hero .e-eyebrow{color:var(--or3);display:block;margin-bottom:16px}
+.d-card .hero h3{font-family:var(--serif);font-weight:700;font-size:30px;line-height:1.12;color:#fff;margin:0 0 18px}
+.d-card .badge{display:inline-flex;gap:14px;align-items:center;font-family:var(--mono);font-size:12px;font-weight:700;
+  letter-spacing:.12em;color:var(--or2);border:1px solid rgba(212,176,90,.3);border-radius:40px;padding:9px 20px;margin-bottom:26px}
+.d-card .badge i{width:3px;height:3px;border-radius:50%;background:var(--or2);font-style:normal}
+.d-card .bd{padding:34px 40px 8px}
+.d-card .bd .lbl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--or);text-align:center;display:block;margin-bottom:24px}
+.d-card ul{list-style:none;margin:0;padding:0}
+.d-card li{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--cr2)}
+.d-card li:last-child{border-bottom:0}
+.d-card li .mk{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:rgba(196,162,74,.14);
+  display:grid;place-items:center;color:var(--or);font-weight:700;font-size:13px;margin-top:1px}
+.d-card li .tx{font-size:15.5px;color:#403a31;line-height:1.5}
+.d-card li .tx b{color:var(--ink)}
+.d-card .cta{text-align:center;padding:28px 40px 6px}
+.d-card .reassure{text-align:center;font-size:13px;color:#8a8170;padding:0 40px 6px}
+.d-card .ft{padding:26px 40px 34px;text-align:center;color:#9c8f78}
+.d-card .ft .e-rule{margin-bottom:18px;opacity:.7}
+.d-card .ft a{color:var(--or);font-weight:600}
+
+/* tech panel */
+.tech{max-width:600px;margin:70px auto 0;background:rgba(255,255,255,.03);border:1px solid rgba(212,176,90,.18);
+  border-radius:14px;padding:30px 30px 26px}
+.tech .e-eyebrow{color:var(--or2);display:block;margin-bottom:14px}
+.tech h2{font-family:var(--serif);font-style:italic;font-weight:700;font-size:22px;color:#fff;margin:0 0 16px}
+.tech p,.tech li{color:rgba(242,237,228,.66);font-size:14px;line-height:1.65}
+.tech ul{margin:0;padding-left:18px}
+.tech li{margin-bottom:8px}
+.tech b{color:var(--or3)}
+.foot-note{max-width:600px;margin:24px auto 0;text-align:center;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:rgba(242,237,228,.32);line-height:1.7}
+
+@media(max-width:560px){
+  .d-letter .bd,.d-letter .hd,.d-letter .cta,.d-letter .sig,.d-letter .ft{padding-left:26px;padding-right:26px}
+  .d-ink .bd,.d-mag .mast,.d-mag .art,.d-mag .intro2,.d-card .bd,.d-card .hero,.d-mani .in{padding-left:26px;padding-right:26px}
+  .d-ink h3,.d-mani h3{font-size:31px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="intro">
+    <p class="eyebrow">L'Autre Récit · Système e-mail</p>
+    <h1>Cinq façons de <em>décliner</em> la marque par l'e-mail</h1>
+    <p>Même ADN partout — Playfair italic, doré <code style="font-family:var(--mono);font-size:.85em;color:var(--or3)">#C4A24A</code>, crème &amp; encre, filets dorés — mais cinq registres pour cinq usages. Survolez l'aperçu « boîte de réception » de chaque e-mail, puis l'e-mail lui-même.</p>
+    <hr class="frule">
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab" data-target="all">Tout voir</button>
+    <button class="tab" data-target="letter">01 · La Lettre</button>
+    <button class="tab" data-target="ink">02 · L'Encre</button>
+    <button class="tab" data-target="mag">03 · Le Sommaire</button>
+    <button class="tab" data-target="mani">04 · Le Manifeste</button>
+    <button class="tab" data-target="card">05 · La Carte</button>
+  </nav>
+
+  <!-- ============ 01 · LA LETTRE ============ -->
+  <section class="case" data-id="letter">
+    <div class="caption">
+      <span class="chip"><b>1</b> La Lettre · crème éditorial</span>
+      <h2>La Lettre</h2>
+      <p><span class="use">Pour la nurture hebdomadaire / Substack.</span> Une vraie lettre : un seul sujet, une citation, une signature. Chaude, littéraire, intime — l'ADN au repos.</p>
+    </div>
+    <div class="inbox">
+      <div class="av">R</div>
+      <div class="ix">
+        <div class="top"><span class="from">L'Autre Récit</span><span class="time">09:12</span></div>
+        <div class="subj">Ce que « intégration » nous empêche de voir</div>
+        <div class="pre">L'édition de la semaine — 6 min de lecture.</div>
+      </div>
+    </div>
+    <div class="frame"><div class="eml d-letter">
+      <div class="hd"><span class="wm">L'Autre&nbsp;Récit</span><hr class="e-rule"></div>
+      <div class="bd">
+        <span class="e-eyebrow">Édition hebdomadaire · 19 juin 2026</span>
+        <h3>Ce que le mot « intégration » nous empêche de voir</h3>
+        <p>On présente l'intégration comme un point d'arrivée : l'autre se rapproche, s'efface dans le commun, et le problème disparaît. Mais ce vocabulaire fait un travail discret. Il désigne toujours celui qui doit bouger — jamais la structure qui décide du seuil.</p>
+        <p>Stuart Hall l'avait nommé : représenter, c'est déjà gouverner. Tant que le récit dominant garde la main sur les mots, il garde la main sur ce qu'on peut penser.</p>
+        <blockquote class="quote">Allah ne modifie pas l'état d'un peuple tant que les individus qui le composent ne modifient pas ce qui est en eux-mêmes.<cite>Ar-Ra'd · 13:11</cite></blockquote>
+        <p>C'est tout l'enjeu : diagnostiquer la domination sans s'y arrêter. Le reste de l'analyse est en ligne.</p>
+      </div>
+      <div class="cta"><a class="e-btn e-btn-gold" href="#">Lire l'analyse complète →</a></div>
+      <div class="sig">Rany<small>L'Autre Récit — Montpellier</small></div>
+      <div class="ft">
+        <hr class="e-rule">
+        <p class="e-foot-mono"><a href="#">Substack</a> &nbsp;·&nbsp; <a href="#">Instagram</a></p>
+        <p class="e-foot-mono" style="margin-top:10px;opacity:.8">Vous recevez cette lettre car vous suivez L'Autre Récit.<br><a href="#">Se désabonner</a> &nbsp;·&nbsp; <a href="#">Préférences</a></p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ============ 02 · L'ENCRE ============ -->
+  <section class="case" data-id="ink">
+    <div class="caption">
+      <span class="chip"><b>2</b> L'Encre · fond sombre luxe</span>
+      <h2>L'Encre</h2>
+      <p><span class="use">Pour les annonces fortes &amp; le teasing de formation.</span> Le registre sombre du site : wordmark doré en foil, double filet, titre dramatique. Rare et solennel — à ne pas user.</p>
+    </div>
+    <div class="inbox">
+      <div class="av">R</div>
+      <div class="ix">
+        <div class="top"><span class="from">L'Autre Récit</span><span class="time">hier</span></div>
+        <div class="subj">Nouvelle formation : le nationalisme noir américain</div>
+        <div class="pre">Inscriptions bientôt ouvertes. Places limitées.</div>
+      </div>
+    </div>
+    <div class="frame"><div class="eml d-ink">
+      <div class="hd"><span class="wm">L'Autre&nbsp;Récit</span></div>
+      <div class="bd">
+        <span class="e-eyebrow">Bientôt · Nouvelle formation</span>
+        <h3>Le nationalisme noir <em>américain</em></h3>
+        <p class="sub">De Marcus Garvey à Malcolm X : une grille de science politique pour comprendre l'autodétermination noire. Sept modules, des sources, aucune simplification.</p>
+        <p class="date">Ouverture des inscriptions · Avril 2026</p>
+        <a class="e-btn e-btn-gold" href="#">Être prévenu·e en premier →</a>
+      </div>
+      <div class="ft">
+        <p class="e-foot-mono"><a href="#">Substack</a> &nbsp;·&nbsp; <a href="#">Instagram</a></p>
+        <p class="e-foot-mono" style="margin-top:10px;opacity:.85">L'Autre Récit · Montpellier, France<br><a href="#">Se désabonner</a></p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ============ 03 · LE SOMMAIRE ============ -->
+  <section class="case" data-id="mag">
+    <div class="caption">
+      <span class="chip"><b>3</b> Le Sommaire · magazine</span>
+      <h2>Le Sommaire</h2>
+      <p><span class="use">Pour le digest qui renvoie vers plusieurs articles.</span> Une manchette de revue, des articles numérotés en doré, scannable en cinq secondes. Pour faire circuler le fond.</p>
+    </div>
+    <div class="inbox">
+      <div class="av">R</div>
+      <div class="ix">
+        <div class="top"><span class="from">L'Autre Récit</span><span class="time">08:40</span></div>
+        <div class="subj">Au sommaire cette semaine — N°14</div>
+        <div class="pre">Bagayoko, Al-Aqsa, Fanon. Trois analyses.</div>
+      </div>
+    </div>
+    <div class="frame"><div class="eml d-mag">
+      <div class="mast">
+        <span class="wm">L'Autre&nbsp;Récit</span>
+        <span class="iss">N° 14<br>19 · 06 · 2026</span>
+      </div>
+      <p class="intro2">Trois lectures pour cette semaine — là où l'actualité révèle quelque chose de structurel.</p>
+      <a class="art" href="#"><div class="row"><span class="num">01</span><div>
+        <h4>L'affaire Bagayoko et l'effet de seuil</h4>
+        <p class="dek">Comment une phrase ordinaire devient une « citation raciste » — et qui décide du moment où elle bascule.</p>
+        <span class="more">Lire l'analyse →</span></div></div></a>
+      <a class="art" href="#"><div class="row"><span class="num">02</span><div>
+        <h4>Al-Aqsa, Ramadan 2026 : ce que l'histoire dit vraiment</h4>
+        <p class="dek">Retour aux sources, de 'Umar ibn al-Khattab à l'ère de Saladin, contre la lecture pressée du présent.</p>
+        <span class="more">Lire l'analyse →</span></div></div></a>
+      <a class="art" href="#"><div class="row"><span class="num">03</span><div>
+        <h4>Fanon, et l'oppression qu'on intériorise</h4>
+        <p class="dek">La domination ne s'arrête pas aux structures : elle s'installe au-dedans. Diagnostic et issue.</p>
+        <span class="more">Lire l'analyse →</span></div></div></a>
+      <div class="cta"><a class="e-btn e-btn-gold" href="#">Tout lire sur Substack →</a></div>
+      <div class="ft">
+        <hr class="e-rule">
+        <p class="e-foot-mono">L'Autre Récit · Montpellier &nbsp;·&nbsp; <a href="#">Se désabonner</a></p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ============ 04 · LE MANIFESTE ============ -->
+  <section class="case" data-id="mani">
+    <div class="caption">
+      <span class="chip"><b>4</b> Le Manifeste · minimal</span>
+      <h2>Le Manifeste</h2>
+      <p><span class="use">Pour une seule idée, un « effet de seuil ».</span> Presque rien : une affirmation énorme en Playfair, du vide, un lien discret. Le premium par le silence.</p>
+    </div>
+    <div class="inbox">
+      <div class="av">R</div>
+      <div class="ix">
+        <div class="top"><span class="from">L'Autre Récit</span><span class="time">07:00</span></div>
+        <div class="subj">L'autre moitié de l'histoire</div>
+        <div class="pre">Une minute. Une idée.</div>
+      </div>
+    </div>
+    <div class="frame"><div class="eml d-mani">
+      <div class="in">
+        <span class="e-eyebrow">L'Autre Récit</span>
+        <h3>On ne vous a pas menti. On vous a raconté <em>l'autre moitié</em>.</h3>
+        <p class="lede">C'est là que tout commence : pas dans le mensonge, mais dans ce qu'on a choisi de taire. Cette semaine, on rétablit le cadre.</p>
+        <p class="cta"><a href="#">Découvrir le récit →</a></p>
+      </div>
+      <div class="ft">
+        <hr class="e-rule">
+        <p class="e-foot-mono">Montpellier, France &nbsp;·&nbsp; <a href="#" style="color:var(--or)">Se désabonner</a></p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ============ 05 · LA CARTE ============ -->
+  <section class="case" data-id="card">
+    <div class="caption">
+      <span class="chip"><b>5</b> La Carte · lancement</span>
+      <h2>La Carte</h2>
+      <p><span class="use">Pour vendre : ouverture d'une formation.</span> Une carte produit — hero sombre, badge prix, bénéfices à puces dorées, CTA franc. Les deux registres de la marque dans un seul e-mail.</p>
+    </div>
+    <div class="inbox">
+      <div class="av">R</div>
+      <div class="ix">
+        <div class="top"><span class="from">L'Autre Récit</span><span class="time">10:30</span></div>
+        <div class="subj">Votre place pour la formation est ouverte</div>
+        <div class="pre">7 modules · accès à vie · 59,99 €.</div>
+      </div>
+    </div>
+    <div class="frame"><div class="eml d-card">
+      <div class="hero">
+        <span class="wm">L'Autre&nbsp;Récit</span>
+        <span class="e-eyebrow">Formation premium · Inscriptions ouvertes</span>
+        <h3>Nationalisme noir américain</h3>
+        <span class="badge">7 modules <i></i> Accès à vie <i></i> 59,99 €</span><br>
+        <a class="e-btn e-btn-gold" href="#">Je réserve ma place →</a>
+      </div>
+      <div class="bd">
+        <span class="lbl">Ce que vous repartirez en sachant</span>
+        <ul>
+          <li><span class="mk">✓</span><span class="tx">Lire l'autodétermination noire avec une <b>grille de science politique</b>, de Garvey à Malcolm X.</span></li>
+          <li><span class="mk">✓</span><span class="tx">Distinguer le <b>nationalisme</b> du séparatisme, du panafricanisme et du religieux — sans les confondre.</span></li>
+          <li><span class="mk">✓</span><span class="tx">Remonter aux <b>sources primaires</b> au lieu des résumés de seconde main.</span></li>
+        </ul>
+      </div>
+      <div class="cta"><a class="e-btn e-btn-gold" href="#">Commencer la formation →</a></div>
+      <p class="reassure">Paiement sécurisé · Accès immédiat · Satisfait ou remboursé 14 jours</p>
+      <div class="ft">
+        <hr class="e-rule">
+        <p class="e-foot-mono">L'Autre Récit · Montpellier &nbsp;·&nbsp; <a href="#">Se désabonner</a></p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- tech panel -->
+  <div class="tech">
+    <span class="e-eyebrow">Note technique</span>
+    <h2>De la maquette à l'e-mail réel</h2>
+    <p>Ces maquettes sont en CSS moderne (pour les voir nettes ici). L'e-mail <b>envoyé</b> se code autrement, sous peine de casser dans Outlook / Gmail :</p>
+    <ul>
+      <li>Mise en page en <b>tableaux</b> + CSS <b>inline</b>, largeur 600 px.</li>
+      <li>Polices web non garanties → repli <b>Georgia</b> (Playfair) et système (League Spartan). Le wordmark doré peut devenir une <b>image PNG</b> pour rester fidèle partout.</li>
+      <li>Les <b>dégradés dorés</b> tombent en aplat <code style="color:var(--or3)">#C4A24A</code> sur Outlook → prévoir la couleur de secours.</li>
+      <li>Toujours un vrai <b>texte de pré-en-tête</b> (la ligne grise dans la boîte de réception) + lien de désabonnement.</li>
+    </ul>
+    <p style="margin-bottom:0">Dis-moi la direction retenue → je la livre en <b>HTML d'envoi</b> testé, prêt à coller dans l'outil.</p>
+  </div>
+
+  <p class="foot-note">L'Autre Récit — système e-mail · 5 directions · doré #C4A24A · Playfair / League Spartan / JetBrains Mono</p>
+
+</div>
+
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.tab');
+  var cases=document.querySelectorAll('.case');
+  function show(id){
+    tabs.forEach(function(t){t.classList.toggle('on',t.dataset.target===id);});
+    cases.forEach(function(c){
+      var on=(id==='all'||c.dataset.id===id);
+      c.style.display=on?'block':'none';
+      if(on){c.style.animation='none';void c.offsetWidth;c.style.animation='';}
+    });
+    if(id!=='all'){window.scrollTo({top:0,behavior:'smooth'});}
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.target);});});
+  show('all');
+})();
+</script>
+</body>
+</html>

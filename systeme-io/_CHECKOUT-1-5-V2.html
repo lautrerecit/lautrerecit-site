@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Autre Récit — Bon de commande · 1 & 5 (V2 : paiement 3×, garantie 7j, mentions légales)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=League+Spartan:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}html,body{margin:0}
+  body{background:#080706;font-family:'League Spartan',system-ui,sans-serif;color:#F2EDE4}
+  .bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:rgba(14,12,10,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,162,74,.28);padding:13px clamp(16px,4vw,40px)}
+  .wm{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#F2EDE4;margin-right:auto}
+  .wm b{color:#C4A24A;font-weight:700;font-style:normal}
+  .tabs{display:flex;gap:8px}
+  .tab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#bcae93;background:transparent;border:1px solid rgba(196,162,74,.3);border-radius:7px;padding:9px 13px;cursor:pointer;transition:.2s}
+  .tab:hover{color:#F2EDE4;border-color:#C4A24A}
+  .tab.on{color:#0E0C0A;background:linear-gradient(180deg,#EBCB70,#C9A24C,#A9863A);border-color:transparent;font-weight:700}
+  .cap{background:#0b0a08;border-bottom:1px solid rgba(196,162,74,.14);padding:13px clamp(16px,4vw,40px);font-size:13px;line-height:1.5;color:#9a8f7e}
+  .cap b{color:#C4A24A;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:15px;margin-right:8px}
+  .cap .note{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5f5a50;float:right}
+  .alt{display:none}.alt.on{display:block}
+
+  .lbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 7px;display:block}
+  .pick{display:flex;gap:10px;margin:0 0 16px}
+  .pick .opt{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:12px;border-radius:10px;font-size:13.5px;cursor:pointer;font-weight:500;text-align:center;line-height:1.25}
+  .pick .opt small{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;opacity:.7}
+  .pay{display:block;width:100%;border:0;border-radius:10px;padding:18px;font-family:'League Spartan',sans-serif;font-weight:700;font-size:15px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);color:#0E0C0A;box-shadow:0 14px 32px -12px rgba(196,162,74,.6);margin-top:4px}
+  .legal{margin:4px 0 14px;display:grid;gap:10px}
+  .ckbox{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:12px;line-height:1.45}
+  .ckbox .bx{flex:0 0 18px;width:18px;height:18px;border-radius:5px;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:.15s}
+  .ckbox.on .bx{background:linear-gradient(180deg,#EBCB70,#C9A24C);color:#0E0C0A}
+  .ckbox.on .bx:before{content:"\2713"}
+  .ckbox a{text-decoration:underline}
+  .trust{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase}
+
+  /* ===== 01 · SPLIT ===== */
+  .ck1{background:#0E0C0A;padding:clamp(34px,5vw,64px) clamp(20px,4vw,56px)}
+  .ck1 .wrap{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr .98fr;border-radius:20px;overflow:hidden;box-shadow:0 40px 90px -50px rgba(0,0,0,.8)}
+  .ck1 .recap{background:linear-gradient(160deg,#181410,#0E0C0A);padding:clamp(30px,3.6vw,46px)}
+  .ck1 .ey{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#C4A24A;margin:0 0 16px}
+  .ck1 .recap h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,2.8vw,34px);line-height:1.1;margin:0}
+  .ck1 .recap h2 em{font-style:italic;color:#C4A24A}
+  .ck1 .price{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:46px;color:#C4A24A;margin:16px 0 2px}
+  .ck1 .price span{font-family:'JetBrains Mono',monospace;font-style:normal;font-size:10.5px;letter-spacing:.14em;color:#9a8f7e;margin-left:8px}
+  .ck1 .or3x{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#cbbfa8;margin:0 0 4px}
+  .ck1 ul{list-style:none;margin:20px 0 0;padding:18px 0 0;border-top:1px solid rgba(196,162,74,.18);display:grid;gap:11px}
+  .ck1 li{position:relative;padding-left:24px;font-size:14px;color:#d9d0c2;line-height:1.45}
+  .ck1 li:before{content:"\2713";position:absolute;left:0;color:#C4A24A;font-weight:700}
+  .ck1 .gtee{margin-top:18px;padding:14px 16px;border:1px solid rgba(196,162,74,.25);border-radius:11px;font-size:13px;color:#cbbfa8}
+  .ck1 .gtee b{color:#C4A24A}
+  .ck1 .form{background:#FBF8F2;padding:clamp(30px,3.6vw,46px);color:#1A1714}
+  .ck1 .form .h{font-family:'Playfair Display',serif;font-size:20px;margin:0 0 22px;color:#15120E}
+  .ck1 .lbl{color:#6b6253}
+  .ck1 .inp{width:100%;border:1px solid #DDD2BE;background:#fff;border-radius:10px;padding:14px;font-family:'League Spartan',sans-serif;font-size:15px;color:#1A1714;margin:0 0 16px}
+  .ck1 .pick .opt{border:1px solid #DDD2BE;background:#fff;color:#3D3730}
+  .ck1 .pick .opt.on{border-color:#C4A24A;background:#FBF3DF;color:#15120E;box-shadow:0 0 0 1px #C4A24A inset}
+  .ck1 .ckbox{color:#5b5346}.ck1 .ckbox .bx{border:1.5px solid #C9BCA2}.ck1 .ckbox a{color:#9A7B2E}
+  .ck1 .trust{color:#9a8f7e}.ck1 .trust b{color:#9A7B2E}
+  @media(max-width:780px){.ck1 .wrap{grid-template-columns:1fr}}
+
+  /* ===== 05 · DIPTYQUE LUXE ===== */
+  .ck5{background:#0E0C0A;padding:clamp(34px,5vw,64px) clamp(20px,4vw,56px)}
+  .ck5 .wrap{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr .98fr;border-radius:20px;overflow:hidden;box-shadow:0 40px 90px -50px rgba(0,0,0,.8)}
+  .ck5 .vis{position:relative;background:radial-gradient(130% 100% at 20% 10%,#241d12,#0E0C0A 70%);padding:clamp(30px,3.4vw,46px);display:flex;flex-direction:column;justify-content:space-between;min-height:460px}
+  .ck5 .vis:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 88%,rgba(196,162,74,.14),transparent 60%);pointer-events:none}
+  .ck5 .ey{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#C4A24A;margin:0 0 14px;position:relative}
+  .ck5 .vis h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(26px,3vw,38px);line-height:1.08;margin:0;position:relative}
+  .ck5 .vis h2 em{font-style:italic;color:#C4A24A}
+  .ck5 .vis ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;position:relative}
+  .ck5 .vis li{position:relative;padding-left:22px;font-size:13.5px;color:#d9d0c2}
+  .ck5 .vis li:before{content:"\2713";position:absolute;left:0;color:#C4A24A;font-weight:700}
+  .ck5 .vis .price{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:44px;color:#C4A24A;position:relative;margin-top:18px}
+  .ck5 .vis .price small{display:block;font-family:'JetBrains Mono',monospace;font-style:normal;font-size:11px;letter-spacing:.06em;color:#9a8f7e;margin-top:4px}
+  .ck5 .form{background:#FBF8F2;padding:clamp(30px,3.4vw,44px);color:#1A1714}
+  .ck5 .form .h{font-family:'Playfair Display',serif;font-size:19px;margin:0 0 20px;color:#15120E}
+  .ck5 .lbl{color:#6b6253}
+  .ck5 .inp{width:100%;border:1px solid #DDD2BE;background:#fff;border-radius:10px;padding:14px;font-family:'League Spartan',sans-serif;font-size:15px;color:#1A1714;margin:0 0 16px}
+  .ck5 .pick .opt{border:1px solid #DDD2BE;background:#fff;color:#3D3730}
+  .ck5 .pick .opt.on{border-color:#C4A24A;background:#FBF3DF;color:#15120E;box-shadow:0 0 0 1px #C4A24A inset}
+  .ck5 .ckbox{color:#5b5346}.ck5 .ckbox .bx{border:1.5px solid #C9BCA2}.ck5 .ckbox a{color:#9A7B2E}
+  .ck5 .trust{color:#9a8f7e}.ck5 .trust b{color:#9A7B2E}
+  @media(max-width:780px){.ck5 .wrap{grid-template-columns:1fr}.ck5 .vis{min-height:0}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wm">L'<b>Autre</b> Récit · Bon de commande <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5f5a50;letter-spacing:.1em">V2</span></div>
+  <div class="tabs">
+    <button class="tab on" data-i="0">01 · Split</button>
+    <button class="tab" data-i="1">05 · Diptyque luxe</button>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="alt on">
+  <div class="cap"><b>01 · Split</b> Récap sombre + form crème. Ajouts V2 : paiement 1× / 3×, garantie 7 j, cases légales non cochées. <span class="note">champs = natifs Systeme stylés</span></div>
+  <section class="ck1"><div class="wrap">
+    <div class="recap">
+      <p class="ey">Votre commande</p>
+      <h2>Le nationalisme noir <em>américain</em></h2>
+      <div class="price">79,99 €<span>PAIEMENT UNIQUE</span></div>
+      <p class="or3x">ou en 3× 26,66 € — sans frais</p>
+      <ul>
+        <li>Un cours introductif + les 5 cours</li>
+        <li>L'interlude Malcolm × King</li>
+        <li>Accès à vie + mises à jour</li>
+      </ul>
+      <div class="gtee"><b>Garantie 7 jours</b> — satisfait ou remboursé, sans condition.</div>
+    </div>
+    <div class="form">
+      <p class="h">Finalise ta commande</p>
+      <label class="lbl">Prénom</label><input class="inp" placeholder="Ton prénom">
+      <label class="lbl">E-mail</label><input class="inp" placeholder="ton@email.com">
+      <label class="lbl">Paiement</label>
+      <div class="pick"><div class="opt on">1 fois<small>79,99 €</small></div><div class="opt">3 fois<small>3 × 26,66 €</small></div></div>
+      <label class="lbl">Moyen de paiement</label>
+      <div class="pick"><div class="opt on">Carte bancaire<small>Stripe · 1× ou 3×</small></div><div class="opt">PayPal<small>paiement en 1 fois</small></div></div>
+      <input class="inp" placeholder="Numéro de carte  ·  MM/AA  ·  CVC">
+      <div class="legal">
+        <div class="ckbox"><span class="bx"></span><span>Je demande l'accès immédiat à la formation et je <b>renonce expressément à mon droit de rétractation</b> de 14 jours (art. L221-28 Code de la consommation).</span></div>
+        <div class="ckbox"><span class="bx"></span><span>J'ai lu et j'accepte les <a href="#">conditions générales de vente</a>.</span></div>
+      </div>
+      <button class="pay">Payer 79,99 € →</button>
+      <div class="trust"><span><b>✓</b> Paiement sécurisé</span><span><b>✓</b> Accès immédiat</span><span><b>✓</b> Garantie 7 j</span></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- 05 -->
+<div class="alt">
+  <div class="cap"><b>05 · Diptyque luxe</b> Volet valeur sombre+or + form crème. Mêmes ajouts V2. Le plus haut de gamme. <span class="note">champs = natifs Systeme stylés</span></div>
+  <section class="ck5"><div class="wrap">
+    <div class="vis">
+      <div>
+        <p class="ey">Formation premium</p>
+        <h2>Le nationalisme noir <em>américain</em></h2>
+        <ul>
+          <li>Un cours introductif + les 5 cours</li>
+          <li>L'interlude Malcolm × King</li>
+          <li>Accès à vie + mises à jour</li>
+          <li>Citations sourcées & fiches de synthèse</li>
+          <li>Garantie 7 jours, satisfait ou remboursé</li>
+        </ul>
+      </div>
+      <div class="price">79,99 €<small>OU EN 3× 26,66 € · SANS FRAIS</small></div>
+    </div>
+    <div class="form">
+      <p class="h">Finalise ta commande</p>
+      <label class="lbl">Prénom</label><input class="inp" placeholder="Ton prénom">
+      <label class="lbl">E-mail</label><input class="inp" placeholder="ton@email.com">
+      <label class="lbl">Paiement</label>
+      <div class="pick"><div class="opt on">1 fois<small>79,99 €</small></div><div class="opt">3 fois<small>3 × 26,66 €</small></div></div>
+      <div class="pick"><div class="opt on">Carte bancaire<small>Stripe · 1× ou 3×</small></div><div class="opt">PayPal<small>1 fois</small></div></div>
+      <div class="legal">
+        <div class="ckbox"><span class="bx"></span><span>Je demande l'accès immédiat et je <b>renonce à mon droit de rétractation</b> de 14 jours (art. L221-28).</span></div>
+        <div class="ckbox"><span class="bx"></span><span>J'accepte les <a href="#">CGV</a>.</span></div>
+      </div>
+      <button class="pay">Payer 79,99 € →</button>
+      <div class="trust"><span><b>✓</b> Sécurisé</span><span><b>✓</b> Accès immédiat</span><span><b>✓</b> Garantie 7 j</span></div>
+    </div>
+  </div></section>
+</div>
+
+<script>
+  var tabs=[].slice.call(document.querySelectorAll('.tab')),alts=[].slice.call(document.querySelectorAll('.alt'));
+  function go(i){tabs.forEach(function(t,k){t.classList.toggle('on',k===i)});alts.forEach(function(a,k){a.classList.toggle('on',k===i)});window.scrollTo({top:0,behavior:'smooth'})}
+  tabs.forEach(function(t){t.addEventListener('click',function(){go(+t.dataset.i)})});
+  document.querySelectorAll('.pick').forEach(function(g){g.querySelectorAll('.opt').forEach(function(o){o.addEventListener('click',function(){g.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on')})})});
+  document.querySelectorAll('.ckbox').forEach(function(c){c.addEventListener('click',function(){c.classList.toggle('on')})});
+</script>
+</body>
+</html>

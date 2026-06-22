@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "intro-m1",
+    "label": "Introduction · M1 fiche crème",
+    "theme": "cream",
+    "num": "01",
+    "title": "La question que vous n'osiez pas poser"
+  },
+  {
+    "slug": "intro-m2",
+    "label": "Introduction · M2 fiche sombre",
+    "theme": "dark",
+    "num": "02",
+    "title": "Pourquoi cette histoire est mal connue en France"
+  },
+  {
+    "slug": "intro-m3",
+    "label": "Introduction · M3 fiche crème",
+    "theme": "cream",
+    "num": "03",
+    "title": "Race et racisme"
+  },
+  {
+    "slug": "intro-m4",
+    "label": "Introduction · M4 fiche sombre",
+    "theme": "dark",
+    "num": "04",
+    "title": "La domination en pratique"
+  },
+  {
+    "slug": "intro-m5",
+    "label": "Introduction · M5 fiche crème",
+    "theme": "cream",
+    "num": "05",
+    "title": "La boussole analytique"
+  },
+  {
+    "slug": "intro-m6",
+    "label": "Introduction · M6 fiche sombre",
+    "theme": "dark",
+    "num": "06",
+    "title": "Les cinq tensions"
+  },
+  {
+    "slug": "c1-m1",
+    "label": "Cours 1 · M1 fiche crème",
+    "theme": "cream",
+    "num": "01",
+    "title": "La promesse non tenue"
+  },
+  {
+    "slug": "c1-m2",
+    "label": "Cours 1 · M2 fiche sombre",
+    "theme": "dark",
+    "num": "02",
+    "title": "Jim Crow : chiffres, corps, terreur"
+  },
+  {
+    "slug": "c1-m3",
+    "label": "Cours 1 · M3 fiche crème",
+    "theme": "cream",
+    "num": "03",
+    "title": "Le Nord n'est pas mieux"
+  },
+  {
+    "slug": "c1-m4",
+    "label": "Cours 1 · M4 fiche sombre",
+    "theme": "dark",
+    "num": "04",
+    "title": "Du Bois et la double conscience"
+  },
+  {
+    "slug": "c1-m5",
+    "label": "Cours 1 · M5 fiche crème",
+    "theme": "cream",
+    "num": "05",
+    "title": "Garvey et la mobilisation de masse"
+  },
+  {
+    "slug": "c1-m6",
+    "label": "Cours 1 · M6 fiche sombre",
+    "theme": "dark",
+    "num": "06",
+    "title": "Le débat fondateur"
+  },
+  {
+    "slug": "c2-m1",
+    "label": "Cours 2 · M1 fiche crème",
+    "theme": "cream",
+    "num": "01",
+    "title": "Pourquoi le sacré ?"
+  },
+  {
+    "slug": "c2-m2",
+    "label": "Cours 2 · M2 fiche sombre",
+    "theme": "dark",
+    "num": "02",
+    "title": "La machine contre-société"
+  },
+  {
+    "slug": "c2-m3",
+    "label": "Cours 2 · M3 fiche crème",
+    "theme": "cream",
+    "num": "03",
+    "title": "La doctrine comme arme politique"
+  },
+  {
+    "slug": "c2-m4",
+    "label": "Cours 2 · M4 fiche sombre",
+    "theme": "dark",
+    "num": "04",
+    "title": "Le prix de la visibilité"
+  },
+  {
+    "slug": "c2-m5",
+    "label": "Cours 2 · M5 fiche crème",
+    "theme": "cream",
+    "num": "05",
+    "title": "Femmes de la NOI · le silence comme architecture"
+  },
+  {
+    "slug": "c2-m6",
+    "label": "Cours 2 · M6 fiche sombre",
+    "theme": "dark",
+    "num": "06",
+    "title": "Protéger sans gouverner ?"
+  }
+]
