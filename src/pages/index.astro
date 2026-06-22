@@ -392,7 +392,7 @@ const posts = [
     }
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.16 });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
     els.forEach(function (el) { obs.observe(el); });
   })();
 </script>
