@@ -3,10 +3,9 @@ import Base from '../layouts/Base.astro';
 
 // ============================================================
 // Page Contact — formulaire prénom / email / message.
-// Envoi via WEB3FORMS (api.web3forms.com) : compatible hébergement statique (Cloudflare Pages).
-// Les messages arrivent par e-mail selon la clé Web3Forms. Filtre anti-abus sur le prénom (BANNED).
-// Clé Web3Forms configurée (liée à la boîte choisie sur web3forms.com). La clé est publique côté client — c'est normal (elle n'autorise que l'envoi vers ta boîte).
-// Le JS ajoute un « Merci » sans recharger ; sans JS, l'action POST web3forms gère l'envoi.
+// Envoi via FORMSPREE (formspree.io) : compatible hébergement statique (Cloudflare).
+// Les messages arrivent dans la boîte choisie sur formspree.io. Filtre anti-abus sur le prénom (BANNED).
+// Le JS ajoute un « Merci » sans recharger ; sans JS, l'action POST Formspree gère l'envoi.
 // ============================================================
 ---
 <Base
@@ -33,12 +32,10 @@ import Base from '../layouts/Base.astro';
           class="ct-form"
           id="ctForm"
           method="POST"
-          action="https://api.web3forms.com/submit"
+          action="https://formspree.io/f/mbdvjano"
         >
-          <input type="hidden" name="access_key" value="25e0a595-5577-4e38-82e2-294ab4278f32" />
-          <input type="hidden" name="subject" value="Nouveau message · Contact L'Autre Récit" />
-          <input type="hidden" name="from_name" value="Contact L'Autre Récit" />
-          <input type="checkbox" name="botcheck" class="ct-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="hidden" name="_subject" value="Nouveau message · Contact L'Autre Récit" />
+          <input type="text" name="_gotcha" class="ct-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="ct-field">
             <label class="ct-label" for="ct-prenom">Prénom</label>
@@ -193,10 +190,9 @@ import Base from '../layouts/Base.astro';
       btn.disabled = true;
       btn.firstChild.textContent = 'Envoi… ';
 
-      fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          if (!data || !data.success) throw new Error('web3forms');
+      fetch('https://formspree.io/f/mbdvjano', { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error('formspree');
           nameOut.textContent = prenom ? ', ' + prenom : '';
           form.hidden = true;
           success.hidden = false;
