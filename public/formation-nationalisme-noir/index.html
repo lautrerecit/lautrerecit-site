@@ -727,6 +727,24 @@ section.lp.dark .lp-sub{color:rgba(255,255,255,.78);}
 </style>
 </head>
 <body>
+<style>
+.lc-bar{position:sticky;top:0;z-index:9000;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;background:linear-gradient(90deg,#0E0C0A,#1b1710,#0E0C0A);border-bottom:1px solid rgba(196,162,74,.5);padding:9px 16px;text-align:center;box-shadow:0 8px 24px -12px rgba(0,0,0,.6);}
+.lc-bar-txt{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D4B05A;}
+.lc-bar-clock{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:900;font-size:18px;color:#F2EDE4;letter-spacing:.01em;white-space:nowrap;}
+.lc-bar-clock b{color:#EBCB70;}
+.lc-bar-cta{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0E0C0A;background:linear-gradient(180deg,#EBCB70,#C9A24C);padding:8px 16px;border-radius:4px;text-decoration:none;white-space:nowrap;}
+.lc-bar.lc-ended .lc-bar-clock{display:none;}
+@media(max-width:600px){.lc-bar{gap:9px;padding:8px 12px;}.lc-bar-txt{font-size:9.5px;letter-spacing:.07em;}.lc-bar-clock{font-size:15px;}.lc-bar-cta{font-size:10px;padding:7px 12px;}}
+</style>
+<div class="lc-bar" id="lcBar" data-deadline="2026-06-29T22:00:00+02:00">
+  <span class="lc-bar-txt">Tarif de lancement &mdash; jusqu'au 29 juin 22h</span>
+  <span class="lc-bar-clock" id="lcBarClock">--<b>j</b>&nbsp;--:--:--</span>
+  <a class="lc-bar-cta" href="#pricing">Rejoindre &rarr;</a>
+</div>
+<script>
+(function(){var el=document.getElementById('lcBar');if(!el)return;var dl=new Date(el.getAttribute('data-deadline')).getTime();var c=document.getElementById('lcBarClock');function p(n){return(n<10?'0':'')+n;}var iv;function t(){var d=dl-Date.now();if(d<=0){el.classList.add('lc-ended');var s=el.querySelector('.lc-bar-txt');if(s)s.textContent='Tarif de lancement termine';clearInterval(iv);return;}c.innerHTML=Math.floor(d/864e5)+'<b>j</b>&nbsp;'+p(Math.floor(d%864e5/36e5))+':'+p(Math.floor(d%36e5/6e4))+':'+p(Math.floor(d%6e4/1e3));}t();iv=setInterval(t,1000);})();
+</script>
+
 
 <!-- (Aucun header sur la page de vente — focus conversion, 0 sortie) -->
 
