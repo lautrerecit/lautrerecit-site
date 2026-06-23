@@ -39,7 +39,7 @@ const SYSTEME_LOGIN = 'https://systeme.io/login'; // TODO: remplacer par l'URL d
     </nav>
     <div class="lr-actions">
       <a class="btn btn-oc lr-navbtn lr-navbtn-2nd" href={SYSTEME_LOGIN} target="_blank" rel="noopener">Se connecter</a>
-      <a class="btn btn-or lr-navbtn" href={TUNNEL}>Découvrir la formation <span class="ar">→</span></a>
+      <a class="btn btn-or lr-navbtn" href={TUNNEL}><span class="lr-cta-full">Découvrir la formation</span><span class="lr-cta-short">La formation</span> <span class="ar">→</span></a>
     </div>
   </header>
 </div>
@@ -103,8 +103,9 @@ const SYSTEME_LOGIN = 'https://systeme.io/login'; // TODO: remplacer par l'URL d
 
   /* actions : Se connecter (B · or contour) + Découvrir la formation (A · or plein) */
   /* → vrais boutons du design system (.btn .btn-or / .btn .btn-oc de global.css), taille « nav » */
-  .lr-actions { display: flex; align-items: center; gap: 12px; }
-  .lr-navbtn { padding: 11px 20px; font-size: 12px; letter-spacing: 0.1em; }
+  .lr-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .lr-navbtn { padding: 11px 20px; font-size: 12px; letter-spacing: 0.1em; white-space: nowrap; }
+  .lr-cta-short { display: none; }
 
   @media (max-width: 860px) {
     .lr-header { padding: 0 10px 0 16px; gap: 12px; }
@@ -115,5 +116,9 @@ const SYSTEME_LOGIN = 'https://systeme.io/login'; // TODO: remplacer par l'URL d
     .lr-navbtn-2nd { display: none; }          /* « Se connecter » masqué sur mobile */
     .lr-sub, .lr-caret { display: none; }      /* dropdown désactivé sur mobile → À propos ouvre la page */
     .lr-navbtn { padding: 9px 13px; font-size: 11px; letter-spacing: 0.06em; }
+  }
+  @media (max-width: 560px) {
+    .lr-cta-full { display: none; }
+    .lr-cta-short { display: inline; }
   }
 </style>
