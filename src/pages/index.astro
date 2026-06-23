@@ -293,6 +293,11 @@ const posts = [
   .insta-view { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(11,9,7,.5); color: #fff; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0; transition: opacity .35s; }
   .insta-view .ig-ico { width: 16px; height: 16px; }
   .insta-card:hover .insta-view { opacity: 1; }
+  /* Tactile (pas de survol) : badge « Voir le post » toujours visible, coin bas-droit, sans masquer l'image */
+  @media (hover: none) {
+    .insta-view { opacity: 1; inset: auto 8px 8px auto; background: rgba(11,9,7,.82); padding: 6px 11px; border-radius: 999px; font-size: 9.5px; gap: 5px; }
+    .insta-view .ig-ico { width: 13px; height: 13px; }
+  }
   .insta-cap { font-family: var(--sans); font-size: 13.5px; color: rgba(255,255,255,.72); line-height: 1.5; margin: 0; }
   .insta-ig { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--or2); }
   .ig-ico { width: 15px; height: 15px; }
