@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Commande — Le nationalisme noir américain · L'Autre Récit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=League+Spartan:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#0B0907;--ink2:#161310;--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--or-hi:#FBEFC2;--creme:#F2EDE4;
+--sans:'League Spartan',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;
+--foto:grayscale(.4) contrast(1.06) sepia(.22) saturate(1.35) brightness(.74);
+--gold:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);
+--foil:linear-gradient(105deg,#9A7B2E,#FBEFC2 22%,#D4B05A 42%,#C4A24A 58%,#FBEFC2 78%,#9A7B2E);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height:100dvh;overflow-x:hidden;line-height:1.5;-webkit-font-smoothing:antialiased}
+.bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(70% 50% at 20% 0%,rgba(196,162,74,.14),transparent 60%),radial-gradient(60% 40% at 95% 10%,rgba(154,123,46,.12),transparent 60%),linear-gradient(180deg,#0B0907,#14110B 55%,#0A0807)}
+.bg::after{content:"";position:absolute;inset:0;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid rgba(196,162,74,.12);backdrop-filter:blur(10px)}
+.top .wm{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--or2)}
+.top .sec{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#8a806d}
+.top .sec svg{width:13px;height:13px;stroke:var(--or3);fill:none;stroke-width:1.7}
+.wrap{max-width:960px;margin:0 auto;padding:34px 22px 70px;display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:start}
+@media(max-width:760px){.wrap{grid-template-columns:1fr;gap:20px;padding-top:24px}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--or3);margin-bottom:14px}
+.eyebrow::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,transparent,var(--or2))}
+/* ===== colonne produit ===== */
+.h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,5vw,40px);line-height:1.03;color:#fff}
+.h1 em{font-style:italic;color:var(--or2)}
+.sub{margin-top:12px;color:#CFC4AE;font-size:14.5px;max-width:44ch}
+.ph{position:relative;margin-top:20px;border-radius:16px;overflow:hidden;min-height:220px;isolation:isolate}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 26%;filter:var(--foto);z-index:0}
+.ph .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,9,7,.2),rgba(11,9,7,.85))}
+.ph .cap{position:relative;z-index:2;padding:16px 18px;margin-top:150px;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3)}
+.incl{margin-top:24px}
+.incl .t{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3);margin-bottom:14px}
+.incl ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.incl li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:#E4DAC8}
+.incl li .ck{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(196,162,74,.16);border:1px solid rgba(196,162,74,.35);margin-top:1px}
+.incl li .ck svg{width:12px;height:12px;stroke:var(--or2);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.incl li b{color:#fff;font-weight:600}
+.tmoi{margin-top:26px;padding:18px 20px;border-left:2px solid var(--or2);background:linear-gradient(90deg,rgba(196,162,74,.08),transparent);border-radius:0 10px 10px 0}
+.tmoi p{font-family:var(--serif);font-style:italic;font-size:15px;color:#EDE4D2;line-height:1.5}
+.tmoi .who{margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--or3)}
+/* ===== colonne paiement ===== */
+.card{position:sticky;top:20px;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,rgba(34,29,22,.9),rgba(16,13,10,.94));border:1px solid rgba(196,162,74,.25);box-shadow:0 30px 60px -26px rgba(0,0,0,.95)}
+.card .hd{padding:20px 22px 0}
+.card .hd .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3)}
+.card .hd .nm{font-family:var(--serif);font-weight:700;font-size:19px;color:#fff;margin-top:4px}
+.price{padding:16px 22px 4px;display:flex;align-items:baseline;gap:12px}
+.price .now{font-family:var(--serif);font-weight:900;font-size:44px;line-height:1;background:var(--foil);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.price .old{font-size:19px;color:#7d7362;text-decoration:line-through}
+.price .tag{margin-left:auto;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:5px 9px;border-radius:20px;align-self:center}
+.rows{padding:8px 22px 4px}
+.row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(196,162,74,.12);font-size:13.5px;color:#C9BEA8}
+.row:last-child{border-bottom:none}.row b{color:#F2EDE4;font-weight:600}
+.pay{padding:6px 22px 22px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;text-decoration:none;font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.04em;color:var(--ink);background:var(--gold);padding:17px 22px;border-radius:9px;box-shadow:0 16px 34px -12px rgba(196,162,74,.6);transition:transform .3s,box-shadow .35s;position:relative;overflow:hidden}
+.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.btn:hover{transform:translateY(-2px);box-shadow:0 24px 44px -12px rgba(196,162,74,.75)}
+.btn .glare{position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-18deg);transition:left .6s}
+.btn:hover .glare{left:130%}
+.reassure{display:flex;flex-direction:column;gap:9px;margin-top:16px}
+.reassure div{display:flex;align-items:center;gap:9px;font-size:12.5px;color:#A99D86}
+.reassure svg{width:15px;height:15px;stroke:var(--or2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.secure{margin-top:16px;padding-top:15px;border-top:1px solid rgba(196,162,74,.12);display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8a806d}
+.secure svg{width:13px;height:13px;stroke:var(--or3);fill:none;stroke-width:1.7}
+.secure b{color:var(--or2);font-weight:500}
+.note{max-width:960px;margin:0 auto;padding:0 22px 50px;font-size:11.5px;color:#5f5648;text-align:center;font-family:var(--mono);letter-spacing:.04em}
+</style></head><body>
+<div class="bg"></div>
+
+<div class="top">
+ <span class="wm">L'Autre Récit</span>
+ <span class="sec"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Paiement sécurisé</span>
+</div>
+
+<div class="wrap">
+ <!-- PRODUIT -->
+ <div>
+  <div class="eyebrow">Formation · Bon de commande</div>
+  <h1 class="h1">Le nationalisme<br><em>noir américain</em></h1>
+  <p class="sub">De Marcus Garvey à la Nation of Islam et aux Black Panthers : comment une minorité a bâti, brique par brique, ses propres institutions.</p>
+
+  <div class="ph"><img src="/formations/nationalisme-noir.jpg" alt=""/><div class="scrim"></div><div class="cap">5 cours · États-Unis · L'Autre Récit</div></div>
+
+  <div class="incl">
+   <div class="t">Ce que tu obtiens</div>
+   <ul>
+    <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>5 cours complets</b> — de Garvey à Malcolm X et au-delà</span></li>
+    <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Accès à vie</b> à l'espace membre, mises à jour incluses</span></li>
+    <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Quiz & fiches</b> de révision par module</span></li>
+    <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Sources fact-checkées</b>, une pédagogie premium</span></li>
+   </ul>
+  </div>
+
+  <div class="tmoi">
+   <p>« Enfin un média qui nous instruit réellement et donne de vraies clés de compréhension du monde. »</p>
+   <div class="who">Inès · communauté L'Autre Récit</div>
+  </div>
+ </div>
+
+ <!-- PAIEMENT -->
+ <div>
+  <div class="card">
+   <div class="hd"><div class="lab">Ta commande</div><div class="nm">Le nationalisme noir américain</div></div>
+   <div class="price"><span class="now">79,99&nbsp;€</span><span class="old">99&nbsp;€</span><span class="tag">Édition fondateur</span></div>
+   <div class="rows">
+    <div class="row"><span>Formation (5 cours)</span><b>79,99 €</b></div>
+    <div class="row"><span>Accès</span><b>À vie</b></div>
+    <div class="row"><span>Total aujourd'hui</span><b>79,99 €</b></div>
+   </div>
+   <div class="pay">
+    <a class="btn" href="#" data-todo="stripe-payment-link"><span class="glare"></span>Payer 79,99 € <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="reassure">
+     <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Accès immédiat après paiement (email automatique)</div>
+     <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Paiement en 1 fois, carte bancaire</div>
+     <div><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/></svg>Satisfait ou remboursé 14 jours</div>
+    </div>
+    <div class="secure"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Paiement sécurisé propulsé par <b>Stripe</b></div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div class="note">Aperçu — le bouton « Payer » sera relié à Stripe. Prix, garantie et libellés modifiables.</div>
+</body></html>

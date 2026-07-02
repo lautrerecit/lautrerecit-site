@@ -124,5 +124,47 @@
     "theme": "dark",
     "num": "06",
     "title": "Protéger sans gouverner ?"
+  },
+  {
+    "slug": "c3-m1",
+    "label": "Cours 3 · M1 fiche crème",
+    "theme": "cream",
+    "num": "01",
+    "title": "Une vie, ou une trajectoire ?"
+  },
+  {
+    "slug": "c3-m2",
+    "label": "Cours 3 · M2 fiche sombre",
+    "theme": "dark",
+    "num": "02",
+    "title": "Le corps avant la pensée"
+  },
+  {
+    "slug": "c3-m3",
+    "label": "Cours 3 · M3 fiche crème",
+    "theme": "cream",
+    "num": "03",
+    "title": "L'école qui devient cage"
+  },
+  {
+    "slug": "c3-m4",
+    "label": "Cours 3 · M4 fiche sombre",
+    "theme": "dark",
+    "num": "04",
+    "title": "Rompre, par calcul"
+  },
+  {
+    "slug": "c3-m5",
+    "label": "Cours 3 · M5 fiche crème",
+    "theme": "cream",
+    "num": "05",
+    "title": "Changer d'arène"
+  },
+  {
+    "slug": "c3-m6",
+    "label": "Cours 3 · M6 fiche sombre",
+    "theme": "dark",
+    "num": "06",
+    "title": "Une trajectoire inachevée"
   }
 ]
