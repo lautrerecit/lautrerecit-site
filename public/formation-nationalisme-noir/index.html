@@ -743,16 +743,7 @@ section.lp.dark .lp-sub{color:rgba(255,255,255,.78);}.lp.dark .tl-when{color:rgb
 @media(max-width:880px){.lc-bar{gap:10px;}.lc-bar-txt .lc-full{display:none;}.lc-bar-txt .lc-min{display:inline;}}
 @media(max-width:600px){.lc-bar{gap:7px 9px;padding:8px 12px;}.lc-bar-txt{font-size:9px;letter-spacing:.05em;}.lc-bar-clock{font-size:15px;}.lc-bar-cta{font-size:10px;padding:7px 12px;}.lc-bar-promo{font-size:9px;padding:4px 8px;letter-spacing:.06em;}}
 </style>
-<div class="lc-bar" id="lcBar" data-deadline="2026-06-29T22:00:00+02:00">
-  <span class="lc-bar-txt"><span class="lc-full">Tarif de lancement + code <b>MERCI20</b> (&minus;20&nbsp;%) &mdash; fin dans</span><span class="lc-min">Tarif de lancement (&minus;20&nbsp;%) &mdash; fin dans</span></span>
-  <span class="lc-bar-clock" id="lcBarClock">--<b>j</b>&nbsp;--:--:--</span>
-  <span class="lc-bar-promo">Code <b>MERCI20</b></span>
-  <a class="lc-bar-cta" href="#pricing">Rejoindre &rarr;</a>
-</div>
-
-<script>
-(function(){var el=document.getElementById('lcBar');if(!el)return;var dl=new Date(el.getAttribute('data-deadline')).getTime();var c=document.getElementById('lcBarClock');function p(n){return(n<10?'0':'')+n;}var iv;function t(){var d=dl-Date.now();if(d<=0){el.classList.add('lc-ended');var s=el.querySelector('.lc-bar-txt');if(s)s.textContent='Offre terminee';clearInterval(iv);return;}c.innerHTML=Math.floor(d/864e5)+'<b>j</b>&nbsp;'+p(Math.floor(d%864e5/36e5))+':'+p(Math.floor(d%36e5/6e4))+':'+p(Math.floor(d%6e4/1e3));}t();iv=setInterval(t,1000);})();
-</script>
+<!-- Barre de lancement retirée (offre de lancement terminée) -->
 
 
 <!-- (Aucun header sur la page de vente — focus conversion, 0 sortie) -->
