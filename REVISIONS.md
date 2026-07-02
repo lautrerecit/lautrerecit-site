@@ -4,6 +4,43 @@ Journal des décisions et règles à respecter pour le site (et le tunnel, consi
 
 ---
 
+# 🟣 SESSION 2026-07-02 — PAGE LIENS (link-in-bio, `/liens`)
+
+Page « tous les liens » façon Linktree, auto-hébergée. Fichier vivant = **page Astro `src/pages/liens.astro`** (autonome, sans layout site ; `<style is:global>` + `<script is:inline>`). Sert à `lautrerecit.com/liens` (chemin, pas de sous-domaine ni domaine, zéro DNS). La route Astro marche en dev (plus de 404). L'ancien `public/liens/index.html` statique a été supprimé (conflit de route).
+
+**Lien « dernier article » = automatique** : `href={articles[0].url}` + sous-titre `{articles[0].t}`, source unique `src/data/articles.js` (plus récent en tête, même donnée que l'accueil). Nouvel article = 1 ligne en tête de `articles.js` → push → `/liens` suit. Ne jamais éditer ce lien à la main. Substack = const `SUB` (`https://autrerecit.substack.com`), utilisée sur la carte 03 + l'icône footer.
+
+- **Direction retenue = C2** (« deck de verre enrichi ») : top-bar chrome + hero foil + 5 cartes verre à **tilt 3D par carte** + **spot lumineux curseur** + numéros foil + chevrons ronds + fond mesh animé + grain + footer réseaux. Profil NNA noir+or, doré canonique `--or2`, Playfair titres.
+- **5 liens seulement** (ordre figé) : ① CTA formation *nationalisme noir* → **tunnel de vente `/formation-nationalisme-noir/`** (pas la page pédago) · ② *Notre dernier article* (auto = `articles[0].url`) · ③ *Substack* (`https://autrerecit.substack.com`) · ④ *Explorer le site* (`/`) · ⑤ *Nous écrire* (`mailto:contact@lautrerecit.com`).
+- **Vignettes photo** : cartes 01 (cover formation) et 02 (cover article, auto `articles[0].cover`) montrent la photo à la place du numéro (`.thumb` + `.g-inner:has(.thumb) .num{display:none}`) ; 03-05 gardent le numéro. **OG de `/liens`** : bloc OG+Twitter ajouté (`og:image` = cover formation, absolu via `Astro.site`). Build validé (`npm run build`, exit 0, 15 pages).
+- ⚠ **BUG à part** : OG globale du site cassée — `Base.astro` → `og:image=/og-default.jpg` inexistant. Hors scope /liens, à traiter séparément.
+- Retirés sur demande : **logo monogramme « Ré »** (jugé moche), **filigrane « Récit » de fond**, **ligne mentions légales** du footer.
+- Alternatives conservées comme référence : `a.html` (billet), `b.html` (stèle/épine), `c.html` (deck v1), `d.html` (sommaire letterpress), `e.html` (halo minimal).
+- **Banque d'effets** : `public/liens/effets.html` = 18 effets premium noir+or démo (foil, glare, spot, tilt, magnétique, letterpress, bordure conic, brillance, duotone, count-up, grain, mesh, ripple, parallaxe, reveal, marquee, typewriter, underline). Déjà greffés sur C2 : 01/03/04/11/12. Piocher ici pour enrichir.
+- **TODO restant** : confirmer email (`contact@lautrerecit.com` vs `lautrerecit@gmail.com`), puis `git push` pour mettre en ligne. Substack + dernier-article réglés.
+
+---
+
+# 🟣 SESSION 2026-07-01 — TUNNEL : CONTRASTE / ALTERNANCE DES SECTIONS
+
+Fichier : `public/formation-nationalisme-noir/index.html` (copie hub, la seule à éditer).
+
+## Règle posée : chaque section alterne sombre/clair, et les cartes contrastent avec leur fond
+Avant, plusieurs sections étaient un **fond clair rempli de grosses cartes sombres** (ou l'inverse) → l'œil lisait la section par la couleur DOMINANTE (les cartes), d'où l'impression de « pas de contraste / deux sections pareilles ». Corrigé en inversant fond ET cartes pour que chaque section soit franchement sombre OU claire, cartes en couleur opposée, et que ça alterne.
+
+Séquence finale (haut → bas) : hero **D** · trust **C** · Pourquoi **D** (cartes crème) · Bénéfices **C** (cartes noires) · Programme **D** (cartes crème) · Auteur **C** (lettre parchemin) · Concepts **D** (cartes crème) · Déploiement **D** · Prix **C** · FAQ **D** · Preuve **C** · CTA **D**.
+- Seul doublon sombre assumé : **Concepts → Déploiement** (2 sombres d'affilée) — volontaire pour que la section **Prix reste crème** et que le **billet noir ressorte** juste après (même arbitrage que Rany avait tranché avec l'ancienne section aperçu, désormais retirée).
+- Les cartes crème sur fond sombre copient le DS validé (`.bn-card` d'origine) ; les cartes sombres copient `.pain-card` d'origine. Doré : `--or2` accents sur sombre, `--or`/`--or2` sur crème (lisibilité).
+- Lettre du fondateur : section passée en **clair** → fond crème un peu plus profond (`#ECE4D6`) + ombre renforcée + filet doré pour que le parchemin ressorte.
+
+## Retraits
+- **Section « Aperçu de la formation »** (galerie de slides `#apercu`) retirée (markup ; le JS `sg…` est self-guarded donc inerte). CSS `.sg-*`/`.taste-*`/`.freemium` laissé (mort, inoffensif).
+- **Cours d'ouverture gratuit** : supprimé PARTOUT (il n'existe pas) — bandeau « Goûtez avant d'acheter », puce « Cours introductif gratuit », FAQ « essayer avant d'acheter », reassure du CTA final, et « Cours introductif + » dans la timeline de déploiement. Libellés déjà en français (seul « Workbook » traînait, il était dans la section aperçu retirée).
+
+Vérifié au DOM (`preview_eval` :4399/formation-nationalisme-noir/index.html) : fonds, couleurs de texte, pas d'overflow horizontal, `#apercu` absent. Rany push le hub (GitHub Desktop → Cloudflare).
+
+---
+
 # 🟣 SESSION 2026-06-20 (suite) — DOMAINES + TUNNEL & COURS SYSTEME.IO
 
 ## Domaines (Cloudflare DNS, registrar Shopify)
