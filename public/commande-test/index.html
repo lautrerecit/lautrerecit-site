@@ -95,6 +95,10 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 .coord input::placeholder{color:#7d7362}
 .coord input:focus{border-color:var(--or2)}
 .coord input.bad{border-color:#C77885}
+.pay-amount{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8a806d;margin-bottom:12px;text-align:center}
+.pay-amount b{color:var(--or-hi);font-family:var(--sans);font-size:16px;letter-spacing:0;text-transform:none}
+#paypal-btns{min-height:46px}
+.pay-hint{margin-top:9px;font-size:12px;line-height:1.4;color:#E0A4AE;text-align:center}
 .note{max-width:960px;margin:0 auto;padding:0 22px 50px;font-size:11.5px;color:#5f5648;text-align:center;font-family:var(--mono);letter-spacing:.04em}
 </style></head><body>
 <div class="bg"></div>
@@ -156,7 +160,9 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
      <div class="opt on" data-plan="1"><span class="k">En 1 fois</span><span class="v" id="opt1v">79,99 €</span></div>
      <div class="opt" data-plan="4"><span class="k">En 4 fois · PayPal</span><span class="v" id="opt4v">4× 20,00 €</span></div>
     </div>
-    <a class="btn disabled" id="payBtn" href="#" data-todo="stripe-payment-link" aria-disabled="true"><span class="glare"></span><span id="payLabel">Payer 79,99 €</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="pay-amount">À régler&nbsp;: <b id="payLabel">79,99 €</b></div>
+    <div id="paypal-btns"></div>
+    <div id="payHint" class="pay-hint" role="alert"></div>
     <div class="checks">
      <label><input type="checkbox" id="ckCgv"> J'ai lu et j'accepte les <a href="/cgv" target="_blank" rel="noopener">CGV</a> et les <a href="/mentions-legales" target="_blank" rel="noopener">mentions légales</a>.</label>
      <label><input type="checkbox" id="ckRet"> Je demande l'accès immédiat à la formation numérique et je renonce expressément à mon droit de rétractation de 14 jours.</label>
@@ -166,7 +172,7 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Paiement en 1 fois (carte) ou en 4 fois avec PayPal, sans frais</div>
      <div><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/></svg>Satisfait ou remboursé 7 jours</div>
     </div>
-    <div class="secure"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Paiement sécurisé propulsé par <b>Stripe</b></div>
+    <div class="secure"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Paiement sécurisé propulsé par <b>PayPal</b></div>
    </div>
   </div>
  </div>
@@ -176,12 +182,13 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
  <a href="/mentions-legales" target="_blank" rel="noopener">Mentions légales</a>
  <a href="/cgv" target="_blank" rel="noopener">CGV</a>
 </div>
-<div class="note">Aperçu — le bouton « Payer » sera relié à Stripe. Prix, garantie et libellés modifiables.</div>
+<div class="note">Aperçu — paiement PayPal (Sandbox). Prix, garantie et libellés modifiables.</div>
+<script src="https://www.paypal.com/sdk/js?client-id=AcVhc83_GVhd0o1z42HH-B00ab8DCUQEnVoFtQk4fApSG7FZmd7EQDWPC9LXi1SpPa9cCtmiZjQ_vn4X&currency=EUR&enable-funding=paylater&components=buttons&intent=capture"></script>
 <script>
 (function(){
- var BASE=79.99, promo=0, plan=1, CODES={MERCI20:.20,"KDSLMLDFLKDFKLLKDKL100":1};
+ var BASE=79.99, promo=0, plan=1, formValid=false, CODES={MERCI20:.20,"KDSLMLDFLKDFKLLKDKL100":1};
  var el=function(id){return document.getElementById(id)};
- var b=el('payBtn'),c1=el('ckCgv'),c2=el('ckRet'),lab=el('payLabel'),pp=el('payplan'),fn=el('fName'),fe=el('fEmail');
+ var c1=el('ckCgv'),c2=el('ckRet'),lab=el('payLabel'),pp=el('payplan'),fn=el('fName'),fe=el('fEmail'),hint=el('payHint');
  var validEmail=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);};
  function fmt(x){return x.toFixed(2).replace('.',',')+' €';}
  function render(){
@@ -190,13 +197,19 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
   el('rowForm').textContent=fmt(net);
   el('opt1v').textContent=fmt(net);
   el('opt4v').textContent='4× '+fmt(q);
-  if(plan===4){lab.textContent='Payer en 4× — '+fmt(q)+" aujourd'hui";el('todayLbl').textContent="Aujourd'hui · 1er versement";el('todayVal').textContent=fmt(q);el('subVal').textContent='puis 3 × '+fmt(q)+' (mois +1, +2, +3)';el('todaySub').style.display='';}
-  else{lab.textContent='Payer '+fmt(net);el('todayLbl').textContent="Total aujourd'hui";el('todayVal').textContent=fmt(net);el('todaySub').style.display='none';}
-  if(net<=0.001){lab.textContent='Accéder gratuitement';el('todayLbl').textContent='Aujourd’hui';el('todayVal').textContent='Gratuit';el('todaySub').style.display='none';}
+  if(plan===4){lab.textContent=fmt(q);el('todayLbl').textContent="Aujourd'hui · 1er versement";el('todayVal').textContent=fmt(q);el('subVal').textContent='puis 3 × '+fmt(q)+' (mois +1, +2, +3)';el('todaySub').style.display='';}
+  else{lab.textContent=fmt(net);el('todayLbl').textContent="Total aujourd'hui";el('todayVal').textContent=fmt(net);el('todaySub').style.display='none';}
+  if(net<=0.001){lab.textContent='Gratuit';el('todayLbl').textContent='Aujourd’hui';el('todayVal').textContent='Gratuit';el('todaySub').style.display='none';}
  }
- function upd(){var eok=validEmail(fe.value.trim());var ok=c1.checked&&c2.checked&&fn.value.trim().length>=2&&eok;b.classList.toggle('disabled',!ok);b.setAttribute('aria-disabled',ok?'false':'true');fe.classList.toggle('bad',fe.value.trim()!==''&&!eok);}
+ function upd(){var eok=validEmail(fe.value.trim());formValid=c1.checked&&c2.checked&&fn.value.trim().length>=2&&eok;fe.classList.toggle('bad',fe.value.trim()!==''&&!eok);if(formValid&&hint)hint.textContent='';}
  c1.addEventListener('change',upd);c2.addEventListener('change',upd);fn.addEventListener('input',upd);fe.addEventListener('input',upd);upd();
- b.addEventListener('click',function(e){if(b.classList.contains('disabled'))e.preventDefault();});
+ if(window.paypal){paypal.Buttons({
+   style:{shape:'rect',color:'gold',layout:'vertical',label:'pay',tagline:false},
+   onClick:function(data,actions){upd();var n=BASE*(1-promo);if(!formValid){hint.textContent='Renseigne ton prénom + email et coche les 2 cases.';return actions.reject();}if(n<=0.001){hint.textContent='Le code 100% se teste via Systeme, pas via PayPal.';return actions.reject();}hint.textContent='';return actions.resolve();},
+   createOrder:function(data,actions){return actions.order.create({purchase_units:[{amount:{value:(BASE*(1-promo)).toFixed(2),currency_code:'EUR'},description:'Formation - Le nationalisme noir americain',custom_id:fe.value.trim()}]});},
+   onApprove:function(data,actions){return actions.order.capture().then(function(){window.location.href='/merci';});},
+   onError:function(){hint.textContent='Souci avec PayPal, réessaie.';}
+  }).render('#paypal-btns');}else if(hint){hint.textContent="PayPal ne s'est pas chargé (connexion ou bloqueur de pub ?).";}
  pp.addEventListener('click',function(e){var o=e.target.closest('.opt');if(!o)return;pp.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');plan=+o.dataset.plan;render();});
  var pi=el('promoInput'),pb=el('promoBtn'),pm=el('promoMsg');
  function applyPromo(){var code=pi.value.trim().toUpperCase();if(!code){promo=0;pm.className='promo-msg';pm.textContent='';render();return;}
