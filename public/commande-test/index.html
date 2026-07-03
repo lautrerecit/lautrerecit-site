@@ -79,6 +79,15 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 .checks a{color:var(--or2);text-decoration:underline}.checks a:hover{color:var(--or-hi)}
 .foot-legal{max-width:960px;margin:0 auto;padding:6px 22px 2px;text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
 .foot-legal a{color:#8a806d;text-decoration:none}.foot-legal a:hover{color:var(--or2)}
+.promo{display:flex;gap:8px;padding:6px 22px 0}
+.promo input{flex:1;min-width:0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#F2EDE4;background:rgba(24,20,16,.6);border:1px solid rgba(196,162,74,.3);border-radius:8px;padding:11px 12px;outline:none}
+.promo input::placeholder{color:#7d7362;letter-spacing:.1em}
+.promo input:focus{border-color:var(--or2)}
+.promo button{flex:none;font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--or2);background:rgba(196,162,74,.1);border:1px solid rgba(196,162,74,.4);border-radius:8px;padding:0 15px;cursor:pointer;transition:background .25s,color .25s}
+.promo button:hover{background:rgba(196,162,74,.2);color:var(--or-hi)}
+.promo-msg{padding:7px 22px 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em}
+.promo-msg.ok{color:#7CC49B}.promo-msg.err{color:#C77885}
+.tmoi p{transition:opacity .3s}
 .note{max-width:960px;margin:0 auto;padding:0 22px 50px;font-size:11.5px;color:#5f5648;text-align:center;font-family:var(--mono);letter-spacing:.04em}
 </style></head><body>
 <div class="bg"></div>
@@ -117,18 +126,23 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
  <div>
   <div class="card">
    <div class="hd"><div class="lab">Ta commande</div><div class="nm">Le nationalisme noir américain</div></div>
-   <div class="price"><span class="now">79,99&nbsp;€</span><span class="old">119,99&nbsp;€</span><span class="tag">Édition fondateur</span></div>
+   <div class="price"><span class="now" id="priceNow">79,99&nbsp;€</span><span class="old">119,99&nbsp;€</span><span class="tag">Édition fondateur</span></div>
    <div class="tva">Prix TTC · TVA non applicable, art. 293 B du CGI</div>
    <div class="rows">
-    <div class="row"><span>Formation (5 cours)</span><b>79,99 €</b></div>
+    <div class="row"><span>Formation (5 cours)</span><b id="rowForm">79,99 €</b></div>
     <div class="row"><span>Accès</span><b>À vie</b></div>
     <div class="row"><span id="todayLbl">Total aujourd'hui</span><b id="todayVal">79,99 €</b></div>
-    <div class="row" id="todaySub" style="display:none;border-top:none;padding-top:0"><span></span><b style="font-weight:400;color:#8a806d;font-size:11.5px">puis 3 × 20,00 € (mois +1, +2, +3)</b></div>
+    <div class="row" id="todaySub" style="display:none;border-top:none;padding-top:0"><span></span><b id="subVal" style="font-weight:400;color:#8a806d;font-size:11.5px">puis 3 × 20,00 € (mois +1, +2, +3)</b></div>
    </div>
+   <div class="promo">
+    <input id="promoInput" type="text" autocomplete="off" placeholder="Code promo" aria-label="Code promo" />
+    <button type="button" id="promoBtn">Appliquer</button>
+   </div>
+   <div id="promoMsg" class="promo-msg" role="status"></div>
    <div class="pay">
     <div class="payplan" id="payplan">
-     <div class="opt on" data-plan="1"><span class="k">En 1 fois</span><span class="v">79,99 €</span></div>
-     <div class="opt" data-plan="4"><span class="k">En 4 fois · PayPal</span><span class="v">4× 20,00 €</span></div>
+     <div class="opt on" data-plan="1"><span class="k">En 1 fois</span><span class="v" id="opt1v">79,99 €</span></div>
+     <div class="opt" data-plan="4"><span class="k">En 4 fois · PayPal</span><span class="v" id="opt4v">4× 20,00 €</span></div>
     </div>
     <a class="btn disabled" id="payBtn" href="#" data-todo="stripe-payment-link" aria-disabled="true"><span class="glare"></span><span id="payLabel">Payer 79,99 €</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <div class="checks">
@@ -153,12 +167,43 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 <div class="note">Aperçu — le bouton « Payer » sera relié à Stripe. Prix, garantie et libellés modifiables.</div>
 <script>
 (function(){
- var b=document.getElementById('payBtn'),c1=document.getElementById('ckCgv'),c2=document.getElementById('ckRet'),lab=document.getElementById('payLabel'),pp=document.getElementById('payplan');
+ var BASE=79.99, promo=0, plan=1, CODES={MERCI20:.20};
+ var el=function(id){return document.getElementById(id)};
+ var b=el('payBtn'),c1=el('ckCgv'),c2=el('ckRet'),lab=el('payLabel'),pp=el('payplan');
+ function fmt(x){return x.toFixed(2).replace('.',',')+' €';}
+ function render(){
+  var net=BASE*(1-promo), q=net/4;
+  el('priceNow').innerHTML=fmt(net).replace(' €','&nbsp;€');
+  el('rowForm').textContent=fmt(net);
+  el('opt1v').textContent=fmt(net);
+  el('opt4v').textContent='4× '+fmt(q);
+  if(plan===4){lab.textContent='Payer en 4× — '+fmt(q)+" aujourd'hui";el('todayLbl').textContent="Aujourd'hui · 1er versement";el('todayVal').textContent=fmt(q);el('subVal').textContent='puis 3 × '+fmt(q)+' (mois +1, +2, +3)';el('todaySub').style.display='';}
+  else{lab.textContent='Payer '+fmt(net);el('todayLbl').textContent="Total aujourd'hui";el('todayVal').textContent=fmt(net);el('todaySub').style.display='none';}
+ }
  function upd(){var ok=c1.checked&&c2.checked;b.classList.toggle('disabled',!ok);b.setAttribute('aria-disabled',ok?'false':'true');}
  c1.addEventListener('change',upd);c2.addEventListener('change',upd);
  b.addEventListener('click',function(e){if(b.classList.contains('disabled'))e.preventDefault();});
- var tl=document.getElementById('todayLbl'),tv=document.getElementById('todayVal'),ts=document.getElementById('todaySub');
- pp.addEventListener('click',function(e){var o=e.target.closest('.opt');if(!o)return;pp.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');if(o.dataset.plan==='4'){lab.textContent="Payer en 4× — 20,00 € aujourd'hui";tl.textContent="Aujourd'hui · 1er versement";tv.textContent="20,00 €";ts.style.display="";}else{lab.textContent="Payer 79,99 €";tl.textContent="Total aujourd'hui";tv.textContent="79,99 €";ts.style.display="none";}});
+ pp.addEventListener('click',function(e){var o=e.target.closest('.opt');if(!o)return;pp.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');plan=+o.dataset.plan;render();});
+ var pi=el('promoInput'),pb=el('promoBtn'),pm=el('promoMsg');
+ function applyPromo(){var code=pi.value.trim().toUpperCase();if(!code){promo=0;pm.className='promo-msg';pm.textContent='';render();return;}
+  if(CODES[code]){promo=CODES[code];pm.className='promo-msg ok';pm.textContent='✓ Code '+code+' appliqué · −'+Math.round(promo*100)+' %';}
+  else{promo=0;pm.className='promo-msg err';pm.textContent='Code invalide';}
+  render();}
+ pb.addEventListener('click',applyPromo);
+ pi.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();applyPromo();}});
+ render();
+ var AVIS=[
+  ["Enfin un média qui nous instruit réellement et donne de vraies clés de compréhension du monde.","Inès"],
+  ["Un travail de recherche solide, des références sérieuses en sciences humaines.","Chaïmae"],
+  ["Une analyse de l'actualité très juste, un regard éveillé dans un vocabulaire prenant.","Rayan"],
+  ["Des analyses qui citent leurs sources et invitent à la réflexion.","Julie"],
+  ["Enfin un point de vue qui nous ressemble, basé sur les faits, pas sur l'émotion.","Maëva"]
+ ];
+ var tq=document.querySelector('.tmoi p'),tw=document.querySelector('.tmoi .who');
+ if(tq&&tw){var i=0;function show(n){tq.textContent='« '+AVIS[n][0]+' »';tw.textContent=AVIS[n][1]+" · communauté L'Autre Récit";}
+  show(0);
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches){setInterval(function(){i=(i+1)%AVIS.length;tq.style.opacity=0;setTimeout(function(){show(i);tq.style.opacity=1;},300);},5000);}
+ }
 })();
 </script>
 </body></html>
