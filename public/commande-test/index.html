@@ -89,6 +89,12 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 .promo-msg{padding:7px 22px 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em}
 .promo-msg.ok{color:#7CC49B}.promo-msg.err{color:#C77885}
 .tmoi p{transition:opacity .3s}
+.coord{padding:12px 22px 2px;display:flex;flex-direction:column;gap:8px}
+.coord-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3)}
+.coord input{width:100%;min-width:0;font-family:var(--sans);font-size:14px;color:#F2EDE4;background:rgba(24,20,16,.6);border:1px solid rgba(196,162,74,.3);border-radius:8px;padding:12px 13px;outline:none;transition:border-color .2s}
+.coord input::placeholder{color:#7d7362}
+.coord input:focus{border-color:var(--or2)}
+.coord input.bad{border-color:#C77885}
 .note{max-width:960px;margin:0 auto;padding:0 22px 50px;font-size:11.5px;color:#5f5648;text-align:center;font-family:var(--mono);letter-spacing:.04em}
 </style></head><body>
 <div class="bg"></div>
@@ -135,6 +141,11 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
     <div class="row"><span id="todayLbl">Total aujourd'hui</span><b id="todayVal">79,99 €</b></div>
     <div class="row" id="todaySub" style="display:none;border-top:none;padding-top:0"><span></span><b id="subVal" style="font-weight:400;color:#8a806d;font-size:11.5px">puis 3 × 20,00 € (mois +1, +2, +3)</b></div>
    </div>
+   <div class="coord">
+    <div class="coord-lbl">Où envoyer ton accès</div>
+    <input id="fName" type="text" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom" />
+    <input id="fEmail" type="email" autocomplete="email" inputmode="email" placeholder="Adresse email" aria-label="Adresse email" />
+   </div>
    <div class="promo">
     <input id="promoInput" type="text" autocomplete="off" placeholder="Code promo" aria-label="Code promo" />
     <button type="button" id="promoBtn">Appliquer</button>
@@ -170,7 +181,8 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 (function(){
  var BASE=79.99, promo=0, plan=1, CODES={MERCI20:.20};
  var el=function(id){return document.getElementById(id)};
- var b=el('payBtn'),c1=el('ckCgv'),c2=el('ckRet'),lab=el('payLabel'),pp=el('payplan');
+ var b=el('payBtn'),c1=el('ckCgv'),c2=el('ckRet'),lab=el('payLabel'),pp=el('payplan'),fn=el('fName'),fe=el('fEmail');
+ var validEmail=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);};
  function fmt(x){return x.toFixed(2).replace('.',',')+' €';}
  function render(){
   var net=BASE*(1-promo), q=net/4;
@@ -181,8 +193,8 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
   if(plan===4){lab.textContent='Payer en 4× — '+fmt(q)+" aujourd'hui";el('todayLbl').textContent="Aujourd'hui · 1er versement";el('todayVal').textContent=fmt(q);el('subVal').textContent='puis 3 × '+fmt(q)+' (mois +1, +2, +3)';el('todaySub').style.display='';}
   else{lab.textContent='Payer '+fmt(net);el('todayLbl').textContent="Total aujourd'hui";el('todayVal').textContent=fmt(net);el('todaySub').style.display='none';}
  }
- function upd(){var ok=c1.checked&&c2.checked;b.classList.toggle('disabled',!ok);b.setAttribute('aria-disabled',ok?'false':'true');}
- c1.addEventListener('change',upd);c2.addEventListener('change',upd);
+ function upd(){var eok=validEmail(fe.value.trim());var ok=c1.checked&&c2.checked&&fn.value.trim().length>=2&&eok;b.classList.toggle('disabled',!ok);b.setAttribute('aria-disabled',ok?'false':'true');fe.classList.toggle('bad',fe.value.trim()!==''&&!eok);}
+ c1.addEventListener('change',upd);c2.addEventListener('change',upd);fn.addEventListener('input',upd);fe.addEventListener('input',upd);upd();
  b.addEventListener('click',function(e){if(b.classList.contains('disabled'))e.preventDefault();});
  pp.addEventListener('click',function(e){var o=e.target.closest('.opt');if(!o)return;pp.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');plan=+o.dataset.plan;render();});
  var pi=el('promoInput'),pb=el('promoBtn'),pm=el('promoMsg');
