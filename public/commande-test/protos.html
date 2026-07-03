@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Prototypes checkout — NNA · L'Autre Récit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=League+Spartan:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#0B0907;--ink2:#161310;--ink3:#241E18;--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--or-hi:#FBEFC2;--creme:#F2EDE4;
+--sans:'League Spartan',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;
+--foto:grayscale(.4) contrast(1.06) sepia(.22) saturate(1.35) brightness(.74);
+--gold:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);
+--foil:linear-gradient(105deg,#9A7B2E,#FBEFC2 24%,#D4B05A 46%,#C4A24A 60%,#FBEFC2 80%,#9A7B2E);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:#100D0A;color:var(--creme);line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 0 90px}
+.head{text-align:center;padding:48px 22px 8px;max-width:720px;margin:0 auto}
+.head .eb{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--or3);margin-bottom:14px}
+.head h1{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,42px);line-height:1.03;background:var(--foil);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.head p{margin-top:12px;color:#b7ac97;font-size:14px}
+.lab{max-width:760px;margin:54px auto 16px;padding:0 22px;display:flex;align-items:center;gap:12px}
+.lab .n{font-family:var(--mono);font-weight:700;font-size:12px;color:var(--ink);background:var(--gold);padding:4px 10px;border-radius:6px}
+.lab .t{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3)}
+.lab .d{font-family:var(--serif);font-style:italic;font-size:13px;color:#8a806d;text-transform:none;letter-spacing:0}
+.lab::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(196,162,74,.3),transparent)}
+.frame{max-width:720px;margin:0 auto;padding:0 22px}
+.dev{background:linear-gradient(180deg,#0C0A08,#0A0806);border:1px solid rgba(196,162,74,.14);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -34px rgba(0,0,0,.9)}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid rgba(196,162,74,.1)}
+.bar .wm{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--or2)}
+.bar .sc{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:#6a604f}
+.badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-weight:700;font-size:9px;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px;border-radius:100px;background:var(--gold);color:var(--ink)}
+.dot{width:6px;height:6px;border-radius:50%;background:#2f7a3f;box-shadow:0 0 0 3px rgba(47,122,63,.25);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(47,122,63,0)}}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.03em;color:var(--ink);background:var(--gold);padding:15px 22px;border-radius:8px;box-shadow:0 14px 30px -12px rgba(196,162,74,.55);transition:transform .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.leg{font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:#6a604f;text-align:center;margin-top:12px}
+.leg a{color:var(--or2);text-decoration:none}
+.foil-price{font-family:var(--serif);font-weight:900;background:var(--foil);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- A · Split raffiné ---------- */
+.a-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:0}
+@media(max-width:600px){.a-grid{grid-template-columns:1fr}}
+.a-l{padding:26px 24px}
+.a-l .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--or3);margin-bottom:10px}
+.a-l h2{font-family:var(--serif);font-weight:800;font-size:26px;line-height:1.08;color:#fff}
+.a-l ul{list-style:none;margin:18px 0 0;display:flex;flex-direction:column;gap:9px}
+.a-l li{display:flex;gap:10px;font-size:13.5px;color:#C9BEA8}
+.a-l li svg{width:16px;height:16px;stroke:var(--or2);fill:none;stroke-width:2.2;flex:none;margin-top:2px}
+.a-r{padding:26px 24px;background:linear-gradient(160deg,rgba(30,25,20,.6),rgba(14,12,10,.7));border-left:1px solid rgba(196,162,74,.14)}
+.a-r .lab2{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3)}
+.a-r .price{display:flex;align-items:baseline;gap:10px;margin:6px 0 4px}
+.a-r .price .now{font-size:40px}.a-r .price .old{font-size:17px;color:#7d7362;text-decoration:line-through}
+.a-r .tva{font-family:var(--mono);font-size:9px;color:#6a604f;margin-bottom:16px}
+
+/* ---------- B · Le billet ---------- */
+.b-wrap{padding:34px 24px;background:radial-gradient(120% 80% at 50% 0%,rgba(196,162,74,.1),transparent 60%)}
+.ticket{max-width:400px;margin:0 auto;position:relative;background:linear-gradient(155deg,#1a1610,#0f0c08);border:1px solid rgba(196,162,74,.35);border-radius:16px;padding:28px 26px}
+.ticket::before,.ticket::after{content:"";position:absolute;width:26px;height:26px;border-radius:50%;background:#0C0A08;top:50%;transform:translateY(-50%)}
+.ticket::before{left:-14px}.ticket::after{right:-14px}
+.ticket .perf{position:absolute;left:20px;right:20px;top:50%;border-top:1px dashed rgba(196,162,74,.3)}
+.ticket .k{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--or3);text-align:center}
+.ticket h2{font-family:var(--serif);font-weight:900;font-size:24px;line-height:1.06;color:#fff;text-align:center;margin:8px 0 4px}
+.ticket .meta{text-align:center;font-size:12px;color:#A99D86;margin-bottom:22px}
+.ticket .bignum{text-align:center;padding:22px 0 20px}
+.ticket .bignum .now{font-size:52px}
+.ticket .bignum .old{display:block;font-size:14px;color:#7d7362;text-decoration:line-through;margin-top:2px}
+
+/* ---------- C · Plein-photo ---------- */
+.c-hero{position:relative;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate}
+.c-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 26%;filter:var(--foto);z-index:0}
+.c-hero .sc{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,9,7,.4),rgba(11,9,7,.35) 40%,rgba(11,9,7,.97))}
+.c-hero .in{position:relative;z-index:2;padding:24px}
+.c-hero h2{font-family:var(--serif);font-weight:900;font-size:30px;line-height:1.02;color:#fff;margin:12px 0 0;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.c-pay{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 24px;background:#0C0A08;border-top:1px solid rgba(196,162,74,.16);flex-wrap:wrap}
+.c-pay .price .now{font-size:32px}.c-pay .price .old{font-size:14px;color:#7d7362;text-decoration:line-through;margin-left:8px}
+.c-pay .btn{flex:1;min-width:180px}
+
+/* ---------- D · Le reçu ---------- */
+.d-wrap{padding:30px 24px;background:radial-gradient(120% 70% at 50% 0%,rgba(196,162,74,.07),transparent 60%)}
+.receipt{max-width:420px;margin:0 auto;background:#0E0B08;border:1px solid rgba(196,162,74,.22);border-radius:10px;overflow:hidden}
+.receipt .rh{text-align:center;padding:22px 22px 16px;border-bottom:1px dashed rgba(196,162,74,.28)}
+.receipt .seal{width:46px;height:46px;margin:0 auto 12px;border-radius:50%;border:1px solid var(--or2);display:grid;place-items:center;box-shadow:0 0 18px rgba(196,162,74,.3) inset}
+.receipt .seal svg{width:22px;height:22px;stroke:var(--or2);fill:none;stroke-width:2}
+.receipt .rh .k{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3)}
+.receipt .rh h2{font-family:var(--serif);font-weight:700;font-size:19px;color:#fff;margin-top:4px}
+.receipt .items{padding:16px 22px}
+.receipt .it{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12.5px;color:#B7AC97;padding:8px 0;border-bottom:1px solid rgba(196,162,74,.1)}
+.receipt .it b{color:#F2EDE4;font-weight:500}
+.receipt .tot{display:flex;justify-content:space-between;align-items:baseline;padding:14px 22px;border-top:1px dashed rgba(196,162,74,.28)}
+.receipt .tot .l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--or3)}
+.receipt .tot .now{font-size:30px}
+.receipt .rp{padding:4px 22px 22px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+
+<div class="head">
+ <div class="eb">Prototypes · Bon de commande NNA</div>
+ <h1>4 directions, une identité</h1>
+ <p>Même charte noir + or. Quatre façons de présenter le paiement. Survole les boutons.</p>
+</div>
+
+<!-- A -->
+<div class="lab"><span class="n">A</span><span class="t">Split raffiné</span><span class="d">— produit à gauche, paiement à droite</span></div>
+<div class="frame"><div class="dev">
+ <div class="bar"><span class="wm">L'Autre Récit</span><span class="sc">Paiement sécurisé · Stripe</span></div>
+ <div class="a-grid">
+  <div class="a-l">
+   <div class="k">Formation · États-Unis</div>
+   <h2>Le nationalisme noir américain</h2>
+   <ul>
+    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>5 cours, de Garvey à Malcolm X</li>
+    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Accès à vie + mises à jour</li>
+    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Quiz &amp; fiches par module</li>
+   </ul>
+  </div>
+  <div class="a-r">
+   <div class="lab2">Ta commande</div>
+   <div class="price"><span class="now foil-price">79,99&nbsp;€</span><span class="old">99&nbsp;€</span></div>
+   <div class="tva">Prix TTC · TVA non applicable, art. 293 B</div>
+   <a class="btn" href="#">Payer 79,99 € <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+   <div class="leg">Cases CGV + rétractation ici · <a href="#">Mentions</a> · <a href="#">CGV</a></div>
+  </div>
+ </div>
+</div></div>
+
+<!-- B -->
+<div class="lab"><span class="n">B</span><span class="t">Le billet</span><span class="d">— un billet d'entrée à découper</span></div>
+<div class="frame"><div class="dev">
+ <div class="bar"><span class="wm">L'Autre Récit</span><span class="sc">Billet d'accès</span></div>
+ <div class="b-wrap">
+  <div class="ticket">
+   <span class="perf"></span>
+   <div class="k">Billet d'entrée · Formation</div>
+   <h2>Le nationalisme<br/>noir américain</h2>
+   <div class="meta">5 cours · accès à vie</div>
+   <div class="bignum"><span class="now foil-price">79,99&nbsp;€</span><span class="old">au lieu de 99&nbsp;€</span></div>
+   <a class="btn" href="#">Réserver ma place <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+   <div class="leg">Paiement 1× ou 3× · sécurisé Stripe</div>
+  </div>
+ </div>
+</div></div>
+
+<!-- C -->
+<div class="lab"><span class="n">C</span><span class="t">Plein-photo immersif</span><span class="d">— la photo d'abord, l'achat en barre</span></div>
+<div class="frame"><div class="dev">
+ <div class="c-hero">
+  <img src="/formations/nationalisme-noir.jpg" alt=""/><div class="sc"></div>
+  <div class="in"><span class="badge"><span class="dot"></span>Disponible · 5 cours</span><h2>Le nationalisme<br/>noir américain</h2></div>
+ </div>
+ <div class="c-pay">
+  <div class="price"><span class="now foil-price">79,99&nbsp;€</span><span class="old">99&nbsp;€</span></div>
+  <a class="btn" href="#">Payer 79,99 € <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+ </div>
+ <div class="leg" style="padding:0 24px 18px">Prix TTC · cases CGV + rétractation avant paiement · <a href="#">Mentions</a> · <a href="#">CGV</a></div>
+</div></div>
+
+<!-- D -->
+<div class="lab"><span class="n">D</span><span class="t">Le reçu</span><span class="d">— une facture élégante, orientée confiance</span></div>
+<div class="frame"><div class="dev">
+ <div class="bar"><span class="wm">L'Autre Récit</span><span class="sc">Récapitulatif</span></div>
+ <div class="d-wrap">
+  <div class="receipt">
+   <div class="rh">
+    <div class="seal"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+    <div class="k">Bon de commande</div>
+    <h2>Le nationalisme noir américain</h2>
+   </div>
+   <div class="items">
+    <div class="it"><span>Formation — 5 cours</span><b>79,99 €</b></div>
+    <div class="it"><span>Accès</span><b>À vie</b></div>
+    <div class="it"><span>TVA (art. 293 B)</span><b>Non applicable</b></div>
+   </div>
+   <div class="tot"><span class="l">Total aujourd'hui</span><span class="now foil-price">79,99&nbsp;€</span></div>
+   <div class="rp">
+    <a class="btn" href="#">Régler 79,99 € <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="leg">1× ou 3× · Satisfait ou remboursé 7 j · <a href="#">CGV</a></div>
+   </div>
+  </div>
+ </div>
+</div></div>
+
+</body></html>
