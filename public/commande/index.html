@@ -64,6 +64,21 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 .secure{margin-top:16px;padding-top:15px;border-top:1px solid rgba(196,162,74,.12);display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8a806d}
 .secure svg{width:13px;height:13px;stroke:var(--or3);fill:none;stroke-width:1.7}
 .secure b{color:var(--or2);font-weight:500}
+.tva{padding:2px 22px 0;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:#8a806d}
+.payplan{display:flex;gap:8px;margin-bottom:14px}
+.payplan .opt{flex:1;cursor:pointer;border:1px solid rgba(196,162,74,.3);border-radius:9px;padding:10px 8px;text-align:center;background:rgba(24,20,16,.5);transition:border-color .25s,background .25s}
+.payplan .opt.on{border-color:var(--or2);background:rgba(196,162,74,.12)}
+.payplan .opt .k{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or3)}
+.payplan .opt .v{display:block;font-weight:600;font-size:14px;color:#F2EDE4;margin-top:3px}
+.btn.disabled{opacity:.5;filter:grayscale(.3);cursor:not-allowed;box-shadow:none;transform:none}
+.checks{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:12px;line-height:1.4;color:#B7AC97}
+.checks input{appearance:none;-webkit-appearance:none;flex:none;width:18px;height:18px;border:1px solid rgba(196,162,74,.5);border-radius:5px;background:rgba(24,20,16,.6);margin-top:1px;cursor:pointer;position:relative;transition:background .2s,border-color .2s}
+.checks input:checked{background:var(--gold);border-color:var(--or2)}
+.checks input:checked::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #1a1305;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.checks a{color:var(--or2);text-decoration:underline}.checks a:hover{color:var(--or-hi)}
+.foot-legal{max-width:960px;margin:0 auto;padding:6px 22px 2px;text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.foot-legal a{color:#8a806d;text-decoration:none}.foot-legal a:hover{color:var(--or2)}
 .note{max-width:960px;margin:0 auto;padding:0 22px 50px;font-size:11.5px;color:#5f5648;text-align:center;font-family:var(--mono);letter-spacing:.04em}
 </style></head><body>
 <div class="bg"></div>
@@ -102,18 +117,28 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
  <div>
   <div class="card">
    <div class="hd"><div class="lab">Ta commande</div><div class="nm">Le nationalisme noir américain</div></div>
-   <div class="price"><span class="now">79,99&nbsp;€</span><span class="old">99&nbsp;€</span><span class="tag">Édition fondateur</span></div>
+   <div class="price"><span class="now">79,99&nbsp;€</span><span class="old">119,99&nbsp;€</span><span class="tag">Édition fondateur</span></div>
+   <div class="tva">Prix TTC · TVA non applicable, art. 293 B du CGI</div>
    <div class="rows">
     <div class="row"><span>Formation (5 cours)</span><b>79,99 €</b></div>
     <div class="row"><span>Accès</span><b>À vie</b></div>
-    <div class="row"><span>Total aujourd'hui</span><b>79,99 €</b></div>
+    <div class="row"><span id="todayLbl">Total aujourd'hui</span><b id="todayVal">79,99 €</b></div>
+    <div class="row" id="todaySub" style="display:none;border-top:none;padding-top:0"><span></span><b style="font-weight:400;color:#8a806d;font-size:11.5px">puis 2 × 26,66 € (mois +1, +2)</b></div>
    </div>
    <div class="pay">
-    <a class="btn" href="#" data-todo="stripe-payment-link"><span class="glare"></span>Payer 79,99 € <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="payplan" id="payplan">
+     <div class="opt on" data-plan="1"><span class="k">En 1 fois</span><span class="v">79,99 €</span></div>
+     <div class="opt" data-plan="3"><span class="k">En 3 fois</span><span class="v">3× 26,66 €</span></div>
+    </div>
+    <a class="btn disabled" id="payBtn" href="#" data-todo="stripe-payment-link" aria-disabled="true"><span class="glare"></span><span id="payLabel">Payer 79,99 €</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="checks">
+     <label><input type="checkbox" id="ckCgv"> J'ai lu et j'accepte les <a href="/cgv" target="_blank" rel="noopener">CGV</a> et les <a href="/mentions-legales" target="_blank" rel="noopener">mentions légales</a>.</label>
+     <label><input type="checkbox" id="ckRet"> Je demande l'accès immédiat à la formation numérique et je renonce expressément à mon droit de rétractation de 14 jours.</label>
+    </div>
     <div class="reassure">
      <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Accès immédiat après paiement (email automatique)</div>
-     <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Paiement en 1 fois, carte bancaire</div>
-     <div><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/></svg>Satisfait ou remboursé 14 jours</div>
+     <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Paiement en 1 fois ou en 3 fois sans frais, carte bancaire</div>
+     <div><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/></svg>Satisfait ou remboursé 7 jours</div>
     </div>
     <div class="secure"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Paiement sécurisé propulsé par <b>Stripe</b></div>
    </div>
@@ -121,5 +146,19 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
  </div>
 </div>
 
+<div class="foot-legal">
+ <a href="/mentions-legales" target="_blank" rel="noopener">Mentions légales</a>
+ <a href="/cgv" target="_blank" rel="noopener">CGV</a>
+</div>
 <div class="note">Aperçu — le bouton « Payer » sera relié à Stripe. Prix, garantie et libellés modifiables.</div>
+<script>
+(function(){
+ var b=document.getElementById('payBtn'),c1=document.getElementById('ckCgv'),c2=document.getElementById('ckRet'),lab=document.getElementById('payLabel'),pp=document.getElementById('payplan');
+ function upd(){var ok=c1.checked&&c2.checked;b.classList.toggle('disabled',!ok);b.setAttribute('aria-disabled',ok?'false':'true');}
+ c1.addEventListener('change',upd);c2.addEventListener('change',upd);
+ b.addEventListener('click',function(e){if(b.classList.contains('disabled'))e.preventDefault();});
+ var tl=document.getElementById('todayLbl'),tv=document.getElementById('todayVal'),ts=document.getElementById('todaySub');
+ pp.addEventListener('click',function(e){var o=e.target.closest('.opt');if(!o)return;pp.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');if(o.dataset.plan==='3'){lab.textContent="Payer — 1er versement 26,66 €";tl.textContent="Aujourd'hui · 1er versement";tv.textContent="26,66 €";ts.style.display="";}else{lab.textContent="Payer 79,99 €";tl.textContent="Total aujourd'hui";tv.textContent="79,99 €";ts.style.display="none";}});
+})();
+</script>
 </body></html>
