@@ -6,8 +6,8 @@ export const formations = [
     eyebrow: 'Cours · Maghreb',
     blurb:
       "Colonisation et décolonisation par les penseurs eux-mêmes — Fanon, Ibn Badis, Bennabi, Sayad, Djebar. L'autre récit de l'Algérie, écrit depuis l'intérieur.",
-    status: 'available', // 'available' | 'soon'
-    href: '/formations/algerie/', // → page pédagogique du site (elle-même renvoie au tunnel /algerie). Comme NNA.
+    status: 'soon', // ⏳ BROUILLON jusqu'au lancement (dim. soir) : masqué du catalogue. Passer 'available' pour publier.
+    href: '/formations/algerie/', // → page pédagogique (renvoie au tunnel /algerie). Comme NNA.
     duration: '6 cours',
     accent: '#1F6B4A',
     image: '/formations/algerie.jpg',
