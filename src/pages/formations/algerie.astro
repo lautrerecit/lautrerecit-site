@@ -5,11 +5,11 @@ const TUNNEL = '/algerie/index.html'; // page de vente (pricing + checkout Strip
 
 // Ce que vous saurez faire — 5 compétences (verbe d'action + mécanisme).
 const competences = [
-  { v: "Sortir", d: "Du roman des trois dates. Voir 1830-1962 comme une matrice continue — juridique, scolaire, foncière — qui déborde de loin la seule guerre d'indépendance." },
-  { v: "Relire", d: "Ibn Khaldoun pour comprendre comment on défait une société. L'asabiyya — le lien qui fait tenir un groupe — dont la colonisation applique méthodiquement l'inverse." },
-  { v: "Diagnostiquer", d: "La colonisabilité de Bennabi : non pas seulement pourquoi on a été colonisé, mais pourquoi on est devenu colonisable. Une grille qui responsabilise sans dédouaner." },
-  { v: "Reconnaître", d: "La domination symbolique — langue, corps, école. Fanon à Blida, Bourdieu en Kabylie, Djebar et la langue : la domination logée dans l'habitus, le regard, la honte de soi." },
-  { v: "Appliquer", d: "La grille au présent — diaspora, mémoire, discriminations. La double absence de Sayad pour penser l'exil et les mémoires qui ne se croisent pas." },
+  { v: "Sortir", d: "Du roman des trois dates. Voir 1830-1962 comme une matrice continue — juridique, scolaire, foncière — bien plus vaste que la seule guerre d'indépendance." },
+  { v: "Relire", d: "Ibn Khaldoun pour comprendre comment on défait une société. Son asabiyya, le lien qui fait tenir un groupe, dont la colonisation applique méthodiquement l'inverse." },
+  { v: "Diagnostiquer", d: "La colonisabilité de Bennabi : l'état interne qui a rendu la colonisation possible. Le concept responsabilise le colonisé sans dédouaner le colonisateur." },
+  { v: "Reconnaître", d: "La domination symbolique. Fanon à Blida, Bourdieu en Kabylie, Djebar face à la langue : elle se loge dans l'habitus et la honte de soi, au-delà des lois." },
+  { v: "Appliquer", d: "La grille au présent. La double absence de Sayad pour penser l'exil ; les mémoires française et algérienne qui regardent 1962 sans y voir la même chose." },
 ];
 
 // Le programme — six cours, quinze modules.
@@ -95,7 +95,7 @@ const inclus = [
       <h2 class="fp-h2">Une <em class="gold-grad-d">généalogie</em>, pas trois dates.</h2>
       <div class="fp-propos-body">
         <p class="fp-lead">L'Algérie arrive à l'école française par un filtre : trois dates, une guerre, et un grand silence sur le reste.</p>
-        <p>Ici, la colonisation et sa défaite sont lues dans les <strong>textes de ceux qui les ont pensées</strong> — juristes, cheikhs, psychiatres, sociologues, écrivains. Une matrice continue de 1830 à 1962, et son écho jusqu'au présent : la diaspora, la mémoire, la langue. L'objectif n'est pas de commémorer, mais de repartir avec une grille qui sert <strong>au-delà</strong> du cas algérien.</p>
+        <p>Ici, la colonisation et sa défaite se lisent dans les <strong>textes de ceux qui les ont pensées</strong> — juristes, cheikhs, psychiatres, sociologues, écrivains. Une matrice continue de 1830 à 1962, dont l'écho court jusqu'au présent : la diaspora, la mémoire, la langue. On en repart avec une grille qui sert <strong>au-delà</strong> du cas algérien.</p>
       </div>
     </div>
   </section>
@@ -105,7 +105,7 @@ const inclus = [
     <div class="container">
       <p class="eyebrow">Ce que vous saurez faire</p>
       <h2 class="fp-h2 light">Cinq <em class="gold-grad">capacités</em> à la sortie.</h2>
-      <p class="fp-comp-intro">Pas des connaissances à réciter — des outils à mobiliser, sur l'histoire coloniale comme sur le présent : la diaspora, la mémoire, les discriminations, la langue.</p>
+      <p class="fp-comp-intro">Des outils à mobiliser sur l'histoire coloniale comme sur le présent : la diaspora, la mémoire, les discriminations.</p>
       <div class="fp-comp-grid">
         {competences.map((c, i) => (
           <article class="fp-comp-card reveal">
