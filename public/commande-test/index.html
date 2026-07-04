@@ -62,10 +62,10 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 .reassure{display:flex;flex-direction:column;gap:9px;margin-top:16px}
 .reassure div{display:flex;align-items:center;gap:9px;font-size:12.5px;color:#A99D86}
 .reassure svg{width:15px;height:15px;stroke:var(--or2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.secure{margin-top:16px;padding-top:15px;border-top:1px solid rgba(196,162,74,.12);display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8a806d}
+.secure{margin-top:16px;padding-top:15px;border-top:1px solid rgba(196,162,74,.12);display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#a99d86}
 .secure svg{width:13px;height:13px;stroke:var(--or3);fill:none;stroke-width:1.7}
 .secure b{color:var(--or2);font-weight:500}
-.tva{padding:2px 22px 0;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:#8a806d}
+.tva{padding:2px 22px 0;font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:#a99d86}
 .payplan{display:flex;gap:8px;margin-bottom:14px}
 .payplan .opt{flex:1;cursor:pointer;border:1px solid rgba(196,162,74,.3);border-radius:9px;padding:10px 8px;text-align:center;background:rgba(24,20,16,.5);transition:border-color .25s,background .25s}
 .payplan .opt.on{border-color:var(--or2);background:rgba(196,162,74,.12)}
@@ -79,15 +79,7 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 .checks input:checked::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #1a1305;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .checks a{color:var(--or2);text-decoration:underline}.checks a:hover{color:var(--or-hi)}
 .foot-legal{max-width:960px;margin:0 auto;padding:6px 22px 2px;text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
-.foot-legal a{color:#8a806d;text-decoration:none}.foot-legal a:hover{color:var(--or2)}
-.promo{display:flex;gap:8px;padding:6px 22px 0}
-.promo input{flex:1;min-width:0;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#F2EDE4;background:rgba(24,20,16,.6);border:1px solid rgba(196,162,74,.3);border-radius:8px;padding:11px 12px;outline:none}
-.promo input::placeholder{color:#7d7362;letter-spacing:.1em}
-.promo input:focus{border-color:var(--or2)}
-.promo button{flex:none;font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--or2);background:rgba(196,162,74,.1);border:1px solid rgba(196,162,74,.4);border-radius:8px;padding:0 15px;cursor:pointer;transition:background .25s,color .25s}
-.promo button:hover{background:rgba(196,162,74,.2);color:var(--or-hi)}
-.promo-msg{padding:7px 22px 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em}
-.promo-msg.ok{color:#7CC49B}.promo-msg.err{color:#C77885}
+.foot-legal a{color:#a99d86;text-decoration:none}.foot-legal a:hover{color:var(--or2)}
 .tmoi p{transition:opacity .3s}
 .coord{padding:12px 22px 2px;display:flex;flex-direction:column;gap:8px}
 .coord-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3)}
@@ -100,6 +92,13 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 #paypal-btns{min-height:46px}
 .pay-hint{margin-top:9px;font-size:12px;line-height:1.4;color:#E0A4AE;text-align:center}
 .note{max-width:960px;margin:0 auto;padding:0 22px 50px;font-size:11.5px;color:#5f5648;text-align:center;font-family:var(--mono);letter-spacing:.04em}
+/* ===== a11y : focus clavier visible (DS premium §3) ===== */
+a:focus-visible,button:focus-visible,input:focus-visible,.opt:focus-visible{outline:2px solid var(--or2);outline-offset:2px}
+.opt:focus-visible{border-radius:9px}
+.checks input:focus-visible{outline-offset:3px}
+/* ===== rgpd + identité vendeur (info pré-contractuelle L221-5) ===== */
+.rgpd{font-family:var(--sans);font-size:11px;line-height:1.45;color:#9a8f78;margin-top:2px}
+.seller{max-width:960px;margin:0 auto;padding:12px 22px 0;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:#8a806d;line-height:1.7}
 </style></head><body>
 <div class="bg"></div>
 
@@ -148,31 +147,27 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
    <div class="coord">
     <div class="coord-lbl">Où envoyer ton accès</div>
     <input id="fName" type="text" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom" />
-    <input id="fEmail" type="email" autocomplete="email" inputmode="email" placeholder="Adresse email" aria-label="Adresse email" />
+    <input id="fEmail" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="Adresse email" aria-label="Adresse email" />
+    <div class="rgpd">Ton email sert uniquement à créer et t'envoyer ton accès. Aucun spam.</div>
    </div>
-   <div class="promo">
-    <input id="promoInput" type="text" autocomplete="off" placeholder="Code promo" aria-label="Code promo" />
-    <button type="button" id="promoBtn">Appliquer</button>
-   </div>
-   <div id="promoMsg" class="promo-msg" role="status"></div>
    <div class="pay">
-    <div class="payplan" id="payplan">
-     <div class="opt on" data-plan="1"><span class="k">En 1 fois</span><span class="v" id="opt1v">79,99 €</span></div>
-     <div class="opt" data-plan="4"><span class="k">En 4 fois · PayPal</span><span class="v" id="opt4v">4× 20,00 €</span></div>
+    <div class="payplan" id="payplan" role="radiogroup" aria-label="Mode de paiement">
+     <div class="opt on" data-plan="1" role="radio" aria-checked="true" tabindex="0"><span class="k">En 1 fois</span><span class="v" id="opt1v">79,99 €</span></div>
+     <div class="opt" data-plan="4" role="radio" aria-checked="false" tabindex="0"><span class="k">En 4 fois · PayPal</span><span class="v" id="opt4v">4× 20,00 €</span></div>
+    </div>
+    <div class="checks">
+     <label><input type="checkbox" id="ckCgv"> J'ai lu et j'accepte les <a href="/cgv" target="_blank" rel="noopener">CGV</a> et les <a href="/mentions-legales" target="_blank" rel="noopener">mentions légales</a>.</label>
+     <label><input type="checkbox" id="ckRet"> Je demande l'accès immédiat à la formation numérique et je renonce expressément à mon droit de rétractation de 14 jours (contenu numérique fourni aussitôt, art. L221-28 c. consommation).</label>
     </div>
     <div class="pay-amount">À régler&nbsp;: <b id="payLabel">79,99 €</b></div>
     <div id="paypal-btns"></div>
     <div id="payHint" class="pay-hint" role="alert"></div>
-    <div class="checks">
-     <label><input type="checkbox" id="ckCgv"> J'ai lu et j'accepte les <a href="/cgv" target="_blank" rel="noopener">CGV</a> et les <a href="/mentions-legales" target="_blank" rel="noopener">mentions légales</a>.</label>
-     <label><input type="checkbox" id="ckRet"> Je demande l'accès immédiat à la formation numérique et je renonce expressément à mon droit de rétractation de 14 jours.</label>
-    </div>
     <div class="reassure">
-     <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Accès immédiat après paiement (email automatique)</div>
-     <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Paiement en 1 fois (carte) ou en 4 fois avec PayPal, sans frais</div>
-     <div><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/></svg>Satisfait ou remboursé 7 jours</div>
+     <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Accès immédiat après paiement (email automatique)</div>
+     <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Paiement en 1 fois (carte) ou en 4 fois avec PayPal, sans frais</div>
+     <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/></svg>Garantie commerciale « satisfait ou remboursé » sous 7 jours</div>
     </div>
-    <div class="secure"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Paiement sécurisé propulsé par <b>PayPal</b></div>
+    <div class="secure"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Paiement sécurisé propulsé par <b>PayPal</b></div>
    </div>
   </div>
  </div>
@@ -182,42 +177,40 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
  <a href="/mentions-legales" target="_blank" rel="noopener">Mentions légales</a>
  <a href="/cgv" target="_blank" rel="noopener">CGV</a>
 </div>
-<div class="note">Aperçu — paiement PayPal (Sandbox). Prix, garantie et libellés modifiables.</div>
+<!-- note interne + bloc identité vendeur retirés du rendu (identité complète accessible via /mentions-legales) -->
 <script src="https://www.paypal.com/sdk/js?client-id=BAAVFY8mIRYVoMnMgKah9z2eP13R8plqNzgtGrSXyqiEKxkVkXjRhDhGglJztbmB37XMjxDi3Uk9YQEuOg&currency=EUR&enable-funding=paylater&components=buttons&intent=capture"></script>
 <script>
 (function(){
- var BASE=79.99, promo=0, plan=1, formValid=false, CODES={MERCI20:.20,"KDSLMLDFLKDFKLLKDKL100":1,"TESTLIVE-1E-9QK2X":.9875};
+ /* SÉCURITÉ — prix figé 79,99 €, aucun code promo. Le montant part encore du client
+    (PayPal Buttons) donc reste théoriquement modifiable via devtools : le VERROU autoritaire
+    est CÔTÉ MAKE, qui n'accorde l'accès QUE si le montant réellement capté == 79,99 €
+    (filtre {{2.resource.amount.value}} = 79.99). Détail : _CHECKOUT-PAIEMENT.md §6/§11. */
+ var BASE=79.99, plan=1, formValid=false;
  var el=function(id){return document.getElementById(id)};
  var c1=el('ckCgv'),c2=el('ckRet'),lab=el('payLabel'),pp=el('payplan'),fn=el('fName'),fe=el('fEmail'),hint=el('payHint');
  var validEmail=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);};
  function fmt(x){return x.toFixed(2).replace('.',',')+' €';}
  function render(){
-  var net=BASE*(1-promo), q=net/4;
+  var net=BASE, q=net/4;
   el('priceNow').innerHTML=fmt(net).replace(' €','&nbsp;€');
   el('rowForm').textContent=fmt(net);
   el('opt1v').textContent=fmt(net);
   el('opt4v').textContent='4× '+fmt(q);
-  if(plan===4){lab.textContent=fmt(q);el('todayLbl').textContent="Aujourd'hui · 1er versement";el('todayVal').textContent=fmt(q);el('subVal').textContent='puis 3 × '+fmt(q)+' (mois +1, +2, +3)';el('todaySub').style.display='';}
+  if(plan===4){lab.textContent=fmt(q);el('todayLbl').textContent="Aujourd'hui · 1er versement";el('todayVal').textContent=fmt(q);el('subVal').textContent='puis 3 × '+fmt(q)+' · total '+fmt(net);el('todaySub').style.display='';}
   else{lab.textContent=fmt(net);el('todayLbl').textContent="Total aujourd'hui";el('todayVal').textContent=fmt(net);el('todaySub').style.display='none';}
-  if(net<=0.001){lab.textContent='Gratuit';el('todayLbl').textContent='Aujourd’hui';el('todayVal').textContent='Gratuit';el('todaySub').style.display='none';}
  }
  function upd(){var eok=validEmail(fe.value.trim());formValid=c1.checked&&c2.checked&&fn.value.trim().length>=2&&eok;fe.classList.toggle('bad',fe.value.trim()!==''&&!eok);if(formValid&&hint)hint.textContent='';}
  c1.addEventListener('change',upd);c2.addEventListener('change',upd);fn.addEventListener('input',upd);fe.addEventListener('input',upd);upd();
  if(window.paypal){paypal.Buttons({
    style:{shape:'rect',color:'gold',layout:'vertical',label:'pay',tagline:false},
-   onClick:function(data,actions){upd();var n=BASE*(1-promo);if(!formValid){hint.textContent='Renseigne ton prénom + email et coche les 2 cases.';return actions.reject();}if(n<=0.001){hint.textContent='Le code 100% se teste via Systeme, pas via PayPal.';return actions.reject();}hint.textContent='';return actions.resolve();},
-   createOrder:function(data,actions){return actions.order.create({purchase_units:[{amount:{value:(BASE*(1-promo)).toFixed(2),currency_code:'EUR'},description:'Formation - Le nationalisme noir americain',custom_id:fe.value.trim()}]});},
+   onClick:function(data,actions){upd();if(!formValid){hint.textContent='Renseigne ton prénom + email et coche les 2 cases.';return actions.reject();}hint.textContent='';return actions.resolve();},
+   createOrder:function(data,actions){return actions.order.create({purchase_units:[{amount:{value:BASE.toFixed(2),currency_code:'EUR'},description:'Formation - Le nationalisme noir americain',custom_id:fe.value.trim().toLowerCase()}]});},
    onApprove:function(data,actions){return actions.order.capture().then(function(){window.location.href='/merci';});},
    onError:function(){hint.textContent='Souci avec PayPal, réessaie.';}
   }).render('#paypal-btns');}else if(hint){hint.textContent="PayPal ne s'est pas chargé (connexion ou bloqueur de pub ?).";}
- pp.addEventListener('click',function(e){var o=e.target.closest('.opt');if(!o)return;pp.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');plan=+o.dataset.plan;render();});
- var pi=el('promoInput'),pb=el('promoBtn'),pm=el('promoMsg');
- function applyPromo(){var code=pi.value.trim().toUpperCase();if(!code){promo=0;pm.className='promo-msg';pm.textContent='';render();return;}
-  if(CODES[code]){promo=CODES[code];pm.className='promo-msg ok';pm.textContent='✓ Code '+code+' appliqué · −'+Math.round(promo*100)+' %';}
-  else{promo=0;pm.className='promo-msg err';pm.textContent='Code invalide';}
-  render();}
- pb.addEventListener('click',applyPromo);
- pi.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();applyPromo();}});
+ function selPlan(o){if(!o)return;pp.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on');x.setAttribute('aria-checked','false');});o.classList.add('on');o.setAttribute('aria-checked','true');plan=+o.dataset.plan;render();}
+ pp.addEventListener('click',function(e){selPlan(e.target.closest('.opt'));});
+ pp.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){var o=e.target.closest('.opt');if(o){e.preventDefault();selPlan(o);}}});
  render();
  var AVIS=[
   ["Enfin un média qui nous instruit réellement et donne de vraies clés de compréhension du monde.","Inès"],
