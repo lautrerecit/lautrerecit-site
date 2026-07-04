@@ -5,7 +5,7 @@ import { articles } from '../data/articles.js';
 import FormationFeature from '../components/FormationFeature.astro';
 
 // Pour l'instant on ne met en avant QUE la formation disponible (les deux autres en réflexion).
-const featured = formations.find((f) => f.status === 'available');
+const available = formations.filter((f) => f.status === 'available');
 
 // Hero : alternance stricte photo d'auteur → citation fond noir (Sankara inclus).
 const cites = [
@@ -105,21 +105,23 @@ const posts = [
     </div>
   </section>
 
-  <!-- ===== FORMATION (vedette — uniquement la dispo pour l'instant) ===== -->
+  <!-- ===== FORMATIONS (toutes les disponibles, Algérie en tête) ===== -->
   <section class="section formations">
     <div class="container">
       <p class="eyebrow">Le catalogue</p>
-      <h2>La <em class="gold-grad-d">formation</em></h2>
+      <h2>Les <em class="gold-grad-d">formations</em></h2>
       <div class="feature-wrap reveal">
-        <FormationFeature
-          title={featured.title}
-          eyebrow={featured.eyebrow}
-          blurb={featured.blurb}
-          href={featured.href}
-          duration={featured.duration}
-          status={featured.status}
-          image="/formations/nationalisme-noir.jpg"
-        />
+        {available.map((f) => (
+          <FormationFeature
+            title={f.title}
+            eyebrow={f.eyebrow}
+            blurb={f.blurb}
+            href={f.href}
+            duration={f.duration}
+            status={f.status}
+            image={f.image}
+          />
+        ))}
       </div>
     </div>
   </section>
@@ -256,7 +258,7 @@ const posts = [
 
   /* ===== FORMATION (vedette) ===== */
   .formations h2 em { font-style: italic; }
-  .feature-wrap { margin-top: 40px; }
+  .feature-wrap { margin-top: 40px; display: flex; flex-direction: column; gap: clamp(24px, 3.5vw, 44px); }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px; margin-top: 40px; perspective: 1600px; perspective-origin: 50% 40%; }
   .card { display: flex; flex-direction: column; background: linear-gradient(160deg, #fff 0%, var(--cr) 70%, var(--cr2) 100%); border: 1px solid rgba(154,123,46,.28); border-radius: var(--radius); padding: 32px 30px 26px; color: var(--ink2); overflow: hidden; transform-style: preserve-3d; will-change: transform; box-shadow: 0 28px 60px -28px rgba(14,12,10,.45), inset 0 1px 0 rgba(255,255,255,.5); transition: transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .45s, border-color .4s; transform: translateZ(0); }
   .card:hover { transform: translateZ(36px) translateY(-6px); box-shadow: 0 56px 110px -28px rgba(14,12,10,.5), 0 0 0 1px var(--or2), 0 0 60px rgba(196,162,74,.3); border-color: var(--or2); z-index: 2; color: var(--ink2); }

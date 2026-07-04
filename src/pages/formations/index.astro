@@ -3,8 +3,8 @@ import Base from '../../layouts/Base.astro';
 import { formations } from '../../data/formations.js';
 import FormationFeature from '../../components/FormationFeature.astro';
 
-// Seule la formation disponible est présentée pour l'instant.
-const featured = formations.find((f) => f.status === 'available');
+// Toutes les formations disponibles, dans l'ordre du catalogue (Algérie en tête).
+const available = formations.filter((f) => f.status === 'available');
 ---
 <Base
   title="Formations — L'Autre Récit"
@@ -22,16 +22,18 @@ const featured = formations.find((f) => f.status === 'available');
   </section>
 
   <section class="section list-sec">
-    <div class="container">
-      <FormationFeature
-        title={featured.title}
-        eyebrow={featured.eyebrow}
-        blurb={featured.blurb}
-        href={featured.href}
-        duration={featured.duration}
-        status={featured.status}
-        image="/formations/nationalisme-noir.jpg"
-      />
+    <div class="container feat-list">
+      {available.map((f) => (
+        <FormationFeature
+          title={f.title}
+          eyebrow={f.eyebrow}
+          blurb={f.blurb}
+          href={f.href}
+          duration={f.duration}
+          status={f.status}
+          image={f.image}
+        />
+      ))}
     </div>
   </section>
 </Base>
@@ -39,6 +41,7 @@ const featured = formations.find((f) => f.status === 'available');
 <style>
   .head { padding-top: clamp(88px, 11vw, 120px); padding-bottom: 0; }
   .list-sec { padding-top: clamp(32px, 5vw, 56px); }
+  .feat-list { display: flex; flex-direction: column; gap: clamp(24px, 3.5vw, 44px); }
   .list { display: flex; flex-direction: column; gap: 18px; }
   .row {
     display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center;

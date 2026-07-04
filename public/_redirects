@@ -1,0 +1,4 @@
+# Redirections Cloudflare Pages
+# L'ancien chemin de test du bon de commande NNA → le chemin définitif
+/commande-test /commande 301
+/commande-test/ /commande 301

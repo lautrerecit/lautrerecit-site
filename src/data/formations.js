@@ -1,27 +1,28 @@
 // Source unique des formations — utilisée par l'accueil et /formations/.
 export const formations = [
   {
-    slug: 'nationalisme-noir',
-    title: 'Le nationalisme noir américain',
-    eyebrow: 'Cours · États-Unis',
-    blurb:
-      "De Marcus Garvey à la Nation of Islam et aux Black Panthers : comment une minorité a bâti, brique par brique, ses propres institutions face à un État qui ne lui accordait rien.",
-    status: 'available', // 'available' | 'soon'
-    href: '/formations/nationalisme-noir/', // → page pédagogique du site (elle-même renvoie au tunnel de vente). Le menu « Découvrir la formation » pointe directement sur le tunnel.
-
-    duration: '5 cours',
-    accent: '#C4A24A',
-  },
-  {
     slug: 'algerie',
     title: "L'Algérie a pensé",
     eyebrow: 'Cours · Maghreb',
     blurb:
       "Colonisation et décolonisation par les penseurs eux-mêmes — Fanon, Ibn Badis, Bennabi, Sayad, Djebar. L'autre récit de l'Algérie, écrit depuis l'intérieur.",
-    status: 'soon',
-    href: '/formations/algerie/',
-    duration: 'Bientôt',
-    accent: '#9A7B2E',
+    status: 'available', // 'available' | 'soon'
+    href: '/algerie', // → tunnel de vente Algérie (page de vente complète, public/algerie/)
+    duration: '6 cours',
+    accent: '#1F6B4A',
+    image: '/formations/algerie.jpg',
+  },
+  {
+    slug: 'nationalisme-noir',
+    title: 'Le nationalisme noir américain',
+    eyebrow: 'Cours · États-Unis',
+    blurb:
+      "De Marcus Garvey à la Nation of Islam et aux Black Panthers : comment une minorité a bâti, brique par brique, ses propres institutions face à un État qui ne lui accordait rien.",
+    status: 'available',
+    href: '/formations/nationalisme-noir/', // → page pédagogique du site (elle-même renvoie au tunnel de vente). Le menu « Découvrir la formation » pointe directement sur le tunnel.
+    duration: '5 cours',
+    accent: '#C4A24A',
+    image: '/formations/nationalisme-noir.jpg',
   },
   {
     slug: 'afrique-colonisation',
