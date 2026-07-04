@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Merci — Ta formation t'attend · L'Autre Récit</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400;1,6..72,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+ --cr:#F2EDE4;--cr2:#EAE3D8;--paper:#FAF6EB;--paper-w:#FFFCF4;
+ --or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--or-deep:#7A5E1F;--foil1:#E8C76E;--or-fl:#FBEFC2;
+ --tx:#241813;--tx2:#3D2E22;--tx3:#5C4A38;
+ --red:#5E1622;--red-hi:#7A2236;
+ --em:#1F6B4A;--em-d:#13442E;--em-deep:#0A2C1E;--em-pale:#9FD8C0;
+ --title:'Playfair Display',Georgia,serif;--long:'Newsreader',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;--av:'Poppins',sans-serif;
+ --gold:linear-gradient(180deg,#EFD07E,#C9A24C 52%,#9A7B2E);
+ --foil:linear-gradient(105deg,#9A7B2E,#FBEFC2 24%,#D4B05A 46%,#C4A24A 60%,#FBEFC2 80%,#9A7B2E);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--tx);min-height:100dvh;overflow-x:hidden;line-height:1.5;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+.bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(75% 50% at 50% -5%,rgba(196,162,74,.18),transparent 60%),radial-gradient(50% 40% at 50% 108%,rgba(31,107,74,.08),transparent 60%),linear-gradient(180deg,#FCF8EF,#F2EDE4 60%,#ECE4D5)}
+.top{display:flex;align-items:center;justify-content:center;padding:16px 22px;border-bottom:1px solid rgba(154,123,46,.22)}
+.top .wm{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or)}
+.wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 22px 60px}
+.card{width:100%;max-width:560px;text-align:center}
+.seal{width:96px;height:96px;margin:0 auto 26px;position:relative}
+.seal .ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--em);opacity:.45}
+.seal .ring.r2{inset:10px;border-color:var(--or2);opacity:1;box-shadow:0 0 26px rgba(196,162,74,.35),inset 0 0 16px rgba(196,162,74,.2)}
+.seal .halo{position:absolute;inset:-40%;border-radius:50%;background:radial-gradient(circle,rgba(196,162,74,.28),transparent 62%);filter:blur(3px)}
+.seal .ck{position:absolute;inset:0;display:grid;place-items:center}
+.seal .ck svg{width:44px;height:44px;stroke:url(#g);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 8px rgba(31,107,74,.35));animation:pop .5s cubic-bezier(.2,1.4,.4,1) both .1s}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--or);margin-bottom:14px}
+h1{font-family:var(--title);font-weight:900;font-size:clamp(30px,6.2vw,46px);line-height:1.03;color:var(--tx)}
+h1 em{font-style:italic;color:var(--or)}
+.lead{margin-top:14px;font-family:var(--long);color:var(--tx2);font-size:17px;line-height:1.55;max-width:44ch;margin-left:auto;margin-right:auto}
+.lead b{color:var(--red);font-weight:600}
+.steps{margin:30px auto 0;max-width:440px;text-align:left;display:flex;flex-direction:column;gap:14px}
+.step{display:flex;gap:14px;align-items:flex-start;padding:15px 17px;border-radius:13px;background:var(--paper-w);border:1px solid rgba(154,123,46,.28);box-shadow:0 10px 24px -18px rgba(90,70,20,.5)}
+.step .no{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-family:var(--title);font-weight:700;font-size:15px;color:var(--paper-w);background:linear-gradient(160deg,var(--em),var(--em-d))}
+.step .tx{font-size:14.5px;color:var(--tx2)}
+.step .tx b{color:var(--tx);font-weight:600}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:28px;text-decoration:none;font-family:var(--av);font-weight:700;font-size:15px;letter-spacing:.04em;color:var(--em-deep);background:var(--gold);padding:16px 30px;border-radius:9px;box-shadow:0 16px 34px -12px rgba(196,162,74,.5);transition:transform .3s,box-shadow .35s;position:relative;overflow:hidden}
+.cta svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.cta:hover{transform:translateY(-2px);box-shadow:0 24px 44px -12px rgba(196,162,74,.68)}
+.cta .glare{position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-18deg);transition:left .6s}
+.cta:hover .glare{left:130%}
+.help{margin-top:22px;font-size:13px;color:var(--tx3)}
+.help a{color:var(--or);text-decoration:none;border-bottom:1px solid rgba(154,123,46,.4)}
+.help a:hover{color:var(--red)}
+.foot{text-align:center;padding:20px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx3)}
+</style></head><body>
+<div class="bg"></div>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBEFC2"/><stop offset=".5" stop-color="#D4B05A"/><stop offset="1" stop-color="#9A7B2E"/></linearGradient></defs></svg>
+
+<div class="top"><span class="wm">L'Autre Récit</span></div>
+
+<div class="wrap">
+ <div class="card">
+  <div class="seal">
+   <div class="halo"></div><div class="ring"></div><div class="ring r2"></div>
+   <div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+  </div>
+  <div class="eyebrow">Paiement confirmé</div>
+  <h1>Merci — ta place est <em>réservée</em>.</h1>
+  <p class="lead">Ton accès à <b>L'Algérie a pensé</b> est en cours de préparation. Encore un pas et tu y es.</p>
+
+  <div class="steps">
+   <div class="step"><span class="no">1</span><span class="tx">Un <b>email d'accès</b> arrive dans quelques minutes (pense à vérifier les spams).</span></div>
+   <div class="step"><span class="no">2</span><span class="tx">Tu <b>crées ton mot de passe</b> et tu entres dans ton espace membre.</span></div>
+   <div class="step"><span class="no">3</span><span class="tx">Le <b>premier module</b> t'attend déjà — la suite se déploie, et tout reste à toi <b>à vie</b>.</span></div>
+  </div>
+
+  <a class="cta" href="https://cours.lautrerecit.com/school/course/lalgerie-a-pense"><span class="glare"></span>Accéder à ma formation <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+  <p class="help">Pas reçu l'email sous 10 min ? Écris-nous : <a href="mailto:contact@lautrerecit.com">contact@lautrerecit.com</a></p>
+ </div>
+</div>
+
+<div class="foot">© L'Autre Récit · lautrerecit.com</div>
+</body></html>
