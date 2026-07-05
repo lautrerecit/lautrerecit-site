@@ -385,7 +385,7 @@ a.tkc{display:block;text-decoration:none;color:inherit;cursor:pointer;}
 .tkc-meta strong{display:block;font-family:var(--num);font-style:italic;font-size:15px;color:var(--or3);letter-spacing:0;text-transform:none;font-weight:900;margin-top:3px;}
 .tkc-right{border-left:1.5px dashed rgba(196,162,74,.45);padding:22px 16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:5px;position:relative;z-index:2;}
 .tkc-right-l{font-family:var(--mono);font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--or3);font-weight:600;}
-.tkc-strike{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);text-decoration:line-through;}
+.tkc-strike{font-family:var(--num);font-style:italic;font-size:19px;color:rgba(244,220,146,.6);text-decoration:line-through;text-decoration-thickness:1.5px;}
 .tkc-price{font-family:var(--num);font-style:italic;font-weight:900;font-size:56px;color:var(--or3);line-height:1;text-shadow:0 2px 18px rgba(232,199,122,.5);margin:2px 0 6px;white-space:nowrap;}
 .tkc-price sup{font-size:.5em;color:var(--or2);vertical-align:super;}
 .tkc-cta{font-family:var(--av);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red-low);font-weight:600;background:linear-gradient(180deg,var(--or3),var(--or2));padding:11px 22px;text-decoration:none;display:inline-block;box-shadow:0 8px 20px -6px rgba(232,199,122,.5);transition:.25s;white-space:nowrap;}
@@ -548,7 +548,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.faq-q:focus-visible,sum
     <div class="lph-tagline">Une théorie de la domination, forgée par <em>celles et ceux</em> qui la subissaient.</div>
     <p class="lph-sub">Quinze modules, six cours, une généalogie continue&nbsp;: l'histoire de l'Algérie coloniale, lue dans les textes de ceux qui l'ont pensée.</p>
     <div class="btn-cluster">
-      <a class="btn btn-gold btn-lg" href="#pricing">Réserver ma place — 24,99&nbsp;€</a>
+      <a class="btn btn-gold btn-lg" href="#pricing">Réserver ma place — <s style="opacity:.5;font-weight:400;margin-right:.35em">39,99&nbsp;€</s>24,99&nbsp;€</a>
       <a class="btn btn-outline btn-lg" href="#programme">Voir le programme</a>
     </div>
     <div class="lph-trust">★ Accès à vie · Paiement en 3× · Garantie 7 jours</div>
@@ -557,7 +557,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.faq-q:focus-visible,sum
 
 <!-- §4 · Barre CTA sticky -->
 <div class="lp-cta-sticky" id="ctaSticky" aria-hidden="true">
-  <div class="lp-cta-sticky-txt">L'Algérie a <b>pensé</b><span class="lp-cta-sticky-price">Tarif de lancement · 24,99&nbsp;€</span></div>
+  <div class="lp-cta-sticky-txt">L'Algérie a <b>pensé</b><span class="lp-cta-sticky-price">Tarif de lancement · <s style="opacity:.55;font-weight:400">39,99&nbsp;€</s> 24,99&nbsp;€</span></div>
   <a href="https://buy.stripe.com/00w4gA1a25lo7WM8Gabsc00">Réserver</a>
 </div>
 
@@ -929,12 +929,18 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.faq-q:focus-visible,sum
     <div class="proof-marquee">
       <!-- ⚠️ vérifier authenticité + consentement des témoignages ci-dessous (non confirmés par Rany) -->
       <div class="proof-track" id="proofTrack">
+        <div class="proof-card"><div class="proof-card-source">Retour formation</div><p class="proof-card-quote">«&nbsp;Bluffé par la <strong>richesse académique</strong>&nbsp;: ça va bien plus loin que des biographies. Pour une première formation, c'est vraiment remarquable.&nbsp;»</p><div class="proof-card-attr"><span>Benoit</span></div></div>
+        <div class="proof-card"><div class="proof-card-source">Retour formation</div><p class="proof-card-quote">«&nbsp;Rarement vu quelque chose d'aussi <strong>beau et soigné</strong>, je suis épatée&nbsp;! Très propre, très pro, et le fond est vraiment bien réfléchi. Du haut niveau.&nbsp;»</p><div class="proof-card-attr"><span>Safia</span></div></div>
+        <div class="proof-card"><div class="proof-card-source">Retour formation</div><p class="proof-card-quote">«&nbsp;C'est <strong>très enrichissant</strong>, hâte de voir la suite. Merci pour votre travail&nbsp;!&nbsp;»</p><div class="proof-card-attr"><span>Imane</span></div></div>
         <div class="proof-card"><div class="proof-card-source">Retour communauté</div><p class="proof-card-quote">«&nbsp;Un regard éveillé, un vocabulaire prenant&nbsp;: des récits qui poussent à la réflexion, à l'introspection et à <strong>l'action</strong>. Un média qui doit devenir une référence.&nbsp;»</p><div class="proof-card-attr"><span>Rayan</span></div></div>
         <div class="proof-card"><div class="proof-card-source">Retour communauté</div><p class="proof-card-quote">«&nbsp;Des analyses d'une grande finesse, qui décalent le regard et reposent les bonnes questions. <strong>Quelle respiration&nbsp;!</strong>&nbsp;»</p><div class="proof-card-attr"><span>Madeleine</span></div></div>
         <div class="proof-card"><div class="proof-card-source">Retour communauté</div><p class="proof-card-quote">«&nbsp;Un travail de recherche solide, des références sérieuses en sciences humaines. L'Autre Récit <strong>vulgarise le travail scientifique</strong>.&nbsp;»</p><div class="proof-card-attr"><span>Chaïmae</span></div></div>
         <div class="proof-card"><div class="proof-card-source">Retour communauté</div><p class="proof-card-quote">«&nbsp;Un média pertinent et sourcé, qui mobilise les sciences sociales pour décortiquer l'actualité. <strong>Indépendant, nécessaire et incontournable.</strong>&nbsp;»</p><div class="proof-card-attr"><span>Soumaya</span></div></div>
         <div class="proof-card"><div class="proof-card-source">Retour communauté</div><p class="proof-card-quote">«&nbsp;Enfin un média qui nous instruit réellement et donne de vraies clés de compréhension du monde. <strong>Le média qui nous manquait.</strong>&nbsp;»</p><div class="proof-card-attr"><span>Inès</span></div></div>
         <div class="proof-card"><div class="proof-card-source">Retour communauté</div><p class="proof-card-quote">«&nbsp;J'y retrouve même <strong>les auteurs que j'étudie en cours</strong> — ça m'aide vraiment à voir l'histoire autrement.&nbsp;»</p><div class="proof-card-attr"><span>Lina</span></div></div>
+        <div class="proof-card" aria-hidden="true"><div class="proof-card-source">Retour formation</div><p class="proof-card-quote">«&nbsp;Bluffé par la <strong>richesse académique</strong>&nbsp;: ça va bien plus loin que des biographies. Pour une première formation, c'est vraiment remarquable.&nbsp;»</p><div class="proof-card-attr"><span>Benoit</span></div></div>
+        <div class="proof-card" aria-hidden="true"><div class="proof-card-source">Retour formation</div><p class="proof-card-quote">«&nbsp;Rarement vu quelque chose d'aussi <strong>beau et soigné</strong>, je suis épatée&nbsp;! Très propre, très pro, un fond vraiment réfléchi. Du haut niveau.&nbsp;»</p><div class="proof-card-attr"><span>Safia</span></div></div>
+        <div class="proof-card" aria-hidden="true"><div class="proof-card-source">Retour formation</div><p class="proof-card-quote">«&nbsp;C'est <strong>très enrichissant</strong>, hâte de voir la suite. Merci pour votre travail&nbsp;!&nbsp;»</p><div class="proof-card-attr"><span>Imane</span></div></div>
         <div class="proof-card" aria-hidden="true"><div class="proof-card-source">Retour communauté</div><p class="proof-card-quote">«&nbsp;Un regard éveillé, un vocabulaire prenant&nbsp;: des récits qui poussent à la réflexion et à <strong>l'action</strong>.&nbsp;»</p><div class="proof-card-attr"><span>Rayan</span></div></div>
         <div class="proof-card" aria-hidden="true"><div class="proof-card-source">Retour communauté</div><p class="proof-card-quote">«&nbsp;Des analyses d'une grande finesse, qui reposent les bonnes questions. <strong>Quelle respiration&nbsp;!</strong>&nbsp;»</p><div class="proof-card-attr"><span>Madeleine</span></div></div>
         <div class="proof-card" aria-hidden="true"><div class="proof-card-source">Retour communauté</div><p class="proof-card-quote">«&nbsp;L'Autre Récit <strong>vulgarise le travail scientifique</strong> là où les premiers concernés sont souvent absents.&nbsp;»</p><div class="proof-card-attr"><span>Chaïmae</span></div></div>
@@ -956,7 +962,7 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.faq-q:focus-visible,sum
     <div class="lp-finalcta-rule"></div>
     <p class="lp-finalcta-sub">Deux heures et demie qui changent la manière dont vous lirez la colonisation, ses penseurs, et leurs héritages dans le présent.</p>
     <div class="btn-cluster" style="justify-content:center;">
-      <a class="btn btn-gold btn-lg" href="https://buy.stripe.com/00w4gA1a25lo7WM8Gabsc00">Rejoindre la formation — 24,99&nbsp;€</a>
+      <a class="btn btn-gold btn-lg" href="https://buy.stripe.com/00w4gA1a25lo7WM8Gabsc00">Rejoindre la formation — <s style="opacity:.5;font-weight:400;margin-right:.35em">39,99&nbsp;€</s>24,99&nbsp;€</a>
       <a class="btn btn-outline btn-lg" href="#programme">Revoir le programme</a>
     </div>
     <div class="lp-finalcta-reassure">★ Paiement 3× · Accès à vie · Garantie 7 jours · Mises à jour incluses</div>
