@@ -538,6 +538,21 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,.faq-q:focus-visible,sum
 </head>
 <body>
 
+<!-- ════ 0 · BARRE DE LANCEMENT (header sticky) ════ -->
+<style>
+.dz-bar{position:sticky;top:0;z-index:9000;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;background:linear-gradient(90deg,#06231A,#13442E,#06231A);border-bottom:1px solid rgba(196,162,74,.5);padding:9px 18px;text-align:center;box-shadow:0 8px 24px -12px rgba(6,30,20,.6);}
+.dz-bar-txt{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#D4B05A;}
+.dz-bar-txt s{opacity:.6;font-weight:400;color:rgba(244,220,146,.75);margin-right:.15em;}
+.dz-bar-txt b{color:#F2EDE4;font-weight:800;}
+.dz-bar-cta{font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#06231A;background:linear-gradient(180deg,#F4DC92,#C4A24A);padding:8px 17px;border-radius:5px;text-decoration:none;white-space:nowrap;transition:transform .25s,box-shadow .25s;}
+.dz-bar-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px -6px rgba(232,199,122,.55);}
+@media(max-width:600px){.dz-bar{gap:11px;padding:8px 12px}.dz-bar-txt{font-size:10px;letter-spacing:.08em}.dz-bar-cta{padding:7px 13px}}
+</style>
+<div class="dz-bar">
+  <span class="dz-bar-txt">Tarif de lancement · <s>39,99&nbsp;€</s> <b>24,99&nbsp;€</b> · accès à vie</span>
+  <a class="dz-bar-cta" href="#pricing">Rejoindre →</a>
+</div>
+
 <!-- ════ 1 · HERO · ÉMERAUDE (sombre) ════ -->
 <section class="lp-hero cine">
   <div class="lph-photo"><img src="images/ibnbadishero.jpg" alt="Ibn Badis, penseur réformiste algérien, un livre à la main" style="object-position:center 25%"></div>
