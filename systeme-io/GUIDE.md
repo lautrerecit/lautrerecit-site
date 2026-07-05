@@ -188,3 +188,12 @@ CONCLUSION GÉNÉRALE
 4. Monter le **tunnel** (pages 1-2) + le **cours** (pages 3-4) + **connexion** (5) sur Systeme.
 5. Brancher : CTA page de vente Netlify → `/commander` · « Se connecter » vitrine → URL login Systeme.
 6. Test d'achat réel (mode test Stripe) de bout en bout.
+
+---
+
+## Cours « L'Algérie a pensé » — accueil membre + carnet
+
+- **Accueil membre (Algérie)** : coller `03-espace-accueil-algerie.html` dans la 1re leçon « Bienvenue » du cours Algérie → élément **Code HTML** (comme pour NNA, mais palette émeraude + carnet).
+- **Le carnet** est hébergé sur la vitrine (Netlify) : `https://www.lautrerecit.com/algerie/carnet/`. Le bloc l'ouvre en **nouvel onglet** (`target="_blank"`).
+- ⚠ **Ne jamais iframe le carnet** dans Systeme.io : `X-Frame-Options: SAMEORIGIN` (Netlify) le bloque, ET le stockage tiers (localStorage) casserait sur Safari/Chrome → notes perdues. Toujours un lien nouvel onglet, jamais un iframe.
+- Domaine canonique **www** obligatoire dans le lien (origine stable = notes de l'élève persistantes).
