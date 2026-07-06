@@ -5,6 +5,8 @@ import { articles, SUB } from '../data/articles.js';
 const latest = articles[0];
 const FORMATION = '/formation-nationalisme-noir/';          // tunnel de vente (pricing + checkout)
 const FORMATION_IMG = '/formations/nationalisme-noir.jpg';  // cover formation (1920×1299)
+const ALGERIE = '/algerie/';                                // tunnel « L'Algérie a pensé » (même domaine)
+const ALGERIE_IMG = '/formations/algerie.jpg';              // cover Ibn Badis
 const canonical = new URL('/liens', Astro.site).href;
 const ogImage = new URL(FORMATION_IMG, Astro.site).href;    // image de partage (OG)
 // Tracking : UTM sur les liens SORTANTS (Substack) → attribués à /liens dans le dashboard Substack.
@@ -124,6 +126,10 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 .h-btn{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);background:linear-gradient(180deg,#EBCB70,#C9A24C 52%,#A9863A);padding:14px 24px;border-radius:6px;box-shadow:0 12px 28px -10px rgba(196,162,74,.55);align-self:flex-start;transition:transform .3s,box-shadow .35s}
 .h-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .hero-ph:hover .h-btn{transform:translateY(-2px);box-shadow:0 20px 40px -10px rgba(196,162,74,.72)}
+/* carte Algérie · accent émeraude (palette de la formation) */
+.hero-ph.algerie .glow{background:radial-gradient(72% 60% at 76% 4%,rgba(31,107,74,.45),transparent 62%)}
+.hero-ph.algerie .h-kick{color:#9FD8C0}
+.hero-ph.algerie .h-badge .dot{background:#1f6b4a;box-shadow:0 0 0 3px rgba(31,107,74,.32)}
 /* footer */
 .foot{margin-top:30px;text-align:center}
 .social{display:flex;justify-content:center;gap:13px;margin-bottom:20px}
@@ -147,6 +153,17 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 </header>
 
 <div class="deck" id="deck">
+ <a class="hero-ph algerie" href={ALGERIE}>
+  <img class="bg" src={ALGERIE_IMG} alt="" style="object-position:center 20%" />
+  <span class="scrim"></span><span class="glow"></span>
+  <div class="in">
+   <span class="h-badge"><span class="dot"></span>Nouveau · 15 modules</span>
+   <div class="h-kick">Cours · Algérie</div>
+   <div class="h-title">L'Algérie<br/>a pensé</div>
+   <div class="h-desc">1830–1962 : la colonisation de l'Algérie, lue dans les textes de celles et ceux qui l'ont pensée — d'Ibn Badis à Fanon et Sayad.</div>
+   <span class="h-btn">Découvrir la formation <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+  </div>
+ </a>
  <a class="hero-ph" href={FORMATION}>
   <img class="bg" src={FORMATION_IMG} alt="" />
   <span class="scrim"></span><span class="glow"></span>
