@@ -289,7 +289,7 @@ textarea::placeholder{color:rgba(90,80,68,.55)}
       <li><a href="#cover">Couverture</a></li>
       <li><a href="#ouverture">Ce qu'est ce carnet</a></li>
       <li><a href="#methode">La méthode · 4 gestes</a></li>
-      <li><a class="head">Les quinze outils</a></li>
+      <li id="toc-anchor"><a class="head">Les quinze outils</a></li>
       <!-- modules injectés -->
       <li><a class="head">Clôture</a></li>
       <li><a href="#synthese">La synthèse</a></li>
@@ -367,7 +367,7 @@ textarea::placeholder{color:rgba(90,80,68,.55)}
       </div>
       <div class="qcard"><div class="ql"><b>1 :</b> Maintenant que vous vous en êtes servi comme d'outils, que veut dire pour vous « l'Algérie a <em>pensé</em> » ?</div><textarea data-key="carnet:synthese:sens" placeholder="Écrivez ici…"></textarea></div>
       <div class="qcard"><div class="ql"><b>2 :</b> Revenez à votre toute première entrée, <em>M1, la carte du silence</em>. Qu'est-ce qui a bougé ?</div><textarea data-key="carnet:synthese:bouge" placeholder="Écrivez ici…"></textarea></div>
-      <div class="qcard"><div class="ql"><b>3 :</b> Pour finir, comme à <em>M15</em> :</div>
+      <div class="qcard"><div class="ql"><b>3 :</b> Pour finir, comme à <em>M14</em> :</div>
         <div class="two">
           <div><div class="ql" style="font-size:16px;margin-bottom:8px">Ce que je <b>garde</b>.</div><textarea data-key="carnet:synthese:garde" placeholder="Écrivez ici…"></textarea></div>
           <div><div class="ql" style="font-size:16px;margin-bottom:8px">Ce que je <b>transmets</b>.</div><textarea data-key="carnet:synthese:transmets" placeholder="Écrivez ici…"></textarea></div>
@@ -391,6 +391,18 @@ textarea::placeholder{color:rgba(90,80,68,.55)}
 <script>
 (function(){
   "use strict";
+  // migration v2 : liste des modules mise à jour, purge des anciennes clés
+  try{
+    if(localStorage.getItem("carnet:__v")!=="2"){
+      var _ks=[],_i;
+      for(_i=0;_i<localStorage.length;_i++){
+        var _k=localStorage.key(_i);
+        if(_k && _k.indexOf("carnet:")===0){_ks.push(_k);}
+      }
+      for(_i=0;_i<_ks.length;_i++){localStorage.removeItem(_ks[_i]);}
+      localStorage.setItem("carnet:__v","2");
+    }
+  }catch(e){}
   var MODULES=[
     {n:1,t:"Qui parle",concept:"Le récit dépend de qui le tient : il y a la source, et il y a le silence autour d'elle.",echo:"<b>Ce qu'on vous a appris / vos sources :</b> où allez-vous chercher ce que vous savez de l'histoire coloniale, et qu'est-ce qui manque ?"},
     {n:2,t:"Ibn Khaldoun",concept:"L'asabiyya : la cohésion qui fait et défait le pouvoir, et un penseur rigoureux effacé du canon.",echo:"<b>Ce qu'on vous a appris :</b> qui est cité comme « fondateur » de la pensée sociale, et qui n'y figure jamais ?"},
@@ -398,13 +410,13 @@ textarea::placeholder{color:rgba(90,80,68,.55)}
     {n:4,t:"Indigénat",concept:"Une catégorie juridique qui inclut sur le papier et exclut dans les faits : sujet, jamais citoyen.",echo:"<b>Ce que vous lisez :</b> un statut ou une catégorie d'aujourd'hui qui donne d'une main et retire de l'autre."},
     {n:5,t:"Orientalisme",concept:"Le dispositif du regard : qui regarde, qui est mis en scène, et pour qui.",echo:"<b>Ce que vous lisez :</b> une image « ethnique » contemporaine, passée aux trois questions."},
     {n:6,t:"La femme, le regard",concept:"« Atteindre la femme pour atteindre la société » : le corps des femmes comme terrain politique.",echo:"<b>Ce que vous lisez :</b> un débat actuel sur le voile : la même grille y revient-elle ?",note:"Écart essentiel : le contexte juridique et politique d'aujourd'hui n'est pas celui de la colonie. Ne laissez pas le rapprochement l'effacer."},
-    {n:7,t:"Djebar, la langue",concept:"Écrire dans la langue de l'autre : à la fois butin et blessure ; la langue intime n'est pas la langue d'écriture.",echo:"<b>Votre propre vie :</b> vos langues : ce que chacune vous laisse dire, et ce qu'elle vous fait taire."},
-    {n:8,t:"Sexualisation de l'homme",concept:"La balance désir / menace comme instrument de contrôle.",echo:"<b>Ce que vous lisez :</b> un fait divers, une fiction : l'homme y est-il désiré, redouté, les deux ?"},
-    {n:9,t:"Abdelkader & Ibn Badis",concept:"Ce qui survit à une défaite militaire : la nation comme idée, langue, mémoire.",echo:"<b>Ce qu'on vous a appris / votre vie :</b> une défaite, et ce qu'elle n'a pas pu prendre."},
-    {n:10,t:"Bennabi, la colonisabilité",concept:"La colonisabilité : la disposition intérieure et les réflexes que la domination installe.",echo:"<b>Votre propre vie :</b> un réflexe (langue, corps, rapport à l'autorité) qui suppose que l'autre vaut mieux.",note:"Écart : Bennabi appelle à la responsabilité intérieure, sans « accuser le colonisé ». Tenez les deux."},
-    {n:11,t:"Fanon",concept:"Le regard de l'autre intériorisé : l'aliénation, ce que ce regard fabrique en nous.",echo:"<b>Votre vie + ce que vous lisez :</b> où le regard de l'autre a-t-il façonné une image de vous, ou des vôtres ?"},
-    {n:12,t:"Nationalismes",concept:"Le monopole de la représentation : effacer le pluriel pour imposer l'unité. L'islam comme terrain contesté, pas socle uniforme.",echo:"<b>Ce que vous lisez :</b> qui prétend parler seul au nom d'un groupe ; où un « bloc » supposé uniforme cache une pluralité réelle."},
-    {n:13,t:"Sétif, la guerre",concept:"Déraciner pour contrôler ; le chiffre comme objet politique ; le seuil où les voies légales se ferment.",echo:"<b>Ce qu'on vous a appris / ce que vous lisez :</b> un déplacement forcé, ou un bilan « contesté » : qui compte, et pourquoi."},
+    {n:7,t:"Sexualisation de l'homme",concept:"La balance désir / menace comme instrument de contrôle.",echo:"<b>Ce que vous lisez :</b> un fait divers, une fiction : l'homme y est-il désiré, redouté, les deux ?"},
+    {n:8,t:"Abdelkader & Ibn Badis",concept:"Ce qui survit à une défaite militaire : la nation comme idée, langue, mémoire.",echo:"<b>Ce qu'on vous a appris / votre vie :</b> une défaite, et ce qu'elle n'a pas pu prendre."},
+    {n:9,t:"Bennabi, la colonisabilité",concept:"La colonisabilité : la disposition intérieure et les réflexes que la domination installe.",echo:"<b>Votre propre vie :</b> un réflexe (langue, corps, rapport à l'autorité) qui suppose que l'autre vaut mieux.",note:"Écart : Bennabi appelle à la responsabilité intérieure, sans « accuser le colonisé ». Tenez les deux."},
+    {n:10,t:"Fanon",concept:"Le regard de l'autre intériorisé : l'aliénation, ce que ce regard fabrique en nous.",echo:"<b>Votre vie + ce que vous lisez :</b> où le regard de l'autre a-t-il façonné une image de vous, ou des vôtres ?"},
+    {n:11,t:"Nationalismes",concept:"Le monopole de la représentation : effacer le pluriel pour imposer l'unité. L'islam comme terrain contesté, pas socle uniforme.",echo:"<b>Ce que vous lisez :</b> qui prétend parler seul au nom d'un groupe ; où un « bloc » supposé uniforme cache une pluralité réelle."},
+    {n:12,t:"Le seuil, 1945",concept:"Une guerre ne commence pas quand la violence apparaît, mais quand une stratégie est réfutée par les faits.",echo:"<b>Ce que vous lisez / votre vie :</b> une voie légale ou institutionnelle empruntée jusqu'au bout — et le moment où l'on a su qu'elle ne mènerait nulle part.",note:"Écart : une réfutation dit ce qui ne marche pas ; elle ne dit jamais ce qui vient après. Neuf ans séparent 1945 de 1954. Ne transformez pas une cause en fatalité."},
+    {n:13,t:"La guerre, 1954–1962",concept:"Déraciner pour contrôler : le regroupement comme technique. Et le monopole qui se paie à l'intérieur.",echo:"<b>Ce qu'on vous a appris :</b> un récit de libération dont on vous a tu les règlements de comptes internes.",note:"Écart : Harbi lit le FLN sans complaisance. Une cause juste n'immunise pas une organisation. Tenez les deux."},
     {n:14,t:"La torture",concept:"La torture comme système : un cadre légal, une victime qui documente, un aveu d'État tardif.",echo:"<b>Ce que vous lisez :</b> une reconnaissance officielle tardive : ce qu'elle répare, ce qu'elle laisse intact."},
     {n:15,t:"La double absence",concept:"Ni tout à fait d'ici, ni tout à fait de là-bas : l'entre-deux de l'émigré-immigré.",echo:"<b>Votre propre vie :</b> une trace de ce double déplacement dans votre histoire familiale : ce que vous gardez, ce que vous transmettez.",note:"Clôture de l'arc. Vous basculez ensuite vers la synthèse."}
   ];
@@ -422,9 +434,8 @@ textarea::placeholder{color:rgba(90,80,68,.55)}
   var entriesEl=document.getElementById("entries");
   var toclist=document.getElementById("toclist");
   var headIdx=null;
-  // repère le <li> "Les quinze outils" pour insérer les modules après
-  var lis=toclist.querySelectorAll("li");
-  var insertAfter=lis[4]; // après le head "Les quinze outils"
+  // repère le <li> ancre "Les quinze outils" pour insérer les modules après
+  var insertAfter=document.getElementById("toc-anchor");
 
   MODULES.forEach(function(m){
     // lien TOC
