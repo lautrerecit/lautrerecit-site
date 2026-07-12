@@ -4,6 +4,7 @@
 export const SUB = 'https://autrerecit.substack.com';
 
 export const articles = [
+  { cat: 'Société',                       date: 'Juillet 2026', t: "Qui nous protège de la police ?", d: "Présomption d'usage légitime : la force protégée d'elle-même.", url: "https://autrerecit.substack.com/p/qui-nous-protege-de-la-police", cover: "/articles/police.jpg" },
   { cat: 'Société',                       date: 'Juin 2026',    t: "Pourquoi tout (dé)politiser ?", d: "La dépolitisation comme privilège.", url: "https://autrerecit.substack.com/p/pourquoi-tout-depolitiser", cover: "/articles/depolitiser.jpg" },
   { cat: 'Conflit',                       date: 'Mars 2026',    t: "Al-Aqsa sous verrou : ce que ça dit de nous", d: "Sommes-nous dignes de notre héritage ?", url: "https://autrerecit.substack.com/p/al-aqsa-sous-verrou-ce-que-ca-dit", cover: "/articles/alaqsa.jpg" },
   { cat: 'Géopolitique',                  date: 'Mars 2026',    t: "L'instrumentalisation médiatique de la condition des femmes iraniennes", d: "Sauver les femmes… ou le récit occidental dominant ?", url: "https://autrerecit.substack.com/p/linstrumentalisation-politique-et", cover: "/articles/iran.webp" },
