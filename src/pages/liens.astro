@@ -175,10 +175,20 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
    <span class="h-btn">Découvrir la formation <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
   </div>
  </a>
- <a class="glass" href={articleUrl} target="_blank" rel="noopener"><div class="g-inner"><span class="spot"></span><img class="thumb" src={latest.cover} alt="" loading="lazy" /><span class="num">01</span><span class="tx"><span class="lab">Lecture</span><span class="t">Notre dernier article</span><span class="s">{latest.t}</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
- <a class="glass" href={subUrl} target="_blank" rel="noopener"><div class="g-inner"><span class="spot"></span><span class="num">02</span><span class="tx"><span class="lab">Newsletter</span><span class="t">Substack</span><span class="s">Recevoir les textes longs</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
- <a class="glass" href="/"><div class="g-inner"><span class="spot"></span><span class="num">03</span><span class="tx"><span class="lab">Accueil</span><span class="t">Entrer dans le récit</span><span class="s">lautrerecit.com</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
- <a class="glass" href="mailto:contact@lautrerecit.com"><div class="g-inner"><span class="spot"></span><span class="num">04</span><span class="tx"><span class="lab">Contact</span><span class="t">Nous écrire</span><span class="s">contact@lautrerecit.com</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
+ <a class="hero-ph article" href={articleUrl} target="_blank" rel="noopener">
+  <img class="bg" src={latest.cover} alt="" />
+  <span class="scrim"></span><span class="glow"></span>
+  <div class="in">
+   <span class="h-badge"><span class="dot"></span>Nouvel article</span>
+   <div class="h-kick">{latest.cat} · {latest.date}</div>
+   <div class="h-title">{latest.t}</div>
+   <div class="h-desc">{latest.d}</div>
+   <span class="h-btn">Lire l'article <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+  </div>
+ </a>
+ <a class="glass" href={subUrl} target="_blank" rel="noopener"><div class="g-inner"><span class="spot"></span><span class="num">01</span><span class="tx"><span class="lab">Newsletter</span><span class="t">Substack</span><span class="s">Recevoir les textes longs</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
+ <a class="glass" href="/"><div class="g-inner"><span class="spot"></span><span class="num">02</span><span class="tx"><span class="lab">Accueil</span><span class="t">Entrer dans le récit</span><span class="s">lautrerecit.com</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
+ <a class="glass" href="mailto:contact@lautrerecit.com"><div class="g-inner"><span class="spot"></span><span class="num">03</span><span class="tx"><span class="lab">Contact</span><span class="t">Nous écrire</span><span class="s">contact@lautrerecit.com</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
 </div>
 
 <footer class="foot">
