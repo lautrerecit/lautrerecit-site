@@ -93,7 +93,7 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 .tx .s{display:block;font-size:12.5px;color:#AB9F88;margin-top:3px}
 .chev{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(196,162,74,.3);color:var(--or2);opacity:.75;transition:transform .3s,opacity .3s,background .3s;transform:translateZ(20px)}
 .chev svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.thumb{order:-1;flex:none;width:54px;height:54px;border-radius:12px;object-fit:cover;border:1px solid rgba(196,162,74,.4);filter:sepia(.22) saturate(1.05) brightness(1.02);box-shadow:0 8px 18px -10px rgba(0,0,0,.95);transform:translateZ(18px);transition:transform .3s}
+.thumb{order:-1;flex:none;width:54px;height:54px;border-radius:12px;object-fit:cover;border:1px solid rgba(196,162,74,.4);filter:grayscale(1) brightness(1.02) contrast(1.04);box-shadow:0 8px 18px -10px rgba(0,0,0,.95);transform:translateZ(18px);transition:transform .3s}
 .g-inner:has(.thumb) .num{display:none}
 .glass:hover .thumb{transform:translateZ(30px) scale(1.03)}
 .glass.cta .thumb{border-color:rgba(26,19,5,.4);box-shadow:0 8px 18px -10px rgba(0,0,0,.55)}
@@ -175,7 +175,7 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
    <span class="h-btn">Découvrir la formation <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
   </div>
  </a>
- <a class="glass" href={articleUrl} target="_blank" rel="noopener"><div class="g-inner"><span class="spot"></span><span class="num">01</span><span class="tx"><span class="lab">Lecture</span><span class="t">Notre dernier article</span><span class="s">{latest.t}</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
+ <a class="glass" href={articleUrl} target="_blank" rel="noopener"><div class="g-inner"><span class="spot"></span><img class="thumb" src={latest.cover} alt="" loading="lazy" /><span class="num">01</span><span class="tx"><span class="lab">Lecture</span><span class="t">Notre dernier article</span><span class="s">{latest.t}</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
  <a class="glass" href={subUrl} target="_blank" rel="noopener"><div class="g-inner"><span class="spot"></span><span class="num">02</span><span class="tx"><span class="lab">Newsletter</span><span class="t">Substack</span><span class="s">Recevoir les textes longs</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
  <a class="glass" href="/"><div class="g-inner"><span class="spot"></span><span class="num">03</span><span class="tx"><span class="lab">Accueil</span><span class="t">Entrer dans le récit</span><span class="s">lautrerecit.com</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
  <a class="glass" href="mailto:contact@lautrerecit.com"><div class="g-inner"><span class="spot"></span><span class="num">04</span><span class="tx"><span class="lab">Contact</span><span class="t">Nous écrire</span><span class="s">contact@lautrerecit.com</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
