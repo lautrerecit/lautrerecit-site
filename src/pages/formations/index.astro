@@ -3,12 +3,12 @@ import Base from '../../layouts/Base.astro';
 import { formations } from '../../data/formations.js';
 import FormationFeature from '../../components/FormationFeature.astro';
 
-// Toutes les formations disponibles, dans l'ordre du catalogue (Algérie en tête).
+// Toutes les formations disponibles, dans l'ordre du catalogue.
 const available = formations.filter((f) => f.status === 'available');
 ---
 <Base
   title="Formations — L'Autre Récit"
-  description="Le catalogue des formations d'histoire critique : nationalisme noir américain, Algérie coloniale et décoloniale, et plus à venir."
+  description="Le catalogue des formations d'histoire critique : nationalisme noir américain, et plus à venir."
 >
   <section class="section head">
     <div class="container">

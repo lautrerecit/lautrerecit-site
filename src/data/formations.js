@@ -1,18 +1,6 @@
 // Source unique des formations — utilisée par l'accueil et /formations/.
 export const formations = [
   {
-    slug: 'algerie',
-    title: "L'Algérie a pensé",
-    eyebrow: 'Cours · Maghreb',
-    blurb:
-      "Colonisation et décolonisation par les penseurs eux-mêmes — Fanon, Ibn Badis, Bennabi, Sayad, Djebar. L'autre récit de l'Algérie, écrit depuis l'intérieur.",
-    status: 'available', // ✅ PUBLIÉ — lancement 5 juillet 2026.
-    href: '/formations/algerie/', // → page pédagogique (renvoie au tunnel /algerie). Comme NNA.
-    duration: '6 cours',
-    accent: '#1F6B4A',
-    image: '/formations/algerie.jpg',
-  },
-  {
     slug: 'nationalisme-noir',
     title: 'Le nationalisme noir américain',
     eyebrow: 'Cours · États-Unis',
