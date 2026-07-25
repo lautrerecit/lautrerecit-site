@@ -138,7 +138,7 @@ Codes qui **étaient** dans le JS (retirés) :
 
 Passe complète sur `public/commande-test/index.html` (couleur/contraste, a11y, UX, juridique, code). **Corrigé & vérifié au DOM (:4399)** :
 - **UX/légal — consentement AVANT paiement** : les 2 cases (CGV + renonciation) sont remontées **au-dessus** du bouton PayPal (avant : bouton d'abord). Ordre `.pay` = payplan → checks → montant → PayPal → reassure → secure.
-- **Juridique** : ajout réf. **art. L221-28** dans la case de renonciation ; **garantie 7 j** requalifiée « **garantie commerciale** » (distincte du droit légal auquel on renonce, sinon message trompeur) ; **identité vendeur** en pied (L'Autre Récit · Rany WAHDAN · SIRET · adresse Montpellier · email) = info pré-contractuelle L221-5 ; ligne **RGPD** sous l'email (finalité + « aucun spam »).
+- **Juridique** : ajout réf. **art. L221-28** dans la case de renonciation ; **garantie 7 j** requalifiée « **garantie commerciale** » (distincte du droit légal auquel on renonce, sinon message trompeur) ; **identité vendeur** en pied (L'Autre Récit · Rany W · SIRET · adresse Montpellier · email) = info pré-contractuelle L221-5 ; ligne **RGPD** sous l'email (finalité + « aucun spam »).
 - **Honnêteté prix** : le plan 4× affiche désormais « puis 3 × 20,00 € · **total 79,99 €** » (avant : 4×20,00 = 80,00 laissait croire à un centime de plus).
 - **A11y** : `:focus-visible` doré (clavier) ; options de paiement en **radiogroup** navigables au clavier (role/tabindex/aria-checked + Entrée/Espace) ; SVG décoratifs `aria-hidden` ; `autocapitalize=off spellcheck=false` sur l'email.
 - **Contraste** : `.tva` (mention TVA légale) et `.secure`/`.foot-legal` remontés `#8a806d → #a99d86` (AA sur la carte).
