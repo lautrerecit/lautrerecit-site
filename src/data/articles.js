@@ -4,6 +4,7 @@
 export const SUB = 'https://autrerecit.substack.com';
 
 export const articles = [
+  { cat: 'Société',                       date: 'Septembre 2026', t: "Le problème du voile, porte d'entrée de l'islamophobie", d: "De l'indigénat au gel des comptes bancaires, ce que l'obsession du hijab révèle d'un mécanisme qui ne s'arrête jamais au foulard.", url: "https://autrerecit.substack.com/p/le-probleme-du-voile-miroir-de-lislamophobie", cover: "/articles/voile.jpg" },
   { cat: 'Société',                       date: 'Juillet 2026', t: "Qui nous protège de la police ?", d: "Présomption d'usage légitime : la force protégée d'elle-même.", url: "https://autrerecit.substack.com/p/qui-nous-protege-de-la-police", cover: "/articles/police.jpg" },
   { cat: 'Société',                       date: 'Juin 2026',    t: "Pourquoi tout (dé)politiser ?", d: "La dépolitisation comme privilège.", url: "https://autrerecit.substack.com/p/pourquoi-tout-depolitiser", cover: "/articles/depolitiser.jpg" },
   { cat: 'Conflit',                       date: 'Mars 2026',    t: "Al-Aqsa sous verrou : ce que ça dit de nous", d: "Sommes-nous dignes de notre héritage ?", url: "https://autrerecit.substack.com/p/al-aqsa-sous-verrou-ce-que-ca-dit", cover: "/articles/alaqsa.jpg" },
