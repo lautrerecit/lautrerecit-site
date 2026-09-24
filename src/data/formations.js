@@ -23,6 +23,7 @@ export const formations = [
     duration: '15 modules',
     accent: '#1F6B4A',
     image: '/formations/algerie.jpg',
+    imagePosition: 'center 62%',
   },
   {
     slug: 'afrique-colonisation',
