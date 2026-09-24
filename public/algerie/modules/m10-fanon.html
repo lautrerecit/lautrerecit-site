@@ -1,0 +1,1190 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Frantz Fanon — aliénation et violence · Module 10 · L’Algérie a pensé</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400;1,6..72,500&family=Poppins:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cr:#F2EDE4; --cr2:#EAE3D8; --cr3:#D4C9B8; --paper:#FAF6EB; --paper-w:#FFFCF4;
+  --em:#1F6B4A; --em-d:#13442E; --em-deep:#0A2C1E; --em-l:#2D8862; --em-bright:#3CA47A;
+  --or:#9A7B2E; --or2:#C4A24A; --or3:#D4B05A; --or-deep:#7A5E1F; --or-flow1:#F4DC92; --or-flow2:#B98E32;
+  --red:#5E1622; --red-hi:#7A2236; --red-low:#4A1320;
+  --ink:#0E0C0A; --ink2:#1A1714; --ink3:#3D3730;
+  --terre:#B8553A;
+  --av:'Poppins','Avant Garde Gothic',sans-serif;
+  --title:'Playfair Display',Georgia,serif;
+  --num:'Playfair Display',Georgia,serif;
+  --long:'DM Sans',system-ui,sans-serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --ar:'Amiri',serif;
+  --t-hero:clamp(60px,9vw,140px);
+  --t-question:clamp(42px,5.2vw,68px);
+  --t-section:clamp(33px,4.3vw,54px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--cr);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow:hidden}
+@keyframes foilFlow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+@keyframes drawLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes scan{0%{transform:translateX(-120%) skewX(-12deg);opacity:0}10%{opacity:.85}50%{transform:translateX(260%) skewX(-12deg);opacity:.85}60%,100%{opacity:0}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes haloPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.7;transform:scale(1.02)}}
+@keyframes pgScan{0%{transform:translateX(-100%);opacity:0}12%{opacity:.9}50%{transform:translateX(220%);opacity:.9}65%{opacity:0}100%{transform:translateX(220%);opacity:0}}
+@keyframes pdGlow{0%,100%{box-shadow:0 26px 60px -18px rgba(20,4,10,.6),0 0 0 1px rgba(196,162,74,.2),0 0 60px -10px rgba(212,176,90,.35),0 0 130px -20px rgba(232,199,110,.25)}50%{box-shadow:0 32px 80px -18px rgba(20,4,10,.7),0 0 0 1px rgba(212,176,90,.34),0 0 100px -10px rgba(232,199,110,.55),0 0 200px -20px rgba(232,199,110,.4)}}
+@keyframes orbit{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.foil{background:linear-gradient(110deg,#8a6d28,#C4A24A 16%,#F4DC92 30%,#E8C76E 44%,#9A7B2E 58%,#D4B05A 72%,#F8E3A0 86%,#C4A24A 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:foilFlow 7s linear infinite}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.foil{background-position:0 50%}}
+
+.stage{position:fixed;inset:0;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;opacity:0;transition:opacity .4s ease;flex-direction:column;align-items:flex-start;justify-content:center;padding:90px 130px;text-align:left;color:var(--ink)}
+.slide.active{display:flex;opacity:1}
+.slide>*{position:relative;z-index:2}
+.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 25%,rgba(196,162,74,.08),transparent 60%),linear-gradient(155deg,var(--cr) 0%,var(--cr2) 100%);z-index:0}
+.slide.cover::before{background:radial-gradient(ellipse 70% 55% at 50% 35%,rgba(196,162,74,.12),transparent 60%),linear-gradient(160deg,var(--cr) 0%,var(--cr2) 70%,#DDD2BD 100%)}
+.slide.em{color:var(--cr)}
+.slide.em::before{background:radial-gradient(ellipse 80% 60% at 30% 25%,rgba(60,164,122,.18),transparent 60%),linear-gradient(155deg,var(--em-d) 0%,var(--em-deep) 70%,#06231A 100%)}
+.slide.ink{color:var(--cr)}
+.slide.ink::before{background:radial-gradient(ellipse 70% 55% at 50% 30%,rgba(196,162,74,.14),transparent 60%),linear-gradient(160deg,var(--em-d) 0%,var(--em-deep) 70%,#06231A 100%)}
+.slide.red{color:var(--cr)}
+.slide.red::before{background:radial-gradient(ellipse 70% 55% at 50% 30%,rgba(232,199,110,.14),transparent 60%),linear-gradient(160deg,var(--red-hi) 0%,var(--red) 55%,var(--red-low) 100%)}
+.slide.or{color:var(--cr)}
+.slide.or::before{background:radial-gradient(ellipse 75% 60% at 50% 35%,rgba(244,220,146,.16),transparent 62%),linear-gradient(160deg,#3a2c0e 0%,#241a08 60%,#15100a 100%)}
+.slide::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.04;mix-blend-mode:overlay;pointer-events:none;z-index:1}
+
+/* CHROME */
+.eyebrow{position:absolute;top:38px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--or-deep);z-index:30;display:inline-flex;align-items:center;gap:14px}
+.eyebrow::before,.eyebrow::after{content:"";width:24px;height:1px;background:var(--or2);opacity:.7}
+.slide.em .eyebrow,.slide.ink .eyebrow,.slide.red .eyebrow,.slide.or .eyebrow{color:var(--or3)}
+.slide.em .eyebrow::before,.slide.em .eyebrow::after,.slide.ink .eyebrow::before,.slide.ink .eyebrow::after,.slide.red .eyebrow::before,.slide.red .eyebrow::after,.slide.or .eyebrow::before,.slide.or .eyebrow::after{background:var(--or3)}
+.kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);margin-bottom:18px}
+.kicker::before{content:"";width:32px;height:1px;background:var(--or2)}
+.kicker em{font-family:var(--title);font-style:italic;font-weight:700;text-transform:none;letter-spacing:.005em;font-size:14px;color:var(--or-deep)}
+.slide.em .kicker,.slide.ink .kicker,.slide.red .kicker{color:var(--or3)}
+.slide.em .kicker::before,.slide.ink .kicker::before,.slide.red .kicker::before{background:var(--or3)}
+.slide.em .kicker em,.slide.ink .kicker em,.slide.red .kicker em{color:var(--or3)}
+
+/* NAV */
+.navchrome{position:fixed;left:0;right:0;bottom:0;height:64px;z-index:40;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 56px;pointer-events:none}
+.navchrome>*{pointer-events:auto}
+.navchrome::before{content:"";position:absolute;left:0;right:0;bottom:0;top:0;background:linear-gradient(0deg,rgba(40,28,8,.18),transparent);z-index:-1}
+.nav-brand{font-family:var(--av);font-weight:500;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--or-deep);display:inline-flex;align-items:center;gap:12px}
+.nav-brand .dot{width:5px;height:5px;border-radius:50%;background:var(--or2);box-shadow:0 0 0 3px rgba(196,162,74,.2)}
+.nav-seg{display:flex;gap:5px;align-items:center;justify-self:center}
+.nav-seg i{width:16px;height:3px;border-radius:2px;background:rgba(40,28,8,.16);transition:.5s cubic-bezier(.7,0,.3,1)}
+.nav-seg i.done{background:var(--or2);opacity:.7}
+.nav-seg i.on{width:30px;background:linear-gradient(90deg,var(--or2),var(--or3));box-shadow:0 0 10px rgba(232,199,110,.45)}
+.nav-count{font-family:var(--num);font-style:italic;font-weight:900;font-size:22px;color:var(--or-deep);letter-spacing:.01em;display:inline-flex;align-items:baseline;gap:3px;justify-self:end}
+.nav-count sup{font-family:var(--mono);font-size:10px;font-style:normal;font-weight:500;color:rgba(61,55,48,.5)}
+.navbtn{position:fixed;top:50%;width:56px;height:56px;border-radius:50%;border:1px solid var(--or2);background:rgba(242,237,228,.6);backdrop-filter:blur(8px) saturate(140%);-webkit-backdrop-filter:blur(8px) saturate(140%);display:grid;place-items:center;cursor:pointer;z-index:45;transform:translateY(-50%);transition:transform .5s cubic-bezier(.34,1.4,.5,1),box-shadow .5s,border-color .4s,background .4s,opacity .4s}
+.navbtn.prev{left:28px}.navbtn.next{right:28px}
+.navbtn::before{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,var(--or3),var(--or2));transform:scale(0);transition:transform .55s cubic-bezier(.34,1.5,.4,1)}
+.navbtn svg{width:20px;height:20px;fill:none;stroke:var(--or2);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:2;transition:stroke .4s,transform .45s cubic-bezier(.34,1.4,.5,1)}
+.navbtn:hover{border-color:transparent;transform:translateY(-50%) scale(1.08);box-shadow:0 0 0 6px rgba(232,199,110,.14),0 22px 44px -14px rgba(232,199,110,.55)}
+.navbtn:hover::before{transform:scale(1)}.navbtn:hover svg{stroke:var(--ink)}
+.navbtn.prev:hover svg{transform:translateX(-3px)}.navbtn.next:hover svg{transform:translateX(3px)}
+.navbtn:disabled{opacity:.25;cursor:default;pointer-events:none}
+.hint{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(61,55,48,.5);transition:opacity .5s}
+.hint .arr{color:var(--or2);font-weight:600}
+.hint.gone{opacity:0;pointer-events:none}
+.slide.em .hint,.slide.ink .hint,.slide.red .hint,.slide.or .hint{color:rgba(232,199,110,.5)}
+.slide.em .hint .arr,.slide.ink .hint .arr,.slide.red .hint .arr,.slide.or .hint .arr{color:var(--or3)}
+
+/* S1 COVER — portrait module (.ph-portrait / .p-mono) */
+#s1{align-items:center;justify-content:center;text-align:center}
+#s1 .wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ar);font-weight:700;font-size:300px;line-height:1;color:rgba(154,123,46,.07);pointer-events:none;z-index:0;direction:rtl}
+#s1 .meta-tag{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:46px;display:inline-flex;align-items:center;gap:14px}
+#s1 .meta-tag::before,#s1 .meta-tag::after{content:"";width:30px;height:1px;background:var(--or2);opacity:.55}
+#s1 .t1{font-family:var(--av);font-weight:500;font-size:clamp(60px,9vw,140px);line-height:.88;letter-spacing:-.04em;color:var(--ink);position:relative;display:inline-block;z-index:2}
+#s1 .t1::before{content:"";position:absolute;inset:-20% -10%;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(196,162,74,.22),transparent 60%);z-index:-1}
+#s1 .t1 .foil{font-family:var(--av);font-style:normal;font-weight:500}
+#s1 .sub{margin-top:34px;font-family:var(--title);font-style:italic;font-size:22px;color:var(--ink2);max-width:760px;line-height:1.4;position:relative;z-index:2}
+#s1 .sub em{color:var(--or-deep);font-weight:700}
+#s1 .filet{margin:28px auto 0;width:120px;height:1px;background:var(--or2);opacity:.55}
+#s1 .dates{margin-top:18px;font-family:var(--num);font-style:italic;font-weight:900;font-size:22px;color:var(--or-deep);letter-spacing:.02em;position:relative;z-index:2}
+#s1 .meta{position:absolute;bottom:120px;left:50%;transform:translateX(-50%);display:flex;gap:36px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(61,55,48,.55);font-weight:500}
+#s1 .meta i{font-style:normal;color:var(--or-deep);font-weight:700;margin-right:8px}
+
+/* S2 QUESTION émeraude */
+#s2{align-items:center;justify-content:center;text-align:center}
+#s2 .wrap{max-width:1100px;width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+#s2 .kicker{justify-content:center}
+#s2 .q{font-family:var(--long);font-weight:400;font-size:var(--t-question);line-height:1.15;letter-spacing:-.014em;color:var(--cr);max-width:1000px;text-align:center}
+#s2 .q em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s2 .rep{margin:30px auto 0;font-family:var(--long);font-size:21px;line-height:1.7;color:rgba(242,237,228,.9);max-width:800px;text-align:left;opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s}
+#s2.is-on .rep{opacity:1;transform:none}
+#s2 .rep strong{color:var(--or3);font-weight:700;font-style:normal}
+#s2 .ar-side{position:absolute;top:84px;right:104px;text-align:right;z-index:3}
+#s2 .ar-side .a{font-family:var(--ar);font-size:40px;direction:rtl;line-height:1;color:var(--or3)}
+#s2 .ar-side .f{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,199,110,.6);margin-top:8px}
+
+/* S3 ANCRAGE biographique — 3 cards */
+#s3{align-items:center;justify-content:center;text-align:center}
+#s3 .anc-card{text-align:left}
+#s3 .head{margin-bottom:36px;max-width:1100px;text-align:center;margin-left:auto;margin-right:auto}
+#s3 .head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:14px}
+#s3 .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;letter-spacing:-.018em;color:var(--ink)}
+#s3 .head h2 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s3 .anc{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;width:100%;max-width:1200px;margin:0 auto}
+#s3 .anc-card{position:relative;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.3);border-radius:14px;padding:30px 28px 26px;box-shadow:0 18px 44px -20px rgba(20,12,4,.4),inset 0 1px 0 rgba(255,255,255,.85);opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s cubic-bezier(.34,1.4,.5,1),box-shadow .5s,border-color .4s;overflow:hidden}
+#s3 .anc-card.revealed{opacity:1;transform:none}
+#s3 .anc-card .sh{position:absolute;inset:0;border-radius:14px;overflow:hidden;pointer-events:none}
+#s3 .anc-card.revealed .sh::after{content:"";position:absolute;top:-50%;left:-60%;width:50%;height:200%;background:linear-gradient(115deg,transparent 40%,rgba(232,199,110,.4) 50%,transparent 60%);animation:scan 1.6s ease}
+#s3 .anc-card:hover{transform:translateY(-6px);border-color:var(--or2);box-shadow:0 30px 64px -20px rgba(20,12,4,.55),0 0 60px -16px rgba(232,199,110,.35),inset 0 1px 0 rgba(255,255,255,.9)}
+#s3 .anc-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or2),var(--or3),var(--or2),transparent)}
+#s3 .anc-card .d{position:relative;font-family:var(--num);font-style:italic;font-weight:900;font-size:30px;color:var(--or-deep);line-height:.95;margin-bottom:4px;z-index:2}
+#s3 .anc-card .pl{position:relative;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--or);font-weight:700;margin-bottom:12px;z-index:2}
+#s3 .anc-card .t{position:relative;font-family:var(--av);font-weight:500;font-size:17px;color:var(--ink);line-height:1.2;margin-bottom:8px;z-index:2}
+#s3 .anc-card .t em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s3 .anc-card .x{position:relative;font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--ink2);z-index:2}
+#s3 .lede{margin-top:30px;max-width:900px;margin-left:auto;margin-right:auto;text-align:center;font-family:var(--long);font-size:18px;line-height:1.6;color:var(--ink2);opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s}
+#s3 .lede.revealed{opacity:1;transform:none}
+#s3 .lede em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+
+/* S5 STÈLE concept */
+#s5{align-items:center;justify-content:center;text-align:center}
+#s5 .stele{position:relative;max-width:900px;width:100%;background:linear-gradient(165deg,var(--em-d),var(--em-deep));border:1px solid var(--or2);border-radius:18px;padding:58px 72px 52px;box-shadow:0 60px 120px -50px #000,0 0 0 1px rgba(212,176,90,.2),0 0 110px -30px rgba(232,199,110,.3),inset 0 1px 0 rgba(212,176,90,.25);overflow:hidden}
+#s5 .stele::before{content:"";position:absolute;top:14px;left:14px;right:14px;bottom:14px;border:.5px solid rgba(212,176,90,.45);border-radius:11px;pointer-events:none}
+#s5 .stele::after{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(105deg,transparent,rgba(255,246,220,.18),transparent);transform:skewX(-12deg);opacity:0;pointer-events:none}
+#s5.is-on .stele::after{animation:scan 1.8s ease}
+#s5 .stele .ar{font-family:var(--ar);font-weight:700;font-size:50px;color:var(--or3);direction:rtl;line-height:1;margin-bottom:12px}
+#s5 .stele .word{font-family:var(--av);font-weight:500;font-size:clamp(50px,7.6vw,98px);line-height:.95;letter-spacing:-.035em;color:#fff}
+#s5 .stele .word em{font-style:italic;color:var(--or3)}
+#s5 .stele .src{margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or3);font-weight:600}
+#s5 .stele .open{max-height:0;opacity:0;overflow:hidden;transition:max-height .8s cubic-bezier(.7,0,.3,1),opacity .7s,margin .7s}
+#s5 .stele.opened .open{max-height:360px;opacity:1;margin-top:30px;padding-top:26px;border-top:.5px solid rgba(212,176,90,.4)}
+#s5 .stele .cite{font-family:var(--title);font-style:italic;font-size:21px;line-height:1.45;color:var(--or3);max-width:720px;margin:0 auto 16px}
+#s5 .stele .def{font-family:var(--sans);font-size:17px;line-height:1.6;color:rgba(255,246,236,.86);max-width:680px;margin:0 auto}
+#s5 .stele .def em{color:var(--or3);font-style:italic;font-weight:600;font-family:var(--title)}
+
+/* S6 DOCUMENT ANNOTÉ — couverture Peau noire (pattern P09, fond crème) */
+#s6{align-items:center;justify-content:center;text-align:center}
+#s6 .cartel{text-align:left}
+#s6 .wrap6{display:grid;grid-template-columns:1.28fr .72fr;align-items:center;gap:40px;width:100%;max-width:1200px;margin:0 auto}
+#s6 .doc-wrap{position:relative;display:flex;align-items:center;justify-content:flex-start;padding-left:8px}
+#s6 .doc-archive{position:relative;width:min(420px,42vw);box-shadow:-20px 30px 60px -16px rgba(20,8,10,.5),-3px 6px 0 0 var(--cr3),-8px 13px 0 0 var(--cr2);transform:rotate(-2deg);transition:transform .7s cubic-bezier(.34,1.2,.5,1)}
+#s6 .doc-archive:hover{transform:rotate(0) translateY(-5px)}
+#s6 .doc-archive img{display:block;width:100%;filter:grayscale(.3) sepia(.22) contrast(1.06) brightness(1.04);border:1px solid rgba(122,94,31,.3)}
+#s6 .anno{position:absolute;display:flex;align-items:center;gap:0;z-index:4}
+#s6 .anno.a1{top:11%;right:-104px}
+#s6 .anno.a2{top:48%;right:-116px}
+#s6 .anno.a3{bottom:13%;right:-96px}
+#s6 .anno .dot{width:7px;height:7px;border-radius:50%;background:var(--or2);box-shadow:0 0 0 3px rgba(196,162,74,.2);flex-shrink:0}
+#s6 .anno .lead{width:40px;height:1px;background:linear-gradient(90deg,var(--or2),rgba(196,162,74,.3))}
+#s6 .anno .lbl{font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--or3);line-height:1.45;white-space:nowrap}
+#s6 .anno .lbl b{color:#FCF8EF;font-weight:700}
+#s6 .cartel{position:relative;padding-left:40px}
+#s6 .cartel .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or3);font-weight:600;margin-bottom:14px}
+#s6 .cartel h2{font-family:var(--title);font-style:italic;font-weight:700;font-size:clamp(26px,3vw,38px);line-height:1.12;color:#FCF8EF;margin-bottom:18px}
+#s6 .cartel .read{font-family:var(--sans);font-size:14.5px;line-height:1.7;color:rgba(245,240,232,.9);max-width:340px;margin-bottom:20px}
+#s6 .cartel .read em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s6 .cartel .src{font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--or-deep);line-height:1.6;padding-top:14px;border-top:.5px solid rgba(154,123,46,.3)}
+#s6 .cartel .src em{font-family:var(--num);font-style:italic;font-weight:900;color:var(--or-deep);font-size:13px}
+
+/* S7 COMMENTAIRE — 3 cards + climax rouge */
+#s7{align-items:center;justify-content:center;text-align:center}
+#s7 .anc-card{text-align:left}
+#s7 .head{margin-bottom:34px;max-width:1100px;text-align:center;margin-left:auto;margin-right:auto}
+#s7 .head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:14px}
+#s7 .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;letter-spacing:-.018em;color:var(--ink)}
+#s7 .head h2 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s7 .anc{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;width:100%;max-width:1200px;margin:0 auto}
+#s7 .anc-card{position:relative;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.3);border-radius:14px;padding:28px 26px 24px;box-shadow:0 18px 44px -20px rgba(20,12,4,.4),inset 0 1px 0 rgba(255,255,255,.85);opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s cubic-bezier(.34,1.4,.5,1),box-shadow .5s,border-color .4s;overflow:hidden;display:flex;flex-direction:column}
+#s7 .anc-card.revealed{opacity:1;transform:none}
+#s7 .anc-card:hover{transform:translateY(-6px);border-color:var(--or2);box-shadow:0 30px 64px -20px rgba(20,12,4,.55),0 0 60px -16px rgba(232,199,110,.35),inset 0 1px 0 rgba(255,255,255,.9)}
+#s7 .anc-card .sh{position:absolute;inset:0;border-radius:14px;overflow:hidden;pointer-events:none}
+#s7 .anc-card.revealed .sh::after{content:"";position:absolute;top:-50%;left:-60%;width:50%;height:200%;background:linear-gradient(115deg,transparent 40%,rgba(232,199,110,.4) 50%,transparent 60%);animation:scan 1.6s ease}
+#s7 .anc-card .n{position:relative;font-family:var(--ar);font-weight:700;font-size:clamp(46px,4.8vw,62px);line-height:.9;color:var(--or2);align-self:flex-start;direction:rtl;flex:0 0 auto;z-index:2;margin-bottom:6px}
+#s7 .anc-card .t{position:relative;font-family:var(--av);font-weight:500;font-size:18px;color:var(--ink);line-height:1.18;margin-bottom:10px;z-index:2}
+#s7 .anc-card .t em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s7 .anc-card .x{position:relative;font-family:var(--sans);font-size:13.5px;line-height:1.58;color:var(--ink2);z-index:2}
+#s7 .anc-card .x em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s7 .anc-card.climax{background:linear-gradient(165deg,var(--red-hi),var(--red) 60%,var(--red-low));border-color:var(--or3)}
+#s7 .anc-card.climax::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or3),var(--or2),var(--or3),transparent)}
+#s7 .anc-card.climax .n,#s7 .anc-card.climax .t{color:var(--or3)}
+#s7 .anc-card.climax .t em{color:var(--or3)}
+#s7 .anc-card.climax .x{color:rgba(242,237,228,.9)}
+#s7 .anc-card.climax .x em{color:var(--or3)}
+
+/* S8 TRANSITION or */
+#s8{align-items:center;justify-content:center;text-align:center}
+#s8 .lab{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--or3);font-weight:600;margin-bottom:30px}
+#s8 .line{font-family:var(--av);font-weight:500;font-size:clamp(30px,3.8vw,50px);line-height:1.2;letter-spacing:-.02em;color:var(--cr);max-width:1000px;text-align:center}
+#s8 .line em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s8 .filet{margin:34px auto 0;width:90px;height:1px;background:var(--or3);opacity:.55}
+#s8 .ar-foot{margin-top:30px;text-align:center}
+#s8 .ar-foot .a{font-family:var(--ar);font-size:34px;direction:rtl;line-height:1;color:var(--or3)}
+#s8 .ar-foot .f{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,199,110,.6);margin-top:8px}
+
+/* S9 NIVEAU 3 + aujourd'hui */
+#s9{align-items:center;justify-content:center;text-align:center}
+#s9 .body{text-align:left}
+#s9 .head{margin-bottom:30px;max-width:1180px;margin-left:auto;margin-right:auto;text-align:center}
+#s9 .head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:12px}
+#s9 .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;color:var(--ink)}
+#s9 .head h2 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s9 .wrap9{display:grid;grid-template-columns:.92fr 1.08fr;gap:52px;align-items:center;width:100%;max-width:1280px;margin:0 auto}
+#s9 .ph{position:relative;background:var(--paper-w);padding:13px 13px 11px;border-radius:4px;box-shadow:0 6px 14px rgba(20,12,4,.2),0 36px 80px -34px rgba(20,12,4,.55),0 0 0 1px rgba(212,176,90,.35),inset 0 1px 0 rgba(255,255,255,.9);transform:rotate(-1.2deg);transition:transform .6s cubic-bezier(.34,1.2,.5,1)}
+#s9 .ph:hover{transform:rotate(0) translateY(-5px)}
+#s9 .ph::after{content:"";position:absolute;inset:13px 13px 11px;box-shadow:inset 0 0 0 1px rgba(40,28,8,.18);pointer-events:none;z-index:2}
+#s9 .ph img{display:block;width:100%;height:420px;object-fit:cover;object-position:center 30%;filter:grayscale(.3) sepia(.22) contrast(1.06) brightness(1.04)}
+#s9 .ph .line{position:absolute;left:13px;right:13px;bottom:11px;height:2px;background:linear-gradient(90deg,transparent,var(--or2) 35%,var(--or-flow1) 55%,var(--or3) 75%,transparent);z-index:3}
+#s9 .ph .cred{margin-top:11px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--or-deep);text-align:center}
+#s9 .ph .cred em{font-family:var(--num);font-style:italic;font-weight:900;color:var(--or-deep);font-size:11px;text-transform:none}
+#s9 .body .central{font-family:var(--long);font-size:21px;line-height:1.55;color:var(--ink);margin-bottom:24px;max-width:680px}
+#s9 .body .central em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s9 .lines{display:flex;flex-direction:column;gap:14px}
+#s9 .ln{display:flex;gap:16px;align-items:flex-start;opacity:0;transform:translateX(16px);transition:opacity .6s,transform .6s cubic-bezier(.34,1.4,.5,1)}
+#s9 .ln.revealed{opacity:1;transform:none}
+#s9 .ln .dot{flex-shrink:0;width:9px;height:9px;border-radius:50%;margin-top:7px;background:radial-gradient(circle at 38% 30%,var(--or-flow1),var(--or2));box-shadow:0 0 10px rgba(232,199,110,.5)}
+#s9 .ln p{font-family:var(--sans);font-size:14.5px;line-height:1.55;color:var(--ink2);max-width:620px}
+#s9 .ln p em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s9 .ln .qt{font-family:var(--title);font-style:italic;font-weight:400;color:var(--ink)}
+
+/* S10 CITATION signature — DALLE ROUGE */
+#s10{align-items:center;justify-content:center;text-align:center}
+/* (ancienne plaque-citation #s10 retirée — slide devenue le débat Fanon/Sartre/Arendt) */
+
+/* S11 QUESTION OUVERTE */
+#s11{align-items:center;justify-content:center;text-align:center}
+#s11 .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:26px;display:inline-flex;align-items:center;gap:14px}
+#s11 .lab::before{content:"";width:32px;height:1px;background:var(--or2)}
+/* (ancien exercice à lignes vides #s11 retiré — slide devenue le dossier refermé) */
+
+/* S12 SYNTHÈSE 3 cards rouge */
+#s12{align-items:center;justify-content:center;text-align:center}
+#s12 .wrap{max-width:1180px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
+#s12 .lab{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--or3);font-weight:600;margin-bottom:22px;display:inline-flex;align-items:center;gap:14px}
+#s12 .lab::before,#s12 .lab::after{content:"";width:24px;height:1px;background:var(--or3);opacity:.7}
+#s12 .h{font-family:var(--av);font-weight:500;font-size:clamp(32px,4.2vw,50px);line-height:1.05;letter-spacing:-.025em;color:var(--cr);max-width:1000px;margin-bottom:54px}
+#s12 .h em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s12 .acquis{display:grid;grid-template-columns:repeat(3,1fr);gap:42px;width:100%;max-width:1100px;margin-bottom:46px;padding:0 22px 0 30px}
+#s12 .syn-card{position:relative;background:linear-gradient(180deg,var(--paper-w) 0%,var(--cr2) 100%);border:1px solid rgba(154,123,46,.4);border-radius:12px;padding:30px 28px 28px;min-height:228px;text-align:left;display:flex;flex-direction:column;box-shadow:0 26px 60px -18px rgba(20,4,10,.6),0 0 0 1px rgba(196,162,74,.2),0 0 60px -10px rgba(212,176,90,.35),0 0 130px -20px rgba(232,199,110,.25);opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.7,0,.3,1),transform .7s cubic-bezier(.34,1.4,.5,1),box-shadow .55s}
+#s12 .syn-card.revealed{opacity:1;transform:none;animation:pdGlow 5s ease-in-out infinite}
+#s12 .syn-card.revealed:nth-child(2){animation-delay:-1.6s}
+#s12 .syn-card.revealed:nth-child(3){animation-delay:-3.2s}
+#s12 .syn-card.pop{transform:translateY(-10px) scale(1.04) rotate(-.5deg);animation-play-state:paused;box-shadow:0 50px 110px -22px rgba(20,4,10,.75),0 0 0 1.5px var(--or2),0 0 130px -8px rgba(232,199,110,.7),0 0 260px -20px rgba(232,199,110,.5)}
+#s12 .syn-card:hover{transform:translateY(-10px) scale(1.02);animation-play-state:paused;box-shadow:0 50px 110px -22px rgba(20,4,10,.75),0 0 0 1.5px var(--or2),0 0 130px -8px rgba(232,199,110,.7),0 0 260px -20px rgba(232,199,110,.5)}
+#s12 .syn-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or2),var(--or3),var(--or2),transparent);z-index:3}
+#s12 .syn-card .sh{position:absolute;inset:0;border-radius:12px;overflow:hidden;pointer-events:none;z-index:1}
+#s12 .syn-card.revealed .sh::after{content:"";position:absolute;top:-50%;left:-50%;width:55%;height:200%;background:linear-gradient(115deg,transparent 35%,rgba(232,199,110,.32) 45%,rgba(255,246,220,.55) 50%,rgba(232,199,110,.32) 55%,transparent 65%);transform:translateX(-100%);animation:pgScan 6s ease-in-out infinite;mix-blend-mode:overlay}
+#s12 .syn-card.revealed:nth-child(2) .sh::after{animation-delay:-2s}
+#s12 .syn-card.revealed:nth-child(3) .sh::after{animation-delay:-4s}
+#s12 .syn-card .n{display:block;font-family:var(--ar);font-weight:700;font-size:44px;line-height:.9;color:var(--or2);direction:rtl;text-shadow:0 2px 10px rgba(20,4,10,.4);margin-bottom:6px}
+#s12 .syn-card:hover .n,#s12 .syn-card.pop .n{transform:translateY(-2px)}
+#s12 .syn-card .tag{position:relative;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--or-deep);z-index:3;margin-bottom:8px}
+#s12 .syn-card .ti{position:relative;font-family:var(--title);font-style:italic;font-weight:700;font-size:19px;color:var(--ink);line-height:1.18;margin-bottom:10px;z-index:3}
+#s12 .syn-card .ti em{color:var(--or-deep)}
+#s12 .syn-card .ru{width:32px;height:1.5px;background:var(--or2);margin-bottom:12px;position:relative;z-index:3}
+#s12 .syn-card p{position:relative;font-family:var(--sans);font-size:13.5px;line-height:1.6;color:var(--ink2);z-index:3}
+#s12 .syn-card p em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s12 .next{padding:16px 32px;background:rgba(244,237,228,.92);border:1px dashed var(--or2);border-radius:100px;display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--or-deep);font-weight:700;box-shadow:0 4px 10px rgba(20,4,10,.3),0 22px 40px -14px rgba(20,4,10,.55),0 0 60px -16px rgba(232,199,110,.4),inset 0 1px 0 rgba(255,255,255,.85);opacity:0;transform:translateY(10px);transition:opacity .6s,transform .5s cubic-bezier(.34,1.4,.5,1)}
+#s12 .next.revealed{opacity:1;transform:none}
+#s12 .next::before{content:"→";font-family:var(--num);font-style:italic;font-size:20px;color:var(--or-deep)}
+#s12 .next b{color:var(--ink);font-weight:700;letter-spacing:.2em}
+#s12 .next em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or);text-transform:none;letter-spacing:.005em;font-size:14px}
+
+:focus-visible{outline:2px solid var(--or2);outline-offset:3px;border-radius:2px}
+.navbtn:focus-visible,button:focus-visible{outline-offset:4px}
+
+/* P2-POLISH · responsive fallback + finition typo */
+html{font-kerning:normal;font-feature-settings:"kern" 1,"liga" 1,"clig" 1}
+@media(max-width:1100px){.slide{padding:60px 56px}}
+@media(max-width:760px){.slide{padding:40px 24px}.navchrome{padding:0 18px}.navbtn.prev{left:10px}.navbtn.next{right:10px}}
+/* DA-CHROME-V2 START · sérif éditorial italique (Newsreader) — verrouillé 26 juin */
+.eyebrow{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:15.5px!important;letter-spacing:.005em!important;text-transform:none!important;gap:0!important}
+.eyebrow::before,.eyebrow::after{display:none!important}
+.eyebrow span{font-style:italic!important;letter-spacing:.005em!important}
+.kicker{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:16px!important;letter-spacing:.01em!important;text-transform:none!important}
+.kicker::before,.kicker::after{display:none!important}
+.kicker em{font-family:var(--long),Georgia,serif!important;font-style:italic!important}
+.hint{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:15px!important;letter-spacing:.01em!important;text-transform:none!important}
+.lab{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:13.5px!important;letter-spacing:.01em!important;text-transform:none!important}
+.foot{font-family:var(--long),Georgia,serif!important;font-style:italic!important;letter-spacing:.01em!important;text-transform:none!important}
+#s1 .meta-tag{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:16px!important;letter-spacing:.01em!important;text-transform:none!important}
+#s1 .meta{font-family:var(--long),Georgia,serif!important;font-style:italic!important;letter-spacing:.01em!important;text-transform:none!important;font-variant-numeric:oldstyle-nums}
+#s1 .meta i{font-style:italic!important}
+.nav-brand{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;letter-spacing:.02em!important;text-transform:none!important}
+/* DA-CHROME-V2 END */
+
+
+/* ===== S10 · le débat Fanon / Sartre / Arendt ===== */
+#s10.slide{align-items:center;justify-content:center;padding:56px 84px;text-align:center}
+#s10 .dbt-head{max-width:1060px;margin:0 auto 30px}
+#s10 .dbt-head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or3);font-weight:700;margin-bottom:14px}
+#s10 .dbt-h{font-family:var(--sans);font-weight:600;font-size:clamp(30px,3.3vw,45px);line-height:1.07;letter-spacing:-.02em;color:#FCF8EF;text-wrap:balance}
+#s10 .dbt-h em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s10 .dbt-sub{margin:16px auto 0;font-family:var(--sans);font-size:15.5px;line-height:1.55;color:rgba(245,240,232,.8);max-width:800px}
+#s10 .dbt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;width:100%;max-width:1120px;margin:0 auto}
+#s10 .dbt-c{position:relative;background:linear-gradient(180deg,rgba(250,246,235,.97),rgba(238,231,219,.94));border:1px solid rgba(212,176,90,.4);border-radius:14px;padding:24px 22px;text-align:left;box-shadow:0 24px 54px -24px rgba(20,4,10,.7),inset 0 1px 0 rgba(255,255,255,.8);opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s cubic-bezier(.34,1.4,.5,1)}
+#s10 .dbt-c.revealed{opacity:1;transform:none}
+#s10 .dbt-c::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;border-radius:14px 14px 0 0}
+#s10 .dbt-c.fanon::before{background:linear-gradient(90deg,var(--em-l,#2D8862),var(--em,#1F6B4A))}
+#s10 .dbt-c.sartre::before{background:linear-gradient(90deg,var(--red-hi,#7A2236),var(--red,#5E1622))}
+#s10 .dbt-c.arendt::before{background:linear-gradient(90deg,var(--or3),var(--or-deep))}
+#s10 .dbt-c .nm{font-family:var(--title);font-style:italic;font-weight:700;font-size:26px;color:var(--ink);line-height:1}
+#s10 .dbt-c .rl{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--or-deep);margin:8px 0 14px}
+#s10 .dbt-c p{font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--ink2)}
+#s10 .dbt-c b{color:var(--or-deep);font-weight:700}
+#s10 .dbt-foot{margin-top:24px;font-family:var(--title);font-style:italic;font-size:17px;color:rgba(245,240,232,.72)}
+
+/* ===== S11 · le dossier refermé ===== */
+#s11.slide{align-items:center;justify-content:center;padding:58px 90px}
+#s11 .dos-wrap{max-width:1060px;width:100%;margin:0 auto;text-align:left}
+#s11 .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:14px}
+#s11 .dos-h{font-family:var(--sans);font-weight:600;font-size:clamp(28px,3.1vw,42px);line-height:1.08;letter-spacing:-.02em;color:var(--ink);max-width:20ch}
+#s11 .dos-h em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s11 .dos-b{margin-top:18px;font-family:var(--sans);font-size:16.5px;line-height:1.62;color:var(--ink2);max-width:74ch}
+#s11 .dos-b b{color:var(--or-deep);font-weight:700}
+#s11 .dos-face{display:flex;align-items:stretch;gap:18px;margin-top:26px;opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
+#s11 .dos-face.revealed{opacity:1;transform:none}
+#s11 .dos-c{flex:1;background:linear-gradient(180deg,var(--paper-w,#FFFCF4),var(--cr2,#EAE3D8));border:1px solid rgba(154,123,46,.32);border-radius:12px;padding:18px 20px;box-shadow:0 18px 40px -20px rgba(20,12,4,.4)}
+#s11 .dos-c .y{font-family:var(--num);font-style:italic;font-weight:900;font-size:24px;color:var(--or-deep);line-height:1}
+#s11 .dos-c .t{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin:6px 0 10px}
+#s11 .dos-c p{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink2)}
+#s11 .dos-c.av{opacity:.86}
+#s11 .dos-arw{align-self:center;font-family:var(--num);font-size:26px;color:var(--or2)}
+#s11 .dos-end{margin-top:24px;padding-left:20px;border-left:2px solid var(--or2);font-family:var(--title);font-style:italic;font-size:18px;line-height:1.5;color:var(--ink2);max-width:78ch;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
+#s11 .dos-end.revealed{opacity:1;transform:none}
+</style>
+<style id="cvA-cover">
+/* Couverture A + foil dore anime — titre 2 lignes (session 26/06) */
+body:has(#s1.active) .navchrome,body:has(#s1.active) .hint{opacity:0!important;pointer-events:none}
+#s1{align-items:center;justify-content:center;text-align:center;padding:54px 40px}
+#s1 .cvA-top{position:absolute;top:46px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:16px;z-index:3}
+#s1 .cvA-brand{font-family:var(--title);font-style:italic;font-weight:700;font-size:32px;color:var(--ink);line-height:1}
+#s1 .cvA-brand .cvA-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--or2);vertical-align:middle;margin-right:12px;box-shadow:0 0 0 4px rgba(196,162,74,.18)}
+#s1 .cvA-tract{width:130px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--or2),var(--or3) 45%,#FBEFC2 60%,var(--or2));box-shadow:0 1px 6px rgba(196,162,74,.4)}
+#s1 .cvA-mod{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or-deep);font-weight:500;margin-bottom:18px}
+#s1 .cvA-tt{position:relative;display:inline-block}
+#s1 .cvA-tt::before{content:"";position:absolute;inset:-20% -12%;background:radial-gradient(ellipse 62% 52% at 50% 50%,rgba(196,162,74,.16),transparent 64%);z-index:-1}
+#s1 .cvA-l1{display:block;font-family:var(--av);font-weight:600;font-size:clamp(40px,6.2vw,80px);line-height:1;letter-spacing:-.025em;color:var(--ink)}
+#s1 .cvA-l1 em{font-family:var(--title);font-style:italic;font-weight:900}
+#s1 .cvA-l2{display:block;font-family:var(--av);font-weight:600;font-size:clamp(24px,3.3vw,44px);line-height:1.06;letter-spacing:-.015em;color:var(--ink);margin-top:8px}
+#s1 .cvA-sub{font-family:var(--long);font-style:italic;font-size:18px;color:var(--ink2);max-width:680px;margin-top:26px;line-height:1.45}
+#s1 .cvA-sub em{font-family:var(--title);font-style:italic;font-weight:600;color:var(--or-deep)}
+#s1 .cvA-period{position:absolute;bottom:24px;left:40px;font-family:var(--long);font-style:italic;font-size:15px;color:var(--ink3);z-index:3}
+#s1 .cvA-pg{position:absolute;bottom:16px;right:40px;font-family:var(--title);font-style:italic;font-weight:900;font-size:26px;color:var(--or2);z-index:3}
+#s1 .cvA-pg sup{font-family:var(--mono);font-size:10px;font-style:normal;color:rgba(154,123,46,.6)}
+</style>
+<style id="contraste-fix">
+/* CONTRASTE FIX — audit 27 juin (foil cover profond + meme-sur-meme corriges) */
+#s1 .cvA-l1 em{background:linear-gradient(110deg,#6b5320,#7A5E1F 14%,#9A7B2E 32%,#C4A24A 50%,#8a6d28 68%,#B98E32 86%,#6b5320 100%)!important;background-size:300% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+</style>
+<style id="citfix">
+/* CARD/FOND v2 (27 juin) : seal off · plaques creme/bordeaux alternees · separation */
+/* INVERT — plaque bordeaux sur fond creme (s10) */
+/* (ancien forçage crème de s10 retiré : la slide du débat est bordeaux) */
+#s10{color:var(--ink2)!important}
+#s10 .eyebrow{color:var(--or-deep)!important}
+#s10 .eyebrow::before,#s10 .eyebrow::after{background:var(--or2)!important}
+#s10 .kicker{color:var(--or-deep)!important}
+#s10 .kicker::before{background:var(--or2)!important}
+#s10 .kicker em{color:var(--or-deep)!important}
+#s10 .foot{color:var(--ink3)!important}
+#s10 .foot em{color:var(--red-hi)!important}
+#s10 .hint{color:rgba(61,55,48,.55)!important}
+#s10 .hint .arr{color:var(--or-deep)!important}
+/* #s3 */
+#s3 .anc-card {
+  background: linear-gradient(165deg, var(--paper-w), var(--cr)) !important;
+  border: 1px solid var(--or2) !important;
+  box-shadow: 0 44px 120px -34px rgba(20, 4, 10, .8), 0 0 0 1px rgba(122, 34, 54, .25), inset 0 1px 0 rgba(255, 255, 255, .8) !important;
+}
+#s3 .anc-card .d,
+#s3 .anc-card .pl,
+#s3 .anc-card .t,
+#s3 .anc-card .x {
+  color: var(--ink2) !important;
+}
+#s3 .anc-card .t em {
+  color: var(--or-deep) !important;
+}
+/* #s7 */
+#s7 .anc-card {
+  background: linear-gradient(165deg, var(--paper-w), var(--cr)) !important;
+  border: 1px solid var(--or2) !important;
+  box-shadow: 0 44px 120px -34px rgba(20, 4, 10, .8), 0 0 0 1px rgba(122, 34, 54, .25), inset 0 1px 0 rgba(255, 255, 255, .8) !important;
+}
+#s7 .anc-card .n,
+#s7 .anc-card .t,
+#s7 .anc-card .x {
+  color: var(--ink2) !important;
+}
+#s7 .anc-card .t em,
+#s7 .anc-card .x em {
+  color: var(--or-deep) !important;
+}
+#s7 .anc-card.climax .n,
+#s7 .anc-card.climax .t,
+#s7 .anc-card.climax .x {
+  color: rgba(242, 237, 228, .9) !important;
+}
+#s7 .anc-card.climax .t em,
+#s7 .anc-card.climax .x em {
+  color: var(--or3) !important;
+}
+</style>
+<style id="fxfoil">
+/* FIX CLIPPING (27 juin) : descendantes du foil + halo cover */
+.foil{display:inline-block;line-height:1.16;padding-bottom:.07em}
+#s1 .cvA-tt::before{inset:-22% -17%!important}
+#s1 .t1::before{inset:-22% -16%!important}
+</style>
+<style id="calibB">
+/* CALIBRATION B (standard verrouillé) */
+/* CALIBRATION B · m11-fanon.html — Équilibre+ (27 juin 2026) */
+
+/* 1. SLIDE QUESTION — titre-question clamped 40px→60px max */
+#s2 .q {
+  font-size: clamp(40px, 4.6vw, 60px) !important;
+}
+
+/* 2. NUMEROS DECORATIFS — brider à ~30px + bordeaux (--red-hi) */
+#s7 .anc-card .n {
+  font-size: 30px !important;
+  color: var(--red-hi) !important;
+}
+#s12 .syn-card .n {
+  font-size: 30px !important;
+  color: var(--red-hi) !important;
+}
+
+/* 3. CORPS DE TEXTE — remonter à 16px + line-height 1.55-1.65 */
+#s3 .anc-card .x {
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+#s7 .anc-card .x {
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+#s9 .ln p {
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+#s12 .syn-card p {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+
+/* 4. CARDS PARTIELLEMENT VIDES — supprimer min-height + centrer contenu */
+#s12 .syn-card {
+  min-height: auto !important;
+  justify-content: center !important;
+}
+</style>
+<style id="chromeEpure">
+/* ANNOTATIONS ÉPURÉES (V3 corrigé, 27 juin) : rien en haut · progression centre · pager n°/total bas-droite */
+.eyebrow{display:none!important}
+/* COHÉRENCE COULEUR du chrome avec le fond de la slide active */
+body:has(.slide.em.active) .nav-brand,body:has(.slide.ink.active) .nav-brand,body:has(.slide.red.active) .nav-brand,
+body:has(.slide.em.active) .nav-count,body:has(.slide.ink.active) .nav-count,body:has(.slide.red.active) .nav-count{color:var(--or3)!important}
+body:has(.slide.em.active) .nav-count sup,body:has(.slide.ink.active) .nav-count sup,body:has(.slide.red.active) .nav-count sup{color:rgba(232,199,110,.55)!important}
+body:has(.slide.em.active) .nav-seg i.done,body:has(.slide.ink.active) .nav-seg i.done,body:has(.slide.red.active) .nav-seg i.done{background:var(--or3)!important;opacity:.7}
+body:has(.slide.or.active) .nav-brand,body:has(.slide.or.active) .nav-count{color:var(--red-low)!important}
+body:has(.slide.or.active) .nav-count sup{color:rgba(74,19,32,.55)!important}
+body:has(.slide.or.active) .nav-seg i.done{background:var(--red-low)!important;opacity:.6}
+body:has(.slide.or.active) .nav-seg i.on{background:linear-gradient(90deg,var(--red-low),var(--red-hi))!important;box-shadow:none!important}
+</style>
+<style id="foilTitles">
+/* ===== FOIL DÉMOCRATISÉ (28 juin) — mots-clés de TITRE / affichage · mix par fond ===== */
+/* Corps inline (p / .v / .x / .role / .rep / cards) reste OR SOLIDE. Fonds OR exclus (doré-sur-doré). */
+/* fond CLAIR (crème) → foil DOUX profond */
+.head h2 em,.q em,.h em,.stele .word em,.word em,.line em,.quote em,.lede em{
+  font-family:var(--title);font-style:italic;font-weight:700;
+  background:linear-gradient(110deg,#6b5320,#7A5E1F 14%,#9A7B2E 32%,#C4A24A 50%,#8a6d28 68%,#B98E32 86%,#6b5320 100%);
+  background-size:280% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:foilFlow 11s linear infinite;display:inline-block;line-height:1.16;padding-bottom:.04em}
+/* fond SOMBRE (émeraude / ink / rouge / photo) → foil RICHE lumineux */
+.slide.em .head h2 em,.slide.ink .head h2 em,.slide.red .head h2 em,
+.slide.em .q em,.slide.ink .q em,.slide.red .q em,
+.slide.em .h em,.slide.ink .h em,.slide.red .h em,
+.slide.em .line em,.slide.ink .line em,.slide.red .line em,
+.slide.em .quote em,.slide.ink .quote em,.slide.red .quote em,
+.stele .word em,.slide.em .word em,.slide.ink .word em,.slide.red .word em,
+.fullframe .ff-sub em{
+  font-family:var(--title);font-style:italic;font-weight:700;
+  background-image:linear-gradient(110deg,#8a6d28,#C4A24A 16%,#F4DC92 30%,#E8C76E 44%,#9A7B2E 58%,#D4B05A 72%,#F8E3A0 86%,#C4A24A 100%);background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:foilFlow 7s linear infinite;display:inline-block;line-height:1.16;padding-bottom:.04em}
+/* fond OR → garder OR SOLIDE (foil doré-sur-doré illisible) */
+.slide.or .head h2 em,.slide.or .q em,.slide.or .h em,.slide.or .line em,.slide.or .word em{
+  background:none;-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:var(--red-low);color:var(--red-low);animation:none}
+</style>
+<style id="chromeV3">
+/* ===== ANNOTATION 3 — « ligne haute, alignée gauche » (validée par Rany) ===== */
+/* SANS-serif (Avant Garde / Poppins) · pas de doublon · barre de progression conservée */
+/* HAUT-GAUCHE = section + n° (source unique du module + numérotation) */
+.topline{position:fixed;top:34px;left:56px;z-index:42;display:flex;align-items:center;gap:11px;font-family:var(--av);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;pointer-events:none}
+.topline .sec{color:var(--or-deep);font-weight:600}
+.topline .bar{width:22px;height:1px;background:rgba(154,123,46,.5)}
+.topline .num{color:rgba(61,55,48,.5)}
+/* BAS = marque seule (gauche) + barre de progression (droite) — plus de pager ni de nom de module dupliqué */
+.footline{position:fixed;left:0;right:0;bottom:0;height:58px;z-index:42;display:flex;align-items:center;justify-content:space-between;padding:0 56px;font-family:var(--av);pointer-events:none}
+.footline .f-left{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--or-deep)}
+.footline .f-left .f-dot{width:5px;height:5px;border-radius:50%;background:var(--or2);box-shadow:0 0 0 3px rgba(196,162,74,.2)}
+.footline .f-seg{display:flex;gap:5px;align-items:center}
+.footline .f-seg i{width:16px;height:3px;border-radius:2px;background:rgba(40,28,8,.16);transition:.5s cubic-bezier(.7,0,.3,1)}
+.footline .f-seg i.done{background:var(--or2);opacity:.7}
+.footline .f-seg i.on{width:30px;background:linear-gradient(90deg,var(--or2),var(--or3));box-shadow:0 0 10px rgba(232,199,110,.45)}
+/* fonds sombres (em / ink / red / fullframe) → texte clair doré */
+body:has(.slide.em.active) .topline .sec,body:has(.slide.ink.active) .topline .sec,body:has(.slide.red.active) .topline .sec,body:has(.slide.fullframe.active) .topline .sec,
+body:has(.slide.em.active) .footline .f-left,body:has(.slide.ink.active) .footline .f-left,body:has(.slide.red.active) .footline .f-left,body:has(.slide.fullframe.active) .footline .f-left{color:var(--or3)!important}
+body:has(.slide.em.active) .topline .num,body:has(.slide.ink.active) .topline .num,body:has(.slide.red.active) .topline .num,body:has(.slide.fullframe.active) .topline .num{color:rgba(232,239,231,.5)!important}
+body:has(.slide.em.active) .topline .bar,body:has(.slide.ink.active) .topline .bar,body:has(.slide.red.active) .topline .bar,body:has(.slide.fullframe.active) .topline .bar{background:rgba(212,176,90,.5)!important}
+body:has(.slide.em.active) .footline .f-seg i.done,body:has(.slide.ink.active) .footline .f-seg i.done,body:has(.slide.red.active) .footline .f-seg i.done,body:has(.slide.fullframe.active) .footline .f-seg i.done{background:var(--or3)!important;opacity:.6}
+body:has(.slide.em.active) .footline .f-seg i,body:has(.slide.ink.active) .footline .f-seg i,body:has(.slide.red.active) .footline .f-seg i,body:has(.slide.fullframe.active) .footline .f-seg i{background:rgba(232,239,231,.22)}
+/* fond or → texte bordeaux foncé */
+body:has(.slide.or.active) .topline .sec,body:has(.slide.or.active) .footline .f-left{color:var(--red-low)!important}
+body:has(.slide.or.active) .topline .num{color:rgba(74,19,32,.5)!important}
+body:has(.slide.or.active) .topline .bar{background:rgba(74,19,32,.4)!important}
+body:has(.slide.or.active) .footline .f-seg i.done{background:var(--red-low)!important;opacity:.55}
+body:has(.slide.or.active) .footline .f-seg i.on{background:linear-gradient(90deg,var(--red-low),var(--red-hi))!important;box-shadow:none!important}
+body:has(.slide.or.active) .footline .f-left .f-dot{background:var(--red-low)}
+/* cover → chrome masqué */
+body:has(#s1.active) .topline,body:has(#s1.active) .footline,body:has(#s1.active) .hint{opacity:0!important;pointer-events:none}
+</style>
+<style id="transEm">
+/* transitions ex-.or → émeraude (A2), recoloration texte */
+#s8 .lab{color:var(--or3)!important}
+#s8 .line{color:rgba(255,250,240,.92)!important}
+#s8 .filet{background:var(--or3)!important;opacity:.55}
+#s8 .ar-foot .a,#s8 .ar-side .a{color:var(--or3)!important}
+#s8 .ar-foot .f,#s8 .ar-side .f{color:rgba(232,239,231,.6)!important}
+#s8 .year{color:var(--or3)!important}
+</style>
+<style id="lisibFix">
+/* AUDIT LISIBILITÉ 28 juin — corrections contraste */
+#s7 .anc-card.climax{background:linear-gradient(165deg,var(--red-hi),var(--red) 60%,var(--red-low))!important;border-color:var(--or3)!important}
+</style>
+<style id="swashfix">/* swash italique du foil (queue du « e ») cassait contre le « : » — on etend a droite pour degager le swash + le doter du dore */
+#s1 .cvA-l1 em{padding-right:.16em}</style>
+<style id="m10audit">
+/* ===== AUDIT M10 (28 juil.) — sync montage : nouvelles slides + révélations ===== */
+
+/* S05 · le trio phylo / onto / socio */
+#s5 .stele{padding:46px 64px 42px}
+#s5 .stele .word{font-size:clamp(44px,6.6vw,86px)}
+#s5 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;max-width:900px;margin:26px auto 0}
+#s5 .tr-c{background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.34);border-radius:11px;padding:16px 18px;text-align:left;box-shadow:0 16px 38px -22px rgba(20,12,4,.45);opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s cubic-bezier(.34,1.4,.5,1)}
+#s5 .tr-c.revealed{opacity:1;transform:none}
+#s5 .tr-c.revealed:nth-child(2){transition-delay:.1s}
+#s5 .tr-c.revealed:nth-child(3){transition-delay:.2s}
+#s5 .tr-c.on{border-color:var(--or2);box-shadow:0 20px 46px -20px rgba(20,12,4,.55),0 0 0 1px rgba(196,162,74,.35)}
+#s5 .tr-t{font-family:var(--av);font-weight:500;font-size:17px;color:var(--ink);margin-bottom:5px}
+#s5 .tr-c.on .tr-t{color:var(--or-deep);font-family:var(--title);font-style:italic;font-weight:700;font-size:19px}
+#s5 .tr-c p{font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink2)}
+#s5 .trio-end{margin:22px auto 0;font-family:var(--long);font-size:19px;line-height:1.55;color:var(--ink2);text-align:center;opacity:0;transform:translateY(10px);transition:opacity .7s .3s,transform .7s .3s}
+#s5 .trio-end.revealed{opacity:1;transform:none}
+#s5 .trio-end em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+
+/* S06 · de la nature à la situation (émeraude) */
+#sNat{align-items:center;justify-content:center;text-align:center}
+#sNat .head{margin-bottom:32px;max-width:1100px;margin-left:auto;margin-right:auto;text-align:center}
+#sNat .head .lab{color:var(--or3)!important;margin-bottom:12px}
+#sNat .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;letter-spacing:-.018em;color:#FCF8EF}
+#sNat .nat-flow{display:flex;align-items:stretch;gap:20px;width:100%;max-width:1120px;margin:0 auto}
+#sNat .nat-c{flex:1;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.35);border-radius:13px;padding:22px 24px;text-align:left;box-shadow:0 26px 60px -26px rgba(6,20,14,.8),inset 0 1px 0 rgba(255,255,255,.8)}
+#sNat .nat-c.ap,#sNat .nat-arw{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s cubic-bezier(.34,1.4,.5,1)}
+#sNat .nat-c.ap.revealed,#sNat .nat-arw.revealed{opacity:1;transform:none}
+#sNat .nat-c.av{opacity:.9}
+#sNat .nat-c.ap{border-color:var(--or2);box-shadow:0 30px 68px -24px rgba(6,20,14,.85),0 0 0 1px rgba(196,162,74,.35),inset 0 1px 0 rgba(255,255,255,.85)}
+#sNat .nat-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--or);font-weight:700;margin-bottom:8px}
+#sNat .nat-t{font-family:var(--av);font-weight:500;font-size:17.5px;color:var(--ink);line-height:1.18;margin-bottom:10px}
+#sNat .nat-c p{font-family:var(--sans);font-size:15.5px;line-height:1.55;color:var(--ink2)}
+#sNat .nat-c p b{color:var(--or-deep);font-weight:700}
+#sNat .nat-arw{align-self:center;font-family:var(--num);font-style:italic;font-size:30px;color:var(--or3)}
+#sNat .nat-end{margin:28px auto 0;max-width:940px;font-family:var(--long);font-size:19px;line-height:1.55;color:rgba(245,240,232,.9);text-align:center;opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s}
+#sNat .nat-end.revealed{opacity:1;transform:none}
+#sNat .nat-end em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+
+/* S07 · les deux temps de l'épidermisation (animés, sans clic) */
+#sFanon .fn-steps{display:flex;flex-direction:column;gap:11px;margin-top:20px}
+#sFanon .fn-st{opacity:0;transform:translateY(8px);font-family:var(--sans);font-size:14px;line-height:1.5;color:rgba(255,245,240,.86);padding-left:14px;border-left:2px solid rgba(212,176,90,.5)}
+#sFanon .fn-st b{color:var(--or3);font-weight:700;margin-right:9px;font-family:var(--num);font-style:italic;font-size:16px}
+#sFanon.active .fn-st.st1{animation:fnStIn .9s cubic-bezier(.33,0,.2,1) 16s forwards}
+#sFanon.active .fn-st.st2{animation:fnStIn .9s cubic-bezier(.33,0,.2,1) 25s forwards}
+@keyframes fnStIn{to{opacity:1;transform:none}}
+
+/* S09 · les deux dates de la bascule */
+#s8 .tr-steps{display:flex;flex-direction:column;gap:14px;max-width:860px;margin:28px auto 0;text-align:left}
+#s8 .tr-st{display:flex;gap:18px;align-items:flex-start;opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s cubic-bezier(.34,1.4,.5,1)}
+#s8 .tr-st.revealed{opacity:1;transform:none}
+#s8 .tr-st .y{flex:0 0 auto;font-family:var(--num);font-style:italic;font-weight:900;font-size:26px;color:var(--or3);line-height:1.1;min-width:74px}
+#s8 .tr-st p{font-family:var(--sans);font-size:15.5px;line-height:1.58;color:rgba(245,240,232,.88)}
+#s8 .tr-st p b{color:var(--or3);font-weight:700}
+
+/* S11 · le monopole confisqué (émeraude) */
+#sMono{align-items:center;justify-content:center;text-align:center}
+#sMono .mono-wrap{max-width:1140px;width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+#sMono .kicker{justify-content:center;color:var(--or3)!important}
+#sMono .q{font-family:var(--long);font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1.14;letter-spacing:-.014em;color:var(--cr);max-width:990px;text-align:center;margin-bottom:34px}
+#sMono .mono-r{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;width:100%;max-width:1060px}
+#sMono .mono-c{background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.35);border-radius:13px;padding:22px 24px;text-align:left;box-shadow:0 26px 60px -26px rgba(6,20,14,.8),inset 0 1px 0 rgba(255,255,255,.8);opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s cubic-bezier(.34,1.4,.5,1)}
+#sMono .mono-c.revealed{opacity:1;transform:none}
+#sMono .mono-t{font-family:var(--title);font-style:italic;font-weight:700;font-size:20px;color:var(--or-deep);margin-bottom:10px}
+#sMono .mono-c p{font-family:var(--sans);font-size:15.5px;line-height:1.58;color:var(--ink2)}
+#sMono .mono-c p b{color:var(--or-deep);font-weight:700}
+
+/* S03 · 1re carte présente dès l’arrivée (le montage passe vite sur la bio) */
+#s3 .anc-card.first{opacity:1;transform:none}
+#s3 .anc-card.first .sh::after{content:"";position:absolute;top:-50%;left:-60%;width:50%;height:200%;background:linear-gradient(115deg,transparent 40%,rgba(232,199,110,.4) 50%,transparent 60%);animation:scan 1.6s ease}
+
+/* S04 · annotations rejetées HORS de la couverture (elles mordaient sur l’image) */
+#s6 .anno{left:100%;right:auto!important;margin-left:18px}
+
+/* S13 · dossier refermé — 3 paliers */
+#s11 .dos-end{margin-top:20px}
+#s11 .dos-end b{font-family:var(--sans);font-style:normal;font-weight:700;color:var(--or-deep)}
+</style>
+</head>
+<body>
+<style>
+#sFanon.slide{padding:0}
+#sFanon{background:radial-gradient(ellipse 92% 80% at 50% 42%,#5a1d29 0%,var(--red) 38%,var(--red-low) 100%)}
+#sFanon::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,transparent 50%,rgba(20,6,10,.62) 100%);pointer-events:none;z-index:14}
+#sFanon .txtcol{position:absolute;left:64px;top:50%;transform:translateY(-50%);width:38%;max-width:500px;z-index:20}
+#sFanon .txtcol h1{font-family:var(--av),'Poppins',sans-serif;font-weight:500;font-size:clamp(30px,4vw,54px);line-height:1.05;letter-spacing:-.02em;color:#FBEFE9}
+#sFanon .txtcol h1 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#sFanon .txtcol .sub{font-family:var(--sans);font-size:clamp(14px,1.5vw,17px);line-height:1.6;color:rgba(255,245,240,.84);margin-top:20px}
+#sFanon .txtcol .sub b{color:var(--or3);font-weight:700}
+#sFanon .txtcol .filet{width:58px;height:1px;background:var(--or2);margin:24px 0;opacity:.7}
+#sFanon .stats{display:flex;gap:28px}
+#sFanon .stat .n{font-family:var(--title);font-style:italic;font-weight:900;font-size:30px;color:var(--or3);line-height:1}
+#sFanon .stat .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,245,240,.55);margin-top:6px}
+#sFanon .fn-stage{position:absolute;right:1%;top:0;bottom:0;width:58%;perspective:1700px;perspective-origin:50% 42%;display:grid;place-items:center;z-index:10}
+#sFanon .fn-floor{position:absolute;left:6%;right:6%;top:36%;bottom:6%;background:radial-gradient(ellipse at 50% 60%,rgba(159,216,192,.16),rgba(45,136,98,.05) 46%,transparent 76%);filter:blur(40px)}
+
+/* ───────── PANNEAU-PORTRAIT (bloc épais preserve-3d) ───────── */
+#sFanon .fn-panel{position:relative;width:430px;height:528px;transform-style:preserve-3d;transform:rotateY(-17deg) rotateX(6deg);animation:fnFloat 11s ease-in-out infinite}
+@keyframes fnFloat{0%,100%{transform:rotateY(-17deg) rotateX(6deg) translateZ(0)}50%{transform:rotateY(-13deg) rotateX(5deg) translateZ(16px)}}
+/* épaisseur du panneau : couches empilées en Z (vraie profondeur de bas-relief) */
+#sFanon .fn-edge{position:absolute;inset:0;border-radius:7px}
+#sFanon .fn-edge.e1{transform:translateZ(-14px);background:linear-gradient(180deg,#3a2a10,#241808);box-shadow:0 60px 100px -22px rgba(20,6,10,.92)}
+#sFanon .fn-edge.e2{transform:translateZ(-26px);background:linear-gradient(180deg,#2a1d0c,#160e06);filter:brightness(.8)}
+#sFanon .fn-edge.e3{transform:translateZ(-38px);background:#120a05;filter:brightness(.6)}
+#sFanon .fn-frame{position:absolute;inset:0;border-radius:7px;background:linear-gradient(150deg,#1a1410,#0d0a07);border:1px solid rgba(212,176,90,.4);box-shadow:inset 0 0 0 1px rgba(232,199,122,.16),inset 0 2px 0 rgba(232,199,122,.2);overflow:hidden}
+#sFanon .fn-frame::before{content:"";position:absolute;inset:14px;border:1px solid rgba(212,176,90,.28);border-radius:3px}
+/* plaque où le visage est sculpté */
+#sFanon .fn-relief{position:absolute;inset:26px;border-radius:3px;background:radial-gradient(ellipse at 42% 32%,#7a2236,#3a0e18 70%);overflow:hidden}
+
+/* ── le visage de base (bas-relief), visible avant la fracture ── */
+#sFanon .fn-base{position:absolute;inset:0;transition:opacity .5s}
+#sFanon.active .fn-base{animation:fnBaseHide .5s 3.2s forwards}
+@keyframes fnBaseHide{to{opacity:0}}
+#sFanon .fn-face{position:absolute;inset:0;width:100%;height:100%}
+
+/* ── faisceau de regard qui balaie ── */
+#sFanon .fn-beam{position:absolute;top:-20%;left:-50%;width:46%;height:140%;z-index:6;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(159,216,192,.18) 30%,rgba(255,255,255,.42) 50%,rgba(159,216,192,.18) 70%,transparent);transform:rotate(8deg);opacity:0;filter:blur(2px)}
+#sFanon.active .fn-beam{animation:fnSweep 2.5s cubic-bezier(.5,0,.3,1) .8s forwards}
+@keyframes fnSweep{0%{left:-50%;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:150%;opacity:0}}
+/* trace de l'iris/regard qui suit le faisceau */
+#sFanon .fn-eyebeam{position:absolute;top:50%;left:-40%;width:160px;height:160px;z-index:5;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,rgba(159,216,192,.5),rgba(45,136,98,.12) 46%,transparent 70%);opacity:0;filter:blur(6px)}
+#sFanon.active .fn-eyebeam{animation:fnEye 2.5s cubic-bezier(.5,0,.3,1) .8s forwards}
+@keyframes fnEye{0%{left:-40%;opacity:0}16%{opacity:.9}84%{opacity:.9}100%{left:130%;opacity:0}}
+
+/* ── les ÉCLATS épidermiques (fragments clip-path en preserve-3d) ── */
+#sFanon .fn-shards{position:absolute;inset:0;transform-style:preserve-3d}
+#sFanon .fn-shard{position:absolute;inset:0;transform-style:preserve-3d;opacity:0}
+#sFanon .fn-shard .sk{position:absolute;inset:0;width:100%;height:100%}
+/* liseré or sur l'arête de chaque éclat */
+#sFanon .fn-shard::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,199,122,.5),transparent 40%);mix-blend-mode:screen;opacity:0;transition:opacity .6s}
+#sFanon.active .fn-shard::after{opacity:1;transition-delay:3.4s}
+/* découpe + soulèvement de chaque éclat */
+#sFanon .fn-shard.s1{clip-path:polygon(0 0,52% 0,40% 38%,0 46%)}
+#sFanon .fn-shard.s2{clip-path:polygon(52% 0,100% 0,100% 40%,40% 38%)}
+#sFanon .fn-shard.s3{clip-path:polygon(0 46%,40% 38%,46% 72%,0 78%)}
+#sFanon .fn-shard.s4{clip-path:polygon(40% 38%,100% 40%,100% 74%,46% 72%)}
+#sFanon .fn-shard.s5{clip-path:polygon(0 78%,46% 72%,40% 100%,0 100%)}
+#sFanon .fn-shard.s6{clip-path:polygon(46% 72%,100% 74%,100% 100%,40% 100%)}
+/* SAFARI : var() dans @keyframes ne s’anime pas — valeurs figées, une animation par éclat */
+#sFanon.active .fn-shard.s1{animation:fnBurst1 1.5s cubic-bezier(.34,1.4,.5,1) 3.2s forwards}
+#sFanon.active .fn-shard.s2{animation:fnBurst2 1.5s cubic-bezier(.34,1.4,.5,1) 3.34s forwards}
+#sFanon.active .fn-shard.s3{animation:fnBurst3 1.5s cubic-bezier(.34,1.4,.5,1) 3.28s forwards}
+#sFanon.active .fn-shard.s4{animation:fnBurst4 1.5s cubic-bezier(.34,1.4,.5,1) 3.42s forwards}
+#sFanon.active .fn-shard.s5{animation:fnBurst5 1.5s cubic-bezier(.34,1.4,.5,1) 3.5s forwards}
+#sFanon.active .fn-shard.s6{animation:fnBurst6 1.5s cubic-bezier(.34,1.4,.5,1) 3.46s forwards}
+@keyframes fnBurst1{0%{opacity:0;transform:translate3d(0,0,0)}20%{opacity:1}100%{opacity:1;transform:translate3d(-46px,-34px,78px) rotateX(-16deg) rotateY(-20deg)}}
+@keyframes fnBurst2{0%{opacity:0;transform:translate3d(0,0,0)}20%{opacity:1}100%{opacity:1;transform:translate3d(54px,-30px,104px) rotateX(-12deg) rotateY(18deg)}}
+@keyframes fnBurst3{0%{opacity:0;transform:translate3d(0,0,0)}20%{opacity:1}100%{opacity:1;transform:translate3d(-58px,6px,62px) rotateX(6deg) rotateY(-22deg)}}
+@keyframes fnBurst4{0%{opacity:0;transform:translate3d(0,0,0)}20%{opacity:1}100%{opacity:1;transform:translate3d(60px,8px,128px) rotateX(4deg) rotateY(22deg)}}
+@keyframes fnBurst5{0%{opacity:0;transform:translate3d(0,0,0)}20%{opacity:1}100%{opacity:1;transform:translate3d(-44px,42px,54px) rotateX(18deg) rotateY(-16deg)}}
+@keyframes fnBurst6{0%{opacity:0;transform:translate3d(0,0,0)}20%{opacity:1}100%{opacity:1;transform:translate3d(52px,46px,90px) rotateX(16deg) rotateY(18deg)}}
+/* lignes de fracture or qui restent à la surface */
+#sFanon .fn-frac{position:absolute;inset:0;z-index:7;pointer-events:none;overflow:visible}
+#sFanon .fn-frac path{fill:none;stroke:var(--or-flow1);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:700;stroke-dashoffset:700;filter:drop-shadow(0 0 6px rgba(232,199,122,.85))}
+#sFanon.active .fn-frac path{animation:fnDrawIn 1.6s ease 3.1s forwards}
+@keyframes fnDrawIn{to{stroke-dashoffset:0}}
+
+/* schéma épidermique : trame de peau qui s'allume sous le panneau */
+#sFanon .fn-grid{position:absolute;inset:26px;border-radius:3px;z-index:1;background-image:radial-gradient(rgba(232,199,122,.5) 1px,transparent 1.6px);background-size:15px 15px;opacity:0;mix-blend-mode:screen}
+#sFanon.active .fn-grid{animation:fnFadeIn 1.4s ease 3.5s forwards}
+@keyframes fnFadeIn{to{opacity:1}}
+
+/* étiquette diagnostic révélée */
+#sFanon .fn-tag{position:absolute;bottom:58px;left:50%;transform:translateX(-50%) translateY(14px);z-index:40;text-align:center;font-family:var(--title);font-style:italic;font-weight:900;font-size:clamp(19px,2.3vw,28px);color:#FCF8EF;opacity:0;transition:opacity .8s 4.2s,transform .8s 4.2s}
+#sFanon.active .fn-tag{opacity:1;transform:translateX(-50%) translateY(0)}
+#sFanon .fn-tag em{color:var(--or3)}
+#sFanon .fn-tag small{display:block;margin-top:7px;font-family:var(--title);font-style:italic;font-size:13px;font-weight:400;color:rgba(255,250,240,.72)}
+</style>
+
+
+<div class="stage" id="stage">
+
+<!-- S1 COVER — portrait module -->
+<section class="slide cover active" id="s1" data-slide="1">
+  <div class="cvA-top"><div class="cvA-brand"><span class="cvA-dot"></span>L’Autre Récit</div><div class="cvA-tract"></div></div>
+  <div class="cvA-mod">L’Algérie a pensé · Module 10 / 15</div>
+  <div class="cvA-tt"><span class="cvA-l1">Frantz <em class="foil">Fanon</em>&#8239;:</span><span class="cvA-l2">diagnostiquer le système colonial.</span></div>
+  <div class="cvA-sub">Un psychiatre retourne son regard clinique&#8239;: du malade vers le monde qui l’a rendu malade.</div>
+  <div class="cvA-period">1925 — 1961</div>
+  <div class="cvA-pg">10<sup> / 15</sup></div>
+</section>
+
+<section class="slide em" id="s2" data-slide="2" data-clicks="1">
+  <div class="eyebrow"><span>S02 · La question d’ouverture</span></div>
+  <div class="ar-side"><div class="a">النظرة</div><div class="f">an-naẓra · le regard</div></div>
+  <div class="wrap">
+    <div class="kicker"><span>L’hypothèse</span></div>
+    <p class="q">Où loge la maladie coloniale&#8239;: dans le <em>colonisé</em>, ou dans la <em>relation</em>&#8239;?</p>
+    <p class="rep">Au module précédent, Bennabi cherchait le mal au-dedans, du côté de la <strong>colonisabilité</strong>. Fanon fait le geste symétrique. Lui aussi est un homme du diagnostic, mais il braque son regard clinique <strong>au-dehors</strong>&#8239;: la maladie du colonisé loge dans la relation coloniale elle-même. La charge de la preuve change de camp.</p>
+  </div>
+</section>
+
+<section class="slide" id="s3" data-slide="3" data-clicks="2">
+  <div class="eyebrow"><span>S03 · L’ancrage</span></div>
+  <div class="head">
+    <div class="lab">Un parcours · avant l’Algérie</div>
+    <h2>Un homme qui se <em>déplace</em>.</h2>
+  </div>
+  <div class="anc">
+    <div class="anc-card first">
+      <span class="sh"></span>
+      <div class="d">1925</div>
+      <div class="pl">Fort-de-France · Martinique</div>
+      <div class="t">L’enfant des <em>Antilles</em> françaises</div>
+      <div class="x">Né le 20 juillet dans une colonie française où l’on apprend à l’école à se penser français avant tout.</div>
+    </div>
+    <div class="anc-card" data-step="1">
+      <span class="sh"></span>
+      <div class="d">1943</div>
+      <div class="pl">Les Forces françaises libres</div>
+      <div class="t">Le <em>soldat</em></div>
+      <div class="x">Engagé jusqu’en 1945, il découvre le racisme au cœur de l’armée qui prétend combattre le nazisme. Le sang du colonisé est bon pour libérer la France, et l’homme colonisé reste à sa place.</div>
+    </div>
+    <div class="anc-card" data-step="2">
+      <span class="sh"></span>
+      <div class="d">Lyon</div>
+      <div class="pl">Médecine, puis psychiatrie</div>
+      <div class="t">Le futur <em>médecin</em></div>
+      <div class="x">Il étudie la médecine et se spécialise en psychiatrie. Sa thèse, remaniée, paraît en 1952 au Seuil sous le titre Peau noire, masques blancs.</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide ink" id="s6" data-slide="4">
+  <div class="eyebrow"><span>S04 · Cas pratique · le document</span></div>
+  <div class="wrap6">
+    <div class="doc-wrap">
+      <div class="doc-archive">
+        <img src="assets/fanon_peau_noire_couv.jpg" alt="Peau noire, masques blancs — Éditions du Seuil, 1952">
+        <div class="anno a1"><span class="dot"></span><span class="lead"></span><span class="lbl"><b>Le masque</b> · le mimétisme<br>imposé au colonisé</span></div>
+        <div class="anno a2"><span class="dot"></span><span class="lead"></span><span class="lbl"><b>La peau</b> · l’assignation<br>par la couleur</span></div>
+        <div class="anno a3"><span class="dot"></span><span class="lead"></span><span class="lbl"><b>1952</b> · d’abord pensé<br>comme une thèse</span></div>
+      </div>
+    </div>
+    <div class="cartel">
+      <div class="lab">Le livre fondateur</div>
+      <h2>Peau noire, masques blancs</h2>
+      <p class="read">Le livre où Fanon forge l’outil qui commande tout le reste&#8239;: la <em>sociogénie</em>. Sous le regard colonial, l’homme noir est sommé d’endosser un masque blanc pour exister.</p>
+      <div class="src">Frantz Fanon · Éditions du Seuil · <em>1952</em></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="s5" data-slide="5" data-clicks="2">
+  <div class="eyebrow"><span>S05 · Le concept-clé</span></div>
+  <div class="stele" id="stele">
+    <div class="ar">النشأة الاجتماعية</div>
+    <div class="word"><em>Sociogénie</em></div>
+    <div class="src">le sociodiagnostic · 1952</div>
+    <div class="open">
+      <p class="cite">«&#8239;À côté de la phylogénie et de l’ontogénie, il y a la sociogénie. En un sens, disons qu’il s’agit ici d’un sociodiagnostic.&#8239;»</p>
+      <p class="def">Certaines souffrances viennent de la <em>structure sociale</em> elle-même, de la place qu’une société assigne à un homme, avant toute biologie.</p>
+    </div>
+  </div>
+  <div class="trio">
+    <div class="tr-c" data-step="2"><div class="tr-t">Phylogénie</div><p>l’histoire de l’espèce.</p></div>
+    <div class="tr-c" data-step="2"><div class="tr-t">Ontogénie</div><p>celle de l’individu, de son enfance.</p></div>
+    <div class="tr-c on" data-step="2"><div class="tr-t">Sociogénie</div><p>la place qu’une société assigne à un homme.</p></div>
+  </div>
+  <p class="trio-end" data-step="2">L’objet ausculté devient <em>la société</em>.</p>
+</section>
+
+<section class="slide em" id="sNat" data-slide="6" data-clicks="2">
+  <div class="eyebrow"><span>S06 · Le déplacement</span></div>
+  <div class="head">
+    <div class="lab">Pourquoi c’est décisif politiquement</div>
+    <h2>De la <em>nature</em> à la situation.</h2>
+  </div>
+  <div class="nat-flow">
+    <div class="nat-c av">
+      <div class="nat-l">La science coloniale</div>
+      <div class="nat-t">Antoine Porot · l’École d’Alger</div>
+      <p>L’infériorité du Maghrébin tenue pour une donnée de nature, gravée dans le cerveau. Le primitivisme cérébral en fait un diagnostic médical.</p>
+    </div>
+    <div class="nat-arw" data-step="1">→</div>
+    <div class="nat-c ap" data-step="1">
+      <div class="nat-l">La contre-expertise</div>
+      <div class="nat-t">Fanon · le même mot déplacé</div>
+      <p>Ce que Porot appelle une nature, il le rebaptise <b>effet de situation</b>. L’impulsivité qu’on prête au colonisé est la réponse à un monde qui l’écrase.</p>
+    </div>
+  </div>
+  <p class="nat-end" data-step="2">Le déplacement fait passer la question de la <em>biologie</em> au <em>pouvoir</em>&#8239;: une infériorité produite par une structure peut être défaite en défaisant la structure.</p>
+</section>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="fnSkin" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8a3543"/><stop offset=".5" stop-color="#5E1622"/><stop offset="1" stop-color="#3A0E18"/>
+  </linearGradient>
+  <radialGradient id="fnLight" cx="40%" cy="34%" r="68%">
+    <stop offset="0" stop-color="#C77885"/><stop offset=".45" stop-color="#7A2236"/><stop offset="1" stop-color="#3A0E18"/>
+  </radialGradient>
+</defs></svg>
+
+<section class="slide red" id="sFanon" data-slide="7" data-clicks="0">
+  <div class="eyebrow"><span>S07 · l’épidermisation</span></div>
+  <div class="txtcol">
+    <h1>Le racisme franchit<br>la <em>peau</em>.</h1>
+    <p class="sub">« S’il y a complexe d’infériorité, c’est à la suite d’un double processus : économique d’abord, par intériorisation ou, mieux, <b>épidermisation</b> de cette infériorité. »</p>
+    <div class="fn-steps">
+      <div class="fn-st st1"><b>1</b>Une infériorité réelle, économique : le colonisé est dépossédé, exploité, exclu.</div>
+      <div class="fn-st st2"><b>2</b>Imposée du dehors, elle finit par s’inscrire dans la peau même. À force d’être regardé comme moindre, le colonisé finit par se sentir moindre.</div>
+    </div>
+    <div class="filet"></div>
+    <div class="stats">
+      <div class="stat"><div class="n">1952</div><div class="l">Peau noire</div></div>
+      <div class="stat"><div class="n">∴</div><div class="l">sociogénie</div></div>
+      <div class="stat"><div class="n">1961</div><div class="l">Les Damnés</div></div>
+    </div>
+  </div>
+  <div class="fn-stage">
+    <div class="fn-floor"></div>
+    <div class="fn-panel">
+      <div class="fn-edge e3"></div>
+      <div class="fn-edge e2"></div>
+      <div class="fn-edge e1"></div>
+      <div class="fn-frame">
+        <div class="fn-relief">
+          <div class="fn-grid"></div>
+          <!-- visage de base -->
+          <div class="fn-base">
+            <svg class="fn-face" viewBox="0 0 378 476" preserveAspectRatio="xMidYMid slice">
+              <rect width="378" height="476" fill="url(#fnLight)"/>
+              <g>
+                <path d="M189 64 C129 64 96 116 96 186 C96 250 112 318 150 372 C166 396 200 396 228 372 C266 318 282 250 282 186 C282 116 249 64 189 64 Z" fill="url(#fnSkin)"/>
+                <path d="M120 150 C148 122 230 122 258 150" fill="none" stroke="rgba(20,6,10,.5)" stroke-width="3"/>
+                <ellipse cx="150" cy="196" rx="20" ry="13" fill="#160a0c"/>
+                <ellipse cx="228" cy="196" rx="20" ry="13" fill="#160a0c"/>
+                <circle cx="156" cy="192" r="4" fill="rgba(199,120,133,.9)"/>
+                <circle cx="234" cy="192" r="4" fill="rgba(199,120,133,.9)"/>
+                <path d="M189 212 L177 264 L201 264 Z" fill="rgba(20,6,10,.42)"/>
+                <path d="M156 308 C178 322 200 322 222 308" fill="none" stroke="rgba(20,6,10,.55)" stroke-width="4" stroke-linecap="round"/>
+                <path d="M96 186 C84 196 84 224 100 234" fill="url(#fnSkin)"/>
+                <path d="M282 186 C294 196 294 224 278 234" fill="url(#fnSkin)"/>
+              </g>
+              <ellipse cx="150" cy="120" rx="70" ry="44" fill="rgba(255,255,255,.06)"/>
+            </svg>
+          </div>
+          <!-- éclats épidermiques -->
+          <div class="fn-shards">
+            <div class="fn-shard s1"><svg class="sk" viewBox="0 0 378 476" preserveAspectRatio="xMidYMid slice"><rect width="378" height="476" fill="url(#fnLight)"/><path d="M189 64 C129 64 96 116 96 186 C96 250 112 318 150 372 C166 396 200 396 228 372 C266 318 282 250 282 186 C282 116 249 64 189 64 Z" fill="url(#fnSkin)"/><path d="M120 150 C148 122 230 122 258 150" fill="none" stroke="rgba(20,6,10,.5)" stroke-width="3"/><ellipse cx="150" cy="196" rx="20" ry="13" fill="#160a0c"/><ellipse cx="228" cy="196" rx="20" ry="13" fill="#160a0c"/><circle cx="156" cy="192" r="4" fill="rgba(199,120,133,.9)"/><circle cx="234" cy="192" r="4" fill="rgba(199,120,133,.9)"/><path d="M189 212 L177 264 L201 264 Z" fill="rgba(20,6,10,.42)"/><path d="M156 308 C178 322 200 322 222 308" fill="none" stroke="rgba(20,6,10,.55)" stroke-width="4" stroke-linecap="round"/></svg></div>
+            <div class="fn-shard s2"><svg class="sk" viewBox="0 0 378 476" preserveAspectRatio="xMidYMid slice"><rect width="378" height="476" fill="url(#fnLight)"/><path d="M189 64 C129 64 96 116 96 186 C96 250 112 318 150 372 C166 396 200 396 228 372 C266 318 282 250 282 186 C282 116 249 64 189 64 Z" fill="url(#fnSkin)"/><path d="M120 150 C148 122 230 122 258 150" fill="none" stroke="rgba(20,6,10,.5)" stroke-width="3"/><ellipse cx="150" cy="196" rx="20" ry="13" fill="#160a0c"/><ellipse cx="228" cy="196" rx="20" ry="13" fill="#160a0c"/><circle cx="156" cy="192" r="4" fill="rgba(199,120,133,.9)"/><circle cx="234" cy="192" r="4" fill="rgba(199,120,133,.9)"/><path d="M189 212 L177 264 L201 264 Z" fill="rgba(20,6,10,.42)"/><path d="M156 308 C178 322 200 322 222 308" fill="none" stroke="rgba(20,6,10,.55)" stroke-width="4" stroke-linecap="round"/></svg></div>
+            <div class="fn-shard s3"><svg class="sk" viewBox="0 0 378 476" preserveAspectRatio="xMidYMid slice"><rect width="378" height="476" fill="url(#fnLight)"/><path d="M189 64 C129 64 96 116 96 186 C96 250 112 318 150 372 C166 396 200 396 228 372 C266 318 282 250 282 186 C282 116 249 64 189 64 Z" fill="url(#fnSkin)"/><ellipse cx="150" cy="196" rx="20" ry="13" fill="#160a0c"/><ellipse cx="228" cy="196" rx="20" ry="13" fill="#160a0c"/><path d="M189 212 L177 264 L201 264 Z" fill="rgba(20,6,10,.42)"/><path d="M156 308 C178 322 200 322 222 308" fill="none" stroke="rgba(20,6,10,.55)" stroke-width="4" stroke-linecap="round"/></svg></div>
+            <div class="fn-shard s4"><svg class="sk" viewBox="0 0 378 476" preserveAspectRatio="xMidYMid slice"><rect width="378" height="476" fill="url(#fnLight)"/><path d="M189 64 C129 64 96 116 96 186 C96 250 112 318 150 372 C166 396 200 396 228 372 C266 318 282 250 282 186 C282 116 249 64 189 64 Z" fill="url(#fnSkin)"/><ellipse cx="150" cy="196" rx="20" ry="13" fill="#160a0c"/><ellipse cx="228" cy="196" rx="20" ry="13" fill="#160a0c"/><path d="M189 212 L177 264 L201 264 Z" fill="rgba(20,6,10,.42)"/><path d="M156 308 C178 322 200 322 222 308" fill="none" stroke="rgba(20,6,10,.55)" stroke-width="4" stroke-linecap="round"/></svg></div>
+            <div class="fn-shard s5"><svg class="sk" viewBox="0 0 378 476" preserveAspectRatio="xMidYMid slice"><rect width="378" height="476" fill="url(#fnLight)"/><path d="M189 64 C129 64 96 116 96 186 C96 250 112 318 150 372 C166 396 200 396 228 372 C266 318 282 250 282 186 C282 116 249 64 189 64 Z" fill="url(#fnSkin)"/><path d="M156 308 C178 322 200 322 222 308" fill="none" stroke="rgba(20,6,10,.55)" stroke-width="4" stroke-linecap="round"/></svg></div>
+            <div class="fn-shard s6"><svg class="sk" viewBox="0 0 378 476" preserveAspectRatio="xMidYMid slice"><rect width="378" height="476" fill="url(#fnLight)"/><path d="M189 64 C129 64 96 116 96 186 C96 250 112 318 150 372 C166 396 200 396 228 372 C266 318 282 250 282 186 C282 116 249 64 189 64 Z" fill="url(#fnSkin)"/><path d="M156 308 C178 322 200 322 222 308" fill="none" stroke="rgba(20,6,10,.55)" stroke-width="4" stroke-linecap="round"/></svg></div>
+          </div>
+          <!-- lignes de fracture qui restent gravées en or -->
+          <svg class="fn-frac" viewBox="0 0 378 476" preserveAspectRatio="none">
+            <path d="M197 0 L151 181 L0 219"/>
+            <path d="M151 181 L378 190"/>
+            <path d="M0 371 L174 343 L151 181"/>
+            <path d="M174 343 L378 352"/>
+            <path d="M151 476 L174 343"/>
+          </svg>
+          <div class="fn-eyebeam"></div>
+          <div class="fn-beam"></div>
+        </div>
+      </div>
+    </div>
+    <div class="fn-tag">L’infériorité devient une <em>sensation de soi</em>.<small>Peau noire, masques blancs · 1952</small></div>
+  </div>
+</section>
+
+<section class="slide" id="s7" data-slide="8" data-clicks="3">
+  <div class="eyebrow"><span>S08 · La contre-expertise</span></div>
+  <div class="head">
+    <div class="lab">Ce que le diagnostic engage</div>
+    <h2>Soigner l’homme, ou soigner <em>la situation</em>&#8239;?</h2>
+  </div>
+  <div class="anc">
+    <div class="anc-card" data-step="1">
+      <span class="sh"></span>
+      <div class="n">١</div>
+      <div class="t">Une aliénation <em>collective</em></div>
+      <div class="x">L’aliénation du colonisé est collective, parce que sa cause l’est. On ne guérit pas un homme rendu malade par un monde tant que ce monde demeure.</div>
+    </div>
+    <div class="anc-card" data-step="2">
+      <span class="sh"></span>
+      <div class="n">٢</div>
+      <div class="t">L’hôpital comme <em>milieu de vie</em></div>
+      <div class="x">À Blida, il applique la thérapie institutionnelle apprise à Saint-Alban auprès de François Tosquelles. Il échoue d’abord, pour avoir calqué des recettes européennes sur des patients dont il ignorait la culture, puis corrige à partir des patients eux-mêmes.</div>
+    </div>
+    <div class="anc-card climax" data-step="3">
+      <span class="sh"></span>
+      <div class="n">٣</div>
+      <div class="t">Un homme <em>empirique</em></div>
+      <div class="x">Loin du dogmatique auquel on le réduit, Fanon corrige sa méthode sur le terrain. Et la conséquence est politique&#8239;: le soin véritable finit par conduire le médecin <em>hors de l’hôpital</em>.</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide em" id="s8" data-slide="9" data-clicks="2">
+  <div class="eyebrow"><span>S09 · La bascule</span></div>
+  <div class="lab">De la clinique à la rupture.</div>
+  <p class="line">De l’hôpital de Blida au combat, la guerre fait passer Fanon du <em>soin</em> au politique.</p>
+  <div class="filet"></div>
+  <div class="tr-steps">
+    <div class="tr-st" data-step="1"><span class="y">1956</span><p>À Blida affluent deux catégories de patients qui se croisent&#8239;: des militants brisés par la torture, et des tortionnaires que leur propre violence détruit. Fanon soigne les deux, et sa position devient intenable. Il <b>démissionne</b> de son plein gré, sans être révoqué comme le dit parfois la légende, par une lettre au ministre-résident Robert Lacoste.</p></div>
+    <div class="tr-st" data-step="2"><span class="y">1957</span><p>Expulsé au début de l’année, il rejoint le <b>Front de libération nationale</b> et s’installe à Tunis.</p></div>
+  </div>
+  <div class="ar-foot"><div class="a">الثورة</div><div class="f">ath-thawra · la révolution</div></div>
+</section>
+
+<section class="slide" id="s9" data-slide="10" data-clicks="3">
+  <div class="eyebrow"><span>S10 · Le théoricien · 1961</span></div>
+  <div class="head">
+    <div class="lab">Les Damnés de la terre · Maspero · 1961</div>
+    <h2>Le diagnostic posé sur <em>le système</em>.</h2>
+  </div>
+  <div class="wrap9">
+    <div class="ph">
+      <img src="assets/fanon_1959_tunis_ecrivains.jpg.webp" alt="Frantz Fanon, Tunis, 1959">
+      <span class="line"></span>
+      <div class="cred">Frantz Fanon · Tunis · <em>1959</em></div>
+    </div>
+    <div class="body">
+      <p class="central">Aux Damnés de la terre, l’objet ausculté change d’échelle&#8239;: Fanon examine <em>la relation coloniale</em> elle-même, et le langage qui la soutient.</p>
+      <div class="lines">
+        <div class="ln" data-step="1">
+          <span class="dot"></span>
+          <p><span class="qt">«&#8239;Ce monde compartimenté, ce monde coupé en deux, est habité par des espèces différentes.&#8239;»</span> Deux villes, deux humanités, et entre elles une frontière tenue par la seule <em>force nue</em>.</p>
+        </div>
+        <div class="ln" data-step="2">
+          <span class="dot"></span>
+          <p><span class="qt">«&#8239;Le langage du colon, quand il parle du colonisé, est un langage zoologique.&#8239;»</span> Horde, grouillement, pullulement&#8239;: le bestiaire appliqué à des hommes, pour pouvoir les tenir sans remords.</p>
+        </div>
+        <div class="ln" data-step="3">
+          <span class="dot"></span>
+          <p>L’analyse confirme cliniquement ce que Césaire appelait, au tout premier module, la <em>chosification</em>. L’épidermisation, c’est la manière dont cette chose finit par se vivre comme diminuée.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide em" id="sMono" data-slide="11" data-clicks="2">
+  <div class="eyebrow"><span>S11 · La violence décoloniale</span></div>
+  <div class="mono-wrap">
+    <div class="kicker"><span>Une question de science politique</span></div>
+    <p class="q">Dans un monde où le colonisé est un <em>objet</em>, qu’est-ce qui peut le refaire <em>sujet</em>&#8239;?</p>
+    <div class="mono-r">
+      <div class="mono-c" data-step="1">
+        <div class="mono-t">La réponse de Fanon</div>
+        <p>Il se ressaisit en reprenant ce qu’on lui avait confisqué&#8239;: la capacité d’agir sur le rapport de force. Cette violence est <b>désaliénante</b>, elle défait l’intériorisation de l’infériorité, et l’homme qui était une chose se redresse en acteur de son histoire.</p>
+      </div>
+      <div class="mono-c" data-step="2">
+        <div class="mono-t">Le monopole confisqué</div>
+        <p>Dans toute société, quelqu’un détient le monopole de la <b>violence légitime</b>. Dans la colonie, il appartient à l’occupant&#8239;: c’est lui que la lutte de libération vient briser. Une fonction politique, à mille lieues de l’éloge du sang qu’on lui a prêté.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide red" id="s10" data-slide="12" data-clicks="3">
+  <div class="dbt-head">
+    <div class="lab">Le point le plus important du module</div>
+    <h2 class="dbt-h">Fanon <em>décrit</em>. Sartre <em>exalte</em>.</h2>
+    <p class="dbt-sub">Cette distinction se joue dans un débat entre trois noms.</p>
+  </div>
+  <div class="dbt-grid">
+    <div class="dbt-c fanon" data-step="1">
+      <div class="nm">Fanon</div><div class="rl">décrit</div>
+      <p>La violence de libération comme <b>moyen</b>&#8239;: l’acte par lequel un homme rendu objet se ressaisit comme sujet. Une fonction politique, à distance de l’éloge du sang qu’on lui a prêté.</p>
+    </div>
+    <div class="dbt-c sartre" data-step="2">
+      <div class="nm">Sartre</div><div class="rl">exalte</div>
+      <p>Dans sa préface, il va plus loin que Fanon&#8239;: la violence devient une <b>valeur</b>, presque une rédemption métaphysique. C’est ce texte incandescent qui a fait lire Fanon comme un prophète du sang.</p>
+    </div>
+    <div class="dbt-c arendt" data-step="3">
+      <div class="nm">Arendt</div><div class="rl">le garde-fou</div>
+      <p>Elle sépare la violence <b>moyen</b>, justifiable par son but, et la violence <b>valeur</b>, fin en soi. Sa critique vise Sartre. Elle sert à lire Fanon avec justesse.</p>
+    </div>
+  </div>
+  <div class="dbt-foot">On a mis sur le compte de l’auteur ce que le préfacier avait ajouté.</div>
+</section>
+
+<section class="slide" id="s11" data-slide="13" data-clicks="4">
+  <div class="dos-wrap">
+    <div class="lab">Le dossier refermé · 1961</div>
+    <h2 class="dos-h">Le médecin aura tenu la même <em>thèse</em>.</h2>
+    <p class="dos-b">Le dernier chapitre des <i>Damnés de la terre</i> s’intitule «&#8239;Guerre coloniale et troubles mentaux&#8239;». Fanon, redevenu psychiatre, y aligne des cas cliniques recueillis pendant la guerre&#8239;: des hommes que la torture a brisés, <b>des deux côtés de la ligne</b>.</p>
+    <div class="dos-face" data-step="1">
+      <div class="dos-c av"><div class="y">1918</div><div class="t">Antoine Porot · l’École d’Alger</div><p>Une impulsivité criminelle tenue pour une nature, gravée dans le cerveau du Nord-Africain.</p></div>
+      <div class="dos-arw">→</div>
+      <div class="dos-c ap"><div class="y">1961</div><div class="t">Fanon · dernier chapitre</div><p>La même violence, replacée dans son histoire&#8239;: fabriquée par la guerre coloniale.</p></div>
+    </div>
+    <p class="dos-end" data-step="2">Il y inclut une section qui répond mot pour mot à la science trouvée à Blida en arrivant&#8239;: «&#8239;De l’impulsivité criminelle du Nord-Africain à la guerre de libération nationale&#8239;». Le dossier que Porot croyait clos, Fanon le referme.</p>
+    <p class="dos-end" data-step="3">Il meurt le <b>6 décembre 1961</b>, d’une leucémie, dans une clinique du Maryland où il était parti se faire soigner trop tard. Il est inhumé en Algérie, sur la terre du combat qu’il avait fait sien.</p>
+    <p class="dos-end" data-step="4">Il prévient déjà contre l’après&#8239;: les <b>bourgeoisies nationales</b> risquent de prendre la place du colon en laissant la structure intacte. Celui qu’on accuse d’ivresse révolutionnaire est le plus lucide sur les trahisons de la révolution.</p>
+  </div>
+</section>
+
+<section class="slide red" id="s12" data-slide="14" data-clicks="4">
+  <div class="eyebrow"><span>S14 · À retenir</span></div>
+  <div class="wrap">
+    <div class="lab">Ce qu’on emporte de ce module</div>
+    <h2 class="h">La maladie logeait dans la <em>relation</em>.</h2>
+    <div class="acquis">
+      <div class="syn-card" data-step="1">
+        <span class="sh"></span><span class="n">١</span>
+        <span class="tag">À retenir · un</span>
+        <h3 class="ti">La <em>sociogénie</em></h3>
+        <div class="ru"></div>
+        <p>À côté de la nature et de la biographie, un troisième terme&#8239;: la structure sociale. L’infériorité passe du registre de la nature à celui du pouvoir.</p>
+      </div>
+      <div class="syn-card" data-step="2">
+        <span class="sh"></span><span class="n">٢</span>
+        <span class="tag">À retenir · deux</span>
+        <h3 class="ti">L’<em>épidermisation</em></h3>
+        <div class="ru"></div>
+        <p>La domination s’inscrit dans la peau et se vit comme un soi diminué.</p>
+      </div>
+      <div class="syn-card" data-step="3">
+        <span class="sh"></span><span class="n">٣</span>
+        <span class="tag">À retenir · trois</span>
+        <h3 class="ti">La violence relue <em>politiquement</em></h3>
+        <div class="ru"></div>
+        <p>Dans un monde tenu par la force nue, la libération reprend un monopole confisqué. Arendt distingue ce que Fanon justifie comme moyen de ce que Sartre glorifie comme valeur.</p>
+      </div>
+    </div>
+    <div class="next" data-step="4"><span><b>Prochain</b> · M11 · les <em>nationalismes</em> en divergence</span></div>
+  </div>
+</section>
+
+</div>
+
+<div class="topline" id="topline">
+  <span class="sec">Fanon</span><span class="bar"></span><span class="num"><span id="tlCur">01</span> / <span id="tlTot">12</span></span>
+</div>
+<nav class="footline" id="nav">
+  <div class="f-left"><span class="f-dot"></span>L’Autre Récit</div>
+  <div class="f-seg" id="navSeg"></div>
+</nav>
+<button class="navbtn prev" id="navPrev" aria-label="Précédent"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="navbtn next" id="navNext" aria-label="Suivant"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const total=slides.length;
+  const _qa=new URLSearchParams(location.search).get('slide');
+  let cur=_qa?Math.max(0,Math.min(parseInt(_qa)-1,total-1)):0, step=0;
+  const navSeg=document.getElementById('navSeg');
+  const tlCur=document.getElementById('tlCur');
+  const tlTot=document.getElementById('tlTot');
+  const navPrev=document.getElementById('navPrev');
+  const navNext=document.getElementById('navNext');
+  if(tlTot) tlTot.textContent=String(total).padStart(2,'0');
+  for(let i=0;i<total;i++){ navSeg.appendChild(document.createElement('i')); }
+  const segs=[...navSeg.children];
+  function updateNav(){
+    if(tlCur) tlCur.textContent=String(cur+1).padStart(2,'0');
+    segs.forEach((el,i)=>{el.className = i<cur?'done' : i===cur?'on' : '';});
+    navPrev.disabled = cur===0;
+    navNext.disabled = cur===total-1;
+  }
+  function resetReveals(sl){
+    sl.classList.remove('is-on');
+    sl.querySelectorAll('.revealed').forEach(t=>{t.style.transition='none';t.classList.remove('revealed');void t.offsetWidth;t.style.transition='';});
+    sl.querySelectorAll('.opened').forEach(t=>t.classList.remove('opened'));
+    sl.querySelectorAll('.pop').forEach(t=>{t.style.transition='none';t.classList.remove('pop');void t.offsetWidth;t.style.transition='';});
+    const hint=sl.querySelector('[data-hint]');if(hint)hint.classList.remove('gone');
+  }
+  function goto(n){
+    if(n<0||n>=total) return;
+    slides[cur].classList.remove('active');
+    cur=n;step=0;
+    const sl=slides[cur];
+    resetReveals(sl);
+    sl.classList.add('active');
+    updateNav();
+  }
+  function markHint(sl){const h=sl.querySelector('[data-hint]');if(h)h.classList.add('gone')}
+  function clickStep(){
+    const sl=slides[cur];
+    const maxClicks=parseInt(sl.dataset.clicks||'0',10);
+    // S5 stèle : 1er clic ouvre
+    if(sl.id==='s5'){
+      const st=sl.querySelector('#stele');
+      if(st && !st.classList.contains('opened')){st.classList.add('opened');sl.classList.add('is-on');step=1;markHint(sl);return}
+      if(step<maxClicks){step++;sl.querySelectorAll(`[data-step="${step}"]`).forEach(t=>t.classList.add('revealed'));if(step>=maxClicks)markHint(sl);return}
+      goto(cur+1);return;
+    }
+    if(step<maxClicks){
+      step++;
+      sl.classList.add('is-on');
+      sl.querySelectorAll(`[data-step="${step}"]`).forEach(t=>t.classList.add('revealed'));
+      // S12 : dernier clic = pop 3D des cards de synthèse
+      if(sl.id==='s12' && step===maxClicks){ sl.querySelectorAll('.syn-card').forEach(c=>c.classList.add('pop')); }
+      if(step>=maxClicks) markHint(sl);
+    } else { goto(cur+1); }
+  }
+  if(_qa && cur>0){ slides.forEach((s,i)=>s.classList.toggle('active', i===cur)); }
+  if(new URLSearchParams(location.search).get('reveal')==='1'){
+    const sl=slides[cur];
+    sl.classList.add('is-on');
+    sl.querySelectorAll('[data-step]').forEach(el=>el.classList.add('revealed'));
+    sl.querySelectorAll('.stele').forEach(el=>el.classList.add('opened'));
+  }
+  navPrev.addEventListener('click',e=>{e.stopPropagation();goto(cur-1)});
+  navNext.addEventListener('click',e=>{e.stopPropagation();goto(cur+1)});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'){e.preventDefault();clickStep()}
+    else if(e.key==='ArrowLeft'){e.preventDefault();goto(cur-1)}
+    else if(e.key==='Home'){e.preventDefault();goto(0)}
+    else if(e.key==='End'){e.preventDefault();goto(total-1)}
+  });
+  const EXCLUDE='.navchrome,.navbtn,button,a';
+  document.getElementById('stage').addEventListener('click',e=>{
+    if(e.target.closest(EXCLUDE)) return;
+    const sl=slides[cur];
+    const maxClicks=parseInt(sl.dataset.clicks||'0',10);
+    const steleNotOpen = sl.id==='s5' && !sl.querySelector('#stele')?.classList.contains('opened');
+    const hasPending = steleNotOpen || step<maxClicks;
+    const rect=sl.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    if(x < rect.width/2){ goto(cur-1); }
+    else { if(hasPending) clickStep(); else goto(cur+1); }
+  });
+  updateNav();
+})();
+</script>
+</body>
+</html>

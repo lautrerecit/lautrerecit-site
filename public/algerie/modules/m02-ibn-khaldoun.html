@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Ibn Khaldoun — Module 2 · L’Algérie a pensé</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400;1,6..72,500&family=Poppins:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cr:#F2EDE4; --cr2:#EAE3D8; --cr3:#D4C9B8; --paper:#FAF6EB; --paper-w:#FFFCF4;
+  --em:#1F6B4A; --em-d:#13442E; --em-deep:#0A2C1E; --em-l:#2D8862; --em-bright:#3CA47A;
+  --or:#9A7B2E; --or2:#C4A24A; --or3:#D4B05A; --or-deep:#7A5E1F; --or-flow1:#F4DC92; --or-flow2:#B98E32;
+  --red:#5E1622; --red-hi:#7A2236; --red-low:#4A1320;
+  --ink:#0E0C0A; --ink2:#1A1714; --ink3:#3D3730;
+  --terre:#B8553A;
+  --av:'Poppins','Avant Garde Gothic',sans-serif;
+  --title:'Playfair Display',Georgia,serif;
+  --num:'Playfair Display',Georgia,serif;
+  --long:'DM Sans',system-ui,sans-serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --ar:'Amiri',serif;
+  --t-hero:clamp(60px,9vw,140px);
+  --t-question:clamp(42px,5.2vw,68px);
+  --t-section:clamp(33px,4.3vw,54px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--cr);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow:hidden}
+@keyframes foilFlow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+@keyframes drawLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes scan{0%{transform:translateX(-120%) skewX(-12deg);opacity:0}10%{opacity:.85}50%{transform:translateX(260%) skewX(-12deg);opacity:.85}60%,100%{opacity:0}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes haloPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.7;transform:scale(1.02)}}
+@keyframes pgScan{0%{transform:translateX(-100%);opacity:0}12%{opacity:.9}50%{transform:translateX(220%);opacity:.9}65%{opacity:0}100%{transform:translateX(220%);opacity:0}}
+@keyframes pdGlow{0%,100%{box-shadow:0 26px 60px -18px rgba(20,4,10,.6),0 0 0 1px rgba(196,162,74,.2),0 0 60px -10px rgba(212,176,90,.35),0 0 130px -20px rgba(232,199,110,.25)}50%{box-shadow:0 32px 80px -18px rgba(20,4,10,.7),0 0 0 1px rgba(212,176,90,.34),0 0 100px -10px rgba(232,199,110,.55),0 0 200px -20px rgba(232,199,110,.4)}}
+@keyframes orbit{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.foil{background:linear-gradient(110deg,#8a6d28,#C4A24A 16%,#F4DC92 30%,#E8C76E 44%,#9A7B2E 58%,#D4B05A 72%,#F8E3A0 86%,#C4A24A 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:foilFlow 7s linear infinite}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.foil{background-position:0 50%}}
+
+.stage{position:fixed;inset:0;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;opacity:0;transition:opacity .4s ease;flex-direction:column;align-items:flex-start;justify-content:center;padding:90px 130px;text-align:left;color:var(--ink)}
+.slide.active{display:flex;opacity:1}
+.slide>*{position:relative;z-index:2}
+.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 25%,rgba(196,162,74,.08),transparent 60%),linear-gradient(155deg,var(--cr) 0%,var(--cr2) 100%);z-index:0}
+.slide.cover::before{background:radial-gradient(ellipse 70% 55% at 50% 35%,rgba(196,162,74,.12),transparent 60%),linear-gradient(160deg,var(--cr) 0%,var(--cr2) 70%,#DDD2BD 100%)}
+.slide.em{color:var(--cr)}
+.slide.em::before{background:radial-gradient(ellipse 80% 60% at 30% 25%,rgba(60,164,122,.18),transparent 60%),linear-gradient(155deg,var(--em-d) 0%,var(--em-deep) 70%,#06231A 100%)}
+.slide.ink{color:var(--cr)}
+.slide.ink::before{background:radial-gradient(ellipse 70% 55% at 50% 30%,rgba(196,162,74,.14),transparent 60%),linear-gradient(160deg,var(--em-d) 0%,var(--em-deep) 70%,#06231A 100%)}
+.slide.red{color:var(--cr)}
+.slide.red::before{background:radial-gradient(ellipse 70% 55% at 50% 30%,rgba(232,199,110,.14),transparent 60%),linear-gradient(160deg,var(--red-hi) 0%,var(--red) 55%,var(--red-low) 100%)}
+.slide::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.04;mix-blend-mode:overlay;pointer-events:none;z-index:1}
+
+/* CHROME */
+.eyebrow{position:absolute;top:38px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--or-deep);z-index:30;display:inline-flex;align-items:center;gap:14px}
+.eyebrow::before,.eyebrow::after{content:"";width:24px;height:1px;background:var(--or2);opacity:.7}
+.slide.em .eyebrow,.slide.ink .eyebrow,.slide.red .eyebrow{color:var(--or3)}
+.slide.em .eyebrow::before,.slide.em .eyebrow::after,.slide.ink .eyebrow::before,.slide.ink .eyebrow::after,.slide.red .eyebrow::before,.slide.red .eyebrow::after{background:var(--or3)}
+.kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);margin-bottom:18px}
+.kicker::before{content:"";width:32px;height:1px;background:var(--or2)}
+.kicker em{font-family:var(--title);font-style:italic;font-weight:700;text-transform:none;letter-spacing:.005em;font-size:14px;color:var(--or-deep)}
+.slide.em .kicker,.slide.ink .kicker,.slide.red .kicker{color:var(--or3)}
+.slide.em .kicker::before,.slide.ink .kicker::before,.slide.red .kicker::before{background:var(--or3)}
+.slide.em .kicker em,.slide.ink .kicker em,.slide.red .kicker em{color:var(--or3)}
+
+/* NAV */
+.navchrome{position:fixed;left:0;right:0;bottom:0;height:64px;z-index:40;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 56px;pointer-events:none}
+.navchrome>*{pointer-events:auto}
+.navchrome::before{content:"";position:absolute;left:0;right:0;bottom:0;top:0;background:linear-gradient(0deg,rgba(40,28,8,.18),transparent);z-index:-1}
+.nav-brand{font-family:var(--av);font-weight:500;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--or-deep);display:inline-flex;align-items:center;gap:12px}
+.nav-brand .dot{width:5px;height:5px;border-radius:50%;background:var(--or2);box-shadow:0 0 0 3px rgba(196,162,74,.2)}
+.nav-seg{display:flex;gap:5px;align-items:center;justify-self:center}
+.nav-seg i{width:16px;height:3px;border-radius:2px;background:rgba(40,28,8,.16);transition:.5s cubic-bezier(.7,0,.3,1)}
+.nav-seg i.done{background:var(--or2);opacity:.7}
+.nav-seg i.on{width:30px;background:linear-gradient(90deg,var(--or2),var(--or3));box-shadow:0 0 10px rgba(232,199,110,.45)}
+.nav-count{font-family:var(--num);font-style:italic;font-weight:900;font-size:22px;color:var(--or-deep);letter-spacing:.01em;display:inline-flex;align-items:baseline;gap:3px;justify-self:end}
+.nav-count sup{font-family:var(--mono);font-size:10px;font-style:normal;font-weight:500;color:rgba(61,55,48,.5)}
+.navbtn{position:fixed;top:50%;width:56px;height:56px;border-radius:50%;border:1px solid var(--or2);background:rgba(242,237,228,.6);backdrop-filter:blur(8px) saturate(140%);-webkit-backdrop-filter:blur(8px) saturate(140%);display:grid;place-items:center;cursor:pointer;z-index:45;transform:translateY(-50%);transition:transform .5s cubic-bezier(.34,1.4,.5,1),box-shadow .5s,border-color .4s,background .4s,opacity .4s}
+.navbtn.prev{left:28px}.navbtn.next{right:28px}
+.navbtn::before{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,var(--or3),var(--or2));transform:scale(0);transition:transform .55s cubic-bezier(.34,1.5,.4,1)}
+.navbtn svg{width:20px;height:20px;fill:none;stroke:var(--or2);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:2;transition:stroke .4s,transform .45s cubic-bezier(.34,1.4,.5,1)}
+.navbtn:hover{border-color:transparent;transform:translateY(-50%) scale(1.08);box-shadow:0 0 0 6px rgba(232,199,110,.14),0 22px 44px -14px rgba(232,199,110,.55)}
+.navbtn:hover::before{transform:scale(1)}.navbtn:hover svg{stroke:var(--ink)}
+.navbtn.prev:hover svg{transform:translateX(-3px)}.navbtn.next:hover svg{transform:translateX(3px)}
+.navbtn:disabled{opacity:.25;cursor:default;pointer-events:none}
+.hint{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(61,55,48,.5);transition:opacity .5s}
+.hint .arr{color:var(--or2);font-weight:600}
+.hint.gone{opacity:0;pointer-events:none}
+.slide.em .hint,.slide.ink .hint,.slide.red .hint{color:rgba(232,199,110,.5)}
+.slide.em .hint .arr,.slide.ink .hint .arr,.slide.red .hint .arr{color:var(--or3)}
+
+/* S1 COVER */
+#s1{align-items:center;justify-content:center;text-align:center}
+#s1 .meta-tag{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:46px;display:inline-flex;align-items:center;gap:14px}
+#s1 .meta-tag::before,#s1 .meta-tag::after{content:"";width:30px;height:1px;background:var(--or2);opacity:.55}
+#s1 .t1{font-family:var(--av);font-weight:500;font-size:var(--t-hero);line-height:.88;letter-spacing:-.04em;color:var(--ink);position:relative;display:inline-block}
+#s1 .t1::before{content:"";position:absolute;inset:-20% -10%;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(196,162,74,.22),transparent 60%);z-index:-1;animation:haloPulse 4s ease-in-out infinite}
+#s1 .sub{margin-top:38px;font-family:var(--title);font-style:italic;font-size:22px;color:var(--ink2);max-width:760px;line-height:1.4}
+#s1 .sub em{color:var(--or-deep);font-weight:700}
+#s1 .filet{margin-top:30px;width:120px;height:1px;background:var(--or2);opacity:.55;transform-origin:center;animation:drawLine 1.2s cubic-bezier(.7,0,.3,1) .4s both}
+#s1 .meta{position:absolute;bottom:120px;left:50%;transform:translateX(-50%);display:flex;gap:36px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(61,55,48,.55);font-weight:500}
+#s1 .meta i{font-style:normal;color:var(--or-deep);font-weight:700;margin-right:8px}
+#s1 .wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ar);font-weight:700;font-size:440px;line-height:1;color:rgba(154,123,46,.05);pointer-events:none;z-index:0}
+#s1 .stamp{position:absolute;top:90px;right:104px;width:120px;height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;transform:rotate(-8deg);color:var(--terre);z-index:3}
+#s1 .stamp::before{content:"";position:absolute;inset:0;border:1.5px solid currentColor;border-radius:50%;opacity:.7}
+#s1 .stamp::after{content:"";position:absolute;inset:7px;border:.5px solid currentColor;border-radius:50%;opacity:.35}
+#s1 .stamp .l{font-family:var(--mono);font-size:8px;letter-spacing:.24em;text-transform:uppercase;font-weight:700}
+#s1 .stamp .y{font-family:var(--num);font-style:italic;font-weight:900;font-size:28px;line-height:1;margin-top:4px}
+
+/* S2 QUESTION émeraude */
+#s2{align-items:center;justify-content:center}
+#s2 .wrap{max-width:1100px;margin-left:auto;margin-right:auto}
+#s2 .q{font-family:var(--long);font-weight:400;font-size:var(--t-question);line-height:1.15;letter-spacing:-.014em;color:var(--cr);max-width:1000px}
+#s2 .q em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s2 .rep{margin-top:30px;font-family:var(--long);font-size:21px;line-height:1.7;color:rgba(242,237,228,.9);max-width:760px;opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s}
+#s2.is-on .rep{opacity:1;transform:none}
+#s2 .rep strong{color:var(--or3);font-weight:700;font-style:normal}
+#s2 .ar-side{position:absolute;top:84px;right:104px;text-align:right;z-index:3}
+#s2 .ar-side .a{font-family:var(--ar);font-size:40px;direction:rtl;line-height:1;color:var(--or3)}
+#s2 .ar-side .f{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,199,110,.6);margin-top:8px}
+
+/* S3 PORTRAIT — split médaillon + fiche */
+#s3{align-items:center;justify-content:center}
+#s3 .wrap{display:grid;grid-template-columns:380px 1fr;gap:70px;align-items:center;max-width:1280px;width:100%;margin-left:auto;margin-right:auto}
+#s3 .medal{position:relative;width:340px;height:340px;margin:0 auto}
+#s3 .medal .ring{position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(154,123,46,.4);animation:orbit 40s linear infinite}
+#s3 .medal .disk{position:absolute;inset:24px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#F4DC92,var(--or2) 55%,var(--or-deep));box-shadow:0 30px 70px -22px rgba(20,12,4,.6),inset 0 0 0 6px rgba(20,12,4,.18),inset 0 8px 18px rgba(255,246,220,.5),inset 0 -10px 22px rgba(20,12,4,.45);display:grid;place-items:center;overflow:hidden}
+#s3 .medal .disk .ar{font-family:var(--ar);font-weight:700;font-size:72px;color:var(--red-low);direction:rtl;line-height:1.2;text-align:center;text-shadow:0 1px 2px rgba(255,246,220,.4)}
+#s3 .medal .glare{position:absolute;inset:24px;border-radius:50%;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.5) 50%,transparent 60%);opacity:0;pointer-events:none}
+#s3.is-on .medal .glare{animation:scan 1.6s ease}
+#s3 .medal .cap{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--or-deep);font-weight:600;white-space:nowrap}
+#s3 .info .nm{font-family:var(--av);font-weight:500;font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+#s3 .info .nm em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s3 .info .dt{font-family:var(--num);font-style:italic;font-weight:900;font-size:18px;color:var(--or-deep);margin-top:6px}
+#s3 .info .roles{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+#s3 .info .roles span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--or-deep);padding:5px 11px;border:1px solid rgba(154,123,46,.4);border-radius:100px;opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s}
+#s3.is-on .info .roles span{opacity:1;transform:none}
+#s3.is-on .info .roles span:nth-child(2){transition-delay:.1s}
+#s3.is-on .info .roles span:nth-child(3){transition-delay:.2s}
+#s3.is-on .info .roles span:nth-child(4){transition-delay:.3s}
+#s3 .info .lede{margin-top:24px;font-family:var(--long);font-size:18px;line-height:1.55;color:var(--ink2);max-width:600px}
+#s3 .info .lede[data-step]{opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease}
+#s3 .info .lede.revealed{opacity:1;transform:none}
+#s3 .info .lede em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+
+/* S4 STÈLE concept */
+#s4{align-items:center;justify-content:center;text-align:center}
+#s4 .stele{position:relative;max-width:880px;width:100%;background:linear-gradient(165deg,var(--em-d),var(--em-deep));border:1px solid var(--or2);border-radius:18px;padding:60px 72px 54px;box-shadow:0 60px 120px -50px #000,0 0 0 1px rgba(212,176,90,.2),0 0 110px -30px rgba(232,199,110,.3),inset 0 1px 0 rgba(212,176,90,.25);overflow:hidden}
+#s4 .stele::before{content:"";position:absolute;top:14px;left:14px;right:14px;bottom:14px;border:.5px solid rgba(212,176,90,.45);border-radius:11px;pointer-events:none}
+#s4 .stele::after{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(105deg,transparent,rgba(255,246,220,.18),transparent);transform:skewX(-12deg);opacity:0;pointer-events:none}
+#s4.is-on .stele::after{animation:scan 1.8s ease}
+#s4 .stele .ar{font-family:var(--ar);font-weight:700;font-size:64px;color:var(--or3);direction:rtl;line-height:1;margin-bottom:10px}
+#s4 .stele .word{font-family:var(--av);font-weight:500;font-size:clamp(54px,8vw,104px);line-height:.95;letter-spacing:-.035em;color:#fff}
+#s4 .stele .word em{font-style:italic;color:var(--or3)}
+#s4 .stele .src{margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or3);font-weight:600}
+#s4 .stele .open{max-height:0;opacity:0;overflow:hidden;transition:max-height .8s cubic-bezier(.7,0,.3,1),opacity .7s,margin .7s}
+#s4 .stele.opened .open{max-height:300px;opacity:1;margin-top:30px;padding-top:26px;border-top:.5px solid rgba(212,176,90,.4)}
+#s4 .stele .def{font-family:var(--sans);font-size:18px;line-height:1.6;color:rgba(255,246,236,.88);max-width:680px;margin:0 auto}
+#s4 .stele .def em{color:var(--or3);font-style:italic;font-weight:600;font-family:var(--title)}
+#s4 .stele .open .cyc{margin-top:14px;opacity:0;transform:translateY(6px);transition:opacity .6s ease,transform .6s ease}
+#s4 .stele.opened .open .cyc{opacity:1;transform:none;transition-delay:.55s}
+
+/* S5 TRAJECTOIRE — frise 3 jalons */
+#s5{align-items:center;justify-content:center}
+#s5 .head{margin-bottom:40px;max-width:1100px;text-align:center;margin-left:auto;margin-right:auto}
+#s5 .head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:14px}
+#s5 .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;letter-spacing:-.018em;color:var(--ink)}
+#s5 .head h2 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s5 .frise{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:34px;width:100%;max-width:1180px;margin:0 auto;padding-top:30px}
+#s5 .frise::before{content:"";position:absolute;top:36px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,transparent,var(--or2),var(--or3),var(--or2),transparent);box-shadow:0 0 14px rgba(196,162,74,.4)}
+#s5 .jal{position:relative;display:flex;flex-direction:column;align-items:center;opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s cubic-bezier(.34,1.4,.5,1)}
+#s5 .jal.revealed{opacity:1;transform:none}
+#s5 .jal .node{width:11px;height:11px;background:var(--or2);transform:rotate(45deg);margin-bottom:24px;z-index:3}
+#s5 .jal .card{position:relative;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.3);border-radius:14px;padding:26px 24px;text-align:left;width:100%;box-shadow:0 18px 44px -20px rgba(20,12,4,.4),inset 0 1px 0 rgba(255,255,255,.85);transition:transform .5s,box-shadow .5s,border-color .4s}
+#s5 .jal .card:hover{transform:translateY(-6px);border-color:var(--or2);box-shadow:0 30px 64px -20px rgba(20,12,4,.55),0 0 60px -16px rgba(232,199,110,.35),inset 0 1px 0 rgba(255,255,255,.9)}
+#s5 .jal .y{font-family:var(--num);font-style:italic;font-weight:900;font-size:34px;color:var(--or-deep);line-height:.85;margin-bottom:10px}
+#s5 .jal .pl{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--or);font-weight:700;margin-bottom:8px}
+#s5 .jal .t{font-family:var(--av);font-weight:500;font-size:18.5px;color:var(--ink);line-height:1.2;margin-bottom:9px}
+#s5 .jal .t em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s5 .jal .d{font-family:var(--sans);font-size:14.5px;line-height:1.56;color:var(--ink2)}
+
+
+/* S9 LE CYCLE — schéma circulaire */
+#s9 .head{margin-bottom:30px;max-width:1100px;text-align:center;margin-left:auto;margin-right:auto}
+#s9 .head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:12px}
+#s9 .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;color:var(--ink)}
+#s9 .head h2 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s9 .cycle{position:relative;width:560px;height:480px;margin:0 auto}
+#s9 .cycle .core{position:absolute;top:50%;left:50%;width:150px;height:150px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 38% 30%,#2a2114,#0d0b08);border:1.5px solid var(--or3);box-shadow:0 0 40px -8px var(--or2),inset 0 0 24px rgba(196,162,74,.25);display:grid;place-items:center;text-align:center;padding:18px;z-index:4}
+#s9 .cycle .core .ar{font-family:var(--ar);font-weight:700;font-size:30px;color:var(--or3);direction:rtl;line-height:1.1}
+#s9 .cycle .core .l{font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,199,110,.7);margin-top:4px}
+#s9 .cycle .arc{position:absolute;inset:40px;border-radius:50%;border:1.5px dashed rgba(154,123,46,.35)}
+#s9 .cycle .ph{position:absolute;width:200px;padding:16px 18px;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.32);border-radius:12px;box-shadow:0 18px 40px -18px rgba(20,12,4,.45),inset 0 1px 0 rgba(255,255,255,.85);text-align:left;opacity:0;transform:scale(.85);transition:opacity .6s,transform .6s cubic-bezier(.34,1.5,.4,1)}
+#s9 .cycle .ph.revealed{opacity:1;transform:scale(1)}
+#s9 .cycle .ph .n{font-family:var(--ar);font-weight:700;font-size:clamp(46px,4.8vw,62px);line-height:.9;color:var(--or2);direction:rtl;align-self:center;flex:0 0 auto;margin-bottom:6px}
+#s9 .cycle .ph .t{font-family:var(--av);font-weight:500;font-size:15px;color:var(--ink);line-height:1.15;margin-bottom:5px}
+#s9 .cycle .ph .t em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s9 .cycle .ph .d{font-family:var(--sans);font-size:11.5px;line-height:1.45;color:var(--ink2)}
+#s9 .cycle .ph.p1{top:-10px;left:50%;transform:translateX(-50%) scale(.85)}
+#s9 .cycle .ph.p1.revealed{transform:translateX(-50%) scale(1)}
+#s9 .cycle .ph.p2{bottom:20px;right:-30px}
+#s9 .cycle .ph.p3{bottom:20px;left:-30px}
+#s9 .cycle .ph.fin{border-color:var(--red-hi)}
+#s9 .cycle .ph.fin .n{color:var(--red-hi)}
+
+/* S10 CITATION signature émeraude */
+#s10{align-items:center;justify-content:center;text-align:center}
+#s10 .kicker{margin-bottom:30px;justify-content:center}
+#s10 .plate{position:relative;max-width:1080px;width:100%;background:linear-gradient(160deg,#1A5840 0%,var(--em-d) 55%,#0A2C1E 100%);border:1px solid var(--or3);border-radius:16px;padding:58px 68px 50px;box-shadow:0 4px 12px rgba(6,30,20,.5),0 40px 110px -34px rgba(6,30,20,.75),0 0 0 1px rgba(232,199,110,.2),0 0 110px -22px rgba(232,199,110,.3),inset 0 1px 0 rgba(232,199,110,.25);overflow:hidden;text-align:left;animation:floatY 9s ease-in-out infinite}
+#s10 .plate::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 65% 50% at 50% 30%,rgba(232,199,110,.14),transparent 60%);pointer-events:none}
+#s10 .plate .seal{position:absolute;top:18px;right:22px;width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 38% 32%,var(--or-flow1),var(--or2) 60%,var(--or-deep));box-shadow:0 6px 14px rgba(6,30,20,.5),inset 0 0 0 1.5px rgba(10,44,30,.4),inset 0 -3px 6px rgba(10,44,30,.4),inset 0 3px 6px rgba(255,246,220,.4);display:grid;place-items:center;font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--em-deep);text-align:center;line-height:1.05;text-transform:uppercase;transform:rotate(-9deg);z-index:5}
+#s10 .plate .seal::before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px dashed rgba(10,44,30,.5)}
+#s10 .plate .gm{position:absolute;top:10px;left:24px;font-family:var(--title);font-style:italic;font-weight:900;font-size:180px;line-height:.7;color:var(--or3);opacity:.2;z-index:1}
+#s10 .plate .q{font-family:var(--title);font-style:italic;font-weight:400;font-size:clamp(28px,3.2vw,42px);line-height:1.28;color:var(--cr);position:relative;z-index:2}
+#s10 .plate .q em{color:var(--or3);font-weight:700}
+#s10 .plate .rule{margin:32px 0 18px;width:54px;height:1px;background:var(--or3);opacity:.65;position:relative;z-index:2}
+#s10 .plate .at{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--or3);font-weight:500;position:relative;z-index:2}
+#s10 .plate .at b{color:var(--cr);font-weight:700;letter-spacing:.18em}
+#s10 .plate .at i{color:var(--or3);font-style:italic;font-family:var(--title);font-size:14px;text-transform:none;letter-spacing:.005em}
+#s10 .foot{margin-top:30px;max-width:880px;font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--ink3);text-align:center}
+#s10 .foot em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+
+/* S11 APPLICATION */
+#s11{align-items:center;justify-content:center;text-align:center}
+#s11 .wrap{max-width:1100px;width:100%;margin-left:auto;margin-right:auto;display:flex;flex-direction:column;align-items:center}
+#s11 .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:26px;display:inline-flex;align-items:center;gap:14px}
+#s11 .lab::before{content:"";width:32px;height:1px;background:var(--or2)}
+#s11 .q{font-family:var(--long);font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.25;letter-spacing:-.01em;color:var(--ink);max-width:960px;margin-bottom:36px}
+#s11 .q em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s11 .ex{position:relative;display:flex;gap:28px;align-items:flex-start;text-align:left;padding:30px 34px;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.4);border-radius:12px;max-width:840px;margin-left:auto;margin-right:auto;opacity:0;transform:translateY(10px);box-shadow:0 4px 10px rgba(20,12,4,.18),0 26px 60px -22px rgba(20,12,4,.4),0 0 0 1px rgba(196,162,74,.22),0 0 70px -18px rgba(232,199,110,.25),inset 0 1px 0 rgba(255,255,255,.85);transition:opacity .65s,transform .65s,box-shadow .55s}
+#s11.is-on .ex{opacity:1;transform:none}
+#s11 .ex::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or2),var(--or3),var(--or2),transparent);border-radius:12px 12px 0 0}
+#s11 .ex .n{flex:0 0 auto;font-family:var(--ar);font-weight:700;font-size:clamp(46px,4.8vw,62px);line-height:.9;color:var(--or2);direction:rtl;align-self:center}
+#s11 .ex .body h4{font-family:var(--av);font-weight:500;font-size:22px;color:var(--ink);line-height:1.15;margin-bottom:9px}
+#s11 .ex .body h4 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s11 .ex .body p{font-family:var(--sans);font-size:16px;line-height:1.62;color:var(--ink2);max-width:600px}
+#s11 .ex .body p em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+
+/* S12 PASSERELLE bordeaux */
+#s12{align-items:center;justify-content:center;text-align:center}
+#s12 .wrap{max-width:1180px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
+#s12 .lab{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--or3);font-weight:600;margin-bottom:22px;display:inline-flex;align-items:center;gap:14px}
+#s12 .lab::before,#s12 .lab::after{content:"";width:24px;height:1px;background:var(--or3);opacity:.7}
+#s12 .h{font-family:var(--av);font-weight:500;font-size:clamp(34px,4.4vw,52px);line-height:1.05;letter-spacing:-.025em;color:var(--cr);max-width:1000px;margin-bottom:60px}
+#s12 .h em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s12 .acquis{display:grid;grid-template-columns:repeat(3,1fr);gap:42px;width:100%;max-width:1100px;margin-bottom:50px;padding:0 22px 0 30px}
+#s12 .card{position:relative;background:linear-gradient(180deg,var(--paper-w) 0%,var(--cr2) 100%);border:1px solid rgba(154,123,46,.4);border-radius:12px;padding:30px 28px 28px;min-height:230px;text-align:left;display:flex;flex-direction:column;box-shadow:0 26px 60px -18px rgba(20,4,10,.6),0 0 0 1px rgba(196,162,74,.2),0 0 60px -10px rgba(212,176,90,.35),0 0 130px -20px rgba(232,199,110,.25);opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.7,0,.3,1),transform .7s cubic-bezier(.34,1.4,.5,1),box-shadow .55s}
+#s12 .card.revealed{opacity:1;transform:none;animation:pdGlow 5s ease-in-out infinite}
+#s12 .card.revealed:nth-child(2){animation-delay:-1.6s}
+#s12 .card.revealed:nth-child(3){animation-delay:-3.2s}
+#s12 .card:hover{transform:translateY(-10px) scale(1.02);animation-play-state:paused;box-shadow:0 50px 110px -22px rgba(20,4,10,.75),0 0 0 1.5px var(--or2),0 0 130px -8px rgba(232,199,110,.7),0 0 260px -20px rgba(232,199,110,.5)}
+#s12 .card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or2),var(--or3),var(--or2),transparent);z-index:3}
+#s12 .card .sh{position:absolute;inset:0;border-radius:12px;overflow:hidden;pointer-events:none;z-index:1}
+#s12 .card.revealed .sh::after{content:"";position:absolute;top:-50%;left:-50%;width:55%;height:200%;background:linear-gradient(115deg,transparent 35%,rgba(232,199,110,.32) 45%,rgba(255,246,220,.55) 50%,rgba(232,199,110,.32) 55%,transparent 65%);transform:translateX(-100%);animation:pgScan 6s ease-in-out infinite;mix-blend-mode:overlay}
+#s12 .card.revealed:nth-child(2) .sh::after{animation-delay:-2s}
+#s12 .card.revealed:nth-child(3) .sh::after{animation-delay:-4s}
+#s12 .card .n{display:block;font-family:var(--ar);font-weight:700;font-size:46px;line-height:.9;color:var(--or3);direction:rtl;transition:transform .5s;margin-bottom:6px}
+#s12 .card:hover .n{transform:translateY(-3px)}
+#s12 .card .tag{position:relative;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--or-deep);z-index:3;margin-bottom:8px}
+#s12 .card .ti{position:relative;font-family:var(--title);font-style:italic;font-weight:700;font-size:19px;color:var(--ink);line-height:1.18;margin-bottom:10px;z-index:3}
+#s12 .card .ti em{color:var(--or-deep)}
+#s12 .card .ru{width:32px;height:1.5px;background:var(--or2);margin-bottom:12px;position:relative;z-index:3}
+#s12 .card p{position:relative;font-family:var(--sans);font-size:14.5px;line-height:1.6;color:var(--ink2);z-index:3}
+#s12 .card p em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s12 .next{padding:16px 32px;background:rgba(244,237,228,.92);border:1px dashed var(--or2);border-radius:100px;display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--or-deep);font-weight:700;box-shadow:0 4px 10px rgba(20,4,10,.3),0 22px 40px -14px rgba(20,4,10,.55),0 0 60px -16px rgba(232,199,110,.4),inset 0 1px 0 rgba(255,255,255,.85);opacity:0;transform:translateY(10px);transition:opacity .6s,transform .5s cubic-bezier(.34,1.4,.5,1)}
+#s12 .next.revealed{opacity:1;transform:none}
+#s12 .next::before{content:"→";font-family:var(--num);font-style:italic;font-size:20px;color:var(--or-deep)}
+#s12 .next b{color:var(--ink);font-weight:700;letter-spacing:.2em}
+#s12 .next em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or);text-transform:none;letter-spacing:.005em;font-size:14px}
+
+:focus-visible{outline:2px solid var(--or2);outline-offset:3px;border-radius:2px}
+.navbtn:focus-visible,button:focus-visible{outline-offset:4px}
+
+/* P2-POLISH · responsive fallback + finition typo */
+html{font-kerning:normal;font-feature-settings:"kern" 1,"liga" 1,"clig" 1}
+@media(max-width:1100px){.slide{padding:60px 56px}}
+@media(max-width:760px){.slide{padding:40px 24px}.navchrome{padding:0 18px}.navbtn.prev{left:10px}.navbtn.next{right:10px}}
+
+/* === S9bis · ROUE DES DYNASTIES · disque incliné qui tourne + Muqaddima === */
+#sRoue.slide{padding:0}
+#sRoue .txtcol{position:absolute;left:100px;top:50%;transform:translateY(-50%);width:38%;max-width:500px;z-index:20}
+#sRoue .txtcol h1{font-family:var(--av);font-weight:500;font-size:clamp(30px,4vw,54px);line-height:1.05;letter-spacing:-.02em;color:#F4FBF6}
+#sRoue .txtcol h1 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#sRoue .txtcol .sub{font-family:var(--sans);font-size:clamp(14px,1.5vw,17px);line-height:1.6;color:rgba(244,251,246,.84);margin-top:20px}
+#sRoue .txtcol .sub b{color:var(--or3);font-weight:700}
+#sRoue .txtcol .filet{width:58px;height:1px;background:var(--or2);margin:24px 0;opacity:.7}
+#sRoue .stats{display:flex;gap:28px}
+#sRoue .stat .n{font-family:var(--title);font-style:italic;font-weight:900;font-size:30px;color:var(--or3);line-height:1}
+#sRoue .stat .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,251,246,.55);margin-top:6px}
+#sRoue .arab{position:absolute;top:50%;right:5%;transform:translateY(-50%);font-family:var(--ar);font-size:clamp(120px,18vw,260px);font-weight:700;color:rgba(212,176,90,.05);z-index:1;pointer-events:none;line-height:1;direction:rtl}
+/* --- ASTROLABE DU POUVOIR (remplace la roue · design A raffiné) --- */
+@keyframes astSpin{to{transform:rotate(360deg)}}
+@keyframes astSpinR{to{transform:rotate(-360deg)}}
+@keyframes astBreath{0%,100%{transform:rotateX(12deg) rotateY(-9deg)}50%{transform:rotateX(5deg) rotateY(-2deg)}}
+@keyframes rimSweep{to{transform:translateZ(6px) rotate(360deg)}}
+@keyframes drawArc{to{stroke-dashoffset:0}}
+@keyframes arrowIn{to{opacity:1}}
+@keyframes phRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes linkIn{to{opacity:1}}
+#sRoue .ast-scene{position:absolute;right:1%;top:0;bottom:0;width:60%;z-index:10}
+#sRoue .ast-drop{position:absolute;left:50%;top:52%;width:min(33vw,512px);height:min(33vw,512px);transform:translate(calc(-50% + 16px),calc(-50% + 22px));border-radius:50%;background:radial-gradient(circle at 44% 40%,rgba(4,18,9,.6),rgba(4,18,9,.3) 50%,transparent 72%);z-index:1}
+#sRoue .ast-ground{position:absolute;left:50%;top:calc(52% + min(18vw,278px));width:min(21vw,320px);height:38px;transform:translateX(calc(-50% + 24px));border-radius:50%;background:radial-gradient(ellipse,rgba(4,18,9,.55),rgba(4,18,9,.22) 55%,transparent 72%);z-index:1}
+#sRoue .ast-ground::after{content:"";position:absolute;inset:-70% -36%;border-radius:50%;background:radial-gradient(ellipse,rgba(4,18,9,.3),transparent 68%)}
+#sRoue .ast-wrap{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);perspective:1300px;z-index:2}
+#sRoue .ast{position:relative;width:min(31vw,470px);height:min(31vw,470px);transform-style:preserve-3d;animation:astBreath 11s ease-in-out infinite;will-change:transform}
+#sRoue .ast .throne{position:absolute;top:-56px;left:50%;width:46px;height:46px;transform:translateX(-50%) translateZ(2px);border-radius:50%;border:7px solid var(--or2);box-shadow:inset 2px 3px 4px rgba(255,246,220,.6),inset -2px -4px 6px rgba(4,18,9,.5),6px 8px 14px rgba(4,18,9,.5)}
+#sRoue .ast .throne::after{content:"";position:absolute;left:50%;top:38px;width:10px;height:22px;transform:translateX(-50%);background:linear-gradient(135deg,var(--or2),var(--or-deep));border-radius:3px}
+#sRoue .ast .rim-depth{position:absolute;inset:-24px;border-radius:50%;background:conic-gradient(from 190deg,var(--or-deep),#4d3d14 30%,var(--ink2) 55%,#4d3d14 80%,var(--or-deep));-webkit-mask:radial-gradient(circle,transparent 60.5%,#000 61%);mask:radial-gradient(circle,transparent 60.5%,#000 61%)}
+#sRoue .ast .rim-depth.d1{transform:translateZ(-3px) scale(1.004)}
+#sRoue .ast .rim-depth.d2{transform:translateZ(-6px) scale(1.008)}
+#sRoue .ast .rim{position:absolute;inset:-24px;border-radius:50%;transform:translateZ(2px);background:conic-gradient(from 190deg,#7A5E1F,#9A7B2E 12%,#F4DC92 28%,#E8C76E 34%,#C4A24A 46%,#8a6d28 62%,#D4B05A 76%,#9A7B2E 88%,#7A5E1F);-webkit-mask:radial-gradient(circle,transparent 60.5%,#000 61%);mask:radial-gradient(circle,transparent 60.5%,#000 61%)}
+#sRoue .ast .rim-bevel{position:absolute;inset:-24px;border-radius:50%;transform:translateZ(4px);background:conic-gradient(from 250deg,transparent 0 6%,rgba(255,246,220,.85) 15%,transparent 26%);-webkit-mask:radial-gradient(circle,transparent 70.2%,#000 70.6%,#000 71.5%,transparent 71.9%);mask:radial-gradient(circle,transparent 70.2%,#000 70.6%,#000 71.5%,transparent 71.9%)}
+#sRoue .ast .rim-sweep{position:absolute;inset:-24px;border-radius:50%;transform:translateZ(6px);background:conic-gradient(from -20deg,transparent 0 4%,rgba(255,246,220,.22) 9%,transparent 15%);-webkit-mask:radial-gradient(circle,transparent 60.5%,#000 61%);mask:radial-gradient(circle,transparent 60.5%,#000 61%);animation:rimSweep 12s linear infinite;pointer-events:none}
+#sRoue .ast .grad{position:absolute;inset:-13px;border-radius:50%;transform:translateZ(5px);background:repeating-conic-gradient(rgba(20,12,4,.55) 0 .5deg,transparent .5deg 6deg);-webkit-mask:radial-gradient(circle,transparent 63%,#000 63.5%,#000 68%,transparent 68.5%);mask:radial-gradient(circle,transparent 63%,#000 63.5%,#000 68%,transparent 68.5%)}
+#sRoue .ast .grad-hi{position:absolute;inset:-13px;border-radius:50%;transform:translateZ(7px) rotate(.45deg);background:repeating-conic-gradient(rgba(255,246,220,.5) 0 .5deg,transparent .5deg 6deg);-webkit-mask:radial-gradient(circle,transparent 63%,#000 63.5%,#000 68%,transparent 68.5%);mask:radial-gradient(circle,transparent 63%,#000 63.5%,#000 68%,transparent 68.5%)}
+#sRoue .ast .mater{position:absolute;inset:0;border-radius:50%;transform-style:preserve-3d;background:radial-gradient(circle at 36% 28%,#237A52,#0A2C1E 66%,#061F15);box-shadow:inset 0 0 0 2px rgba(212,176,90,.5),inset 10px 14px 34px rgba(255,246,220,.14),inset -14px -20px 44px rgba(4,18,9,.6)}
+#sRoue .ast .mater .tropic{position:absolute;border-radius:50%;border:1.5px solid rgba(212,176,90,.45);transform:translateZ(6px)}
+#sRoue .ast .mater .tropic.t1{inset:12%}#sRoue .ast .mater .tropic.t2{inset:26%}#sRoue .ast .mater .tropic.t3{inset:41%}
+#sRoue .ast .mater .ar{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateZ(8px);font-family:var(--ar);font-size:min(4.6vw,68px);color:rgba(251,239,194,.22);direction:rtl}
+#sRoue .ast .cyc{position:absolute;inset:-24px;transform:translateZ(9px);pointer-events:none}
+#sRoue .ast .cyc svg{width:100%;height:100%;overflow:visible}
+#sRoue .cyc-arc{fill:none;stroke-width:9;stroke-linecap:round;stroke-dasharray:490;stroke-dashoffset:490;opacity:.95;transition:opacity .5s ease,stroke-width .4s ease}
+#sRoue .cyc-arrow{opacity:0}
+#sRoue.active .cyc-arc.s1{animation:drawArc .8s cubic-bezier(.5,0,.3,1) .2s forwards}
+#sRoue.active .cyc-arc.s2{animation:drawArc .8s cubic-bezier(.5,0,.3,1) .6s forwards}
+#sRoue.active .cyc-arc.s3{animation:drawArc .8s cubic-bezier(.5,0,.3,1) 1s forwards}
+#sRoue.active .cyc-arrow.w1{animation:arrowIn .4s ease .6s forwards}
+#sRoue.active .cyc-arrow.w2{animation:arrowIn .4s ease 1s forwards}
+#sRoue.active .cyc-arrow.w3{animation:arrowIn .4s ease 1.4s forwards}
+#sRoue .ast .rete-sh{position:absolute;inset:6%;transform:translateZ(3px) translate(10px,13px);border-radius:50%;pointer-events:none}
+#sRoue .ast .rete-sh::before{content:"";position:absolute;inset:16%;border-radius:50%;border:6px solid rgba(4,18,9,.38);box-shadow:0 0 9px 3px rgba(4,18,9,.22),inset 0 0 9px 3px rgba(4,18,9,.22)}
+#sRoue .ast .rete-sh::after{content:"";position:absolute;left:50%;top:50%;width:46%;height:7px;transform:translate(-50%,-50%) rotate(158deg);border-radius:4px;background:rgba(4,18,9,.3)}
+#sRoue .ast .rete-lift{position:absolute;inset:6%;transform:translateZ(14px);transform-style:preserve-3d}
+#sRoue .ast .rete{position:absolute;inset:0;animation:astSpin 52s linear infinite;will-change:transform}
+#sRoue .ast .rete .ecl{position:absolute;inset:16%;border-radius:50%;border:5px solid rgba(212,176,90,.85);box-shadow:inset 1px 2px 2px rgba(255,246,220,.5),2px 3px 3px rgba(4,18,9,.55);-webkit-mask:conic-gradient(#000 0 78%,transparent 78% 86%,#000 86%);mask:conic-gradient(#000 0 78%,transparent 78% 86%,#000 86%)}
+#sRoue .ast .rete .ptr{position:absolute;left:50%;top:50%;width:5px;transform-origin:50% 0;clip-path:polygon(50% 0,100% 6%,58% 100%,42% 100%,0 6%);border-radius:3px;transition:opacity .5s ease}
+#sRoue .ast .rete .ptr.p1{height:46%;transform:rotate(158deg);background:linear-gradient(180deg,var(--em-bright),var(--em-l) 75%)}
+#sRoue .ast .rete .ptr.p2{height:38%;transform:rotate(272deg);background:linear-gradient(180deg,var(--or-flow1),var(--or2) 75%)}
+#sRoue .ast .rete .ptr.p3{height:42%;transform:rotate(46deg);background:linear-gradient(180deg,var(--rose),var(--red-hi) 75%)}
+#sRoue .ast .rete .starw{position:absolute;width:26px;height:26px;margin:-13px}
+#sRoue .ast .rete .starw::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:radial-gradient(circle,rgba(244,220,146,.55),rgba(244,220,146,.18) 45%,transparent 70%)}
+#sRoue .ast .rete .starw .star{position:absolute;inset:8px;background:var(--or-flow1);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+#sRoue .ast .rete .starw.s1{left:24%;top:30%}#sRoue .ast .rete .starw.s2{left:66%;top:22%}#sRoue .ast .rete .starw.s3{left:58%;top:70%}
+#sRoue .ast .alid-lift{position:absolute;left:50%;top:50%;width:86%;height:7px;transform:translate(-50%,-50%) translateZ(20px);transform-style:preserve-3d}
+#sRoue .ast .alid{position:absolute;inset:0;animation:astSpinR 34s linear infinite;background:linear-gradient(90deg,transparent,var(--or2) 18%,var(--or-flow1) 50%,var(--or2) 82%,transparent);border-radius:4px;box-shadow:2px 3px 6px rgba(4,18,9,.55)}
+#sRoue .ast .pin{position:absolute;left:50%;top:50%;width:22px;height:22px;transform:translate(-50%,-50%) translateZ(26px);border-radius:50%;background:radial-gradient(circle at 36% 30%,#fff,var(--or-flow1) 40%,var(--or));box-shadow:0 0 0 4px rgba(212,176,90,.25),3px 4px 12px rgba(4,18,9,.5),0 0 18px rgba(196,162,74,.5)}
+#sRoue .ast-ph{position:absolute;z-index:22;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid var(--or2);border-radius:5px;padding:8px 13px 8px 15px;color:var(--ink);box-shadow:6px 12px 28px -10px rgba(4,18,9,.85);opacity:0;transition:opacity .45s ease,box-shadow .45s ease}
+#sRoue.active .ast-ph.a1{animation:phRise .6s cubic-bezier(.3,.7,.3,1) 1.3s forwards}
+#sRoue.active .ast-ph.a2{animation:phRise .6s cubic-bezier(.3,.7,.3,1) 1.45s forwards}
+#sRoue.active .ast-ph.a3{animation:phRise .6s cubic-bezier(.3,.7,.3,1) 1.6s forwards}
+#sRoue .ast-ph b{display:block;font-size:11.5px;letter-spacing:.14em;font-weight:700}
+#sRoue .ast-ph i{font-style:normal;font-size:8.5px}
+#sRoue .ast-ph::before{content:"";position:absolute;left:5px;top:7px;bottom:7px;width:2px;border-radius:2px}
+#sRoue .ast-ph.a1{right:4%;top:15%}
+#sRoue .ast-ph.a1::before,#sRoue .ast-ph.a1 i{color:#3CA47A}
+#sRoue .ast-ph.a1::before{background:linear-gradient(180deg,var(--em-bright),var(--em-l))}
+#sRoue .ast-ph.a2{right:14%;bottom:10%}
+#sRoue .ast-ph.a2::before{background:linear-gradient(180deg,var(--or-flow1),var(--or2))}
+#sRoue .ast-ph.a2 i{color:var(--or3)}
+#sRoue .ast-ph.a3{left:2%;top:15%;border-color:var(--red-hi)}
+#sRoue .ast-ph.a3::before{background:linear-gradient(180deg,var(--rose),var(--red-hi))}
+#sRoue .ast-ph.a3 i{color:var(--rose)}
+#sRoue .cyc-link{position:absolute;z-index:21;height:0;border-top:1px dashed rgba(196,162,74,.65);opacity:0}
+#sRoue.active .cyc-link.l1{animation:linkIn .5s ease 1.5s forwards}
+#sRoue.active .cyc-link.l2{animation:linkIn .5s ease 1.65s forwards}
+#sRoue.active .cyc-link.l3{animation:linkIn .5s ease 1.8s forwards}
+#sRoue .cyc-link.l1{right:calc(4% + 40px);top:calc(15% + 52px);width:70px;transform:rotate(38deg);transform-origin:right center}
+#sRoue .cyc-link.l2{right:calc(14% + 60px);bottom:calc(10% + 30px);width:60px;transform:rotate(-30deg);transform-origin:right center}
+#sRoue .cyc-link.l3{left:calc(2% + 50px);top:calc(15% + 52px);width:70px;transform:rotate(-38deg);transform-origin:left center}
+/* projecteur (3 clics) : opacité + halo · aucun filter */
+#sRoue.ph1 .cyc-arc.s2,#sRoue.ph1 .cyc-arc.s3,#sRoue.ph2 .cyc-arc.s1,#sRoue.ph2 .cyc-arc.s3,#sRoue.ph3 .cyc-arc.s1,#sRoue.ph3 .cyc-arc.s2{opacity:.25}
+#sRoue.ph1 .cyc-arc.s1,#sRoue.ph2 .cyc-arc.s2,#sRoue.ph3 .cyc-arc.s3{stroke-width:13}
+#sRoue.ph1 .ptr.p2,#sRoue.ph1 .ptr.p3,#sRoue.ph2 .ptr.p1,#sRoue.ph2 .ptr.p3,#sRoue.ph3 .ptr.p1,#sRoue.ph3 .ptr.p2{opacity:.3}
+#sRoue.ph1 .ast-ph.a2,#sRoue.ph1 .ast-ph.a3,#sRoue.ph2 .ast-ph.a1,#sRoue.ph2 .ast-ph.a3,#sRoue.ph3 .ast-ph.a1,#sRoue.ph3 .ast-ph.a2{opacity:.35!important}
+#sRoue.ph1 .ast-ph.a1,#sRoue.ph2 .ast-ph.a2{box-shadow:6px 12px 28px -10px rgba(4,18,9,.85),0 0 26px rgba(232,199,122,.55)}
+#sRoue.ph3 .ast-ph.a3{box-shadow:6px 12px 28px -10px rgba(4,18,9,.85),0 0 26px rgba(199,120,133,.55)}
+@media(prefers-reduced-motion:reduce){#sRoue .cyc-arc{stroke-dashoffset:0!important}#sRoue .cyc-arrow,#sRoue .ast-ph,#sRoue .cyc-link{opacity:1!important;transform:none!important}}
+/* DA-CHROME-V2 START · sérif éditorial italique (Newsreader) — verrouillé 26 juin */
+.eyebrow{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:15.5px!important;letter-spacing:.005em!important;text-transform:none!important;gap:0!important}
+.eyebrow::before,.eyebrow::after{display:none!important}
+.eyebrow span{font-style:italic!important;letter-spacing:.005em!important}
+.kicker{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:16px!important;letter-spacing:.01em!important;text-transform:none!important}
+.kicker::before,.kicker::after{display:none!important}
+.kicker em{font-family:var(--long),Georgia,serif!important;font-style:italic!important}
+.hint{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:15px!important;letter-spacing:.01em!important;text-transform:none!important}
+.lab{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:13.5px!important;letter-spacing:.01em!important;text-transform:none!important}
+.foot{font-family:var(--long),Georgia,serif!important;font-style:italic!important;letter-spacing:.01em!important;text-transform:none!important}
+#s1 .meta-tag{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:16px!important;letter-spacing:.01em!important;text-transform:none!important}
+#s1 .meta{font-family:var(--long),Georgia,serif!important;font-style:italic!important;letter-spacing:.01em!important;text-transform:none!important;font-variant-numeric:oldstyle-nums}
+#s1 .meta i{font-style:italic!important}
+.nav-brand{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;letter-spacing:.02em!important;text-transform:none!important}
+/* DA-CHROME-V2 END */
+</style>
+<style id="cvA-cover">
+/* Couverture A + foil dore anime — titre 2 lignes (session 26/06) */
+body:has(#s1.active) .navchrome,body:has(#s1.active) .hint{opacity:0!important;pointer-events:none}
+#s1{align-items:center;justify-content:center;text-align:center;padding:54px 40px}
+#s1 .cvA-top{position:absolute;top:46px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:16px;z-index:3}
+#s1 .cvA-brand{font-family:var(--title);font-style:italic;font-weight:700;font-size:32px;color:var(--ink);line-height:1}
+#s1 .cvA-brand .cvA-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--or2);vertical-align:middle;margin-right:12px;box-shadow:0 0 0 4px rgba(196,162,74,.18)}
+#s1 .cvA-tract{width:130px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--or2),var(--or3) 45%,#FBEFC2 60%,var(--or2));box-shadow:0 1px 6px rgba(196,162,74,.4)}
+#s1 .cvA-mod{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or-deep);font-weight:500;margin-bottom:18px}
+#s1 .cvA-tt{position:relative;display:inline-block}
+#s1 .cvA-tt::before{content:"";position:absolute;inset:-20% -12%;background:radial-gradient(ellipse 62% 52% at 50% 50%,rgba(196,162,74,.16),transparent 64%);z-index:-1}
+#s1 .cvA-l1{display:block;font-family:var(--av);font-weight:600;font-size:clamp(40px,6.2vw,80px);line-height:1;letter-spacing:-.025em;color:var(--ink)}
+#s1 .cvA-l1 em{font-family:var(--title);font-style:italic;font-weight:900}
+#s1 .cvA-l2{display:block;font-family:var(--av);font-weight:600;font-size:clamp(24px,3.3vw,44px);line-height:1.06;letter-spacing:-.015em;color:var(--ink);margin-top:8px}
+#s1 .cvA-sub{font-family:var(--long);font-style:italic;font-size:18px;color:var(--ink2);max-width:680px;margin-top:26px;line-height:1.45}
+#s1 .cvA-sub em{font-family:var(--title);font-style:italic;font-weight:600;color:var(--or-deep)}
+#s1 .cvA-period{position:absolute;bottom:24px;left:40px;font-family:var(--long);font-style:italic;font-size:15px;color:var(--ink3);z-index:3}
+#s1 .cvA-pg{position:absolute;bottom:16px;right:40px;font-family:var(--title);font-style:italic;font-weight:900;font-size:26px;color:var(--or2);z-index:3}
+#s1 .cvA-pg sup{font-family:var(--mono);font-size:10px;font-style:normal;color:rgba(154,123,46,.6)}
+</style>
+<style id="contraste-fix">
+/* CONTRASTE FIX — audit 27 juin (foil cover profond + meme-sur-meme corriges) */
+#s1 .cvA-l1 em{background:linear-gradient(110deg,#6b5320,#7A5E1F 14%,#9A7B2E 32%,#C4A24A 50%,#8a6d28 68%,#B98E32 86%,#6b5320 100%)!important;background-size:300% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+#s5 .jal .pl{color:var(--or-deep)!important}
+#s11 .ex .n{color:var(--or-deep)!important}
+</style>
+<style id="citfix">
+/* CARD/FOND v2 (27 juin) : seal off · plaques creme/bordeaux alternees · separation */
+.seal{display:none!important}
+#s5 .jal .card {
+  background: linear-gradient(180deg, var(--paper-w), var(--cr2)) !important;
+  border: 1px solid var(--or2) !important;
+  box-shadow: 0 18px 44px -20px rgba(20, 12, 4, .4), inset 0 1px 0 rgba(255, 255, 255, .85), 0 0 0 1px rgba(154, 123, 46, .5), 0 0 40px -12px rgba(196, 162, 74, .25) !important;
+}
+
+#s5 .jal .card .y {
+  color: var(--or-deep) !important;
+}
+
+#s5 .jal .card .pl {
+  color: var(--or-deep) !important;
+}
+
+#s5 .jal .card .t {
+  color: var(--ink) !important;
+}
+
+#s5 .jal .card .t em {
+  color: var(--or-deep) !important;
+}
+
+#s5 .jal .card .d {
+  color: var(--ink2) !important;
+}
+</style>
+<style id="fxfoil">
+/* FIX CLIPPING (27 juin) : descendantes du foil + halo cover */
+.foil{display:inline-block;line-height:1.16;padding-bottom:.07em}
+#s1 .cvA-tt::before{inset:-22% -17%!important}
+#s1 .t1::before{inset:-22% -16%!important}
+</style>
+<style id="calibB">
+/* CALIBRATION B (standard verrouillé) */
+/* CALIBRATION B — Ibn Khaldoun M2 · 27 juin 2026 */
+
+/* 1. SLIDE QUESTION — brider le titre-question */
+#s2 .q {
+  font-size: clamp(40px, 4.6vw, 60px) !important;
+}
+
+/* 2. NUMEROS DECORATIFS — brider + passer en bordeaux (--red-hi) */
+
+/* S5 Trajéectoire : années des jalons */
+#s5 .jal .y {
+  font-size: clamp(28px, 3.2vw, 34px) !important;
+  color: var(--red-hi) !important;
+}
+
+/* S9 (Roue) : chiffres arabe dans les cards de phases — NE PAS TOUCHER (porteurs de sens) */
+
+/* S11 Application : numéro d'exercice arabe */
+#s11 .ex .n {
+  font-size: clamp(28px, 3.2vw, 34px) !important;
+  color: var(--red-hi) !important;
+}
+
+/* S12 Passerelle : numéros d'acquis en arabe */
+#s12 .card .n {
+  font-size: clamp(28px, 3.2vw, 34px) !important;
+  color: var(--red-hi) !important;
+}
+
+/* 3. CORPS CARD — remonter taille + line-height */
+
+/* S5 Jalons : description */
+#s5 .jal .d {
+  font-size: 16px !important;
+  line-height: 1.62 !important;
+}
+
+/* S12 Acquis : paragraphe contenu */
+#s12 .card p {
+  font-size: 16px !important;
+  line-height: 1.62 !important;
+}
+
+/* 4. CARDS À MOITIE VIDE — supprimer min-height + centrer */
+
+/* S5 Jalons */
+#s5 .jal .card {
+  min-height: auto !important;
+  justify-content: flex-start !important;
+}
+
+/* S12 Acquis */
+#s12 .card {
+  min-height: auto !important;
+  justify-content: flex-start !important;
+}
+</style>
+<style id="chromeEpure">
+/* ANNOTATIONS ÉPURÉES (V3 corrigé, 27 juin) : rien en haut · progression centre · pager n°/total bas-droite */
+.eyebrow{display:none!important}
+/* COHÉRENCE COULEUR du chrome avec le fond de la slide active */
+body:has(.slide.em.active) .nav-brand,body:has(.slide.ink.active) .nav-brand,body:has(.slide.red.active) .nav-brand,
+body:has(.slide.em.active) .nav-count,body:has(.slide.ink.active) .nav-count,body:has(.slide.red.active) .nav-count{color:var(--or3)!important}
+body:has(.slide.em.active) .nav-count sup,body:has(.slide.ink.active) .nav-count sup,body:has(.slide.red.active) .nav-count sup{color:rgba(232,199,110,.55)!important}
+body:has(.slide.em.active) .nav-seg i.done,body:has(.slide.ink.active) .nav-seg i.done,body:has(.slide.red.active) .nav-seg i.done{background:var(--or3)!important;opacity:.7}
+body:has(.slide.or.active) .nav-brand,body:has(.slide.or.active) .nav-count{color:var(--red-low)!important}
+body:has(.slide.or.active) .nav-count sup{color:rgba(74,19,32,.55)!important}
+body:has(.slide.or.active) .nav-seg i.done{background:var(--red-low)!important;opacity:.6}
+body:has(.slide.or.active) .nav-seg i.on{background:linear-gradient(90deg,var(--red-low),var(--red-hi))!important;box-shadow:none!important}
+</style>
+<style id="foilTitles">
+/* ===== FOIL DÉMOCRATISÉ (28 juin) — mots-clés de TITRE / affichage · mix par fond ===== */
+/* Corps inline (p / .v / .x / .role / .rep / cards) reste OR SOLIDE. Fonds OR exclus (doré-sur-doré). */
+/* fond CLAIR (crème) → foil DOUX profond */
+.head h2 em,.q em,.h em,.stele .word em,.word em,.line em,.quote em,.lede em{
+  font-family:var(--title);font-style:italic;font-weight:700;
+  background:linear-gradient(110deg,#6b5320,#7A5E1F 14%,#9A7B2E 32%,#C4A24A 50%,#8a6d28 68%,#B98E32 86%,#6b5320 100%);
+  background-size:280% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:foilFlow 11s linear infinite;display:inline-block;line-height:1.16;padding-bottom:.04em}
+/* fond SOMBRE (émeraude / ink / rouge / photo) → foil RICHE lumineux */
+.slide.em .head h2 em,.slide.ink .head h2 em,.slide.red .head h2 em,
+.slide.em .q em,.slide.ink .q em,.slide.red .q em,
+.slide.em .h em,.slide.ink .h em,.slide.red .h em,
+.slide.em .line em,.slide.ink .line em,.slide.red .line em,
+.slide.em .quote em,.slide.ink .quote em,.slide.red .quote em,
+.stele .word em,.slide.em .word em,.slide.ink .word em,.slide.red .word em,
+.fullframe .ff-sub em{
+  font-family:var(--title);font-style:italic;font-weight:700;
+  background-image:linear-gradient(110deg,#8a6d28,#C4A24A 16%,#F4DC92 30%,#E8C76E 44%,#9A7B2E 58%,#D4B05A 72%,#F8E3A0 86%,#C4A24A 100%);background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:foilFlow 7s linear infinite;display:inline-block;line-height:1.16;padding-bottom:.04em}
+/* fond OR → garder OR SOLIDE (foil doré-sur-doré illisible) */
+.slide.or .head h2 em,.slide.or .q em,.slide.or .h em,.slide.or .line em,.slide.or .word em{
+  background:none;-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:var(--red-low);color:var(--red-low);animation:none}
+</style>
+<style id="chromeV3">
+/* ===== ANNOTATION 3 — « ligne haute, alignée gauche » (validée par Rany) ===== */
+/* SANS-serif (Avant Garde / Poppins) · pas de doublon · barre de progression conservée */
+/* HAUT-GAUCHE = section + n° (source unique du module + numérotation) */
+.topline{position:fixed;top:34px;left:56px;z-index:42;display:flex;align-items:center;gap:11px;font-family:var(--av);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;pointer-events:none}
+.topline .sec{color:var(--or-deep);font-weight:600}
+.topline .bar{width:22px;height:1px;background:rgba(154,123,46,.5)}
+.topline .num{color:rgba(61,55,48,.5)}
+/* BAS = marque seule (gauche) + barre de progression (droite) — plus de pager ni de nom de module dupliqué */
+.footline{position:fixed;left:0;right:0;bottom:0;height:58px;z-index:42;display:flex;align-items:center;justify-content:space-between;padding:0 56px;font-family:var(--av);pointer-events:none}
+.footline .f-left{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--or-deep)}
+.footline .f-left .f-dot{width:5px;height:5px;border-radius:50%;background:var(--or2);box-shadow:0 0 0 3px rgba(196,162,74,.2)}
+.footline .f-seg{display:flex;gap:5px;align-items:center}
+.footline .f-seg i{width:16px;height:3px;border-radius:2px;background:rgba(40,28,8,.16);transition:.5s cubic-bezier(.7,0,.3,1)}
+.footline .f-seg i.done{background:var(--or2);opacity:.7}
+.footline .f-seg i.on{width:30px;background:linear-gradient(90deg,var(--or2),var(--or3));box-shadow:0 0 10px rgba(232,199,110,.45)}
+/* fonds sombres (em / ink / red / fullframe) → texte clair doré */
+body:has(.slide.em.active) .topline .sec,body:has(.slide.ink.active) .topline .sec,body:has(.slide.red.active) .topline .sec,body:has(.slide.fullframe.active) .topline .sec,
+body:has(.slide.em.active) .footline .f-left,body:has(.slide.ink.active) .footline .f-left,body:has(.slide.red.active) .footline .f-left,body:has(.slide.fullframe.active) .footline .f-left{color:var(--or3)!important}
+body:has(.slide.em.active) .topline .num,body:has(.slide.ink.active) .topline .num,body:has(.slide.red.active) .topline .num,body:has(.slide.fullframe.active) .topline .num{color:rgba(232,239,231,.5)!important}
+body:has(.slide.em.active) .topline .bar,body:has(.slide.ink.active) .topline .bar,body:has(.slide.red.active) .topline .bar,body:has(.slide.fullframe.active) .topline .bar{background:rgba(212,176,90,.5)!important}
+body:has(.slide.em.active) .footline .f-seg i.done,body:has(.slide.ink.active) .footline .f-seg i.done,body:has(.slide.red.active) .footline .f-seg i.done,body:has(.slide.fullframe.active) .footline .f-seg i.done{background:var(--or3)!important;opacity:.6}
+body:has(.slide.em.active) .footline .f-seg i,body:has(.slide.ink.active) .footline .f-seg i,body:has(.slide.red.active) .footline .f-seg i,body:has(.slide.fullframe.active) .footline .f-seg i{background:rgba(232,239,231,.22)}
+/* fond or → texte bordeaux foncé */
+body:has(.slide.or.active) .topline .sec,body:has(.slide.or.active) .footline .f-left{color:var(--red-low)!important}
+body:has(.slide.or.active) .topline .num{color:rgba(74,19,32,.5)!important}
+body:has(.slide.or.active) .topline .bar{background:rgba(74,19,32,.4)!important}
+body:has(.slide.or.active) .footline .f-seg i.done{background:var(--red-low)!important;opacity:.55}
+body:has(.slide.or.active) .footline .f-seg i.on{background:linear-gradient(90deg,var(--red-low),var(--red-hi))!important;box-shadow:none!important}
+body:has(.slide.or.active) .footline .f-left .f-dot{background:var(--red-low)}
+/* cover → chrome masqué */
+body:has(#s1.active) .topline,body:has(#s1.active) .footline,body:has(#s1.active) .hint{opacity:0!important;pointer-events:none}
+</style>
+<style id="swashfix">/* swash italique du foil (queue du « e ») cassait contre le « : » — on etend a droite pour degager le swash + le doter du dore */
+#s1 .cvA-l1 em{padding-right:.16em}</style>
+<style id="antistatic">
+/* ANTI-STATIQUE (5 juillet) — couverture vivante · stèle en 2 temps · roue en 3 temps · legs en cascade */
+@keyframes cvRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes tractShine{0%,55%{background-position:140% 0}100%{background-position:-140% 0}}
+#s1.active .cvA-mod{animation:cvRise .7s ease .12s both}
+#s1.active .cvA-tt{animation:cvRise .85s ease .3s both}
+#s1.active .cvA-sub{animation:cvRise .85s ease .55s both}
+#s1.active .cvA-period,#s1.active .cvA-pg{animation:cvRise .9s ease .85s both}
+#s1 .cvA-tt::before{animation:haloPulse 7s ease-in-out infinite}
+#s1 .cvA-tract{background:linear-gradient(90deg,var(--or2) 0%,var(--or3) 38%,#FBEFC2 50%,var(--or3) 62%,var(--or2) 100%);background-size:240% 100%;animation:tractShine 6s ease-in-out infinite}
+/* s4 — clic 1 : définition ; clic 2 : la loi du cycle */
+#s4 .stele .open .cyc.revealed{opacity:1;transform:none;transition-delay:.1s}
+/* sRoue projecteur : défini dans le bloc astrolabe (#sRoue.ph1/2/3) */
+/* s12 — entrée en cascade du legs */
+#s12.active .legs-k{animation:cvRise .6s ease .1s both}
+#s12.active .legs-name{animation:cvRise .7s ease .25s both}
+#s12.active .legs-d{animation:cvRise .7s ease .45s both}
+#s12.active .legs-rule{animation:cvRise .7s ease .62s both}
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+<!-- S1 COVER -->
+<section class="slide cover active" id="s1" data-slide="1">
+  <div class="cvA-top"><div class="cvA-brand"><span class="cvA-dot"></span>L’Autre Récit</div><div class="cvA-tract"></div></div>
+  <div class="cvA-mod">L’Algérie a pensé · Module 2 / 15</div>
+  <div class="cvA-tt"><span class="cvA-l1">Ibn <em class="foil">Khaldoun</em>&#8239;:</span><span class="cvA-l2">penser le pouvoir depuis le Maghreb.</span></div>
+  <div class="cvA-sub">Cinq siècles avant la sociologie, une théorie du cycle des États et de la cohésion sociale.</div>
+  <div class="cvA-period">1332 — 1406</div>
+  <div class="cvA-pg">02<sup> / 15</sup></div>
+</section>
+
+<!-- S2 QUESTION émeraude -->
+<section class="slide em" id="s2" data-slide="2" data-clicks="1">
+  <div class="eyebrow"><span>La question d’ouverture</span></div>
+  <div class="ar-side"><div class="a">العصبية</div><div class="f">al-’asabiyya · la cohésion du groupe</div></div>
+  <div class="wrap">
+    <div class="kicker"><span>Avant l’Europe, <em>un Maghrébin</em></span></div>
+    <p class="q">En <em>1377</em>, dans une forteresse de l’actuelle Algérie, un homme écrit la première théorie de la montée et de la chute des empires. <em>Comment</em> a-t-il pensé cela, quatre siècles avant Montesquieu&#8239;?</p>
+    <p class="rep">Réfugié à <strong>Qalʿat Ibn Salama</strong>, près de Tiaret, Ibn Khaldoun rédige en quelques mois la <strong>Muqaddima</strong>, l’«&#8239;Introduction&#8239;» à une histoire universelle. Il y fonde une science nouvelle&#8239;: l’étude des sociétés humaines.</p>
+  </div>
+</section>
+
+<!-- S3 PORTRAIT -->
+<section class="slide" id="s3" data-slide="3" data-clicks="2">
+  <div class="eyebrow"><span>Qui est-il</span></div>
+  <div class="wrap">
+    <div class="medal">
+      <div class="ring"></div>
+      <div class="disk"><div class="ar">ابن<br>خلدون</div><div class="glare"></div></div>
+      <div class="cap">Aucun portrait d’époque · statue de Tunis, 1932</div>
+    </div>
+    <div class="info">
+      <div class="nm">Abd al-Rahman <em>Ibn Khaldoun</em></div>
+      <div class="dt">Tunis 1332 — Le Caire 1406</div>
+      <div class="roles"><span>Juriste malékite</span><span>Diplomate</span><span>Historien</span><span>Exilé</span></div>
+      <p class="lede" data-step="2">D’une famille andalouse chassée de Séville par la Reconquista. Il sert et trahit les dynasties rivales du Maghreb et de l’Andalousie musulmane, avant de se retirer pour <em>comprendre</em> ce qu’il a vu de l’intérieur du pouvoir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S5 TRAJECTOIRE (jalons AVANT le concept — raccord voix Fish : biographie §3 puis asabiyya §4) -->
+<section class="slide" id="s5" data-slide="4" data-clicks="3">
+  <div class="eyebrow"><span>Trois jalons d’une vie</span></div>
+  <div class="head">
+    <div class="lab">Du palais à la forteresse</div>
+    <h2>Une vie passée <em>dans</em> le pouvoir, puis à le penser.</h2>
+  </div>
+  <div class="frise">
+    <div class="jal" data-step="1">
+      <div class="node"></div>
+      <div class="card">
+        <div class="y">1332</div>
+        <div class="pl">Tunis · l’enfance</div>
+        <div class="t">Une famille de <em>vizirs</em></div>
+        <div class="d">Né dans l’élite andalouse de Tunis. Formé au droit, au Coran, à la poésie. La peste de 1348 emporte ses parents et ses maîtres.</div>
+      </div>
+    </div>
+    <div class="jal" data-step="2">
+      <div class="node"></div>
+      <div class="card">
+        <div class="y">1354–74</div>
+        <div class="pl">Fez · Grenade · Tlemcen</div>
+        <div class="t">Vingt ans de <em>cour</em></div>
+        <div class="d">Conseiller, ambassadeur, prisonnier, comploteur. Il sert les sultans du Maghreb et d’al-Andalus, et voit de près comment le pouvoir se prend et se perd.</div>
+      </div>
+    </div>
+    <div class="jal" data-step="3">
+      <div class="node"></div>
+      <div class="card">
+        <div class="y">1377</div>
+        <div class="pl">Qalʿat Ibn Salama · Algérie</div>
+        <div class="t">La <em>retraite</em> féconde</div>
+        <div class="d">Retiré dans une forteresse près de Tiaret, il écrit la Muqaddima en cinq mois. À 45 ans, il invente une manière de lire l’histoire comme une science.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 STÈLE concept (après les jalons — raccord voix Fish §4 : « une question s’impose… l’asabiyya ») -->
+<section class="slide" id="s4" data-slide="5" data-clicks="2">
+  <div class="eyebrow"><span>Le concept-clé</span></div>
+  <div class="stele" id="stele">
+    <div class="ar">عَصَبِيَّة</div>
+    <div class="word"><em>’Asabiyya</em></div>
+    <div class="src">la cohésion qui fait et défait les empires</div>
+    <div class="open">
+      <p class="def">La force de solidarité d’un groupe&#8239;: le sentiment d’appartenance qui pousse à se battre, à conquérir, à durer ensemble.</p>
+      <p class="def cyc" data-step="2"><em>Une dynastie monte tant que son ’asabiyya est forte. Elle tombe quand le confort la dissout.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- S8b · L'ASTROLABE DU POUVOIR · le cycle des dynasties (remplace la roue) -->
+<style id="astCenter">
+/* composition centrée : titre en bandeau haut · boussole au centre · labels collés au limbe · stats en bas */
+#sRoue .ast-head{position:absolute;top:58px;left:50%;transform:translateX(-50%);width:92%;max-width:1120px;text-align:center;z-index:22}
+#sRoue .ast-head h1{font-family:var(--av);font-weight:500;font-size:clamp(28px,3.5vw,50px);line-height:1.06;letter-spacing:-.02em;color:#F4FBF6}
+#sRoue .ast-head h1 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#sRoue .ast-say{margin:14px auto 0;font-family:var(--sans);font-size:clamp(13px,1.4vw,16.5px);line-height:1.55;color:rgba(244,251,246,.88);max-width:730px}
+#sRoue .ast-say b{color:var(--or3);font-weight:700}
+#sRoue .ast-say em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#sRoue .ast-foot{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);z-index:22}
+#sRoue .ast-foot .stats{display:flex;gap:46px;justify-content:center}
+#sRoue .ast-foot .stat{text-align:center}
+#sRoue .ast-foot .stat .n{font-family:var(--title);font-style:italic;font-weight:900;font-size:clamp(22px,2vw,30px);color:var(--or3);line-height:1}
+#sRoue .ast-foot .stat .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,251,246,.55);margin-top:6px}
+/* boussole centrée */
+#sRoue .ast-scene{left:0;right:0;top:0;bottom:0;width:auto}
+#sRoue .ast-wrap{left:50%;top:55%}
+#sRoue .ast{width:min(28vw,420px);height:min(28vw,420px)}
+#sRoue .ast-drop{left:50%;top:55%;width:min(31vw,458px);height:min(31vw,458px);transform:translate(calc(-50% + 14px),calc(-50% + 20px))}
+#sRoue .ast-ground{left:50%;top:calc(55% + min(15.5vw,232px));width:min(18vw,290px);transform:translateX(calc(-50% + 20px))}
+/* labels collés au limbe, à leur secteur */
+#sRoue .ast-ph.a1{right:auto;bottom:auto;left:calc(50% + 150px);top:calc(55% - 188px)}
+#sRoue .ast-ph.a2{right:auto;bottom:auto;left:calc(50% - 66px);top:calc(55% + 196px)}
+#sRoue .ast-ph.a3{left:auto;bottom:auto;right:calc(50% + 150px);top:calc(55% - 188px)}
+/* connecteurs inutiles maintenant que les labels touchent le limbe */
+#sRoue .cyc-link{display:none}
+/* stats en bas, hint sous les stats (anti-chevauchement) */
+#sRoue .ast-foot{bottom:56px}
+#sRoue .hint{bottom:18px}
+</style>
+<section class="slide em" id="sRoue" data-slide="8b" data-clicks="3">
+  <div class="eyebrow"><span>La roue des dynasties · la Muqaddima</span></div>
+  <div class="ast-head">
+    <h1>Le <em>cycle</em> qu’Ibn Khaldoun a dessiné en 1377.</h1>
+    <p class="ast-say">Ce qu’il démontre&#8239;: la cohésion d’un groupe, son <b>’asabiyya</b>, fait sa force ; le confort la dissout ; et aucun pouvoir n’échappe au <em>cycle</em>.</p>
+  </div>
+  <div class="ast-scene">
+    <div class="ast-drop"></div>
+    <div class="ast-ground"></div>
+    <div class="ast-wrap">
+      <div class="ast">
+        <div class="rim-depth d2"></div>
+        <div class="rim-depth d1"></div>
+        <div class="rim"></div>
+        <div class="rim-bevel"></div>
+        <div class="rim-sweep"></div>
+        <div class="grad"></div>
+        <div class="grad-hi"></div>
+        <div class="throne"></div>
+        <div class="mater">
+          <div class="tropic t1"></div><div class="tropic t2"></div><div class="tropic t3"></div>
+          <div class="ar">عصبية</div>
+        </div>
+        <div class="cyc"><svg viewBox="0 0 548 548" aria-hidden="true">
+          <defs>
+            <linearGradient id="gq" gradientUnits="userSpaceOnUse" x1="326" y1="30" x2="491" y2="399"><stop offset="0" stop-color="#3CA47A"/><stop offset="1" stop-color="#2D8862"/></linearGradient>
+            <linearGradient id="gi" gradientUnits="userSpaceOnUse" x1="471" y1="428" x2="67" y2="414"><stop offset="0" stop-color="#F4DC92"/><stop offset="1" stop-color="#C4A24A"/></linearGradient>
+            <linearGradient id="gc" gradientUnits="userSpaceOnUse" x1="49" y1="384" x2="239" y2="26"><stop offset="0" stop-color="#C77885"/><stop offset="1" stop-color="#7A2236"/></linearGradient>
+          </defs>
+          <path class="cyc-arc s1" stroke="url(#gq)" d="M326 29.5 A250 250 0 0 1 490.5 399"/>
+          <path class="cyc-arc s2" stroke="url(#gi)" d="M471 427.9 A250 250 0 0 1 66.7 413.8"/>
+          <path class="cyc-arc s3" stroke="url(#gc)" d="M49.3 383.6 A250 250 0 0 1 239.2 26.4"/>
+          <path class="cyc-arrow w1" fill="#2D8862" transform="translate(490.5 399) rotate(120)" d="M12 0 L-10 -8 L-10 8 Z"/>
+          <path class="cyc-arrow w2" fill="#C4A24A" transform="translate(66.7 413.8) rotate(236)" d="M12 0 L-10 -8 L-10 8 Z"/>
+          <path class="cyc-arrow w3" fill="#7A2236" transform="translate(239.2 26.4) rotate(-8)" d="M12 0 L-10 -8 L-10 8 Z"/>
+        </svg></div>
+        <div class="rete-sh"></div>
+        <div class="rete-lift"><div class="rete">
+          <div class="ecl"></div>
+          <div class="ptr p1"></div><div class="ptr p2"></div><div class="ptr p3"></div>
+          <div class="starw s1"><div class="star"></div></div>
+          <div class="starw s2"><div class="star"></div></div>
+          <div class="starw s3"><div class="star"></div></div>
+        </div></div>
+        <div class="alid-lift"><div class="alid"></div></div>
+        <div class="pin"></div>
+      </div>
+    </div>
+    <div class="ast-ph a1"><b>Conquête</b><i>l’élan</i></div>
+    <div class="ast-ph a2"><b>Installation</b><i>le confort</i></div>
+    <div class="ast-ph a3"><b>Chute</b><i>l’asabiyya se dissout</i></div>
+    <div class="cyc-link l1"></div>
+    <div class="cyc-link l2"></div>
+    <div class="cyc-link l3"></div>
+  </div>
+  <div class="ast-foot">
+    <div class="stats">
+      <div class="stat"><div class="n">1377</div><div class="l">la Muqaddima</div></div>
+      <div class="stat"><div class="n">~120</div><div class="l">ans · le cycle</div></div>
+      <div class="stat"><div class="n">٣</div><div class="l">phases</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S8ter · CITATION LUXE · la loi des trois générations (verbatim Rosenthal, ch.3 §12) -->
+<style id="luxeCSS">
+#sLuxe{align-items:center;justify-content:center;text-align:center}
+#sLuxe .lux-wrap{max-width:1000px;width:100%;display:flex;flex-direction:column;align-items:center}
+#sLuxe .lux-gen{display:flex;gap:20px;margin-bottom:36px}
+#sLuxe .lux-gen .g{display:flex;flex-direction:column;align-items:center;gap:9px;opacity:.38;transition:opacity .7s ease}
+#sLuxe .lux-gen .g.on{opacity:1}
+#sLuxe .lux-gen .g .ar{font-family:var(--ar);font-weight:700;font-size:32px;color:var(--or3);width:58px;height:58px;display:grid;place-items:center;border:1px solid rgba(212,176,90,.4);border-radius:50%;direction:rtl}
+#sLuxe .lux-gen .g.on .ar{border-color:var(--or3);box-shadow:0 0 26px rgba(199,120,133,.55),inset 0 0 14px rgba(199,120,133,.25)}
+#sLuxe .lux-gen .g .t{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,245,240,.62)}
+#sLuxe .lux-gen .g.on .t{color:var(--or3)}
+#sLuxe .lux-gen .arr{align-self:center;color:rgba(212,176,90,.5);font-family:var(--num);font-style:italic;font-size:20px}
+#sLuxe .lux-q{font-family:var(--title);font-style:italic;font-weight:400;font-size:clamp(28px,3.4vw,46px);line-height:1.3;color:var(--cr);max-width:960px}
+#sLuxe .lux-q em{font-weight:700;color:var(--or3)}
+#sLuxe .lux-at{margin-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or3);display:inline-flex;align-items:baseline;gap:10px;flex-wrap:wrap;justify-content:center}
+#sLuxe .lux-at b{color:var(--cr);font-weight:700}
+#sLuxe .lux-at i{font-family:var(--title);font-style:italic;text-transform:none;letter-spacing:.005em;font-size:14px;color:var(--or3)}
+#sLuxe .lux-note{margin-top:32px;max-width:740px;font-family:var(--sans);font-size:16px;line-height:1.6;color:rgba(255,245,240,.86);opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s}
+#sLuxe .lux-note.revealed{opacity:1;transform:none}
+#sLuxe .lux-note em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+</style>
+<section class="slide red" id="sLuxe" data-slide="8c" data-clicks="1">
+  <div class="eyebrow"><span>La loi des trois générations</span></div>
+  <div class="lux-wrap">
+    <div class="lux-gen">
+      <div class="g"><span class="ar">١</span><span class="t">conquiert</span></div>
+      <span class="arr">→</span>
+      <div class="g"><span class="ar">٢</span><span class="t">administre</span></div>
+      <span class="arr">→</span>
+      <div class="g on"><span class="ar">٣</span><span class="t">dilapide</span></div>
+    </div>
+    <p class="lux-q">«&#8239;La troisième génération a tout à fait <em>oublié</em> le temps de la vie rude, comme s’il n’avait jamais existé. Le <em>luxe</em> y atteint son comble… et la <em>cohésion</em> disparaît.&#8239;»</p>
+    <div class="lux-at"><span><b>Ibn Khaldoun</b></span><span><i>Al-Muqaddima</i> · 1377 · trad. Rosenthal</span></div>
+    <p class="lux-note" data-step="1">Voilà sa vraie thèse&#8239;: le confort dissout la cohésion qui a fait la force. La formule choc qu’on lui prête — «&#8239;les temps de confort créent des hommes faibles&#8239;» — est, elle, du <em>XXIᵉ siècle</em>.</p>
+  </div>
+</section>
+
+<!-- S10 CITATION signature -->
+<section class="slide" id="s10" data-slide="9">
+  <div class="eyebrow"><span>Citation · Ibn Khaldoun</span></div>
+  <div class="kicker"><span>La <em>formule</em> du module</span></div>
+  <div class="plate">
+    <span class="gm">"</span>
+    <div class="seal">Muqaddima<br>1377</div>
+    <p class="q">Le passé ressemble à l’avenir plus qu’une <em>goutte d’eau ne ressemble à une autre</em>.</p>
+    <div class="rule"></div>
+    <div class="at"><span><b>Ibn Khaldoun</b></span><span><i>Al-Muqaddima</i> · 1377</span></div>
+  </div>
+  <p class="foot">Le présent observable devient la mesure du passé&#8239;: l’histoire obéit à des régularités. Cinq siècles avant la sociologie européenne, Ibn Khaldoun pose le geste fondateur&#8239;: faire de l’histoire humaine un objet de <em>science</em>. Et ce geste a été pensé depuis le Maghreb. Son outil, l’<em>asabiyya</em>, nous servira plus loin&#8239;: lire la cohésion d’un groupe, jusqu’à celle que le FLN imposera de force en 1954.</p>
+</section>
+
+<!-- S11 APPLICATION -->
+<section class="slide" id="s11" data-slide="10" data-clicks="1">
+  <div class="eyebrow"><span>À vous</span></div>
+  <div class="wrap">
+    <div class="lab">Une note à vous-mêmes</div>
+    <p class="q">Si Ibn Khaldoun pensait déjà le pouvoir avec rigueur en 1377, <em>pourquoi</em> son nom n’apparaît-il presque jamais dans vos manuels d’histoire de la pensée&#8239;?</p>
+    <div class="ex">
+      <span class="n">١</span>
+      <div class="body">
+        <h4>Le <em>test du sommaire</em></h4>
+        <p>Ouvrez un manuel de philosophie ou de sciences sociales. Cherchez Ibn Khaldoun dans l’index. Notez ce que vous trouvez, et ce que cette absence dit du récit qu’on vous a transmis sur l’origine des idées.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S12 PASSERELLE bordeaux -->
+<section class="slide red" id="s12" data-slide="11" data-clicks="4">
+  <div class="eyebrow"><span>Le legs</span></div>
+  <div class="wrap">
+    <div class="lab">Ce qu’Ibn Khaldoun nous laisse</div>
+    <h2 class="h">Ce qu’il permet de penser <em>aujourd’hui</em>.</h2>
+    <div class="acquis">
+      <div class="card" data-step="1">
+        <span class="sh"></span>
+        <span class="n">١</span>
+        <span class="tag">Acquis · un</span>
+        <h3 class="ti">Une <em>science</em> des sociétés</h3>
+        <div class="ru"></div>
+        <p>Pensée au XIVᵉ siècle, écrite près de Tiaret. La pensée rigoureuse du pouvoir n’a pas attendu l’Europe.</p>
+      </div>
+      <div class="card" data-step="2">
+        <span class="sh"></span>
+        <span class="n">٢</span>
+        <span class="tag">Acquis · deux</span>
+        <h3 class="ti">L’outil&#8239;: l’<em>ʿasabiyya</em></h3>
+        <div class="ru"></div>
+        <p>La cohésion d’un groupe fait et défait les pouvoirs. Elle monte, se dissout dans le confort, retombe.</p>
+      </div>
+      <div class="card" data-step="3">
+        <span class="sh"></span>
+        <span class="n">٣</span>
+        <span class="tag">Une nuance</span>
+        <h3 class="ti">Ne pas le mesurer à l’<em>Europe</em></h3>
+        <div class="ru"></div>
+        <p>Le célébrer comme celui qui a <em>devancé</em> l’Europe, c’est encore le mesurer à elle. Sa vraie force est un regard&#8239;: traiter le pouvoir en objet d’étude.</p>
+      </div>
+    </div>
+    <div class="next" data-step="4"><span><b>Prochain</b> · M3 · 1830 · la <em>conquête</em> et la dépossession</span></div>
+  </div>
+</section>
+
+</div>
+
+<div class="topline" id="topline">
+  <span class="sec">Ibn Khaldoun</span><span class="bar"></span><span class="num"><span id="tlCur">01</span> / <span id="tlTot">12</span></span>
+</div>
+<nav class="footline" id="nav">
+  <div class="f-left"><span class="f-dot"></span>L’Autre Récit</div>
+  <div class="f-seg" id="navSeg"></div>
+</nav>
+<button class="navbtn prev" id="navPrev" aria-label="Précédent"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="navbtn next" id="navNext" aria-label="Suivant"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const total=slides.length;
+  const _qa=new URLSearchParams(location.search).get('slide');
+  let cur=_qa?Math.max(0,Math.min(parseInt(_qa)-1,total-1)):0, step=0;
+  const navSeg=document.getElementById('navSeg');
+  const tlCur=document.getElementById('tlCur');
+  const tlTot=document.getElementById('tlTot');
+  const navPrev=document.getElementById('navPrev');
+  const navNext=document.getElementById('navNext');
+  if(tlTot) tlTot.textContent=String(total).padStart(2,'0');
+  for(let i=0;i<total;i++){ navSeg.appendChild(document.createElement('i')); }
+  const segs=[...navSeg.children];
+  function updateNav(){
+    if(tlCur) tlCur.textContent=String(cur+1).padStart(2,'0');
+    segs.forEach((el,i)=>{el.className = i<cur?'done' : i===cur?'on' : '';});
+    navPrev.disabled = cur===0;
+    navNext.disabled = cur===total-1;
+  }
+  function resetReveals(sl){
+    sl.classList.remove('is-on','ph1','ph2','ph3');
+    sl.querySelectorAll('.revealed').forEach(t=>{t.style.transition='none';t.classList.remove('revealed');void t.offsetWidth;t.style.transition='';});
+    sl.querySelectorAll('.opened').forEach(t=>t.classList.remove('opened'));
+    const hint=sl.querySelector('[data-hint]');if(hint)hint.classList.remove('gone');
+  }
+  function goto(n){
+    if(n<0||n>=total) return;
+    slides[cur].classList.remove('active');
+    cur=n;step=0;
+    const sl=slides[cur];
+    resetReveals(sl);
+    sl.classList.add('active');
+    updateNav();
+  }
+  function markHint(sl){const h=sl.querySelector('[data-hint]');if(h)h.classList.add('gone')}
+  function clickStep(){
+    const sl=slides[cur];
+    const maxClicks=parseInt(sl.dataset.clicks||'0',10);
+    // S4 stèle : clic 1 ouvre (définition), clic 2 révèle la loi du cycle
+    if(sl.id==='s4'){
+      const st=sl.querySelector('#stele');
+      if(st && !st.classList.contains('opened')){st.classList.add('opened');sl.classList.add('is-on');return}
+      const cyc=sl.querySelector('.cyc');
+      if(cyc && !cyc.classList.contains('revealed')){cyc.classList.add('revealed');markHint(sl);return}
+      goto(cur+1);return;
+    }
+    // sRoue : 3 clics — projecteur conquête → installation → chute
+    if(sl.id==='sRoue'){
+      if(step<3){step++;sl.classList.remove('ph1','ph2','ph3');sl.classList.add('ph'+step,'is-on');if(step>=3)markHint(sl);return}
+      goto(cur+1);return;
+    }
+    if(step<maxClicks){
+      step++;
+      sl.classList.add('is-on');
+      sl.querySelectorAll(`[data-step="${step}"]`).forEach(t=>t.classList.add('revealed'));
+      if(step>=maxClicks) markHint(sl);
+    } else { goto(cur+1); }
+  }
+  if(_qa && cur>0){ slides.forEach((s,i)=>s.classList.toggle('active', i===cur)); }
+  if(new URLSearchParams(location.search).get('reveal')==='1'){
+    const sl=slides[cur];
+    sl.classList.add('is-on');
+    sl.querySelectorAll('[data-step]').forEach(el=>el.classList.add('revealed'));
+    sl.querySelectorAll('.stele').forEach(el=>el.classList.add('opened'));
+  }
+  navPrev.addEventListener('click',e=>{e.stopPropagation();goto(cur-1)});
+  navNext.addEventListener('click',e=>{e.stopPropagation();goto(cur+1)});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'){e.preventDefault();clickStep()}
+    else if(e.key==='ArrowLeft'){e.preventDefault();goto(cur-1)}
+    else if(e.key==='Home'){e.preventDefault();goto(0)}
+    else if(e.key==='End'){e.preventDefault();goto(total-1)}
+  });
+  const EXCLUDE='.navchrome,.navbtn,button,a';
+  document.getElementById('stage').addEventListener('click',e=>{
+    if(e.target.closest(EXCLUDE)) return;
+    const sl=slides[cur];
+    const maxClicks=parseInt(sl.dataset.clicks||'0',10);
+    const steleNotOpen = sl.id==='s4' && !sl.querySelector('#stele')?.classList.contains('opened');
+    const hasPending = steleNotOpen || step<maxClicks;
+    const rect=sl.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    if(x < rect.width/2){ goto(cur-1); }
+    else { if(hasPending) clickStep(); else goto(cur+1); }
+  });
+  updateNav();
+})();
+</script>
+</body>
+</html>

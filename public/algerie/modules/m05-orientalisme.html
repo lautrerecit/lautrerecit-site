@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Orientalisme — Module 5 · L’Algérie a pensé</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400;1,6..72,500&family=Poppins:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Palette formation Algérie — crème dominante + accents émeraude/rouge/or */
+  --cr:#F2EDE4; --cr2:#EAE3D8; --cr3:#D4C9B8; --paper:#FAF6EB; --paper-w:#FFFCF4;
+  --em:#1F6B4A; --em-d:#13442E; --em-deep:#0A2C1E; --em-l:#2D8862; --em-bright:#3CA47A;
+  --or:#9A7B2E; --or2:#C4A24A; --or3:#D4B05A; --or-deep:#7A5E1F; --or-flow1:#F4DC92; --or-flow2:#B98E32;
+  --red:#5E1622; --red-hi:#7A2236; --red-low:#4A1320;
+  --ink:#0E0C0A; --ink2:#1A1714; --ink3:#3D3730;
+  --terre:#B8553A;
+  /* Typo verrouillée */
+  --av:'Poppins','Avant Garde Gothic',sans-serif;
+  --title:'Playfair Display',Georgia,serif;
+  --num:'Playfair Display',Georgia,serif;
+  --long:'DM Sans',system-ui,sans-serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --ar:'Amiri',serif;
+  /* Calibration */
+  --t-hero:clamp(60px,9vw,140px);
+  --t-question:clamp(42px,5.2vw,68px);
+  --t-section:clamp(33px,4.3vw,54px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--cr);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow:hidden}
+@keyframes foilFlow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+@keyframes drawLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes scan{0%{transform:translateX(-120%) skewX(-12deg);opacity:0}10%{opacity:.85}50%{transform:translateX(260%) skewX(-12deg);opacity:.85}60%,100%{opacity:0}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes haloPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.7;transform:scale(1.02)}}
+@keyframes shineRim{0%{opacity:0}30%{opacity:1}100%{opacity:0;left:140%}}
+.foil{background:linear-gradient(110deg,#8a6d28,#C4A24A 16%,#F4DC92 30%,#E8C76E 44%,#9A7B2E 58%,#D4B05A 72%,#F8E3A0 86%,#C4A24A 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:foilFlow 7s linear infinite}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.foil{background-position:0 50%}}
+
+/* STAGE + SLIDES */
+.stage{position:fixed;inset:0;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;opacity:0;transition:opacity .4s ease;flex-direction:column;align-items:flex-start;justify-content:center;padding:90px 130px;text-align:left;color:var(--ink)}
+.slide.active{display:flex;opacity:1}
+.slide>*{position:relative;z-index:2}
+/* défaut : socle crème */
+.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 25%,rgba(196,162,74,.08),transparent 60%),linear-gradient(155deg,var(--cr) 0%,var(--cr2) 100%);z-index:0}
+/* cover crème + tampon */
+.slide.cover::before{background:radial-gradient(ellipse 70% 55% at 50% 35%,rgba(196,162,74,.12),transparent 60%),linear-gradient(160deg,var(--cr) 0%,var(--cr2) 70%,#DDD2BD 100%)}
+/* slide ÉMERAUDE */
+.slide.em{color:var(--cr)}
+.slide.em::before{background:radial-gradient(ellipse 80% 60% at 30% 25%,rgba(60,164,122,.18),transparent 60%),linear-gradient(155deg,var(--em-d) 0%,var(--em-deep) 70%,#06231A 100%)}
+/* slide INK */
+.slide.ink{color:var(--cr)}
+.slide.ink::before{background:radial-gradient(ellipse 70% 55% at 50% 30%,rgba(196,162,74,.14),transparent 60%),linear-gradient(160deg,var(--em-d) 0%,var(--em-deep) 70%,#06231A 100%)}
+/* slide ROUGE */
+.slide.red{color:var(--cr)}
+.slide.red::before{background:radial-gradient(ellipse 70% 55% at 50% 30%,rgba(232,199,110,.14),transparent 60%),linear-gradient(160deg,var(--red-hi) 0%,var(--red) 55%,var(--red-low) 100%)}
+.slide::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.04;mix-blend-mode:overlay;pointer-events:none;z-index:1}
+
+/* CHROME */
+.eyebrow{position:absolute;top:38px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--or-deep);z-index:30;display:inline-flex;align-items:center;gap:14px}
+.eyebrow::before,.eyebrow::after{content:"";width:24px;height:1px;background:var(--or2);opacity:.7}
+.kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);margin-bottom:18px}
+.kicker::before{content:"";width:32px;height:1px;background:var(--or2)}
+.kicker em{font-family:var(--title);font-style:italic;font-weight:700;text-transform:none;letter-spacing:.005em;font-size:14px;color:var(--or-deep)}
+
+/* Overrides chrome pour slides à fond sombre — or3 + crème */
+.slide.em .eyebrow,.slide.ink .eyebrow,.slide.red .eyebrow{color:var(--or3)}
+.slide.em .eyebrow::before,.slide.em .eyebrow::after,
+.slide.ink .eyebrow::before,.slide.ink .eyebrow::after,
+.slide.red .eyebrow::before,.slide.red .eyebrow::after{background:var(--or3)}
+.slide.em .kicker,.slide.ink .kicker,.slide.red .kicker{color:var(--or3)}
+.slide.em .kicker::before,.slide.ink .kicker::before,.slide.red .kicker::before{background:var(--or3)}
+.slide.em .kicker em,.slide.ink .kicker em,.slide.red .kicker em{color:var(--or3)}
+.slide.em .hint,.slide.ink .hint,.slide.red .hint{color:rgba(232,199,110,.5)}
+.slide.em .hint .arr,.slide.ink .hint .arr,.slide.red .hint .arr{color:var(--or3)}
+
+/* NAV */
+.navchrome{position:fixed;left:0;right:0;bottom:0;height:64px;z-index:40;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 56px;pointer-events:none}
+.navchrome>*{pointer-events:auto}
+.navchrome::before{content:"";position:absolute;left:0;right:0;bottom:0;top:0;background:linear-gradient(0deg,rgba(40,28,8,.18),transparent);z-index:-1}
+.nav-brand{font-family:var(--av);font-weight:500;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--or-deep);display:inline-flex;align-items:center;gap:12px}
+.nav-brand .dot{width:5px;height:5px;border-radius:50%;background:var(--or2);box-shadow:0 0 0 3px rgba(196,162,74,.2)}
+.nav-seg{display:flex;gap:5px;align-items:center;justify-self:center}
+.nav-seg i{width:16px;height:3px;border-radius:2px;background:rgba(40,28,8,.16);transition:.5s cubic-bezier(.7,0,.3,1)}
+.nav-seg i.done{background:var(--or2);opacity:.7}
+.nav-seg i.on{width:30px;background:linear-gradient(90deg,var(--or2),var(--or3));box-shadow:0 0 10px rgba(232,199,110,.45)}
+.nav-count{font-family:var(--num);font-style:italic;font-weight:900;font-size:22px;color:var(--or-deep);letter-spacing:.01em;display:inline-flex;align-items:baseline;gap:3px;justify-self:end}
+.nav-count sup{font-family:var(--mono);font-size:10px;font-style:normal;font-weight:500;color:rgba(61,55,48,.5)}
+.navbtn{position:fixed;top:50%;width:56px;height:56px;border-radius:50%;border:1px solid var(--or2);background:rgba(242,237,228,.6);backdrop-filter:blur(8px) saturate(140%);-webkit-backdrop-filter:blur(8px) saturate(140%);display:grid;place-items:center;cursor:pointer;z-index:45;transform:translateY(-50%);transition:transform .5s cubic-bezier(.34,1.4,.5,1),box-shadow .5s,border-color .4s,background .4s,opacity .4s}
+.navbtn.prev{left:28px}
+.navbtn.next{right:28px}
+.navbtn::before{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,var(--or3),var(--or2));transform:scale(0);transition:transform .55s cubic-bezier(.34,1.5,.4,1)}
+.navbtn svg{width:20px;height:20px;fill:none;stroke:var(--or2);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:2;transition:stroke .4s,transform .45s cubic-bezier(.34,1.4,.5,1)}
+.navbtn:hover{border-color:transparent;transform:translateY(-50%) scale(1.08);box-shadow:0 0 0 6px rgba(232,199,110,.14),0 22px 44px -14px rgba(232,199,110,.55)}
+.navbtn:hover::before{transform:scale(1)}
+.navbtn:hover svg{stroke:var(--ink)}
+.navbtn.prev:hover svg{transform:translateX(-3px)}
+.navbtn.next:hover svg{transform:translateX(3px)}
+.navbtn:disabled{opacity:.25;cursor:default;pointer-events:none}
+.hint{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(61,55,48,.5);transition:opacity .5s}
+.hint .arr{color:var(--or2);font-weight:600}
+.hint.gone{opacity:0;pointer-events:none}
+
+/* ================= S1 COUVERTURE ================= */
+#s1{align-items:center;justify-content:center;text-align:center}
+#s1 .meta-tag{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:42px;display:inline-flex;align-items:center;gap:14px}
+#s1 .meta-tag::before,#s1 .meta-tag::after{content:"";width:30px;height:1px;background:var(--or3);opacity:.55}
+#s1 .t1{font-family:var(--av);font-weight:500;font-size:clamp(56px,8.4vw,128px);line-height:.9;letter-spacing:-.04em;position:relative;display:inline-block}
+#s1 .t1::before{content:"";position:absolute;inset:-24% -12%;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(196,162,74,.22),transparent 60%);z-index:-1;animation:haloPulse 4s ease-in-out infinite}
+#s1 .sub{margin-top:34px;font-family:var(--title);font-style:italic;font-size:23px;color:var(--ink2);max-width:760px;line-height:1.4}
+#s1 .sub em{color:var(--or-deep);font-weight:700}
+#s1 .filet{margin-top:26px;width:120px;height:1px;background:var(--or3);opacity:.55;transform-origin:center;animation:drawLine 1.2s cubic-bezier(.7,0,.3,1) .4s both}
+#s1 .lede{margin-top:30px;font-family:var(--sans);font-size:15.5px;line-height:1.6;color:var(--ink3);max-width:680px}
+#s1 .meta{position:absolute;bottom:118px;left:50%;transform:translateX(-50%);display:flex;gap:36px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(154,123,46,.65);font-weight:500}
+#s1 .meta i{font-style:normal;color:var(--or-deep);font-weight:700;margin-right:8px}
+#s1 .wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ar);font-weight:700;font-size:460px;line-height:1;color:rgba(232,199,110,.045);pointer-events:none;z-index:0}
+#s1 .stamp{position:absolute;top:90px;right:104px;width:120px;height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;transform:rotate(-8deg);color:var(--or-deep);z-index:3}
+#s1 .stamp::before{content:"";position:absolute;inset:0;border:1.5px solid currentColor;border-radius:50%;opacity:.7}
+#s1 .stamp::after{content:"";position:absolute;inset:7px;border:.5px solid currentColor;border-radius:50%;opacity:.35}
+#s1 .stamp .l{font-family:var(--mono);font-size:8px;letter-spacing:.24em;text-transform:uppercase;font-weight:700}
+#s1 .stamp .y{font-family:var(--num);font-style:italic;font-weight:900;font-size:28px;line-height:1;margin-top:4px}
+
+/* ================= S2 QUESTION (émeraude) ================= */
+#s2{align-items:center;justify-content:center;text-align:center}
+#s2 .q{font-family:var(--av);font-weight:500;font-size:var(--t-question);line-height:1.08;letter-spacing:-.02em;color:var(--cr);max-width:1100px}
+#s2 .q em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s2 .filet{margin:34px auto;width:90px;height:1px;background:var(--or3);opacity:.6}
+#s2 .appui{font-family:var(--long);font-size:21px;line-height:1.6;color:rgba(242,237,228,.86);max-width:820px;margin:0 auto}
+
+/* ================= S3 SAID — photo + thèse + citation ================= */
+#s3{align-items:center;justify-content:center;text-align:center}
+#s3 .wrap{max-width:1280px;width:100%;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;text-align:left}
+#s3 .pcol{display:flex;flex-direction:column;align-items:center;gap:16px}
+#s3 .pframe{position:relative;width:100%;background:var(--paper-w);padding:14px;border-radius:4px;box-shadow:0 6px 14px rgba(20,12,4,.2),0 36px 80px -34px rgba(20,12,4,.5),0 0 0 1px rgba(212,176,90,.35),inset 0 1px 0 rgba(255,255,255,.9);transform:rotate(-1.2deg);transition:transform .6s cubic-bezier(.34,1.2,.5,1)}
+#s3 .pframe:hover{transform:rotate(0) translateY(-5px)}
+#s3 .pframe::after{content:"";position:absolute;inset:12px;box-shadow:inset 0 0 0 1px rgba(40,28,8,.18);pointer-events:none}
+#s3 .pframe img{display:block;width:100%;max-height:66vh;object-fit:cover;object-position:center 16%;filter:grayscale(.3) sepia(.2) contrast(1.06) brightness(1.04)}
+#s3 .pcol .cap{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--or-deep);text-align:center}
+#s3 .body .id{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+#s3 .body .nm{font-family:var(--av);font-weight:500;font-size:30px;letter-spacing:-.01em;color:var(--ink);line-height:1}
+#s3 .body .dt{font-family:var(--num);font-style:italic;font-weight:900;font-size:20px;color:var(--or)}
+#s3 .body .oeuvre{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:20px}
+#s3 .these{background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.3);border-left:3px solid var(--or2);border-radius:0 10px 10px 0;padding:22px 26px;font-family:var(--sans);font-size:16.5px;line-height:1.64;color:var(--ink2);max-width:680px;box-shadow:0 4px 10px rgba(20,12,4,.1),inset 0 1px 0 rgba(255,255,255,.8)}
+#s3 .these em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s3 .quote{margin-top:22px;font-family:var(--title);font-style:italic;font-size:24px;line-height:1.4;color:var(--ink);max-width:680px;padding-left:22px;border-left:2px solid var(--or2)}
+#s3 .quote em{color:var(--or-deep);font-weight:700}
+#s3 .quote .src{display:block;margin-top:10px;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--or-deep);font-weight:600}
+#s3 .note{margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:rgba(61,55,48,.62);line-height:1.5;max-width:600px}
+
+/* ================= S4 ATELIERS — 4 cards reveal ================= */
+#s4{align-items:center;justify-content:center;text-align:center}
+#s4 .head{margin:0 auto 34px;max-width:1100px;text-align:center}
+#s4 .head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:14px}
+#s4 .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;letter-spacing:-.018em;color:var(--ink)}
+#s4 .head h2 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s4 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;width:100%;max-width:1280px;margin:0 auto}
+#s4 .at{position:relative;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.32);border-radius:13px;padding:28px 24px 26px;min-height:236px;display:flex;flex-direction:column;box-shadow:0 4px 12px rgba(20,12,4,.16),0 26px 56px -24px rgba(20,12,4,.4),inset 0 1px 0 rgba(255,255,255,.85);opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.7,0,.3,1),transform .65s cubic-bezier(.34,1.4,.5,1),box-shadow .5s,border-color .4s}
+#s4 .at.revealed{opacity:1;transform:none}
+#s4 .at:hover{transform:translateY(-8px);border-color:var(--or2);box-shadow:0 8px 18px rgba(20,12,4,.22),0 40px 90px -24px rgba(20,12,4,.55),0 0 60px -16px rgba(232,199,110,.35),inset 0 1px 0 rgba(255,255,255,.9)}
+#s4 .at::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;border-radius:13px 13px 0 0;background:linear-gradient(90deg,transparent,var(--or2),var(--or3),var(--or2),transparent)}
+#s4 .at .n{font-family:var(--ar);font-weight:700;font-size:44px;line-height:.9;color:var(--or3);direction:rtl;margin-bottom:14px}
+#s4 .at .ti{font-family:var(--av);font-weight:500;font-size:20px;color:var(--ink);line-height:1.16;margin-bottom:10px}
+#s4 .at .ti em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s4 .at .ru{width:30px;height:1.5px;background:var(--or2);margin-bottom:12px}
+#s4 .at{text-align:left}
+#s4 .at p{font-family:var(--sans);font-size:14.5px;line-height:1.56;color:var(--ink2);margin-top:auto}
+
+/* ================= S5 PINCEAU — tableaux couleur + analyse ================= */
+#s5,#s5b{align-items:center;justify-content:center;text-align:center}
+#s5 .wrap,#s5b .wrap{max-width:1320px;width:100%;margin:0 auto;display:grid;grid-template-columns:1.22fr 1fr;gap:60px;align-items:center;text-align:left}
+#s5 .canvas,#s5b .canvas{position:relative;background:linear-gradient(135deg,#d8b76a 0%,#b89440 45%,#cba753 100%);padding:13px;border-radius:3px;box-shadow:0 12px 24px rgba(20,12,4,.3),0 50px 110px -42px rgba(20,12,4,.62),0 0 0 1px rgba(122,94,31,.5),inset 0 1px 0 rgba(255,248,220,.6);transition:transform .6s cubic-bezier(.34,1.2,.5,1)}
+#s5 .canvas:hover,#s5b .canvas:hover{transform:translateY(-5px)}
+#s5 .canvas img,#s5b .canvas img{display:block;width:100%;max-height:64vh;object-fit:contain;border:10px solid #F4ECD8;box-shadow:inset 0 0 0 1px rgba(40,28,8,.15);filter:contrast(1.04) saturate(1.04)}
+#s5 .canvas .cartouche,#s5b .canvas .cartouche{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or-deep);text-align:center;margin-top:13px;line-height:1.5}
+#s5 .canvas .cartouche em,#s5b .canvas .cartouche em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep);text-transform:none;letter-spacing:.005em;font-size:11.5px}
+#s5 .ana .lab,#s5b .ana .lab{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:14px}
+#s5 .ana .txt,#s5b .ana .txt{font-family:var(--long);font-size:19px;line-height:1.62;color:var(--ink2);max-width:480px}
+#s5 .ana .txt em,#s5b .ana .txt em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+
+/* ================= S6 OBJECTIF — carte postale + Alloula ================= */
+#s6{align-items:center;justify-content:center;text-align:center}
+#s6 .wrap{max-width:1280px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;text-align:left}
+#s6 .cards{position:relative;display:flex;align-items:center;justify-content:center;min-height:60vh}
+#s6 .cp{position:relative;background:var(--paper-w);padding:12px 12px 36px;border-radius:3px;box-shadow:0 8px 18px rgba(20,12,4,.3),0 40px 90px -38px rgba(0,0,0,.65),0 0 0 1px rgba(212,176,90,.28),inset 0 1px 0 rgba(255,255,255,.9);transform:rotate(-2deg);transition:transform .6s cubic-bezier(.34,1.2,.5,1);z-index:2}
+#s6 .cp:hover{transform:rotate(0) translateY(-5px)}
+#s6 .cp img{display:block;width:100%;max-width:380px;max-height:62vh;object-fit:cover;filter:grayscale(.4) sepia(.26) contrast(1.06) brightness(1.03)}
+#s6 .cp .stamp{position:absolute;bottom:10px;right:14px;transform:rotate(-9deg);border:1.5px solid var(--terre);color:var(--terre);font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 7px;border-radius:3px;opacity:.7;background:rgba(255,255,255,.5)}
+#s6 .book{position:absolute;right:-6px;bottom:6px;width:188px;border-radius:3px;box-shadow:0 10px 22px rgba(20,12,4,.4),0 30px 60px -28px rgba(0,0,0,.7),0 0 0 1px rgba(212,176,90,.3);transform:rotate(5deg) translateX(40px);opacity:0;transition:opacity .65s,transform .7s cubic-bezier(.34,1.4,.5,1);z-index:3}
+#s6 .book.revealed{opacity:1;transform:rotate(5deg) translateX(0)}
+#s6 .book img{display:block;width:100%;border-radius:3px;filter:grayscale(.3) sepia(.2) contrast(1.06) brightness(1.04)}
+#s6 .ana .lab{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:16px}
+#s6 .ana .txt{font-family:var(--long);font-size:18px;line-height:1.6;color:var(--ink2);max-width:560px}
+#s6 .ana .txt em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s6 .quote{margin-top:26px;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s;max-width:560px}
+#s6 .quote.revealed{opacity:1;transform:none}
+#s6 .quote .q{font-family:var(--title);font-style:italic;font-size:19px;line-height:1.4;color:var(--ink);padding-left:18px;border-left:2px solid var(--or2)}
+#s6 .quote .q em{color:var(--or-deep);font-weight:700}
+#s6 .quote .src{margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--or-deep);font-weight:600}
+
+/* ================= S7 CARNET — concept stèle + chiffres ================= */
+#s7{justify-content:center}
+#s7 .wrap{max-width:1040px;width:100%;margin:0 auto;display:block;text-align:center}
+#s7 .stele{position:relative;background:linear-gradient(170deg,#103a28,#0a2c1e 70%,#06231a);border:1px solid var(--or3);border-radius:16px;padding:54px 58px;max-width:780px;margin:0 auto;text-align:center;box-shadow:0 44px 110px -42px rgba(0,0,0,.8),0 0 0 1px rgba(232,199,110,.14),inset 0 1px 0 rgba(232,199,110,.18)}
+#s7 .stele::before{content:"";position:absolute;inset:12px;border:.5px solid rgba(232,199,110,.4);border-radius:9px;pointer-events:none}
+#s7 .stele .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--or3);font-weight:600;margin-bottom:18px}
+#s7 .stele .concept{font-family:var(--title);font-style:italic;font-weight:700;font-size:clamp(40px,4.6vw,60px);line-height:1.06;color:var(--cr)}
+#s7 .stele .concept em{color:var(--or3)}
+#s7 .stele .sub{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--or3);line-height:1.6}
+#s7 .ana .lab{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:16px}
+#s7 .ana{margin-top:34px;text-align:center}
+#s7 .ana .txt{font-family:var(--long);font-size:19px;line-height:1.62;color:var(--ink2);max-width:760px;margin:0 auto}
+#s7 .ana .txt em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s7 .figs{display:flex;gap:44px;margin-top:30px;flex-wrap:wrap;justify-content:center}
+#s7 .fig{opacity:0;transform:translateY(10px);transition:opacity .55s,transform .55s cubic-bezier(.34,1.4,.5,1)}
+#s7 .fig.revealed{opacity:1;transform:none}
+#s7 .fig .v{font-family:var(--num);font-style:italic;font-weight:900;font-size:40px;line-height:.9;color:var(--or)}
+#s7 .fig .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-top:8px;max-width:130px;line-height:1.4}
+
+/* ================= S8 MYTHE KABYLE — diptyque (émeraude) ================= */
+#s8{align-items:center;justify-content:center;text-align:center}
+#s8 .head{margin:0 auto 34px;max-width:1100px;text-align:center}
+#s8 .head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or3);font-weight:600;margin-bottom:14px}
+#s8 .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;letter-spacing:-.018em;color:var(--cr)}
+#s8 .head h2 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s8 .dip{display:grid;grid-template-columns:1fr auto 1fr;gap:30px;align-items:stretch;width:100%;max-width:1180px;margin:0 auto}
+#s8 .pan{background:linear-gradient(180deg,rgba(15,74,51,.42),rgba(6,30,20,.55));border:1px solid rgba(232,199,110,.3);border-radius:14px;padding:34px 36px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7);opacity:0;transform:translateY(14px);transition:opacity .65s,transform .65s cubic-bezier(.34,1.4,.5,1)}
+#s8 .pan.revealed{opacity:1;transform:none}
+#s8 .pan{text-align:left}
+#s8 .pan .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--or3);font-weight:700;margin-bottom:12px}
+#s8 .pan .ti{font-family:var(--title);font-style:italic;font-weight:700;font-size:25px;line-height:1.12;color:var(--cr);margin-bottom:16px}
+#s8 .pan .ti em{color:var(--or3)}
+#s8 .pan ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+#s8 .pan li{font-family:var(--sans);font-size:14px;line-height:1.45;color:rgba(242,237,228,.86);padding-left:18px;position:relative}
+#s8 .pan li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--or3);opacity:.8}
+#s8 .vs{align-self:center;font-family:var(--num);font-style:italic;font-weight:900;font-size:26px;color:var(--or3);opacity:.7}
+#s8 .verdict{margin-top:26px;width:100%;max-width:1180px;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s;text-align:center}
+#s8 .verdict.revealed{opacity:1;transform:none}
+#s8 .verdict .v{font-family:var(--long);font-size:20px;line-height:1.45;color:var(--cr);max-width:840px;margin:0 auto}
+#s8 .verdict .v em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s8 .verdict .src{margin-top:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,199,110,.6)}
+
+/* ================= S9 DIAGNOSTIC — Porot vs Fanon ================= */
+#s9{align-items:center;justify-content:center;text-align:center}
+#s9 .head{margin:0 auto 32px;max-width:1100px;text-align:center}
+#s9 .head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:14px}
+#s9 .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;letter-spacing:-.018em;color:var(--ink)}
+#s9 .head h2 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s9 .conf{display:grid;grid-template-columns:1fr auto 1fr;gap:36px;align-items:stretch;width:100%;max-width:1220px;margin:0 auto}
+#s9 .blk{background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.32);border-radius:14px;padding:30px 32px;text-align:left;box-shadow:0 4px 12px rgba(20,12,4,.14),0 26px 60px -26px rgba(20,12,4,.42),inset 0 1px 0 rgba(255,255,255,.85)}
+#s9 .blk.fanon{opacity:0;transform:translateY(14px);transition:opacity .65s,transform .65s cubic-bezier(.34,1.4,.5,1)}
+#s9 .blk.fanon.revealed{opacity:1;transform:none}
+#s9 .blk .who{font-family:var(--av);font-weight:500;font-size:21px;color:var(--ink);line-height:1.12;margin-bottom:4px}
+#s9 .blk .who em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s9 .blk .ref{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or-deep);font-weight:600;line-height:1.5;margin-bottom:16px}
+#s9 .blk .ru{width:30px;height:1.5px;background:var(--or2);margin-bottom:14px}
+#s9 .blk p{font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--ink2)}
+#s9 .blk p em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s9 .blk.fanon{border-left:3px solid var(--em)}
+#s9 .opp{align-self:center;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;transition:opacity .6s}
+#s9 .opp.revealed{opacity:1}
+#s9 .opp svg{width:34px;height:34px;stroke:var(--or-deep);fill:none;stroke-width:1.6}
+#s9 .opp .l{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--or-deep);font-weight:600;writing-mode:vertical-rl;transform:rotate(180deg)}
+
+/* ================= S10 RESPIRATION — citation (ink) ================= */
+#s10{align-items:center;justify-content:center;text-align:center}
+#s10 .q{font-family:var(--title);font-style:italic;font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.22;color:var(--cr);max-width:1040px}
+#s10 .q em{font-weight:700;color:var(--or3)}
+#s10 .rule{margin:34px auto 18px;width:60px;height:1px;background:var(--or3);opacity:.6}
+#s10 .at{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--or3);font-weight:500}
+#s10 .at b{color:var(--cr);font-weight:700}
+#s10 .at i{font-style:italic;font-family:var(--title);font-size:14px;text-transform:none;letter-spacing:.005em;color:var(--or3)}
+
+/* ================= S11 MIROIR — climax balance (rouge) ================= */
+#s11{justify-content:center;align-items:center;text-align:center}
+#s11 .head{margin:0 auto 38px;max-width:1040px}
+#s11 .head .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or3);font-weight:600;margin-bottom:14px}
+#s11 .head h2{font-family:var(--av);font-weight:500;font-size:var(--t-section);line-height:1.05;letter-spacing:-.018em;color:var(--cr)}
+#s11 .head h2 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s11 .bal{display:grid;grid-template-columns:1fr auto 1fr;gap:38px;align-items:stretch;width:100%;max-width:1180px;margin:0 auto}
+#s11 .side{text-align:left;background:linear-gradient(180deg,rgba(58,14,24,.62),rgba(32,6,13,.74));border:1px solid rgba(232,199,110,.44);border-radius:16px;padding:38px 40px;box-shadow:0 40px 90px -34px rgba(10,2,6,.85),0 0 0 1px rgba(122,34,54,.4),inset 0 1px 0 rgba(244,220,146,.22)}
+#s11 .side .tag{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--or3);font-weight:700;margin-bottom:12px}
+#s11 .side .ti{font-family:var(--title);font-style:italic;font-weight:700;font-size:31px;color:var(--cr);line-height:1.1;margin-bottom:14px}
+#s11 .side .ti em{color:var(--or3)}
+#s11 .side p{font-family:var(--sans);font-size:16px;line-height:1.62;color:rgba(244,236,224,.9)}
+#s11 .scale{align-self:center;font-family:var(--num);font-style:italic;font-weight:900;font-size:30px;color:var(--or3);opacity:.8}
+#s11 .verdict{margin-top:28px;width:100%;max-width:1180px;text-align:center;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
+#s11 .verdict.revealed{opacity:1;transform:none}
+#s11 .verdict .v{font-family:var(--long);font-size:25px;line-height:1.42;color:var(--cr);max-width:820px;margin:0 auto}
+#s11 .verdict .v em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s11 .verdict .src{margin-top:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,199,110,.6)}
+
+/* ================= S12 À TOI — exercice ================= */
+#s12{align-items:center;justify-content:center;text-align:center}
+#s12 .wrap{max-width:1080px;width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+#s12 .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:24px;display:inline-flex;align-items:center;gap:14px}
+#s12 .lab::before{content:"";width:32px;height:1px;background:var(--or3)}
+#s12 .q{font-family:var(--long);font-weight:400;font-size:clamp(26px,3.2vw,40px);line-height:1.26;letter-spacing:-.01em;color:var(--ink);max-width:920px;margin-bottom:34px}
+#s12 .q em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s12 .ex{position:relative;display:flex;gap:26px;align-items:flex-start;padding:30px 34px;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.4);border-radius:12px;max-width:880px;margin:0 auto;text-align:left;box-shadow:0 4px 10px rgba(20,12,4,.18),0 26px 60px -22px rgba(20,12,4,.4),0 0 0 1px rgba(196,162,74,.2),inset 0 1px 0 rgba(255,255,255,.85);overflow:hidden}
+#s12 .ex::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or2),var(--or3),var(--or2),transparent)}
+#s12 .ex .n{flex:0 0 auto;font-family:var(--ar);font-weight:700;font-size:60px;line-height:.9;color:var(--or2);direction:rtl}
+#s12 .ex .body h4{font-family:var(--av);font-weight:500;font-size:19px;color:var(--ink);line-height:1.15;margin-bottom:10px}
+#s12 .ex .body h4 em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s12 .ex .body .gestes{display:flex;gap:24px;flex-wrap:wrap;margin-top:4px}
+#s12 .ex .body .g{font-family:var(--sans);font-size:13.5px;line-height:1.5;color:var(--ink2);max-width:200px}
+#s12 .ex .body .g b{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep);display:block;margin-bottom:2px}
+#s12 .tip{margin:22px auto 0;max-width:880px;text-align:left;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s;font-family:var(--long);font-size:16px;line-height:1.6;color:var(--ink3);padding-left:20px;border-left:2px solid var(--or2)}
+#s12 .tip.revealed{opacity:1;transform:none}
+#s12 .tip em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+
+/* ================= S13 PASSERELLE (rouge) ================= */
+#s13{align-items:center;justify-content:center;text-align:center}
+#s13 .wrap{max-width:1080px;width:100%;display:flex;flex-direction:column;align-items:center}
+#s13 .lab{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#EBD79A;font-weight:600;margin-bottom:24px;display:inline-flex;align-items:center;gap:14px}
+#s13 .lab::before,#s13 .lab::after{content:"";width:24px;height:1px;background:#EBD79A;opacity:.85}
+#s13 .line{font-family:var(--long);font-size:clamp(28px,3.6vw,46px);line-height:1.28;color:var(--cr);max-width:960px;margin-bottom:48px}
+#s13 .line em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s13 .next{padding:16px 32px;background:rgba(248,243,233,.96);border:1px dashed var(--or);border-radius:100px;display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--red-low);font-weight:700;box-shadow:0 4px 10px rgba(20,4,10,.3),0 22px 40px -14px rgba(20,4,10,.55),0 0 60px -16px rgba(232,199,110,.4),inset 0 1px 0 rgba(255,255,255,.85)}
+#s13 .next::before{content:"→";font-family:var(--num);font-style:italic;font-size:20px;color:var(--or)}
+#s13 .next b{color:var(--red-low);font-weight:700;letter-spacing:.2em}
+#s13 .next em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or);text-transform:none;letter-spacing:.005em;font-size:14px}
+
+:focus-visible{outline:2px solid var(--or2);outline-offset:3px;border-radius:2px}
+.navbtn:focus-visible,button:focus-visible{outline-offset:4px}
+
+/* responsive fallback + finition typo */
+html{font-kerning:normal;font-feature-settings:"kern" 1,"liga" 1,"clig" 1}
+@media(max-width:1180px){.slide{padding:70px 70px}
+  #s3 .wrap,#s5 .wrap,#s6 .wrap,#s7 .wrap{grid-template-columns:1fr;gap:34px}
+  #s4 .grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.slide{padding:40px 24px}.navchrome{padding:0 18px}.navbtn.prev{left:10px}.navbtn.next{right:10px}
+  #s8 .dip,#s9 .conf,#s11 .bal{grid-template-columns:1fr}}
+/* DA-CHROME-V2 START · sérif éditorial italique (Newsreader) — verrouillé 26 juin */
+.eyebrow{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:15.5px!important;letter-spacing:.005em!important;text-transform:none!important;gap:0!important}
+.eyebrow::before,.eyebrow::after{display:none!important}
+.eyebrow span{font-style:italic!important;letter-spacing:.005em!important}
+.kicker{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:16px!important;letter-spacing:.01em!important;text-transform:none!important}
+.kicker::before,.kicker::after{display:none!important}
+.kicker em{font-family:var(--long),Georgia,serif!important;font-style:italic!important}
+.hint{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:15px!important;letter-spacing:.01em!important;text-transform:none!important}
+.lab{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:13.5px!important;letter-spacing:.01em!important;text-transform:none!important}
+.foot{font-family:var(--long),Georgia,serif!important;font-style:italic!important;letter-spacing:.01em!important;text-transform:none!important}
+#s1 .meta-tag{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:16px!important;letter-spacing:.01em!important;text-transform:none!important}
+#s1 .meta{font-family:var(--long),Georgia,serif!important;font-style:italic!important;letter-spacing:.01em!important;text-transform:none!important;font-variant-numeric:oldstyle-nums}
+#s1 .meta i{font-style:italic!important}
+.nav-brand{font-family:var(--long),Georgia,serif!important;font-style:italic!important;font-weight:400!important;letter-spacing:.02em!important;text-transform:none!important}
+/* DA-CHROME-V2 END */
+</style>
+<style id="cvA-cover">
+/* Couverture A + foil dore anime — titre 2 lignes (session 26/06) */
+body:has(#s1.active) .navchrome,body:has(#s1.active) .hint{opacity:0!important;pointer-events:none}
+#s1{align-items:center;justify-content:center;text-align:center;padding:54px 40px}
+#s1 .cvA-top{position:absolute;top:46px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:16px;z-index:3}
+#s1 .cvA-brand{font-family:var(--title);font-style:italic;font-weight:700;font-size:32px;color:var(--ink);line-height:1}
+#s1 .cvA-brand .cvA-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--or2);vertical-align:middle;margin-right:12px;box-shadow:0 0 0 4px rgba(196,162,74,.18)}
+#s1 .cvA-tract{width:130px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--or2),var(--or3) 45%,#FBEFC2 60%,var(--or2));box-shadow:0 1px 6px rgba(196,162,74,.4)}
+#s1 .cvA-mod{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--or-deep);font-weight:500;margin-bottom:18px}
+#s1 .cvA-tt{position:relative;display:inline-block}
+#s1 .cvA-tt::before{content:"";position:absolute;inset:-20% -12%;background:radial-gradient(ellipse 62% 52% at 50% 50%,rgba(196,162,74,.16),transparent 64%);z-index:-1}
+#s1 .cvA-l1{display:block;font-family:var(--av);font-weight:600;font-size:clamp(40px,6.2vw,80px);line-height:1;letter-spacing:-.025em;color:var(--ink)}
+#s1 .cvA-l1 em{font-family:var(--title);font-style:italic;font-weight:900}
+#s1 .cvA-l2{display:block;font-family:var(--av);font-weight:600;font-size:clamp(24px,3.3vw,44px);line-height:1.06;letter-spacing:-.015em;color:var(--ink);margin-top:8px}
+#s1 .cvA-sub{font-family:var(--long);font-style:italic;font-size:18px;color:var(--ink2);max-width:680px;margin-top:26px;line-height:1.45}
+#s1 .cvA-sub em{font-family:var(--title);font-style:italic;font-weight:600;color:var(--or-deep)}
+#s1 .cvA-period{position:absolute;bottom:24px;left:40px;font-family:var(--long);font-style:italic;font-size:15px;color:var(--ink3);z-index:3}
+#s1 .cvA-pg{position:absolute;bottom:16px;right:40px;font-family:var(--title);font-style:italic;font-weight:900;font-size:26px;color:var(--or2);z-index:3}
+#s1 .cvA-pg sup{font-family:var(--mono);font-size:10px;font-style:normal;color:rgba(154,123,46,.6)}
+</style>
+<style id="contraste-fix">
+/* CONTRASTE FIX — audit 27 juin (foil cover profond + meme-sur-meme corriges) */
+#s1 .cvA-l1 em{background:linear-gradient(110deg,#6b5320,#7A5E1F 14%,#9A7B2E 32%,#C4A24A 50%,#8a6d28 68%,#B98E32 86%,#6b5320 100%)!important;background-size:300% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
+#s5 .canvas .cartouche,#s5b .canvas .cartouche{color:var(--ink2)!important}
+#s8 .verdict .src{color:var(--or3)!important;opacity:1!important}
+#s11 .verdict .src{color:var(--or3)!important;opacity:1!important}
+</style>
+<style id="citfix">
+/* CARD/FOND v2 (27 juin) : seal off · plaques creme/bordeaux alternees · separation */
+#s11 .side{
+  background: linear-gradient(180deg, var(--paper-w), var(--cr)) !important;
+  border: 1px solid var(--or2) !important;
+  box-shadow: 0 40px 90px -34px rgba(10,2,6,.85), 0 0 0 1px rgba(196,162,74,.28), inset 0 1px 0 rgba(255,255,255,.9) !important;
+  color: var(--ink) !important;
+}
+
+#s11 .side .tag{
+  color: var(--or-deep) !important;
+}
+
+#s11 .side .ti{
+  color: var(--ink) !important;
+}
+
+#s11 .side .ti em{
+  color: var(--or-deep) !important;
+}
+
+#s11 .side p{
+  color: var(--ink2) !important;
+}
+</style>
+<style id="fxfoil">
+/* FIX CLIPPING (27 juin) : descendantes du foil + halo cover */
+.foil{display:inline-block;line-height:1.16;padding-bottom:.07em}
+#s1 .cvA-tt::before{inset:-22% -17%!important}
+#s1 .t1::before{inset:-22% -16%!important}
+</style>
+<style id="calibB">
+/* CALIBRATION B (standard verrouillé) */
+/* CALIBRATION B — m5-orientalisme.html */
+
+/* SLIDES QUESTION : réduire le titre-question */
+#s2 .q {
+  font-size: clamp(40px, 4.6vw, 60px) !important;
+}
+
+/* NUMÉROS DÉCORATIFS — S4 ateliers : réduire + passer en bordeaux */
+#s4 .at .n {
+  font-size: clamp(24px, 3.2vw, 32px) !important;
+  color: var(--red-hi) !important;
+}
+
+/* NUMÉROS DÉCORATIFS — S12 exercice : réduire + passer en bordeaux */
+#s12 .ex .n {
+  font-size: clamp(24px, 3.2vw, 32px) !important;
+  color: var(--red-hi) !important;
+}
+
+/* CORPS DES CARDS — S4 ateliers : remonter de 14.5px à 16px */
+#s4 .at p {
+  font-size: 16px !important;
+  line-height: 1.62 !important;
+}
+
+/* CORPS DES GESTES — S12 exercice : remonter de 13.5px à 16px */
+#s12 .ex .body .g {
+  font-size: 16px !important;
+  line-height: 1.62 !important;
+}
+
+/* CARD S12 exercice : centrer le contenu si vide vertical */
+#s12 .ex {
+  min-height: auto !important;
+  align-items: center !important;
+}
+</style>
+<style id="chromeEpure">
+/* ANNOTATIONS ÉPURÉES (V3 corrigé, 27 juin) : rien en haut · progression centre · pager n°/total bas-droite */
+.eyebrow{display:none!important}
+/* COHÉRENCE COULEUR du chrome avec le fond de la slide active */
+body:has(.slide.em.active) .nav-brand,body:has(.slide.ink.active) .nav-brand,body:has(.slide.red.active) .nav-brand,
+body:has(.slide.em.active) .nav-count,body:has(.slide.ink.active) .nav-count,body:has(.slide.red.active) .nav-count{color:var(--or3)!important}
+body:has(.slide.em.active) .nav-count sup,body:has(.slide.ink.active) .nav-count sup,body:has(.slide.red.active) .nav-count sup{color:rgba(232,199,110,.55)!important}
+body:has(.slide.em.active) .nav-seg i.done,body:has(.slide.ink.active) .nav-seg i.done,body:has(.slide.red.active) .nav-seg i.done{background:var(--or3)!important;opacity:.7}
+body:has(.slide.or.active) .nav-brand,body:has(.slide.or.active) .nav-count{color:var(--red-low)!important}
+body:has(.slide.or.active) .nav-count sup{color:rgba(74,19,32,.55)!important}
+body:has(.slide.or.active) .nav-seg i.done{background:var(--red-low)!important;opacity:.6}
+body:has(.slide.or.active) .nav-seg i.on{background:linear-gradient(90deg,var(--red-low),var(--red-hi))!important;box-shadow:none!important}
+</style>
+<style id="foilTitles">
+/* ===== FOIL DÉMOCRATISÉ (28 juin) — mots-clés de TITRE / affichage · mix par fond ===== */
+/* Corps inline (p / .v / .x / .role / .rep / cards) reste OR SOLIDE. Fonds OR exclus (doré-sur-doré). */
+/* fond CLAIR (crème) → foil DOUX profond */
+.head h2 em,.q em,.h em,.stele .word em,.word em,.line em,.quote em,.lede em{
+  font-family:var(--title);font-style:italic;font-weight:700;
+  background:linear-gradient(110deg,#6b5320,#7A5E1F 14%,#9A7B2E 32%,#C4A24A 50%,#8a6d28 68%,#B98E32 86%,#6b5320 100%);
+  background-size:280% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:foilFlow 11s linear infinite;display:inline-block;line-height:1.16;padding-bottom:.04em}
+/* fond SOMBRE (émeraude / ink / rouge / photo) → foil RICHE lumineux */
+.slide.em .head h2 em,.slide.ink .head h2 em,.slide.red .head h2 em,
+.slide.em .q em,.slide.ink .q em,.slide.red .q em,
+.slide.em .h em,.slide.ink .h em,.slide.red .h em,
+.slide.em .line em,.slide.ink .line em,.slide.red .line em,
+.slide.em .quote em,.slide.ink .quote em,.slide.red .quote em,
+.stele .word em,.slide.em .word em,.slide.ink .word em,.slide.red .word em,
+.fullframe .ff-sub em{
+  font-family:var(--title);font-style:italic;font-weight:700;
+  background-image:linear-gradient(110deg,#8a6d28,#C4A24A 16%,#F4DC92 30%,#E8C76E 44%,#9A7B2E 58%,#D4B05A 72%,#F8E3A0 86%,#C4A24A 100%);background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  animation:foilFlow 7s linear infinite;display:inline-block;line-height:1.16;padding-bottom:.04em}
+/* fond OR → garder OR SOLIDE (foil doré-sur-doré illisible) */
+.slide.or .head h2 em,.slide.or .q em,.slide.or .h em,.slide.or .line em,.slide.or .word em{
+  background:none;-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:var(--red-low);color:var(--red-low);animation:none}
+</style>
+<style id="chromeV3">
+/* ===== ANNOTATION 3 — « ligne haute, alignée gauche » (validée par Rany) ===== */
+/* SANS-serif (Avant Garde / Poppins) · pas de doublon · barre de progression conservée */
+/* HAUT-GAUCHE = section + n° (source unique du module + numérotation) */
+.topline{position:fixed;top:34px;left:56px;z-index:42;display:flex;align-items:center;gap:11px;font-family:var(--av);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;pointer-events:none}
+.topline .sec{color:var(--or-deep);font-weight:600}
+.topline .bar{width:22px;height:1px;background:rgba(154,123,46,.5)}
+.topline .num{color:rgba(61,55,48,.5)}
+/* BAS = marque seule (gauche) + barre de progression (droite) — plus de pager ni de nom de module dupliqué */
+.footline{position:fixed;left:0;right:0;bottom:0;height:58px;z-index:42;display:flex;align-items:center;justify-content:space-between;padding:0 56px;font-family:var(--av);pointer-events:none}
+.footline .f-left{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--or-deep)}
+.footline .f-left .f-dot{width:5px;height:5px;border-radius:50%;background:var(--or2);box-shadow:0 0 0 3px rgba(196,162,74,.2)}
+.footline .f-seg{display:flex;gap:5px;align-items:center}
+.footline .f-seg i{width:16px;height:3px;border-radius:2px;background:rgba(40,28,8,.16);transition:.5s cubic-bezier(.7,0,.3,1)}
+.footline .f-seg i.done{background:var(--or2);opacity:.7}
+.footline .f-seg i.on{width:30px;background:linear-gradient(90deg,var(--or2),var(--or3));box-shadow:0 0 10px rgba(232,199,110,.45)}
+/* fonds sombres (em / ink / red / fullframe) → texte clair doré */
+body:has(.slide.em.active) .topline .sec,body:has(.slide.ink.active) .topline .sec,body:has(.slide.red.active) .topline .sec,body:has(.slide.fullframe.active) .topline .sec,
+body:has(.slide.em.active) .footline .f-left,body:has(.slide.ink.active) .footline .f-left,body:has(.slide.red.active) .footline .f-left,body:has(.slide.fullframe.active) .footline .f-left{color:var(--or3)!important}
+body:has(.slide.em.active) .topline .num,body:has(.slide.ink.active) .topline .num,body:has(.slide.red.active) .topline .num,body:has(.slide.fullframe.active) .topline .num{color:rgba(232,239,231,.5)!important}
+body:has(.slide.em.active) .topline .bar,body:has(.slide.ink.active) .topline .bar,body:has(.slide.red.active) .topline .bar,body:has(.slide.fullframe.active) .topline .bar{background:rgba(212,176,90,.5)!important}
+body:has(.slide.em.active) .footline .f-seg i.done,body:has(.slide.ink.active) .footline .f-seg i.done,body:has(.slide.red.active) .footline .f-seg i.done,body:has(.slide.fullframe.active) .footline .f-seg i.done{background:var(--or3)!important;opacity:.6}
+body:has(.slide.em.active) .footline .f-seg i,body:has(.slide.ink.active) .footline .f-seg i,body:has(.slide.red.active) .footline .f-seg i,body:has(.slide.fullframe.active) .footline .f-seg i{background:rgba(232,239,231,.22)}
+/* fond or → texte bordeaux foncé */
+body:has(.slide.or.active) .topline .sec,body:has(.slide.or.active) .footline .f-left{color:var(--red-low)!important}
+body:has(.slide.or.active) .topline .num{color:rgba(74,19,32,.5)!important}
+body:has(.slide.or.active) .topline .bar{background:rgba(74,19,32,.4)!important}
+body:has(.slide.or.active) .footline .f-seg i.done{background:var(--red-low)!important;opacity:.55}
+body:has(.slide.or.active) .footline .f-seg i.on{background:linear-gradient(90deg,var(--red-low),var(--red-hi))!important;box-shadow:none!important}
+body:has(.slide.or.active) .footline .f-left .f-dot{background:var(--red-low)}
+/* cover → chrome masqué */
+body:has(#s1.active) .topline,body:has(#s1.active) .footline,body:has(#s1.active) .hint{opacity:0!important;pointer-events:none}
+</style>
+<style id="swashfix">/* swash italique du foil (queue du « e ») cassait contre le « : » — on etend a droite pour degager le swash + le doter du dore */
+#s1 .cvA-l1 em{padding-right:.16em}</style>
+<style id="s5detail">
+/* S5 & S5b · traitement DÉTAIL / loupe (standard tableaux, sans 3D) */
+#s5 .dtl,#s5b .dtl{max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:1.4fr .92fr;gap:54px;align-items:center;text-align:left}
+#s5 .dtl-art,#s5b .dtl-art{display:flex;flex-direction:column;gap:16px;align-items:center}
+#s5 .dtl-frame,#s5b .dtl-frame{position:relative;width:100%;background:linear-gradient(150deg,#e2c778,#c4a24a 42%,#9a7b2e 74%,#c4a24a 100%);padding:6px;border-radius:2px;box-shadow:0 30px 56px -26px rgba(40,28,8,.6),0 8px 18px -8px rgba(40,28,8,.4),inset 0 1px 0 rgba(255,248,220,.7)}
+#s5 .dtl-frame .mat,#s5b .dtl-frame .mat{position:relative;background:linear-gradient(160deg,var(--paper-w),#f1e9d6);padding:20px;box-shadow:inset 0 0 0 1px rgba(154,123,46,.4)}
+#s5 .dtl-frame .win,#s5b .dtl-frame .win{position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(40,28,8,.5),0 6px 16px rgba(40,28,8,.32)}
+#s5 .dtl-frame img,#s5b .dtl-frame img{display:block;width:100%;max-height:58vh;object-fit:contain;filter:contrast(1.05) saturate(1.05)}
+#s5 .dtl-cart,#s5b .dtl-cart{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);line-height:1.6;text-align:center}
+#s5 .dtl-cart em,#s5b .dtl-cart em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep);text-transform:none;letter-spacing:.005em;font-size:12px}
+#s5 .dtl-zoom,#s5b .dtl-zoom{display:flex;flex-direction:column;align-items:center;gap:20px}
+#s5 .loupe,#s5b .loupe{position:relative;width:min(300px,26vw);height:min(300px,26vw);border-radius:50%;box-shadow:0 0 0 7px var(--paper-w),0 0 0 9px var(--or2),0 24px 50px -20px rgba(40,28,8,.6),inset 0 0 30px rgba(40,28,8,.35);filter:contrast(1.06) saturate(1.06)}
+#s5 .loupe{background-image:url("assets/delacroix_femmes_alger_1834.jpg");background-size:260%;background-position:44% 58%}
+#s5b .loupe{background-image:url("assets/fromentin_orientaliste.jpg");background-size:540%;background-position:38% 93%}
+#s5 .loupe::after,#s5b .loupe::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 34% 28%,rgba(255,252,240,.35),transparent 46%);pointer-events:none}
+#s5 .dtl-note,#s5b .dtl-note{max-width:340px;text-align:center;font-family:var(--long);font-size:16px;line-height:1.62;color:var(--ink2)}
+#s5 .dtl-note em,#s5b .dtl-note em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s5 .dtl-note .tg,#s5b .dtl-note .tg{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--em);font-weight:700;margin-bottom:10px}
+@media(max-width:1180px){#s5 .dtl,#s5b .dtl{grid-template-columns:1fr;gap:30px}#s5 .loupe,#s5b .loupe{width:min(260px,60vw);height:min(260px,60vw)}}
+</style>
+<style id="fixAudit">
+/* AUDIT 14 juil — contraste s4 & s8 + reveals DANS la stèle s7 */
+
+/* S4 · cartes ÉMERAUDE sur fond crème (fin du crème-sur-crème) */
+#s4 .at{background:linear-gradient(180deg,#155038,#0c3122 72%,#082418);border:1px solid rgba(232,199,110,.34);box-shadow:0 5px 14px rgba(6,30,20,.4),0 28px 58px -24px rgba(6,30,20,.62),inset 0 1px 0 rgba(232,199,110,.16)}
+#s4 .at:hover{transform:translateY(-8px);border-color:var(--or3);box-shadow:0 8px 18px rgba(6,30,20,.5),0 42px 92px -24px rgba(6,30,20,.72),0 0 60px -16px rgba(232,199,110,.32),inset 0 1px 0 rgba(232,199,110,.2)}
+#s4 .at .n{color:var(--or3)!important}
+#s4 .at .ti{color:var(--cr)}
+#s4 .at .ti em{color:var(--or3)}
+#s4 .at .ru{background:var(--or3)}
+#s4 .at p{color:rgba(242,237,228,.85)}
+
+/* S8 · cartes CRÈME sur fond émeraude (fin de l'émeraude-sur-émeraude) */
+#s8 .pan{background:linear-gradient(180deg,var(--paper-w),#f1e9d6);border:1px solid var(--or2);box-shadow:0 28px 62px -26px rgba(6,30,20,.72),inset 0 1px 0 rgba(255,255,255,.85)}
+#s8 .pan .tag{color:var(--or-deep)}
+#s8 .pan .ti{color:var(--ink)}
+#s8 .pan .ti em{color:var(--or)}
+#s8 .pan li{color:var(--ink2)}
+#s8 .pan li::before{background:var(--or2)}
+
+/* S7 · le concept se DÉPLOIE DANS la stèle verte (plus rien en bas) */
+#s7 .stele .st-rule{width:60px;height:1px;background:var(--or3);margin:22px auto 20px;opacity:0;transition:opacity .5s}
+#s7 .stele .st-rule.revealed{opacity:.5}
+#s7 .stele .st-body{font-family:var(--long);font-size:16px;line-height:1.62;color:rgba(242,237,228,.9);max-width:600px;margin:0 auto;opacity:0;transform:translateY(8px);transition:opacity .55s,transform .55s}
+#s7 .stele .st-body.revealed{opacity:1;transform:none}
+#s7 .stele .st-body em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s7 .stele .figs{display:flex;gap:38px;justify-content:center;margin-top:22px;flex-wrap:wrap}
+#s7 .stele .fig{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s cubic-bezier(.34,1.4,.5,1)}
+#s7 .stele .fig.revealed{opacity:1;transform:none}
+#s7 .stele .fig .v{font-family:var(--num);font-style:italic;font-weight:900;font-size:32px;color:var(--or3);line-height:.9}
+#s7 .stele .fig .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,199,110,.78);font-weight:600;margin-top:8px;max-width:120px;line-height:1.4;margin-left:auto;margin-right:auto}
+</style>
+<style id="sSaidMag">
+/* S03b · slide MAGAZINE · Said + citation « doctrine politique » */
+#sSaidMag{padding:0;align-items:stretch;justify-content:stretch}
+#sSaidMag .mag{position:relative;z-index:2;display:grid;grid-template-columns:44% 56%;width:100%;height:100%}
+#sSaidMag .mag-photo{position:relative;overflow:hidden;background:var(--ink2)}
+#sSaidMag .mag-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 24%;filter:contrast(1.05) saturate(1.06)}
+#sSaidMag .mag-photo::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(10,8,6,.46),transparent 24%,transparent 64%,rgba(10,8,6,.6))}
+#sSaidMag .mag-photo .edge{position:absolute;top:0;bottom:0;right:0;width:2px;z-index:3;background:linear-gradient(180deg,transparent,var(--or2) 30%,var(--or-flow1) 50%,var(--or2) 70%,transparent)}
+#sSaidMag .mag-folio{position:absolute;top:78px;left:38px;z-index:4;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,239,194,.88);font-weight:600}
+#sSaidMag .mag-cap{position:absolute;left:38px;bottom:84px;z-index:4;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,239,194,.82);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+#sSaidMag .mag-cap b{font-family:var(--title);font-style:italic;font-weight:700;text-transform:none;letter-spacing:.005em;font-size:13px;color:var(--or3)}
+#sSaidMag .mag-text{position:relative;background:linear-gradient(160deg,var(--paper-w),var(--cr2));padding:0 clamp(48px,6vw,96px);display:flex;flex-direction:column;justify-content:center}
+#sSaidMag .mag-text::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--or2) 25%,var(--or-flow1) 50%,var(--or2) 75%,transparent)}
+#sSaidMag .mag-kick{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);font-weight:600;display:inline-flex;align-items:center;gap:12px;margin-bottom:22px}
+#sSaidMag .mag-kick::before{content:"";width:30px;height:1px;background:var(--or2)}
+#sSaidMag .mag-gm{font-family:var(--title);font-style:italic;font-weight:900;font-size:96px;line-height:.4;color:var(--or2);opacity:.42;display:block;height:40px}
+#sSaidMag .mag-quote{font-family:var(--title);font-style:italic;font-weight:400;font-size:clamp(25px,2.65vw,37px);line-height:1.3;color:var(--ink);max-width:660px;margin-top:6px}
+#sSaidMag .mag-quote em{font-weight:700;color:var(--or)}
+#sSaidMag .mag-rule{width:54px;height:1px;background:var(--or2);opacity:.7;margin:30px 0 20px}
+#sSaidMag .mag-by{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--or-deep);font-weight:600;line-height:1.7}
+#sSaidMag .mag-by i{font-family:var(--title);font-style:italic;font-weight:700;text-transform:none;letter-spacing:.005em;font-size:15px;color:var(--ink2)}
+#sSaidMag .mag-stand{margin-top:24px;font-family:var(--long);font-size:15px;line-height:1.6;color:var(--ink3);max-width:520px;padding-left:16px;border-left:2px solid rgba(154,123,46,.4)}
+/* chrome clair côté photo (gauche) pour cette slide */
+body:has(#sSaidMag.active) .topline .sec{color:var(--or3)!important}
+body:has(#sSaidMag.active) .topline .num{color:rgba(240,232,214,.6)!important}
+body:has(#sSaidMag.active) .topline .bar{background:rgba(212,176,90,.5)!important}
+body:has(#sSaidMag.active) .footline .f-left{color:var(--or3)!important}
+body:has(#sSaidMag.active) .footline .f-left .f-dot{background:var(--or3)}
+@media(max-width:1100px){#sSaidMag .mag{grid-template-columns:1fr}#sSaidMag .mag-photo{min-height:36vh}#sSaidMag .mag-text{padding:52px 40px}}
+</style>
+<style id="bordeauxPass">
+/* + de bordeaux (14 juil.) — va avec la peinture */
+/* S5 · cartes ateliers → BORDEAUX (textes crème + or3 conservés) */
+#s4 .at{background:linear-gradient(180deg,#7A2236,#5E1622 58%,#4A1320)!important;border:1px solid rgba(232,199,110,.36)!important;box-shadow:0 5px 14px rgba(20,4,10,.42),0 28px 58px -24px rgba(20,4,10,.64),inset 0 1px 0 rgba(232,199,110,.16)!important}
+#s4 .at:hover{border-color:var(--or3)!important;box-shadow:0 8px 18px rgba(20,4,10,.52),0 42px 92px -24px rgba(20,4,10,.74),0 0 60px -16px rgba(232,199,110,.32),inset 0 1px 0 rgba(232,199,110,.2)!important}
+
+/* S8 · citation Alloula → ENCADRÉ BORDEAUX */
+#s6 .quote{max-width:560px;background:linear-gradient(160deg,#7A2236,#5E1622 55%,#4A1320);border:1px solid var(--or3);border-radius:13px;padding:26px 30px;box-shadow:0 8px 20px rgba(20,4,10,.4),0 30px 66px -28px rgba(20,4,10,.6),0 0 0 1px rgba(232,199,110,.16),inset 0 1px 0 rgba(232,199,110,.2)}
+#s6 .quote .q{color:var(--cr)!important;padding-left:0!important;border-left:0!important;font-size:20px;line-height:1.44}
+#s6 .quote .q em{color:var(--or3)!important}
+#s6 .quote .src{color:var(--or3)!important;margin-top:12px}
+
+/* S9 · bureaux arabes : fond bordeaux + stèle BLANCHE (contraste) */
+#s7 .stele{background:linear-gradient(180deg,var(--paper-w),#f1e9d6)!important;border:1px solid var(--or2)!important;box-shadow:0 44px 110px -42px rgba(20,4,10,.7),0 0 0 1px rgba(196,162,74,.25),inset 0 1px 0 rgba(255,255,255,.9)!important}
+#s7 .stele::before{border-color:rgba(154,123,46,.35)!important}
+#s7 .stele .lab{color:var(--or-deep)!important}
+#s7 .stele .concept{color:var(--ink)!important}
+#s7 .stele .concept em{color:var(--or)!important}
+#s7 .stele .sub{color:var(--or-deep)!important}
+#s7 .stele .st-rule{background:var(--or2)!important}
+#s7 .stele .st-rule.revealed{opacity:.6!important}
+#s7 .stele .st-body{color:var(--ink2)!important}
+#s7 .stele .st-body em{color:var(--or)!important}
+#s7 .stele .fig .v{color:var(--or)!important}
+#s7 .stele .fig .l{color:var(--or-deep)!important}
+</style>
+<style id="endslides">
+/* S13 (survivance) — additions */
+#s12 .surv-txt{font-family:var(--long);font-size:16.5px;line-height:1.64;color:var(--ink2);max-width:780px;margin:0 auto;text-align:center}
+#s12 .surv-txt em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or)}
+#s12 .heritieres{margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+#s12 .heritieres span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--or-deep);font-weight:600;border:1px solid rgba(154,123,46,.42);border-radius:100px;padding:6px 14px;background:var(--paper-w)}
+#s12 .tip b{color:var(--or-deep);font-weight:700;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+/* S13 · card en BORDEAUX (contraste + premium) */
+#s12 .ex{background:linear-gradient(160deg,#7A2236,#5E1622 55%,#4A1320)!important;border:1px solid var(--or3)!important;box-shadow:0 10px 24px rgba(20,4,10,.42),0 36px 78px -30px rgba(20,4,10,.64),0 0 0 1px rgba(232,199,110,.16),0 0 90px -30px rgba(232,199,110,.3),inset 0 1px 0 rgba(232,199,110,.22)!important;padding:38px 44px!important;max-width:820px!important}
+#s12 .ex .body{width:100%;text-align:center}
+#s12 .heritieres{margin-top:0!important;margin-bottom:20px}
+#s12 .heritieres span{color:var(--or3)!important;background:transparent!important;border:1px solid rgba(232,199,110,.5)!important}
+#s12 .surv-txt{color:var(--cr)!important;font-size:18.5px;line-height:1.58;max-width:640px}
+#s12 .surv-txt em{color:var(--or3)!important}
+
+/* S14 · SYNTHÈSE 3 cards (fond bordeaux, cards crème) */
+#s13{align-items:center;justify-content:center}
+#s13 .synwrap{max-width:1200px;width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+#s13 .synlab{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--or3);font-weight:600;margin-bottom:16px;display:inline-flex;align-items:center;gap:12px}
+#s13 .synlab::before,#s13 .synlab::after{content:"";width:26px;height:1px;background:var(--or3);opacity:.7}
+#s13 .synh{font-family:var(--av);font-weight:500;font-size:clamp(28px,3.4vw,44px);line-height:1.06;letter-spacing:-.02em;color:var(--cr);max-width:920px;margin-bottom:38px}
+#s13 .synh em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or3)}
+#s13 .syngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;width:100%;max-width:1160px}
+#s13 .syncard{position:relative;background:linear-gradient(180deg,var(--paper-w),#f1e9d6);border:1px solid var(--or2);border-radius:14px;padding:30px 26px 28px;text-align:left;box-shadow:0 8px 20px rgba(20,4,10,.4),0 34px 74px -30px rgba(20,4,10,.62),inset 0 1px 0 rgba(255,255,255,.9);opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.7,0,.3,1),transform .65s cubic-bezier(.34,1.4,.5,1)}
+#s13 .syncard.revealed{opacity:1;transform:none}
+#s13 .syncard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;border-radius:14px 14px 0 0;background:linear-gradient(90deg,transparent,var(--or2),var(--or3),var(--or2),transparent)}
+#s13 .syncard .n{font-family:var(--ar);font-weight:700;font-size:30px;line-height:.9;color:var(--red-hi);direction:rtl}
+#s13 .syncard .tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-top:8px}
+#s13 .syncard .ti{font-family:var(--av);font-weight:500;font-size:20px;color:var(--ink);line-height:1.14;margin-top:6px}
+#s13 .syncard .ti em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s13 .syncard .ru{width:30px;height:1.5px;background:var(--or2);margin:12px 0}
+#s13 .syncard p{font-family:var(--sans);font-size:14.5px;line-height:1.58;color:var(--ink2)}
+#s13 .syncard p em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or-deep)}
+#s13 .synnext{margin-top:38px;padding:16px 32px;background:rgba(248,243,233,.96);border:1px dashed var(--or);border-radius:100px;display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--red-low);font-weight:700;box-shadow:0 22px 40px -14px rgba(20,4,10,.55),inset 0 1px 0 rgba(255,255,255,.85);opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
+#s13 .synnext.revealed{opacity:1;transform:none}
+#s13 .synnext::before{content:"→";font-family:var(--num);font-style:italic;font-size:20px;color:var(--or)}
+#s13 .synnext b{color:var(--red-low);letter-spacing:.2em}
+#s13 .synnext em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or);text-transform:none;letter-spacing:.005em;font-size:14px}
+@media(max-width:1100px){#s13 .syngrid{grid-template-columns:1fr}}
+</style>
+<style id="s4seuil">
+/* S05 · slide-SEUIL des ateliers (l'audio n'énumère pas les 4) */
+#s4 .th{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+#s4 .th-sub{font-family:var(--long);font-size:clamp(17px,1.9vw,21px);line-height:1.5;color:var(--ink3);margin-top:18px;max-width:640px}
+#s4 .th-nums{margin-top:44px;display:inline-flex;align-items:center;gap:clamp(30px,5vw,64px);justify-content:center;position:relative}
+#s4 .th-nums::before{content:"";position:absolute;left:4%;right:4%;top:52%;height:1px;background:linear-gradient(90deg,transparent,rgba(196,162,74,.4) 20%,rgba(196,162,74,.4) 80%,transparent);z-index:0}
+#s4 .th-nums span{font-family:var(--ar);font-weight:700;font-size:clamp(40px,4.6vw,60px);color:var(--or2);line-height:1;opacity:.92;position:relative;z-index:1;padding:0 8px}
+#s4 .th-hint{margin-top:26px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--or-deep);font-weight:600;opacity:.72}
+</style>
+<style id="s9porot">
+/* S11 · le diagnostic · Porot seul (Fanon → son propre module) · photo G / texte D */
+#s9{align-items:center;justify-content:center}
+#s9 .pw{max-width:1140px;width:100%;margin:0 auto;display:grid;grid-template-columns:.72fr 1.1fr;gap:60px;align-items:center;text-align:left}
+#s9 .pw-photo{display:flex;flex-direction:column;gap:14px;align-items:center}
+#s9 .pframe{position:relative;width:100%;max-width:320px;background:var(--paper-w);padding:12px;border-radius:3px;box-shadow:0 30px 66px -28px rgba(20,12,4,.6),0 0 0 1px rgba(212,176,90,.35),inset 0 1px 0 rgba(255,255,255,.9);transform:rotate(-1.2deg);transition:transform .6s cubic-bezier(.34,1.2,.5,1)}
+#s9 .pframe:hover{transform:rotate(0) translateY(-4px)}
+#s9 .pframe img{display:block;width:100%;filter:grayscale(.32) sepia(.26) contrast(1.05) brightness(1.03)}
+#s9 .pframe::after{content:"";position:absolute;inset:12px;box-shadow:inset 0 0 0 1px rgba(40,28,8,.18);pointer-events:none}
+#s9 .pw-cart{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);text-align:center}
+#s9 .pw-cart b{font-family:var(--title);font-style:italic;font-weight:700;text-transform:none;color:var(--or-deep);font-size:12px}
+#s9 .pw-lab{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--or-deep);font-weight:600;margin-bottom:14px}
+#s9 .pw-h{font-family:var(--av);font-weight:500;font-size:clamp(27px,3.3vw,42px);line-height:1.07;letter-spacing:-.02em;color:var(--ink);margin-bottom:18px}
+#s9 .pw-h em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or)}
+#s9 .pw-ref{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--or-deep);font-weight:600;line-height:1.5;margin-bottom:18px}
+#s9 .pw-body{font-family:var(--long);font-size:16.5px;line-height:1.64;color:var(--ink2);max-width:560px}
+#s9 .pw-body em{font-family:var(--title);font-style:italic;font-weight:700;color:var(--or)}
+@media(max-width:1100px){#s9 .pw{grid-template-columns:1fr;gap:30px}#s9 .pframe{max-width:260px}}
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+<!-- ===================== S1 COUVERTURE ===================== -->
+<!-- numéro de module provisoire, à finaliser -->
+<section class="slide cover active" id="s1" data-slide="1">
+  <div class="cvA-top"><div class="cvA-brand"><span class="cvA-dot"></span>L’Autre Récit</div><div class="cvA-tract"></div></div>
+  <div class="cvA-mod">L’Algérie a pensé · Module 5 / 15</div>
+  <div class="cvA-tt"><span class="cvA-l1">L’<em class="foil">Orientalisme</em>&#8239;:</span><span class="cvA-l2">fabriquer l’Orient.</span></div>
+  <div class="cvA-sub">Comment l’Occident a peint, photographié et décrit l’Algérie pour la posséder.</div>
+  <div class="cvA-period">1830 — 1962</div>
+  <div class="cvA-pg">05<sup> / 15</sup></div>
+</section>
+
+<!-- ===================== S2 QUESTION ===================== -->
+<section class="slide em" id="s2" data-slide="2">
+  <div class="eyebrow"><span>S02 · La question d’ouverture</span></div>
+  <p class="q">Peut-on décrire un peuple sans <em>le posséder</em>&#8239;?</p>
+  <div class="filet"></div>
+  <p class="appui">Le tableau, la carte postale, le rapport savant, le diagnostic médical : autant de regards qui se donnent pour neutres. Aucun ne l’est.</p>
+</section>
+
+<!-- ===================== S3 LE CADRE — EDWARD SAID ===================== -->
+<section class="slide" id="s3" data-slide="3">
+  <div class="eyebrow"><span>S03 · Le cadre · Edward Said</span></div>
+  <div class="wrap">
+    <div class="pcol">
+      <div class="pframe"><img src="assets/said_portrait_echarpe.jpg" alt="Edward Said"></div>
+      <div class="cap">Edward W. Said</div>
+    </div>
+    <div class="body">
+      <div class="id"><span class="nm">Edward W. Said</span><span class="dt">1935 – 2003</span></div>
+      <div class="oeuvre">L’Orientalisme. L’Orient créé par l’Occident · 1978 (trad. fr. Seuil, 1980)</div>
+      <p class="these">L’Orient de l’orientalisme est une <em>fiction</em> : une image que l’Occident a produite pour s’en rendre maître. Un savoir — philologie, peinture, récits de voyage, administration — jamais séparé du pouvoir qui l’emploie.</p>
+      <blockquote class="quote">«&#8239;L’orientalisme [est] un style occidental de domination, de restructuration et d’<em>autorité</em> sur l’Orient.&#8239;»
+        <span class="src">L’Orientalisme · 1978</span>
+      </blockquote>
+      <p class="note">Said décrit surtout le Proche-Orient. Pour l’Algérie, ses héritiers : Lorcin, Alloula, Fanon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== S03b · MAGAZINE · SAID ===================== -->
+<section class="slide" id="sSaidMag" data-slide="3b" data-clicks="0">
+  <div class="eyebrow"><span>S03 · Said · le texte fondateur</span></div>
+  <div class="mag">
+    <div class="mag-photo">
+      <img src="assets/orientalisme.jpg" alt="Eugène Fromentin, Chasse au faucon en Algérie : la curée, 1863">
+      <span class="edge"></span>
+      <div class="mag-folio">L’image orientaliste</div>
+      <div class="mag-cap">Eugène Fromentin · <b>Chasse au faucon en Algérie</b> · 1863 · Orsay</div>
+    </div>
+    <div class="mag-text">
+      <div class="mag-kick"><span>Le texte fondateur</span></div>
+      <span class="mag-gm">«</span>
+      <p class="mag-quote">L’orientalisme est fondamentalement une <em>doctrine politique</em> imposée à l’Orient parce que celui-ci était plus faible que l’Occident.</p>
+      <div class="mag-rule"></div>
+      <div class="mag-by">Edward W. Said<br><i>L’Orientalisme. L’Orient créé par l’Occident</i> · 1978</div>
+      <p class="mag-stand">Le savoir suit le rapport de force&#8239;: il l’habille et le justifie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== S4 LES ATELIERS ===================== -->
+<section class="slide" id="s4" data-slide="4" data-clicks="0">
+  <div class="eyebrow"><span>S04 · Le seuil des ateliers</span></div>
+  <div class="th">
+    <div class="head">
+      <div class="lab">Entrons dans les ateliers</div>
+      <h2>Quatre ateliers fabriquent le <em>même</em> Orient.</h2>
+    </div>
+    <p class="th-sub">Des métiers différents produisent une seule image.</p>
+    <div class="th-nums"><span>١</span><span>٢</span><span>٣</span><span>٤</span></div>
+    <div class="th-hint">développés un par un, dans les slides qui suivent</div>
+  </div>
+</section>
+
+<!-- ===================== S5 LE PINCEAU ===================== -->
+<section class="slide" id="s5" data-slide="5" data-clicks="0">
+  <div class="eyebrow"><span>S05 · Le pinceau · le harem peint pour Paris</span></div>
+  <div class="dtl">
+    <div class="dtl-art">
+      <div class="dtl-frame"><div class="mat"><div class="win"><img src="assets/delacroix_femmes_alger_1834.jpg" alt="Delacroix, Femmes d’Alger dans leur appartement, 1834"></div></div></div>
+      <div class="dtl-cart">Eugène Delacroix · <em>Femmes d’Alger dans leur appartement</em> · 1834 · Salon de 1834 · Louvre</div>
+    </div>
+    <div class="dtl-zoom">
+      <div class="loupe"></div>
+      <p class="dtl-note"><span class="tg">détail · le harem fabriqué</span>En 1832, Delacroix entre dans un intérieur algérois — un accès que seule la conquête rend possible. Sur la toile, l’intime d’une maison de femmes devient un <em>harem</em> : narghilé, étoffes, pénombre. Un décor érotique monté pour le Salon de Paris.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== S5b LE PINCEAU · FROMENTIN ===================== -->
+<section class="slide" id="s5b" data-slide="5b" data-clicks="0">
+  <div class="eyebrow"><span>S05 · Le pinceau · le désert pittoresque</span></div>
+  <div class="dtl">
+    <div class="dtl-art">
+      <div class="dtl-frame"><div class="mat"><div class="win"><img src="assets/fromentin_orientaliste.jpg" alt="Fromentin, Un été dans le Sahara, 1857"></div></div></div>
+      <div class="dtl-cart">Eugène Fromentin · <em>Un été dans le Sahara</em> · 1857 · huile sur toile</div>
+    </div>
+    <div class="dtl-zoom">
+      <div class="loupe"></div>
+      <p class="dtl-note"><span class="tg">détail · des figures, pas des gens</span>Fromentin peint le Sahara comme un <em>décor</em> figé. Les habitants s’y réduisent à des silhouettes du paysage — nul n’y parle, nul n’y agit. Le désert devient une carte postale avant l’heure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== S6 L’OBJECTIF ===================== -->
+<section class="slide" id="s6" data-slide="6" data-clicks="1">
+  <div class="eyebrow"><span>S06 · L’objectif · la carte postale</span></div>
+  <div class="wrap">
+    <div class="cards">
+      <div class="cp">
+        <img src="assets/cp_femme_ouled_nails_neurdein.jpg" alt="Carte postale coloniale, femme Ouled Naïl, studio Neurdein">
+        <div class="stamp">Neurdein · v. 1900</div>
+      </div>
+    </div>
+    <div class="ana">
+      <div class="lab">Le fantasme en studio</div>
+      <p class="txt">Vers 1900, des femmes posent en studio, dévoilées, costumées en « mauresques », pour des cartes postales expédiées par milliers en métropole. Aucune ne documente une vie réelle : elles fabriquent le <em>fantasme</em> du harem à destination de l’expéditeur.</p>
+      <div class="quote" data-step="1">
+        <p class="q">Une «&#8239;<em>double violation</em>&#8239;» : dévoiler ce que la société algérienne soustrayait au regard, puis en faire une marchandise qu’on expédie.</p>
+        <div class="src">Malek Alloula · Le Harem colonial. Images d’un sous-érotisme · 1981</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== S7 LE CARNET ===================== -->
+<section class="slide red" id="s7" data-slide="7" data-clicks="3">
+  <div class="eyebrow"><span>S07 · Le carnet · le savoir de terrain</span></div>
+  <div class="wrap">
+    <div class="stele">
+      <div class="lab">Le concept · cliquez pour déployer</div>
+      <div class="concept">Les <em>bureaux arabes</em></div>
+      <div class="sub">créés sous Bugeaud · arrêté du 1ᵉʳ février 1844 · dirigés par le général Daumas</div>
+      <div class="st-rule" data-step="1"></div>
+      <p class="st-body" data-step="1">Des officiers-ethnographes recensent les tribus, classent les mœurs, cartographient les confréries et les langues. Décrire pour contrôler — ces carnets forgent les <em>catégories</em> qui serviront à diviser.</p>
+      <div class="figs">
+        <div class="fig" data-step="1"><div class="v">1844</div><div class="l">arrêté fondateur</div></div>
+        <div class="fig" data-step="2"><div class="v">tribus</div><div class="l">recensées, classées</div></div>
+        <div class="fig" data-step="3"><div class="v">officiers</div><div class="l">des affaires arabes</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== S8 LE MYTHE KABYLE (émeraude) ===================== -->
+<section class="slide em" id="s8" data-slide="8" data-clicks="2">
+  <div class="eyebrow"><span>S08 · Le mythe kabyle · diviser pour régner</span></div>
+  <div class="head">
+    <div class="lab">Une fiction administrative</div>
+    <h2>Deux peuples <em>inventés</em> pour n’en gouverner qu’un.</h2>
+  </div>
+  <div class="dip">
+    <div class="pan" data-step="1">
+      <div class="tag">Atelier · gauche</div>
+      <div class="ti">Le « <em>bon Berbère</em> »</div>
+      <ul>
+        <li>montagnard, sédentaire</li>
+        <li>« démocrate », assimilable</li>
+        <li>christianisable, proche de Rome</li>
+      </ul>
+    </div>
+    <div class="vs">↔</div>
+    <div class="pan" data-step="1">
+      <div class="tag">Atelier · droite</div>
+      <div class="ti">L’« <em>Arabe irréductible</em> »</div>
+      <ul>
+        <li>nomade, sans attache</li>
+        <li>fanatique, inassimilable</li>
+        <li>étranger au sol qu’il occupe</li>
+      </ul>
+    </div>
+  </div>
+  <div class="verdict" data-step="2">
+    <p class="v">Aucune des deux images n’est vraie. Le savoir colonial les fabrique pour briser l’<em>unité</em> algérienne.</p>
+    <div class="src">Patricia M. E. Lorcin · Imperial Identities · 1995</div>
+  </div>
+</section>
+
+<!-- ===================== S9 LE DIAGNOSTIC ===================== -->
+<section class="slide" id="s9" data-slide="9" data-clicks="0">
+  <div class="eyebrow"><span>S09 · Le diagnostic · la psychiatrie coloniale</span></div>
+  <div class="pw">
+    <div class="pw-photo">
+      <div class="pframe"><img src="assets/porot.jpg" alt="Antoine Porot, psychiatre, fondateur de l’École d’Alger"></div>
+      <div class="pw-cart">Antoine <b>Porot</b> · 1876 – 1965</div>
+    </div>
+    <div class="pw-text">
+      <div class="pw-lab">Le racisme en blouse blanche</div>
+      <h2 class="pw-h">Quand la médecine décrète le « primitif » <em>par nature</em>.</h2>
+      <div class="pw-ref">« Notes de psychiatrie musulmane » · Annales médico-psychologiques · 1918</div>
+      <p class="pw-body">Antoine Porot fonde l’« <em>École d’Alger</em> » : le « Nord-Africain » y est décrit comme un primitif, un impulsif, un criminel-né, au psychisme plus fruste que celui de l’Européen. Cette fois, c’est un médecin qui diagnostique&#8239;: il donne à la hiérarchie coloniale l’autorité la plus difficile à contester, celle de la <em>science</em>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== S11 LE MIROIR (rouge) ===================== -->
+<section class="slide red" id="s11" data-slide="11" data-clicks="2">
+  <div class="eyebrow"><span>S11 · Le miroir · savoir &amp; droit</span></div>
+  <div class="head">
+    <div class="lab">Le climax du module</div>
+    <h2>Deux régimes, une même <em>domination</em>.</h2>
+  </div>
+  <div class="bal">
+    <div class="side" data-step="1">
+      <div class="tag">Premier régime</div>
+      <div class="ti">Le <em>droit</em></div>
+      <p>L’indigénat — vu au module précédent — contraint les corps : punir sans juge, sans appel.</p>
+    </div>
+    <div class="scale">⚖</div>
+    <div class="side" data-step="1">
+      <div class="tag">Second régime</div>
+      <div class="ti">Le <em>savoir</em></div>
+      <p>L’orientalisme naturalise la hiérarchie : peindre, photographier, diagnostiquer le « primitif ».</p>
+    </div>
+  </div>
+  <div class="verdict" data-step="2">
+    <p class="v">Le droit soumet ; le savoir justifie. Ils fonctionnent <em>ensemble</em>.</p>
+    <div class="src">Georges Balandier · « La situation coloniale » · 1951</div>
+  </div>
+</section>
+
+<!-- ===================== S12 À TOI ===================== -->
+<section class="slide" id="s12" data-slide="12" data-clicks="1">
+  <div class="eyebrow"><span>S12 · La survivance du regard</span></div>
+  <div class="wrap">
+    <div class="lab">Une précaution, pour finir</div>
+    <p class="q">Ces images ne sont pas mortes avec la <em>colonie</em>.</p>
+    <div class="ex">
+      <div class="body">
+        <div class="heritieres"><span>publicité</span><span>cinéma</span><span>tourisme</span></div>
+        <p class="surv-txt">Ces images survivent au système qui les a produites&#8239;: elles mettent en lumière des <em>structures mentales</em> coloniales encore vivaces dans la société.</p>
+      </div>
+    </div>
+    <p class="tip" data-step="1">Reconnaître cette habitude du regard, la nommer pour ce qu’elle est, c’est <em>reprendre la main</em> sur elle. <b>→ à démonter dans le carnet</b></p>
+  </div>
+</section>
+
+<!-- ===================== S13 PASSERELLE (rouge) ===================== -->
+<section class="slide red" id="s13" data-slide="13" data-clicks="4">
+  <div class="eyebrow"><span>S13 · Ce qu’on emporte</span></div>
+  <div class="synwrap">
+    <div class="synlab">Ce qu’on emporte</div>
+    <h2 class="synh">L’orientalisme, un savoir au service d’un <em>pouvoir</em>.</h2>
+    <div class="syngrid">
+      <div class="syncard" data-step="1">
+        <div class="n">١</div>
+        <div class="tag">Le principe</div>
+        <div class="ti">Décrire, c’est <em>posséder</em></div>
+        <div class="ru"></div>
+        <p>Pour l’Occident colonial, décrire l’Orient, c’est déjà se l’approprier.</p>
+      </div>
+      <div class="syncard" data-step="2">
+        <div class="n">٢</div>
+        <div class="tag">Les ateliers</div>
+        <div class="ti">Fabriqué en des <em>lieux concrets</em></div>
+        <div class="ru"></div>
+        <p>L’atelier, le studio, le bureau, le service : chacun produit un outil de gouvernement — le mythe kabyle, le diagnostic de primitivité.</p>
+      </div>
+      <div class="syncard" data-step="3">
+        <div class="n">٣</div>
+        <div class="tag">Le montage</div>
+        <div class="ti">Droit + savoir, <em>ensemble</em></div>
+        <div class="ru"></div>
+        <p>Le droit contraint les corps, le savoir justifie la hiérarchie. Les deux tiennent la colonie debout.</p>
+      </div>
+    </div>
+    <div class="synnext" data-step="4"><span><b>Prochain</b> · M6 · le corps des femmes, la bataille du <em>voile</em></span></div>
+  </div>
+</section>
+
+</div>
+
+<div class="topline" id="topline">
+  <span class="sec">L’orientalisme</span><span class="bar"></span><span class="num"><span id="tlCur">01</span> / <span id="tlTot">14</span></span>
+</div>
+<nav class="footline" id="nav">
+  <div class="f-left"><span class="f-dot"></span>L’Autre Récit</div>
+  <div class="f-seg" id="navSeg"></div>
+</nav>
+<button class="navbtn prev" id="navPrev" aria-label="Précédent"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="navbtn next" id="navNext" aria-label="Suivant"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const total=slides.length;
+  const _qa=new URLSearchParams(location.search).get('slide');
+  let cur=_qa?Math.max(0,Math.min(parseInt(_qa)-1,total-1)):0, step=0;
+
+  const navSeg=document.getElementById('navSeg');
+  const tlCur=document.getElementById('tlCur');
+  const tlTot=document.getElementById('tlTot');
+  const navPrev=document.getElementById('navPrev');
+  const navNext=document.getElementById('navNext');
+  if(tlTot) tlTot.textContent=String(total).padStart(2,'0');
+  for(let i=0;i<total;i++){ navSeg.appendChild(document.createElement('i')); }
+  const segs=[...navSeg.children];
+
+  function updateNav(){
+    if(tlCur) tlCur.textContent=String(cur+1).padStart(2,'0');
+    segs.forEach((el,i)=>{el.className = i<cur?'done' : i===cur?'on' : '';});
+    navPrev.disabled = cur===0;
+    navNext.disabled = cur===total-1;
+  }
+  function resetReveals(sl){
+    sl.classList.remove('is-on');
+    sl.querySelectorAll('.revealed').forEach(t=>{
+      t.style.transition='none';
+      t.classList.remove('revealed');
+      void t.offsetWidth;
+      t.style.transition='';
+    });
+    const hint=sl.querySelector('[data-hint]');
+    if(hint) hint.classList.remove('gone');
+  }
+  function goto(n){
+    if(n<0||n>=total) return;
+    slides[cur].classList.remove('active');
+    cur=n;step=0;
+    const sl=slides[cur];
+    resetReveals(sl);
+    sl.classList.add('active');
+    updateNav();
+  }
+  function markHint(sl){const h=sl.querySelector('[data-hint]');if(h)h.classList.add('gone')}
+  function clickStep(){
+    const sl=slides[cur];
+    const maxClicks=parseInt(sl.dataset.clicks||'0',10);
+    if(step<maxClicks){
+      step++;
+      sl.classList.add('is-on');
+      sl.querySelectorAll(`[data-step="${step}"]`).forEach(t=>t.classList.add('revealed'));
+      if(step>=maxClicks) markHint(sl);
+    } else {
+      goto(cur+1);
+    }
+  }
+
+  if(_qa && cur>0){
+    slides.forEach((s,i)=>s.classList.toggle('active', i===cur));
+  }
+  if(new URLSearchParams(location.search).get('reveal')==='1'){
+    const sl=slides[cur];
+    sl.classList.add('is-on');
+    sl.querySelectorAll('[data-step]').forEach(el=>el.classList.add('revealed'));
+  }
+
+  navPrev.addEventListener('click',e=>{e.stopPropagation();goto(cur-1)});
+  navNext.addEventListener('click',e=>{e.stopPropagation();goto(cur+1)});
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'){e.preventDefault();clickStep()}
+    else if(e.key==='ArrowLeft'){e.preventDefault();goto(cur-1)}
+    else if(e.key==='Home'){e.preventDefault();goto(0)}
+    else if(e.key==='End'){e.preventDefault();goto(total-1)}
+  });
+
+  const EXCLUDE='.navchrome,.navbtn,button,a';
+  document.getElementById('stage').addEventListener('click',e=>{
+    if(e.target.closest(EXCLUDE)) return;
+    const sl=slides[cur];
+    const maxClicks=parseInt(sl.dataset.clicks||'0',10);
+    const hasPending = step<maxClicks;
+    const rect=sl.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    if(x < rect.width/2){
+      goto(cur-1);
+    } else {
+      if(hasPending) clickStep();
+      else goto(cur+1);
+    }
+  });
+
+  updateNav();
+})();
+</script>
+</body>
+</html>

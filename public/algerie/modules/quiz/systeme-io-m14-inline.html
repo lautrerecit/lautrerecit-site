@@ -1,0 +1,365 @@
+<!-- L'Autre Récit · Le rappel · M14 · La torture, la doctrine en acte · bloc code personnalisé systeme.io (inline, styles scopés .lrq).
+     Un seul bloc rappel par page. -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+<style>
+.lrq{
+  --cr:#F2EDE4; --cr2:#EAE3D8; --paper:#FAF6EB; --paper-w:#FFFCF4;
+  --em-d:#13442E; --em-deep:#0A2C1E; --em:#1F6B4A; --em-l:#2D8862; --em-bright:#3CA47A;
+  --or:#9A7B2E; --or2:#C4A24A; --or3:#D4B05A; --or-deep:#7A5E1F; --or-flow1:#F4DC92;
+  --red:#5E1622; --red-hi:#7A2236; --rose:#C77885;
+  --ink:#0E0C0A; --ink2:#1A1714; --ink3:#3D3730;
+  --title:'Playfair Display',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace; --ar:'Amiri',serif;
+}
+.lrq,.lrq *,.lrq *::before,.lrq *::after{box-sizing:border-box;margin:0;padding:0}
+.lrq{background:var(--cr);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6;text-align:center}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.lrq .wrap{max-width:780px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(18px,5vw,34px) 72px}
+.lrq .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);font-weight:600;display:inline-flex;align-items:center;gap:14px;animation:rise .6s ease both}
+.lrq .eyebrow::before{content:"";width:28px;height:1px;background:var(--or2)}
+.lrq h1{font-family:var(--title);font-weight:900;font-size:clamp(32px,5.4vw,52px);line-height:1.05;letter-spacing:-.02em;margin:16px 0 0;animation:rise .7s ease .1s both}
+.lrq h1 em{font-style:italic;color:var(--em-d)}
+.lrq .lede{font-family:var(--title);font-style:italic;font-size:clamp(16px,2vw,19px);color:var(--ink2);max-width:54ch;margin:16px auto 0;animation:rise .7s ease .2s both}
+.lrq .lede b{color:var(--or-deep);font-weight:700}
+.lrq .mods{display:flex;gap:10px;margin:34px auto 0;max-width:640px;animation:rise .7s ease .3s both}
+.lrq .mod-btn{flex:1;font-family:var(--sans);text-align:center;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.35);border-radius:13px;padding:16px 18px;cursor:pointer;transition:border-color .25s,transform .25s cubic-bezier(.22,.9,.36,1)}
+.lrq .mod-btn:hover{transform:translateY(-2px);border-color:var(--or2)}
+.lrq .mod-btn.on{background:radial-gradient(120% 140% at 50% 0%,#1A5840,var(--em-deep) 78%);border-color:var(--or2)}
+.lrq .mod-k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--or-deep)}
+.lrq .mod-btn.on .mod-k{color:var(--or3)}
+.lrq .mod-t{font-family:var(--title);font-style:italic;font-weight:700;font-size:17px;margin-top:5px;color:var(--ink)}
+.lrq .mod-btn.on .mod-t{color:#fff}
+.lrq .stage{margin-top:28px}
+.lrq .playcard{border-radius:20px;overflow:hidden;box-shadow:0 34px 78px -48px rgba(20,14,4,.55);animation:rise .5s ease both}
+.lrq .hero{background:radial-gradient(130% 130% at 20% -10%,#1A5A3D,var(--em-deep) 70%);color:#EFF6F1;padding:clamp(24px,3.4vw,34px) clamp(22px,4vw,40px) clamp(26px,3.6vw,32px);position:relative;overflow:hidden}
+.lrq .hero::after{content:"تذكّر";position:absolute;bottom:-40px;right:-6px;font-family:var(--ar);font-size:clamp(90px,15vw,150px);color:rgba(212,176,90,.06);line-height:.8;direction:rtl;pointer-events:none}
+.lrq .hk{position:relative;font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--or3)}
+.lrq .ht{position:relative;font-family:var(--title);font-weight:700;font-size:clamp(23px,3vw,32px);line-height:1.08;margin:8px 0 0;color:#fff}
+.lrq .ht em{font-style:italic;color:var(--or2)}
+.lrq .hbar{position:relative;height:5px;border-radius:99px;margin:18px auto 0;max-width:520px;background:rgba(255,255,255,.14);overflow:hidden}
+.lrq .hbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--or3),var(--or));transition:width .5s cubic-bezier(.22,.9,.36,1)}
+.lrq .hsc{position:relative;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or3);margin-top:13px}
+.lrq .hsc b{font-family:var(--title);font-style:italic;color:var(--or2);font-size:16px}
+.lrq .qcard{background:var(--paper-w);padding:clamp(26px,4vw,40px)}
+.lrq .q-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--or-deep);font-weight:600}
+.lrq .q-fact{font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--ink2);margin:14px auto 0;max-width:58ch}
+.lrq .q-fact b{color:var(--red-hi);font-weight:700}
+.lrq .q-ask{font-family:var(--title);font-weight:700;font-size:clamp(20px,2.6vw,26px);line-height:1.28;color:var(--ink);margin:10px auto 0;max-width:24ch}
+.lrq .q-ask em{font-style:italic;color:var(--em-d)}
+.lrq .q-ask b{color:var(--em-d)}
+.lrq .opts{display:grid;gap:10px;margin:26px auto 0;max-width:640px;text-align:left}
+.lrq .opt{display:flex;align-items:center;gap:15px;width:100%;padding:14px 18px;border-radius:12px;font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink2);background:var(--paper-w);border:1.5px solid #E3D8C2;box-shadow:0 3px 10px -5px rgba(20,14,4,.16);cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s,transform .2s cubic-bezier(.22,.9,.36,1)}
+.lrq .opt:hover:not([disabled]){border-color:var(--or2);transform:translateY(-1px);box-shadow:0 9px 20px -9px rgba(154,123,46,.32)}
+.lrq .opt[disabled]{cursor:default}
+.lrq .opt .L{font-family:var(--title);font-style:italic;font-weight:900;font-size:19px;line-height:1;color:var(--or2);flex:0 0 18px;text-align:center}
+.lrq .opt .tx{flex:1}
+.lrq .opt .mk{flex:0 0 18px;text-align:center;font-weight:800;font-size:15px;color:transparent}
+.lrq .opt.picked-good,.lrq .opt.reveal-good{background:rgba(31,107,74,.09);border-color:var(--em)}
+.lrq .opt.picked-good .mk,.lrq .opt.reveal-good .mk{color:var(--em)}
+.lrq .opt.reveal-good{border-style:dashed}
+.lrq .opt.picked-bad{background:rgba(94,22,34,.07);border-color:var(--red-hi)}
+.lrq .opt.picked-bad .L{color:var(--red-hi)}
+.lrq .opt.picked-bad .mk{color:var(--red-hi)}
+.lrq .opt.faded{opacity:.62}
+.lrq .fb{margin:22px auto 0;max-width:640px;padding:17px 22px;border-radius:12px;background:var(--paper);border:1px solid rgba(154,123,46,.4);border-left:3px solid var(--or2);font-size:14px;line-height:1.64;color:var(--ink2)}
+.lrq .fb-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--or-deep);display:block;margin-bottom:7px}
+.lrq .fb b{color:var(--ink);font-weight:700}
+.lrq .fb em{font-family:var(--title);font-style:italic}
+.lrq .next-row{display:flex;justify-content:center;margin:24px 0 0}
+.lrq .btn{font-family:var(--sans);font-weight:600;font-size:15px;color:#F7EDE4;background:linear-gradient(180deg,var(--red-hi),var(--red));border:none;border-radius:100px;padding:14px 30px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;box-shadow:0 12px 28px -12px rgba(94,22,34,.5),inset 0 1px 0 rgba(255,255,255,.12);transition:transform .25s cubic-bezier(.34,1.4,.5,1)}
+.lrq .btn:hover{transform:translateY(-2px)}
+.lrq .btn .ar{font-family:var(--title);font-style:italic;font-weight:900;font-size:18px;color:var(--or3)}
+.lrq .final{background:radial-gradient(120% 130% at 50% 0%,#1A5840,var(--em-deep) 72%);border:1px solid var(--or2);border-radius:20px;padding:clamp(30px,4.5vw,48px);color:#F4FBF6;position:relative;overflow:hidden;animation:rise .5s ease both}
+.lrq .final::before{content:"";position:absolute;left:0;top:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or3) 30%,#FBEFC2 50%,var(--or3) 70%,transparent)}
+.lrq .final::after{content:"تذكّر";position:absolute;bottom:-28px;right:-4px;font-family:var(--ar);font-size:clamp(110px,18vw,190px);color:rgba(212,176,90,.06);line-height:.8;direction:rtl;pointer-events:none}
+.lrq .final-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--or3);font-weight:600}
+.lrq .score{font-family:var(--title);font-weight:900;font-size:clamp(44px,7vw,66px);line-height:1;margin:14px 0 0;color:#fff}
+.lrq .score span{font-size:.45em;font-weight:700;font-style:italic;color:var(--or3)}
+.lrq .final-verdict{font-family:var(--title);font-style:italic;font-size:clamp(17px,2.2vw,20px);color:rgba(244,251,246,.92);margin:14px auto 0;max-width:50ch;position:relative;z-index:2}
+.lrq .bascule{margin:26px auto 0;max-width:56ch;padding:20px 24px;background:rgba(244,251,246,.06);border:1px solid rgba(212,176,90,.3);border-radius:12px;position:relative;z-index:2}
+.lrq .bascule-k{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--or3);font-weight:600}
+.lrq .bascule p{font-size:14.5px;line-height:1.65;color:rgba(244,251,246,.88);margin:8px 0 0}
+.lrq .bascule b{color:var(--or3);font-weight:600}
+.lrq .final-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;margin:26px 0 0;position:relative;z-index:2}
+.lrq .btn-ghost{font-family:var(--sans);font-weight:500;font-size:14px;color:rgba(244,251,246,.75);background:none;border:1px solid rgba(244,251,246,.3);border-radius:100px;padding:13px 24px;cursor:pointer;transition:border-color .2s,color .2s}
+.lrq .btn-ghost:hover{border-color:var(--or3);color:var(--or3)}
+.lrq .foot{margin:52px auto 0;padding-top:24px;border-top:1px solid rgba(154,123,46,.3);max-width:640px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center}
+.lrq .foot-brand{font-family:var(--title);font-style:italic;font-weight:700;font-size:16px;color:var(--ink)}
+.lrq .foot-brand span{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--or2);margin-right:10px;vertical-align:middle}
+.lrq .foot-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.lrq :focus-visible{outline:2px solid var(--or2);outline-offset:3px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.lrq *{animation:none!important;transition:none!important}}
+@media(max-width:560px){.lrq .mods{flex-direction:column}}
+.lrq .hidden{display:none!important}
+</style>
+<div class="lrq">
+<main class="wrap">
+  <p class="eyebrow" id="eyebrow"></p>
+  <h1>Le <em>rappel</em>.</h1>
+  <p class="lede">Cinq à six choix. Aucun ne teste votre mémoire : chacun oppose des <b>lectures défendables</b>, et une seule tient. Le vrai enseignement est dans la correction de celle que vous aurez choisie.</p>
+
+  <div class="mods" id="mods"></div>
+
+  <div class="stage" id="stage"></div>
+
+  <div class="foot">
+    <div class="foot-brand"><span></span>L'Autre Récit</div>
+    <div class="foot-l">Le rappel · avant le carnet</div>
+  </div>
+</main>
+</div>
+<script>
+/* ── Paramètres du cours (remplis par build-rappel.js) ── */
+var COURS_LABEL = "La guerre, et après";
+var COURS_NUM = "Cours IV";
+var eb = document.getElementById("eyebrow");
+if (eb) eb.textContent = "L'Algérie a pensé · " + COURS_NUM + " · " + COURS_LABEL;
+
+var DATA = {
+  "m14": {
+    "key": "M14",
+    "title": "La torture, la doctrine en acte",
+    "bascule": "En deux mille quatorze, un fait ; en deux mille dix-huit, une politique. <b>Un État met soixante et un ans à reconnaître un système, parce que le reconnaître, c'est s'accuser lui-même.</b> Le carnet vous demande une reconnaissance officielle tardive : ce qu'elle répare, ce qu'elle laisse intact.",
+    "qs": [
+      {
+        "k": "1 · La bavure et le système",
+        "fact": "Le module n'entend pas raconter des supplices mais instruire un dossier : réunir des pièces datées, les confronter, en tirer une conclusion qui tienne. Une bavure accuse un homme ; un système met en cause une politique.",
+        "ask": "Qu'est-ce qui prouve un système ?",
+        "opts": [
+          {
+            "t": "Le nombre des victimes : trois mille disparus ne sont pas des cas isolés.",
+            "ok": false,
+            "fb": "L'ordre de grandeur est écrasant, et il ne suffit pas : <b>le nombre des victimes prouve l'ampleur, pas la nature.</b> Un massacre de masse peut rester une accumulation de fautes."
+          },
+          {
+            "t": "La gravité des actes : certains supplices excèdent tout ordre reçu.",
+            "ok": false,
+            "fb": "L'excès est précisément l'argument de la bavure : <b>l'écart d'un individu qui déborde le cadre</b>, le cadre restant sain. C'est la thèse que le dossier vient démonter."
+          },
+          {
+            "t": "Les traces de l'organisation : textes, chaîne, couverture, temps de l'aveu.",
+            "ok": true,
+            "fb": "Les textes qui autorisent, la chaîne qui exécute, la hiérarchie qui couvre, le temps qu'il aura fallu pour l'avouer. <b>Un argument logique avant d'être moral.</b>"
+          }
+        ]
+      },
+      {
+        "k": "2 · Le droit",
+        "fact": "Le douze mars 1956, le Parlement vote la loi dite des pouvoirs spéciaux. En janvier 1957, l'autorité civile délègue les pouvoirs de police à l'armée. La même institution arrête, détient, interroge et juge.",
+        "ask": "Que change ce montage juridique ?",
+        "opts": [
+          {
+            "t": "Il vide un espace de tout droit : la torture n'y opère pas en cachette.",
+            "ok": true,
+            "fb": "C'est l'état d'exception : le pouvoir suspend légalement la loi, et la suspension devient la règle. <b>La question n'est plus qui a torturé, mais qui a ouvert le lieu où l'on pouvait torturer.</b>"
+          },
+          {
+            "t": "Il légalise la torture : un texte l'autorise désormais explicitement en Algérie.",
+            "ok": false,
+            "fb": "Aucun texte ne l'autorise, et c'est plus grave : <b>elle opère dans un espace que la loi a délibérément vidé de tout droit.</b> Rien à écrire, il suffit de retirer les contre-pouvoirs."
+          },
+          {
+            "t": "Il militarise la justice : les tribunaux civils perdent toute leur compétence.",
+            "ok": false,
+            "fb": "Le transfert de compétence ne dit pas l'essentiel. Ce qui saute, c'est la séparation des fonctions : <b>arrêter, détenir, interroger et juger reviennent à la même institution.</b>"
+          }
+        ]
+      },
+      {
+        "k": "3 · Teitgen",
+        "fact": "Paul Teitgen, ancien résistant déporté à Dachau et torturé par la Gestapo à Nancy, compte trois mille vingt-quatre disparus pour les sept premiers mois de 1957. Il écrit à Robert Lacoste pour demander à être relevé de ses fonctions.",
+        "ask": "Que dénonce-t-il, précisément ?",
+        "opts": [
+          {
+            "t": "L'illégalité des méthodes : la loi française y était ouvertement violée.",
+            "ok": false,
+            "fb": "Il écarte cette lecture dans la lettre même : engagés « non pas dans l'illégalité », écrit-il, mais dans tout autre chose. <b>Ce n'est pas là que porte son accusation.</b>"
+          },
+          {
+            "t": "« l'anonymat et l'irresponsabilité » : personne n'a plus à rendre compte.",
+            "ok": true,
+            "fb": "Le tortionnaire exécute, le chef ignore, le ministre ne sait pas. <b>Cette déresponsabilisation organisée, c'est la définition même du système, vue de l'intérieur.</b>"
+          },
+          {
+            "t": "L'ampleur des disparitions : le chiffre à lui seul emporte la démonstration.",
+            "ok": false,
+            "fb": "Il avance ce chiffre prudemment, en sachant le total réel inconnu. <b>Il fournit mieux qu'un chiffre : le regard de l'appareil sur lui-même.</b>"
+          }
+        ]
+      },
+      {
+        "k": "4 · L'organe",
+        "fact": "En 1957, l'armée met sur pied les dispositifs opérationnels de protection, équipes spécialisées rattachées au commandement. Après la bataille d'Alger, des directives recommandent d'étendre à tout le territoire les procédés qui ont « fait leurs preuves » dans la capitale.",
+        "ask": "Pourquoi ces deux faits pèsent-ils lourd ?",
+        "opts": [
+          {
+            "t": "Ils datent la généralisation : la pratique quitte Alger pour tout le pays.",
+            "ok": false,
+            "fb": "La date importe moins que la forme du geste. <b>Une pratique qu'on généralise par circulaire cesse d'appartenir aux hommes qui l'exécutent.</b>"
+          },
+          {
+            "t": "Ils désignent des coupables : le commandement savait et laissait faire.",
+            "ok": false,
+            "fb": "Savoir et fermer les yeux resterait de la complicité passive. Ici l'institution est active : <b>on fonde un organe, avec un sigle, une place dans l'organigramme, une mission.</b>"
+          },
+          {
+            "t": "On fonde un organe et on généralise par circulaire : l'institution ordonne.",
+            "ok": true,
+            "fb": "On ne bricole pas une bavure dans un coin de caserne. Raphaëlle Branche en a reconstitué l'architecture pièce par pièce : <b>la pratique appartient à l'institution qui l'ordonne.</b>"
+          }
+        ]
+      },
+      {
+        "k": "5 · Le livre saisi",
+        "fact": "Février 1958, La Question d'Henri Alleg. Un tortionnaire y lance : « Ici, c'est la Gestapo ! » et invoque l'Indochine. Le vingt-sept mars, l'État fait saisir le livre pour « participation à une entreprise de démoralisation de l'armée ».",
+        "ask": "Que vaut cette saisie dans le dossier ?",
+        "opts": [
+          {
+            "t": "Un aveu d'impuissance : la censure n'a pas empêché la diffusion du livre.",
+            "ok": false,
+            "fb": "L'échec pratique de la censure ne prouve rien sur le fond. Ce qui compte est le motif retenu : <b>nuire à la Défense nationale, non publier des faits inexacts.</b>"
+          },
+          {
+            "t": "Une preuve retournée : on ne censure pas ce que l'on peut réfuter.",
+            "ok": true,
+            "fb": "Le faux se réfute ; <b>on censure ce dont on redoute qu'il soit établi.</b> Et la référence à l'Indochine, dans la bouche du tortionnaire, atteste une formation d'institution."
+          },
+          {
+            "t": "Un abus de plus : la liberté de la presse tombe avec les autres droits.",
+            "ok": false,
+            "fb": "L'ajouter à la liste des abus le rend anodin. La saisie est une pièce à charge : <b>l'État réagit comme on réagit à ce qu'on ne peut pas contredire.</b>"
+          }
+        ]
+      },
+      {
+        "k": "6 · L'aveu",
+        "fact": "En 2014, François Hollande reconnaît que Maurice Audin est mort en détention. Le treize septembre 2018, Emmanuel Macron nomme « le système appelé arrestation-détention à l'époque même », rendu possible par les pouvoirs spéciaux.",
+        "ask": "Pourquoi le second geste compte-t-il davantage ?",
+        "opts": [
+          {
+            "t": "Parce que l'État nomme le système et le relie lui-même à la loi.",
+            "ok": true,
+            "fb": "Il remonte la chaîne arrestation, détention, interrogatoire, et la rattache aux pouvoirs spéciaux. <b>En deux mille quatorze, un fait ; en deux mille dix-huit, une politique.</b>"
+          },
+          {
+            "t": "Parce qu'il vient d'un président né après la guerre, donc sans dette.",
+            "ok": false,
+            "fb": "La biographie du signataire ne change pas la portée de l'acte. Ce qui la change, c'est <b>ce que l'État accepte de reconnaître : non plus un exécutant, mais une chaîne.</b>"
+          },
+          {
+            "t": "Parce qu'il rouvre les archives : les historiens peuvent enfin travailler.",
+            "ok": false,
+            "fb": "Les historiens travaillaient déjà, et Vidal-Naquet avait démonté le récit de l'évasion dès l'époque. <b>Ce qui manquait n'était pas la preuve, c'était l'aveu.</b>"
+          }
+        ]
+      }
+    ]
+  }
+};
+
+/* ═══════════ MOTEUR ═══════════ */
+(function(){
+  var stage = document.getElementById('stage');
+  var modsEl = document.getElementById('mods');
+  var cur = null, qi = 0, score = 0, answered = false;
+  var LET = ['A','B','C','D','E'];
+
+  Object.keys(DATA).forEach(function(id){
+    var m = DATA[id];
+    var b = document.createElement('button');
+    b.className = 'mod-btn'; b.type = 'button';
+    b.innerHTML = '<div class="mod-k">Module ' + m.key.slice(1) + ' · ' + m.qs.length + ' questions</div><div class="mod-t">' + m.title + '</div>';
+    b.addEventListener('click', function(){ start(id, b); });
+    modsEl.appendChild(b);
+  });
+
+  function start(id, btn){
+    var all = modsEl.querySelectorAll('.mod-btn');
+    for (var i=0;i<all.length;i++) all[i].classList.remove('on');
+    btn.classList.add('on');
+    cur = DATA[id]; qi = 0; score = 0;
+    render();
+    stage.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function render(){
+    answered = false;
+    var q = cur.qs[qi];
+    var html = '';
+    html += '<div class="playcard">';
+    html += '<div class="hero"><div class="hk">Le rappel · ' + cur.key + '</div><div class="ht">' + cur.title + '</div><div class="hbar"><i style="width:' + (qi/cur.qs.length*100) + '%"></i></div><div class="hsc">Score <b>' + score + '</b> / ' + cur.qs.length + '</div></div>';
+    html += '<div class="qcard">';
+    html += '<div class="q-k">Question ' + q.k + '</div>';
+    html += '<p class="q-fact">' + q.fact + '</p>';
+    html += '<p class="q-ask">' + q.ask + '</p>';
+    html += '<div class="opts">';
+    for (var i=0;i<q.opts.length;i++){
+      html += '<button type="button" class="opt" data-i="' + i + '"><span class="L">' + LET[i] + '</span><span class="tx">' + q.opts[i].t + '</span><span class="mk"></span></button>';
+    }
+    html += '</div><div id="fb-zone"></div><div class="next-row hidden" id="next-row"><button type="button" class="btn" id="next-btn">' + (qi < cur.qs.length-1 ? 'Question suivante' : 'Voir le résultat') + ' <span class="ar">→</span></button></div>';
+    html += '</div></div>';
+    stage.innerHTML = html;
+    requestAnimationFrame(function(){
+      var f = stage.querySelector('.hbar i');
+      if (f) f.style.width = (qi/cur.qs.length*100) + '%';
+    });
+    var opts = stage.querySelectorAll('.opt');
+    for (var j=0;j<opts.length;j++){ opts[j].addEventListener('click', pick); }
+    document.getElementById('next-btn').addEventListener('click', next);
+  }
+
+  function pick(e){
+    if (answered) return;
+    answered = true;
+    var q = cur.qs[qi];
+    var idx = parseInt(e.currentTarget.getAttribute('data-i'), 10);
+    var chosen = q.opts[idx];
+    if (chosen.ok) score++;
+    var opts = stage.querySelectorAll('.opt');
+    for (var i=0;i<opts.length;i++){
+      opts[i].setAttribute('disabled','');
+      var o = q.opts[i];
+      var mk = opts[i].querySelector('.mk');
+      if (i === idx){
+        opts[i].classList.add(o.ok ? 'picked-good' : 'picked-bad');
+        mk.textContent = o.ok ? '✓' : '✕';
+      } else if (o.ok){
+        opts[i].classList.add('reveal-good');
+        mk.textContent = '✓';
+      } else {
+        opts[i].classList.add('faded');
+      }
+    }
+    document.getElementById('fb-zone').innerHTML = '<div class="fb"><span class="fb-k">Pourquoi</span>' + chosen.fb + '</div>';
+    document.getElementById('next-row').classList.remove('hidden');
+    var sc = stage.querySelector('.hsc b'); if (sc) sc.textContent = score;
+    var bar = stage.querySelector('.hbar i'); if (bar) bar.style.width = ((qi+1)/cur.qs.length*100) + '%';
+  }
+
+  function next(){
+    qi++;
+    if (qi < cur.qs.length){ render(); }
+    else { final(); }
+    stage.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function final(){
+    var n = cur.qs.length;
+    var verdict;
+    if (score === n) verdict = "Sans faute. Les contresens que ce module désamorce, vous les repérez désormais chez les autres. C'est exactement l'outil.";
+    else if (score >= n-1) verdict = "L'essentiel tient. Relisez la correction de votre erreur : c'est la lecture que vous portiez en arrivant.";
+    else if (score >= Math.ceil(n/2)) verdict = "Les corrections que vous venez de lire sont le vrai contenu de ce rappel. Elles valent une réécoute ciblée.";
+    else verdict = "Ce module retourne des évidences, il est normal qu'il résiste. Réécoutez-le avec les corrections en tête : elles nomment vos lectures une par une.";
+    var html = '';
+    html += '<div class="final">';
+    html += '<div class="final-k">Le rappel · ' + cur.key + ' · ' + cur.title + '</div>';
+    html += '<div class="score">' + score + '<span> / ' + n + '</span></div>';
+    html += '<p class="final-verdict">' + verdict + '</p>';
+    html += '<div class="bascule"><div class="bascule-k">Maintenant, le carnet</div><p>' + cur.bascule + '</p></div>';
+    html += '<div class="final-cta"><a class="btn" href="https://www.lautrerecit.com/algerie/carnet/" target="_blank" rel="noopener">Ouvrir mon carnet <span class="ar">→</span></a><button type="button" class="btn-ghost" id="redo">Refaire ce rappel</button></div>';
+    html += '</div>';
+    stage.innerHTML = html;
+    document.getElementById('redo').addEventListener('click', function(){ qi=0; score=0; render(); });
+  }
+})();
+</script>

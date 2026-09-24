@@ -1,0 +1,365 @@
+<!-- L'Autre Récit · Le rappel · M10 · Frantz Fanon, aliénation, sociogénie, violence · bloc code personnalisé systeme.io (inline, styles scopés .lrq).
+     Un seul bloc rappel par page. -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+<style>
+.lrq{
+  --cr:#F2EDE4; --cr2:#EAE3D8; --paper:#FAF6EB; --paper-w:#FFFCF4;
+  --em-d:#13442E; --em-deep:#0A2C1E; --em:#1F6B4A; --em-l:#2D8862; --em-bright:#3CA47A;
+  --or:#9A7B2E; --or2:#C4A24A; --or3:#D4B05A; --or-deep:#7A5E1F; --or-flow1:#F4DC92;
+  --red:#5E1622; --red-hi:#7A2236; --rose:#C77885;
+  --ink:#0E0C0A; --ink2:#1A1714; --ink3:#3D3730;
+  --title:'Playfair Display',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace; --ar:'Amiri',serif;
+}
+.lrq,.lrq *,.lrq *::before,.lrq *::after{box-sizing:border-box;margin:0;padding:0}
+.lrq{background:var(--cr);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6;text-align:center}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.lrq .wrap{max-width:780px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(18px,5vw,34px) 72px}
+.lrq .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or-deep);font-weight:600;display:inline-flex;align-items:center;gap:14px;animation:rise .6s ease both}
+.lrq .eyebrow::before{content:"";width:28px;height:1px;background:var(--or2)}
+.lrq h1{font-family:var(--title);font-weight:900;font-size:clamp(32px,5.4vw,52px);line-height:1.05;letter-spacing:-.02em;margin:16px 0 0;animation:rise .7s ease .1s both}
+.lrq h1 em{font-style:italic;color:var(--em-d)}
+.lrq .lede{font-family:var(--title);font-style:italic;font-size:clamp(16px,2vw,19px);color:var(--ink2);max-width:54ch;margin:16px auto 0;animation:rise .7s ease .2s both}
+.lrq .lede b{color:var(--or-deep);font-weight:700}
+.lrq .mods{display:flex;gap:10px;margin:34px auto 0;max-width:640px;animation:rise .7s ease .3s both}
+.lrq .mod-btn{flex:1;font-family:var(--sans);text-align:center;background:linear-gradient(180deg,var(--paper-w),var(--cr2));border:1px solid rgba(154,123,46,.35);border-radius:13px;padding:16px 18px;cursor:pointer;transition:border-color .25s,transform .25s cubic-bezier(.22,.9,.36,1)}
+.lrq .mod-btn:hover{transform:translateY(-2px);border-color:var(--or2)}
+.lrq .mod-btn.on{background:radial-gradient(120% 140% at 50% 0%,#1A5840,var(--em-deep) 78%);border-color:var(--or2)}
+.lrq .mod-k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--or-deep)}
+.lrq .mod-btn.on .mod-k{color:var(--or3)}
+.lrq .mod-t{font-family:var(--title);font-style:italic;font-weight:700;font-size:17px;margin-top:5px;color:var(--ink)}
+.lrq .mod-btn.on .mod-t{color:#fff}
+.lrq .stage{margin-top:28px}
+.lrq .playcard{border-radius:20px;overflow:hidden;box-shadow:0 34px 78px -48px rgba(20,14,4,.55);animation:rise .5s ease both}
+.lrq .hero{background:radial-gradient(130% 130% at 20% -10%,#1A5A3D,var(--em-deep) 70%);color:#EFF6F1;padding:clamp(24px,3.4vw,34px) clamp(22px,4vw,40px) clamp(26px,3.6vw,32px);position:relative;overflow:hidden}
+.lrq .hero::after{content:"تذكّر";position:absolute;bottom:-40px;right:-6px;font-family:var(--ar);font-size:clamp(90px,15vw,150px);color:rgba(212,176,90,.06);line-height:.8;direction:rtl;pointer-events:none}
+.lrq .hk{position:relative;font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--or3)}
+.lrq .ht{position:relative;font-family:var(--title);font-weight:700;font-size:clamp(23px,3vw,32px);line-height:1.08;margin:8px 0 0;color:#fff}
+.lrq .ht em{font-style:italic;color:var(--or2)}
+.lrq .hbar{position:relative;height:5px;border-radius:99px;margin:18px auto 0;max-width:520px;background:rgba(255,255,255,.14);overflow:hidden}
+.lrq .hbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--or3),var(--or));transition:width .5s cubic-bezier(.22,.9,.36,1)}
+.lrq .hsc{position:relative;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--or3);margin-top:13px}
+.lrq .hsc b{font-family:var(--title);font-style:italic;color:var(--or2);font-size:16px}
+.lrq .qcard{background:var(--paper-w);padding:clamp(26px,4vw,40px)}
+.lrq .q-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--or-deep);font-weight:600}
+.lrq .q-fact{font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--ink2);margin:14px auto 0;max-width:58ch}
+.lrq .q-fact b{color:var(--red-hi);font-weight:700}
+.lrq .q-ask{font-family:var(--title);font-weight:700;font-size:clamp(20px,2.6vw,26px);line-height:1.28;color:var(--ink);margin:10px auto 0;max-width:24ch}
+.lrq .q-ask em{font-style:italic;color:var(--em-d)}
+.lrq .q-ask b{color:var(--em-d)}
+.lrq .opts{display:grid;gap:10px;margin:26px auto 0;max-width:640px;text-align:left}
+.lrq .opt{display:flex;align-items:center;gap:15px;width:100%;padding:14px 18px;border-radius:12px;font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink2);background:var(--paper-w);border:1.5px solid #E3D8C2;box-shadow:0 3px 10px -5px rgba(20,14,4,.16);cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s,transform .2s cubic-bezier(.22,.9,.36,1)}
+.lrq .opt:hover:not([disabled]){border-color:var(--or2);transform:translateY(-1px);box-shadow:0 9px 20px -9px rgba(154,123,46,.32)}
+.lrq .opt[disabled]{cursor:default}
+.lrq .opt .L{font-family:var(--title);font-style:italic;font-weight:900;font-size:19px;line-height:1;color:var(--or2);flex:0 0 18px;text-align:center}
+.lrq .opt .tx{flex:1}
+.lrq .opt .mk{flex:0 0 18px;text-align:center;font-weight:800;font-size:15px;color:transparent}
+.lrq .opt.picked-good,.lrq .opt.reveal-good{background:rgba(31,107,74,.09);border-color:var(--em)}
+.lrq .opt.picked-good .mk,.lrq .opt.reveal-good .mk{color:var(--em)}
+.lrq .opt.reveal-good{border-style:dashed}
+.lrq .opt.picked-bad{background:rgba(94,22,34,.07);border-color:var(--red-hi)}
+.lrq .opt.picked-bad .L{color:var(--red-hi)}
+.lrq .opt.picked-bad .mk{color:var(--red-hi)}
+.lrq .opt.faded{opacity:.62}
+.lrq .fb{margin:22px auto 0;max-width:640px;padding:17px 22px;border-radius:12px;background:var(--paper);border:1px solid rgba(154,123,46,.4);border-left:3px solid var(--or2);font-size:14px;line-height:1.64;color:var(--ink2)}
+.lrq .fb-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--or-deep);display:block;margin-bottom:7px}
+.lrq .fb b{color:var(--ink);font-weight:700}
+.lrq .fb em{font-family:var(--title);font-style:italic}
+.lrq .next-row{display:flex;justify-content:center;margin:24px 0 0}
+.lrq .btn{font-family:var(--sans);font-weight:600;font-size:15px;color:#F7EDE4;background:linear-gradient(180deg,var(--red-hi),var(--red));border:none;border-radius:100px;padding:14px 30px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;box-shadow:0 12px 28px -12px rgba(94,22,34,.5),inset 0 1px 0 rgba(255,255,255,.12);transition:transform .25s cubic-bezier(.34,1.4,.5,1)}
+.lrq .btn:hover{transform:translateY(-2px)}
+.lrq .btn .ar{font-family:var(--title);font-style:italic;font-weight:900;font-size:18px;color:var(--or3)}
+.lrq .final{background:radial-gradient(120% 130% at 50% 0%,#1A5840,var(--em-deep) 72%);border:1px solid var(--or2);border-radius:20px;padding:clamp(30px,4.5vw,48px);color:#F4FBF6;position:relative;overflow:hidden;animation:rise .5s ease both}
+.lrq .final::before{content:"";position:absolute;left:0;top:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or3) 30%,#FBEFC2 50%,var(--or3) 70%,transparent)}
+.lrq .final::after{content:"تذكّر";position:absolute;bottom:-28px;right:-4px;font-family:var(--ar);font-size:clamp(110px,18vw,190px);color:rgba(212,176,90,.06);line-height:.8;direction:rtl;pointer-events:none}
+.lrq .final-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--or3);font-weight:600}
+.lrq .score{font-family:var(--title);font-weight:900;font-size:clamp(44px,7vw,66px);line-height:1;margin:14px 0 0;color:#fff}
+.lrq .score span{font-size:.45em;font-weight:700;font-style:italic;color:var(--or3)}
+.lrq .final-verdict{font-family:var(--title);font-style:italic;font-size:clamp(17px,2.2vw,20px);color:rgba(244,251,246,.92);margin:14px auto 0;max-width:50ch;position:relative;z-index:2}
+.lrq .bascule{margin:26px auto 0;max-width:56ch;padding:20px 24px;background:rgba(244,251,246,.06);border:1px solid rgba(212,176,90,.3);border-radius:12px;position:relative;z-index:2}
+.lrq .bascule-k{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--or3);font-weight:600}
+.lrq .bascule p{font-size:14.5px;line-height:1.65;color:rgba(244,251,246,.88);margin:8px 0 0}
+.lrq .bascule b{color:var(--or3);font-weight:600}
+.lrq .final-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;margin:26px 0 0;position:relative;z-index:2}
+.lrq .btn-ghost{font-family:var(--sans);font-weight:500;font-size:14px;color:rgba(244,251,246,.75);background:none;border:1px solid rgba(244,251,246,.3);border-radius:100px;padding:13px 24px;cursor:pointer;transition:border-color .2s,color .2s}
+.lrq .btn-ghost:hover{border-color:var(--or3);color:var(--or3)}
+.lrq .foot{margin:52px auto 0;padding-top:24px;border-top:1px solid rgba(154,123,46,.3);max-width:640px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center}
+.lrq .foot-brand{font-family:var(--title);font-style:italic;font-weight:700;font-size:16px;color:var(--ink)}
+.lrq .foot-brand span{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--or2);margin-right:10px;vertical-align:middle}
+.lrq .foot-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.lrq :focus-visible{outline:2px solid var(--or2);outline-offset:3px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.lrq *{animation:none!important;transition:none!important}}
+@media(max-width:560px){.lrq .mods{flex-direction:column}}
+.lrq .hidden{display:none!important}
+</style>
+<div class="lrq">
+<main class="wrap">
+  <p class="eyebrow" id="eyebrow"></p>
+  <h1>Le <em>rappel</em>.</h1>
+  <p class="lede">Cinq à six choix. Aucun ne teste votre mémoire : chacun oppose des <b>lectures défendables</b>, et une seule tient. Le vrai enseignement est dans la correction de celle que vous aurez choisie.</p>
+
+  <div class="mods" id="mods"></div>
+
+  <div class="stage" id="stage"></div>
+
+  <div class="foot">
+    <div class="foot-brand"><span></span>L'Autre Récit</div>
+    <div class="foot-l">Le rappel · avant le carnet</div>
+  </div>
+</main>
+</div>
+<script>
+/* ── Paramètres du cours (remplis par build-rappel.js) ── */
+var COURS_LABEL = "Penser la résistance";
+var COURS_NUM = "Cours III";
+var eb = document.getElementById("eyebrow");
+if (eb) eb.textContent = "L'Algérie a pensé · " + COURS_NUM + " · " + COURS_LABEL;
+
+var DATA = {
+  "m10": {
+    "key": "M10",
+    "title": "Frantz Fanon, aliénation, sociogénie, violence",
+    "bascule": "Fanon fait passer l'infériorité du registre de la nature à celui du pouvoir : <b>ce qu'une situation a produit peut être défait avec elle.</b> Le carnet vous demande où le regard de l'autre a fabriqué une image de vous, ou des vôtres, jusqu'à se loger sous la peau.",
+    "qs": [
+      {
+        "k": "1 · La sociogénie",
+        "fact": "Dans l'Introduction de Peau noire, masques blancs, paru en 1952, Fanon forge son outil : « À côté de la phylogénie et de l'ontogénie, il y a la sociogénie. »",
+        "ask": "Qu'ajoute ce troisième terme ?",
+        "opts": [
+          {
+            "t": "L'histoire intime : l'enfance du patient explique enfin son trouble.",
+            "ok": false,
+            "fb": "C'est l'ontogénie, l'un des deux termes auxquels Fanon <b>ajoute</b> le sien. La médecine disposait déjà de cette explication : <b>le mal dans l'histoire intime du patient.</b>"
+          },
+          {
+            "t": "La structure sociale : la place qu'une société assigne à un homme.",
+            "ok": true,
+            "fb": "Certaines souffrances viennent de la structure elle-même, <b>avant toute biologie.</b> Le mot « sociodiagnostic » le dit : l'objet ausculté devient la société, pas le malade."
+          },
+          {
+            "t": "L'histoire de l'espèce : la souffrance se lit sur une longue durée.",
+            "ok": false,
+            "fb": "C'est la phylogénie, l'autre terme déjà disponible : <b>le mal dans la nature.</b> Or c'est exactement l'explication que la science coloniale utilisait contre le Nord-Africain."
+          }
+        ]
+      },
+      {
+        "k": "2 · Contre Porot",
+        "fact": "L'École d'Alger tenait l'infériorité du Nord-Africain pour une donnée gravée dans le cerveau : le « primitivisme cérébral » d'Antoine Porot. C'est le diagnostic qu'on remet à Fanon avec ses patients, à Blida.",
+        "ask": "Que fait Fanon de cette catégorie ?",
+        "opts": [
+          {
+            "t": "Il la réfute par les faits : aucune étude sérieuse ne la confirmait.",
+            "ok": false,
+            "fb": "Réfuter un mauvais résultat laisserait la question sur le terrain de la biologie. Fanon change de terrain : <b>le déplacement fait passer la question de la biologie au pouvoir.</b>"
+          },
+          {
+            "t": "Il l'élargit au colonisateur : la colonie rend tout le monde malade.",
+            "ok": false,
+            "fb": "Il soigne bien les deux camps à Blida, militants brisés et tortionnaires. Mais la symétrie clinique n'est pas la thèse : <b>ce qui est en cause, c'est la place assignée par la structure.</b>"
+          },
+          {
+            "t": "Il la déplace : ce que Porot dit nature devient effet de situation.",
+            "ok": true,
+            "fb": "L'impulsivité prêtée au colonisé est la réponse à un monde qui l'écrase. <b>Si l'infériorité est produite par une structure, elle peut être défaite en défaisant la structure.</b>"
+          }
+        ]
+      },
+      {
+        "k": "3 · L'épidermisation",
+        "fact": "Fanon décrit un double processus : une infériorité économique d'abord, puis « intériorisation ou, mieux, épidermisation de cette infériorité ».",
+        "ask": "Que nomme le mot <em>épidermisation</em> ?",
+        "opts": [
+          {
+            "t": "L'infériorité devenue sensation de soi : être regardé moindre, puis l'être.",
+            "ok": true,
+            "fb": "Le mot est forgé sur « épiderme » : <b>le racisme a franchi la peau et déforme le rapport de l'homme à lui-même.</b> Ce que Césaire appelait chosification se vit ici de l'intérieur."
+          },
+          {
+            "t": "La couleur comme stigmate : la peau porte d'abord la marque sociale.",
+            "ok": false,
+            "fb": "La peau n'est pas le support d'un signe, elle est le lieu où l'infériorité s'installe. Et le premier temps n'est pas visuel : <b>une infériorité réelle, économique, dépossession et exclusion.</b>"
+          },
+          {
+            "t": "Le racisme visible : la domination s'affiche sur les corps colonisés.",
+            "ok": false,
+            "fb": "L'affichage reste au-dehors, et c'est précisément ce que le mot dépasse : <b>l'infériorité imposée du dehors, l'homme finit par l'inscrire dans sa peau même.</b>"
+          }
+        ]
+      },
+      {
+        "k": "4 · Le monde coupé en deux",
+        "fact": "« Ce monde compartimenté, ce monde coupé en deux est habité par des espèces différentes. » Le colon parle du colonisé en langage zoologique : hordes, grouillement, pullulement.",
+        "ask": "Pourquoi cette description compte-t-elle ?",
+        "opts": [
+          {
+            "t": "Elle mesure l'inégalité : la colonie pousse l'écart social à l'extrême.",
+            "ok": false,
+            "fb": "L'écart de degré permettrait de réformer. Fanon décrit une différence de nature : <b>deux humanités, et entre elles une frontière tenue par la seule force nue.</b>"
+          },
+          {
+            "t": "Elle explique la haine : deux peuples séparés finissent par se craindre.",
+            "ok": false,
+            "fb": "La peur réciproque suppose deux camps symétriques. Or le langage zoologique va dans un seul sens : <b>il range le colonisé hors de l'humanité, pour pouvoir le tenir sans remords.</b>"
+          },
+          {
+            "t": "Elle établit que l'ordre y tient par la force nue, non par la loi.",
+            "ok": true,
+            "fb": "Dans une société ordinaire, l'ordre repose sur le consentement et la loi. Ici, ouvertement sur la contrainte armée : <b>la violence est le principe même du système</b>, avant d'être une réponse."
+          }
+        ]
+      },
+      {
+        "k": "5 · La violence",
+        "fact": "Le colonisé est un objet privé de tout pouvoir sur son propre sort, dans un monde tenu par la contrainte armée. Le chapitre d'ouverture des Damnés de la terre s'intitule « De la violence ».",
+        "ask": "Quelle fonction Fanon lui attribue-t-il ?",
+        "opts": [
+          {
+            "t": "Désaliéner : reprendre un monopole confisqué, l'objet redevient sujet.",
+            "ok": true,
+            "fb": "Dans toute société, quelqu'un détient le monopole de la violence légitime ; dans la colonie il appartient à l'occupant. <b>Fanon décrit une fonction politique, pas un éloge du sang.</b>"
+          },
+          {
+            "t": "Purifier : le sang versé lave l'humiliation subie par le colonisé.",
+            "ok": false,
+            "fb": "La rédemption par le sang, c'est la lecture que la préface a installée. <b>On a mis sur le compte de l'auteur ce que le préfacier avait rajouté.</b>"
+          },
+          {
+            "t": "Dissuader : seule la force fait reculer une administration coloniale.",
+            "ok": false,
+            "fb": "Le calcul tactique manque l'effet que Fanon vise : elle est <b>désaliénante, elle défait l'intériorisation de l'infériorité.</b> Ce qui se joue est dans l'homme, pas seulement en face."
+          }
+        ]
+      },
+      {
+        "k": "6 · Fanon, Sartre, Arendt",
+        "fact": "Sartre préface Les Damnés de la terre en 1961 : la violence du colonisé y devient « l'homme lui-même se recomposant ». Arendt publie On Violence en 1970.",
+        "ask": "Comment se répartit ce débat ?",
+        "opts": [
+          {
+            "t": "Arendt réfute Fanon ; Sartre le défend contre une lecture hostile.",
+            "ok": false,
+            "fb": "C'est la version reçue, et elle est inexacte : <b>la cible première d'Arendt, c'est Sartre.</b> Elle lui reproche même d'aller plus loin que Fanon lui-même."
+          },
+          {
+            "t": "Fanon décrit un moyen ; Sartre en fait une valeur ; Arendt vise Sartre.",
+            "ok": true,
+            "fb": "Un instrument se justifie par son but, une valeur en soi jamais. <b>Le garde-fou d'Arendt sert à lire Fanon avec justesse, non à le disqualifier.</b>"
+          },
+          {
+            "t": "Les trois s'accordent : la violence coloniale appelle une réponse armée.",
+            "ok": false,
+            "fb": "L'accord effacerait la distinction qui fait tout le module. Tenez la règle de lecture : <b>Fanon décrit ; Sartre exalte.</b> Confondre les deux a fabriqué la caricature."
+          }
+        ]
+      }
+    ]
+  }
+};
+
+/* ═══════════ MOTEUR ═══════════ */
+(function(){
+  var stage = document.getElementById('stage');
+  var modsEl = document.getElementById('mods');
+  var cur = null, qi = 0, score = 0, answered = false;
+  var LET = ['A','B','C','D','E'];
+
+  Object.keys(DATA).forEach(function(id){
+    var m = DATA[id];
+    var b = document.createElement('button');
+    b.className = 'mod-btn'; b.type = 'button';
+    b.innerHTML = '<div class="mod-k">Module ' + m.key.slice(1) + ' · ' + m.qs.length + ' questions</div><div class="mod-t">' + m.title + '</div>';
+    b.addEventListener('click', function(){ start(id, b); });
+    modsEl.appendChild(b);
+  });
+
+  function start(id, btn){
+    var all = modsEl.querySelectorAll('.mod-btn');
+    for (var i=0;i<all.length;i++) all[i].classList.remove('on');
+    btn.classList.add('on');
+    cur = DATA[id]; qi = 0; score = 0;
+    render();
+    stage.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function render(){
+    answered = false;
+    var q = cur.qs[qi];
+    var html = '';
+    html += '<div class="playcard">';
+    html += '<div class="hero"><div class="hk">Le rappel · ' + cur.key + '</div><div class="ht">' + cur.title + '</div><div class="hbar"><i style="width:' + (qi/cur.qs.length*100) + '%"></i></div><div class="hsc">Score <b>' + score + '</b> / ' + cur.qs.length + '</div></div>';
+    html += '<div class="qcard">';
+    html += '<div class="q-k">Question ' + q.k + '</div>';
+    html += '<p class="q-fact">' + q.fact + '</p>';
+    html += '<p class="q-ask">' + q.ask + '</p>';
+    html += '<div class="opts">';
+    for (var i=0;i<q.opts.length;i++){
+      html += '<button type="button" class="opt" data-i="' + i + '"><span class="L">' + LET[i] + '</span><span class="tx">' + q.opts[i].t + '</span><span class="mk"></span></button>';
+    }
+    html += '</div><div id="fb-zone"></div><div class="next-row hidden" id="next-row"><button type="button" class="btn" id="next-btn">' + (qi < cur.qs.length-1 ? 'Question suivante' : 'Voir le résultat') + ' <span class="ar">→</span></button></div>';
+    html += '</div></div>';
+    stage.innerHTML = html;
+    requestAnimationFrame(function(){
+      var f = stage.querySelector('.hbar i');
+      if (f) f.style.width = (qi/cur.qs.length*100) + '%';
+    });
+    var opts = stage.querySelectorAll('.opt');
+    for (var j=0;j<opts.length;j++){ opts[j].addEventListener('click', pick); }
+    document.getElementById('next-btn').addEventListener('click', next);
+  }
+
+  function pick(e){
+    if (answered) return;
+    answered = true;
+    var q = cur.qs[qi];
+    var idx = parseInt(e.currentTarget.getAttribute('data-i'), 10);
+    var chosen = q.opts[idx];
+    if (chosen.ok) score++;
+    var opts = stage.querySelectorAll('.opt');
+    for (var i=0;i<opts.length;i++){
+      opts[i].setAttribute('disabled','');
+      var o = q.opts[i];
+      var mk = opts[i].querySelector('.mk');
+      if (i === idx){
+        opts[i].classList.add(o.ok ? 'picked-good' : 'picked-bad');
+        mk.textContent = o.ok ? '✓' : '✕';
+      } else if (o.ok){
+        opts[i].classList.add('reveal-good');
+        mk.textContent = '✓';
+      } else {
+        opts[i].classList.add('faded');
+      }
+    }
+    document.getElementById('fb-zone').innerHTML = '<div class="fb"><span class="fb-k">Pourquoi</span>' + chosen.fb + '</div>';
+    document.getElementById('next-row').classList.remove('hidden');
+    var sc = stage.querySelector('.hsc b'); if (sc) sc.textContent = score;
+    var bar = stage.querySelector('.hbar i'); if (bar) bar.style.width = ((qi+1)/cur.qs.length*100) + '%';
+  }
+
+  function next(){
+    qi++;
+    if (qi < cur.qs.length){ render(); }
+    else { final(); }
+    stage.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function final(){
+    var n = cur.qs.length;
+    var verdict;
+    if (score === n) verdict = "Sans faute. Les contresens que ce module désamorce, vous les repérez désormais chez les autres. C'est exactement l'outil.";
+    else if (score >= n-1) verdict = "L'essentiel tient. Relisez la correction de votre erreur : c'est la lecture que vous portiez en arrivant.";
+    else if (score >= Math.ceil(n/2)) verdict = "Les corrections que vous venez de lire sont le vrai contenu de ce rappel. Elles valent une réécoute ciblée.";
+    else verdict = "Ce module retourne des évidences, il est normal qu'il résiste. Réécoutez-le avec les corrections en tête : elles nomment vos lectures une par une.";
+    var html = '';
+    html += '<div class="final">';
+    html += '<div class="final-k">Le rappel · ' + cur.key + ' · ' + cur.title + '</div>';
+    html += '<div class="score">' + score + '<span> / ' + n + '</span></div>';
+    html += '<p class="final-verdict">' + verdict + '</p>';
+    html += '<div class="bascule"><div class="bascule-k">Maintenant, le carnet</div><p>' + cur.bascule + '</p></div>';
+    html += '<div class="final-cta"><a class="btn" href="https://www.lautrerecit.com/algerie/carnet/" target="_blank" rel="noopener">Ouvrir mon carnet <span class="ar">→</span></a><button type="button" class="btn-ghost" id="redo">Refaire ce rappel</button></div>';
+    html += '</div>';
+    stage.innerHTML = html;
+    document.getElementById('redo').addEventListener('click', function(){ qi=0; score=0; render(); });
+  }
+})();
+</script>
