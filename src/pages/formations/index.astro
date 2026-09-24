@@ -4,7 +4,7 @@ import { formations } from '../../data/formations.js';
 import FormationFeature from '../../components/FormationFeature.astro';
 
 // Toutes les formations disponibles, dans l'ordre du catalogue.
-const available = formations.filter((f) => f.status === 'available');
+const available = formations.filter((f) => f.status === 'available' || f.status === 'closed');
 ---
 <Base
   title="Formations — L'Autre Récit"

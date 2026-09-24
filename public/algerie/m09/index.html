@@ -2,6 +2,16 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    if (localStorage.getItem('algerie_unlocked') !== '1') {
+      var here = location.pathname + location.search;
+      location.replace('/algerie/connexion/?redirect=' + encodeURIComponent(here));
+    }
+  } catch(e){}
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Module 9 · L’Algérie a pensé</title>

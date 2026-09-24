@@ -13,6 +13,18 @@ export const formations = [
     image: '/formations/nationalisme-noir.jpg',
   },
   {
+    slug: 'algerie',
+    title: 'L’Algérie a pensé',
+    eyebrow: 'Cours · Algérie',
+    blurb:
+      "De la conquête de 1830 à la double absence de 1962 : quinze modules pour lire la colonisation et la décolonisation algériennes par ses propres penseurs — Ibn Khaldoun, Fanon, Bennabi, Sayad, Djebar.",
+    status: 'closed',
+    href: '/algerie/connexion/',
+    duration: '15 modules',
+    accent: '#1F6B4A',
+    image: '/formations/algerie.jpg',
+  },
+  {
     slug: 'afrique-colonisation',
     title: 'Coloniser, décoloniser l’Afrique',
     eyebrow: 'Grand cours · Afrique',
