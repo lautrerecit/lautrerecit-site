@@ -36,6 +36,7 @@ const articleUrl = tag(latest.url);
 <meta name="twitter:image" content={ogImage} />
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=League+Spartan:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cd21d5b512f04dab9201a53c06442a6d"}'></script>
 <style is:global>
 :root{--ink:#0E0C0A;--ink2:#161310;--or:#9A7B2E;--or2:#C4A24A;--or3:#D4B05A;--or-hi:#FBEFC2;--creme:#F2EDE4;
 --sans:'League Spartan',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;
@@ -147,7 +148,7 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
 </header>
 
 <div class="deck" id="deck">
- <a class="hero-ph" href={FORMATION}>
+ <a class="hero-ph" href="/l/formation/">
   <img class="bg" src={FORMATION_IMG} alt="" />
   <span class="scrim"></span><span class="glow"></span>
   <div class="in">
@@ -169,16 +170,16 @@ body{font-family:var(--sans);background:var(--ink);color:var(--creme);min-height
    <span class="h-btn">Lire l'article <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
   </div>
  </a>
- <a class="glass" href={subUrl} target="_blank" rel="noopener"><div class="g-inner"><span class="spot"></span><span class="num">01</span><span class="tx"><span class="lab">Newsletter</span><span class="t">Substack</span><span class="s">Recevoir les textes longs</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
+ <a class="glass" href="/l/substack/" target="_blank" rel="noopener"><div class="g-inner"><span class="spot"></span><span class="num">01</span><span class="tx"><span class="lab">Newsletter</span><span class="t">Substack</span><span class="s">Recevoir les textes longs</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
  <a class="glass" href="/"><div class="g-inner"><span class="spot"></span><span class="num">02</span><span class="tx"><span class="lab">Accueil</span><span class="t">Entrer dans le récit</span><span class="s">lautrerecit.com</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
- <a class="glass" href="mailto:contact@lautrerecit.com"><div class="g-inner"><span class="spot"></span><span class="num">03</span><span class="tx"><span class="lab">Contact</span><span class="t">Nous écrire</span><span class="s">contact@lautrerecit.com</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
+ <a class="glass" href="/l/contact/"><div class="g-inner"><span class="spot"></span><span class="num">03</span><span class="tx"><span class="lab">Contact</span><span class="t">Nous écrire</span><span class="s">contact@lautrerecit.com</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></a>
 </div>
 
 <footer class="foot">
  <div class="social">
-  <a href="https://www.instagram.com/lautrerecit/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor" stroke="none"/></svg></a>
-  <a href={subUrl} target="_blank" rel="noopener" aria-label="Substack"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 9h16M4 13h16l-8 6-8-6z"/></svg></a>
-  <a href="mailto:contact@lautrerecit.com" aria-label="Mail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+  <a href="/l/instagram/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor" stroke="none"/></svg></a>
+  <a href="/l/substack/" target="_blank" rel="noopener" aria-label="Substack"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 9h16M4 13h16l-8 6-8-6z"/></svg></a>
+  <a href="/l/contact/" aria-label="Mail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
  </div>
 </footer>
 </div>
