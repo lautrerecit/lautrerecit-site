@@ -24,7 +24,7 @@ const ctaLabel = isClosed ? 'Se connecter' : cta;
   </div>
   <div class="feat-in">
     <span class:list={['feat-badge', { soon: !isClickable, closed: isClosed }]}>
-      {isAvailable ? `Disponible · ${duration}` : isClosed ? 'Accès réservé' : 'Bientôt'}
+      {isAvailable ? `Disponible · ${duration}` : isClosed ? 'Accès réservé aux membres déjà inscrits' : 'Bientôt'}
     </span>
     <p class="feat-eyebrow">{eyebrow}</p>
     <h3 class="feat-title">{title}</h3>

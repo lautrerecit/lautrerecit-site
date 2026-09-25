@@ -5,7 +5,7 @@ import { articles } from '../data/articles.js';
 import FormationFeature from '../components/FormationFeature.astro';
 
 // Pour l'instant on ne met en avant QUE la formation disponible (les deux autres en réflexion).
-const available = formations.filter((f) => f.status === 'available');
+const available = formations.filter((f) => f.status === 'available' || f.status === 'closed');
 
 // Hero : alternance stricte photo d'auteur → citation fond noir (Sankara inclus).
 const cites = [
@@ -120,6 +120,7 @@ const posts = [
             duration={f.duration}
             status={f.status}
             image={f.image}
+            imagePosition={f.imagePosition}
           />
         ))}
       </div>
