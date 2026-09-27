@@ -83,6 +83,32 @@ try {
   const slides = await page.locator('.slide').all();
   console.log(`${slides.length} slides détectées.`);
 
+  // Détecte les chevauchements avant d'exporter (texte qui déborde sur la
+  // pagination `.pC`, position:absolute en bas de chaque slide) : un texte
+  // trop grand/gras pousse le flux de contenu en dehors de l'espace prévu,
+  // et comme `.slide{overflow:hidden}` ne le signale pas, ça passe inaperçu
+  // tant qu'on n'a pas regardé l'image. Mieux vaut le savoir avant d'exporter.
+  const overlaps = await page.evaluate(() => {
+    const results = [];
+    document.querySelectorAll('.slide').forEach((slide, i) => {
+      const pC = slide.querySelector('.pC');
+      if (!pC) return;
+      const pcRect = pC.getBoundingClientRect();
+      slide.querySelectorAll('.in *').forEach((el) => {
+        if (el.children.length || !el.textContent.trim()) return; // seulement les feuilles avec du texte
+        const r = el.getBoundingClientRect();
+        if (r.bottom > pcRect.top + 4 && r.top < pcRect.bottom) {
+          results.push({ slide: i + 1, el: el.tagName + (el.className ? '.' + String(el.className).split(' ')[0] : ''), text: el.textContent.trim().slice(0, 40) });
+        }
+      });
+    });
+    return results;
+  });
+  if (overlaps.length) {
+    console.warn(`⚠ Chevauchement texte/pagination détecté :`);
+    for (const o of overlaps) console.warn(`  slide ${o.slide} — <${o.el}> « ${o.text}… »`);
+  }
+
   // Numéros de slides (1-indexés) passés en argument pour n'exporter qu'un
   // sous-ensemble, ex. `node scripts/export-paix-coloniale.mjs 6 8`.
   const only = process.argv.slice(2).map(Number).filter(Boolean);
