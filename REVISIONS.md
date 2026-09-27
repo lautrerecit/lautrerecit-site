@@ -4,6 +4,32 @@ Journal des décisions et règles à respecter pour le site (et le tunnel, consi
 
 ---
 
+# 🟣 SESSION 2026-09-27 — EXPORT PNG CARROUSEL : BUG POLICES EN HEADLESS
+
+### ⚠️ BUG RÉCURRENT — Chromium headless (sandbox Claude) ne charge pas les Google Fonts
+Script d'export : `scripts/export-paix-coloniale.mjs` (capture chaque `.slide` de `paix-coloniale.html` en PNG via Playwright/Chromium headless, `deviceScaleFactor:2`).
+
+**Symptôme** : les PNG générés ressemblent au design mais **les polices ne correspondent pas** au rendu réel du site (interlignage différent, italiques sans les empattements de Cormorant Garamond, graisses différentes) → texte qui « paraît juste » mais qui n'est pas la bonne police.
+
+**Cause** : dans l'environnement sandbox (proxy réseau maison, cf. `/root/.ccr/README.md`), le Chromium headless de Playwright **ne fait pas confiance au certificat du proxy** (le magasin NSS `~/.pki/nssdb` n'est pas peuplé pour ce binaire). Les requêtes `<link>` vers `fonts.googleapis.com`/`fonts.gstatic.com` échouent avec `ERR_CERT_AUTHORITY_INVALID` **silencieusement** (pas d'erreur visible dans le script, la page se charge quand même) → toutes les polices retombent sur le fallback système. `document.fonts.ready` se résout quand même (les fallbacks comptent comme « chargés ») donc **ce test ne suffit pas** à détecter le problème.
+En revanche, `fetch()` côté **Node** (pas Chromium) valide ce certificat correctement (curl aussi) — le problème est spécifique au magasin de certificats de Chromium, pas au réseau/proxy lui-même.
+
+**Fix appliqué** (dans `export-paix-coloniale.mjs`) :
+1. `page.route(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//, …)` → intercepte les requêtes de polices et les relaie via `fetch()` **Node** (qui marche), plutôt que de laisser Chromium les faire lui-même.
+2. Après chargement, vérifier explicitement `document.fonts` et logguer un `⚠` si une police a un `status !== 'loaded'` — ne **jamais** se fier uniquement à `document.fonts.ready`.
+3. Toujours comparer visuellement au moins 1-2 slides (dont une avec de l'italique/serif, ex. slide 6, et une avec de l'arabe, ex. slide 3) après un export — c'est le seul moyen fiable de repérer un fallback silencieux.
+
+➡️ **Ce correctif est déjà dans le script committé.** Si un futur export (paix-coloniale ou un autre carrousel du même type) montre encore des polices qui « ne collent pas » à l'original, revérifier ce point AVANT toute autre piste — c'est la cause n°1 constatée.
+
+### ⚠️ Piège n°2 — `font-family:Georgia,'Cormorant Garamond',serif` (Georgia en premier)
+Le fix ci-dessus réglait Google Fonts, mais **`.ann-fact p`** (paragraphe encadré, slides 6/8) déclare **Georgia en premier** dans sa pile de polices, Cormorant Garamond en repli. Georgia est une police **système** (Microsoft, jamais servie par Google Fonts) : sur un poste normal (Windows/Mac), elle est installée → le navigateur l'utilise, avec un **gras nettement plus épais/dense** que celui de Cormorant Garamond. Le Chromium headless de ce sandbox n'a **pas** Georgia (absente des conteneurs Linux) → il retombe silencieusement sur Cormorant Garamond, dont le gras est plus fin et élégant → **export visiblement moins gras que le vrai rendu**, alors même que les Google Fonts se chargent bien.
+
+**Fix appliqué** : le script injecte **Gelasio** (clone libre de Georgia publié par Google Fonts, mêmes métriques/dessin) sous le nom `"Georgia"` juste après le chargement de la page, avant la capture — cf. bloc `Gelasio` dans `export-paix-coloniale.mjs`.
+
+➡️ **Réflexe à avoir** : si un élément du deck utilise `Georgia` (ou toute autre police *système* non chargée via `<link>` Google Fonts) en premier dans sa pile, vérifier qu'elle a un substitut Google Fonts injecté dans le script avant de conclure que l'export est fidèle — sinon le rendu variera silencieusement entre ce sandbox et un vrai navigateur.
+
+---
+
 # 🟣 SESSION 2026-07-02 — PAGE LIENS (link-in-bio, `/liens`)
 
 Page « tous les liens » façon Linktree, auto-hébergée. Fichier vivant = **page Astro `src/pages/liens.astro`** (autonome, sans layout site ; `<style is:global>` + `<script is:inline>`). Sert à `lautrerecit.com/liens` (chemin, pas de sous-domaine ni domaine, zéro DNS). La route Astro marche en dev (plus de 404). L'ancien `public/liens/index.html` statique a été supprimé (conflit de route).
