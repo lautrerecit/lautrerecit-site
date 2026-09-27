@@ -21,6 +21,13 @@ En revanche, `fetch()` côté **Node** (pas Chromium) valide ce certificat corre
 
 ➡️ **Ce correctif est déjà dans le script committé.** Si un futur export (paix-coloniale ou un autre carrousel du même type) montre encore des polices qui « ne collent pas » à l'original, revérifier ce point AVANT toute autre piste — c'est la cause n°1 constatée.
 
+### ⚠️ Piège n°2 — `font-family:Georgia,'Cormorant Garamond',serif` (Georgia en premier)
+Le fix ci-dessus réglait Google Fonts, mais **`.ann-fact p`** (paragraphe encadré, slides 6/8) déclare **Georgia en premier** dans sa pile de polices, Cormorant Garamond en repli. Georgia est une police **système** (Microsoft, jamais servie par Google Fonts) : sur un poste normal (Windows/Mac), elle est installée → le navigateur l'utilise, avec un **gras nettement plus épais/dense** que celui de Cormorant Garamond. Le Chromium headless de ce sandbox n'a **pas** Georgia (absente des conteneurs Linux) → il retombe silencieusement sur Cormorant Garamond, dont le gras est plus fin et élégant → **export visiblement moins gras que le vrai rendu**, alors même que les Google Fonts se chargent bien.
+
+**Fix appliqué** : le script injecte **Gelasio** (clone libre de Georgia publié par Google Fonts, mêmes métriques/dessin) sous le nom `"Georgia"` juste après le chargement de la page, avant la capture — cf. bloc `Gelasio` dans `export-paix-coloniale.mjs`.
+
+➡️ **Réflexe à avoir** : si un élément du deck utilise `Georgia` (ou toute autre police *système* non chargée via `<link>` Google Fonts) en premier dans sa pile, vérifier qu'elle a un substitut Google Fonts injecté dans le script avant de conclure que l'export est fidèle — sinon le rendu variera silencieusement entre ce sandbox et un vrai navigateur.
+
 ---
 
 # 🟣 SESSION 2026-07-02 — PAGE LIENS (link-in-bio, `/liens`)
