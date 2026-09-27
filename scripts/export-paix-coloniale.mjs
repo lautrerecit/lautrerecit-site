@@ -41,6 +41,26 @@ try {
 
   await page.goto(`file://${htmlPath}`, { waitUntil: 'networkidle' });
 
+  // La page utilise `font-family:Georgia,'Cormorant Garamond',serif` par
+  // endroits (ex. .ann-fact p) : sur un vrai poste (Windows/Mac), Georgia est
+  // une police système installée et passe donc AVANT Cormorant Garamond dans
+  // la pile — son gras est nettement plus épais/dense que celui, fin et
+  // élégant, de Cormorant Garamond. Ce Chromium headless n'a pas Georgia
+  // installée (police propriétaire Microsoft, absente des conteneurs Linux),
+  // donc il retombe silencieusement sur Cormorant Garamond → rendu plus fin
+  // que ce qu'un visiteur voit réellement. On comble ce trou avec Gelasio,
+  // le clone libre de Georgia (mêmes métriques, même dessin) publié par
+  // Google Fonts, réinjecté sous le nom "Georgia" pour que le rendu headless
+  // corresponde à ce qu'un navigateur normal affiche.
+  try {
+    const gelasioCss = await (
+      await fetch("https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,700;1,400;1,700&display=swap")
+    ).text();
+    await page.addStyleTag({ content: gelasioCss.replace(/Gelasio/g, 'Georgia') });
+  } catch (err) {
+    console.warn(`⚠ Impossible de charger le substitut de Georgia (Gelasio) : ${err.message}`);
+  }
+
   // Attend que toutes les polices web (Google Fonts) soient réellement chargées,
   // sinon Chromium capture parfois les slides avec la police de fallback système.
   await page.evaluate(async () => {
