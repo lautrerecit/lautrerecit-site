@@ -63,7 +63,12 @@ try {
   const slides = await page.locator('.slide').all();
   console.log(`${slides.length} slides détectées.`);
 
-  for (let i = 0; i < slides.length; i++) {
+  // Numéros de slides (1-indexés) passés en argument pour n'exporter qu'un
+  // sous-ensemble, ex. `node scripts/export-paix-coloniale.mjs 6 8`.
+  const only = process.argv.slice(2).map(Number).filter(Boolean);
+  const indices = only.length ? only.map((n) => n - 1) : slides.map((_, i) => i);
+
+  for (const i of indices) {
     const n = String(i + 1).padStart(2, '0');
     const outPath = join(outDir, `paix-coloniale-${n}.png`);
     await slides[i].screenshot({ path: outPath });
