@@ -17,3 +17,4 @@ npm-debug.log*
 .env.r2
 # exports générés (déjà livrés en pièces jointes)
 export-paix-coloniale/
+export-lyceens-violence/
