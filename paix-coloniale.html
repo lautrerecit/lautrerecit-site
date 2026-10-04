@@ -9,7 +9,7 @@
     --frame-or:linear-gradient(135deg,var(--or-deep),var(--or3) 45%,var(--or-fl) 52%,var(--or2) 60%,var(--or-deep));
     --foil-or:linear-gradient(100deg,#DFC176 0%,#F2DFA4 30%,#FBEFC2 50%,#E8CC86 72%,#DFC176 100%);
     --foil-acc:linear-gradient(100deg,#A55353 0%,#E08A8A 34%,#D46A6A 52%,#E08A8A 70%,#A55353 100%);
-    --grade-bw:grayscale(1) contrast(1.06) brightness(1.02);
+    --grade-bw:contrast(1.05) saturate(1.1) brightness(1.01);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{background:#17130E;font-family:var(--sans);color:#EAE3D8}
@@ -32,14 +32,15 @@
   .creme .vg{background:radial-gradient(ellipse 82% 72% at 50% 44%,transparent 40%,rgba(90,72,48,.10) 80%,rgba(76,60,40,.20) 100%)}
   .plein{position:absolute;inset:0;z-index:1}
   .plein img{width:100%;height:100%;object-fit:cover;filter:var(--grade-bw)}
-  .plein.sombre img{filter:grayscale(1) contrast(1.06) brightness(.63)}
-  .plein .veil{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(6,4,5,.47) 0%,rgba(6,4,5,.11) 26%,rgba(6,4,5,.51) 54%,rgba(4,3,4,.86) 76%,#050304 90%)}
+  .plein.sombre img{filter:contrast(1.05) saturate(1.1) brightness(.7)}
+  .plein .veil{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(6,4,5,.71) 0%,rgba(6,4,5,.33) 26%,rgba(6,4,5,.73) 54%,rgba(4,3,4,.945) 76%,#050304 95%)}
   .bandeau{position:absolute;left:0;right:0;top:46px;z-index:8;text-align:center;
     font-family:'Quicksand',var(--sans);font-weight:600;font-size:20px;letter-spacing:.07em;
     text-transform:uppercase;color:rgba(255,252,244,.92);padding:0 90px;line-height:1.4}
   .slide.creme .bandeau{color:var(--acc-deep)}
   .foil{font-family:var(--serif);font-style:italic;font-weight:900;display:inline-block;line-height:1.04;
     padding-bottom:.06em;padding-right:.06em;background:var(--foil-or);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .creme .foil{background:var(--foil-acc);-webkit-background-clip:text;background-clip:text}
   .dh{font-family:var(--serif);font-weight:800;line-height:1.06;letter-spacing:-.01em;color:var(--cr);font-size:calc(66px * var(--u))}
   .creme .dh{color:var(--ink)}
   .dh em{font-style:italic;display:inline;padding-right:.04em;
@@ -94,13 +95,13 @@
 </style></head><body><div class="shell">
 
   <div class="devcap"><b>01</b> — cover · photo</div>
-  <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">Gaza, un an après : la paix coloniale</div>
+  <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div>
     <div class="plein sombre"><img src="img/gaza-ruines.jpg" alt=""><div class="veil"></div></div>
     <div class="in" style="justify-content:flex-end;padding-bottom:150px">
       <p class="dp">Clamé comme un <b>miracle diplomatique</b> il y a un an, le <b>cessez-le-feu</b> à Gaza est, aujourd'hui, vu comme tous comme un <b>mirage</b>. À l'ONU, Macron <b>hausse le ton</b> : <span style="font-style:italic">« Certains se flattent d'une <b style="font-style:italic">paix prétendue</b> ! Mais cette paix n'a pas rouvert une seule seconde les voies humanitaires. Devons-nous contempler ce <b style="font-style:italic">spectacle</b> qui nous fait <b style="font-style:italic">honte à tous</b> ? <b style="font-style:italic">Jamais</b> ! »</span> Un <span class="foil">« en même temps »</span> caractéristique : Paris a <b>autorisé</b> une <b>cinquième fois</b> <b>l'avion</b> de <b>Netanyahou</b> à <b>survoler</b> la France depuis le <b>mandat d'arrêt</b> de la CPI. Finalement, <span class="foil">de quelle paix parle-t-on ?</span></p>
       <p style="margin-top:16px;font-family:var(--mono);font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,252,244,.6)">Discours à l'ONU, sept. 2026</p>
     </div>
-    <div class="pC"><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="pC"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div></div>
 
   <div class="devcap"><b>02</b> — raw · paroles / actes</div>
@@ -158,12 +159,12 @@
     <div class="wa-it"><b>NOV.24–SEPT.26 <span class="wa-src">· Assemblée nationale</span></b><p>Mandat CPI ignoré : <em>5 survols</em> de l'avion de Netanyahou autorisés.</p></div>
   </div>
 </div>
-<div class="bandeau">Gaza, un an après : la paix coloniale</div>
-<div class="pC"><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div>
+<div class="pC"><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div></div>
 
-  <div class="devcap"><b>03</b> — raw · dictionnaire</div>
-  <div class="frame-wrap"><div class="slide"><div class="bandeau">Gaza, un an après : la paix coloniale</div><div class="bg rouge"></div><div class="gr"></div><div class="vg"></div><style>
+  <div class="devcap"><b>03</b> — plaque · dictionnaire</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div><div class="bg rouge"></div><div class="gr"></div><div class="vg"></div><style>
 .dc-arabe{position:absolute;left:50%;top:560px;transform:translateX(-50%);z-index:2;font-family:'Amiri',serif;font-weight:700;font-size:380px;line-height:1;color:rgba(212,176,90,.15);pointer-events:none;white-space:nowrap}
 .dc-eyebrow{position:relative;z-index:4;font-family:var(--mono);font-weight:600;letter-spacing:.32em;text-indent:.32em;font-size:20px;color:rgba(232,204,134,.78);text-transform:uppercase}
 .dc-word{position:relative;z-index:4;font-family:var(--cormo);font-weight:700;font-size:112px;line-height:1;margin-top:22px;color:#F2D98E;text-shadow:0 1px 0 #dcbb63,0 2px 0 #cea94f,0 3px 0 #bd963f,0 4px 0 #a98634,0 5px 1px #8f6f2b,0 10px 22px rgba(18,4,8,.55)}
@@ -184,14 +185,14 @@
   <div class="dc-gram"><span class="n">nom</span><span class="fem">féminin</span></div>
   <div class="dc-pho">/pɛ kɔ.lɔ.njal/</div>
   <div class="dc-rule"></div>
-  <p class="dc-def">Paix de façade qui laisse intacte la structure de domination : si elle se prétend <b>neutre</b>, elle ne l'est jamais — l'un y est en <b>sécurité</b>, l'autre y reste sous <b>oppression organisée</b>.</p>
-  <p class="dc-def">Le colonisateur n'invoque la « paix » que lorsqu'il est attaqué. Sinon, elle est permanente : <b class="f">violence structurelle sous façade pacifique</b>, parfois blocus, checkpoints, démolitions, accès à l'eau coupé.</p>
+  <p class="dc-def"><b>Paix de façade</b> qui laisse intacte la <b>structure de domination</b> : si elle se prétend <b>neutre</b>, elle ne l'est jamais — l'un y est en <b>sécurité</b>, l'autre y reste sous <b class="f">oppression organisée</b>.</p>
+  <p class="dc-def">Le colonisateur n'invoque la « paix » que lorsqu'il est <b>attaqué</b>. Sinon, elle est <b>permanente</b> : <b class="f">violence structurelle sous façade pacifique</b>, parfois blocus, checkpoints, démolitions, accès à l'eau coupé.</p>
 </div>
-<div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="pC"><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div></div>
 
   <div class="devcap"><b>04</b> — plaque · qbox académique</div>
-  <div class="frame-wrap"><div class="slide"><div class="bandeau">Gaza, un an après : la paix coloniale</div><div class="bg vert"></div><div class="gr"></div><div class="vg"></div><style>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div><div class="bg vert"></div><div class="gr"></div><div class="vg"></div><style>
 .gm-row{display:flex;align-items:center;gap:22px;margin-bottom:18px}
 .gm-photo{flex:0 0 108px;width:108px;height:108px;border-radius:50%;padding:4px;background:var(--frame-or);box-shadow:0 14px 30px -12px rgba(0,0,0,.55)}
 .gm-photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
@@ -201,118 +202,124 @@
     <div class="in">
       <div class="gm-row"><div class="gm-photo"><img src="img/galtung.jpg.webp" alt=""></div><div class="gm-cap"><b>Johan Galtung</b>Sociologue norvégien, fondateur des peace studies</div></div>
       <h1 class="dh" style="font-size:60px">Deux paix,<br><em>disait Galtung.</em></h1>
-      <p class="dp">En 1969, le sociologue norvégien <b>Johan Galtung</b> distingue la <b>paix négative</b> (simple absence de guerre) de la <b>paix positive</b> : l'absence de <b class="f">violence structurelle</b>, celle qui vit dans les lois, les frontières, les rapports de force, bien après que les armes se sont tues.</p>
+      <p class="dp">En 1969, le sociologue norvégien <b>Johan Galtung</b> distingue la <b>paix négative</b> (simple absence de guerre) de la <b>paix positive</b> : l'absence de <b class="f">violence structurelle</b>, celle qui vit dans les lois, les frontières, les rapports de force, <span class="foil">bien après que les armes se sont tues.</span></p>
       <div class="qbox">
         <p class="q">La violence structurelle est silencieuse, elle ne se voit pas — elle est <b>statique</b> par essence, elle est <b>l'eau qui dort</b>.</p>
         <div class="src">Johan Galtung · Violence, Peace and Peace Research, 1969 (trad.)</div>
       </div>
     </div>
-    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div></div>
 
   <div class="devcap"><b>05</b> — plaque · rouge</div>
-  <div class="frame-wrap"><div class="slide"><div class="bandeau">Gaza, un an après : la paix coloniale</div><div class="bg rouge"></div><div class="gr"></div><div class="vg"></div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div><div class="bg rouge"></div><div class="gr"></div><div class="vg"></div>
     <div class="in">
       <h1 class="dh" style="font-size:54px">La déshumanisation,<br><em>racine de tout le reste.</em></h1>
-      <p class="dp">La déshumanisation des Palestiniens est le fondement de la domination coloniale. En 1982, Menachem Begin les décrit comme des <b>« bêtes qui marchent sur deux pattes »</b>. En 1983, Rafael Eitan : des <b>« cafards drogués dans une bouteille »</b>. En 2023, Yoav Gallant reprend le geste : des <b class="f">« animaux humains »</b>.</p>
+      <p class="dp"><b>La déshumanisation</b> des Palestiniens est le <b>fondement</b> de la <b>domination coloniale</b>. En 1982, Menachem Begin les décrit comme des <b>« bêtes qui marchent sur deux pattes »</b>. En 1983, Rafael Eitan : des <b>« cafards drogués dans une bouteille »</b>. En 2023, Yoav Gallant reprend le geste : des <b class="f">« animaux humains »</b>.</p>
+      <p style="margin-top:12px;font-family:var(--mono);font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:rgba(242,237,228,.55)">Begin, New Statesman 1982 · Eitan, Knesset/NYT 1983</p>
       <div class="e e-cr">
         <p>En avril 2026, le ministre Jean-Noël Barrot reprend la phrase attribuée à Golda Meir : <b>« Nous pouvons pardonner aux Arabes d'avoir tué nos enfants, mais nous ne pouvons pas leur pardonner de nous avoir obligés à tuer leurs enfants. »</b></p>
       </div>
       <p class="relance">Tant que l'humanité de l'un est niée, <b>parler de paix n'a pas de sens.</b></p>
     </div>
-    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div></div>
 
-  <div class="devcap"><b>06</b> — plaque · crème</div>
-  <div class="frame-wrap"><div class="slide creme"><div class="bandeau">Gaza, un an après : la paix coloniale</div><div class="bg creme"></div><div class="gr"></div><div class="vg"></div>
-    <div class="in" style="align-items:center;text-align:center;justify-content:flex-start;padding-top:112px">
-      <h1 class="dh" style="font-size:44px">Le syndrome<br><em>de Tom et Jerry.</em></h1>
-      <p class="dp" style="text-align:left">Les médias couvrent le conflit comme un dessin animé, sans jamais expliquer les causes structurelles : Gaza y paraît comme une crise humanitaire venue de nulle part, <b class="f">décontextualisée, déshistoricisée</b>. On y parle d'un <b>« cycle de la violence »</b> ou d'une <b>« trêve brisée »</b> : le spectateur suit des épisodes, mais reste dans une ignorance entretenue.</p>
-      <div class="e e-acc" style="text-align:left">
-        <p>Acrimed documente l'asymétrie du traitement médiatique : l'armée israélienne citée sans vérification, le ministère de la Santé de Gaza précédé d'un <b>« selon le Hamas »</b> ; les Palestiniens réduits à des <b>« corps sans voix »</b>, face aux portraits humanisants des Israéliens.</p>
-        <div class="src">Acrimed, 2025-2026</div>
+  <div class="devcap"><b>06</b> — plaque · crème + médaillon</div>
+  <div class="frame-wrap"><div class="slide creme"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div><div class="bg creme"></div><div class="gr"></div><div class="vg"></div><style>
+.med-photo{width:280px;height:280px;border-radius:50%;padding:6px;margin:0 auto calc(38px * var(--u));background:var(--frame-or);box-shadow:0 20px 44px -16px rgba(90,60,20,.4)}
+.med-photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 32%;display:block}
+</style>
+    <div class="in" style="align-items:center;text-align:center;justify-content:flex-start;padding-top:88px">
+      <div class="med-photo"><img src="img/media-manipulation-cream.webp" alt=""></div>
+      <h1 class="dh" style="font-size:52px">Le syndrome<br><em>de Tom et Jerry.</em></h1>
+      <p class="dp" style="text-align:left">Les <b>médias</b> couvrent le <b>conflit</b> comme un <b>dessin animé</b>, sans jamais <b>expliquer</b> les <b>causes structurelles</b> : Gaza y paraît <b class="f">décontextualisée, déshistoricisée</b>, un simple <b>« cycle de la violence »</b>. Le spectateur suit des épisodes, mais reste dans une <span class="foil">ignorance entretenue.</span></p>
+      <div class="ann-fact" style="text-align:left">
+        <p>Acrimed documente l'<b>asymétrie</b> du traitement médiatique : l'<b>armée israélienne</b> citée sans vérification, le ministère de la Santé de Gaza précédé d'un <b>« selon le Hamas »</b> ; les Palestiniens réduits à des <b>« corps sans voix »</b>, face aux <b>portraits humanisants des Israéliens</b>.</p>
+        <p style="margin-top:12px;font-family:var(--mono);font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--acc-deep);font-style:normal">Acrimed, 15 oct. 2015 · Acrimed, 28 août 2025</p>
       </div>
     </div>
-    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
   </div></div>
 
   <div class="devcap"><b>07</b> — cover · photo</div>
-  <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">Gaza, un an après : la paix coloniale</div>
+  <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div>
     <div class="plein sombre"><img src="img/famine.jpg" alt=""><div class="veil"></div></div>
     <div class="in" style="justify-content:flex-end;padding-bottom:150px">
-      <h1 class="dh" style="font-size:44px">La pire crise économique<br><em>jamais enregistrée dans le monde.</em></h1>
+      <h1 class="dh" style="font-size:54px">La pire crise économique<br>jamais enregistrée<br><em>dans le monde.</em></h1>
       <p class="dp">C'est ça, <span class="foil">la paix coloniale</span>. Deux territoires voisins, deux réalités <b>diamétralement opposées</b> : la sécurité et la paix pour les uns, <b>la plus grande crise économique jamais enregistrée dans le monde</b> pour les autres. À Gaza, toujours sous blocus, le <b>génocide</b> se fait toujours sentir : <b class="f">0,58 dollar par jour</b> de PIB par habitant, <b>90 % de la population active sans emploi</b>, <b>92 % des établissements économiques détruits</b>. La CNUCED parle de <span class="foil">décennies de développement anéanties</span>.</p>
       <p style="margin-top:22px;font-family:var(--mono);font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,252,244,.62)">CNUCED (ONU), sept. 2026</p>
     </div>
-    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
   </div></div>
 
   <div class="devcap"><b>08</b> — plaque · crème + photo</div>
-  <div class="frame-wrap"><div class="slide creme"><div class="bandeau">Gaza, un an après : la paix coloniale</div><div class="bg creme"></div><div class="gr"></div><div class="vg"></div><style>
-.ann-fact{margin-top:26px;padding-left:30px;position:relative}
-.ann-fact::before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:5px;background:linear-gradient(180deg,var(--acc-deep),var(--or3))}
-.ann-fact p{font-family:Georgia,'Cormorant Garamond',serif;font-style:normal;font-weight:400;font-size:32px;line-height:1.4;color:var(--ink)}
+  <div class="frame-wrap"><div class="slide creme"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div><div class="bg creme"></div><div class="gr"></div><div class="vg"></div><style>
+.ann-fact{margin-top:26px;padding-left:34px;position:relative}
+.ann-fact::before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:6px;background:linear-gradient(180deg,var(--acc-deep),var(--or3))}
+.ann-fact p{font-family:Georgia,'Cormorant Garamond',serif;font-style:normal;font-weight:400;font-size:34px;line-height:1.36;color:var(--ink)}
 .ann-fact p b{font-weight:700;font-style:normal;color:var(--acc)}
 .ann-photo{position:absolute;left:0;right:0;bottom:0;height:460px;overflow:hidden;z-index:2}
-.ann-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:grayscale(.1) contrast(1.05)}
-.ann-photo .sc{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,6,.62) 0%,rgba(14,10,6,.16) 30%,rgba(14,10,6,.10) 60%,rgba(14,10,6,.72) 100%)}
+.ann-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:contrast(1.05) saturate(1.1)}
+.ann-photo .sc{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,6,.83) 0%,rgba(14,10,6,.4) 30%,rgba(14,10,6,.31) 60%,rgba(14,10,6,.89) 100%)}
 .ann-photo .tx{position:absolute;left:64px;right:64px;top:44px;text-align:center;font-family:var(--serif);font-weight:800;font-size:38px;line-height:1.2;color:#FFFCF4}
 .ann-photo .tx b{font-weight:900;font-style:italic;background-image:var(--foil-or);-webkit-background-clip:text;background-clip:text;color:transparent}
 </style>
     <div class="in" style="bottom:484px;padding-bottom:0">
       <h1 class="dh" style="font-size:52px">Le plan promettait<br><em>« aucune annexion ».</em></h1>
-      <p class="dp">Le 26 septembre 2025, Trump l'assure : <b>« Je ne permettrai pas à Israël d'annexer la Cisjordanie. »</b> Moins d'un mois plus tard, le 23 octobre, la Knesset vote l'annexion (<b>71 voix contre 13</b>) au nom d'un « droit naturel, historique et légal ». Aucune sanction ne suit.</p>
+      <p class="dp">Le 26 septembre 2025, Trump l'assure : <b>« Je ne permettrai pas à Israël d'annexer la Cisjordanie. »</b> Moins d'un mois plus tard, la Knesset vote un premier texte d'annexion, <b>25 voix contre 24</b>. <span class="foil">Aucune sanction ne suit.</span></p>
       <div class="ann-fact">
-        <p>Sur le terrain, l'annexion ne s'embarrasse pas des votes : le projet <b>E1</b> coupe la Cisjordanie en deux, <b>20 214 logements</b> validés depuis 2025 — un record. Smotrich revendique <b>82 % du territoire</b>.</p>
+        <p>Sur le terrain, le projet <b>E1</b> coupe la Cisjordanie en deux avec <b>3 401 logements</b> approuvés, sur <b>27 941</b> validés en 2025 — <b>un record absolu</b>. <b>Smotrich</b> revendique <b>82 % du territoire</b>.</p>
+        <p style="margin-top:12px;font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--acc-deep);font-style:normal">Times of Israel · Peace Now, 2025</p>
       </div>
     </div>
     <div class="ann-photo"><img src="img/cisjordanie.webp" alt=""><div class="sc"></div><div class="tx">La Cisjordanie est elle aussi le reflet de la <b>paix coloniale</b> : un <b>cessez-le-feu de façade</b> face à une domination coloniale structurelle et toujours impunie.</div></div>
-    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i><i></i></div>
   </div></div>
 
   <div class="devcap"><b>09</b> — cover · photo</div>
-  <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">Gaza, un an après : la paix coloniale</div>
+  <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div>
     <div class="plein sombre"><img src="img/un-geneva-hrc.jpg" alt=""><div class="veil"></div></div>
     <div class="in" style="justify-content:flex-end;padding-bottom:150px">
-      <p class="dp">Le consensus juridique s'est formé : la Commission d'enquête internationale de l'ONU conclut à des <b>motifs raisonnables</b> qu'Israël <b>continue de commettre un génocide</b> à Gaza — quatre des cinq actes définis par la Convention de 1948. Les enfants représentent <b>27 % des tués et blessés</b> depuis octobre 2023, un <b class="f">ciblage délibéré</b> selon la Commission. Amnesty et Human Rights Watch documentent le même constat.</p>
+      <p class="dp">Le consensus juridique s'est formé : la Commission d'enquête internationale de l'ONU conclut à des <b>motifs raisonnables</b> qu'Israël <b>continue de commettre un génocide</b> à Gaza — <b>quatre des cinq actes</b> définis par la Convention de 1948. Les enfants représentent <b>27 % des tués et blessés</b> depuis octobre 2023, un <b class="f">ciblage délibéré</b> selon la Commission. <b>Amnesty et Human Rights Watch</b> documentent le même constat.</p>
       <p class="dp" style="margin-top:34px;font-style:italic;font-family:var(--serif);font-weight:700;color:var(--or-fl)">Ce que les institutions documentent a un nom. <span class="foil">« Ni guerre, ni paix. »</span></p>
       <p style="margin-top:22px;font-family:var(--mono);font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,252,244,.62)">Commission d'enquête de l'ONU, 18 juin 2026 · Amnesty · HRW</p>
     </div>
-    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i></div>
+    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i><i></i></div>
   </div></div>
 
   <div class="devcap"><b>10</b> — plaque · vert</div>
-  <div class="frame-wrap"><div class="slide"><div class="bandeau">Gaza, un an après : la paix coloniale</div><div class="bg vert"></div><div class="gr"></div><div class="vg"></div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div><div class="bg vert"></div><div class="gr"></div><div class="vg"></div>
     <div class="in">
-      <h1 class="dh" style="font-size:54px">Un an de « paix »,<br><em>l'exode continue.</em></h1>
-      <p class="dp">En Cisjordanie, plus de <b>36 000 Palestiniens</b> ont été déplacés entre novembre 2024 et octobre 2025 — une <b class="f">ampleur inédite</b>, selon le Haut-Commissariat de l'ONU. Le rythme mensuel des déplacements a doublé depuis 2022, un record depuis le début du recensement onusien en 2009.</p>
-      <div class="e e-cr">
-        <p>À Gaza, la « ligne jaune » cède du terrain depuis l'accord : <b>moins de 40 %</b> du territoire reste aux Palestiniens. Des milliers de déplacés vivent encore sous tente, leur maison située au-delà de la ligne — depuis <b>plus de deux ans</b>.</p>
+      <h1 class="dh" style="font-size:50px">Un an de « paix »,<br><em>l'exode continue.</em></h1>
+      <p class="dp" style="margin-top:calc(16px * var(--u))">En Cisjordanie, plus de <b>36 000 Palestiniens</b> ont été déplacés entre novembre 2024 et octobre 2025 — une <b class="f">ampleur inédite</b>, selon le Haut-Commissariat de l'ONU. Le rythme mensuel des déplacements a <b>doublé depuis 2022</b>, un <b>record</b> depuis le début du recensement onusien en 2009.</p>
+      <div class="e e-cr" style="margin-top:calc(38px * var(--u));padding:calc(26px * var(--u)) calc(30px * var(--u))">
+        <p>À Gaza, la <b>« ligne jaune »</b> cède du terrain depuis l'accord : <b>moins de 40 %</b> du territoire reste aux Palestiniens. Des milliers de déplacés vivent encore <b>sous tente</b>, leur maison située au-delà de la ligne — depuis <b>plus de deux ans</b>.</p>
+        <div class="src" style="margin-top:10px">HCDH (OHCHR), mars 2026 · UN News, sept. 2026</div>
       </div>
-      <p class="relance">Les colons frappent, l'armée protège. <b>La paix coloniale ne déplace jamais le même camp.</b></p>
+      <p class="relance" style="margin-top:calc(16px * var(--u))">Les colons frappent, l'armée intervient. <span class="foil">La paix coloniale, c'est la paix des uns au détriment des autres.</span></p>
     </div>
-    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i></div>
+    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i></i></div>
   </div></div>
 
   <div class="devcap"><b>11</b> — cover · photo</div>
   <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">Un an après : la paix coloniale enfin dévoilée</div>
     <div class="plein sombre"><img src="img/gaza-femme-enfants-v2.jpg" alt=""><div class="veil"></div></div>
     <div class="in" style="justify-content:flex-end;padding-bottom:150px"><style>
-.ch-scale{font-family:var(--serif);line-height:1.24;margin-top:30px}
-.ch-scale .s1{font-weight:400;font-size:26px;color:rgba(255,252,244,.86)}
-.ch-scale .s2{font-weight:700;font-style:italic;font-size:34px;color:var(--or-fl)}
-.ch-scale .s3{display:block;margin-top:6px;font-weight:900;font-style:italic;font-size:46px;background-image:var(--foil-or);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ch-scale{font-family:var(--serif);line-height:1.18;margin-top:38px;text-align:center}
+.ch-scale span{display:block;font-style:italic;background-image:var(--foil-or);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ch-scale .s1{font-weight:700;font-size:46px}
+.ch-scale .s2{margin-top:6px;font-weight:800;font-size:52px}
+.ch-scale .s3{margin-top:6px;font-weight:900;font-size:60px}
 </style>
-      <p class="dp">Selon le ministère de la Santé, depuis le 10 octobre 2025, <b>plus de 1 372 Palestiniens</b> ont été tués à Gaza, un bilan jugé fiable par l'ONU. Ce que l'on répète depuis un an apparaît désormais au grand jour : <span class="foil">la paix coloniale.</span></p>
-      <p class="dp" style="margin-top:22px">Frappes, ripostes, incidents : le cessez-le-feu a certes offert un répit, mais surtout permis <span class="foil">à la domination de se maintenir.</span></p>
-      <p class="dp" style="margin-top:22px">La combattre exige du courage politique : la nommer, refuser de la normaliser et <span class="foil">s'attaquer aux structures qui la perpétuent.</span></p>
+      <p class="dp">Selon le ministère de la Santé, depuis le 10 octobre 2025, <b>plus de 1 372 Palestiniens</b> ont été tués à Gaza, un bilan jugé fiable par l'ONU. Ce que l'on répète depuis un an apparaît désormais au grand jour : <span class="foil">la paix coloniale.</span> Frappes, ripostes, incidents : le cessez-le-feu a certes offert un répit, mais surtout permis <span class="foil">à la domination de se maintenir.</span> La combattre exige du courage politique : la nommer, refuser de la normaliser et <span class="foil">s'attaquer aux structures qui la perpétuent.</span></p>
       <div class="ch-scale">
         <span class="s1">Tout le reste n'est qu'un habillage</span>
         <span class="s2">pour masquer sa lâcheté…</span>
         <span class="s3">ou sa complicité.</span>
       </div>
     </div>
-    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i></div>
+    <div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i></div>
   </div></div>
 
 

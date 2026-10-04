@@ -15,3 +15,6 @@ npm-debug.log*
 .netlify/
 .env.stream
 .env.r2
+# exports générés (déjà livrés en pièces jointes)
+export-paix-coloniale/
+export-lyceens-violence/
