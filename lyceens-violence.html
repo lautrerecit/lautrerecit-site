@@ -1,0 +1,551 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>lyceens-violence-1 · 16 slides</title><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600&family=IBM+Plex+Mono:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Amiri:wght@400;700&display=swap" rel="stylesheet"><style>
+  :root{
+    --cr:#F2EDE4;--paper-w:#FFFCF4;--w:#FFFCF4;
+    --or2:#C4A24A;--or3:#D4B05A;--or-deep:#7A5E1F;--or-fl:#FBEFC2;
+    --acc:#721D5B;--acc-deep:#5E1849;
+    --ink:#0E0C0A;--ink3:#3D3730;--cr-soft:rgba(242,237,228,.86);
+    --serif:'Playfair Display',Georgia,serif;--sans:'Poppins',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',monospace;--cormo:'Cormorant Garamond',Georgia,serif;--ar:'Amiri',serif;
+    --frame-or:linear-gradient(135deg,var(--or-deep),var(--or3) 45%,var(--or-fl) 52%,var(--or2) 60%,var(--or-deep));
+    --fondcreme:radial-gradient(ellipse 58% 42% at 26% 18%,rgba(255,255,252,.95) 0%,transparent 62%),radial-gradient(ellipse 54% 40% at 82% 34%,rgba(248,240,222,.80) 0%,transparent 64%),radial-gradient(ellipse 86% 56% at 50% 104%,rgba(226,214,194,.72) 0%,transparent 76%),linear-gradient(158deg,#FDFCF9 0%,#F5EFE3 54%,#E9DFCD 100%);
+    --foil-or:linear-gradient(100deg,#DFC176 0%,#F2DFA4 30%,#FBEFC2 50%,#E8CC86 72%,#DFC176 100%);
+    --foil-acc:linear-gradient(100deg,#4E1340 0%,#9B4A85 34%,#721D5B 52%,#9B4A85 70%,#4E1340 100%);
+    --grade-bw:grayscale(1) contrast(1.06) brightness(1.02);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:#17130E;font-family:var(--sans);color:#EAE3D8}
+  .shell{max-width:1140px;margin:0 auto;padding:52px 22px 120px}
+  .devcap{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:#7E766C;text-transform:uppercase;margin:38px 0 11px;text-align:center}
+  .devcap b{color:var(--or3);font-weight:500}
+  .frame-wrap{width:min(1080px,94vw);margin:0 auto;overflow:hidden;border-radius:8px;box-shadow:0 26px 70px -32px rgba(0,0,0,.8)}
+  .slide{--u:1.15;width:1080px;height:1440px;position:relative;overflow:hidden;color:var(--cr);font-family:var(--sans)}
+  .slide.creme{color:var(--ink3)}
+  .in{position:absolute;inset:0;z-index:4;padding:112px 106px;display:flex;flex-direction:column;justify-content:center}
+  .bg{position:absolute;inset:0;z-index:0}
+  .bg.grape{background:radial-gradient(ellipse 58% 42% at 24% 16%,rgba(114, 29, 91, 0.9) 0%,transparent 64%),radial-gradient(ellipse 64% 46% at 80% 30%,rgba(101, 26, 81, 0.86) 0%,transparent 66%),radial-gradient(ellipse 86% 56% at 50% 104%,rgba(68, 17, 55, 0.94) 0%,transparent 76%),linear-gradient(163deg,#721D5B 0%,#5D184B 48%,#501440 100%)}
+  .bg.cyan{background:radial-gradient(ellipse 58% 42% at 24% 16%,rgba(9, 90, 94, 0.9) 0%,transparent 64%),radial-gradient(ellipse 64% 46% at 80% 30%,rgba(8, 80, 84, 0.86) 0%,transparent 66%),radial-gradient(ellipse 86% 56% at 50% 104%,rgba(5, 54, 56, 0.94) 0%,transparent 76%),linear-gradient(163deg,#095A5E 0%,#074A4D 48%,#063F42 100%)}
+  .cmp-half.grape{background-image:radial-gradient(ellipse 58% 42% at 24% 16%,rgba(114, 29, 91, 0.9) 0%,transparent 64%),radial-gradient(ellipse 64% 46% at 80% 30%,rgba(101, 26, 81, 0.86) 0%,transparent 66%),radial-gradient(ellipse 86% 56% at 50% 104%,rgba(68, 17, 55, 0.94) 0%,transparent 76%),linear-gradient(163deg,#721D5B 0%,#5D184B 48%,#501440 100%)}
+  .cmp-half.cyan{background-image:radial-gradient(ellipse 58% 42% at 24% 16%,rgba(9, 90, 94, 0.9) 0%,transparent 64%),radial-gradient(ellipse 64% 46% at 80% 30%,rgba(8, 80, 84, 0.86) 0%,transparent 66%),radial-gradient(ellipse 86% 56% at 50% 104%,rgba(5, 54, 56, 0.94) 0%,transparent 76%),linear-gradient(163deg,#095A5E 0%,#074A4D 48%,#063F42 100%)}
+
+  .bg.creme{background:radial-gradient(ellipse 58% 42% at 26% 18%,rgba(255,255,252,.95) 0%,transparent 62%),radial-gradient(ellipse 54% 40% at 82% 34%,rgba(248,240,222,.80) 0%,transparent 64%),radial-gradient(ellipse 86% 56% at 50% 104%,rgba(226,214,194,.72) 0%,transparent 76%),linear-gradient(158deg,#FDFCF9 0%,#F5EFE3 54%,#E9DFCD 100%)}
+  .gr{position:absolute;inset:0;pointer-events:none;z-index:6;opacity:.18;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.33 0.33 0.33 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='l'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0.33 0.33 0.33 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23l)'/%3E%3C/svg%3E");
+    background-size:240px 240px,240px 240px;background-position:0 0,90px 130px}
+  .creme .gr{opacity:.14}
+  .vg{position:absolute;inset:0;pointer-events:none;z-index:5;background:radial-gradient(ellipse 84% 74% at 50% 46%,transparent 44%,rgba(12,5,8,.16) 82%,rgba(10,4,6,.32) 100%)}
+  .creme .vg{background:radial-gradient(ellipse 82% 72% at 50% 44%,transparent 40%,rgba(90,72,48,.10) 80%,rgba(76,60,40,.20) 100%)}
+  .plein{position:absolute;inset:0;z-index:1}
+  .plein img{width:100%;height:100%;object-fit:cover;filter:var(--grade-bw)}
+  .plein.sombre img{filter:grayscale(1) contrast(1.06) brightness(.55)}
+  .plein.sepia img{filter:grayscale(1) sepia(.30) contrast(1.05) brightness(.72)}
+  .plein.duo img{filter:grayscale(1) contrast(1.1) brightness(.82)}
+  .plein.duo::before{content:"";position:absolute;inset:0;background:var(--duo);mix-blend-mode:multiply;opacity:.76;z-index:2}
+  .plein .veil{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(6,4,5,.58) 0%,rgba(6,4,5,.14) 26%,rgba(6,4,5,.62) 54%,rgba(4,3,4,.94) 76%,#050304 90%)}
+  .cart{position:absolute;left:58px;top:112px;z-index:5;font-family:var(--mono);font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,239,194,.68)}
+  .bandeau{position:absolute;left:0;right:0;top:46px;z-index:8;text-align:center;
+    font-family:'Quicksand',var(--sans);font-weight:600;font-size:20px;letter-spacing:.07em;
+    text-transform:uppercase;color:rgba(255,252,244,.92);padding:0 90px;line-height:1.4}
+  .slide.creme .bandeau{color:var(--acc-deep)}
+  .eyebrow{display:flex;align-items:center;gap:20px;font-family:var(--mono);font-weight:600;letter-spacing:.3em;
+    text-indent:.3em;color:#E8CC86;text-transform:uppercase;margin-bottom:26px;font-size:calc(21px * var(--u))}
+  .eyebrow .fil{width:56px;height:2px;background:linear-gradient(90deg,transparent,var(--or2) 45%,var(--or3) 50%,var(--or2) 55%,transparent)}
+  .slide.creme .eyebrow{color:var(--acc-deep)}
+  .slide.creme .eyebrow .fil{background:linear-gradient(90deg,transparent,var(--acc) 45%,var(--acc-deep) 50%,var(--acc) 55%,transparent)}
+  .slide.surphoto .eyebrow{color:var(--or3)}
+  .foil{font-family:var(--serif);font-style:italic;font-weight:900;display:inline-block;line-height:1.04;
+    padding-bottom:.06em;padding-right:.06em;background:var(--foil-or);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .dh{font-family:var(--serif);font-weight:800;line-height:1.06;letter-spacing:-.01em;color:var(--cr);font-size:calc(66px * var(--u))}
+  .creme .dh{color:var(--ink)}
+  .dh em{font-style:italic;display:inline;padding-right:.04em;
+    -webkit-background-clip:text;background-clip:text;color:transparent;background-image:var(--foil-or)}
+  .creme .dh em{background-image:var(--foil-acc)}
+  .dp{font-weight:300;line-height:1.5;color:var(--cr-soft);margin-top:calc(24px * var(--u));font-size:calc(35px * var(--u))}
+  .creme .dp{color:var(--ink3)}
+  .dp.filet{padding-left:36px;border-left:6px solid #F0D98C}
+  .slide.creme .dp.filet{border-left-color:#A5532F}
+  .verdict{font-family:var(--serif);font-style:italic;font-weight:400;line-height:1.3;color:var(--cr);
+    margin-top:calc(24px * var(--u));font-size:calc(40px * var(--u))}
+  .creme .verdict{color:var(--ink3)}
+  .verdict b{font-family:var(--serif);font-style:italic;font-weight:800;color:#FBEFC2;background-image:none}
+  .creme .verdict b{color:var(--acc)}
+  .verdict b.f{padding-bottom:.05em;padding-right:.03em;-webkit-background-clip:text;background-clip:text;
+    color:transparent;background-image:var(--foil-or)}
+  .creme .verdict b.f{background-image:none;-webkit-background-clip:initial;background-clip:initial;
+    color:#6B3A5C;text-shadow:0 1px 0 #F0D9E5,0 -1px 0 #2D1526,0 2px 5px rgba(45,21,38,.25)}
+  .slide.surphoto{color:var(--paper-w)}
+  .slide.surphoto .dp{color:rgba(255,252,244,.94)}
+  .slide.surphoto .bandeau{left:50%;right:auto;width:max-content;transform:translateX(-50%);color:transparent;background-image:var(--foil-or);-webkit-background-clip:text;background-clip:text}
+  .goldline{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:7;background:linear-gradient(90deg,transparent,var(--or2) 30%,var(--or-fl) 50%,var(--or3) 70%,transparent)}
+  /* ══ les trois niveaux de relief (v25) ══ */
+  .slide .dp b,.slide .dp em,.slide .agddef .em{
+    font-family:var(--sans);font-style:normal;font-weight:600;font-size:inherit;
+    background-image:none;-webkit-background-clip:border-box;background-clip:border-box;color:#FBEFC2}
+  .slide.creme .dp b,.slide.creme .dp em,.slide.creme .agddef .em{color:var(--acc);background-image:none}
+  .slide .dp b.f,.slide .agddef .em.f{
+    font-family:var(--serif);font-style:italic;font-weight:700;font-size:1.07em;padding-bottom:.05em;padding-right:.03em;
+    background-image:var(--foil-or);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .slide.creme .dp b.f,.slide.creme .agddef .em.f{background-image:none;-webkit-background-clip:initial;background-clip:initial;
+    color:#6B3A5C;text-shadow:0 1px 0 #F0D9E5,0 -1px 0 #2D1526,0 2px 5px rgba(45,21,38,.25)}
+  .slide .dp b.w{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.07em;color:inherit;background-image:none}
+  /* plaques */
+  .e{position:relative;padding:calc(34px * var(--u)) calc(38px * var(--u))}
+  .e p{font-weight:300;line-height:1.44;font-size:calc(31px * var(--u))}
+  .e .src{font-family:var(--mono);letter-spacing:.13em;text-transform:uppercase;margin-top:calc(16px * var(--u));font-size:calc(17px * var(--u))}
+  .e-acc{margin-top:calc(50px * var(--u));background:linear-gradient(104deg,#721D5B 0%,#5E1849 52%,#3A0F2E 100%);box-shadow:0 28px 60px -26px rgba(50,12,40,.6)}
+  .e-acc::after{content:"";position:absolute;inset:0;border:1px solid rgba(212,176,90,.42);pointer-events:none}
+  .e-acc p{color:#FFFCF4}
+  .e-acc .src{color:rgba(255,252,244,.96)}
+  .e-acc b,.e-acc em{font-family:var(--serif);font-style:italic;font-weight:700;color:#FBEFC2}
+  .e-tr{margin-top:calc(50px * var(--u));padding-left:calc(46px * var(--u));background:rgba(255,252,244,.06)}
+  .e-tr::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:5px;background:var(--acc);border-radius:3px}
+  .e-tr p{color:var(--cr)}
+  .e-tr .src{color:var(--cr-soft)}
+  .e-tr b,.e-tr em{font-family:var(--serif);font-style:italic;font-weight:700;color:var(--or-fl)}
+  .slide.creme .e-tr{background:rgba(36,26,18,.04)}
+  .slide.creme .e-tr p{color:var(--ink3)}
+  .slide.creme .e-tr b,.slide.creme .e-tr em{color:var(--acc)}
+  .e-cr{margin-top:calc(50px * var(--u));background:var(--paper-w);box-shadow:0 30px 64px -28px rgba(20,8,10,.65)}
+  .e-cr::after{content:"";position:absolute;inset:0;border:1px solid rgba(122,94,31,.38);pointer-events:none}
+  .e-cr p{color:var(--ink3)}
+  .e-cr .src{color:var(--acc-deep)}
+  .e-cr b,.e-cr em{font-family:var(--serif);font-style:italic;font-weight:700;color:var(--acc)}
+  .e-cr b.f,.e-cr em.f{background-image:none;-webkit-background-clip:initial;background-clip:initial;
+    color:#6B3A5C;text-shadow:0 1px 0 #F0D9E5,0 -1px 0 #2D1526,0 2px 5px rgba(45,21,38,.25)}
+  .tagfoil{position:absolute;left:34px;top:calc(-20px * var(--u));z-index:3;
+    background:linear-gradient(135deg,#C4A24A,#E8CC86 40%,#FBEFC2 52%,#DFC176 62%,#C4A24A);
+    color:#241A08;font-family:var(--mono);font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;padding:calc(9px * var(--u)) calc(22px * var(--u));font-size:calc(20px * var(--u));
+    box-shadow:0 8px 20px -8px rgba(20,10,2,.6)}
+  /* qbox */
+  .qbox{position:relative;margin-top:calc(46px * var(--u));padding:calc(44px * var(--u)) calc(38px * var(--u)) calc(32px * var(--u)) calc(50px * var(--u));
+    background:var(--paper-w);box-shadow:0 30px 64px -28px rgba(20,8,10,.65)}
+  .qbox::before{content:"";position:absolute;left:0;top:0;bottom:0;width:12px;background:var(--frame-or)}
+  .qbox .q{font-family:var(--serif);font-style:italic;font-weight:400;line-height:1.22;color:var(--ink);font-size:calc(38px * var(--u))}
+  .qbox .q b{font-weight:700;color:var(--or-deep)}
+  .qbox .src{font-family:var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--or-deep);margin-top:calc(16px * var(--u));font-size:calc(17px * var(--u))}
+  /* dictionnaire */
+  .agdef{padding:150px 100px}
+  .agdef::before{content:"";position:absolute;left:0;top:150px;bottom:150px;width:5px;z-index:3;
+    background:linear-gradient(180deg,var(--or-fl),var(--or2) 50%,var(--or-deep))}
+  .agwm{position:absolute;top:46%;left:52%;transform:translate(-50%,-50%);font-family:var(--ar);font-weight:700;
+    font-size:300px;line-height:1;color:var(--or2);opacity:.07;pointer-events:none;z-index:1;white-space:nowrap}
+  .agword{font-family:var(--cormo);font-weight:700;font-size:114px;line-height:.9;color:#F2D98E;
+    text-shadow:0 1px 0 #dcbb63,0 2px 0 #cea94f,0 3px 0 #bd963f,0 4px 0 #a98634,0 5px 1px #8f6f2b,0 8px 16px rgba(18,4,8,.55)}
+  .agfem{font-family:var(--serif);font-size:52px;line-height:1;margin-top:18px;color:var(--cr-soft)}
+  .creme .agfem{color:var(--ink3)}
+  .agphon{font-family:var(--mono);font-size:25px;color:rgba(242,237,228,.84);margin-top:18px}
+  .creme .agphon{color:rgba(61,55,48,.84)}
+  .agrule{height:1.5px;margin:36px 0 32px;background:linear-gradient(90deg,var(--or2),transparent)}
+  .agddef{font-weight:300;font-size:41px;line-height:1.46;color:var(--cr)}
+  .creme .agddef{color:var(--ink3)}
+  .agddef+.agddef{margin-top:26px}
+  .agfields{margin-top:36px;display:flex;gap:54px;font-family:var(--mono);font-size:22px;color:var(--cr)}
+  .agfields b{color:#FBEFC2;font-weight:600;margin-right:10px}
+  .creme .agfields{color:var(--ink3)}
+  .creme .agfields b{color:var(--acc)}
+  /* lignes */
+  .lignes{margin-top:calc(40px * var(--u))}
+  .lignes .lg{display:flex;align-items:baseline;gap:calc(30px * var(--u));padding:calc(24px * var(--u)) 0;border-bottom:1px solid rgba(196,162,74,.34)}
+  .lignes .lg:last-child{border-bottom:none}
+  .lignes .mot{font-family:var(--serif);font-weight:800;font-style:italic;font-size:calc(40px * var(--u));color:#F2DFA4;flex:0 0 calc(300px * var(--u))}
+  .lignes .qoi{font-weight:300;font-size:calc(30px * var(--u));line-height:1.34;color:var(--cr-soft)}
+  .lignes .qoi b{font-family:var(--sans);font-style:normal;font-weight:600;color:#FBEFC2}
+  /* duo */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:calc(28px * var(--u));margin-top:calc(52px * var(--u))}
+  .duo .cel{position:relative;padding:calc(44px * var(--u)) calc(32px * var(--u)) calc(34px * var(--u));background:var(--paper-w);box-shadow:0 24px 54px -24px rgba(10,6,4,.6)}
+  .duo .cel::after{content:"";position:absolute;inset:0;border:1px solid rgba(122,94,31,.38)}
+  .duo .an{position:absolute;left:26px;top:calc(-18px * var(--u));z-index:3;
+    background:linear-gradient(135deg,#C4A24A,#E8CC86 40%,#FBEFC2 52%,#DFC176 62%,#C4A24A);
+    color:#241A08;font-family:var(--mono);font-weight:600;letter-spacing:.18em;
+    padding:calc(8px * var(--u)) calc(18px * var(--u));font-size:calc(20px * var(--u));box-shadow:0 8px 20px -8px rgba(20,10,2,.6)}
+  .duo .lb{font-family:var(--serif);font-weight:800;font-size:calc(40px * var(--u));line-height:1.1;color:var(--ink)}
+  .duo .tx{font-weight:300;font-size:calc(27px * var(--u));line-height:1.38;color:var(--ink3);margin-top:calc(16px * var(--u))}
+  .duo .tx b{font-family:var(--serif);font-style:italic;font-weight:700;color:var(--acc)}
+  /* slot photo à venir */
+  .slot{position:relative;overflow:hidden;background:linear-gradient(158deg,#2C2620,#15110D)}
+  .slot img{width:100%;height:100%;object-fit:cover;filter:var(--grade-bw);display:block;position:relative;z-index:2}
+  .slot::after{content:"";position:absolute;inset:14px;border:1px dashed rgba(251,239,194,.28);pointer-events:none}
+  .slot .lb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:22px;font-family:var(--mono);font-size:19px;letter-spacing:.13em;text-transform:uppercase;
+    color:rgba(251,239,194,.58);line-height:1.9}
+  .slot img + .lb{display:none}
+  .bande{height:calc(330px * var(--u));margin-top:calc(44px * var(--u))}
+  /* chute, relance, source */
+  .chute{font-family:var(--serif);font-style:italic;font-weight:700;font-size:calc(40px * var(--u));line-height:1.22;color:rgba(255,252,244,.90);margin-top:calc(62px * var(--u))}
+  .chute b{font-weight:700;background-image:var(--foil-or);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .relance{font-family:var(--sans);font-style:normal;font-weight:400;font-size:calc(37px * var(--u));line-height:1.3;color:var(--acc-deep);margin-top:calc(22px * var(--u))}
+  .slide.creme .relance{color:var(--ink3)}
+  .slide:not(.creme) .relance{color:var(--or-fl)}
+  .relance b{font-weight:700;color:inherit;background-image:none}
+  .slide.creme .relance b{color:var(--acc)}
+  .slide:not(.creme) .relance b{color:#FBEFC2}
+  .relance b.f{font-family:var(--serif);font-style:italic;font-weight:700;padding-bottom:.05em;
+    background-image:var(--foil-or);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .slide.creme .relance b.f{background-image:none;-webkit-background-clip:initial;background-clip:initial;
+    color:#6B3A5C;text-shadow:0 1px 0 #F0D9E5,0 -1px 0 #2D1526,0 2px 5px rgba(45,21,38,.25)}
+  .srcline{font-family:var(--mono);font-size:calc(18px * var(--u));letter-spacing:.14em;text-transform:uppercase;color:rgba(251,239,194,.80);margin-top:calc(26px * var(--u))}
+  .creme .srcline{color:var(--acc-deep)}
+  /* pastilles */
+  .slide{--pac:#E8CC86;--dim:rgba(251,239,194,.28)}
+  .slide.creme{--pac:var(--acc-deep);--dim:rgba(122,94,31,.24)}
+  .slide.surphoto{--pac:var(--or-fl);--dim:rgba(255,252,244,.34)}
+  .pC{position:absolute;left:50%;transform:translateX(-50%);bottom:46px;z-index:9;display:flex;gap:15px;align-items:center}
+  .pC i{display:block;width:9px;height:9px;border-radius:50%;background:var(--dim)}
+  .pC i.pas{background:var(--pac);opacity:.52}
+  .pC i.on{width:16px;height:16px;background:var(--pac);box-shadow:0 0 0 5px rgba(0,0,0,.10)}
+  /* source globale, bas de chaque slide */
+  .refs{position:absolute;left:0;right:0;bottom:82px;z-index:8;text-align:center;padding:0 90px;
+    font-family:var(--mono);font-size:15px;letter-spacing:.08em;color:rgba(255,255,255,.60)}
+  .slide.creme .refs{color:rgba(61,55,48,.60)}
+  .slide.surphoto .refs{color:rgba(255,255,255,.66)}
+
+.imgbox{position:relative;height:calc(440px * var(--u));width:calc(340px * var(--u));margin:calc(24px * var(--u)) auto;
+  overflow:hidden;border-radius:6px;box-shadow:0 24px 48px -20px rgba(10,6,4,.55);flex:0 0 auto}
+.imgbox img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.12) contrast(1.04)}
+.imgbox .ic{position:absolute;right:14px;bottom:12px;font-family:'IBM Plex Mono',monospace;
+  font-size:calc(16px * var(--u));letter-spacing:.05em;color:rgba(255,255,255,.92);
+  text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.imgstack{display:flex;flex-direction:column;gap:calc(20px * var(--u));margin:calc(38px * var(--u)) 0}
+.imgstack .row{border-radius:14px;overflow:hidden;box-shadow:0 16px 32px -16px rgba(10,6,4,.4);
+  flex:0 0 auto;background:var(--paper-w);padding:calc(16px * var(--u))}
+.imgstack .row img{width:100%;display:block;border-radius:5px}
+.imgstack .cred{margin-top:calc(2px * var(--u));font-family:'IBM Plex Mono',monospace;
+  font-size:calc(17px * var(--u));letter-spacing:.05em;text-align:right}
+.slide.creme .imgstack .cred{color:var(--acc-deep)}
+.slide:not(.creme) .imgstack .cred{color:var(--cr-soft)}
+/* carte postale inclinée (gabarit "carte") */
+.cartein{align-items:center;text-align:center}
+.pcwrap{position:relative;display:flex;justify-content:center;margin:0 auto 40px}
+.pc{width:620px;background:var(--paper-w);padding:22px 22px 0;transform:rotate(-1.4deg);
+  box-shadow:0 34px 70px -26px rgba(10,4,4,.65),0 0 0 1px rgba(122,94,31,.34);flex:0 0 auto}
+.pc img{display:block;width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff}
+.pc .cap{font-family:var(--mono);font-size:15px;letter-spacing:.06em;color:#3D3730;text-transform:uppercase;padding:16px 6px 18px;line-height:1.4}
+.slide.creme .pc{box-shadow:0 34px 70px -26px rgba(10,4,4,.35),0 0 0 1px rgba(122,94,31,.5)}
+/* diptyque net : image + texte, l'un en haut l'autre en bas (gabarit "diptyque") */
+.dip-top{position:absolute;top:0;left:0;right:0;height:800px;overflow:hidden;z-index:2}
+.dip-bot{position:absolute;top:800px;left:0;right:0;bottom:0;z-index:2}
+.dip-img{background:var(--fondcreme);display:flex;align-items:center;justify-content:center;padding:50px}
+.dip-top.dip-img{padding-top:90px}
+.dip-img img{max-width:100%;max-height:100%;object-fit:contain;position:relative;z-index:2}
+.dip-txt{padding:44px 96px 70px;display:flex;flex-direction:column;justify-content:flex-start}
+.dip-top.dip-txt{padding-top:90px}
+.dip-hair{position:absolute;top:796px;left:0;right:0;height:4px;z-index:6;
+  background:linear-gradient(90deg,transparent,var(--or2) 20%,var(--or-fl) 50%,var(--or2) 80%,transparent)}
+.slide:has(.dip-top.dip-img) .bandeau{color:var(--acc-deep)}
+/* comparatif : deux pays / deux temps, empilés (gabarit "comparatif")
+   fenêtre dans le MÊME dégradé pleine-slide (1080×1440) que le reste du deck,
+   jamais un dégradé redérivé — sinon les radiaux se déforment dans la demi-hauteur */
+.cmp-half{position:absolute;left:0;right:0;overflow:hidden;z-index:2;
+  background-repeat:no-repeat;background-size:1080px 1440px}
+.cmp-top{background-position:0 0}
+.cmp-bot{background-position:0 -749px}
+.cmp-half.creme{background-image:radial-gradient(ellipse 58% 42% at 26% 18%,rgba(255,255,252,.95) 0%,transparent 62%),radial-gradient(ellipse 54% 40% at 82% 34%,rgba(248,240,222,.80) 0%,transparent 64%),radial-gradient(ellipse 86% 56% at 50% 104%,rgba(226,214,194,.72) 0%,transparent 76%),linear-gradient(158deg,#FDFCF9 0%,#F5EFE3 54%,#E9DFCD 100%)}
+.cmp-in{position:absolute;inset:0;padding:0 90px;display:flex;flex-direction:column;justify-content:flex-start}
+.cmp-line{position:absolute;left:0;right:0;top:52%;height:8px;margin-top:-3px;z-index:6;pointer-events:none}
+.cmp-line::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.22),transparent 45%,transparent 55%,rgba(255,255,255,.32))}
+.cmp-line::after{content:"";position:absolute;left:0;right:0;top:3px;height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--or2) 15%,var(--or-fl) 50%,var(--or2) 85%,transparent)}
+.cmp-seam-tag{position:absolute;left:50%;top:52%;transform:translate(-50%,-100%);z-index:7;margin-top:-6px;line-height:1;
+  font-family:var(--sans);font-weight:700;letter-spacing:-.01em;font-size:40px;
+  color:#EDE3CE;text-shadow:0 1px 0 #fff,0 -1.5px 1px rgba(40,28,8,.5),0 3px 5px rgba(40,28,8,.25);white-space:nowrap}
+.cmp-half.creme .dh{color:var(--ink)}
+.cmp-half.creme .dh em{background-image:var(--foil-acc)}
+.cmp-half.creme .dp{color:var(--ink3)}
+.cmp-half.creme .dp b,.cmp-half.creme .dp em{color:var(--acc);background-image:none}
+.cmp-half.creme .dp b.f,.cmp-half.creme .dp em.f{background-image:none;-webkit-background-clip:initial;background-clip:initial;
+  color:#6B3A5C;text-shadow:0 1px 0 #F0D9E5,0 -1px 0 #2D1526,0 2px 5px rgba(45,21,38,.25)}
+.slide:has(.cmp-half.creme) .bandeau{color:var(--acc-deep)}
+/* timeline verticale (gabarit "timeline") : fil doré + noeuds datés, un par événement */
+.tlv{position:relative;width:100%;margin-top:calc(24px * var(--u))}
+.tlv::before{content:"";position:absolute;left:9px;top:9px;bottom:13px;width:2px;
+  background:linear-gradient(180deg,transparent,var(--or2) 6%,var(--or3) 50%,var(--or2) 94%,transparent)}
+.tlv .nd{position:relative;padding:0 0 calc(22px * var(--u)) calc(56px * var(--u))}
+.tlv .nd:last-child{padding-bottom:0}
+.tlv .nd::before{content:"";position:absolute;left:2px;top:6px;width:18px;height:18px;border-radius:50%;
+  background:var(--acc-deep);border:2px solid var(--or3);box-shadow:0 0 0 4px rgba(0,0,0,.12)}
+.slide.creme .tlv .nd::before{background:var(--paper-w);border-color:var(--acc)}
+.tlv .yr{font-family:var(--mono);font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--or3);font-size:calc(19px * var(--u))}
+.slide.creme .tlv .yr{color:var(--acc-deep)}
+.tlv .cc{font-family:var(--serif);font-style:italic;font-weight:700;line-height:1.12;color:var(--cr);
+  margin:5px 0 6px;font-size:calc(36px * var(--u))}
+.tlv .cc em{color:var(--or3)}
+.slide.creme .tlv .cc{color:var(--ink)}
+.slide.creme .tlv .cc em{color:var(--acc)}
+.tlv .gl{font-weight:300;line-height:1.27;color:var(--cr-soft);font-size:calc(25px * var(--u))}
+.slide.creme .tlv .gl{color:var(--ink3)}
+.tlv .gl b{font-family:var(--sans);font-style:normal;font-weight:600;color:#FBEFC2;background-image:none}
+.slide.creme .tlv .gl b{color:var(--acc)}
+/* corpus : planche de trois cartes numérotées (gabarit "corpus") */
+.crp{margin-top:calc(40px * var(--u))}
+.crp .g{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(22px * var(--u))}
+.crp figure{position:relative;background:var(--paper-w);padding:calc(30px * var(--u)) calc(20px * var(--u)) calc(24px * var(--u));
+  box-shadow:0 22px 46px -22px rgba(10,6,4,.55),0 0 0 1px rgba(122,94,31,.32);
+  display:flex;flex-direction:column;align-items:center;text-align:center}
+.crp figure::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--or2) 28%,var(--or-fl) 50%,var(--or3) 72%,transparent)}
+.crp .no{width:calc(40px * var(--u));height:calc(40px * var(--u));border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-style:italic;font-weight:900;font-size:calc(20px * var(--u));color:var(--paper-w);
+  background:var(--acc-deep);box-shadow:0 0 0 1px rgba(196,162,74,.5);margin-bottom:calc(14px * var(--u))}
+.crp .ht{font-family:var(--mono);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);
+  font-size:calc(14px * var(--u))}
+.crp .cap{font-weight:300;line-height:1.32;color:var(--ink3);margin-top:calc(8px * var(--u));font-size:calc(17px * var(--u))}
+/* triptyque : trois bandes photo plein cadre, texte ancré en bas (gabarit "triptyque") */
+.tri-g{position:absolute;inset:0;z-index:2;display:grid;grid-template-columns:repeat(3,1fr)}
+.tri-band{position:relative;overflow:hidden}
+.tri-band+.tri-band{border-left:2px solid rgba(196,162,74,.42)}
+.tri-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(1.0)}
+.tri-slot{position:absolute;inset:0;background:linear-gradient(158deg,#2C2620,#15110D);display:flex;align-items:center;justify-content:center}
+.tri-slot .lb{font-family:var(--mono);font-size:calc(15px * var(--u));letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(251,239,194,.5);text-align:center;line-height:1.6}
+.tri-t{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(8,8,8,.35) 0%,transparent 22%,rgba(8,8,8,.5) 52%,rgba(4,4,4,.94) 84%,#050404 100%)}
+.tri-in{position:absolute;left:26px;right:26px;bottom:86px;z-index:3}
+.tri-an{font-family:var(--serif);font-style:italic;font-weight:900;line-height:1;color:var(--or3);
+  margin-bottom:calc(8px * var(--u));font-size:calc(32px * var(--u))}
+.tri-nom{font-family:var(--serif);font-weight:700;line-height:1.12;color:var(--paper-w);font-size:calc(26px * var(--u))}
+.tri-meta{font-family:var(--mono);font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--or3);
+  margin:calc(6px * var(--u)) 0 calc(12px * var(--u));font-size:calc(14px * var(--u))}
+.tri-corps{font-weight:300;color:var(--cr-soft);line-height:1.4;font-size:calc(21px * var(--u))}
+.tri-corps b{font-family:var(--sans);font-weight:600;color:#FBEFC2;background-image:none}
+.tri-title{position:absolute;top:118px;left:52px;right:52px;z-index:5;font-family:var(--serif);font-weight:900;
+  line-height:1.04;color:var(--paper-w);text-shadow:0 2px 18px rgba(0,0,0,.75);font-size:calc(46px * var(--u))}
+.tri-title em{font-style:italic;color:var(--or3);background-image:none}
+/* plaque musée : image encadrée + cartel dessous, tout centré (gabarit "musee") */
+.musee-in{align-items:center;text-align:center}
+.musee-frame{padding:16px;background:var(--frame-or);box-shadow:0 40px 80px -30px rgba(20,8,10,.5),0 0 0 1px rgba(122,94,31,.4);flex:0 0 auto}
+.musee-frame img{display:block;width:560px;max-width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;border:1px solid rgba(122,94,31,.5)}
+.musee-slot{width:560px;height:560px;display:flex;align-items:center;justify-content:center;background:linear-gradient(158deg,#2C2620,#15110D);border:none;padding:0}
+.musee-slot .lb{font-family:var(--mono);font-size:19px;letter-spacing:.13em;text-transform:uppercase;color:rgba(251,239,194,.58);text-align:center;line-height:1.9}
+.musee-plate{margin-top:calc(40px * var(--u));max-width:800px}
+.musee-kick{font-family:var(--mono);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--or-deep);font-size:calc(18px * var(--u))}
+.slide.creme .musee-kick{color:var(--acc-deep)}
+/* fracture : image détourée incrustée en bas, texte + carte en haut (gabarit "fracture") */
+.frac-img{position:absolute;left:0;bottom:0;width:420px;z-index:2;pointer-events:none}
+.frac-img img{display:block;width:100%;height:auto;transform:scaleX(-1)}
+.frac-slot{width:800px;height:640px;background:linear-gradient(158deg,#2C2620,#15110D);
+  display:flex;align-items:center;justify-content:center;border-radius:6px}
+.frac-slot .lb{font-family:var(--mono);font-size:19px;letter-spacing:.13em;text-transform:uppercase;
+  color:rgba(251,239,194,.58);text-align:center;line-height:1.9}
+.slide.creme .dp b.f,.slide.creme .verdict b.f,.slide.creme .relance b.f{color:#6A1A55;text-shadow:none;background-image:none;-webkit-background-clip:initial;background-clip:initial}</style></head><body><div class="shell">  <div class="devcap"><b>01</b> — cover · cyan</div>
+  <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">La première violence</div><div class="plein sombre"><img src="img/lyceecover.jpg" alt="" loading="eager" decoding="sync"><div class="veil"></div><div style="position:absolute;inset:0;z-index:3;background:rgba(4,3,4,.12)"></div></div><div class="gr"></div><div class="in" style="justify-content:flex-end;padding-bottom:146px"><div class="foil" style="font-size:70px;margin-top:30px">La violence<br><em>qu'on filme.</em></div><p class="dp" style="margin-top:30px">Le <b>21 septembre</b>, le blocus du lycée Saint-Exupéry de Créteil, né du manque de <b>professeurs</b> et de <b>moyens</b>, gagne les lycées de banlieue, puis le pays : un ras-le-bol face à une <b>violence généralisée</b>. Personnels et élèves dénoncent des conditions de travail et d'étude dégradées, reléguées au second plan par l'<b>angle sécuritaire</b>, qui ne retient que les <b>dérives violentes</b>. On ne parle que de violence. Alors parlons-en : <b class="f">quelle est celle que l'on refuse de voir, celle dont naissent les autres ?</b></p></div><div class="goldline"></div><div class="refs">Wikipédia FR, « Mouvement lycéen et blocus de 2026 » · Euronews, 29 septembre 2026</div><div class="pC"><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>02</b> — texte · grape</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">La première violence</div><div class="bg grape"></div><div class="gr"></div><div class="vg"></div><div class="in"><h1 class="dh" style="font-size:66px">Posons<br><em>le cadre.</em></h1><p class="dp"><b>Toute violence est condamnable</b>, surtout contre des lycées déjà dégradés ou le personnel, au cœur des revendications. Un mouvement se radicalise face à un <b>usage de la force jugé illégitime</b> ou des individus étrangers à la cause s’y greffent pour d’autres raisons. À l’heure où le <b>cadrage médiatique</b> parle d’une « folie de la foule », rhétorique déconstruite par la sociologie depuis le XXe siècle, les violences policières semblent moins intéresser. En réalité, la <b>violence première</b> est ailleurs : <b>institutionnelle, systémique</b>, quotidienne, invisible pour ceux qui ne la subissent pas. <b class="f">Elle se joue dans l’école publique, depuis trop longtemps, sans jamais faire la une.</b></p></div><div class="refs">Galtung, 1969 · Gitlin, 1980 · Tilly, 2003 · Reicher et Stott</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>03</b> — brut · cyan</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">La première violence</div><div class="bg cyan"></div><div class="gr"></div><div class="vg"></div><style>
+.pp{position:absolute;left:0;right:0;top:0;bottom:0;z-index:4}
+.pp-gr{position:absolute;left:50%;top:700px;transform:translateX(-50%);z-index:2;font-family:'Amiri',serif;font-weight:700;font-size:380px;line-height:1;color:rgba(212,176,90,.15);pointer-events:none;white-space:nowrap}
+.pp-in{position:absolute;left:100px;right:100px;top:120px;z-index:4}
+.dc-eyebrow{font-family:var(--mono);font-weight:600;letter-spacing:.32em;text-indent:.32em;font-size:20px;color:rgba(240,217,140,.80);text-transform:uppercase}
+.dc-word{font-family:var(--cormo);font-weight:700;font-size:112px;line-height:1;margin-top:20px;color:#F2D98E;text-shadow:0 1px 0 #dcbb63,0 2px 0 #cea94f,0 3px 0 #bd963f,0 4px 0 #a98634,0 5px 1px #8f6f2b,0 10px 22px rgba(20,8,40,.55)}
+.dc-gram{display:flex;align-items:baseline;gap:16px;margin-top:22px}
+.dc-gram .n{font-family:var(--serif);font-size:40px;color:var(--cr-soft)}
+.dc-gram .fem{font-family:var(--serif);font-style:italic;font-weight:700;font-size:40px;background-image:var(--foil-or);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dc-pho{font-family:var(--mono);font-size:21px;letter-spacing:.04em;color:rgba(240,217,140,.70);margin-top:8px}
+.dc-rule{height:1.5px;margin:30px 0 28px;background:linear-gradient(90deg,var(--or2),transparent)}
+.dc-def{font-weight:300;font-size:42px;line-height:1.36;color:var(--cr)}
+.dc-def b{font-family:var(--sans);font-weight:600;color:#FBEFC2}
+.dc-sm{font-weight:300;font-size:34px;line-height:1.34;color:var(--cr);margin-top:14px}
+.dc-sm b{font-family:var(--sans);font-weight:600;color:#FBEFC2}
+.dc-ul{list-style:none;margin:14px 0 0;padding:0}
+.dc-ul li{position:relative;padding-left:34px;font-weight:300;font-size:34px;line-height:1.3;color:var(--cr);margin-top:10px}
+.dc-ul li:before{content:'';position:absolute;left:4px;top:.52em;width:12px;height:12px;transform:rotate(45deg);background:#F0D98C}
+.dc-ul b{font-family:var(--sans);font-weight:600;color:#FBEFC2}
+</style>
+<div class="pp">
+<div class="pp-gr">تعريف</div>
+<div class="pp-in">
+  <div class="dc-eyebrow">Le concept</div>
+  <div class="dc-word">Protest paradigm</div>
+  <div class="dc-gram"><span class="n">locution</span><span class="fem">anglaise</span></div>
+  <div class="dc-pho">/ˈproʊ.tɛst ˈpær.ə.daɪm/</div>
+  <p class="dc-def" style="margin-top:46px">Schéma de couverture médiatique qui présente une mobilisation comme <b>déviante</b> ou <b>menaçante</b>, en la réduisant à ses <b>actions</b> plutôt qu'à ses <b>revendications</b>. Observé par <b>Todd Gitlin</b> en 1980 dans la presse américaine face au mouvement étudiant, nommé par <b>Chan et Lee</b> en 1984, il repose, selon <b>McLeod et Hertog</b>, sur trois mécanismes&nbsp;:</p>
+  <ul class="dc-ul" style="margin-top:22px">
+    <li style="font-size:40px">un cadrage qui <b>marginalise</b> le mouvement</li>
+    <li style="font-size:40px">le recours aux <b>sources officielles</b></li>
+    <li style="font-size:40px">l'appel à une <b>opinion publique</b> supposée hostile</li>
+  </ul>
+</div>
+</div>
+<div class="refs">Gitlin, The Whole World Is Watching, 1980 · Chan et Lee, 1984 · McLeod et Hertog, 1992 et 1999</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>04</b> — texte · creme</div>
+  <div class="frame-wrap"><div class="slide creme"><div class="bandeau">La première violence</div><div class="bg creme"></div><div class="gr"></div><div class="vg"></div><div class="in"><h1 class="dh" style="font-size:50px">Au JT de France 2,<br><em>les flammes avant les revendications.</em></h1><p class="dp">ACRIMED note que du 28 septembre au 1er octobre, les JT de 13 h et 20 h ont consacré <b>24 minutes et 53 secondes</b> à la mobilisation lycéenne. <b>19 minutes et 26 secondes</b> portent sur les violences, les incendies et les affrontements, dont 47 secondes sur la réponse policière ; <b>2 minutes et 58 secondes</b> sur les accusations du gouvernement contre LFI. L'organisation du mouvement n'obtient que 33 secondes. Au total, <b>90 %</b> du temps va au spectacle et à l'ordre. <b class="f">Pour 1 minute et 56 secondes de revendications, 19 minutes et 26 secondes de violences.</b></p></div><div class="refs">ACRIMED, J. Younes, « Au JT de France 2, poubelles brûlées partout », 2 octobre 2026 · les 47 s sont comprises dans les 19 min 26 s · regroupement « spectacle et ordre » (90 %) : de l’auteur</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>05</b> — cover · cyan</div>
+  <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">La première violence</div><div class="plein sombre"><img src="img/attal.jpg" alt="" loading="eager" decoding="sync"><div class="veil"></div><div style="position:absolute;inset:0;z-index:3;background:rgba(4,3,4,.28)"></div></div><div class="gr"></div><div class="in" style="justify-content:flex-end;padding-bottom:146px"><div class="foil" style="font-size:72px;margin-top:30px">La campagne<br><em>a déjà commencé.</em></div><p class="dp" style="margin-top:30px"><b>Gabriel Attal</b>, candidat à la présidentielle de 2027, avertit les lycéens dans une vidéo : on risque de retenir les poubelles brûlées, « pas vos revendications. Pas votre colère. Les flammes. » Sur les plateaux, <b>Nathanaël Combary</b>, qui n'est plus lycéen, travaille selon Contre Attaque pour une agence dirigée par un conseiller du candidat. Attal promet « <b>un prof devant vous</b> » ; <b class="f">son gouvernement annulait pourtant 691,6 millions d'euros de crédits de l'Éducation nationale en février 2024.</b></p></div><div class="goldline"></div><div class="refs">vidéo « Message aux lycéens de France » · décret n° 2024-124 du 21 février 2024 · Contre Attaque, 3 octobre 2026 (non vérifié de façon indépendante) · Mood School, « Qui est Nathanaël Combary ? »</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>06</b> — brut · creme</div>
+  <div class="frame-wrap"><div class="slide creme"><div class="bandeau">La première violence</div><div class="bg creme"></div><div class="gr"></div><div class="vg"></div><style>.gf{position:absolute;inset:0;z-index:4}
+.gf .ph{position:absolute;bottom:0;left:-20px;display:block;z-index:3;filter:drop-shadow(0 6px 10px rgba(60,20,50,.28))}
+.gf .p{position:absolute;margin:0;z-index:6}
+.gf .qs{position:absolute;left:64px;right:64px;top:662px;margin:0;text-align:center;font-size:38px;line-height:1.14;z-index:6}
+.gf .fin{position:absolute;left:64px;right:64px;top:736px;margin:0;text-align:center;font-size:38px;line-height:1.15;z-index:6;text-wrap:balance}
+/*kw-foil retiré : mots-clés = gras couleur unie (charte crème du moteur)*/
+.slide.creme .dp .pv{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;background-image:var(--foil-acc);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
+.gf .card{position:absolute;left:400px;right:64px;top:918px;background:linear-gradient(160deg,#5E1A4D,#3E0F34);border-radius:6px;padding:46px 26px 24px;box-shadow:0 18px 40px rgba(60,20,50,.35);z-index:6}
+.gf .tag{position:absolute;left:0;top:-30px;padding:9px 20px;background:linear-gradient(120deg,#8A6C21,#F0D98C 50%,#8A6C21);font:700 20px/1 var(--mono);letter-spacing:.16em;color:#2A0B22;text-transform:uppercase}
+.gf .card p{margin:0;font:italic 600 35.65px/1.2 Poppins,sans-serif;color:#FFFCF4}
+.gf .card b{font:900 italic 36px/1.2 'Playfair Display',serif;color:#F0D98C}
+.gf .card small{display:block;margin-top:12px;font:500 24px/1.2 var(--sans);color:rgba(255,252,244,.85)}
+.gf .s{position:absolute;margin:0;left:400px;right:64px;font:400 19.55px/1.25 var(--mono);letter-spacing:.03em;color:rgba(61,55,48,.7);z-index:7}
+.slide:has(.gf) .pC{left:auto;right:64px;transform:none}
+</style><div class="gf"><h1 class="dh" style="position:absolute;left:64px;right:64px;top:92px;margin:0;font-size:66px">Une leçon de morale<br><em>hors de propos.</em></h1><p class="dp p" style="left:64px;right:64px;top:238px;font-size:40.25px;line-height:1.26">Le champion du monde <b>Jimmy Gressier</b> ne comprend pas <i>« qu'on manifeste parce qu'une journée de 8h à 18h serait devenue insupportable »</i>. Son <b>culte de l'effort</b> passe à côté du sujet : les longues journées comptent (<b>5 h</b> par jour dans l'OCDE), mais les lycéens réclament d'abord de <b>bonnes conditions de travail</b>. <span class="pv">Mais comment étudier sans professeurs et sans les moyens nécessaires ?</span></p><p class="dp fin"><span class="pv">Avant d'exiger davantage d'efforts des élèves, encore faudrait-il leur donner une école à la hauteur de leurs efforts.</span></p><img class="ph" src="img/gressier-detoure-flush-double.png" alt="" style="width:380px"><div class="card"><div class="tag">Ce qu'il dit</div><p>« Je ne comprends pas qu'on manifeste parce qu'une journée de <b>8h à 18h</b> serait devenue insupportable. (…) Le travail n'est pas une injustice. <b>L'effort n'est pas une oppression.</b> »</p></div><p class="s" style="bottom:92px;text-align:right">Story Instagram de J. Gressier, 3 oct. 2026 · OCDE 2019 (collège)</p></div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>07</b> — cover · grape</div>
+  <div class="frame-wrap"><div class="slide surphoto"><div class="bandeau">La première violence</div><div class="plein sombre"><img src="img/jeunes.jpg" alt="" loading="eager" decoding="sync"><div class="veil"></div><div style="position:absolute;inset:0;z-index:3;background:rgba(4,3,4,.3)"></div></div><div class="gr"></div><div class="in" style="justify-content:flex-end;padding-bottom:146px"><div class="foil" style="font-size:58px;margin-top:30px">La jeunesse<br><em>n'est qu'un mot.</em></div><p class="dp" style="margin-top:30px">Reprocher aux lycéens de manifester, c'est souvent le réflexe du « <b>nous, à leur âge</b> ». Or, comme le rappelait <b>Bourdieu</b>, faire des jeunes issus de milieux sociaux différents un <b>bloc homogène</b> n'a guère de sens. C'est d'ailleurs la force de ces manifestations : elles réunissent des lycéens de <b>banlieue</b>, de <b>province</b> comme de grands établissements <b>parisiens</b>. Parler de « la jeunesse » comme d'un bloc, c'est aussi <b>exercer un pouvoir sur elle</b> : lui dire qui elle est, ce qu'elle vaut et comment elle devrait se comporter. <b class="f">Le « nous, à leur âge » dit finalement moins sur les jeunes qui se battent pour leur avenir que sur ceux qui s'autorisent à les juger.</b></p></div><div class="goldline"></div><div class="refs">Bourdieu, « La jeunesse n'est qu'un mot », 1978 (Questions de sociologie, Minuit, 1984) · franceinfo, 1er octobre 2026</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>08</b> — brut · cyan</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">La première violence</div><div class="bg cyan"></div><div class="gr"></div><div class="vg"></div><style>.nm{font-family:'Playfair Display',serif;font-style:italic;font-weight:800}.sb{font-family:'Poppins',sans-serif;font-weight:300}</style><div style="position:absolute;inset:0;z-index:4"><h1 class="dh" style="position:absolute;left:0;right:0;top:92px;text-align:center;font-size:66px;margin:0;z-index:4">L'école publique,<br><em>en six manques.</em></h1><svg viewBox="0 0 1080 1440" width="1080" height="1440" style="position:absolute;left:0;top:0"><defs>
+<linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".30"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/></linearGradient>
+<linearGradient id="gw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8A2F70"/><stop offset=".5" stop-color="#380E2C"/><stop offset="1" stop-color="#240A1C"/></linearGradient>
+<linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EAF0F1"/><stop offset="1" stop-color="#B9CBD0"/></linearGradient>
+<radialGradient id="hole" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#240A1C"/><stop offset="1" stop-color="#4A1A3E"/></radialGradient>
+<linearGradient id="sh" x1="0" x2="1"><stop offset="0" stop-color="#04201F" stop-opacity=".55"/><stop offset="1" stop-color="#04201F" stop-opacity="0"/></linearGradient>
+</defs><polygon points="488.0,1170.0 638.0,1100.0 638.0,1180.0 280.0,1283.0" fill="url(#sh)" /><polygon points="280.0,1061.0 504.0,1174.0 280.0,1289.0 56.0,1174.0" fill="#073A3D" /><polygon points="56.0,1174.0 280.0,1289.0 280.0,1303.0 56.0,1188.0" fill="#052A2C" /><polygon points="504.0,1174.0 280.0,1289.0 280.0,1303.0 504.0,1188.0" fill="#06393B" /><polygon points="72.0,1170.0 280.0,1273.0 280.0,1133.0 72.0,1030.0" fill="#C9B787" /><polygon points="488.0,1170.0 280.0,1273.0 280.0,1133.0 488.0,1030.0" fill="#DCCB9C" /><polygon points="72.0,1170.0 280.0,1273.0 280.0,1133.0 72.0,1030.0" fill="url(#gl)" /><polygon points="488.0,1170.0 280.0,1273.0 280.0,1133.0 488.0,1030.0" fill="url(#gl)" /><polygon points="72.0,1030.0 280.0,1133.0 280.0,1142.0 72.0,1039.0" fill="#380E2C" /><polygon points="488.0,1030.0 280.0,1133.0 280.0,1142.0 488.0,1039.0" fill="#4A1A3E" /><polygon points="86.3,1067.9 131.4,1090.3 131.4,1156.7 86.3,1134.4" fill="#9A7A2A" /><polygon points="90.1,1073.6 127.6,1092.2 127.6,1151.0 90.1,1132.4" fill="url(#gw)" /><polygon points="107.7,1082.3 110.0,1083.5 110.0,1142.3 107.7,1141.1" fill="#9A7A2A" /><polygon points="90.1,1073.6 103.1,1080.1 94.8,1134.8 90.1,1132.4" fill="rgba(255,255,255,.12)" /><polygon points="145.7,1097.3 190.9,1119.7 190.9,1186.1 145.7,1163.8" fill="rgba(240,217,140,.12)" stroke="#C9A13C" stroke-width="2.4" stroke-dasharray="6 5"/><line x1="158.8" y1="1137.0" x2="177.8" y2="1146.5" stroke="#E8C65F" stroke-width="3.4" stroke-linecap="round"/><line x1="168.3" y1="1132.3" x2="168.3" y2="1151.2" stroke="#E8C65F" stroke-width="3.4" stroke-linecap="round"/><polygon points="205.1,1126.8 250.3,1149.1 250.3,1215.6 205.1,1193.2" fill="#9A7A2A" /><polygon points="208.9,1132.4 246.5,1151.0 246.5,1209.9 208.9,1191.3" fill="url(#gw)" /><polygon points="226.5,1141.2 228.9,1142.3 228.9,1201.2 226.5,1200.0" fill="#9A7A2A" /><polygon points="208.9,1132.4 222.0,1138.9 213.7,1193.6 208.9,1191.3" fill="rgba(255,255,255,.12)" /><polygon points="353.7,1129.7 413.1,1100.3 413.1,1200.0 353.7,1229.4" fill="#7A5230" /><polygon points="358.4,1132.1 408.4,1107.4 408.4,1202.3 358.4,1227.0" fill="url(#gw)" /><polygon points="358.4,1132.1 382.2,1120.3 382.2,1215.3 358.4,1227.0" fill="rgba(255,255,255,.10)" /><polygon points="344.2,1124.9 422.6,1086.1 422.6,1095.6 344.2,1134.4" fill="#380E2C" /><polygon points="346.6,1236.9 420.3,1200.4 420.3,1205.4 346.6,1241.9" fill="#EADFB8" /><polygon points="346.6,1241.9 420.3,1205.4 420.3,1210.4 346.6,1246.9" fill="#D4C79A" /><polygon points="346.6,1246.9 420.3,1210.4 420.3,1215.4 346.6,1251.9" fill="#EADFB8" /><text x="383.4" y="1100.8" transform="rotate(-26.565 383.4 1100.8)" font-family="IBM Plex Mono,monospace" font-weight="600" font-size="11" letter-spacing="2.2" fill="#380E2C" text-anchor="middle">ÉCOLE</text><polygon points="72.0,1030.0 280.0,1133.0 280.0,993.0 72.0,890.0" fill="#C9B787" /><polygon points="488.0,1030.0 280.0,1133.0 280.0,993.0 488.0,890.0" fill="#DCCB9C" /><polygon points="72.0,1030.0 280.0,1133.0 280.0,993.0 72.0,890.0" fill="url(#gl)" /><polygon points="488.0,1030.0 280.0,1133.0 280.0,993.0 488.0,890.0" fill="url(#gl)" /><polygon points="72.0,890.0 280.0,993.0 280.0,1002.0 72.0,899.0" fill="#380E2C" /><polygon points="488.0,890.0 280.0,993.0 280.0,1002.0 488.0,899.0" fill="#4A1A3E" /><polygon points="86.3,927.9 131.4,950.3 131.4,1016.7 86.3,994.4" fill="#9A7A2A" /><polygon points="90.1,933.6 127.6,952.2 127.6,1011.0 90.1,992.4" fill="url(#gw)" /><polygon points="107.7,942.3 110.0,943.5 110.0,1002.3 107.7,1001.1" fill="#9A7A2A" /><polygon points="90.1,933.6 103.1,940.1 94.8,994.8 90.1,992.4" fill="rgba(255,255,255,.12)" /><polygon points="294.3,1016.8 339.4,994.4 339.4,1060.9 294.3,1083.2" fill="#9A7A2A" /><polygon points="298.1,1018.7 335.6,1000.1 335.6,1058.9 298.1,1077.5" fill="url(#gw)" /><polygon points="315.7,1010.0 318.0,1008.8 318.0,1067.7 315.7,1068.8" fill="#9A7A2A" /><polygon points="298.1,1018.7 311.1,1012.2 302.8,1075.2 298.1,1077.5" fill="rgba(255,255,255,.12)" /><polygon points="145.7,957.3 190.9,979.7 190.9,1046.1 145.7,1023.8" fill="rgba(240,217,140,.12)" stroke="#C9A13C" stroke-width="2.4" stroke-dasharray="6 5"/><polygon points="353.7,987.4 398.9,965.0 398.9,1031.4 353.7,1053.8" fill="rgba(240,217,140,.12)" stroke="#C9A13C" stroke-width="2.4" stroke-dasharray="6 5"/><polygon points="205.1,986.8 250.3,1009.1 250.3,1075.6 205.1,1053.2" fill="#9A7A2A" /><polygon points="208.9,992.4 246.5,1011.0 246.5,1069.9 208.9,1051.3" fill="url(#gw)" /><polygon points="226.5,1001.2 228.9,1002.3 228.9,1061.2 226.5,1060.0" fill="#9A7A2A" /><polygon points="208.9,992.4 222.0,998.9 213.7,1053.6 208.9,1051.3" fill="rgba(255,255,255,.12)" /><polygon points="413.1,957.9 458.3,935.6 458.3,1002.0 413.1,1024.4" fill="#9A7A2A" /><polygon points="416.9,959.8 454.5,941.2 454.5,1000.1 416.9,1018.7" fill="url(#gw)" /><polygon points="434.5,951.1 436.9,950.0 436.9,1008.8 434.5,1010.0" fill="#9A7A2A" /><polygon points="416.9,959.8 430.0,953.4 421.7,1016.3 416.9,1018.7" fill="rgba(255,255,255,.12)" /><polygon points="72.0,890.0 280.0,993.0 280.0,853.0 72.0,750.0" fill="#C9B787" /><polygon points="488.0,890.0 280.0,993.0 280.0,853.0 488.0,750.0" fill="#DCCB9C" /><polygon points="72.0,890.0 280.0,993.0 280.0,853.0 72.0,750.0" fill="url(#gl)" /><polygon points="488.0,890.0 280.0,993.0 280.0,853.0 488.0,750.0" fill="url(#gl)" /><polygon points="72.0,750.0 280.0,853.0 280.0,862.0 72.0,759.0" fill="#380E2C" /><polygon points="488.0,750.0 280.0,853.0 280.0,862.0 488.0,759.0" fill="#4A1A3E" /><polygon points="86.3,787.9 131.4,810.3 131.4,876.7 86.3,854.4" fill="#9A7A2A" /><polygon points="90.1,793.6 127.6,812.2 127.6,871.0 90.1,852.4" fill="url(#gw)" /><polygon points="107.7,802.3 110.0,803.5 110.0,862.3 107.7,861.1" fill="#9A7A2A" /><polygon points="86.3,787.9 131.4,810.3 131.4,876.7 86.3,854.4" fill="none" stroke="#E8C65F" stroke-width="2.6" stroke-dasharray="6 5"/><polygon points="90.1,793.6 103.1,800.1 94.8,854.8 90.1,852.4" fill="rgba(255,255,255,.12)" /><polygon points="294.3,876.8 339.4,854.4 339.4,920.9 294.3,943.2" fill="#9A7A2A" /><polygon points="298.1,878.7 335.6,860.1 335.6,918.9 298.1,937.5" fill="url(#gw)" /><polygon points="315.7,870.0 318.0,868.8 318.0,927.7 315.7,928.8" fill="#9A7A2A" /><polygon points="294.3,876.8 339.4,854.4 339.4,920.9 294.3,943.2" fill="none" stroke="#E8C65F" stroke-width="2.6" stroke-dasharray="6 5"/><polygon points="298.1,878.7 311.1,872.2 302.8,935.2 298.1,937.5" fill="rgba(255,255,255,.12)" /><polygon points="145.7,817.3 190.9,839.7 190.9,906.1 145.7,883.8" fill="#9A7A2A" /><polygon points="149.5,823.0 187.1,841.6 187.1,900.5 149.5,881.9" fill="url(#gw)" /><polygon points="167.1,831.7 169.5,832.9 169.5,891.8 167.1,890.6" fill="#9A7A2A" /><polygon points="145.7,817.3 190.9,839.7 190.9,906.1 145.7,883.8" fill="none" stroke="#E8C65F" stroke-width="2.6" stroke-dasharray="6 5"/><polygon points="149.5,823.0 162.6,829.5 154.2,884.2 149.5,881.9" fill="rgba(255,255,255,.12)" /><polygon points="353.7,847.4 398.9,825.0 398.9,891.4 353.7,913.8" fill="#9A7A2A" /><polygon points="357.5,849.3 395.1,830.7 395.1,889.5 357.5,908.1" fill="url(#gw)" /><polygon points="375.1,840.6 377.5,839.4 377.5,898.2 375.1,899.4" fill="#9A7A2A" /><polygon points="353.7,847.4 398.9,825.0 398.9,891.4 353.7,913.8" fill="none" stroke="#E8C65F" stroke-width="2.6" stroke-dasharray="6 5"/><polygon points="357.5,849.3 370.6,842.8 362.2,905.8 357.5,908.1" fill="rgba(255,255,255,.12)" /><polygon points="205.1,846.8 250.3,869.1 250.3,935.6 205.1,913.2" fill="#9A7A2A" /><polygon points="208.9,852.4 246.5,871.0 246.5,929.9 208.9,911.3" fill="url(#gw)" /><polygon points="226.5,861.2 228.9,862.3 228.9,921.2 226.5,920.0" fill="#9A7A2A" /><polygon points="205.1,846.8 250.3,869.1 250.3,935.6 205.1,913.2" fill="none" stroke="#E8C65F" stroke-width="2.6" stroke-dasharray="6 5"/><polygon points="208.9,852.4 222.0,858.9 213.7,913.6 208.9,911.3" fill="rgba(255,255,255,.12)" /><polygon points="413.1,817.9 458.3,795.6 458.3,862.0 413.1,884.4" fill="#9A7A2A" /><polygon points="416.9,819.8 454.5,801.2 454.5,860.1 416.9,878.7" fill="url(#gw)" /><polygon points="434.5,811.1 436.9,810.0 436.9,868.8 434.5,870.0" fill="#9A7A2A" /><polygon points="413.1,817.9 458.3,795.6 458.3,862.0 413.1,884.4" fill="none" stroke="#E8C65F" stroke-width="2.6" stroke-dasharray="6 5"/><polygon points="416.9,819.8 430.0,813.4 421.7,876.3 416.9,878.7" fill="rgba(255,255,255,.12)" /><polygon points="72.0,750.0 280.0,853.0 280.0,713.0 72.0,610.0" fill="#C9B787" /><polygon points="488.0,750.0 280.0,853.0 280.0,713.0 488.0,610.0" fill="#DCCB9C" /><polygon points="72.0,750.0 280.0,853.0 280.0,713.0 72.0,610.0" fill="url(#gl)" /><polygon points="488.0,750.0 280.0,853.0 280.0,713.0 488.0,610.0" fill="url(#gl)" /><polygon points="72.0,610.0 280.0,713.0 280.0,722.0 72.0,619.0" fill="#380E2C" /><polygon points="488.0,610.0 280.0,713.0 280.0,722.0 488.0,619.0" fill="#4A1A3E" /><polygon points="86.3,647.9 131.4,670.3 131.4,736.7 86.3,714.4" fill="rgba(240,217,140,.12)" stroke="#C9A13C" stroke-width="2.4" stroke-dasharray="6 5"/><polygon points="294.3,736.8 339.4,714.4 339.4,780.9 294.3,803.2" fill="rgba(240,217,140,.12)" stroke="#C9A13C" stroke-width="2.4" stroke-dasharray="6 5"/><polygon points="145.7,677.3 190.9,699.7 190.9,766.1 145.7,743.8" fill="#9A7A2A" /><polygon points="149.5,683.0 187.1,701.6 187.1,760.5 149.5,741.9" fill="url(#gw)" /><polygon points="167.1,691.7 169.5,692.9 169.5,751.8 167.1,750.6" fill="#9A7A2A" /><polygon points="149.5,683.0 162.6,689.5 154.2,744.2 149.5,741.9" fill="rgba(255,255,255,.12)" /><polygon points="353.7,707.4 398.9,685.0 398.9,751.4 353.7,773.8" fill="#9A7A2A" /><polygon points="357.5,709.3 395.1,690.7 395.1,749.5 357.5,768.1" fill="url(#gw)" /><polygon points="375.1,700.6 377.5,699.4 377.5,758.2 375.1,759.4" fill="#9A7A2A" /><polygon points="357.5,709.3 370.6,702.8 362.2,765.8 357.5,768.1" fill="rgba(255,255,255,.12)" /><polygon points="205.1,706.8 250.3,729.1 250.3,795.6 205.1,773.2" fill="rgba(240,217,140,.12)" stroke="#C9A13C" stroke-width="2.4" stroke-dasharray="6 5"/><polygon points="413.1,677.9 458.3,655.6 458.3,722.0 413.1,744.4" fill="rgba(240,217,140,.12)" stroke="#C9A13C" stroke-width="2.4" stroke-dasharray="6 5"/><polygon points="72.0,610.0 280.0,713.0 280.0,573.0 72.0,470.0" fill="#C9B787" /><polygon points="488.0,610.0 280.0,713.0 280.0,573.0 488.0,470.0" fill="#DCCB9C" /><polygon points="72.0,610.0 280.0,713.0 280.0,573.0 72.0,470.0" fill="url(#gl)" /><polygon points="488.0,610.0 280.0,713.0 280.0,573.0 488.0,470.0" fill="url(#gl)" /><polygon points="72.0,470.0 280.0,573.0 280.0,582.0 72.0,479.0" fill="#380E2C" /><polygon points="488.0,470.0 280.0,573.0 280.0,582.0 488.0,479.0" fill="#4A1A3E" /><polygon points="86.3,507.9 131.4,530.3 131.4,596.7 86.3,574.4" fill="#9A7A2A" /><polygon points="90.1,513.6 127.6,532.2 127.6,591.0 90.1,572.4" fill="url(#gw)" /><polygon points="107.7,522.3 110.0,523.5 110.0,582.3 107.7,581.1" fill="#9A7A2A" /><circle cx="97.0" cy="529.8" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="97.0" cy="545.2" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="97.0" cy="560.7" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="108.8" cy="535.7" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="108.8" cy="551.1" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="108.8" cy="566.6" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="120.7" cy="541.6" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="120.7" cy="557.0" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="120.7" cy="572.4" r="3.4" fill="#F0D98C" fill-opacity=".85"/><polygon points="90.1,513.6 103.1,520.1 94.8,574.8 90.1,572.4" fill="rgba(255,255,255,.12)" /><polygon points="294.3,596.8 339.4,574.4 339.4,640.9 294.3,663.2" fill="#9A7A2A" /><polygon points="298.1,598.7 335.6,580.1 335.6,638.9 298.1,657.5" fill="url(#gw)" /><polygon points="315.7,590.0 318.0,588.8 318.0,647.7 315.7,648.8" fill="#9A7A2A" /><circle cx="305.0" cy="608.1" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="305.0" cy="623.5" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="305.0" cy="638.9" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="316.8" cy="602.2" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="316.8" cy="617.6" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="316.8" cy="633.1" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="328.7" cy="596.3" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="328.7" cy="611.7" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="328.7" cy="627.2" r="3.4" fill="#F0D98C" fill-opacity=".85"/><polygon points="298.1,598.7 311.1,592.2 302.8,655.2 298.1,657.5" fill="rgba(255,255,255,.12)" /><polygon points="145.7,537.3 190.9,559.7 190.9,626.1 145.7,603.8" fill="#9A7A2A" /><polygon points="149.5,543.0 187.1,561.6 187.1,620.5 149.5,601.9" fill="url(#gw)" /><polygon points="167.1,551.7 169.5,552.9 169.5,611.8 167.1,610.6" fill="#9A7A2A" /><circle cx="156.4" cy="559.2" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="156.4" cy="574.7" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="156.4" cy="590.1" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="168.3" cy="565.1" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="168.3" cy="580.6" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="168.3" cy="596.0" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="180.2" cy="571.0" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="180.2" cy="586.4" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="180.2" cy="601.9" r="3.4" fill="#F0D98C" fill-opacity=".85"/><polygon points="149.5,543.0 162.6,549.5 154.2,604.2 149.5,601.9" fill="rgba(255,255,255,.12)" /><polygon points="353.7,567.4 398.9,545.0 398.9,611.4 353.7,633.8" fill="#9A7A2A" /><polygon points="357.5,569.3 395.1,550.7 395.1,609.5 357.5,628.1" fill="url(#gw)" /><polygon points="375.1,560.6 377.5,559.4 377.5,618.2 375.1,619.4" fill="#9A7A2A" /><circle cx="364.4" cy="578.7" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="364.4" cy="594.1" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="364.4" cy="609.5" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="376.3" cy="572.8" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="376.3" cy="588.2" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="376.3" cy="603.6" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="388.2" cy="566.9" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="388.2" cy="582.3" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="388.2" cy="597.7" r="3.4" fill="#F0D98C" fill-opacity=".85"/><polygon points="357.5,569.3 370.6,562.8 362.2,625.8 357.5,628.1" fill="rgba(255,255,255,.12)" /><polygon points="205.1,566.8 250.3,589.1 250.3,655.6 205.1,633.2" fill="#9A7A2A" /><polygon points="208.9,572.4 246.5,591.0 246.5,649.9 208.9,631.3" fill="url(#gw)" /><polygon points="226.5,581.2 228.9,582.3 228.9,641.2 226.5,640.0" fill="#9A7A2A" /><circle cx="215.8" cy="588.7" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="215.8" cy="604.1" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="215.8" cy="619.5" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="227.7" cy="594.6" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="227.7" cy="610.0" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="227.7" cy="625.4" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="239.6" cy="600.4" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="239.6" cy="615.9" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="239.6" cy="631.3" r="3.4" fill="#F0D98C" fill-opacity=".85"/><polygon points="208.9,572.4 222.0,578.9 213.7,633.6 208.9,631.3" fill="rgba(255,255,255,.12)" /><polygon points="413.1,537.9 458.3,515.6 458.3,582.0 413.1,604.4" fill="#9A7A2A" /><polygon points="416.9,539.8 454.5,521.2 454.5,580.1 416.9,598.7" fill="url(#gw)" /><polygon points="434.5,531.1 436.9,530.0 436.9,588.8 434.5,590.0" fill="#9A7A2A" /><circle cx="423.8" cy="549.2" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="423.8" cy="564.7" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="423.8" cy="580.1" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="435.7" cy="543.4" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="435.7" cy="558.8" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="435.7" cy="574.2" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="447.6" cy="537.5" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="447.6" cy="552.9" r="3.4" fill="#F0D98C" fill-opacity=".85"/><circle cx="447.6" cy="568.3" r="3.4" fill="#F0D98C" fill-opacity=".85"/><polygon points="416.9,539.8 430.0,533.4 421.7,596.3 416.9,598.7" fill="rgba(255,255,255,.12)" /><polygon points="72.0,470.0 280.0,573.0 280.0,433.0 72.0,330.0" fill="#C9B787" /><polygon points="488.0,470.0 280.0,573.0 280.0,433.0 488.0,330.0" fill="#DCCB9C" /><polygon points="72.0,470.0 280.0,573.0 280.0,433.0 72.0,330.0" fill="url(#gl)" /><polygon points="488.0,470.0 280.0,573.0 280.0,433.0 488.0,330.0" fill="url(#gl)" /><polygon points="72.0,330.0 280.0,433.0 280.0,442.0 72.0,339.0" fill="#380E2C" /><polygon points="488.0,330.0 280.0,433.0 280.0,442.0 488.0,339.0" fill="#4A1A3E" /><polygon points="86.3,367.9 131.4,390.3 131.4,456.7 86.3,434.4" fill="#9A7A2A" /><polygon points="90.1,373.6 127.6,392.2 127.6,451.0 90.1,432.4" fill="url(#gw)" /><polygon points="107.7,382.3 110.0,383.5 110.0,442.3 107.7,441.1" fill="#9A7A2A" /><polygon points="90.1,373.6 103.1,380.1 94.8,434.8 90.1,432.4" fill="rgba(255,255,255,.12)" /><polygon points="294.3,456.8 339.4,434.4 339.4,500.9 294.3,523.2" fill="#9A7A2A" /><polygon points="298.1,458.7 335.6,440.1 335.6,498.9 298.1,517.5" fill="url(#gw)" /><polygon points="315.7,450.0 318.0,448.8 318.0,507.7 315.7,508.8" fill="#9A7A2A" /><polygon points="298.1,458.7 311.1,452.2 302.8,515.2 298.1,517.5" fill="rgba(255,255,255,.12)" /><polygon points="145.7,397.3 190.9,419.7 190.9,486.1 145.7,463.8" fill="#9A7A2A" /><polygon points="149.5,403.0 187.1,421.6 187.1,480.5 149.5,461.9" fill="url(#gw)" /><polygon points="167.1,411.7 169.5,412.9 169.5,471.8 167.1,470.6" fill="#9A7A2A" /><polygon points="149.5,403.0 162.6,409.5 154.2,464.2 149.5,461.9" fill="rgba(255,255,255,.12)" /><polygon points="353.7,427.4 398.9,405.0 398.9,471.4 353.7,493.8" fill="#9A7A2A" /><polygon points="357.5,429.3 395.1,410.7 395.1,469.5 357.5,488.1" fill="url(#gw)" /><polygon points="375.1,420.6 377.5,419.4 377.5,478.2 375.1,479.4" fill="#9A7A2A" /><polygon points="357.5,429.3 370.6,422.8 362.2,485.8 357.5,488.1" fill="rgba(255,255,255,.12)" /><polygon points="205.1,426.8 250.3,449.1 250.3,515.6 205.1,493.2" fill="#9A7A2A" /><polygon points="208.9,432.4 246.5,451.0 246.5,509.9 208.9,491.3" fill="url(#gw)" /><polygon points="226.5,441.2 228.9,442.3 228.9,501.2 226.5,500.0" fill="#9A7A2A" /><polygon points="208.9,432.4 222.0,438.9 213.7,493.6 208.9,491.3" fill="rgba(255,255,255,.12)" /><polygon points="413.1,397.9 458.3,375.6 458.3,442.0 413.1,464.4" fill="#9A7A2A" /><polygon points="416.9,399.8 454.5,381.2 454.5,440.1 416.9,458.7" fill="url(#gw)" /><polygon points="434.5,391.1 436.9,390.0 436.9,448.8 434.5,450.0" fill="#9A7A2A" /><polygon points="416.9,399.8 430.0,393.4 421.7,456.3 416.9,458.7" fill="rgba(255,255,255,.12)" /><path d="M81.5,339.5 L119.5,389.1 L145.7,392.6 L186.1,469.6 L224.1,478.9" fill="none" stroke="#380E2C" stroke-width="3.2" stroke-linejoin="round"/><path d="M186.1,469.6 L205.1,505.1 L190.9,512.2" fill="none" stroke="#380E2C" stroke-width="2.2"/><polygon points="228.9,412.4 274.1,434.8 274.1,501.2 238.4,464.6" fill="rgba(60,40,70,.30)" /><polygon points="291.9,498.3 363.2,463.0 351.3,525.8 296.6,550.5" fill="rgba(60,40,70,.26)" /><path d="M422.6,364.7 L403.6,412.1 L427.4,428.8 L410.7,486.9" fill="none" stroke="#380E2C" stroke-width="3" stroke-linejoin="round"/><polygon points="280.0,227.0 488.0,330.0 280.0,433.0 72.0,330.0" fill="#EFE2B5" /><polygon points="280.0,227.0 488.0,330.0 280.0,433.0 72.0,330.0" fill="none" stroke="#8A6C21" stroke-width="2" stroke-opacity=".55"/><polygon points="72.0,330.0 280.0,433.0 280.0,425.0 72.0,322.0" fill="#DCCB9C" /><polygon points="488.0,330.0 280.0,433.0 280.0,425.0 488.0,322.0" fill="#EADFB8" /><polygon points="232.0,330.0 280.0,354.0 280.0,299.0 232.0,275.0" fill="#C9B787" /><polygon points="328.0,330.0 280.0,354.0 280.0,299.0 328.0,275.0" fill="#DCCB9C" /><polygon points="280.0,251.0 328.0,275.0 280.0,299.0 232.0,275.0" fill="#EFE2B5" /><polygon points="232.0,275.0 280.0,299.0 280.0,306.0 232.0,282.0" fill="#380E2C" /><polygon points="328.0,275.0 280.0,299.0 280.0,306.0 328.0,282.0" fill="#4A1A3E" /><g transform="matrix(1,-.5,0,1,304.0,310.5)"><circle cx="0" cy="0" r="17" fill="#380E2C" stroke="#F0D98C" stroke-width="2.6"/><path d="M0,0 L0,-11 M0,0 L8,4" stroke="#F0D98C" stroke-width="2.2" stroke-linecap="round" fill="none"/></g><line x1="502" y1="1106.0" x2="514" y2="1106.0" stroke="#F0D98C" stroke-opacity=".6" stroke-width="2.5" stroke-dasharray="6 6"/><line x1="502" y1="966.0" x2="514" y2="966.0" stroke="#F0D98C" stroke-opacity=".6" stroke-width="2.5" stroke-dasharray="6 6"/><line x1="502" y1="826.0" x2="514" y2="826.0" stroke="#F0D98C" stroke-opacity=".6" stroke-width="2.5" stroke-dasharray="6 6"/><line x1="502" y1="686.0" x2="514" y2="686.0" stroke="#F0D98C" stroke-opacity=".6" stroke-width="2.5" stroke-dasharray="6 6"/><line x1="502" y1="546.0" x2="514" y2="546.0" stroke="#F0D98C" stroke-opacity=".6" stroke-width="2.5" stroke-dasharray="6 6"/><line x1="502" y1="406.0" x2="514" y2="406.0" stroke="#F0D98C" stroke-opacity=".6" stroke-width="2.5" stroke-dasharray="6 6"/></svg><div style="position:absolute;left:520px;width:500px;top:1036.0px;height:140px;display:flex;gap:14px;align-items:center"><span style="font-family:Amiri,serif;font-weight:700;font-size:66px;line-height:1;color:#F0D98C;width:48px;text-align:center;flex:none">١</span><span><span class="nm" style="font-size:34px;display:block;line-height:1.08;margin-bottom:3px;color:#F0D98C">Santé et harcèlement</span><span class="sb" style="font-size:28px;display:block;line-height:1.15;color:#F2EDE4">1 médecin pour 16 500 élèves ; 250 000 se disent harcelés</span></span></div><div style="position:absolute;left:520px;width:500px;top:896.0px;height:140px;display:flex;gap:14px;align-items:center"><span style="font-family:Amiri,serif;font-weight:700;font-size:66px;line-height:1;color:#F0D98C;width:48px;text-align:center;flex:none">٢</span><span><span class="nm" style="font-size:34px;display:block;line-height:1.08;margin-bottom:3px;color:#F0D98C">Un droit notifié, absent</span><span class="sb" style="font-size:28px;display:block;line-height:1.15;color:#F2EDE4">48 726 élèves notifiés sans AESH, contre 36 186 en 2024</span></span></div><div style="position:absolute;left:520px;width:500px;top:756.0px;height:140px;display:flex;gap:14px;align-items:center"><span style="font-family:Amiri,serif;font-weight:700;font-size:66px;line-height:1;color:#F0D98C;width:48px;text-align:center;flex:none">٣</span><span><span class="nm" style="font-size:34px;display:block;line-height:1.08;margin-bottom:3px;color:#F0D98C">Des personnels précaires</span><span class="sb" style="font-size:28px;display:block;line-height:1.15;color:#F2EDE4">Près de 10 % de non-titulaires ; 98 % d'AESH à temps partiel</span></span></div><div style="position:absolute;left:520px;width:500px;top:616.0px;height:140px;display:flex;gap:14px;align-items:center"><span style="font-family:Amiri,serif;font-weight:700;font-size:66px;line-height:1;color:#F0D98C;width:48px;text-align:center;flex:none">٤</span><span><span class="nm" style="font-size:34px;display:block;line-height:1.08;margin-bottom:3px;color:#F0D98C">Des cours non assurés</span><span class="sb" style="font-size:28px;display:block;line-height:1.15;color:#F2EDE4">9,8 % des heures ; 1 absence courte sur 10 remplacée</span></span></div><div style="position:absolute;left:520px;width:500px;top:476.0px;height:140px;display:flex;gap:14px;align-items:center"><span style="font-family:Amiri,serif;font-weight:700;font-size:66px;line-height:1;color:#F0D98C;width:48px;text-align:center;flex:none">٥</span><span><span class="nm" style="font-size:34px;display:block;line-height:1.08;margin-bottom:3px;color:#F0D98C">Des classes pleines</span><span class="sb" style="font-size:28px;display:block;line-height:1.15;color:#F2EDE4">30,2 élèves par classe au lycée général et technologique</span></span></div><div style="position:absolute;left:520px;width:500px;top:336.0px;height:140px;display:flex;gap:14px;align-items:center"><span style="font-family:Amiri,serif;font-weight:700;font-size:66px;line-height:1;color:#F0D98C;width:48px;text-align:center;flex:none">٦</span><span><span class="nm" style="font-size:34px;display:block;line-height:1.08;margin-bottom:3px;color:#F0D98C">Un bâti d'avant 1980</span><span class="sb" style="font-size:28px;display:block;line-height:1.15;color:#F2EDE4">Près de 60 % du second degré date d'avant 1980</span></span></div><div style="position:absolute;right:56px;top:1282px;font:italic 300 27px/1.2 Poppins,sans-serif;color:rgba(242,237,228,.8)">Liste non exhaustive</div></div><div class="refs">Sénat (Havet), 2023 · DEPP 26-14 et effectifs, 2025 · Cour des comptes, déc. 2025 · RERS 2025 · DGESCO, 2025 · ministère, ratios 2023-2024 · DEPP, harcèlement, nov. 2025</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>09</b> — brut · grape</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">La première violence</div><div class="bg grape"></div><div class="gr"></div><div class="vg"></div><style>
+.dc6{position:absolute;inset:0;z-index:4}
+.dc6 .k{position:absolute;top:878px;width:296px}
+.dc6 .k b{display:block;white-space:nowrap;font:italic 800 46px/1 var(--serif);color:#F0D98C}
+.dc6 .k span{display:block;margin-top:8px;font:300 24px/1.18 var(--sans);color:#F2EDE4}
+</style>
+<div class="dc6">
+<h1 class="dh" style="position:absolute;left:64px;right:64px;top:104px;margin:0;font-size:70px;z-index:4">Un métier<br><em>déclassé.</em></h1>
+<p style="position:absolute;left:64px;right:64px;top:318px;margin:0;font:400 28px/1.25 var(--sans);color:#F2EDE4;z-index:4">Salaire d'entrée d'un professeur certifié, hors primes, en SMIC</p>
+<svg viewBox="0 0 1080 1440" width="1080" height="1440" style="position:absolute;left:0;top:0">
+<defs><linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0D98C" stop-opacity=".30"/><stop offset="1" stop-color="#F0D98C" stop-opacity="0"/></linearGradient></defs>
+<line x1="130" y1="880.0" x2="1000" y2="880.0" stroke="rgba(242,237,228,.20)" stroke-width="1.6"/><text x="116" y="889.0" text-anchor="end" font-family="Poppins,sans-serif" font-size="26" fill="rgba(242,237,228,.85)">1,0×</text><line x1="130" y1="742.9" x2="1000" y2="742.9" stroke="rgba(242,237,228,.20)" stroke-width="1.6"/><text x="116" y="751.9" text-anchor="end" font-family="Poppins,sans-serif" font-size="26" fill="rgba(242,237,228,.85)">1,4×</text><line x1="130" y1="605.7" x2="1000" y2="605.7" stroke="rgba(242,237,228,.20)" stroke-width="1.6"/><text x="116" y="614.7" text-anchor="end" font-family="Poppins,sans-serif" font-size="26" fill="rgba(242,237,228,.85)">1,8×</text><line x1="130" y1="468.6" x2="1000" y2="468.6" stroke="rgba(242,237,228,.20)" stroke-width="1.6"/><text x="116" y="477.6" text-anchor="end" font-family="Poppins,sans-serif" font-size="26" fill="rgba(242,237,228,.85)">2,2×</text><text x="130.0" y="922" text-anchor="middle" font-family="Poppins,sans-serif" font-size="27" fill="rgba(242,237,228,.85)">1980</text><text x="332.3" y="922" text-anchor="middle" font-family="Poppins,sans-serif" font-size="27" fill="rgba(242,237,228,.85)">1990</text><text x="534.7" y="922" text-anchor="middle" font-family="Poppins,sans-serif" font-size="27" fill="rgba(242,237,228,.85)">2000</text><text x="737.0" y="922" text-anchor="middle" font-family="Poppins,sans-serif" font-size="27" fill="rgba(242,237,228,.85)">2010</text><text x="939.3" y="922" text-anchor="middle" font-family="Poppins,sans-serif" font-size="27" fill="rgba(242,237,228,.85)">2020</text>
+<path d="M130.0,498.4 C133.4,497.1 143.5,477.8 150.2,490.9 C157.0,503.9 163.7,559.8 170.5,576.6 C177.2,593.3 184.0,584.9 190.7,591.3 C197.4,597.8 204.2,608.2 210.9,615.3 C217.7,622.4 224.4,626.8 231.2,633.8 C237.9,640.9 244.7,649.3 251.4,657.5 C258.1,665.7 264.9,680.9 271.6,683.2 C278.4,685.5 285.1,671.4 291.9,671.2 C298.6,671.0 305.3,679.1 312.1,682.2 C318.8,685.2 325.6,685.2 332.3,689.4 C339.1,693.5 345.8,705.5 352.6,707.2 C359.3,708.9 366.0,698.6 372.8,699.3 C379.5,700.1 386.3,708.7 393.0,711.7 C399.8,714.6 406.5,714.8 413.3,716.8 C420.0,718.8 426.7,721.9 433.5,723.7 C440.2,725.4 447.0,724.2 453.7,727.4 C460.5,730.7 467.2,739.5 474.0,743.2 C480.7,746.9 487.4,749.1 494.2,749.7 C500.9,750.3 507.7,745.7 514.4,747.0 C521.2,748.3 527.9,753.6 534.7,757.6 C541.4,761.6 548.1,768.3 554.9,771.0 C561.6,773.7 568.4,769.5 575.1,773.7 C581.9,777.9 588.6,788.9 595.3,796.3 C602.1,803.8 608.8,816.8 615.6,818.3 C622.3,819.8 629.1,809.3 635.8,805.3 C642.6,801.2 649.3,795.2 656.0,793.9 C662.8,792.7 669.5,795.8 676.3,797.7 C683.0,799.7 689.8,803.2 696.5,805.6 C703.3,808.0 710.0,811.2 716.7,812.1 C723.5,813.0 730.2,808.7 737.0,811.1 C743.7,813.4 750.5,822.3 757.2,826.2 C764.0,830.1 770.7,832.8 777.4,834.4 C784.2,836.0 790.9,834.9 797.7,835.8 C804.4,836.6 811.2,838.4 817.9,839.5 C824.7,840.7 831.4,841.7 838.1,842.6 C844.9,843.6 851.6,844.7 858.4,845.4 C865.1,846.1 871.9,851.5 878.6,846.7 C885.3,841.9 892.1,822.5 898.8,816.6 C905.6,810.6 912.3,811.1 919.1,811.1 C925.8,811.0 932.6,814.7 939.3,816.2 C946.0,817.8 952.8,817.9 959.5,820.3 C966.3,822.7 973.0,826.9 979.8,830.6 C986.5,834.4 996.6,840.9 1000.0,843.0 L1000.0,880.0 L130.0,880.0 Z" fill="url(#ar)"/>
+<path d="M130.0,498.4 C133.4,497.1 143.5,477.8 150.2,490.9 C157.0,503.9 163.7,559.8 170.5,576.6 C177.2,593.3 184.0,584.9 190.7,591.3 C197.4,597.8 204.2,608.2 210.9,615.3 C217.7,622.4 224.4,626.8 231.2,633.8 C237.9,640.9 244.7,649.3 251.4,657.5 C258.1,665.7 264.9,680.9 271.6,683.2 C278.4,685.5 285.1,671.4 291.9,671.2 C298.6,671.0 305.3,679.1 312.1,682.2 C318.8,685.2 325.6,685.2 332.3,689.4 C339.1,693.5 345.8,705.5 352.6,707.2 C359.3,708.9 366.0,698.6 372.8,699.3 C379.5,700.1 386.3,708.7 393.0,711.7 C399.8,714.6 406.5,714.8 413.3,716.8 C420.0,718.8 426.7,721.9 433.5,723.7 C440.2,725.4 447.0,724.2 453.7,727.4 C460.5,730.7 467.2,739.5 474.0,743.2 C480.7,746.9 487.4,749.1 494.2,749.7 C500.9,750.3 507.7,745.7 514.4,747.0 C521.2,748.3 527.9,753.6 534.7,757.6 C541.4,761.6 548.1,768.3 554.9,771.0 C561.6,773.7 568.4,769.5 575.1,773.7 C581.9,777.9 588.6,788.9 595.3,796.3 C602.1,803.8 608.8,816.8 615.6,818.3 C622.3,819.8 629.1,809.3 635.8,805.3 C642.6,801.2 649.3,795.2 656.0,793.9 C662.8,792.7 669.5,795.8 676.3,797.7 C683.0,799.7 689.8,803.2 696.5,805.6 C703.3,808.0 710.0,811.2 716.7,812.1 C723.5,813.0 730.2,808.7 737.0,811.1 C743.7,813.4 750.5,822.3 757.2,826.2 C764.0,830.1 770.7,832.8 777.4,834.4 C784.2,836.0 790.9,834.9 797.7,835.8 C804.4,836.6 811.2,838.4 817.9,839.5 C824.7,840.7 831.4,841.7 838.1,842.6 C844.9,843.6 851.6,844.7 858.4,845.4 C865.1,846.1 871.9,851.5 878.6,846.7 C885.3,841.9 892.1,822.5 898.8,816.6 C905.6,810.6 912.3,811.1 919.1,811.1 C925.8,811.0 932.6,814.7 939.3,816.2 C946.0,817.8 952.8,817.9 959.5,820.3 C966.3,822.7 973.0,826.9 979.8,830.6 C986.5,834.4 996.6,840.9 1000.0,843.0" fill="none" stroke="#F0D98C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="150.2" cy="490.9" r="10" fill="#F0D98C"/>
+<circle cx="1000.0" cy="843.0" r="10" fill="#F0D98C"/>
+<text x="178.2" y="498.9" font-family="Playfair Display,serif" font-style="italic" font-weight="800" font-size="70" fill="#F0D98C">2,2×</text>
+<text x="178.2" y="538.9" font-family="Poppins,sans-serif" font-weight="300" font-size="28" fill="#F2EDE4">le SMIC en 1980</text>
+<text x="1000.0" y="769.0" text-anchor="end" font-family="Playfair Display,serif" font-style="italic" font-weight="800" font-size="70" fill="#F0D98C">1,1×</text>
+<text x="1000.0" y="809.0" text-anchor="end" font-family="Poppins,sans-serif" font-weight="300" font-size="28" fill="#F2EDE4">le SMIC en 2023</text>
+</svg>
+<p class="dp" style="position:absolute;left:64px;right:64px;top:1010px;margin:0;z-index:4;font-size:34px;line-height:1.28">Un métier passion qui épuise et n'attire plus : des salaires <b>18&nbsp;%</b> sous ceux des autres diplômés du supérieur, des <b>démissions</b> de titulaires multipliées par près de huit (364 en 2008-2009, 2&nbsp;836 en 2021-2022), des congés maladie en hausse de 41&nbsp;%, face à une institution maltraitante. <b class="f">Attirer ne suffit pas à retenir.</b></p>
+</div><div class="refs">Lucas Chancel, lucaschancel.com/enseignants (courbe relue sur le graphique) · OCDE, Regards sur l'éducation 2025 · Sénat, novembre 2023 · Cour des comptes, déc. 2025</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>10</b> — texte · cyan</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">La première violence</div><div class="bg cyan"></div><div class="gr"></div><div class="vg"></div><div class="in"><h1 class="dh" style="font-size:68px">L'école inclusive<br><em>sans moyens.</em></h1><p class="dp">Les élèves en situation de handicap sont toujours plus nombreux : <b>436 085</b> en 2022 contre 155 361 en 2006, plus de <b>520 000</b> en 2025. Mais l'accompagnement ne suit pas : sur <b>352 102</b> élèves notifiés pour une aide humaine, <b>48 726</b> n'ont pas d'AESH à la rentrée 2025, contre 36 186 un an plus tôt. L'INSEI estime à environ <b>50 000</b> les enfants encore non scolarisés. <b class="f">Un droit reconnu, des moyens absents.</b></p></div><div class="refs">Cour des comptes, sept. 2024 · DGESCO, rentrée 2025 (via Banque des Territoires, Sénat) · INSEI</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>11</b> — brut · creme</div>
+  <div class="frame-wrap"><div class="slide creme"><div class="bandeau">La première violence</div><div class="bg creme"></div><div class="gr"></div><div class="vg"></div><style>.pn{position:absolute;inset:0;z-index:4}.pn .lg{position:absolute;right:56px;top:142px;font:400 24px/1.55 var(--sans);color:var(--ink3)}.pn .lg i{display:inline-block;width:34px;height:7px;border-radius:4px;vertical-align:middle;margin-right:10px}</style>
+<div class="pn">
+<h1 class="dh" style="position:absolute;left:64px;right:64px;top:118px;margin:0;font-size:70px;z-index:4">Le niveau<br><em>recule.</em></h1>
+<div class="lg"><i style="background:#721D5B"></i>France<br><i style="background:#9B9488"></i>Moyenne OCDE<br><span style="font-size:20px">(24 pays comparables, depuis 2015)</span></div>
+<svg viewBox="0 0 1080 1440" width="1080" height="1440" style="position:absolute;left:0;top:0">
+<text x="64" y="350" font-family="Playfair Display,serif" font-weight="800" font-size="36" fill="#14110D">Mathématiques</text>
+<line x1="126" y1="508.6" x2="904" y2="508.6" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="515.6" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">460</text>
+<line x1="126" y1="465.7" x2="904" y2="465.7" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="472.7" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">480</text>
+<line x1="126" y1="422.9" x2="904" y2="422.9" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="429.9" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">500</text>
+<line x1="126" y1="380.0" x2="904" y2="380.0" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="387.0" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">520</text>
+<polyline points="590.0,431.4 680.0,431.4 800.0,463.6 890.0,487.1" fill="none" stroke="#9B9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="230.0,399.3 320.0,431.4 410.0,429.3 500.0,433.6 590.0,437.9 680.0,433.6 800.0,478.6 890.0,512.9" fill="none" stroke="#721D5B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="238.0" y="381.3" font-family="Poppins,sans-serif" font-weight="600" font-size="27" fill="#14110D">511</text>
+<circle cx="890.0" cy="487.1" r="9" fill="#9B9488"/>
+<circle cx="890.0" cy="512.9" r="12" fill="#721D5B"/>
+<text x="910.0" y="542.9" font-family="Poppins,sans-serif" font-weight="700" font-size="34" fill="#721D5B">458</text>
+<text x="910.0" y="481.1" font-family="Poppins,sans-serif" font-weight="600" font-size="27" fill="#6F695F">470</text>
+<text x="230.0" y="566.0" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.6)">2003</text>
+<text x="500.0" y="566.0" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.6)">2012</text>
+<text x="890.0" y="566.0" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.6)">2025</text>
+<text x="64" y="622" font-family="Playfair Display,serif" font-weight="800" font-size="36" fill="#14110D">Sciences</text>
+<line x1="126" y1="780.6" x2="904" y2="780.6" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="787.6" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">460</text>
+<line x1="126" y1="737.7" x2="904" y2="737.7" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="744.7" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">480</text>
+<line x1="126" y1="694.9" x2="904" y2="694.9" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="701.9" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">500</text>
+<line x1="126" y1="652.0" x2="904" y2="652.0" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="659.0" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">520</text>
+<polyline points="590.0,701.3 680.0,709.9 800.0,714.1 890.0,724.9" fill="none" stroke="#9B9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="320.0,705.6 410.0,699.1 500.0,697.0 590.0,705.6 680.0,709.9 800.0,722.7 890.0,731.3" fill="none" stroke="#721D5B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="328.0" y="687.6" font-family="Poppins,sans-serif" font-weight="600" font-size="27" fill="#14110D">495</text>
+<circle cx="890.0" cy="724.9" r="9" fill="#9B9488"/>
+<circle cx="890.0" cy="731.3" r="12" fill="#721D5B"/>
+<text x="910.0" y="761.3" font-family="Poppins,sans-serif" font-weight="700" font-size="34" fill="#721D5B">483</text>
+<text x="910.0" y="718.9" font-family="Poppins,sans-serif" font-weight="600" font-size="27" fill="#6F695F">486</text>
+<text x="320.0" y="838.0" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.6)">2006</text>
+<text x="500.0" y="838.0" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.6)">2012</text>
+<text x="890.0" y="838.0" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.6)">2025</text>
+<text x="64" y="894" font-family="Playfair Display,serif" font-weight="800" font-size="36" fill="#14110D">Lecture</text>
+<line x1="126" y1="1052.6" x2="904" y2="1052.6" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="1059.6" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">460</text>
+<line x1="126" y1="1009.7" x2="904" y2="1009.7" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="1016.7" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">480</text>
+<line x1="126" y1="966.9" x2="904" y2="966.9" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="973.9" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">500</text>
+<line x1="126" y1="924.0" x2="904" y2="924.0" stroke="rgba(20,17,13,.17)" stroke-width="1.6"/>
+<text x="114" y="931.0" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.55)">520</text>
+<polyline points="590.0,973.3 680.0,984.0 800.0,1005.4 890.0,1039.7" fill="none" stroke="#9B9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="140.0,956.1 230.0,975.4 320.0,992.6 410.0,975.4 500.0,956.1 590.0,969.0 680.0,981.9 800.0,1022.6 890.0,1061.1" fill="none" stroke="#721D5B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="148.0" y="938.1" font-family="Poppins,sans-serif" font-weight="600" font-size="27" fill="#14110D">505</text>
+<circle cx="890.0" cy="1039.7" r="9" fill="#9B9488"/>
+<circle cx="890.0" cy="1061.1" r="12" fill="#721D5B"/>
+<text x="910.0" y="1091.1" font-family="Poppins,sans-serif" font-weight="700" font-size="34" fill="#721D5B">456</text>
+<text x="910.0" y="1033.7" font-family="Poppins,sans-serif" font-weight="600" font-size="27" fill="#6F695F">466</text>
+<text x="140.0" y="1110.0" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.6)">2000</text>
+<text x="500.0" y="1110.0" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.6)">2012</text>
+<text x="890.0" y="1110.0" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="20" fill="rgba(20,17,13,.6)">2025</text>
+</svg>
+<p class="dp" style="position:absolute;left:64px;right:64px;top:1132px;margin:0;z-index:4;font-size:38px;line-height:1.28"><b>34e en maths</b> sur 90 pays : la France perd <b>huit places</b> en trois ans. <b class="f">Elle recule plus que la moyenne.</b></p>
+</div>
+<div class="refs">DEPP, « PISA 2025 : une baisse commune à l'OCDE » · OCDE, PISA 2025 (rang établi à partir des scores) · Digischool</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>12</b> — brut · grape</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">La première violence</div><div class="bg grape"></div><div class="gr"></div><div class="vg"></div><style>.ig{position:absolute;inset:0;z-index:4}</style>
+<div class="ig">
+<h1 class="dh" style="position:absolute;left:64px;right:64px;top:118px;margin:0;font-size:70px;z-index:4">Pas la même<br><em>école.</em></h1>
+<svg viewBox="0 0 1080 1440" width="1080" height="1440" style="position:absolute;left:0;top:0">
+<text x="64" y="388" font-family="Poppins,sans-serif" font-weight="600" font-size="29" fill="rgba(242,237,228,.95)">Écart favorisés / défavorisés, sciences, PISA 2025</text>
+<rect x="64" y="410" width="620.0" height="68" rx="9" fill="#F0D98C"/>
+<text x="84" y="455" font-family="Poppins,sans-serif" font-weight="600" font-size="30" fill="#380E2C">France</text>
+<text x="702.0" y="462" font-family="Playfair Display,serif" font-weight="800" font-size="52" fill="#F0D98C">100 pts</text>
+<rect x="64" y="494" width="527.0" height="68" rx="9" fill="rgba(242,237,228,.80)"/>
+<text x="84" y="539" font-family="Poppins,sans-serif" font-weight="600" font-size="30" fill="#380E2C">Moyenne OCDE</text>
+<text x="609.0" y="546" font-family="Playfair Display,serif" font-weight="800" font-size="52" fill="#F2EDE4">85 pts</text>
+<text x="64" y="646" font-family="Poppins,sans-serif" font-weight="600" font-size="29" fill="rgba(242,237,228,.95)">Absences de courte durée remplacées, 1er degré, 2015-2016</text>
+<rect x="64" y="668" width="471.9599999999999" height="68" rx="9" fill="#F0D98C"/>
+<text x="84" y="713" font-family="Poppins,sans-serif" font-weight="600" font-size="30" fill="#380E2C">Seine-Saint-Denis</text>
+<text x="553.9599999999999" y="720" font-family="Playfair Display,serif" font-weight="800" font-size="52" fill="#F0D98C">51 %</text>
+<rect x="64" y="752" width="721.28" height="68" rx="9" fill="rgba(242,237,228,.80)"/>
+<text x="84" y="797" font-family="Poppins,sans-serif" font-weight="600" font-size="30" fill="#380E2C">France entière</text>
+<text x="803.28" y="804" font-family="Playfair Display,serif" font-weight="800" font-size="52" fill="#F2EDE4">78 %</text>
+</svg>
+<p class="dp" style="position:absolute;left:64px;right:64px;top:884px;margin:0;z-index:4;font-size:40px;line-height:1.3">L'écart social se réduit depuis 2015, surtout parce que les <b>favorisés reculent</b>. En Seine-Saint-Denis, des associations de parents estiment qu'un élève perd <b>une année de cours</b> sur sa scolarité ; le rapport parlementaire de 2018 reprend l'estimation. <b class="f">Le milieu social pèse plus ici qu'ailleurs.</b></p>
+</div>
+<div class="refs">DEPP, PISA 2025, note sur la culture scientifique · Cornut-Gentille et Kokouendo, rapport sur l'action de l'État en Seine-Saint-Denis, 2018</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>13</b> — texte · cyan</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">La première violence</div><div class="bg cyan"></div><div class="gr"></div><div class="vg"></div><div class="in"><h1 class="dh" style="font-size:76px">La loi<br><em>de l'omerta.</em></h1><p class="dp">Au lycée Maurice-Utrillo de Stains, des personnels alertent depuis <b>2011</b> sur des <b>violences sexistes, sexuelles et racistes</b> qu'ils imputent à un membre du personnel. À la rentrée 2026, deux professeures syndiquées sont menacées de <b>mutation « dans l'intérêt du service »</b>. Selon Basta!, l'<b>enquête du rectorat</b> porte sur des « tensions » dans l'équipe, sans audition des élèves ni des parents ; le rectorat affirme avoir traité les signalements selon les procédures. L'article 40 du code de procédure pénale impose pourtant à tout fonctionnaire de <b>signaler</b> un délit. <b class="f">Dans l'institution, alerter a un coût.</b></p></div><div class="refs">Basta!, 30 septembre 2026 · Café pédagogique, 4 septembre 2026 · Code de procédure pénale, art. 40 · allégations des enseignantes, le rectorat conteste</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>14</b> — texte · creme</div>
+  <div class="frame-wrap"><div class="slide creme"><div class="bandeau">La première violence</div><div class="bg creme"></div><div class="gr"></div><div class="vg"></div><div class="in"><h1 class="dh" style="font-size:66px">Elle se décide<br><em>en chiffres.</em></h1><p class="dp">Le budget 2027, présenté le <b>1er octobre</b>, ajoute <b>1,2 milliard</b> d'euros à l'Éducation nationale et supprime <b>1 588 postes</b>, dont 836 dans le second degré, avec 1 300 AESH créés. Le ministère invoque 180 000 élèves en moins et 9 600 suppressions que la <b>démographie</b> aurait permises. Un décret de février 2024 annulait déjà <b>691,6 millions</b> d'euros ; Bercy parlait de <b>crédits gelés</b>, sans effet sur l'emploi. <b class="f">Deux lectures du même budget.</b></p></div><div class="refs">Café pédagogique, 2 octobre 2026 et 22 février 2024 · Public Sénat, AEF info (PLF 2027)</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>15</b> — brut · grape</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">La première violence</div><div class="bg grape"></div><div class="gr"></div><div class="vg"></div><style>
+.hq{position:absolute;inset:0;z-index:3;overflow:hidden}
+.hq .q{position:absolute;width:540px;height:720px;overflow:hidden}
+.hq .q img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.62)}
+.hq .q .sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,6,.40) 0%,rgba(14,10,6,.30) 38%,rgba(14,10,6,.78) 70%,rgba(14,10,6,.92) 100%)}
+.hq .q .tx{position:absolute;left:30px;right:26px;bottom:30px}
+.hq .q.lo .tx{bottom:150px}
+.hq .q .tg{font:600 19px/1.2 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#F0D98C}
+.hq .q h3{margin:6px 0 8px;font:800 40px/1.05 var(--serif);color:#F2EDE4}
+.hq .q p{margin:0;font:300 30px/1.28 var(--sans);color:rgba(242,237,228,.95)}
+.hq .q p b{font-weight:600;color:#F0D98C}
+.hq .v{position:absolute;left:539px;top:0;width:2px;height:1440px;background:rgba(240,217,140,.45)}
+.hq .hz{position:absolute;left:0;top:719px;width:1080px;height:2px;background:rgba(240,217,140,.45)}
+.hq .big{position:absolute;inset:0;background:linear-gradient(160deg,#095A5E 0%,#074A4E 60%,#06393B 100%)}
+.hq .big .n{position:absolute;left:30px;top:150px;font:900 190px/1 var(--serif);font-style:italic;color:#F0D98C;letter-spacing:-.02em}
+.hq .big .u{position:absolute;left:34px;top:350px;font:600 34px/1.15 var(--sans);color:#FBEFC2}
+</style>
+<div class="hq">
+<div class="q" style="left:0;top:0"><img src="img/devaquet-1986.jpg" alt=""><div class="sh"></div><div class="tx"><div class="tg">FRANCE · NOV.-DÉC. 1986</div><h3>Devaquet</h3><p>Étudiants et lycéens contre la <b>sélection</b> à l'université. Malik Oussekine meurt le 6 décembre. Projet <b>retiré le 8</b>.</p></div></div>
+<div class="q" style="left:540px;top:0"><div class="big"><div class="n">4,5</div><div class="u">milliards de francs</div></div><div class="tx"><div class="tg">FRANCE · NOVEMBRE 1990</div><h3>Plan d'urgence</h3><p><b>300 000</b> lycéens défilent le 12 pour la sécurité et les moyens. Le gouvernement <b>débloque les crédits</b>.</p></div></div>
+<div class="q lo" style="left:0;top:720px"><img src="img/cpe-2006.jpg" alt=""><div class="sh"></div><div class="tx"><div class="tg">FRANCE · FÉV.-AVRIL 2006</div><h3>CPE</h3><p>Lycéens, étudiants et <b>syndicats</b> contre le contrat première embauche. <b>Retrait présenté le 10 avril</b>.</p></div></div>
+<div class="q lo" style="left:540px;top:720px"><img src="img/retraites-2023.jpg" alt="" style="object-position:50% 30%"><div class="sh"></div><div class="tx"><div class="tg">FRANCE · 2023</div><h3>Retraites</h3><p>Des lycéens rejoignent les cortèges. La loi est <b>promulguée</b> en avril : <b>pas de recul</b>.</p></div></div>
+<div class="v"></div><div class="hz"></div>
+</div>
+<h1 class="dh" style="position:absolute;left:56px;right:56px;top:112px;margin:0;font-size:70px;z-index:5;text-shadow:0 2px 18px rgba(0,0,0,.55)">Parfois<br><em>entendus.</em></h1>
+<div class="refs">Wikipédia FR (projet de loi Devaquet ; CPE) · Universalis, novembre 1990 · photos : Wikimedia Commons (crédits en légende)</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i><i class=""></i></div></div></div>
+  <div class="devcap"><b>16</b> — chute · grape</div>
+  <div class="frame-wrap"><div class="slide"><div class="bandeau">La première violence</div><div class="bg grape"></div><div class="gr"></div><div class="vg"></div><div class="in"><h1 class="dh" style="font-size:76px">Ce qu'ils<br><em>demandent.</em></h1><p class="dp">Les organisations lycéennes réclament des <b>professeurs remplacés</b>, plus de personnel, des <b>classes moins nombreuses</b> (30,2 élèves en moyenne en lycée général et technologique) et des bâtiments en état. Le ministre Édouard Geffray juge certaines revendications légitimes. Nouvelle journée d'action le 6 octobre. <b class="f">Des adultes devant les classes, un toit au-dessus.</b></p><div class="chute">Tant qu'on ne compte que les flammes, la <b>première violence</b> reste <b>sans témoin</b>.</div></div><div class="goldline"></div><div class="refs">Wikipédia FR, « Mouvement lycéen et blocus de 2026 » · CNews, 2 octobre 2026 · DEPP, effectifs par classe (rentrée 2025)</div><div class="pC"><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="pas"></i><i class="on"></i></div></div></div>
+</div></body></html>
