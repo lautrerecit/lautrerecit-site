@@ -1,0 +1,356 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import { enjeux } from '../../data/repliques2027.js';
+import { scrutins, groupes } from '../../data/votes2027.js';
+
+// ============================================================
+// LA BOUSSOLE 2027 — PROPOSITIONS PREMIUM (privé, dev seulement).
+// Six pistes autour de l'identité « boussole », plus le relevé des contrastes corrigés.
+// ============================================================
+const cadran = enjeux.map((e, i) => ({
+  id: e.id, titre: e.titre, question: e.question, actif: e.statut === 'actif',
+  cle: e.statut === 'actif' ? `${e.etat[0].valeur}` : '', angle: i * 36,
+}));
+const s43 = scrutins.find((s) => s.numero === 43 && s.leg === 16);
+const ticks = Array.from({ length: 72 }, (_, i) => i * 5);
+---
+<Base noindex title="Propositions premium — La Boussole 2027" description="Pistes privées.">
+  <div class="r27 pm">
+
+    <!-- ===== 1 · L'EMBLÈME ===== -->
+    <section class="r27-tete pm-tete">
+      <div class="grain"></div>
+      <div class="container pm-tete-grille">
+        <div>
+          <p class="eyebrow pm-filet">Présidentielle 2027</p>
+          <h1 class="r27-h1">La <span class="gold-grad">Boussole</span> 2027</h1>
+          <p class="r27-lede">Proposition 1 · L'emblème. Une rose des vents gravée dont l'aiguille cherche son nord au chargement, puis s'arrête sur « les faits ». Le nom devient un objet, comme le verset « Notre boussole » en bas de chaque page du site.</p>
+          <button type="button" class="btn btn-oc pm-relancer" id="pm-relancer">Relancer l'aiguille <span class="ar">↻</span></button>
+        </div>
+        <svg class="pm-rose" viewBox="-160 -160 320 320" aria-hidden="true">
+          <defs>
+            <linearGradient id="pmOr" x1="0" y1="-1" x2="0" y2="1"><stop offset="0" stop-color="#FBEFC2" /><stop offset=".45" stop-color="#D4B05A" /><stop offset="1" stop-color="#9A7B2E" /></linearGradient>
+            <radialGradient id="pmFond" cx="0" cy="0" r="1"><stop offset="0" stop-color="#2A2117" /><stop offset="1" stop-color="#0E0C0A" /></radialGradient>
+          </defs>
+          <circle r="150" fill="url(#pmFond)" stroke="url(#pmOr)" stroke-width="3" />
+          <circle r="138" fill="none" stroke="rgba(212,176,90,.35)" stroke-width="1" />
+          {ticks.map((t) => <line x1="0" y1={t % 45 === 0 ? -138 : t % 15 === 0 ? -130 : -134} x2="0" y2="-142" stroke={t % 45 === 0 ? '#D4B05A' : 'rgba(212,176,90,.45)'} stroke-width={t % 45 === 0 ? 2 : 1} transform={`rotate(${t})`} />)}
+          <g fill="url(#pmOr)" opacity=".9">
+            <polygon points="0,-112 14,-14 0,0 -14,-14" />
+            <polygon points="112,0 14,14 0,0 14,-14" opacity=".55" />
+            <polygon points="0,112 -14,14 0,0 14,14" opacity=".55" />
+            <polygon points="-112,0 -14,-14 0,0 -14,14" opacity=".55" />
+            <polygon points="62,-62 10,0 0,0 0,-10" opacity=".35" />
+            <polygon points="62,62 0,10 0,0 10,0" opacity=".35" />
+            <polygon points="-62,62 -10,0 0,0 0,10" opacity=".35" />
+            <polygon points="-62,-62 0,-10 0,0 -10,0" opacity=".35" />
+          </g>
+          <text x="0" y="-118" text-anchor="middle" class="pm-card">N</text>
+          <text x="124" y="7" text-anchor="middle" class="pm-card pm-card-s">E</text>
+          <text x="0" y="132" text-anchor="middle" class="pm-card pm-card-s">S</text>
+          <text x="-124" y="7" text-anchor="middle" class="pm-card pm-card-s">O</text>
+          <g class="pm-aiguille" id="pm-aiguille">
+            <polygon points="0,-96 7,0 -7,0" fill="#F2EDE4" />
+            <polygon points="0,96 7,0 -7,0" fill="#6E5520" />
+            <circle r="9" fill="url(#pmOr)" stroke="#0E0C0A" stroke-width="2" />
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== 2 · LE CADRAN DES ENJEUX ===== -->
+    <section class="r27-sec">
+      <div class="container">
+        <p class="eyebrow pm-filet">Proposition 2 · Le cadran des enjeux</p>
+        <h2 class="r27-h2">Les dix dossiers autour de l'aiguille</h2>
+        <p class="r27-intro">Une alternative au tiroir : les enjeux sont disposés comme les graduations d'une boussole. Survolez ou touchez un enjeu, l'aiguille pivote vers lui et le centre affiche sa question et son chiffre-clé. Cliquez pour ouvrir le dossier.</p>
+        <div class="pm-cadran" id="pm-cadran">
+          <svg class="pm-cadran-svg" viewBox="-200 -200 400 400" aria-hidden="true">
+            <circle r="196" fill="#FBF8F2" stroke="#C4A24A" stroke-width="2" />
+            <circle r="150" fill="none" stroke="rgba(154,123,46,.3)" stroke-dasharray="2 5" />
+            {ticks.map((t) => <line x1="0" y1="-196" x2="0" y2={t % 36 === 0 ? -178 : -188} stroke={t % 36 === 0 ? '#9A7B2E' : 'rgba(154,123,46,.35)'} stroke-width={t % 36 === 0 ? 2 : 1} transform={`rotate(${t})`} />)}
+            <g class="pm-cadran-aiguille" id="pm-cadran-aiguille">
+              <polygon points="0,-140 8,0 -8,0" fill="url(#pmOr)" />
+              <polygon points="0,60 8,0 -8,0" fill="#1A1714" />
+              <circle r="10" fill="#1A1714" stroke="#C4A24A" stroke-width="2" />
+            </g>
+          </svg>
+          {cadran.map((e) => (
+            e.actif
+              ? <a class="pm-pt" href={`/2027/${e.id}/`} style={`--a:${e.angle}deg`} data-angle={e.angle} data-titre={e.titre} data-q={e.question} data-cle={e.cle}>{e.titre}</a>
+              : <span class="pm-pt bientot" tabindex="0" style={`--a:${e.angle}deg`} data-angle={e.angle} data-titre={e.titre} data-q={e.question} data-cle="">{e.titre}</span>
+          ))}
+        </div>
+        <div class="pm-centre" aria-live="polite">
+          <span class="pm-centre-t" id="pm-centre-t">Choisissez un cap</span>
+          <span class="pm-centre-q" id="pm-centre-q">Dix enjeux de la campagne</span>
+          <span class="pm-centre-c" id="pm-centre-c"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3 · L'HÉMICYCLE VU DE LA TRIBUNE ===== -->
+    <section class="r27-sec r27-sec-filet">
+      <div class="container">
+        <p class="eyebrow pm-filet">Proposition 3 · L'hémicycle vu de la tribune</p>
+        <h2 class="r27-h2">Le vote, à hauteur de député</h2>
+        <p class="r27-intro">Le même hémicycle que dans les dossiers, incliné en perspective comme si l'on se tenait au perchoir. Les points se lèvent par groupe, de gauche à droite. Exemple réel : le scrutin n° 43 du 20 juillet 2022 sur le Smic à environ 1 500 € net.</p>
+        <div class="pm-tribune">
+          <div class="pm-tribune-boutons" role="group" aria-label="Vue">
+            <button type="button" class="vt-f" aria-pressed="true" data-vue="tribune">Vue de la tribune</button>
+            <button type="button" class="vt-f" aria-pressed="false" data-vue="plat">Vue à plat</button>
+          </div>
+          <div class="pm-tribune-scene" id="pm-scene"><svg class="pm-hemi" id="pm-hemi" viewBox="0 0 420 216" role="img" aria-label="Scrutin 43 : 121 pour, 257 contre"></svg></div>
+          <p class="pm-tribune-leg"><span><i class="pour"></i>Pour</span><span><i class="contre"></i>Contre</span><span><i class="abst"></i>Abstention</span><span class="pm-tribune-tot"><b>121</b> pour · <b>257</b> contre · rejeté</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4 · L'AIGUILLE DE LECTURE ===== -->
+    <section class="r27-sec r27-sec-filet">
+      <div class="container">
+        <p class="eyebrow pm-filet">Proposition 4 · L'aiguille de lecture</p>
+        <h2 class="r27-h2">Une petite boussole qui suit la lecture</h2>
+        <p class="r27-intro">En bas à droite de cette page, une boussole miniature tourne à mesure que l'on descend, et indique la partie en cours. Sur un dossier, elle afficherait « État des lieux », « Qui a voté quoi », « Idées reçues ». Un repère discret pour les pages longues, et un rappel permanent du nom.</p>
+      </div>
+    </section>
+
+    <!-- ===== 5 · LES DÉTAILS QUI FONT LE PREMIUM ===== -->
+    <section class="r27-sec r27-sec-filet">
+      <div class="container">
+        <p class="eyebrow pm-filet">Proposition 5 · Les détails</p>
+        <h2 class="r27-h2">Quatre retouches fines</h2>
+        <div class="pm-details">
+          <div class="pm-d">
+            <span class="pm-d-k">Sur-titres à filets dorés</span>
+            <div class="pm-avap"><p class="eyebrow pm-av">L'état des lieux</p><p class="eyebrow pm-filet">L'état des lieux</p></div>
+            <p class="pm-d-p">Avant / après : le filet tri-ton de la charte (transparent, or, transparent) encadre le libellé, comme sur les decks de la formation.</p>
+          </div>
+          <div class="pm-d">
+            <span class="pm-d-k">Chiffres alignés</span>
+            <div class="pm-avap pm-num"><span>1 867,02 €<br>12,8 %<br>211 Md€</span><span class="pm-tab">1 867,02 €<br>12,8 %<br>211 Md€</span></div>
+            <p class="pm-d-p">Avant / après : chiffres à chasse fixe, les colonnes de nombres s'alignent dans les tableaux et l'hémicycle.</p>
+          </div>
+          <div class="pm-d">
+            <span class="pm-d-k">Entrées échelonnées</span>
+            <div class="pm-cascade" id="pm-cascade"><span></span><span></span><span></span><span></span></div>
+            <p class="pm-d-p">Les cartes de chiffres apparaissent l'une après l'autre au défilement (0,08 s d'écart), au lieu d'arriver en bloc. Survolez pour rejouer.</p>
+          </div>
+          <div class="pm-d">
+            <span class="pm-d-k">Source au survol</span>
+            <div class="pm-src-demo"><span class="pm-src-val">31,1 %<span class="pm-bulle">Insee, indices des prix 2017-2025</span></span></div>
+            <p class="pm-d-p">Survoler un chiffre affiche sa source dans une bulle dorée : la preuve reste à portée de main sans alourdir la carte.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6 · CONTRASTES CORRIGÉS ===== -->
+    <section class="r27-sec r27-sec-filet">
+      <div class="container">
+        <p class="eyebrow pm-filet">Proposition 6 · Contrastes, déjà corrigés</p>
+        <h2 class="r27-h2">Ce que la mesure a trouvé</h2>
+        <p class="r27-intro">Tous les textes passaient déjà la norme (au moins 5,2:1). Les défauts étaient sur les éléments d'interface, qui doivent atteindre 3:1. Corrections appliquées aux vraies pages.</p>
+        <div class="pm-ctr">
+          <div class="pm-c">
+            <span class="pm-c-k">Hémicycle : pour / contre</span>
+            <div class="pm-c-av"><svg viewBox="0 0 120 30"><circle cx="20" cy="15" r="8" fill="#D4B05A" /><circle cx="50" cy="15" r="8" fill="#F2EDE4" /><circle cx="80" cy="15" r="8" fill="#D4B05A" /><circle cx="105" cy="15" r="8" fill="#F2EDE4" /></svg><span>Avant · 1,8:1 entre les deux</span></div>
+            <div class="pm-c-ap"><svg viewBox="0 0 120 30"><circle cx="20" cy="15" r="8" fill="#D4B05A" /><circle cx="50" cy="15" r="7" fill="none" stroke="#F2EDE4" stroke-width="2" /><circle cx="80" cy="15" r="3.6" fill="#A89A86" /><circle cx="105" cy="15" r="8" fill="#D4B05A" /></svg><span>Après · forme pleine, anneau, point</span></div>
+          </div>
+          <div class="pm-c clair">
+            <span class="pm-c-k">Champ de recherche</span>
+            <div class="pm-c-av"><span class="pm-champ" style="border-color:#D4C9B8">« Les immigrés font… »</span><span>Avant · 1,6:1</span></div>
+            <div class="pm-c-ap"><span class="pm-champ" style="border-color:#8E7B58">« Les immigrés font… »</span><span>Après · 4,1:1</span></div>
+          </div>
+          <div class="pm-c clair">
+            <span class="pm-c-k">Pastilles et filtres</span>
+            <div class="pm-c-av"><span class="pm-pas" style="border-color:#D4C9B8">C'est à cause des assistés</span><span>Avant · 1,5:1</span></div>
+            <div class="pm-c-ap"><span class="pm-pas" style="border-color:#8E7B58;background:#fff">C'est à cause des assistés</span><span>Après · 3,5 à 4,1:1</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="pm-mini" id="pm-mini" aria-hidden="true">
+    <svg viewBox="-30 -30 60 60"><circle r="28" fill="#12100B" stroke="#C4A24A" stroke-width="2" /><g id="pm-mini-a"><polygon points="0,-20 4,0 -4,0" fill="#F2EDE4" /><polygon points="0,20 4,0 -4,0" fill="#9A7B2E" /></g><circle r="3.5" fill="#D4B05A" /></svg>
+    <span id="pm-mini-t">L'emblème</span>
+  </div>
+
+  <script type="application/json" id="pm-data" set:html={JSON.stringify({ s43, groupes })} />
+</Base>
+
+<style is:global>
+  /* filets tri-tons de la charte autour des sur-titres */
+  .pm-filet { display: inline-flex; align-items: center; gap: 12px; }
+  .pm-filet::before, .pm-filet::after { content: ""; width: 34px; height: 1px; background: linear-gradient(90deg, transparent, #C4A24A, #D4B05A); }
+  .pm-filet::after { background: linear-gradient(90deg, #D4B05A, #C4A24A, transparent); }
+
+  /* 1 · emblème */
+  .pm-tete-grille { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+  .pm-rose { width: 100%; max-width: 360px; justify-self: center; filter: drop-shadow(0 30px 40px rgba(0,0,0,.55)); }
+  .pm-card { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; fill: #F2EDE4; }
+  .pm-card-s { font-size: 15px; fill: rgba(242,237,228,.7); }
+  .pm-aiguille { transform-origin: 0 0; }
+  .pm-aiguille.cherche { animation: pmCherche 2.6s cubic-bezier(.3, .7, .3, 1) both; }
+  @keyframes pmCherche { 0% { transform: rotate(-120deg); } 30% { transform: rotate(48deg); } 52% { transform: rotate(-24deg); } 70% { transform: rotate(11deg); } 85% { transform: rotate(-4deg); } 100% { transform: rotate(0); } }
+  .pm-relancer { margin-top: 22px; }
+
+  /* 2 · cadran */
+  .pm-cadran { position: relative; width: min(100%, 560px); aspect-ratio: 1; margin: 34px auto 0; }
+  .pm-cadran-svg { position: absolute; inset: 12%; width: 76%; height: 76%; filter: drop-shadow(0 30px 40px rgba(14,12,10,.18)); }
+  .pm-cadran-aiguille { transform: rotate(var(--rot, 0deg)); transition: transform .9s cubic-bezier(.34, 1.45, .5, 1); }
+  .pm-pt { position: absolute; left: calc(50% + 44% * sin(var(--a))); top: calc(50% - 44% * cos(var(--a))); transform: translate(-50%, -50%); font-family: var(--serif); font-weight: 700; font-size: 16px; white-space: nowrap; color: var(--ink); padding: 6px 12px; border-radius: 100px; background: #fff; border: 1px solid #8E7B58; box-shadow: 0 10px 20px -14px rgba(14,12,10,.5); transition: background .2s, color .2s; }
+  .pm-pt:hover, .pm-pt:focus-visible, .pm-pt.on { background: var(--ink); color: #F2EDE4; }
+  .pm-pt.bientot { font-weight: 500; color: #5E554A; background: #F2EDE4; border-style: dashed; cursor: default; }
+  .pm-pt.bientot.on { background: #E3D7C2; color: var(--ink); }
+  .pm-centre { margin: 18px auto 0; max-width: 460px; min-height: 120px; text-align: center; display: grid; gap: 4px; padding: 18px 22px; border-radius: 14px; background: var(--r-carte); border: 1px solid var(--r-filet); border-top: 2px solid var(--or2); }
+  .pm-centre-t { font-family: var(--serif); font-weight: 700; font-size: clamp(20px, 3vw, 26px); color: var(--ink); }
+  .pm-centre-q { font-family: var(--serif); font-style: italic; font-size: clamp(13px, 1.7vw, 15px); line-height: 1.35; color: var(--ink3); }
+  .pm-centre-c { font-family: var(--serif); font-weight: 700; font-size: clamp(22px, 3.4vw, 32px); color: #7A5E18; }
+
+  /* 3 · tribune */
+  .pm-tribune { margin-top: 26px; padding: 26px; border-radius: 16px; background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border-top: 2px solid var(--or2); }
+  .pm-tribune-boutons { display: flex; gap: 8px; justify-content: center; }
+  .pm-tribune .vt-f { font: inherit; font-size: 14px; font-weight: 600; padding: 7px 16px; border-radius: 100px; background: transparent; cursor: pointer; border: 1px solid rgba(212,176,90,.55); color: #F2EDE4; }
+  .pm-tribune .vt-f[aria-pressed="true"] { background: #F2EDE4; color: var(--ink); }
+  .pm-tribune-scene { perspective: 900px; margin-top: 18px; }
+  .pm-hemi { display: block; width: 100%; max-width: 640px; margin: 0 auto; transform-origin: 50% 100%; transition: transform 1s var(--ease); }
+  .pm-tribune-scene.tribune .pm-hemi { transform: rotateX(52deg) translateY(-6%); }
+  .pm-hemi circle { opacity: 0; transform-box: fill-box; transform-origin: center; animation: pmLeve .5s var(--ease) forwards; animation-delay: calc(var(--k) * 2.2ms); }
+  @keyframes pmLeve { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+  .pm-tribune-leg { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin: 14px auto 0; font-size: 14px; color: rgba(242,237,228,.85); }
+  .pm-tribune-leg i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+  .pm-tribune-leg i.pour { background: #D4B05A; }
+  .pm-tribune-leg i.contre { box-shadow: inset 0 0 0 2px #F2EDE4; }
+  .pm-tribune-leg i.abst { width: 6px; height: 6px; margin: 0 9px 0 3px; vertical-align: 1px; background: #A89A86; }
+  .pm-tribune-tot { width: 100%; text-align: center; }
+  .pm-tribune-tot b { font-family: var(--serif); font-size: 24px; color: #F2EDE4; }
+
+  /* 4 · mini boussole */
+  .pm-mini { position: fixed; right: 18px; bottom: 18px; z-index: 50; display: flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 100px; background: rgba(14,12,10,.88); border: 1px solid rgba(196,162,74,.5); box-shadow: 0 14px 30px -12px rgba(0,0,0,.6); }
+  .pm-mini svg { width: 40px; height: 40px; }
+  #pm-mini-a { transition: transform .2s linear; }
+  .pm-mini span { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .08em; color: #F2EDE4; }
+
+  /* 5 · détails */
+  .pm-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
+  .pm-d { padding: 22px; border-radius: 14px; background: var(--r-carte); border: 1px solid var(--r-filet); display: grid; gap: 12px; align-content: start; }
+  .pm-d-k { font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--ink); }
+  .pm-d-p { font-size: 15px; line-height: 1.5; color: var(--ink3); margin: 0; }
+  .pm-avap { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  .pm-av { margin: 0; color: #7A5E18; }
+  .pm-avap .pm-filet { margin: 0; color: #7A5E18; }
+  .pm-num span { font-family: var(--sans); font-size: 20px; line-height: 1.5; text-align: right; color: var(--ink); padding: 6px 12px; background: #fff; border-radius: 6px; }
+  .pm-num .pm-tab { font-variant-numeric: tabular-nums lining-nums; }
+  .pm-cascade { display: flex; gap: 8px; }
+  .pm-cascade span { width: 54px; height: 64px; border-radius: 8px; background: #fff; border: 1px solid var(--r-filet); border-top: 2px solid var(--or2); opacity: 0; transform: translateY(14px); }
+  .pm-cascade.in span { animation: pmCasc .6s var(--ease) forwards; }
+  .pm-cascade.in span:nth-child(2) { animation-delay: .08s; } .pm-cascade.in span:nth-child(3) { animation-delay: .16s; } .pm-cascade.in span:nth-child(4) { animation-delay: .24s; }
+  @keyframes pmCasc { to { opacity: 1; transform: none; } }
+  .pm-src-demo { padding: 22px 0 8px; }
+  .pm-src-val { position: relative; font-family: var(--serif); font-weight: 700; font-size: 40px; color: #7A5E18; cursor: help; border-bottom: 1px dashed #9A7B2E; }
+  .pm-bulle { position: absolute; left: 0; bottom: calc(100% + 8px); white-space: nowrap; font-family: var(--sans); font-weight: 600; font-size: 13.5px; color: #F2EDE4; background: var(--ink); border-top: 2px solid var(--or2); padding: 6px 12px; border-radius: 6px; opacity: 0; transform: translateY(6px); transition: opacity .2s, transform .2s; pointer-events: none; }
+  .pm-src-val:hover .pm-bulle { opacity: 1; transform: none; }
+
+  /* 6 · contrastes */
+  .pm-ctr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
+  .pm-c { display: grid; gap: 14px; padding: 22px; border-radius: 14px; background: linear-gradient(158deg, #1C160F, #0C0A07); }
+  .pm-c.clair { background: var(--r-carte); border: 1px solid var(--r-filet); }
+  .pm-c-k { font-family: var(--serif); font-weight: 700; font-size: 19px; color: #F2EDE4; }
+  .pm-c.clair .pm-c-k { color: var(--ink); }
+  .pm-c-av, .pm-c-ap { display: grid; gap: 6px; font-size: 13.5px; color: rgba(242,237,228,.8); }
+  .pm-c.clair .pm-c-av, .pm-c.clair .pm-c-ap { color: #5A5046; }
+  .pm-c-ap span:last-child { font-weight: 700; }
+  .pm-c svg { width: 140px; }
+  .pm-champ { display: block; padding: 10px 14px; background: #fff; border: 1.5px solid; border-radius: 6px; font-size: 15px; color: #7A6F62; }
+  .pm-pas { justify-self: start; padding: 6px 14px; border: 1px solid; border-radius: 100px; font-size: 14px; color: var(--ink3); }
+
+  @media (max-width: 900px) {
+    .pm-tete-grille { grid-template-columns: 1fr; }
+    .pm-rose { max-width: 260px; }
+    .pm-details, .pm-ctr { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .pm-pt { font-size: 13px; padding: 4px 8px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pm-aiguille.cherche, .pm-hemi circle, .pm-cascade.in span { animation: none; opacity: 1; transform: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* 1 · l'aiguille cherche son nord */
+    var aig = document.getElementById('pm-aiguille');
+    function chercher() { aig.classList.remove('cherche'); void aig.getBBox(); if (!reduit) aig.classList.add('cherche'); }
+    chercher();
+    document.getElementById('pm-relancer').addEventListener('click', chercher);
+
+    /* 2 · cadran */
+    var cad = document.getElementById('pm-cadran'), ca = document.getElementById('pm-cadran-aiguille');
+    var t = document.getElementById('pm-centre-t'), q = document.getElementById('pm-centre-q'), c = document.getElementById('pm-centre-c'), rot = 0;
+    cad.querySelectorAll('.pm-pt').forEach(function (p) {
+      function viser() {
+        var cible = +p.dataset.angle, d = ((cible - rot) % 360 + 540) % 360 - 180; rot += d;
+        ca.style.setProperty('--rot', rot + 'deg');
+        cad.querySelectorAll('.pm-pt').forEach(function (x) { x.classList.toggle('on', x === p); });
+        t.textContent = p.dataset.titre; q.textContent = p.dataset.q;
+        c.textContent = p.dataset.cle || 'Dossier en préparation';
+        c.style.fontSize = p.dataset.cle ? '' : '15px';
+      }
+      p.addEventListener('mouseenter', viser); p.addEventListener('focus', viser);
+    });
+
+    /* 3 · hémicycle vu de la tribune */
+    var D = JSON.parse(document.getElementById('pm-data').textContent), s = D.s43, NS = 'http://www.w3.org/2000/svg';
+    var svg = document.getElementById('pm-hemi'), scene = document.getElementById('pm-scene');
+    function places(n) {
+      var rangs = Math.max(4, Math.min(10, Math.round(Math.sqrt(n / 4)))), r0 = 80, r1 = 196, pts = [], L = [], tot = 0, reste = n;
+      for (var k = 0; k < rangs; k++) { var r = r0 + (r1 - r0) * k / (rangs - 1); L.push(r); tot += r; }
+      L.forEach(function (r, k) { var m = k === rangs - 1 ? reste : Math.round(n * r / tot); reste -= m;
+        for (var j = 0; j < m; j++) { var a = Math.PI * (m === 1 ? .5 : j / (m - 1)); pts.push({ a: a, x: 210 - r * Math.cos(a), y: 210 - r * Math.sin(a) }); } });
+      return pts.sort(function (p1, p2) { return p1.a - p2.a; });
+    }
+    var sieges = [];
+    D.groupes.forEach(function (g) { var v = s.groupes[g.id]; if (!v) return;
+      for (var i = 0; i < v.pour; i++) sieges.push('pour'); for (var j = 0; j < v.abst; j++) sieges.push('abst'); for (var k = 0; k < v.contre; k++) sieges.push('contre'); });
+    var pts = places(sieges.length);
+    sieges.forEach(function (v, i) {
+      var e = document.createElementNS(NS, 'circle'), p = pts[i];
+      e.setAttribute('cx', p.x.toFixed(1)); e.setAttribute('cy', p.y.toFixed(1)); e.style.setProperty('--k', i);
+      if (v === 'pour') { e.setAttribute('r', 4.6); e.setAttribute('fill', '#D4B05A'); }
+      else if (v === 'contre') { e.setAttribute('r', 3.7); e.setAttribute('fill', 'none'); e.setAttribute('stroke', '#F2EDE4'); e.setAttribute('stroke-width', 1.8); }
+      else { e.setAttribute('r', 2.1); e.setAttribute('fill', '#A89A86'); }
+      svg.appendChild(e);
+    });
+    scene.classList.add('tribune');
+    document.querySelectorAll('[data-vue]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('[data-vue]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        scene.classList.toggle('tribune', b.dataset.vue === 'tribune');
+      });
+    });
+
+    /* 4 · mini boussole de lecture */
+    var miniA = document.getElementById('pm-mini-a'), miniT = document.getElementById('pm-mini-t');
+    var reperes = [].slice.call(document.querySelectorAll('.pm .r27-tete, .pm .r27-sec'));
+    var noms = ['L’emblème', 'Le cadran', 'La tribune', 'La lecture', 'Les détails', 'Les contrastes'];
+    function suivre() {
+      var h = document.documentElement.scrollHeight - innerHeight, p = h > 0 ? scrollY / h : 0;
+      miniA.setAttribute('transform', 'rotate(' + Math.round(p * 360) + ')');
+      var i = 0; reperes.forEach(function (r, k) { if (r.getBoundingClientRect().top < innerHeight * .45) i = k; });
+      miniT.textContent = noms[i] || '';
+    }
+    addEventListener('scroll', suivre, { passive: true }); suivre();
+
+    /* 5 · cascade */
+    var casc = document.getElementById('pm-cascade');
+    var o = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { casc.classList.add('in'); o.disconnect(); } }); }, { threshold: .6 });
+    o.observe(casc);
+    casc.parentElement.addEventListener('mouseenter', function () { casc.classList.remove('in'); void casc.offsetWidth; casc.classList.add('in'); });
+  })();
+</script>

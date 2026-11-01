@@ -1,0 +1,217 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import { enjeux } from '../../data/repliques2027.js';
+import Caddie from './composants/Caddie.astro';
+import Balance from './composants/Balance.astro';
+import Egal from './composants/Egal.astro';
+import Votes from './composants/Votes.astro';
+import { scrutins } from '../../data/votes2027.js';
+
+// ============================================================
+// LA BOUSSOLE 2027 — un dossier : état des lieux chiffré + idées reçues.
+// Une page par enjeu ouvert ; chaque idée reçue a son ancre (#id) pour le partage.
+// ============================================================
+export function getStaticPaths() {
+  const actifs = enjeux.filter((e) => e.statut === 'actif');
+  return actifs.map((e, i) => ({
+    params: { enjeu: e.id },
+    props: { e, num: enjeux.indexOf(e) + 1, suivant: actifs[i + 1] || null },
+  }));
+}
+const { e, num, suivant } = Astro.props;
+const n = String(num).padStart(2, '0');
+const [heros, ...autres] = e.etat;
+const aDesVotes = scrutins.some((x) => x.sujet === e.id && x.confirme);
+// Story : priorité à un chiffre déjà vérifié sur la source originale.
+const story = (c) => {
+  const ch = c.chiffres.find((x) => !x.verifier) || c.chiffres[0];
+  return { id: c.id, enjeu: e.titre, num: n, cliche: c.cliche, replique: c.replique, valeur: ch.valeur, source: ch.source, verifier: !!ch.verifier };
+};
+---
+<Base
+  noindex
+  title={`${e.titre} — La Boussole 2027 | L'Autre Récit`}
+  description={`${e.question} État des lieux chiffré et réponses sourcées aux idées reçues.`}
+>
+  <div class="r27">
+    <section class="r27-tete">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="r27-fil"><a href="/2027/">La Boussole 2027</a> · Dossier {n}</p>
+        <p class="eyebrow">Dossier {n}</p>
+        <h1 class="r27-h1">{e.titre}</h1>
+        <p class="r27-question">{e.question}</p>
+        <p class="r27-lede">{e.intro}</p>
+      </div>
+    </section>
+
+    <section class="r27-sec">
+      <div class="container">
+        <p class="eyebrow">L'état des lieux</p>
+        <h2 class="r27-h2">Ce que disent les chiffres</h2>
+        <div class="r27-heros">
+          <div class="r27-heros-chiffre">
+            {heros.visuel === 'egal'
+              ? <Egal avant="2021" apres="2025" legende="Pouvoir d'achat du salaire net moyen" />
+              : <span class="r27-heros-val gold-grad">{heros.valeur}</span>}
+          </div>
+          <div class="r27-heros-texte">
+            {heros.visuel === 'egal' && <span class="r27-heros-val gold-grad">{heros.valeur}</span>}
+            <p class="r27-heros-phrase">{heros.phrase}</p>
+            <span class="r27-heros-src">Source : <a href={heros.url} target="_blank" rel="noopener">{heros.source}</a></span>
+            {heros.verifier && <span class="r27-verif">À vérifier avant publication</span>}
+          </div>
+        </div>
+        <div class="r27-chiffres trois r27-apres-heros">
+          {autres.map((c) => (
+            <div class="r27-chiffre">
+              <span class="r27-valeur">{c.valeur}</span>
+              <p class="r27-phrase">{c.phrase}</p>
+              <span class="r27-source">Source : <a href={c.url} target="_blank" rel="noopener">{c.source}</a></span>
+              {c.verifier && <span class="r27-verif">À vérifier avant publication</span>}
+            </div>
+          ))}
+        </div>
+        {e.visuel === 'caddie' && <Caddie />}
+      </div>
+    </section>
+
+    {aDesVotes && (
+      <section class="r27-sec r27-sec-filet">
+        <div class="container">
+          <p class="eyebrow">À l'Assemblée</p>
+          <h2 class="r27-h2">Qui a voté quoi</h2>
+          <p class="r27-intro">Les principaux votes des députés sur le sujet depuis 2022, groupe par groupe. Suivez un groupe pour voir sa ligne, ou choisissez un scrutin pour le voir dans l'hémicycle.</p>
+          <Votes sujet={e.id} />
+        </div>
+      </section>
+    )}
+
+    <section class="r27-sec r27-sec-filet">
+      <div class="container">
+        <p class="eyebrow">Les idées reçues</p>
+        <h2 class="r27-h2">Ce qu'on vous dit, et quoi répondre</h2>
+        {e.cliches.map((c) => (
+          <article class="r27-cliche" id={c.id}>
+            <div class="r27-cliche-tete">
+              <p class="r27-label">On vous dit</p>
+              <p class="r27-cliche-phrase">«&nbsp;{c.cliche}&nbsp;»</p>
+            </div>
+            <div class="r27-cliche-corps">
+              <div class="r27-replique">
+                <p class="r27-label">Vous répondez</p>
+                <p class="r27-replique-texte">{c.replique}</p>
+              </div>
+              <div class="r27-dev">{c.developpement.map((p) => <p>{p}</p>)}</div>
+              <div class="r27-chiffres trois">
+                {c.chiffres.map((ch) => (
+                  <div class="r27-chiffre">
+                    <span class="r27-valeur">{ch.valeur}</span>
+                    <p class="r27-phrase">{ch.phrase}</p>
+                    <span class="r27-source">Source : <a href={ch.url} target="_blank" rel="noopener">{ch.source}</a></span>
+                    {ch.verifier && <span class="r27-verif">À vérifier avant publication</span>}
+                  </div>
+                ))}
+              </div>
+              {c.visuel === 'balance' && <Balance />}
+              {c.objection && (
+                <div class="r27-objection">
+                  <p class="r27-label">Et si on vous répond</p>
+                  <p class="r27-objection-q">«&nbsp;{c.objection.q}&nbsp;»</p>
+                  <p class="r27-objection-r">{c.objection.r}</p>
+                </div>
+              )}
+              <div class="r27-actions">
+                <button class="btn btn-or" type="button" data-copie={`« ${c.cliche} »\n\n${c.replique}`} data-ancre={c.id}>Copier la réplique</button>
+                <button class="btn btn-gh" type="button" data-lien={c.id}>Copier le lien</button>
+                {story(c).verifier
+                  ? <span class="r27-story-bloque" title="Le chiffre de cette fiche doit d'abord être vérifié sur sa source originale.">Partage : chiffre à vérifier</span>
+                  : <button class="btn btn-gh" type="button" data-story={JSON.stringify(story(c))}>Partager <span class="ar">↗</span></button>}
+              </div>
+            </div>
+          </article>
+        ))}
+
+        <nav class="r27-suite" aria-label="Autres dossiers">
+          <a class="btn btn-gh" href="/2027/"><span class="ar">←</span> Tous les enjeux</a>
+          {suivant && <a class="btn btn-or" href={`/2027/${suivant.id}/`}>Dossier suivant : {suivant.titre} <span class="ar">→</span></a>}
+        </nav>
+      </div>
+    </section>
+  </div>
+  <div class="r27-toast" id="r27-toast" role="status" aria-live="polite"></div>
+  <dialog class="r27-partage" id="r27-partage" aria-labelledby="r27-partage-t">
+    <div class="r27-partage-in">
+      <button type="button" class="r27-partage-x" data-fermer aria-label="Fermer">×</button>
+      <p class="r27-partage-t" id="r27-partage-t">Partager cette fiche</p>
+      <div class="r27-partage-modeles" role="radiogroup" aria-label="Modèle de story">
+        <button type="button" role="radio" aria-checked="true" data-modele="message">Message</button>
+        <button type="button" role="radio" aria-checked="false" data-modele="boussole">Boussole</button>
+      </div>
+      <img class="r27-partage-img" alt="Aperçu de la story" />
+      <div class="r27-partage-canaux"></div>
+    </div>
+  </dialog>
+</Base>
+
+<script is:inline>
+  (function () {
+    var toast = document.getElementById('r27-toast'), tm;
+    function dire(m) { toast.textContent = m; toast.classList.add('vu'); clearTimeout(tm); tm = setTimeout(function () { toast.classList.remove('vu'); }, 2200); }
+    function copier(txt, msg) {
+      function repli() {
+        var z = document.createElement('textarea'); z.value = txt; z.setAttribute('readonly', ''); z.style.position = 'absolute'; z.style.left = '-9999px';
+        document.body.appendChild(z); z.select(); try { document.execCommand('copy'); } catch (e) {} z.remove();
+      }
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).catch(repli); else repli();
+      dire(msg);
+    }
+    if (location.hash) {
+      var cible = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (cible) {
+        var aller = function () { cible.scrollIntoView({ block: 'start', behavior: 'instant' }); };
+        window.addEventListener('load', function () { (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { setTimeout(aller, 60); }); });
+      }
+    }
+    var base = location.origin + location.pathname;
+    document.querySelectorAll('[data-copie]').forEach(function (b) {
+      b.addEventListener('click', function () { copier(b.dataset.copie + '\n\n' + base + '#' + b.dataset.ancre, 'Réplique copiée'); });
+    });
+    document.querySelectorAll('[data-lien]').forEach(function (b) {
+      b.addEventListener('click', function () { copier(base + '#' + b.dataset.lien, 'Lien copié'); });
+    });
+  })();
+</script>
+
+<script>
+  import { dessinerStory, chargerPolices } from './composants/stories.js';
+  import { partager, CANAUX } from './composants/partage.js';
+  const pret = chargerPolices();
+  const dlg = document.getElementById('r27-partage') as HTMLDialogElement;
+  const img = dlg.querySelector('img')!, canaux = dlg.querySelector('.r27-partage-canaux')!;
+  const toast = document.getElementById('r27-toast')!; let tm: number;
+  const dire = (m: string) => { if (!m) return; toast.textContent = m; toast.classList.add('vu'); clearTimeout(tm); tm = window.setTimeout(() => toast.classList.remove('vu'), 2600); };
+  let s: any = null, modele = 'message';
+  const cv = document.createElement('canvas');
+  canaux.innerHTML = CANAUX.map((c) => `<button type="button" class="r27-canal r27-canal-${c.id}" data-canal="${c.id}">${c.nom}</button>`
+    + (c.id === 'story' ? '<p class="r27-partage-sous">Envoyer en message</p>' : '')).join('');
+  async function dessiner() { await pret; dessinerStory(cv, s, modele); img.src = cv.toDataURL('image/jpeg', 0.88); }
+  document.querySelectorAll<HTMLButtonElement>('[data-story]').forEach((b) => {
+    b.addEventListener('click', () => { s = JSON.parse(b.dataset.story!); dessiner(); dlg.showModal(); });
+  });
+  dlg.querySelectorAll<HTMLButtonElement>('[data-modele]').forEach((b) => {
+    b.addEventListener('click', () => {
+      modele = b.dataset.modele!;
+      dlg.querySelectorAll('[data-modele]').forEach((x) => x.setAttribute('aria-checked', String(x === b)));
+      dessiner();
+    });
+  });
+  canaux.addEventListener('click', async (e) => {
+    const b = (e.target as HTMLElement).closest('[data-canal]') as HTMLButtonElement | null; if (!b || !s) return;
+    const url = location.origin + location.pathname + '#' + s.id;
+    dire(await partager(b.dataset.canal!, { texte: `« ${s.cliche} »\n\n${s.replique}`, url, cv, nom: `boussole-2027-${s.id}.png` }));
+  });
+  dlg.querySelector('[data-fermer]')!.addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+</script>

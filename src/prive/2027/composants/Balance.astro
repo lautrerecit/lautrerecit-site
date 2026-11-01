@@ -1,0 +1,80 @@
+---
+// La balance — minima sociaux contre aides publiques aux entreprises, même année (2023).
+// 1 jeton = 10 Md€ ; l'inclinaison est proportionnelle à l'écart réel.
+---
+<div class="bl">
+  <p class="bl-titre">Ce que coûtent les « assistés », à côté de ce que reçoivent les entreprises</p>
+  <div class="bl-objet" aria-hidden="true">
+    <div class="bl-ombre"></div>
+    <div class="bl-mat"></div>
+    <div class="bl-fleau" id="bl-fleau">
+      <div class="bl-pivot"></div>
+      <div class="bl-bras g"><div class="bl-plateau"><div class="bl-pile"></div><span class="bl-etiq">Minima sociaux</span></div></div>
+      <div class="bl-bras d"><div class="bl-plateau"><div class="bl-pile"></div><span class="bl-etiq">Aides aux entreprises</span></div></div>
+    </div>
+  </div>
+  <div class="bl-legendes">
+    <div><span class="bl-val">31,6 Md€</span><span class="bl-txt">Ensemble des minima sociaux en 2023 (RSA, minimum vieillesse, AAH…)</span><span class="bl-src">DREES, édition 2025</span></div>
+    <div><span class="bl-val">211 Md€</span><span class="bl-txt">Aides publiques aux entreprises en 2023, estimation minimale du Sénat. L'État avance 187 Md€.</span><span class="bl-src">Sénat, rapport n° 808 (2024-2025)</span></div>
+    <p class="bl-unite">Un jeton = 10 milliards d'euros.</p>
+  </div>
+  <button class="btn btn-or bl-go" id="bl-go" type="button"><span>Peser</span> <span class="ar">→</span></button>
+</div>
+
+<style is:global>
+  .bl { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px 30px; align-items: center; background: var(--cr); border: 1px solid var(--r-filet); border-radius: 14px; padding: clamp(20px, 3vw, 32px); }
+  .bl-titre { grid-column: 1 / -1; font-family: var(--serif); font-style: italic; font-size: clamp(19px, 2vw, 23px); line-height: 1.3; color: var(--ink); margin: 0; max-width: 40ch; }
+  .bl-objet { position: relative; height: 330px; }
+  .bl-ombre { position: absolute; left: 50%; bottom: 0; width: 200px; height: 18px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(14,12,10,.25), transparent 70%); }
+  .bl-mat { position: absolute; left: 50%; bottom: 10px; width: 14px; height: 240px; transform: translateX(-50%); background: linear-gradient(90deg, #6E5520, #D4B05A 45%, #9A7B2E); border-radius: 7px 7px 2px 2px; }
+  .bl-mat::after { content: ""; position: absolute; left: 50%; bottom: -6px; width: 120px; height: 14px; transform: translateX(-50%); background: linear-gradient(180deg, #D4B05A, #8A6C21); border-radius: 6px; }
+  .bl-fleau { position: absolute; left: 50%; top: 58px; width: 340px; max-width: 80%; height: 10px; transform: translateX(-50%) rotate(0deg); background: linear-gradient(180deg, #E2C26E, #9A7B2E); border-radius: 5px; transition: transform 1.6s cubic-bezier(.34, 1.4, .5, 1); }
+  .bl-pivot { position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFF6CE, #C4A24A 50%, #6E5520); }
+  .bl-bras { position: absolute; top: 5px; width: 0; }
+  .bl-bras.g { left: 14px; }
+  .bl-bras.d { right: 14px; }
+  .bl-plateau { position: absolute; top: 0; left: -64px; width: 128px; height: 150px; transform-origin: 50% 0; transition: transform 1.6s cubic-bezier(.34, 1.4, .5, 1); }
+  .bl-plateau::before { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 120px; background: #8A6C21; }
+  .bl-plateau::after { content: ""; position: absolute; left: 0; right: 0; top: 120px; height: 16px; border-radius: 0 0 64px 64px / 0 0 16px 16px; background: linear-gradient(180deg, #E2C26E, #8A6C21); box-shadow: 0 10px 18px -8px rgba(14,12,10,.4); }
+  .bl-pile { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); display: flex; flex-direction: column-reverse; align-items: center; }
+  .bl-pile .bl-jeton { width: 46px; height: 9px; margin-top: -3px; border-radius: 50%; background: linear-gradient(180deg, #FBEFC2, #C4A24A 55%, #8A6C21); box-shadow: 0 1px 0 #6E5520; opacity: 0; transform: translateY(-70px); animation: blTombe .45s var(--ease) forwards; }
+  @keyframes blTombe { to { opacity: 1; transform: none; } }
+  .bl-etiq { position: absolute; left: 50%; top: 144px; width: 128px; transform: translateX(-50%); text-align: center; font-size: 13.5px; font-weight: 600; line-height: 1.25; color: var(--ink3); }
+  .bl-legendes { display: grid; gap: 18px; }
+  .bl-legendes > div { display: grid; gap: 4px; padding-left: 16px; border-left: 3px solid var(--or2); }
+  .bl-val { font-family: var(--serif); font-weight: 700; font-size: 34px; line-height: 1; color: var(--ink); }
+  .bl-txt { font-size: 15.5px; line-height: 1.45; color: var(--ink3); }
+  .bl-src { font-size: 13.5px; color: #5A5046; }
+  .bl-unite { font-size: 14px; color: #5A5046; margin: 0; }
+  .bl-go { grid-column: 1 / -1; justify-self: center; }
+  @media (max-width: 900px) { .bl { grid-template-columns: 1fr; } .bl-objet { height: 310px; } }
+  @media (prefers-reduced-motion: reduce) { .bl-fleau, .bl-plateau { transition: none; } .bl-pile .bl-jeton { animation: none; opacity: 1; transform: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var go = document.getElementById('bl-go'); if (!go) return;
+    var fleau = document.getElementById('bl-fleau'), plateaux = document.querySelectorAll('.bl-plateau'), pese = false;
+    var reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function jetons(pl, n, delai) {
+      var pile = pl.querySelector('.bl-pile'); pile.innerHTML = '';
+      for (var i = 0; i < n; i++) { var j = document.createElement('span'); j.className = 'bl-jeton'; j.style.animationDelay = (delai + i * 0.06) + 's'; pile.appendChild(j); }
+    }
+    go.addEventListener('click', function () {
+      var lib = go.firstElementChild;
+      if (pese) {
+        pese = false; lib.textContent = 'Peser';
+        fleau.style.transform = 'translateX(-50%) rotate(0deg)';
+        plateaux.forEach(function (p) { p.style.transform = ''; p.querySelector('.bl-pile').innerHTML = ''; });
+        return;
+      }
+      pese = true; lib.textContent = 'Recommencer';
+      jetons(plateaux[0], 3, 0); jetons(plateaux[1], 21, 0.2);
+      var angle = (211 - 31.6) / 211 * 16;
+      setTimeout(function () {
+        fleau.style.transform = 'translateX(-50%) rotate(' + angle + 'deg)';
+        plateaux.forEach(function (p) { p.style.transform = 'rotate(' + (-angle) + 'deg)'; });
+      }, reduit ? 0 : 1300);
+    });
+  })();
+</script>

@@ -1,0 +1,340 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+
+// ============================================================
+// LA BOUSSOLE 2027 — page de PROPOSITIONS (privée, dev seulement).
+// 5 démonstrations de forme à valider avant de les généraliser aux dossiers.
+// Tous les chiffres viennent de src/data/repliques2027.js (sources vérifiées).
+// ============================================================
+---
+<Base noindex title="Propositions de forme — La Boussole 2027" description="Tests de forme privés.">
+  <div class="r27 pp">
+    <section class="r27-tete centre">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="eyebrow">La Boussole 2027 · Laboratoire</p>
+        <h1 class="r27-h1">Cinq façons de faire <span class="gold-grad">parler</span> un chiffre.</h1>
+        <p class="r27-lede">Propositions de forme à tester avant de les appliquer aux dossiers. Chaque bloc est interactif : survolez, cliquez, faites défiler.</p>
+      </div>
+    </section>
+
+    <!-- ===== A · CONTRASTE DES CHIFFRES ===== -->
+    <section class="r27-sec pp-sec">
+      <div class="container">
+        <p class="eyebrow">Proposition A · Les cases de chiffres</p>
+        <h2 class="r27-h2">Trois traitements du même chiffre</h2>
+        <p class="r27-intro">Aujourd'hui, toutes les cases se ressemblent : fond clair, chiffre doré, phrase dessous. Le regard ne sait pas où se poser. Trois pistes pour créer du contraste et une hiérarchie.</p>
+
+        <div class="pa-grille">
+          <figure class="pa-cas">
+            <div class="pa-encre glare">
+              <span class="pa-tag">A1 · Dalle d'encre</span>
+              <span class="pa-val gold-grad" data-compte="31,1" data-prefixe="+" data-suffixe=" %">+31,1 %</span>
+              <p class="pa-phrase">Hausse des prix de l'alimentation entre 2017 et 2025.</p>
+              <span class="pa-src">Insee, indices des prix, calcul L'Autre Récit</span>
+            </div>
+            <figcaption>Le chiffre-héros passe sur encre : contraste maximal, il devient l'objet de la page. Un seul par section, sinon on retombe dans le sombre.</figcaption>
+          </figure>
+
+          <figure class="pa-cas">
+            <div class="pa-filigrane">
+              <span class="pa-fond" aria-hidden="true">32,1</span>
+              <span class="pa-tag sombre">A2 · Filigrane</span>
+              <span class="pa-val2"><b data-compte="32,1">32,1</b> %</span>
+              <p class="pa-phrase sombre">Part des revenus que le quart le plus modeste des ménages consacre au logement.</p>
+              <span class="pa-src sombre">Insee Première n° 2128, 2026</span>
+            </div>
+            <figcaption>Fond crème, le chiffre géant en filigrane donne de la profondeur, le vrai chiffre reste net en encre. Lisible sans être lourd.</figcaption>
+          </figure>
+
+          <figure class="pa-cas">
+            <div class="pa-duo">
+              <span class="pa-tag sombre">A3 · Avant / après</span>
+              <div class="pa-barres" data-anim>
+                <div class="pa-col"><span class="pa-b" style="--h:100%"></span><span class="pa-an">2021</span></div>
+                <span class="pa-egal">=</span>
+                <div class="pa-col"><span class="pa-b" style="--h:100%"></span><span class="pa-an">2025</span></div>
+              </div>
+              <p class="pa-phrase sombre"><b>0 %</b> : le salaire net moyen du privé, une fois l'inflation déduite, n'a pas bougé en quatre ans.</p>
+              <span class="pa-src sombre">Insee Première n° 2132, 22 octobre 2026</span>
+            </div>
+            <figcaption>Quand le chiffre est « zéro », on le montre au lieu de l'écrire : deux barres identiques disent la stagnation mieux que « 0 % ».</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== B · CARTES QUI SE RETOURNENT ===== -->
+    <section class="r27-sec pp-sec">
+      <div class="container">
+        <p class="eyebrow">Proposition B · Le retournement</p>
+        <h2 class="r27-h2">Le cliché d'un côté, la réplique de l'autre</h2>
+        <p class="r27-intro">Chaque idée reçue devient une carte. Recto crème : ce qu'on entend. Un clic, elle pivote en 3D : verso encre, la réplique et son chiffre. Le geste mime le sens du projet, retourner le récit.</p>
+        <div class="pb-rangee">
+          <button class="pb-carte" type="button" aria-pressed="false">
+            <span class="pb-face pb-recto"><span class="pb-k">On vous dit</span><span class="pb-cliche">« Ils viennent pour les aides. »</span><span class="pb-geste">Retourner ↻</span></span>
+            <span class="pb-face pb-verso"><span class="pb-k">Vous répondez</span><span class="pb-chiffre gold-grad">5 ans</span><span class="pb-rep">de titre de séjour autorisant à travailler sont exigés d'un étranger hors UE avant tout RSA.</span><span class="pb-s">CASF, art. L262-4</span></span>
+          </button>
+          <button class="pb-carte" type="button" aria-pressed="false">
+            <span class="pb-face pb-recto"><span class="pb-k">On vous dit</span><span class="pb-cliche">« C'est à cause des assistés. »</span><span class="pb-geste">Retourner ↻</span></span>
+            <span class="pb-face pb-verso"><span class="pb-k">Vous répondez</span><span class="pb-chiffre gold-grad">1,1 %</span><span class="pb-rep">du PIB : le poids de l'ensemble des minima sociaux, RSA compris, en 2023.</span><span class="pb-s">DREES, édition 2025</span></span>
+          </button>
+          <button class="pb-carte" type="button" aria-pressed="false">
+            <span class="pb-face pb-recto"><span class="pb-k">On vous dit</span><span class="pb-cliche">« La France accueille plus que tout le monde. »</span><span class="pb-geste">Retourner ↻</span></span>
+            <span class="pb-face pb-verso"><span class="pb-k">Vous répondez</span><span class="pb-chiffre gold-grad">9e sur 27</span><span class="pb-rep">dans l'UE pour les demandes d'asile rapportées à la population, en 2025.</span><span class="pb-s">Eurostat, calcul L'Autre Récit</span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== C · LA BALANCE ===== -->
+    <section class="r27-sec pp-sec">
+      <div class="container">
+        <p class="eyebrow">Proposition C · La balance</p>
+        <h2 class="r27-h2">Peser ce qu'on compare</h2>
+        <p class="r27-intro">Un objet 3D au service d'une comparaison : chaque jeton vaut 10 milliards d'euros. Cliquez sur « Peser » et la balance penche selon les vrais montants de 2023.</p>
+        <div class="pc-scene">
+          <div class="pc-balance" id="pc-balance">
+            <div class="pc-pied"></div>
+            <div class="pc-mat"></div>
+            <div class="pc-fleau" id="pc-fleau">
+              <div class="pc-pivot"></div>
+              <div class="pc-bras gauche">
+                <div class="pc-plateau" data-n="3"><div class="pc-pile"></div><span class="pc-etiq">Minima sociaux</span></div>
+              </div>
+              <div class="pc-bras droite">
+                <div class="pc-plateau" data-n="21"><div class="pc-pile"></div><span class="pc-etiq">Aides aux entreprises</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="pc-legendes">
+            <div><span class="pc-l-val">31,6 Md€</span><span class="pc-l-txt">Ensemble des minima sociaux (RSA, minimum vieillesse, AAH…)</span><span class="pc-l-src">DREES, 2023</span></div>
+            <div><span class="pc-l-val">211 Md€</span><span class="pc-l-txt">Aides publiques aux entreprises, estimation minimale du Sénat (l'État avance 187 Md€)</span><span class="pc-l-src">Sénat, rapport n° 808, 2023</span></div>
+          </div>
+          <button class="btn btn-or pc-go" id="pc-go" type="button">Peser <span class="ar">→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== D · LES CISEAUX ===== -->
+    <section class="r27-sec pp-sec">
+      <div class="container">
+        <p class="eyebrow">Proposition D · Le graphique qui se dessine</p>
+        <h2 class="r27-h2">L'effet ciseaux du logement</h2>
+        <p class="r27-intro">Un graphique sobre qui se trace quand on arrive dessus. Deux points par courbe, ceux que publie l'Insee, à la même échelle : rien d'inventé entre les deux.</p>
+        <div class="pd-graph" data-anim>
+          <svg viewBox="0 0 640 300" role="img" aria-labelledby="pd-t">
+            <title id="pd-t">Taux d'effort net pour se loger, 2014 et 2024 : 31,0 % puis 32,1 % pour le quart le plus modeste ; 18,3 % puis 16,8 % pour l'ensemble des ménages.</title>
+            <line class="pd-axe" x1="70" y1="262" x2="590" y2="262" />
+            <text class="pd-an" x="110" y="285">2014</text><text class="pd-an" x="550" y="285" text-anchor="end">2024</text>
+            <path class="pd-l modestes" d="M110 54.4 L550 40.0" pathLength="1" />
+            <path class="pd-l ensemble" d="M110 220.4 L550 240.0" pathLength="1" />
+            <circle class="pd-p modestes" cx="110" cy="54.4" r="6" /><circle class="pd-p modestes" cx="550" cy="40.0" r="6" />
+            <circle class="pd-p ensemble" cx="110" cy="220.4" r="6" /><circle class="pd-p ensemble" cx="550" cy="240.0" r="6" />
+            <text class="pd-v fort" x="96" y="61.4" text-anchor="end">31,0 %</text><text class="pd-v fort" x="566" y="47.0">32,1 %</text>
+            <text class="pd-v" x="96" y="227.4" text-anchor="end">18,3 %</text><text class="pd-v" x="566" y="247.0">16,8 %</text>
+          </svg>
+          <div class="pd-leg"><span><i class="modestes"></i>Le quart le plus modeste</span><span><i class="ensemble"></i>Ensemble des ménages</span></div>
+          <p class="pa-src sombre">Insee Première n° 2128, 23 septembre 2026 · taux d'effort net, aides au logement déduites</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== E · BOUSSOLE EN RELIEF ===== -->
+    <section class="r27-sec pp-sec">
+      <div class="container">
+        <p class="eyebrow">Proposition E · Les dossiers en relief</p>
+        <h2 class="r27-h2">Des dossiers qu'on a envie de prendre en main</h2>
+        <p class="r27-intro">Les cartes d'enjeux suivent la souris en légère 3D, avec un reflet doré qui glisse. Le chiffre-clé du dossier apparaît sur la tranche pour donner envie d'entrer.</p>
+        <div class="pe-grille">
+          <a class="pe-carte" href="/2027/vie-chere/"><span class="pe-reflet"></span><span class="pe-num">01</span><span class="pe-titre">Vie chère</span><span class="pe-cle"><b>+31,1 %</b> sur l'alimentation depuis 2017</span><span class="pe-q">Pourquoi tout augmente, et qui en profite ?</span></a>
+          <a class="pe-carte" href="/2027/salaires/"><span class="pe-reflet"></span><span class="pe-num">02</span><span class="pe-titre">Salaires</span><span class="pe-cle"><b>0 %</b> de pouvoir d'achat gagné entre 2021 et 2025</span><span class="pe-q">Peut-on vivre de son travail en 2027 ?</span></a>
+          <a class="pe-carte" href="/2027/immigration/"><span class="pe-reflet"></span><span class="pe-num">03</span><span class="pe-titre">Immigration</span><span class="pe-cle"><b>11,6 %</b> de la population est immigrée</span><span class="pe-q">Combien, pourquoi, et à quel coût réel ?</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .pp-sec + .pp-sec { padding-top: clamp(48px, 7vw, 88px); border-top: 1px solid var(--r-filet); }
+  .r27-sec.pp-sec:first-of-type { padding-top: clamp(56px, 7vw, 96px); }
+
+  /* ===== A ===== */
+  .pa-grille { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 30px; }
+  .pa-cas { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .pa-cas figcaption { font-size: 15px; line-height: 1.55; color: var(--ink3); }
+  .pa-encre, .pa-filigrane, .pa-duo { position: relative; overflow: hidden; min-height: 300px; border-radius: 14px; padding: 26px; display: flex; flex-direction: column; }
+  .pa-tag { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--or3); }
+  .pa-tag.sombre { color: var(--r-or); }
+  .pa-phrase { font-size: 16.5px; line-height: 1.5; color: rgba(242,237,228,.9); margin: 12px 0 0; }
+  .pa-phrase.sombre { color: var(--ink2); }
+  .pa-phrase b { color: var(--ink); }
+  .pa-src { margin-top: auto; padding-top: 16px; font-size: 13.5px; color: rgba(242,237,228,.68); }
+  .pa-src.sombre { color: #5A5046; }
+
+  .pa-encre { background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border-top: 2px solid var(--or2); box-shadow: 0 34px 60px -36px rgba(14,12,10,.6); }
+  .pa-val { font-family: var(--serif); font-weight: 700; font-size: clamp(54px, 5.4vw, 76px); line-height: 1; letter-spacing: -0.03em; margin-top: 30px; padding-bottom: .06em; display: inline-block; }
+
+  .pa-filigrane { background: var(--r-carte); border: 1px solid var(--r-filet); }
+  .pa-fond { position: absolute; right: -8px; bottom: -22px; font-family: var(--serif); font-weight: 900; font-size: 150px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(154,123,46,.34); letter-spacing: -0.04em; pointer-events: none; }
+  .pa-val2 { position: relative; font-family: var(--serif); font-weight: 700; font-size: clamp(50px, 5vw, 68px); line-height: 1; color: var(--ink); margin-top: 30px; letter-spacing: -0.03em; }
+  .pa-val2 b { font-weight: 700; box-shadow: inset 0 -.16em 0 rgba(196,162,74,.45); }
+  .pa-filigrane .pa-phrase, .pa-filigrane .pa-src { position: relative; max-width: 26ch; }
+
+  .pa-duo { background: var(--cr2); border: 1px solid var(--r-filet); }
+  .pa-barres { display: flex; align-items: flex-end; justify-content: center; gap: 22px; height: 130px; margin-top: 22px; }
+  .pa-col { display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; justify-content: flex-end; }
+  .pa-b { width: 58px; height: 0; background: linear-gradient(180deg, #D4B05A, #9A7B2E); border-radius: 4px 4px 0 0; transition: height 1.1s var(--ease); }
+  .pa-barres.in .pa-b { height: calc(var(--h) - 26px); }
+  .pa-col:last-of-type .pa-b { transition-delay: .25s; }
+  .pa-an { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--ink3); }
+  .pa-egal { font-family: var(--serif); font-size: 40px; color: var(--r-or); align-self: center; }
+
+  /* ===== B ===== */
+  .pb-rangee { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 30px; perspective: 1400px; }
+  .pb-carte { position: relative; height: 330px; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; transform-style: preserve-3d; transition: transform .9s var(--ease); }
+  .pb-carte[aria-pressed="true"] { transform: rotateY(180deg); }
+  .pb-carte:hover:not([aria-pressed="true"]) { transform: rotateY(-8deg) translateY(-4px); }
+  .pb-face { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 28px; border-radius: 16px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .pb-recto { background: var(--r-carte); border: 1px solid var(--r-filet); box-shadow: 0 30px 50px -36px rgba(14,12,10,.45); }
+  .pb-verso { transform: rotateY(180deg); background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border-top: 2px solid var(--or2); box-shadow: 0 34px 60px -34px rgba(14,12,10,.65); }
+  .pb-k { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #5E554A; }
+  .pb-verso .pb-k { color: var(--or3); }
+  .pb-cliche { font-family: var(--serif); font-style: italic; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.25; color: var(--ink); margin-top: 18px; }
+  .pb-geste { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--r-or); }
+  .pb-chiffre { font-family: var(--serif); font-weight: 700; font-size: clamp(46px, 4.6vw, 62px); line-height: 1.05; margin-top: 18px; display: inline-block; padding-bottom: .06em; }
+  .pb-rep { font-size: 16.5px; line-height: 1.5; color: #F2EDE4; margin-top: 10px; }
+  .pb-s { margin-top: auto; font-size: 13.5px; color: rgba(242,237,228,.68); }
+
+  /* ===== C ===== */
+  .pc-scene { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; margin-top: 30px; background: var(--r-carte); border: 1px solid var(--r-filet); border-radius: 18px; padding: clamp(24px, 3vw, 40px); }
+  .pc-balance { position: relative; height: 350px; perspective: 900px; }
+  .pc-pied { position: absolute; left: 50%; bottom: 0; width: 200px; height: 18px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(14,12,10,.28), transparent 70%); }
+  .pc-mat { position: absolute; left: 50%; bottom: 10px; width: 14px; height: 250px; transform: translateX(-50%); background: linear-gradient(90deg, #6E5520, #D4B05A 45%, #9A7B2E); border-radius: 7px 7px 2px 2px; }
+  .pc-mat::after { content: ""; position: absolute; left: 50%; bottom: -6px; width: 120px; height: 14px; transform: translateX(-50%); background: linear-gradient(180deg, #D4B05A, #8A6C21); border-radius: 6px; }
+  .pc-fleau { position: absolute; left: 50%; top: 58px; width: 340px; max-width: 78%; height: 10px; transform: translateX(-50%) rotate(0deg); transform-origin: 50% 50%; background: linear-gradient(180deg, #E2C26E, #9A7B2E); border-radius: 5px; transition: transform 1.6s cubic-bezier(.34, 1.4, .5, 1); }
+  .pc-pivot { position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFF6CE, #C4A24A 50%, #6E5520); }
+  .pc-bras { position: absolute; top: 5px; width: 0; }
+  .pc-bras.gauche { left: 14px; }
+  .pc-bras.droite { right: 14px; }
+  .pc-plateau { position: absolute; top: 0; left: -66px; width: 132px; height: 150px; transform-origin: 50% 0; transition: transform 1.6s cubic-bezier(.34, 1.4, .5, 1); }
+  .pc-plateau::before { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 120px; background: #8A6C21; box-shadow: -44px 0 0 0 transparent; }
+  .pc-plateau::after { content: ""; position: absolute; left: 0; right: 0; top: 120px; height: 16px; border-radius: 0 0 66px 66px / 0 0 16px 16px; background: linear-gradient(180deg, #E2C26E, #8A6C21); box-shadow: 0 10px 18px -8px rgba(14,12,10,.4); }
+  .pc-pile { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); display: flex; flex-direction: column-reverse; align-items: center; }
+  .pc-etiq { position: absolute; left: 50%; top: 144px; width: 130px; transform: translateX(-50%); text-align: center; font-size: 13.5px; font-weight: 600; line-height: 1.25; color: var(--ink3); }
+  .pc-legendes { display: grid; gap: 20px; }
+  .pc-legendes > div { display: grid; gap: 4px; padding-left: 16px; border-left: 3px solid var(--or2); }
+  .pc-l-val { font-family: var(--serif); font-weight: 700; font-size: 36px; line-height: 1; color: var(--ink); }
+  .pc-l-txt { font-size: 15.5px; line-height: 1.45; color: var(--ink3); }
+  .pc-l-src { font-size: 13.5px; color: #5A5046; }
+  .pc-go { grid-column: 1 / -1; justify-self: center; }
+
+  /* ===== D ===== */
+  .pd-graph { margin-top: 30px; background: var(--r-carte); border: 1px solid var(--r-filet); border-radius: 18px; padding: clamp(20px, 3vw, 36px); }
+  .pd-graph svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .pd-axe { stroke: var(--cr3); stroke-width: 1.5; }
+  .pd-an { font-family: var(--mono); font-size: 14px; font-weight: 700; fill: var(--ink3); }
+  .pd-l { fill: none; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s var(--ease); }
+  .pd-l.modestes { stroke: #7A2E3A; }
+  .pd-l.ensemble { stroke: #9A7B2E; transition-delay: .3s; }
+  .pd-p { opacity: 0; transition: opacity .4s 1.2s; }
+  .pd-p.modestes { fill: #7A2E3A; }
+  .pd-p.ensemble { fill: #9A7B2E; }
+  .pd-v { font-family: var(--serif); font-weight: 700; font-size: 20px; fill: var(--ink3); opacity: 0; transition: opacity .5s 1.4s; }
+  .pd-v.fort { fill: #7A2E3A; font-size: 24px; }
+  .pd-graph.in .pd-l { stroke-dashoffset: 0; }
+  .pd-graph.in .pd-p, .pd-graph.in .pd-v { opacity: 1; }
+  .pd-leg { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 16px; font-size: 15px; color: var(--ink2); }
+  .pd-leg i { display: inline-block; width: 22px; height: 5px; border-radius: 3px; margin-right: 8px; vertical-align: middle; }
+  .pd-leg i.modestes { background: #7A2E3A; }
+  .pd-leg i.ensemble { background: #9A7B2E; }
+
+  /* ===== E ===== */
+  .pe-grille { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 30px; perspective: 1000px; }
+  .pe-carte { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 8px; min-height: 280px; padding: 26px; color: inherit; background: var(--r-carte); border: 1px solid var(--r-filet); border-top: 2px solid var(--or2); border-radius: 16px; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .25s ease-out, box-shadow .3s; }
+  .pe-carte:hover { color: inherit; box-shadow: 0 40px 70px -40px rgba(14,12,10,.5); }
+  .pe-reflet { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(212,176,90,.22), transparent 45%); opacity: 0; transition: opacity .3s; }
+  .pe-carte:hover .pe-reflet { opacity: 1; }
+  .pe-num { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 22px; color: var(--r-or); }
+  .pe-titre { font-family: var(--serif); font-weight: 700; font-size: 30px; line-height: 1.1; color: var(--ink); }
+  .pe-cle { display: block; margin-top: 6px; padding: 12px 14px; background: linear-gradient(158deg, #1C160F, #0C0A07); border-radius: 8px; font-size: 15px; line-height: 1.4; color: #F2EDE4; }
+  .pe-cle b { font-family: var(--serif); font-size: 22px; color: var(--or2); margin-right: 4px; }
+  .pe-q { margin-top: auto; font-size: 15.5px; color: var(--ink3); }
+
+  @media (max-width: 900px) {
+    .pa-grille, .pb-rangee, .pe-grille { grid-template-columns: 1fr; }
+    .pc-scene { grid-template-columns: 1fr; }
+    .pc-balance { height: 300px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pb-carte, .pc-fleau, .pc-plateau, .pd-l, .pa-b { transition: none !important; }
+  }
+</style>
+
+<style is:global>
+  .pc-pile .pc-jeton { width: 46px; height: 9px; margin-top: -3px; border-radius: 50%; background: linear-gradient(180deg, #FBEFC2, #C4A24A 55%, #8A6C21); box-shadow: 0 1px 0 #6E5520; opacity: 0; transform: translateY(-70px); animation: r27Tombe .45s var(--ease) forwards; }
+  @keyframes r27Tombe { to { opacity: 1; transform: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* apparition au défilement (barres, graphique) */
+    var obs = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('[data-anim]').forEach(function (el) { obs.observe(el); });
+
+    /* compteurs */
+    var obsC = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return; obsC.unobserve(e.target);
+        var el = e.target, fin = parseFloat(el.dataset.compte.replace(',', '.')), dec = (el.dataset.compte.split(',')[1] || '').length;
+        var pre = el.dataset.prefixe || '', suf = el.dataset.suffixe || '', t0 = null;
+        if (reduit) return;
+        function pas(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 1300); p = 1 - Math.pow(1 - p, 3);
+          el.textContent = pre + (fin * p).toFixed(dec).replace('.', ',') + suf; if (p < 1) requestAnimationFrame(pas); }
+        requestAnimationFrame(pas);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-compte]').forEach(function (el) { obsC.observe(el); });
+
+    /* B · retournement */
+    document.querySelectorAll('.pb-carte').forEach(function (c) {
+      c.addEventListener('click', function () { c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); });
+    });
+
+    /* C · balance : 1 jeton = 10 Md€ ; angle selon l'écart réel */
+    var go = document.getElementById('pc-go'), fleau = document.getElementById('pc-fleau');
+    var plateaux = document.querySelectorAll('.pc-plateau'), pese = false;
+    function jetons(pl, n, delai) {
+      var pile = pl.querySelector('.pc-pile'); pile.innerHTML = '';
+      for (var i = 0; i < n; i++) { var j = document.createElement('span'); j.className = 'pc-jeton'; j.style.animationDelay = (delai + i * 0.06) + 's'; pile.appendChild(j); }
+    }
+    go.addEventListener('click', function () {
+      if (pese) { pese = false; fleau.style.transform = 'translateX(-50%) rotate(0deg)'; plateaux.forEach(function (p) { p.style.transform = ''; p.querySelector('.pc-pile').innerHTML = ''; }); go.firstChild.textContent = 'Peser '; return; }
+      pese = true; go.firstChild.textContent = 'Recommencer ';
+      jetons(plateaux[0], 3, 0); jetons(plateaux[1], 21, 0.2);
+      var angle = Math.min(16, (211 - 31.6) / 211 * 16);
+      setTimeout(function () {
+        fleau.style.transform = 'translateX(-50%) rotate(' + angle + 'deg)';
+        plateaux.forEach(function (p) { p.style.transform = 'rotate(' + (-angle) + 'deg)'; });
+      }, reduit ? 0 : 1300);
+    });
+
+    /* E · relief qui suit la souris */
+    if (!reduit && matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll('.pe-carte').forEach(function (c) {
+        c.addEventListener('pointermove', function (e) {
+          var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+          c.style.setProperty('--ry', ((x - .5) * 12) + 'deg'); c.style.setProperty('--rx', ((.5 - y) * 10) + 'deg');
+          c.style.setProperty('--mx', (x * 100) + '%'); c.style.setProperty('--my', (y * 100) + '%');
+        });
+        c.addEventListener('pointerleave', function () { c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg'); });
+      });
+    }
+  })();
+</script>

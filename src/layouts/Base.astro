@@ -12,6 +12,7 @@ const {
   noHeader = false,
   noFooter = false,
   noVerset = false,
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -38,6 +39,7 @@ const ogImage = new URL(image, Astro.site).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

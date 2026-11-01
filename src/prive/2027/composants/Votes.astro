@@ -1,0 +1,176 @@
+---
+// Qui a voté quoi — scrutins publics de l'Assemblée nationale sur un sujet.
+// Hémicycle : un point par député ayant voté, groupes rangés comme dans la salle (gauche → droite).
+// Données : src/data/votes2027.js (chaque vote confirmé sur la page officielle du scrutin).
+import { scrutins, groupes, regleSelection, aRetenir } from '../../../data/votes2027.js';
+const { sujet } = Astro.props;
+const liste = scrutins.filter((s) => s.sujet === sujet && s.confirme).sort((a, b) => b.date.localeCompare(a.date));
+const presents = groupes.filter((g) => liste.some((s) => s.groupes[g.id]));
+const fr = (d) => new Date(d + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const POS = { pour: 'Pour', contre: 'Contre', abstention: 'Abstention', partagé: 'Partagé' };
+const uid = `vt-${sujet}`;
+---
+{liste.length > 0 && (
+<div class="vt" id={uid}>
+  {aRetenir[sujet] && <div class="vt-retenir"><span class="vt-retenir-k">À retenir</span><p>{aRetenir[sujet]}</p></div>}
+  <div class="vt-filtres" role="group" aria-label="Suivre un groupe">
+    <button type="button" class="vt-f" aria-pressed="true" data-g="">Tous les groupes</button>
+    {presents.map((g) => <button type="button" class="vt-f" aria-pressed="false" data-g={g.id}>{g.court}</button>)}
+  </div>
+  <p class="vt-bilan" aria-live="polite"></p>
+
+  <div class="vt-scene">
+    <svg class="vt-hemi" viewBox="0 0 420 216" role="img" aria-label="Hémicycle du scrutin sélectionné"></svg>
+    <p class="vt-total"></p>
+    <div class="vt-legende">
+      <span><i class="pour"></i>Pour</span><span><i class="contre"></i>Contre</span><span><i class="abst"></i>Abstention</span><span class="vt-ni">Un point par député ayant voté, hors non-inscrits</span>
+    </div>
+    <p class="vt-hemi-titre"></p>
+  </div>
+
+  <ol class="vt-liste">
+    {liste.map((s, i) => (
+      <li>
+        <button type="button" class="vt-scrutin" aria-pressed={i === 0 ? 'true' : 'false'} data-i={i}>
+          <span class="vt-meta">{fr(s.date)} · scrutin n° {s.numero} · {s.leg}e législature</span>
+          <span class="vt-intitule">{s.intitule}</span>
+          <span class="vt-phrase">{s.phrase}</span>
+          {s.lecture && <span class="vt-lecture">{s.lecture}</span>}
+          {s.objetAVerifier && <span class="r27-verif">Résumé de l'objet à vérifier sur le texte officiel</span>}
+          <span class:list={['vt-resultat', s.resultat.toLowerCase().startsWith('adopt') ? 'adopte' : 'rejete']}>{s.resultat}</span>
+          <span class="vt-groupes">
+            {presents.map((g) => s.groupes[g.id] && (
+              <span class:list={['vt-g', s.groupes[g.id].position]} data-g={g.id} title={`${g.nom} : ${s.groupes[g.id].pour} pour, ${s.groupes[g.id].contre} contre, ${s.groupes[g.id].abst} abstention`}>
+                <b>{g.court}</b> {POS[s.groupes[g.id].position]}
+              </span>
+            ))}
+          </span>
+        </button>
+        <a class="vt-source" href={s.url} target="_blank" rel="noopener">Détail officiel du scrutin ↗</a>
+      </li>
+    ))}
+  </ol>
+  <p class="vt-regle">{regleSelection}</p>
+  <script type="application/json" class="vt-data" set:html={JSON.stringify({ liste, groupes: presents })} />
+</div>
+)}
+
+<style is:global>
+  .vt { margin-top: 26px; }
+  .vt-filtres { display: flex; flex-wrap: wrap; gap: 8px; }
+  .vt-f { font: inherit; font-size: 14px; font-weight: 600; padding: 7px 14px; border-radius: 100px; border: 1px solid #8E7B58; background: transparent; color: var(--ink3); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .vt-f:hover { border-color: var(--or); color: var(--ink); }
+  .vt-f[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #F2EDE4; }
+  .vt-bilan { min-height: 1.6em; margin: 14px 0 0; font-size: 16.5px; color: var(--ink2); }
+  .vt-bilan b { font-family: var(--serif); font-size: 1.15em; color: var(--ink); }
+  .vt-scene { margin-top: 14px; padding: 22px 22px 18px; border-radius: 16px; background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border-top: 2px solid var(--or2); text-align: center; }
+  .vt-hemi { width: 100%; max-width: 520px; height: auto; display: block; margin: 0 auto; }
+  .vt-hemi circle { transition: fill .35s, opacity .35s; }
+  .vt-total { margin: 8px 0 0; font-size: 16px; color: rgba(242,237,228,.85); }
+  .vt-total b { font-family: var(--serif); font-size: 26px; color: #F2EDE4; }
+  .vt-legende { display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; margin-top: 10px; font-size: 14px; color: rgba(242,237,228,.85); }
+  .vt-legende i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+  .vt-legende i.pour { background: #D4B05A; }
+  .vt-legende i.contre { background: transparent; box-shadow: inset 0 0 0 2px #F2EDE4; }
+  .vt-legende i.abst { width: 6px; height: 6px; margin: 0 9px 0 3px; vertical-align: 1px; background: #A89A86; }
+  .vt-hemi-titre { margin: 10px auto 0; max-width: 56ch; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.4; color: #F2EDE4; }
+  .vt-liste { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; }
+  .vt-liste li { display: grid; gap: 6px; }
+  .vt-scrutin { font: inherit; text-align: left; cursor: pointer; display: grid; gap: 6px; padding: 18px 20px; color: inherit; background: var(--r-carte); border: 1px solid var(--r-filet); border-left: 3px solid transparent; border-radius: 0 12px 12px 0; transition: border-color .2s, box-shadow .2s; }
+  .vt-scrutin:hover { border-color: var(--or); }
+  .vt-scrutin[aria-pressed="true"] { border-left-color: var(--or2); background: #fff; box-shadow: 0 18px 34px -26px rgba(14,12,10,.45); }
+  .vt-meta { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .06em; color: #7A5E18; }
+  .vt-intitule { font-family: var(--serif); font-size: 19px; line-height: 1.3; color: var(--ink); }
+  .vt-phrase { font-size: 15.5px; line-height: 1.5; color: var(--ink3); }
+  .vt-resultat { justify-self: start; font-size: 13px; font-weight: 700; letter-spacing: .04em; padding: 3px 10px; border-radius: 4px; }
+  .vt-resultat.adopte { background: rgba(196,162,74,.22); color: #5E4A14; }
+  .vt-resultat.rejete { background: var(--cr2); color: #4A4238; }
+  .vt-groupes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .vt-g { font-size: 13px; padding: 3px 9px; border-radius: 4px; border: 1px solid transparent; transition: opacity .25s; }
+  .vt-g b { font-weight: 700; }
+  .vt-g.pour { background: #E9CF8A; color: #3A2D0C; }
+  .vt-g.contre { background: #1A1714; color: #F2EDE4; }
+  .vt-g.abstention { background: transparent; border: 1px dashed #8C8072; color: #4A4238; }
+  .vt-g.partagé { background: linear-gradient(90deg, #E9CF8A 50%, #D9CFBF 50%); color: #3A2D0C; }
+  .vt.filtre .vt-g { opacity: .28; }
+  .vt.filtre .vt-g.on { opacity: 1; box-shadow: 0 0 0 2px var(--or2); }
+  .vt-source { justify-self: start; margin-left: 4px; font-size: 13.5px; color: #5A5046; border-bottom: 1px solid rgba(138,108,33,.4); }
+  .vt-retenir { margin-bottom: 20px; padding: 18px 22px; border-left: 3px solid var(--or2); background: var(--r-carte); border-radius: 0 12px 12px 0; }
+  .vt-retenir-k { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #7A5E18; }
+  .vt-retenir p { margin: 6px 0 0; font-size: 17px; line-height: 1.55; color: var(--ink); max-width: 70ch; }
+  .vt-lecture { font-size: 14.5px; font-weight: 600; color: #5E4A14; }
+  .vt-scrutin .r27-verif { justify-self: start; margin-top: 0; }
+  .vt-ni { width: 100%; font-size: 13px; color: rgba(242,237,228,.7); }
+  .vt-regle { margin: 18px 0 0; font-size: 14px; line-height: 1.55; color: #5A5046; max-width: 72ch; }
+</style>
+
+<script is:inline>
+  (function () {
+    document.querySelectorAll('.vt').forEach(function (root) {
+      var D = JSON.parse(root.querySelector('.vt-data').textContent);
+      var svg = root.querySelector('.vt-hemi'), total = root.querySelector('.vt-total'), titre = root.querySelector('.vt-hemi-titre'), bilan = root.querySelector('.vt-bilan');
+      var NS = 'http://www.w3.org/2000/svg', courant = 0, suivi = '';
+
+      // Places de l'hémicycle : rangées concentriques, points triés par angle (gauche → droite).
+      function places(n) {
+        var rangs = Math.max(4, Math.min(10, Math.round(Math.sqrt(n / 4)))), r0 = 80, r1 = 196, pts = [];
+        var longueurs = [], total = 0;
+        for (var k = 0; k < rangs; k++) { var r = r0 + (r1 - r0) * k / (rangs - 1); longueurs.push(r); total += r; }
+        var restant = n;
+        longueurs.forEach(function (r, k) {
+          var m = k === rangs - 1 ? restant : Math.round(n * r / total); restant -= m;
+          for (var j = 0; j < m; j++) { var a = Math.PI * (m === 1 ? .5 : j / (m - 1)); pts.push({ a: a, x: 210 - r * Math.cos(a), y: 210 - r * Math.sin(a) }); }
+        });
+        return pts.sort(function (p, q) { return p.a - q.a; });
+      }
+      function dessiner() {
+        var s = D.liste[courant], sieges = [];
+        D.groupes.forEach(function (g) {
+          var v = s.groupes[g.id]; if (!v) return;
+          for (var i = 0; i < v.pour; i++) sieges.push({ g: g.id, v: 'pour' });
+          for (var i2 = 0; i2 < v.abst; i2++) sieges.push({ g: g.id, v: 'abst' });
+          for (var i3 = 0; i3 < v.contre; i3++) sieges.push({ g: g.id, v: 'contre' });
+        });
+        var pts = places(sieges.length), rayon = sieges.length > 400 ? 3.9 : 4.9;
+        svg.innerHTML = '';
+        sieges.forEach(function (st, i) {
+          var c = document.createElementNS(NS, 'circle'), p = pts[i];
+          // Code par forme, lisible sans la couleur : disque plein = pour, anneau = contre, petit point = abstention.
+          c.setAttribute('cx', p.x.toFixed(1)); c.setAttribute('cy', p.y.toFixed(1));
+          if (st.v === 'pour') { c.setAttribute('r', rayon); c.setAttribute('fill', '#D4B05A'); }
+          else if (st.v === 'contre') { c.setAttribute('r', rayon - 1); c.setAttribute('fill', 'none'); c.setAttribute('stroke', '#F2EDE4'); c.setAttribute('stroke-width', '1.8'); }
+          else { c.setAttribute('r', rayon * .45); c.setAttribute('fill', '#A89A86'); }
+          if (suivi && st.g !== suivi) c.setAttribute('opacity', '.18');
+          svg.appendChild(c);
+        });
+        total.innerHTML = '<b>' + s.pour + '</b> pour · <b>' + s.contre + '</b> contre · ' + s.resultat.toLowerCase();
+        titre.textContent = s.intitule;
+      }
+      function majBilan() {
+        root.classList.toggle('filtre', !!suivi);
+        root.querySelectorAll('.vt-g').forEach(function (e) { e.classList.toggle('on', e.dataset.g === suivi); });
+        if (!suivi) { bilan.textContent = 'Choisissez un groupe pour suivre ses votes, ou un scrutin pour le voir dans l’hémicycle.'; return; }
+        var g = D.groupes.filter(function (x) { return x.id === suivi; })[0], n = { pour: 0, contre: 0, abstention: 0, 'partagé': 0 }, tot = 0;
+        D.liste.forEach(function (s) { var v = s.groupes[suivi]; if (v) { n[v.position]++; tot++; } });
+        bilan.innerHTML = '<b>' + g.nom + '</b> sur ' + tot + ' scrutin' + (tot > 1 ? 's' : '') + ' : ' + n.pour + ' pour, ' + n.contre + ' contre, ' + n.abstention + ' abstention' + (n['partagé'] ? ', ' + n['partagé'] + ' partagé' : '') + '.';
+      }
+      root.querySelectorAll('.vt-f').forEach(function (b) {
+        b.addEventListener('click', function () {
+          suivi = b.dataset.g;
+          root.querySelectorAll('.vt-f').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          majBilan(); dessiner();
+        });
+      });
+      root.querySelectorAll('.vt-scrutin').forEach(function (b) {
+        b.addEventListener('click', function () {
+          courant = +b.dataset.i;
+          root.querySelectorAll('.vt-scrutin').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          dessiner();
+          var sc = root.querySelector('.vt-scene').getBoundingClientRect();
+          if (sc.top < 0) root.querySelector('.vt-scene').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+      majBilan(); dessiner();
+    });
+  })();
+</script>

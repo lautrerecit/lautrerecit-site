@@ -1,0 +1,517 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import { enjeux } from '../../data/repliques2027.js';
+
+// ============================================================
+// LA BOUSSOLE 2027 — 5 CRÉATIONS (privé, dev seulement).
+// 15 générateur de story · 14 vrai ou cliché · 13 loupe du récit · 1 caddie · 17 tiroir à fiches.
+// Chiffres : uniquement ceux de src/data/repliques2027.js.
+// ============================================================
+const actifs = enjeux.filter((e) => e.statut === 'actif');
+
+// Générateur de story : une entrée par idée reçue.
+const stories = actifs.flatMap((e) =>
+  e.cliches.map((c) => {
+    // Priorité à un chiffre déjà vérifié sur la source originale.
+    const ch = c.chiffres.find((x) => !x.verifier) || c.chiffres[0];
+    return { id: c.id, enjeu: e.titre, cliche: c.cliche, replique: c.replique, valeur: ch.valeur, source: ch.source, verifier: !!ch.verifier };
+  })
+);
+
+// Vrai ou cliché : affirmations tirées des fiches (réponse + justification sourcée).
+const quiz = [
+  { a: 'Un étranger hors Union européenne peut toucher le RSA dès son arrivée en France.', vrai: false, r: "Il faut détenir depuis au moins 5 ans un titre de séjour autorisant à travailler.", s: 'CASF, art. L262-4' },
+  { a: 'Un tiers des foyers qui ont droit au RSA ne le demandent pas.', vrai: true, r: 'Fin 2021, 33 à 37 % des foyers éligibles ne le percevaient pas, soit environ 560 000 foyers.', s: 'DREES, 2026' },
+  { a: "La France est le pays de l'UE qui reçoit le plus de demandes d'asile par habitant.", vrai: false, r: "Elle est 9e sur 27. La Grèce en reçoit trois fois plus par habitant.", s: 'Eurostat 2025, calcul L’Autre Récit' },
+  { a: "Depuis 2017, l'alimentation a augmenté plus vite que l'ensemble des prix.", vrai: true, r: '+31,1 % pour l’alimentation, +19,5 % pour l’ensemble des prix entre 2017 et 2025.', s: 'Insee, calcul L’Autre Récit' },
+  { a: 'Les minima sociaux pèsent plus de 10 % du PIB.', vrai: false, r: "L'ensemble des minima sociaux, RSA compris, représente 1,1 % du PIB.", s: 'DREES, 2023' },
+  { a: 'Entre 2021 et 2025, le salaire moyen du privé a gagné du pouvoir d’achat.', vrai: false, r: 'Une fois l’inflation déduite, il est exactement au niveau de 2021.', s: 'Insee Première n° 2132' },
+];
+
+const caddie = Array.from({ length: 25 }, (_, i) => i);
+---
+<Base noindex title="Créations — La Boussole 2027" description="Prototypes privés.">
+  <div class="r27 cr">
+    <section class="r27-tete centre">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="eyebrow">La Boussole 2027 · Atelier</p>
+        <h1 class="r27-h1">Cinq créations à <span class="gold-grad">manipuler</span>.</h1>
+        <p class="r27-lede">Prototypes interactifs avec les chiffres vérifiés des trois premiers dossiers. <a class="cr-lien-clair" href="/2027/propositions/">Voir aussi les propositions de forme</a></p>
+      </div>
+    </section>
+
+    <!-- ===== 13 · LOUPE DU RÉCIT ===== -->
+    <section class="r27-sec cr-sec">
+      <div class="container">
+        <p class="eyebrow">Création 13 · La loupe du récit</p>
+        <h2 class="r27-h2">Lire ce que le cadrage cache</h2>
+        <p class="r27-intro">Promenez la loupe sur la phrase. Sous la lentille apparaît l'autre récit, chiffres à l'appui. Sur téléphone, faites glisser le doigt.</p>
+        <div class="cr-loupe" id="cr-loupe" tabindex="0" aria-label="Phrase à explorer avec la loupe. Appuyez sur Entrée pour tout révéler.">
+          <div class="cr-loupe-dessus">
+            <p class="cr-loupe-k">On vous dit</p>
+            <p class="cr-loupe-cliche">« Les immigrés viennent pour profiter des aides sociales. »</p>
+          </div>
+          <div class="cr-loupe-dessous" aria-hidden="true">
+            <p class="cr-loupe-k or">L'autre récit</p>
+            <p class="cr-loupe-rep"><b>5 ans</b> de titre de séjour autorisant à travailler sont exigés d'un étranger hors UE avant tout RSA. Et <b>61,9 %</b> des immigrés de 15 à 64 ans ont un emploi.</p>
+            <p class="cr-loupe-src">CASF, art. L262-4 · Insee, données 2025</p>
+          </div>
+          <div class="cr-lentille" aria-hidden="true"></div>
+        </div>
+        <button class="btn btn-gh cr-reveler" id="cr-reveler" type="button">Tout révéler</button>
+      </div>
+    </section>
+
+    <!-- ===== 1 · LE CADDIE ===== -->
+    <section class="r27-sec cr-sec">
+      <div class="container">
+        <p class="eyebrow">Création 1 · Le caddie qui se vide</p>
+        <h2 class="r27-h2">Le même budget, huit ans plus tard</h2>
+        <p class="r27-intro">25 produits achetés en 2017. Avec la même somme en 2025, combien en reste-t-il ? Les prix de l'alimentation ont augmenté de 31,1 % en moyenne.</p>
+        <div class="cr-caddie-scene">
+          <div class="cr-annees" role="group" aria-label="Choisir l'année">
+            <button type="button" class="cr-an actif" data-an="2017">2017</button>
+            <button type="button" class="cr-an" data-an="2025">2025</button>
+          </div>
+          <div class="cr-caddie" id="cr-caddie">
+            <div class="cr-panier">
+              {caddie.map((i) => <span class="cr-produit" style={`--i:${i};height:${24 + ((i * 7) % 4) * 8}px`} data-i={i}></span>)}
+            </div>
+            <svg class="cr-chariot" viewBox="0 0 520 290" aria-hidden="true">
+              <defs><linearGradient id="crOr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EBCB70" /><stop offset="1" stop-color="#9A7B2E" /></linearGradient></defs>
+              <path d="M6 26 H48 L62 40" fill="none" stroke="url(#crOr)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+              <polygon points="60,40 500,40 460,200 110,200" fill="rgba(196,162,74,0.07)" stroke="url(#crOr)" stroke-width="6" stroke-linejoin="round" />
+              {[1,2,3,4,5,6,7,8].map((k) => <line x1={60 + k * 440 / 9} y1="40" x2={110 + k * 350 / 9} y2="200" stroke="#B8924A" stroke-opacity=".55" stroke-width="2" />)}
+              <line x1="72" y1="95" x2="487" y2="95" stroke="#B8924A" stroke-opacity=".55" stroke-width="2" />
+              <line x1="85" y1="150" x2="474" y2="150" stroke="#B8924A" stroke-opacity=".55" stroke-width="2" />
+              <path d="M110 200 L124 244 H446 L460 200" fill="none" stroke="url(#crOr)" stroke-width="7" stroke-linejoin="round" />
+              <circle cx="150" cy="264" r="17" fill="#1A1714" stroke="#C4A24A" stroke-width="4" />
+              <circle cx="420" cy="264" r="17" fill="#1A1714" stroke="#C4A24A" stroke-width="4" />
+            </svg>
+          </div>
+          <div class="cr-caddie-texte">
+            <span class="cr-caddie-n" id="cr-caddie-n">25</span>
+            <span class="cr-caddie-sur">produits sur 25</span>
+            <p class="cr-caddie-p" id="cr-caddie-p">En 2017, votre budget remplit le caddie.</p>
+            <p class="cr-src">Insee, indices annuels des prix de l'alimentation 2017-2025, calcul L'Autre Récit (100 / 131,1 ≈ 19 produits sur 25). Moyenne de tous les produits alimentaires.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 14 · VRAI OU CLICHÉ ===== -->
+    <section class="r27-sec cr-sec">
+      <div class="container">
+        <p class="eyebrow">Création 14 · Vrai ou cliché ?</p>
+        <h2 class="r27-h2">Six phrases entendues. Faites le tri.</h2>
+        <p class="r27-intro">Faites glisser la carte vers la gauche (cliché) ou vers la droite (vrai), ou utilisez les boutons. La carte se retourne avec la réponse sourcée.</p>
+        <div class="cr-jeu">
+          <div class="cr-pile" id="cr-pile" aria-live="polite"></div>
+          <div class="cr-boutons" id="cr-boutons">
+            <button class="btn btn-gh" type="button" data-rep="false">← Cliché</button>
+            <span class="cr-compte" id="cr-compte">1 / {quiz.length}</span>
+            <button class="btn btn-or" type="button" data-rep="true">Vrai →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 17 · TIROIR À FICHES ===== -->
+    <section class="r27-sec cr-sec">
+      <div class="container">
+        <p class="eyebrow">Création 17 · Le tiroir à fiches</p>
+        <h2 class="r27-h2">L'archive des dix enjeux</h2>
+        <p class="r27-intro">Chaque tiroir est un dossier. Survolez pour l'entrouvrir, cliquez pour en tirer la fiche. Les tiroirs encore vides sont fermés à clé.</p>
+        <div class="cr-meuble">
+          <div class="cr-meuble-corps">
+            {enjeux.map((e, i) => (
+              <div class:list={['cr-tiroir', { ferme: e.statut !== 'actif' }]} data-id={e.id} tabindex={e.statut === 'actif' ? 0 : -1} role={e.statut === 'actif' ? 'button' : undefined} aria-expanded={e.statut === 'actif' ? 'false' : undefined}>
+                <div class="cr-tiroir-face">
+                  <span class="cr-etiquette"><b>{String(i + 1).padStart(2, '0')}</b> {e.titre}</span>
+                  <span class="cr-poignee"></span>
+                </div>
+                {e.statut === 'actif' && (
+                  <div class="cr-fiche">
+                    <span class="cr-fiche-k">Dossier {String(i + 1).padStart(2, '0')}</span>
+                    <span class="cr-fiche-t">{e.titre}</span>
+                    <span class="cr-fiche-q">{e.question}</span>
+                    <span class="cr-fiche-v">{e.etat[0].valeur} <small>{e.etat[0].phrase}</small></span>
+                    <a class="btn btn-or cr-fiche-go" href={`/2027/${e.id}/`}>Ouvrir le dossier <span class="ar">→</span></a>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div class="cr-meuble-socle"></div>
+          <div class="cr-plan" id="cr-plan" aria-live="polite">
+            <p class="cr-plan-vide">Tirez un tiroir pour poser sa fiche ici.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 15 · GÉNÉRATEUR DE STORY ===== -->
+    <section class="r27-sec cr-sec">
+      <div class="container">
+        <p class="eyebrow">Création 15 · Le générateur de story</p>
+        <h2 class="r27-h2">Une réplique, prête à publier</h2>
+        <p class="r27-intro">Choisissez une idée reçue : la story 1080×1920 se compose aux couleurs de L'Autre Récit, avec sa source. Le bas de l'image reste libre pour les autocollants Instagram.</p>
+        <div class="cr-story">
+          <div class="cr-story-choix" id="cr-story-choix" role="radiogroup" aria-label="Idée reçue">
+            {stories.map((s, i) => (
+              <button type="button" class:list={['cr-story-opt', { actif: i === 0 }]} role="radio" aria-checked={i === 0 ? 'true' : 'false'} data-i={i}>
+                <span class="cr-story-enjeu">{s.enjeu}</span>
+                <span class="cr-story-cliche">« {s.cliche} »</span>
+              </button>
+            ))}
+          </div>
+          <div class="cr-story-apercu">
+            <canvas id="cr-canvas" width="1080" height="1920" aria-label="Aperçu de la story"></canvas>
+            <a class="btn btn-or" id="cr-dl" href="#" download="boussole-2027.png">Télécharger la story <span class="ar">↓</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="application/json" id="cr-data" set:html={JSON.stringify({ stories, quiz })} />
+</Base>
+
+<style is:global>
+  .cr .cr-sec + .cr-sec { padding-top: clamp(48px, 7vw, 88px); border-top: 1px solid var(--r-filet); }
+  .cr-lien-clair { color: var(--or3); border-bottom: 1px solid rgba(212,176,90,.5); }
+  .cr-src { font-size: 13.5px; line-height: 1.45; color: #5A5046; margin: 14px 0 0; }
+
+  /* ===== 13 · LOUPE ===== */
+  .cr-loupe { position: relative; margin-top: 30px; height: clamp(280px, 30vw, 340px); border-radius: 18px; overflow: hidden; cursor: none; touch-action: none; border: 1px solid var(--r-filet); outline-offset: 4px; }
+  .cr-loupe-dessus, .cr-loupe-dessous { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: clamp(24px, 5vw, 64px); }
+  .cr-loupe-dessus { background: var(--r-carte); }
+  .cr-loupe-dessous { background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); clip-path: circle(0px at 50% 50%); }
+  .cr-loupe.tout .cr-loupe-dessous { clip-path: circle(150% at 50% 50%) !important; transition: clip-path .9s var(--ease); }
+  .cr-loupe-k { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #5E554A; margin: 0; }
+  .cr-loupe-k.or { color: var(--or3); }
+  .cr-loupe-cliche { font-family: var(--serif); font-style: italic; font-size: clamp(28px, 4vw, 50px); line-height: 1.15; color: var(--ink); margin: 12px 0 0; max-width: 22ch; }
+  .cr-loupe-rep { font-size: clamp(19px, 2.2vw, 26px); line-height: 1.45; color: #F6F1E8; margin: 12px 0 0; max-width: 40ch; }
+  .cr-loupe-rep b { font-family: var(--serif); color: var(--or2); font-size: 1.25em; }
+  .cr-loupe-src { font-size: 13.5px; color: rgba(242,237,228,.7); margin: 16px 0 0; }
+  .cr-lentille { position: absolute; left: 0; top: 0; width: 220px; height: 220px; margin: -110px 0 0 -110px; border-radius: 50%; pointer-events: none; border: 3px solid var(--or2); box-shadow: 0 0 0 1px rgba(14,12,10,.3), 0 20px 40px -10px rgba(14,12,10,.45), inset 0 0 30px rgba(212,176,90,.25); opacity: 0; transition: opacity .25s; }
+  .cr-loupe.actif .cr-lentille { opacity: 1; }
+  .cr-reveler { margin-top: 16px; }
+
+  /* ===== 1 · CADDIE ===== */
+  .cr-caddie-scene { display: grid; grid-template-columns: 1.3fr 1fr; gap: 34px; align-items: center; margin-top: 30px; background: var(--r-carte); border: 1px solid var(--r-filet); border-radius: 18px; padding: clamp(22px, 3vw, 40px); }
+  .cr-annees { grid-column: 1 / -1; display: inline-flex; justify-self: start; border: 1px solid var(--cr3); border-radius: 100px; padding: 4px; background: var(--cr); }
+  .cr-an { font: inherit; font-family: var(--serif); font-weight: 700; font-size: 20px; padding: 8px 24px; border: 0; border-radius: 100px; background: transparent; color: var(--ink3); cursor: pointer; transition: background .3s, color .3s; }
+  .cr-an.actif { background: var(--ink); color: var(--or2); }
+  .cr-caddie { position: relative; margin-top: 46px; }
+  .cr-chariot { position: relative; z-index: 2; display: block; width: 100%; height: auto; pointer-events: none; }
+  .cr-panier { position: absolute; z-index: 1; left: 22%; right: 13%; bottom: 33%; display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; align-items: end; }
+  .cr-produit { position: relative; border-radius: 4px 4px 2px 2px; background: linear-gradient(180deg, #F6EAD0, #E2D2B4); border: 1px solid #CBB894; box-shadow: inset 0 6px 0 rgba(196,162,74,.55), 0 4px 8px -4px rgba(14,12,10,.3); transition: transform .7s var(--ease), opacity .5s; transition-delay: calc(var(--d, 0) * 70ms); }
+  .cr-produit:nth-child(3n) { background: linear-gradient(180deg, #2A221A, #14100C); border-color: #3A3028; box-shadow: inset 0 6px 0 var(--or2), 0 4px 8px -4px rgba(14,12,10,.4); }
+  .cr-produit:nth-child(5n+2) { background: linear-gradient(180deg, #E9CF8A, #B8924A); border-color: #9A7B2E; box-shadow: inset 0 6px 0 #FBEFC2, 0 4px 8px -4px rgba(14,12,10,.3); }
+  .cr-produit.parti { transform: translate(var(--tx, 60px), -170px) rotate(var(--rot, 30deg)) scale(.6); opacity: 0; }
+  .cr-caddie-texte { display: flex; flex-direction: column; }
+  .cr-caddie-n { font-family: var(--serif); font-weight: 700; font-size: clamp(76px, 9vw, 120px); line-height: .95; color: var(--ink); letter-spacing: -0.04em; }
+  .cr-caddie-sur { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--r-or); margin-top: 6px; }
+  .cr-caddie-p { font-size: 18px; line-height: 1.5; color: var(--ink2); margin: 16px 0 0; }
+
+  /* ===== 14 · VRAI OU CLICHÉ ===== */
+  .cr-jeu { margin-top: 30px; display: grid; justify-items: center; gap: 22px; }
+  .cr-pile { position: relative; width: min(100%, 520px); height: 340px; perspective: 1400px; }
+  .cr-carte { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .55s var(--ease); cursor: grab; touch-action: pan-y; user-select: none; }
+  .cr-carte:active { cursor: grabbing; }
+  .cr-carte.glisse { transition: none; }
+  .cr-carte.sortie { transition: transform .5s var(--ease); pointer-events: none; }
+  .cr-face { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 30px 32px; border-radius: 18px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .cr-recto { background: var(--r-carte); border: 1px solid var(--r-filet); border-top: 2px solid var(--or2); box-shadow: 0 34px 60px -40px rgba(14,12,10,.5); }
+  .cr-verso { transform: rotateY(180deg); background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border-top: 2px solid var(--or2); box-shadow: 0 34px 60px -36px rgba(14,12,10,.6); }
+  .cr-carte.retournee { transform: rotateY(180deg) !important; }
+  .cr-k { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #5E554A; }
+  .cr-aff { font-family: var(--serif); font-style: italic; font-size: clamp(23px, 2.6vw, 30px); line-height: 1.28; color: var(--ink); margin-top: 16px; }
+  .cr-verdict { font-family: var(--serif); font-weight: 700; font-size: 44px; line-height: 1; margin-top: 10px; }
+  .cr-verdict.vrai { color: var(--or2); }
+  .cr-verdict.faux { color: #F6F1E8; }
+  .cr-juste { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--or3); }
+  .cr-rep { font-size: 17.5px; line-height: 1.5; color: #F2EDE4; margin-top: 14px; }
+  .cr-s { margin-top: auto; font-size: 13.5px; color: rgba(242,237,228,.7); }
+  .cr-tampon { position: absolute; top: 24px; padding: 6px 14px; border: 3px solid; border-radius: 6px; font-family: var(--mono); font-weight: 700; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; opacity: 0; pointer-events: none; }
+  .cr-tampon.g { left: 24px; color: #7A2E3A; border-color: #7A2E3A; transform: rotate(-12deg); }
+  .cr-tampon.d { right: 24px; color: #7A5E18; border-color: #9A7B2E; transform: rotate(12deg); }
+  .cr-suivante { margin-top: auto; align-self: flex-start; }
+  .cr-pile .cr-carte:nth-last-child(2) { transform: translateY(12px) scale(.96); }
+  .cr-pile .cr-carte:nth-last-child(3) { transform: translateY(24px) scale(.92); }
+  .cr-pile .cr-carte:nth-last-child(n+4) { transform: translateY(32px) scale(.9); opacity: 0; }
+  .cr-boutons { display: flex; align-items: center; gap: 18px; }
+  .cr-compte { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--ink3); min-width: 56px; text-align: center; }
+  .cr-fin { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px; padding: 30px; border-radius: 18px; background: var(--r-carte); border: 1px solid var(--r-filet); border-top: 2px solid var(--or2); }
+  .cr-fin-score { font-family: var(--serif); font-weight: 700; font-size: 72px; line-height: 1; color: var(--ink); }
+  .cr-fin-p { font-size: 17px; color: var(--ink3); margin: 0; }
+
+  /* ===== 17 · TIROIR À FICHES ===== */
+  .cr-meuble { margin: 34px auto 0; max-width: 760px; perspective: 1600px; }
+  .cr-meuble-corps { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 18px; border-radius: 14px 14px 4px 4px; background: linear-gradient(180deg, #241D16, #120E0A); border-top: 2px solid var(--or2); box-shadow: inset 0 0 0 1px rgba(196,162,74,.25), 0 40px 70px -40px rgba(14,12,10,.6); transform-style: preserve-3d; }
+  .cr-meuble-socle { height: 18px; margin: 0 14px; background: linear-gradient(180deg, #1A1410, #0A0806); border-radius: 0 0 8px 8px; }
+  .cr-tiroir { position: relative; transform-style: preserve-3d; cursor: pointer; outline-offset: 3px; }
+  .cr-tiroir.ferme { cursor: default; }
+  .cr-tiroir-face { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 86px; border-radius: 6px; background: linear-gradient(180deg, #3A2E22, #241C14); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -2px 0 rgba(0,0,0,.4), 0 2px 0 #0A0806; transition: transform .45s var(--ease), box-shadow .45s; }
+  .cr-tiroir:not(.ferme):hover .cr-tiroir-face, .cr-tiroir:not(.ferme):focus-visible .cr-tiroir-face { transform: translateZ(30px) translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 18px 26px -12px rgba(0,0,0,.7); }
+  .cr-tiroir.ouvert .cr-tiroir-face { transform: translateZ(60px) translateY(4px); }
+  .cr-etiquette { padding: 4px 14px; background: #F2EDE4; border: 1px solid #C4A24A; border-radius: 2px; font-size: 15px; font-weight: 600; color: var(--ink); white-space: nowrap; box-shadow: inset 0 0 0 2px #F2EDE4, inset 0 0 0 3px rgba(154,123,46,.35); }
+  .cr-etiquette b { font-family: var(--serif); font-style: italic; color: #7A5E18; margin-right: 4px; }
+  .cr-tiroir.ferme .cr-etiquette { background: #D9CFBF; color: #4A4238; }
+  .cr-poignee { width: 64px; height: 12px; border-radius: 0 0 14px 14px; background: linear-gradient(180deg, #FBEFC2, #C4A24A 50%, #8A6C21); box-shadow: 0 3px 4px rgba(0,0,0,.5); }
+  .cr-tiroir.ferme .cr-poignee { background: linear-gradient(180deg, #9A8B70, #5A5040); }
+  .cr-tiroir .cr-fiche { display: none; }
+  .cr-tiroir.ouvert { z-index: 5; }
+  .cr-plan { position: relative; margin: 26px auto 0; max-width: 620px; min-height: 250px; perspective: 1200px; }
+  .cr-plan-vide { text-align: center; font-family: var(--serif); font-style: italic; font-size: 18px; color: #5E554A; margin: 90px auto 0; }
+  .cr-plan .cr-fiche { display: flex; flex-direction: column; gap: 6px; padding: 26px 30px; background: #FBF8F2; border: 1px solid #DCD1BF; border-top: 2px solid var(--or2); border-radius: 10px; box-shadow: 0 40px 60px -40px rgba(14,12,10,.55); transform-origin: 50% 0; animation: crTire .7s var(--ease) both; }
+  @keyframes crTire { from { opacity: 0; transform: translateY(-60px) rotateX(-55deg); } to { opacity: 1; transform: none; } }
+  .cr-fiche-k { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #7A5E18; }
+  .cr-fiche-t { font-family: var(--serif); font-weight: 700; font-size: 28px; line-height: 1.1; color: var(--ink); }
+  .cr-fiche-q { font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--ink3); }
+  .cr-fiche-v { font-family: var(--serif); font-weight: 700; font-size: 34px; color: #7A5E18; margin-top: 6px; }
+  .cr-fiche-v small { display: block; font-family: var(--sans); font-weight: 400; font-size: 14.5px; line-height: 1.45; color: var(--ink3); }
+  .cr-fiche-go { margin-top: 10px; align-self: flex-start; }
+
+  /* ===== 15 · STORY ===== */
+  .cr-story { display: grid; grid-template-columns: 1fr 320px; gap: 30px; margin-top: 30px; align-items: start; }
+  .cr-story-choix { display: grid; gap: 10px; }
+  .cr-story-opt { font: inherit; text-align: left; cursor: pointer; display: grid; gap: 4px; padding: 14px 18px; background: var(--r-carte); border: 1px solid var(--r-filet); border-left: 3px solid transparent; border-radius: 0 10px 10px 0; transition: border-color .2s, background .2s; }
+  .cr-story-opt:hover { border-color: var(--or); }
+  .cr-story-opt.actif { border-left-color: var(--or2); background: #fff; box-shadow: 0 16px 30px -24px rgba(14,12,10,.4); }
+  .cr-story-enjeu { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #7A5E18; }
+  .cr-story-cliche { font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.35; color: var(--ink); }
+  .cr-story-apercu { position: sticky; top: 96px; display: grid; gap: 16px; justify-items: center; }
+  .cr-dl-bloque { background: var(--cr2) !important; color: #5E4A14 !important; box-shadow: none !important; cursor: not-allowed; border: 1px dashed #9A7B2E !important; }
+  .cr-story-apercu canvas { width: 100%; max-width: 320px; height: auto; border-radius: 16px; box-shadow: 0 40px 70px -40px rgba(14,12,10,.6), 0 0 0 1px var(--r-filet); }
+
+  @media (max-width: 900px) {
+    .cr-caddie-scene, .cr-story { grid-template-columns: 1fr; }
+    .cr-story-apercu { position: static; }
+    .cr-meuble-corps { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .cr-panier { gap: 3px; }
+    .cr-caddie { margin-top: 74px; }
+    .cr-loupe { height: 360px; }
+    .cr-lentille { width: 170px; height: 170px; margin: -85px 0 0 -85px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cr-produit, .cr-carte, .cr-tiroir-face, .cr-fiche { transition: none !important; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var D = JSON.parse(document.getElementById('cr-data').textContent);
+    var reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ===== 13 · LOUPE ===== */
+    (function () {
+      var z = document.getElementById('cr-loupe'), sous = z.querySelector('.cr-loupe-dessous'), len = z.querySelector('.cr-lentille');
+      var R = function () { return len.offsetWidth / 2; };
+      function placer(x, y) {
+        sous.style.clipPath = 'circle(' + R() + 'px at ' + x + 'px ' + y + 'px)';
+        len.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+      }
+      z.addEventListener('pointermove', function (e) {
+        var r = z.getBoundingClientRect(); z.classList.add('actif'); placer(e.clientX - r.left, e.clientY - r.top);
+      });
+      z.addEventListener('pointerleave', function () { z.classList.remove('actif'); sous.style.clipPath = 'circle(0px at 50% 50%)'; });
+      function tout() { z.classList.toggle('tout'); document.getElementById('cr-reveler').textContent = z.classList.contains('tout') ? 'Remettre la loupe' : 'Tout révéler'; }
+      document.getElementById('cr-reveler').addEventListener('click', tout);
+      z.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tout(); } });
+    })();
+
+    /* ===== 1 · CADDIE ===== */
+    (function () {
+      var produits = Array.prototype.slice.call(document.querySelectorAll('.cr-produit'));
+      var reste = Math.round(25 / 1.311); // 19
+      // La grille se remplit de haut en bas : on retire des produits de la rangée du dessus.
+      var partants = [1, 5, 3, 0, 6, 2].slice(0, 25 - reste);
+      var n = document.getElementById('cr-caddie-n'), p = document.getElementById('cr-caddie-p');
+      document.querySelectorAll('.cr-an').forEach(function (b) {
+        b.addEventListener('click', function () {
+          document.querySelectorAll('.cr-an').forEach(function (x) { x.classList.toggle('actif', x === b); });
+          var en2025 = b.dataset.an === '2025';
+          partants.forEach(function (i, k) {
+            var el = produits[i]; el.style.setProperty('--d', k);
+            el.style.setProperty('--tx', (k % 2 ? -1 : 1) * (40 + k * 18) + 'px');
+            el.style.setProperty('--rot', (k % 2 ? -1 : 1) * (20 + k * 9) + 'deg');
+            el.classList.toggle('parti', en2025);
+          });
+          n.textContent = en2025 ? reste : 25;
+          p.textContent = en2025 ? 'Avec la même somme en 2025, il ne reste que ' + reste + ' produits : 6 sont restés en rayon.' : 'En 2017, votre budget remplit le caddie.';
+        });
+      });
+    })();
+
+    /* ===== 14 · VRAI OU CLICHÉ ===== */
+    (function () {
+      var pile = document.getElementById('cr-pile'), compte = document.getElementById('cr-compte'), boutons = document.getElementById('cr-boutons');
+      var Q = D.quiz, idx = 0, score = 0, bloque = false;
+      function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+      function construire() {
+        pile.innerHTML = '';
+        for (var i = Q.length - 1; i >= idx; i--) {
+          var q = Q[i], c = document.createElement('div');
+          c.className = 'cr-carte'; c.dataset.i = i;
+          c.innerHTML = '<div class="cr-face cr-recto"><span class="cr-k">On entend dire</span><p class="cr-aff">« ' + esc(q.a) + ' »</p>' +
+            '<span class="cr-tampon g">Cliché</span><span class="cr-tampon d">Vrai</span></div>' +
+            '<div class="cr-face cr-verso"><span class="cr-juste"></span><span class="cr-verdict ' + (q.vrai ? 'vrai' : 'faux') + '">' + (q.vrai ? 'Vrai' : 'Cliché') + '</span>' +
+            '<p class="cr-rep">' + esc(q.r) + '</p><span class="cr-s">Source : ' + esc(q.s) + '</span></div>';
+          pile.appendChild(c);
+        }
+        compte.textContent = Math.min(idx + 1, Q.length) + ' / ' + Q.length;
+        brancher();
+      }
+      function dessus() { return pile.lastElementChild; }
+      function repondre(choix) {
+        var c = dessus(); if (!c || bloque) return; bloque = true;
+        var q = Q[idx], bon = choix === q.vrai; if (bon) score++;
+        c.querySelector('.cr-juste').textContent = bon ? 'Bonne réponse' : 'Pas tout à fait';
+        c.style.transform = ''; c.classList.remove('glisse'); c.classList.add('retournee');
+        boutons.style.visibility = 'hidden';
+        setTimeout(function () {
+          var suiv = document.createElement('button'); suiv.type = 'button'; suiv.className = 'btn btn-cr cr-suivante';
+          suiv.innerHTML = (idx + 1 < Q.length ? 'Carte suivante' : 'Voir mon score') + ' <span class="ar">→</span>';
+          suiv.addEventListener('click', function (e) {
+            e.stopPropagation();
+            c.classList.add('sortie'); c.style.transform = 'rotateY(180deg) translateX(-140%) rotate(-8deg)';
+            setTimeout(function () { idx++; bloque = false; boutons.style.visibility = ''; idx < Q.length ? construire() : fin(); }, reduit ? 0 : 380);
+          });
+          c.querySelector('.cr-verso').appendChild(suiv); suiv.focus();
+        }, reduit ? 0 : 450);
+      }
+      function fin() {
+        boutons.style.visibility = 'hidden';
+        var txt = 'J’ai fait ' + score + '/' + Q.length + ' au test « Vrai ou cliché ? » de La Boussole 2027.';
+        pile.innerHTML = '<div class="cr-fin"><span class="cr-k">Votre score</span><span class="cr-fin-score">' + score + ' / ' + Q.length + '</span>' +
+          '<p class="cr-fin-p">' + (score >= 5 ? 'Vous êtes prêt pour le prochain repas de famille.' : 'Les dossiers vous donnent les chiffres pour la prochaine fois.') + '</p>' +
+          '<div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center"><button class="btn btn-or" type="button" id="cr-partage">Copier mon score</button><button class="btn btn-gh" type="button" id="cr-rejouer">Rejouer</button></div></div>';
+        document.getElementById('cr-partage').addEventListener('click', function () {
+          var u = location.origin + '/2027/'; (navigator.clipboard ? navigator.clipboard.writeText(txt + ' ' + u) : Promise.reject()).then(function () { document.getElementById('cr-partage').textContent = 'Copié'; }).catch(function () {});
+        });
+        document.getElementById('cr-rejouer').addEventListener('click', function () { idx = 0; score = 0; boutons.style.visibility = ''; construire(); });
+      }
+      function brancher() {
+        var c = dessus(); if (!c) return;
+        var x0 = null, dx = 0, tg = c.querySelector('.cr-tampon.g'), td = c.querySelector('.cr-tampon.d');
+        c.addEventListener('pointerdown', function (e) { if (bloque || e.target.closest('button')) return; x0 = e.clientX; dx = 0; c.classList.add('glisse'); c.setPointerCapture(e.pointerId); });
+        c.addEventListener('pointermove', function (e) {
+          if (x0 === null) return; dx = e.clientX - x0;
+          c.style.transform = 'translateX(' + dx + 'px) rotate(' + dx / 18 + 'deg)';
+          tg.style.opacity = Math.max(0, -dx / 110); td.style.opacity = Math.max(0, dx / 110);
+        });
+        function lacher() {
+          if (x0 === null) return; x0 = null; c.classList.remove('glisse'); tg.style.opacity = 0; td.style.opacity = 0;
+          if (Math.abs(dx) > 110) repondre(dx > 0); else c.style.transform = '';
+        }
+        c.addEventListener('pointerup', lacher); c.addEventListener('pointercancel', lacher);
+      }
+      boutons.querySelectorAll('[data-rep]').forEach(function (b) { b.addEventListener('click', function () { repondre(b.dataset.rep === 'true'); }); });
+      construire();
+    })();
+
+    /* ===== 17 · TIROIRS ===== */
+    (function () {
+      var tiroirs = document.querySelectorAll('.cr-tiroir:not(.ferme)');
+      function basculer(t) {
+        var ouvrir = !t.classList.contains('ouvert');
+        tiroirs.forEach(function (x) { x.classList.remove('ouvert'); x.setAttribute('aria-expanded', 'false'); });
+        var plan = document.getElementById('cr-plan');
+        if (ouvrir) {
+          t.classList.add('ouvert'); t.setAttribute('aria-expanded', 'true');
+          plan.innerHTML = ''; plan.appendChild(t.querySelector('.cr-fiche').cloneNode(true));
+        } else {
+          plan.innerHTML = '<p class="cr-plan-vide">Tirez un tiroir pour poser sa fiche ici.</p>';
+        }
+      }
+      tiroirs.forEach(function (t) {
+        t.addEventListener('click', function (e) { if (e.target.closest('a')) return; basculer(t); });
+        t.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a')) { e.preventDefault(); basculer(t); } });
+      });
+    })();
+
+    /* ===== 15 · STORY ===== */
+    (function () {
+      var cv = document.getElementById('cr-canvas'), g = cv.getContext('2d'), dl = document.getElementById('cr-dl');
+      var W = 1080, H = 1920, M = 96, BAS = 1920 - 300; // rien sous BAS : zone des autocollants
+      function lignes(txt, police, larg) {
+        g.font = police; var mots = txt.split(' '), out = [], l = '';
+        mots.forEach(function (m) { var t = l ? l + ' ' + m : m; if (g.measureText(t).width > larg && l) { out.push(l); l = m; } else l = t; });
+        if (l) out.push(l); return out;
+      }
+      function espace(txt, sp) { g.save(); g.letterSpacing = sp + 'px'; return g; }
+      function dessiner(s, k) {
+        k = k || 1;
+        var fCliche = 'italic 400 ' + Math.round(66 * k) + 'px "Playfair Display"', lhC = Math.round(84 * k);
+        var fRep = '400 ' + Math.round(42 * k) + 'px "League Spartan"', lhR = Math.round(60 * k);
+        var fVal = '700 ' + Math.round(150 * k) + 'px "Playfair Display"';
+        var lc = lignes('« ' + s.cliche + ' »', fCliche, W - 2 * M);
+        var lr = lignes(s.replique, fRep, W - 2 * M - 100);
+        var hCarte = 70 + 40 + Math.round(150 * k) + 40 + lr.length * lhR + 50 + 34 + 60;
+        var yC = 330, yCarte = yC + lc.length * lhC + 70;
+        if (yCarte + hCarte > BAS && k > 0.6) return dessiner(s, k - 0.05);
+
+        // fond crème + vignettage
+        g.fillStyle = '#F2EDE4'; g.fillRect(0, 0, W, H);
+        var rad = g.createRadialGradient(W / 2, H * 0.4, 200, W / 2, H * 0.45, 1300);
+        rad.addColorStop(0, 'rgba(255,255,255,0.55)'); rad.addColorStop(1, 'rgba(154,123,46,0.16)');
+        g.fillStyle = rad; g.fillRect(0, 0, W, H);
+        // filet doré haut
+        var fil = g.createLinearGradient(M, 0, W - M, 0);
+        fil.addColorStop(0, 'rgba(196,162,74,0)'); fil.addColorStop(.5, '#C4A24A'); fil.addColorStop(1, 'rgba(196,162,74,0)');
+        g.fillStyle = fil; g.fillRect(M, 150, W - 2 * M, 3);
+
+        g.textBaseline = 'alphabetic';
+        espace(); g.font = '700 30px "JetBrains Mono"'; g.letterSpacing = '8px'; g.fillStyle = '#7A5E18';
+        g.fillText('LA BOUSSOLE 2027 · ' + s.enjeu.toUpperCase(), M, 120); g.restore();
+        espace(); g.font = '700 28px "JetBrains Mono"'; g.letterSpacing = '6px'; g.fillStyle = '#5E554A'; g.fillText('ON VOUS DIT', M, 250); g.restore();
+        g.font = fCliche; g.fillStyle = '#0E0C0A';
+        lc.forEach(function (l, i) { g.fillText(l, M, yC + i * lhC); });
+
+        // carte encre
+        var x = M - 10, w = W - 2 * M + 20;
+        var cg = g.createLinearGradient(0, yCarte, 0, yCarte + hCarte);
+        cg.addColorStop(0, '#1C160F'); cg.addColorStop(1, '#0C0A07');
+        g.fillStyle = cg; g.beginPath(); g.roundRect(x, yCarte, w, hCarte, 28); g.fill();
+        g.fillStyle = '#C4A24A'; g.beginPath(); g.roundRect(x, yCarte, w, 6, [28, 28, 0, 0]); g.fill();
+        var cx = x + 50, y = yCarte + 80;
+        espace(); g.font = '700 28px "JetBrains Mono"'; g.letterSpacing = '6px'; g.fillStyle = '#D4B05A'; g.fillText('VOUS RÉPONDEZ', cx, y); g.restore();
+        y += 40 + Math.round(150 * k) - 20;
+        var or = g.createLinearGradient(0, y - 130 * k, 0, y);
+        or.addColorStop(0, '#FBEFC2'); or.addColorStop(.45, '#D4B05A'); or.addColorStop(1, '#9A7B2E');
+        g.font = fVal; g.fillStyle = or; g.fillText(s.valeur, cx, y);
+        y += 70;
+        g.font = fRep; g.fillStyle = '#F2EDE4';
+        lr.forEach(function (l, i) { g.fillText(l, cx, y + i * lhR); });
+        y += (lr.length - 1) * lhR + 70;
+        g.font = '400 26px "League Spartan"'; g.fillStyle = 'rgba(242,237,228,0.7)';
+        lignes('Source : ' + s.source, '400 26px "League Spartan"', w - 100).slice(0, 2).forEach(function (l, i) { g.fillText(l, cx, y + i * 34); });
+
+        // signature
+        g.font = 'italic 700 46px "Playfair Display"'; g.fillStyle = '#0E0C0A'; g.textAlign = 'center';
+        g.fillText("L'Autre Récit", W / 2, BAS - 10); g.textAlign = 'left';
+        if (s.verifier) {
+          dl.removeAttribute('href'); dl.classList.add('cr-dl-bloque');
+          dl.innerHTML = 'Chiffre à vérifier avant publication';
+        } else {
+          dl.href = cv.toDataURL('image/png'); dl.download = 'boussole-2027-' + s.id + '.png';
+          dl.classList.remove('cr-dl-bloque'); dl.innerHTML = 'Télécharger la story <span class="ar">↓</span>';
+        }
+      }
+      var opts = document.querySelectorAll('.cr-story-opt');
+      function choisir(i) {
+        opts.forEach(function (o, j) { o.classList.toggle('actif', j === i); o.setAttribute('aria-checked', j === i ? 'true' : 'false'); });
+        dessiner(D.stories[i]);
+      }
+      opts.forEach(function (o, i) { o.addEventListener('click', function () { choisir(i); }); });
+      var polices = ['italic 400 66px "Playfair Display"', '700 150px "Playfair Display"', 'italic 700 46px "Playfair Display"', '400 42px "League Spartan"', '700 28px "JetBrains Mono"'];
+      Promise.all(polices.map(function (f) { return document.fonts.load(f); })).then(function () { choisir(0); }, function () { choisir(0); });
+    })();
+  })();
+</script>

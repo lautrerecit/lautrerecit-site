@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import QuiADit from './composants/QuiADit.astro';
+import { citations, fausses } from '../../data/citations2027.js';
+---
+<Base
+  noindex
+  title="Qui a dit ça ? — La Boussole 2027 | L'Autre Récit"
+  description="Les phrases qui ont fait polémique chez les candidats à la présidentielle 2027. Devinez qui les a prononcées, puis lisez le contexte et la source."
+>
+  <div class="r27">
+    <section class="r27-tete centre">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="r27-fil"><a href="/2027/">La Boussole 2027</a> · Qui a dit ça ?</p>
+        <p class="eyebrow">Le jeu des citations</p>
+        <h1 class="r27-h1">Qui a dit <span class="gold-grad">ça</span> ?</h1>
+        <p class="r27-lede">Des phrases qui ont fait polémique, prononcées par des candidats ou des prétendants à 2027. Devinez leur auteur. Attention, certaines sont fausses : elles circulent sur les réseaux mais personne ne les a dites.</p>
+      </div>
+    </section>
+
+    <section class="r27-sec">
+      <div class="container">
+        <QuiADit tour={10} />
+      </div>
+    </section>
+
+    <section class="r27-sec">
+      <div class="container">
+        <p class="r27-note">Chaque phrase est vérifiée mot pour mot sur sa source : vidéo, compte rendu officiel ou message de son auteur. Le contexte est donné pour chacune, y compris quand la personne a nuancé ou retiré son propos. Les phrases viennent de tous les camps. {citations.length} citations et {fausses.length} fausses en base. <a href="/2027/methode/">Lire la méthode</a></p>
+      </div>
+    </section>
+  </div>
+</Base>

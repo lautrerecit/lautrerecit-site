@@ -1,0 +1,129 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import { enjeux, quiz } from '../../data/repliques2027.js';
+import Quiz from './composants/Quiz.astro';
+import Tiroirs from './composants/Tiroirs.astro';
+
+// ============================================================
+// LA BOUSSOLE 2027 — accueil : moteur de réplique, Vrai ou cliché ?, tiroir à fiches des 10 enjeux.
+// Bande sombre courte en tête, tout le reste sur crème.
+// ============================================================
+const actifs = enjeux.filter((e) => e.statut === 'actif');
+const exemples = actifs.flatMap((e) => e.cliches.map((c) => c.exemple));
+
+// Index de recherche envoyé au navigateur (texte seulement).
+const index = actifs.flatMap((e) =>
+  e.cliches.map((c) => ({
+    href: `/2027/${e.id}/#${c.id}`,
+    enjeu: e.titre,
+    cliche: c.cliche,
+    corpus: [c.cliche, ...(c.variantes || []), ...(c.motscles || []), e.titre].join(' '),
+  }))
+);
+---
+<Base
+  noindex
+  title="La Boussole 2027 — L'Autre Récit"
+  description="Les grands enjeux de la présidentielle 2027 et de quoi répondre aux idées reçues, chiffres et sources à l'appui."
+>
+  <div class="r27">
+    <section class="r27-tete centre">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="eyebrow">Présidentielle 2027 · La Boussole</p>
+        <h1 class="r27-h1">Les vrais enjeux, et de quoi <span class="gold-grad">répondre</span>.</h1>
+        <p class="r27-lede">Salaires, vie chère, services publics, immigration : l'état des lieux chiffré de chaque grand sujet de la campagne, et la réponse sourcée aux idées reçues qui l'accompagnent.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <form class="r27-moteur" id="r27-moteur" role="search">
+        <label for="r27-q">On vous a dit…</label>
+        <div class="r27-champ">
+          <input id="r27-q" name="q" type="search" autocomplete="off" placeholder="« Les immigrés font baisser les salaires »" />
+          <button class="btn btn-or" type="submit">Trouver la réplique <span class="ar">→</span></button>
+        </div>
+        <div class="r27-pastilles">
+          {exemples.map((x) => <button type="button" class="r27-pastille">{x}</button>)}
+        </div>
+        <div class="r27-resultats" id="r27-resultats" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <section class="r27-sec">
+      <div class="container">
+        <p class="eyebrow">Échauffement</p>
+        <h2 class="r27-h2">Vrai ou cliché ?</h2>
+        <p class="r27-intro">{quiz.length} phrases qu'on entend partout. Triez-les, chaque carte se retourne avec sa réponse sourcée.</p>
+        <Quiz />
+      </div>
+    </section>
+
+    <section class="r27-sec">
+      <div class="container">
+        <p class="eyebrow">Le jeu des citations</p>
+        <h2 class="r27-h2">Qui a dit ça ?</h2>
+        <p class="r27-intro">Des phrases qui ont fait polémique, prononcées par des candidats de tous les camps. Devinez leur auteur, puis lisez le contexte et la source. Une fausse citation s’est glissée dans le lot.</p>
+        <p style="margin-top:22px"><a class="btn btn-or" href="/2027/qui-a-dit/">Jouer <span class="ar">→</span></a></p>
+      </div>
+    </section>
+
+    <section class="r27-sec r27-sec-filet">
+      <div class="container">
+        <p class="eyebrow">La boussole</p>
+        <h2 class="r27-h2">Dix enjeux de la campagne</h2>
+        <p class="r27-intro">Chaque tiroir est un dossier : un état des lieux chiffré, puis les réponses aux idées reçues qui circulent sur le sujet. {actifs.length === enjeux.length ? 'Tous sont ouverts.' : `${actifs.length} sont ouverts, les suivants arrivent jusqu'au premier tour.`}</p>
+        <Tiroirs />
+      </div>
+    </section>
+
+    <section class="r27-sec">
+      <div class="container">
+        <p class="r27-note">La Boussole 2027 part d’un point de vue assumé, celui des personnes que visent les idées reçues, et reste indépendant de tout parti. Chaque chiffre renvoie à sa source publique. <a href="/2027/methode/">Lire la méthode</a></p>
+      </div>
+    </section>
+  </div>
+
+  <script type="application/json" id="r27-index" set:html={JSON.stringify(index)} />
+</Base>
+
+<script is:inline>
+  (function () {
+    var INDEX = JSON.parse(document.getElementById('r27-index').textContent);
+    var VIDES = 'le la les un une des de du d l a au aux et ou en on y ce ces cette ca c est sont il ils elle elles nous vous je j me te se sa son ses leur leurs qui que qu quoi pour par sur dans avec sans pas ne n plus moins tout tous tres trop bien fait faire font etre avoir ont ai as mais donc car si deja encore alors comme'.split(' ');
+    function norm(s) {
+      return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[’']/g, ' ').replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+    function racines(s) {
+      return norm(s).split(' ').filter(function (m) { return m.length > 2 && VIDES.indexOf(m) < 0; })
+        .map(function (m) { return m.length > 5 ? m.slice(0, 5) : m; });
+    }
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    INDEX.forEach(function (it) { it.r = racines(it.corpus); });
+
+    var form = document.getElementById('r27-moteur');
+    var q = document.getElementById('r27-q');
+    var out = document.getElementById('r27-resultats');
+
+    function lancer() {
+      var termes = racines(q.value);
+      if (!q.value.trim()) { out.innerHTML = ''; return; }
+      var res = INDEX.map(function (it) {
+        var s = 0; termes.forEach(function (t) { if (it.r.indexOf(t) >= 0) s++; });
+        return { it: it, s: s };
+      }).filter(function (x) { return x.s > 0; }).sort(function (a, b) { return b.s - a.s; }).slice(0, 4);
+      out.innerHTML = res.length ? res.map(function (x) {
+        return '<a class="r27-res" href="' + x.it.href + '"><span class="r27-res-enjeu">' + esc(x.it.enjeu) + '</span>' +
+          '<p class="r27-res-cliche">« ' + esc(x.it.cliche) + ' »</p><p class="r27-res-voir">Voir la réplique →</p></a>';
+      }).join('') : '<p class="r27-vide">Aucune fiche ne correspond encore à cette phrase. Les dossiers s’enrichissent chaque semaine jusqu’au premier tour.</p>';
+    }
+    var t;
+    q.addEventListener('input', function () { clearTimeout(t); t = setTimeout(lancer, 180); });
+    form.addEventListener('submit', function (e) { e.preventDefault(); lancer(); });
+    form.querySelectorAll('.r27-pastille').forEach(function (b) {
+      b.addEventListener('click', function () { q.value = b.textContent; lancer(); });
+    });
+  })();
+</script>

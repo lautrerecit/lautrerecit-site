@@ -1,0 +1,204 @@
+---
+// Qui a dit ça ? — une phrase découpée, quatre noms et un piège « fausse citation ».
+// Après chaque réponse : la fiche (date, média, contexte, ce que disent les faits, source).
+// Tirage équilibré entre les blocs ; bilan de fin : à qui vous avez prêté quoi.
+import { blocs, candidats, citations, fausses } from '../../../data/citations2027.js';
+const { tour = 10 } = Astro.props;
+const data = {
+  blocs,
+  candidats,
+  tour,
+  items: [
+    ...citations.map((c) => ({ ...c, k: 'vraie' })),
+    ...fausses.map((f) => ({ ...f, k: 'fausse' })),
+  ],
+};
+---
+<div class="qd">
+  <div class="qd-tete">
+    <span class="qd-compte" id="qd-compte"></span>
+    <ol class="qd-points" id="qd-points" aria-hidden="true"></ol>
+  </div>
+  <div class="qd-scene" id="qd-scene" aria-live="polite"></div>
+</div>
+<script type="application/json" id="qd-data" set:html={JSON.stringify(data)} />
+
+<style is:global>
+  .qd { max-width: 760px; margin: 34px auto 0; }
+  .qd-tete { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+  .qd-compte { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #5E554A; }
+  .qd-points { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .qd-points li { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #8E7B58; }
+  .qd-points li.ok { background: #7A5E18; border-color: #7A5E18; }
+  .qd-points li.ko { background: transparent; border-color: #7A2E3A; position: relative; }
+  .qd-points li.ko::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: #7A2E3A; }
+  .qd-points li.ici { outline: 2px solid #7A5E18; outline-offset: 2px; }
+
+  /* la phrase, découpée comme une coupure de presse */
+  .qd-coupure { position: relative; padding: 46px 48px 38px; background: #FFFDF8; color: var(--ink);
+    clip-path: polygon(0 3%, 4% 0, 18% 2%, 33% 0, 51% 2.5%, 67% .5%, 84% 2%, 100% 0, 99% 30%, 100% 62%, 99.2% 100%, 80% 98%, 61% 100%, 42% 97.5%, 24% 100%, 7% 98%, 0 100%, .8% 64%, 0 33%);
+    filter: drop-shadow(0 22px 26px rgba(14,12,10,.18)); transform: rotate(-.6deg); animation: qdPose .6s var(--ease) both; }
+  .qd-coupure::before { content: '«'; position: absolute; top: -6px; left: 22px; font-family: var(--serif); font-size: 120px; line-height: 1; color: rgba(122,94,24,.18); }
+  @keyframes qdPose { from { opacity: 0; transform: translateY(-24px) rotate(-3deg); } to { opacity: 1; transform: rotate(-.6deg); } }
+  .qd-theme { position: relative; font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #7A5E18; }
+  .qd-phrase { position: relative; font-family: var(--serif); font-style: italic; font-size: clamp(23px, 2.9vw, 33px); line-height: 1.3; margin: 14px 0 0; text-wrap: pretty; }
+
+  /* les noms */
+  .qd-choix { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+  .qd-nom { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 15px 18px; text-align: left; font: inherit; color: var(--ink); background: var(--r-carte); border: 1.5px solid #8E7B58; border-radius: 12px; cursor: pointer; transition: transform .25s var(--ease), border-color .25s, box-shadow .25s; }
+  .qd-nom b { font-family: var(--serif); font-size: 20px; font-weight: 700; line-height: 1.15; }
+  .qd-nom span { font-size: 14px; color: #5A5046; }
+  .qd-nom:hover:not(:disabled), .qd-nom:focus-visible { transform: translateY(-2px); border-color: #7A5E18; box-shadow: 0 14px 22px -16px rgba(14,12,10,.5); }
+  .qd-nom.faux-btn { grid-column: 1 / -1; flex-direction: row; align-items: baseline; justify-content: center; gap: 10px; border-style: dashed; background: transparent; }
+  .qd-nom.faux-btn b { font-size: 18px; }
+  .qd-nom:disabled { cursor: default; }
+  .qd-nom.est-juste { border: 2.5px solid #7A5E18; background: #FFFDF8; }
+  .qd-nom.est-faux { border: 2.5px solid #7A2E3A; }
+  .qd-nom .qd-marque { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .qd-nom.est-juste .qd-marque { color: #7A5E18; }
+  .qd-nom.est-faux .qd-marque { color: #7A2E3A; }
+  .qd-nom.pale { opacity: .55; }
+
+  /* la fiche révélée */
+  .qd-fiche { margin-top: 26px; padding: 30px 34px; background: var(--r-carte); border: 1px solid var(--r-filet); border-top: 3px solid #7A5E18; border-radius: 14px; animation: qdFiche .55s var(--ease) both; }
+  .qd-fiche.rate { border-top-color: #7A2E3A; }
+  @keyframes qdFiche { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .qd-verdict { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #7A5E18; }
+  .qd-fiche.rate .qd-verdict { color: #7A2E3A; }
+  .qd-auteur { font-family: var(--serif); font-weight: 700; font-size: clamp(30px, 4vw, 42px); line-height: 1.05; color: var(--ink); margin: 8px 0 0; clip-path: inset(0 100% 0 0); animation: qdSigne .9s .15s var(--ease) forwards; }
+  @keyframes qdSigne { to { clip-path: inset(0 0 0 0); } }
+  .qd-parti { font-size: 15.5px; color: var(--ink3); margin: 4px 0 0; }
+  .qd-meta { font-size: 15px; font-weight: 600; color: var(--ink2); margin: 12px 0 0; }
+  .qd-bloc { margin-top: 18px; }
+  .qd-bloc h4 { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #5E554A; margin: 0; }
+  .qd-bloc p { font-size: 16.5px; line-height: 1.55; color: var(--ink2); margin: 5px 0 0; }
+  .qd-bloc.faits { padding: 14px 18px; background: #F4ECDD; border-left: 3px solid #7A5E18; border-radius: 0 8px 8px 0; }
+  .qd-sources { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; font-size: 14.5px; }
+  .qd-sources a { color: #6B5215; font-weight: 600; border-bottom: 1px solid rgba(122,94,24,.4); }
+  .qd-suite { margin-top: 22px; }
+
+  /* fin de partie */
+  .qd-fin { padding: 40px 36px; text-align: center; background: #FFFDF8; border: 1px solid var(--r-filet); border-top: 3px solid #7A5E18; border-radius: 16px; animation: qdFiche .55s var(--ease) both; }
+  .qd-fin-score { font-family: var(--serif); font-weight: 700; font-size: 80px; line-height: 1; color: var(--ink); margin: 8px 0 0; }
+  .qd-fin-p { font-size: 17px; color: var(--ink3); margin: 12px auto 0; max-width: 46ch; }
+  .qd-confus { text-align: left; max-width: 560px; margin: 26px auto 0; padding: 0; list-style: none; border-top: 1px solid var(--r-filet); }
+  .qd-confus li { padding: 12px 0; border-bottom: 1px solid var(--r-filet); font-size: 15.5px; line-height: 1.45; color: var(--ink2); }
+  .qd-confus li i { font-family: var(--serif); color: var(--ink); }
+  .qd-fin-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 26px; }
+  .qd-vide { text-align: center; font-family: var(--serif); font-style: italic; font-size: 19px; color: #5E554A; padding: 40px 0; }
+
+  @media (max-width: 600px) {
+    .qd-coupure { padding: 38px 24px 30px; }
+    .qd-choix { grid-template-columns: 1fr; }
+    .qd-fiche { padding: 24px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .qd-coupure, .qd-fiche, .qd-fin { animation: none; } .qd-auteur { animation: none; clip-path: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var D = JSON.parse(document.getElementById('qd-data').textContent);
+    var scene = document.getElementById('qd-scene'), compte = document.getElementById('qd-compte'), points = document.getElementById('qd-points');
+    var P = {}; D.candidats.forEach(function (c) { P[c.id] = c; });
+    var partie = [], idx = 0, score = 0, journal = [];
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    function melange(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+    function blocDe(it) { var p = P[it.k === 'vraie' ? it.qui : it.attribueA]; return p ? p.bloc : ''; }
+    function dateFr(d) { var m = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(d || ''); if (!m) return esc(d); var mois = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre']; return (m[3] ? (+m[3] === 1 ? '1er' : +m[3]) + ' ' : '') + mois[+m[2] - 1] + ' ' + m[1]; }
+
+    // Tirage : on pioche à tour de rôle dans chaque bloc, au plus 2 fausses citations par partie.
+    function tirer() {
+      var vraies = {}, f = melange(D.items.filter(function (i) { return i.k === 'fausse'; })).slice(0, 2);
+      melange(D.items.filter(function (i) { return i.k === 'vraie'; })).forEach(function (i) { var b = blocDe(i); (vraies[b] = vraies[b] || []).push(i); });
+      var ordre = melange(Object.keys(vraies)), out = [], n = Math.min(D.tour, D.items.length) - f.length;
+      while (out.length < n && ordre.some(function (b) { return vraies[b].length; })) ordre.forEach(function (b) { if (out.length < n && vraies[b].length) out.push(vraies[b].shift()); });
+      out = out.concat(f);
+      return melange(out);
+    }
+    // Quatre noms : la bonne personne (ou celle à qui on attribue la fausse), un nom du même bloc, deux d'ailleurs.
+    function noms(it) {
+      var cible = it.k === 'vraie' ? it.qui : it.attribueA, b = blocDe(it);
+      var meme = melange(D.candidats.filter(function (c) { return c.bloc === b && c.id !== cible; })).slice(0, 1);
+      var autres = melange(D.candidats.filter(function (c) { return c.bloc !== b; }));
+      var vus = {}, autresBlocs = [];
+      autres.forEach(function (c) { if (autresBlocs.length < 3 - meme.length && !vus[c.bloc]) { vus[c.bloc] = 1; autresBlocs.push(c); } });
+      autres.forEach(function (c) { if (autresBlocs.length < 3 - meme.length && autresBlocs.indexOf(c) < 0) autresBlocs.push(c); });
+      return melange([P[cible]].concat(meme, autresBlocs));
+    }
+    function majPoints() {
+      points.innerHTML = partie.map(function (_, i) { var j = journal[i]; return '<li class="' + (j ? (j.bon ? 'ok' : 'ko') : (i === idx ? 'ici' : '')) + '"></li>'; }).join('');
+      compte.textContent = idx < partie.length ? 'Citation ' + (idx + 1) + ' / ' + partie.length : 'Bilan';
+    }
+    function montrer() {
+      var it = partie[idx], liste = noms(it);
+      majPoints();
+      scene.innerHTML = '<figure class="qd-coupure"><span class="qd-theme">' + esc(it.theme || 'Qui a dit ça ?') + '</span><blockquote class="qd-phrase">' + esc(it.texte) + '</blockquote></figure>' +
+        '<div class="qd-choix">' + liste.map(function (c) { return '<button type="button" class="qd-nom" data-id="' + esc(c.id) + '"><b>' + esc(c.nom) + '</b><span>' + esc(c.parti) + '</span></button>'; }).join('') +
+        '<button type="button" class="qd-nom faux-btn" data-id="faux"><b>Personne</b><span>c’est une fausse citation</span></button></div>';
+      scene.querySelectorAll('.qd-nom').forEach(function (b) { b.addEventListener('click', function () { repondre(b.dataset.id); }); });
+    }
+    function repondre(choix) {
+      var it = partie[idx], juste = it.k === 'vraie' ? it.qui : 'faux', bon = choix === juste;
+      if (bon) score++;
+      journal[idx] = { bon: bon, choix: choix, it: it };
+      scene.querySelectorAll('.qd-nom').forEach(function (b) {
+        b.disabled = true;
+        var id = b.dataset.id;
+        if (id === juste) { b.classList.add('est-juste'); b.insertAdjacentHTML('beforeend', '<span class="qd-marque">✓ La réponse</span>'); }
+        else if (id === choix) { b.classList.add('est-faux'); b.insertAdjacentHTML('beforeend', '<span class="qd-marque">✗ Votre choix</span>'); }
+        else b.classList.add('pale');
+      });
+      var f = document.createElement('div');
+      f.className = 'qd-fiche' + (bon ? '' : ' rate');
+      if (it.k === 'vraie') {
+        var p = P[it.qui];
+        f.innerHTML = '<span class="qd-verdict">' + (bon ? 'Bonne réponse' : 'Raté') + '</span>' +
+          '<p class="qd-auteur">' + esc(p.nom) + '</p><p class="qd-parti">' + esc(p.parti) + '</p>' +
+          '<p class="qd-meta">' + dateFr(it.date) + ' · ' + esc(it.media) + '</p>' +
+          '<div class="qd-bloc"><h4>Le contexte</h4><p>' + esc(it.contexte) + '</p></div>' +
+          '<div class="qd-bloc"><h4>Pourquoi ça a fait réagir</h4><p>' + esc(it.polemique) + '</p></div>' +
+          (it.correctif ? '<div class="qd-bloc faits"><h4>Ce que disent les faits</h4><p>' + esc(it.correctif) + '</p></div>' : '') +
+          '<p class="qd-sources"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">Source →</a>' + (it.url2 ? '<a href="' + esc(it.url2) + '" target="_blank" rel="noopener">Seconde source →</a>' : '') + '</p>';
+      } else {
+        f.innerHTML = '<span class="qd-verdict">' + (bon ? 'Bien vu' : 'Piégé') + '</span>' +
+          '<p class="qd-auteur">Personne</p><p class="qd-parti">Phrase attribuée à ' + esc(P[it.attribueA].nom) + ', jamais prononcée.</p>' +
+          '<div class="qd-bloc"><h4>D’où elle vient</h4><p>' + esc(it.origine) + '</p></div>' +
+          '<div class="qd-bloc faits"><h4>Le démenti</h4><p>' + esc(it.dementi) + '</p></div>' +
+          '<p class="qd-sources"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">Lire la vérification →</a></p>';
+      }
+      var s = document.createElement('button');
+      s.type = 'button'; s.className = 'btn btn-or qd-suite';
+      s.innerHTML = (idx + 1 < partie.length ? 'Citation suivante' : 'Voir mon bilan') + ' <span class="ar">→</span>';
+      s.addEventListener('click', function () { idx++; idx < partie.length ? montrer() : fin(); scene.scrollIntoView({ block: 'start', behavior: 'smooth' }); });
+      f.appendChild(s);
+      scene.appendChild(f);
+      majPoints();
+      s.focus({ preventScroll: true });
+      var r = f.getBoundingClientRect(); if (r.top > innerHeight - 120) f.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+    function fin() {
+      majPoints();
+      var rates = journal.filter(function (j) { return !j.bon; });
+      var confus = rates.map(function (j) {
+        var it = j.it, mot = it.texte.split(' ').slice(0, 7).join(' ') + '…';
+        var dit = j.choix === 'faux' ? 'une fausse citation' : esc(P[j.choix].nom);
+        var vrai = it.k === 'vraie' ? esc(P[it.qui].nom) : 'personne : c’était une fausse citation';
+        return '<li><i>« ' + esc(mot) + ' »</i> : vous avez répondu ' + dit + ', c’était ' + vrai + '.</li>';
+      }).join('');
+      var txt = 'J’ai fait ' + score + '/' + partie.length + ' à « Qui a dit ça ? » de La Boussole 2027, par L’Autre Récit.';
+      scene.innerHTML = '<div class="qd-fin"><span class="qd-verdict">Votre score</span><p class="qd-fin-score">' + score + ' / ' + partie.length + '</p>' +
+        '<p class="qd-fin-p">' + (rates.length ? 'Les phrases d’un camp ressemblent souvent à celles d’un autre. Voici à qui vous en avez prêté.' : 'Aucune erreur : vous suivez la campagne de près.') + '</p>' +
+        (confus ? '<ul class="qd-confus">' + confus + '</ul>' : '') +
+        '<div class="qd-fin-actions"><button class="btn btn-or" type="button" id="qd-rejouer">Nouvelle partie</button><button class="btn btn-gh" type="button" id="qd-partage">Copier mon score</button></div></div>';
+      document.getElementById('qd-rejouer').addEventListener('click', demarrer);
+      document.getElementById('qd-partage').addEventListener('click', function () {
+        var bt = this; if (navigator.clipboard) navigator.clipboard.writeText(txt + ' ' + location.origin + '/2027/qui-a-dit/').then(function () { bt.textContent = 'Score copié'; });
+      });
+    }
+    function demarrer() {
+      if (!D.items.length) { scene.innerHTML = '<p class="qd-vide">Les citations sont en cours de vérification.</p>'; compte.textContent = ''; return; }
+      partie = tirer(); idx = 0; score = 0; journal = []; montrer();
+    }
+    demarrer();
+  })();
+</script>

@@ -1,0 +1,90 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import { enjeux } from '../../data/repliques2027.js';
+
+// Labo (dev seulement) : deux modèles de story à comparer sur une vraie réplique, avec les boutons de partage.
+const fiches = enjeux.flatMap((e, i) => e.statut !== 'actif' ? [] : e.cliches.map((c) => {
+  const ch = c.chiffres.find((x) => !x.verifier) || c.chiffres[0];
+  return { id: c.id, enjeu: e.titre, num: String(i + 1).padStart(2, '0'), cliche: c.cliche, replique: c.replique, valeur: ch.valeur, source: ch.source, url: `/2027/${e.id}/#${c.id}` };
+}));
+---
+<Base noindex title="Stories — La Boussole 2027" description="Deux modèles de story.">
+  <div class="r27">
+    <section class="r27-tete">
+      <div class="grain"></div>
+      <div class="container">
+        <p class="r27-fil"><a href="/2027/">La Boussole 2027</a> · Labo</p>
+        <p class="eyebrow">Partage</p>
+        <h1 class="r27-h1">Deux stories à <span class="gold-grad">choisir</span>.</h1>
+        <p class="r27-lede">Chaque modèle est dessiné sur une vraie réplique. Changez de réplique pour voir comment chacun tient avec un texte court ou long.</p>
+      </div>
+    </section>
+
+    <section class="r27-sec">
+      <div class="container">
+        <div class="st-choix">
+          <label for="st-fiche">Réplique affichée</label>
+          <select id="st-fiche">
+            {fiches.map((f, i) => <option value={i}>{f.enjeu} · {f.cliche}</option>)}
+          </select>
+        </div>
+        <div class="st-grille" id="st-grille"></div>
+        <p class="st-note">Sur téléphone, « Story Instagram » et « Message Instagram » ouvrent la feuille de partage avec l’image : Instagram y propose la story ou l’envoi en message. Sur ordinateur, l’image est téléchargée et le texte copié, car Instagram ne permet pas de préremplir un message depuis le web.</p>
+      </div>
+    </section>
+  </div>
+  <div class="r27-toast" id="r27-toast" role="status" aria-live="polite"></div>
+  <script type="application/json" id="st-data" set:html={JSON.stringify(fiches)} />
+</Base>
+
+<style is:global>
+  .st-choix { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .st-choix label { font-weight: 600; color: var(--ink); }
+  .st-choix select { flex: 1; min-width: 0; max-width: 640px; padding: 12px 14px; font: inherit; font-size: 15.5px; color: var(--ink); background: #fff; border: 1.5px solid #8E7B58; border-radius: 8px; }
+  .st-grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 34px 26px; margin-top: 34px; }
+  .st-carte { display: flex; flex-direction: column; gap: 12px; }
+  .st-carte img { width: 100%; aspect-ratio: 9 / 16; border-radius: 16px; box-shadow: 0 30px 50px -30px rgba(14,12,10,.55); background: #E8DFD0; }
+  .st-nom { font-family: var(--serif); font-weight: 700; font-size: 24px; color: var(--ink); margin: 6px 0 0; }
+  .st-nom b { font-family: var(--mono); font-size: 13px; letter-spacing: .14em; color: #7A5E18; margin-right: 8px; }
+  .st-pc { font-size: 15px; line-height: 1.5; color: var(--ink2); margin: 0; }
+  .st-pc strong { color: var(--ink); }
+  .st-partage { display: flex; flex-wrap: wrap; gap: 8px; }
+  .st-partage button { padding: 9px 13px; font: inherit; font-size: 14px; font-weight: 600; color: var(--ink); background: #FFFDF8; border: 1.5px solid #8E7B58; border-radius: 999px; cursor: pointer; }
+  .st-partage button:hover, .st-partage button:focus-visible { border-color: #7A5E18; background: #F4ECDD; }
+  .st-note { font-size: 15px; color: var(--ink3); max-width: 70ch; margin: 40px 0 0; }
+</style>
+
+<script>
+  import { MODELES, dessinerStory, chargerPolices } from './composants/stories.js';
+  import { partager, CANAUX } from './composants/partage.js';
+  const F = JSON.parse(document.getElementById('st-data')!.textContent!);
+  const grille = document.getElementById('st-grille')!, sel = document.getElementById('st-fiche') as HTMLSelectElement;
+  const toast = document.getElementById('r27-toast')!; let tm: number;
+  const dire = (m: string) => { if (!m) return; toast.textContent = m; toast.classList.add('vu'); clearTimeout(tm); tm = window.setTimeout(() => toast.classList.remove('vu'), 2600); };
+  const toiles: HTMLCanvasElement[] = [];
+
+  grille.innerHTML = MODELES.map((m, i) => `
+    <article class="st-carte">
+      <img alt="Story modèle ${m.nom}" data-i="${i}" />
+      <p class="st-nom"><b>${String.fromCharCode(65 + i)}</b>${m.nom}</p>
+      <div class="st-partage">${CANAUX.map((c) => `<button type="button" data-m="${i}" data-c="${c.id}">${c.nom}</button>`).join('')}</div>
+    </article>`).join('');
+
+  async function rendre() {
+    await chargerPolices();
+    const s = F[+sel.value];
+    MODELES.forEach((m, i) => {
+      const cv = dessinerStory(toiles[i] || document.createElement('canvas'), s, m.id);
+      toiles[i] = cv;
+      (grille.querySelector(`img[data-i="${i}"]`) as HTMLImageElement).src = cv.toDataURL('image/jpeg', 0.86);
+    });
+  }
+  sel.addEventListener('change', rendre);
+  grille.addEventListener('click', async (e) => {
+    const b = (e.target as HTMLElement).closest('button[data-c]') as HTMLButtonElement | null; if (!b) return;
+    const s = F[+sel.value], m = MODELES[+b.dataset.m!];
+    dire(await partager(b.dataset.c!, { texte: `« ${s.cliche} »\n\n${s.replique}`, url: location.origin + s.url, cv: toiles[+b.dataset.m!], nom: `boussole-2027-${s.id}-${m.id}.png` }));
+  });
+  rendre();
+</script>
