@@ -1,5 +1,6 @@
 /* Chiffres relevés le 29 octobre 2026, tous vérifiés sur leur source primaire le 29 octobre 2026.
-   verifier: true = source secondaire, à confirmer sur l'original avant publication (aucun à ce jour). */
+   verifier: true = chiffre pas encore confirmé sur sa source d’origine ; signalé sur la page et bloqué pour le partage. */
+import { autreBord } from './autreBord2027.js';
 const INSEE_PRIX = 'https://www.insee.fr/fr/statistiques/serie/011814162';
 const DREES_MS = 'https://www.drees.solidarites-sante.gouv.fr/sites/default/files/2025-12/MS2025%20-%20Fiche%2007%20-%20Les%20d%C3%A9penses%20d%27allocations.pdf';
 const OCDE_FP = 'https://www.oecd.org/en/publications/international-migration-outlook-2021_29f23e9d-en/full-report/component-8.html';
@@ -134,10 +135,10 @@ export const enjeux = [
   {
     id: 'immigration', titre: 'Immigration', statut: 'actif',
     question: 'Combien, pourquoi, et à quel coût réel ?',
-    intro: 'La France compte 8 millions d’immigrés, soit 11,6 % de sa population. Rapportée aux autres pays européens, elle se situe dans la moyenne, et le premier motif d’arrivée légale, ce sont les études.',
+    intro: 'La France compte 8 millions d’immigrés, soit 11,6 % de sa population. Rapportée aux autres pays européens, elle se situe dans la moyenne, et les études sont le premier motif des premiers titres de séjour délivrés.',
     etat: [
       { valeur: '11,6 %', phrase: 'Part des immigrés dans la population en 2025, soit 8,0 millions de personnes (chiffre provisoire).', source: 'Insee, Population immigrée et étrangère en France, 4 juin 2026', url: 'https://www.insee.fr/fr/statistiques/2381757' },
-      { valeur: '15e sur 26', phrase: 'Rang de la France dans l’UE pour la part d’habitants nés à l’étranger : 14,0 %, contre 14,3 % en moyenne.', source: 'Eurostat, migr_pop3ctb, 1er janvier 2025, calcul L’Autre Récit', url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_pop3ctb/default/table' },
+      { valeur: '15e sur 26', phrase: 'Rang de la France parmi les pays de l’UE dont Eurostat publie la donnée, pour la part d’habitants nés à l’étranger : 14,0 %, contre 14,3 % en moyenne. Ce chiffre compte aussi les Français nés à l’étranger, d’où l’écart avec les 11,6 % d’immigrés.', source: 'Eurostat, migr_pop3ctb, 1er janvier 2025, calcul L’Autre Récit', url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_pop3ctb/default/table' },
       { valeur: '377 462', phrase: 'Premiers titres de séjour délivrés en 2025 à des ressortissants de pays tiers (chiffre provisoire). Les études en sont le premier motif (116 835).', source: 'Ministère de l’Intérieur (DGEF), 30 juin 2026', url: DGEF },
       { valeur: '41,2 %', phrase: 'Taux d’admission à l’Ofpra en première instance en 2025. 145 270 demandes ont été déposées, réexamens inclus.', source: 'Ofpra, rapport d’activité 2025', url: OFPRA }
     ],
@@ -159,7 +160,7 @@ export const enjeux = [
         ],
         objection: {
           q: 'Mais en nombre, on est parmi les premiers.',
-          r: 'En nombre brut, la France est 4e, derrière l’Espagne, l’Italie et l’Allemagne, ce qui est logique pour l’un des pays les plus peuplés de l’Union. Seule la comparaison par habitant dit quelque chose de l’effort réel.'
+          r: 'En nombre brut, la France est 4e, derrière l’Espagne, l’Italie et l’Allemagne, ce qui s’explique par sa population, l’une des plus nombreuses de l’Union. Seule la comparaison par habitant dit quelque chose de l’effort réel.'
         }
       },
       {
@@ -169,8 +170,8 @@ export const enjeux = [
         motscles: ['aides', 'allocs', 'allocations', 'rsa', 'ame', 'profiter', 'profitent', 'soins', 'gratuits', 'clandestins', 'sans', 'papiers', 'travaillent', 'social'],
         replique: 'Pour toucher le RSA, un étranger hors Union européenne doit avoir depuis au moins cinq ans un titre de séjour qui l’autorise à travailler. Et 62 % des immigrés de 15 à 64 ans ont un emploi.',
         developpement: [
-          'La condition des cinq ans est inscrite dans le Code de l’action sociale et des familles. Elle ne s’applique pas aux réfugiés et aux titulaires d’une carte de résident.',
-          'Le taux d’emploi des immigrés reste plus faible que celui des personnes sans ascendance migratoire, et leur taux de chômage presque deux fois plus élevé : 12,4 % contre 6,5 %.'
+          'La condition des cinq ans est inscrite dans le Code de l’action sociale et des familles. D’autres étrangers y ont droit sans ce délai : réfugiés, bénéficiaires de la protection subsidiaire, apatrides et titulaires d’une carte de résident. Elle ne s’applique pas non plus aux Algériens, en vertu de l’accord franco-algérien.',
+          'Le taux d’emploi des immigrés reste plus faible que celui des personnes sans ascendance migratoire, et leur taux de chômage presque deux fois plus élevé : 12,4 % contre 6,5 % en 2025 (Insee, enquête Emploi).'
         ],
         chiffres: [
           { valeur: '5 ans', phrase: 'Durée minimale de titre de séjour autorisant à travailler pour qu’un étranger hors UE puisse toucher le RSA.', source: 'CASF, art. L262-4 ; Service-public.fr', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F19778' },
@@ -179,7 +180,7 @@ export const enjeux = [
         ],
         objection: {
           q: 'L’AME, ce sont des soins gratuits pour les clandestins.',
-          r: 'L’AME couvre les soins d’environ 465 000 personnes en situation irrégulière, pour 1,39 milliard d’euros en 2024. C’est moins de 1 % des dépenses de l’Assurance maladie.'
+          r: 'L’AME couvre les soins d’environ 465 000 personnes en situation irrégulière, pour 1,39 milliard d’euros en 2024. Le reste des dépenses de santé des étrangers en situation régulière relève du droit commun.'
         }
       }
     ]
@@ -557,19 +558,27 @@ export const enjeux = [
   }
 ];
 
-/* Vrai ou cliché ? — phrases réellement entendues, réponses tirées des fiches ci-dessus. */
+/* Une idée reçue d’un autre bord par dossier (fiche F3), même exigence de sources : src/data/autreBord2027.js. */
+enjeux.forEach((e) => { if (autreBord[e.id]) e.cliches.push(autreBord[e.id]); });
+
+/* Vrai, faux ou plus compliqué ? — phrases réellement entendues, réponses tirées des fiches ci-dessus.
+   vrai: true/false ; verdict: 'nuance' quand la réponse dépend de la méthode (prime sur vrai). */
 export const quiz = [
-  { a: 'Un étranger hors Union européenne peut toucher le RSA dès son arrivée en France.', vrai: false, r: 'Il faut détenir depuis au moins 5 ans un titre de séjour autorisant à travailler.', s: 'CASF, art. L262-4' },
-  { a: 'Un tiers des foyers qui ont droit au RSA ne le demandent pas.', vrai: true, r: 'Fin 2021, 33 à 37 % des foyers éligibles ne le percevaient pas, soit environ 560 000 foyers.', s: 'DREES, 2026' },
-  { a: 'La France est le pays de l’UE qui reçoit le plus de demandes d’asile par habitant.', vrai: false, r: 'Elle est 9e sur 27. La Grèce en reçoit trois fois plus par habitant.', s: 'Eurostat 2025, calcul L’Autre Récit' },
   { a: 'Depuis 2017, l’alimentation a augmenté plus vite que l’ensemble des prix.', vrai: true, r: '+31,1 % pour l’alimentation, +19,5 % pour l’ensemble des prix entre 2017 et 2025.', s: 'Insee, calcul L’Autre Récit' },
-  { a: 'Le RSA est un gouffre pour les finances publiques.', vrai: false, r: 'Le RSA représente 12,2 milliards d’euros en 2023, soit 0,4 % du PIB.', s: 'DREES, édition 2025' },
-  { a: 'La loi de 1905 interdit de porter le voile dans la rue.', vrai: false, r: 'Elle impose la neutralité à l’État et garantit le libre exercice des cultes. Dans la rue, seule la dissimulation du visage est interdite, par la loi de 2010.', s: 'Légifrance, loi du 9 décembre 1905 ; loi n° 2010-1192' },
-  { a: 'La part des retraites dans le PIB va exploser d’ici 2045.', vrai: false, r: 'Le COR prévoit 14,1 % du PIB en 2025 et 14,2 % en 2045, puis 15,3 % en 2070.', s: 'COR, rapport annuel, juin 2026' },
-  { a: 'Il y a de plus en plus d’homicides en France.', vrai: false, r: '975 victimes en 2025, stable sur un an, après une longue baisse entre 1996 et 2014.', s: 'SSMSI, bilan 2025' },
-  { a: 'La part d’élèves issus de l’immigration a fortement augmenté depuis 2012.', vrai: false, r: 'Elle est stable : 16 % des élèves de 15 ans en 2022, contre 15 % en 2012.', s: 'OCDE, PISA 2022, note France' },
-  { a: 'La part de l’emploi public dans l’emploi total a augmenté en France depuis 2019.', vrai: false, r: 'Elle a baissé de 0,9 point entre 2019 et 2023, l’une des plus fortes baisses de l’OCDE.', s: 'OCDE, Government at a Glance 2025' },
-  { a: 'À CV comparable, un nom à consonance maghrébine réduit les chances d’être rappelé.', vrai: true, r: '22,8 % de rappels contre 33,3 % pour un nom à consonance française, lors d’un testing mené entre 2019 et 2021.', s: 'Testing Dares, repris par l’Insee, 2023' },
-  { a: 'Le chlordécone appartient au passé.', vrai: false, r: 'En 2024, plus de huit adultes sur dix en Guadeloupe et en Martinique en avaient encore dans le sang.', s: 'Santé publique France, Kannari 2, juin 2026' },
+  { a: 'Depuis 2017, on a supprimé massivement des fonctionnaires.', vrai: false, r: 'Le nombre d’agents publics est passé de 5,66 millions fin 2017 à 5,9 millions fin 2024. Ce qui recule, c’est la part des fonctionnaires titulaires, au profit des contractuels.', s: 'Insee Première n° 1741 et n° 2094' },
+  { a: 'Un tiers des foyers qui ont droit au RSA ne le demandent pas.', vrai: true, r: 'Fin 2021, 33 à 37 % des foyers éligibles ne le percevaient pas, soit environ 560 000 foyers.', s: 'DREES, 2026' },
+  { a: 'Le déficit des retraites est inventé pour justifier les réformes.', vrai: false, r: 'Le COR mesure un déficit de 5,1 milliards d’euros en 2025 (0,2 % du PIB), qui se creuserait ensuite. Il est modeste aujourd’hui, mais il n’est pas inventé.', s: 'COR, rapport annuel, juin 2026' },
+  { a: 'La France est le pays de l’UE qui reçoit le plus de demandes d’asile par habitant.', vrai: false, r: 'Elle est 9e sur 27. La Grèce en reçoit trois fois plus par habitant.', s: 'Eurostat 2025, calcul L’Autre Récit' },
   { a: 'Entre 2021 et 2025, le salaire moyen du privé a gagné du pouvoir d’achat.', vrai: false, r: 'Une fois l’inflation déduite, il est exactement au niveau de 2021.', s: 'Insee Première n° 2132' },
+  { a: 'La délinquance baisse partout en France.', vrai: false, r: 'Les cambriolages et les vols reculent en 2025, mais les violences physiques (+5 %) et sexuelles (+8 %) enregistrées augmentent.', s: 'SSMSI, Insécurité et délinquance en 2025' },
+  { a: 'La loi de 1905 interdit de porter le voile dans la rue.', vrai: false, r: 'Elle impose la neutralité à l’État et garantit le libre exercice des cultes. Dans la rue, seule la dissimulation du visage est interdite, par la loi de 2010.', s: 'Légifrance, loi du 9 décembre 1905 ; loi n° 2010-1192' },
+  { a: 'Le RSA est un gouffre pour les finances publiques.', vrai: false, r: 'Le RSA représente 12,2 milliards d’euros en 2023, soit 0,4 % du PIB.', s: 'DREES, édition 2025' },
+  { a: 'À CV comparable, un nom à consonance maghrébine réduit les chances d’être rappelé.', vrai: true, r: '22,8 % de rappels contre 33,3 % pour un nom à consonance française, lors d’un testing mené entre 2019 et 2021.', s: 'Testing Dares, repris par l’Insee, 2023' },
+  { a: 'La part des retraites dans le PIB va exploser d’ici 2045.', vrai: false, r: 'Le COR prévoit 14,1 % du PIB en 2025 et 14,2 % en 2045, puis 15,3 % en 2070.', s: 'COR, rapport annuel, juin 2026' },
+  { a: 'Un étranger hors Union européenne peut toucher le RSA dès son arrivée en France.', vrai: false, verdict: 'nuance', r: 'La règle générale exige cinq ans de titre de séjour autorisant à travailler. Les réfugiés, les bénéficiaires de la protection subsidiaire, les apatrides et les titulaires d’une carte de résident en sont dispensés, comme les Algériens. Il faut aussi avoir 25 ans et vivre en France de façon stable.', s: 'CASF, art. L262-4 ; Service-public.fr' },
+  { a: 'Il y a de plus en plus d’homicides en France.', vrai: false, r: '975 victimes en 2025, stable sur un an, après une longue baisse entre 1996 et 2014.', s: 'SSMSI, bilan 2025' },
+  { a: 'La part de l’emploi public dans l’emploi total a augmenté en France depuis 2019.', vrai: false, r: 'Elle a baissé de 0,9 point entre 2019 et 2023, l’une des plus fortes baisses de l’OCDE.', s: 'OCDE, Government at a Glance 2025' },
+  { a: 'Les immigrés coûtent plus qu’ils ne rapportent aux finances publiques.', vrai: false, verdict: 'nuance', r: 'Tout dépend de ce qu’on leur impute. Sans compter les biens publics, leur solde est de +1,02 % du PIB. En leur attribuant une part de la défense et de la dette, il passe à −0,85 %, contre −3,25 % pour les natifs dans le même calcul.', s: 'OCDE, Perspectives des migrations internationales 2021, tableau 4.1' },
+  { a: 'Le chlordécone appartient au passé.', vrai: false, r: 'En 2024, plus de huit adultes sur dix en Guadeloupe et en Martinique en avaient encore dans le sang.', s: 'Santé publique France, Kannari 2, juin 2026' },
+  { a: 'La part d’élèves issus de l’immigration a fortement augmenté depuis 2012.', vrai: false, r: 'Elle est stable : 16 % des élèves de 15 ans en 2022, contre 15 % en 2012.', s: 'OCDE, PISA 2022, note France' },
 ];

@@ -1,79 +1,79 @@
 ---
-// Vrai ou cliché ? — paquet de cartes à glisser ou à cliquer ; chaque carte se retourne avec la réponse sourcée.
+// Vrai, faux ou plus compliqué ? — paquet de cartes ; trois réponses de même poids, la carte se retourne avec la réponse sourcée.
+// Pas de geste de glisser (un seul geste de jeu par page, fiche §V7) et pas de bouton mis en avant (§V5).
 import { quiz } from '../../../data/repliques2027.js';
 ---
 <div class="qz">
   <div class="qz-pile" id="qz-pile" aria-live="polite"></div>
-  <div class="qz-boutons" id="qz-boutons">
-    <button class="btn btn-gh" type="button" data-rep="false">← Cliché</button>
-    <span class="qz-compte" id="qz-compte">1 / {quiz.length}</span>
-    <button class="btn btn-or" type="button" data-rep="true">Vrai →</button>
+  <div class="qz-boutons" id="qz-boutons" role="group" aria-label="Votre réponse">
+    <button class="btn btn-gh" type="button" data-rep="vrai">Vrai</button>
+    <button class="btn btn-gh" type="button" data-rep="faux">Faux</button>
+    <button class="btn btn-gh" type="button" data-rep="nuance">Plus compliqué</button>
   </div>
-  <p class="qz-aide">Glissez la carte à gauche (cliché) ou à droite (vrai), ou utilisez les boutons.</p>
+  <p class="qz-compte" id="qz-compte">1 / {quiz.length}</p>
 </div>
 <script type="application/json" id="qz-data" set:html={JSON.stringify(quiz)} />
 
 <style is:global>
   .qz { display: grid; justify-items: center; gap: 18px; margin-top: 30px; }
   .qz-pile { position: relative; width: min(100%, 540px); height: 340px; margin-bottom: 26px; perspective: 1400px; }
-  .qz-carte { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .55s var(--ease); cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-  .qz-carte:active { cursor: grabbing; }
-  .qz-carte.glisse { transition: none; }
+  .qz-carte { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .55s var(--ease); }
   .qz-carte.sortie { transition: transform .5s var(--ease); pointer-events: none; }
   .qz-carte.retournee { transform: rotateY(180deg) !important; }
   .qz-face { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 30px 32px; border-radius: 18px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
   .qz-recto { background: var(--r-carte); border: 1px solid var(--r-filet); border-top: 2px solid var(--or2); box-shadow: 0 34px 60px -40px rgba(14,12,10,.5); }
   .qz-verso { transform: rotateY(180deg); background: linear-gradient(158deg, #1C160F 0%, #12100B 60%, #0C0A07 100%); border-top: 2px solid var(--or2); box-shadow: 0 34px 60px -36px rgba(14,12,10,.6); }
-  .qz-k { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #5E554A; }
-  .qz-aff { font-family: var(--serif); font-style: italic; font-size: clamp(23px, 2.6vw, 30px); line-height: 1.28; color: var(--ink); margin-top: 16px; }
-  .qz-juste { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--or3); }
+  .qz-k { font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #5E554A; }
+  .qz-aff { font-family: var(--serif); font-style: italic; font-size: clamp(23px, 2.6vw, 30px); line-height: 1.28; color: var(--ink); margin: auto 0; padding-block: 12px; }
+  .qz-juste { font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--or3); }
   .qz-verdict { font-family: var(--serif); font-weight: 700; font-size: 44px; line-height: 1; margin-top: 10px; color: #F6F1E8; }
   .qz-verdict.vrai { color: var(--or2); }
+  .qz-verdict.nuance { font-size: 38px; }
   .qz-rep { font-size: 17.5px; line-height: 1.5; color: #F2EDE4; margin-top: 14px; }
   .qz-s { font-size: 13.5px; color: rgba(242,237,228,.72); margin-top: 10px; }
   .qz-suivante { margin-top: auto; align-self: flex-start; }
-  .qz-tampon { position: absolute; top: 24px; padding: 6px 14px; border: 3px solid; border-radius: 6px; font-family: var(--mono); font-weight: 700; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; opacity: 0; pointer-events: none; }
-  .qz-tampon.g { right: 24px; color: #7A2E3A; border-color: #7A2E3A; transform: rotate(12deg); }
-  .qz-tampon.d { left: 24px; color: #7A5E18; border-color: #9A7B2E; transform: rotate(-12deg); }
   .qz-pile .qz-carte:nth-last-child(2) { transform: translateY(12px) scale(.96); }
   .qz-pile .qz-carte:nth-last-child(3) { transform: translateY(24px) scale(.92); }
   .qz-pile .qz-carte:nth-last-child(n+4) { transform: translateY(32px) scale(.9); opacity: 0; }
-  .qz-boutons { display: flex; align-items: center; gap: 18px; }
-  .qz-compte { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--ink3); min-width: 56px; text-align: center; }
-  .qz-aide { font-size: 14.5px; color: #5A5046; margin: 0; text-align: center; }
+  .qz-boutons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: min(100%, 540px); }
+  .qz-boutons .btn { justify-content: center; min-height: 48px; }
+  .qz-q { font-size: 15px; font-weight: 600; color: #4A4036; }
+  .qz-compte { font-size: 14px; font-weight: 700; color: var(--sur-nuit, #F2EDE4); margin: 0; }
   .qz-fin { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px; padding: 30px; border-radius: 18px; background: var(--r-carte); border: 1px solid var(--r-filet); border-top: 2px solid var(--or2); }
   .qz-fin-score { font-family: var(--serif); font-weight: 700; font-size: 72px; line-height: 1; color: var(--ink); }
   .qz-fin-p { font-size: 17px; color: var(--ink3); margin: 0; }
   .qz-fin-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
   @media (max-width: 560px) { .qz-pile { height: 380px; } .qz-face { padding: 24px; } }
+  @media (max-width: 480px) { .qz-boutons { grid-template-columns: 1fr 1fr; } .qz-boutons .btn:last-child { grid-column: 1 / -1; } }
   @media (prefers-reduced-motion: reduce) { .qz-carte { transition: none !important; } }
 </style>
 
 <script is:inline>
   (function () {
     var Q = JSON.parse(document.getElementById('qz-data').textContent);
+    var NOMS = { vrai: 'Vrai', faux: 'Faux', nuance: 'Plus compliqué' };
+    function verdict(q) { return q.verdict || (q.vrai ? 'vrai' : 'faux'); }
     var pile = document.getElementById('qz-pile'), compte = document.getElementById('qz-compte'), boutons = document.getElementById('qz-boutons');
     var reduit = matchMedia('(prefers-reduced-motion: reduce)').matches, idx = 0, score = 0, bloque = false;
     function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
     function construire() {
       pile.innerHTML = '';
       for (var i = Q.length - 1; i >= idx; i--) {
-        var q = Q[i], c = document.createElement('div');
+        var q = Q[i], v = verdict(q), c = document.createElement('div');
         c.className = 'qz-carte';
         c.innerHTML = '<div class="qz-face qz-recto"><span class="qz-k">On entend dire</span><p class="qz-aff">« ' + esc(q.a) + ' »</p>' +
-          '<span class="qz-tampon g">Cliché</span><span class="qz-tampon d">Vrai</span></div>' +
-          '<div class="qz-face qz-verso"><span class="qz-juste"></span><span class="qz-verdict' + (q.vrai ? ' vrai' : '') + '">' + (q.vrai ? 'Vrai' : 'Cliché') + '</span>' +
+          '<span class="qz-q">Vrai, faux ou plus compliqué ?</span></div>' +
+          '<div class="qz-face qz-verso"><span class="qz-juste"></span><span class="qz-verdict ' + v + '">' + NOMS[v] + '</span>' +
           '<p class="qz-rep">' + esc(q.r) + '</p><span class="qz-s">Source : ' + esc(q.s) + '</span></div>';
         pile.appendChild(c);
       }
       compte.textContent = (idx + 1) + ' / ' + Q.length;
-      brancher();
     }
     function repondre(choix) {
       var c = pile.lastElementChild; if (!c || bloque) return; bloque = true;
-      var bon = choix === Q[idx].vrai; if (bon) score++;
+      var bon = choix === verdict(Q[idx]); if (bon) score++;
       c.querySelector('.qz-juste').textContent = bon ? 'Bonne réponse' : 'Pas tout à fait';
-      c.classList.remove('glisse'); c.style.transform = ''; c.classList.add('retournee');
+      c.classList.add('retournee');
       boutons.style.visibility = 'hidden';
       setTimeout(function () {
         var b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-cr qz-suivante';
@@ -87,10 +87,10 @@ import { quiz } from '../../../data/repliques2027.js';
       }, reduit ? 0 : 450);
     }
     function fin() {
-      boutons.style.visibility = 'hidden';
-      var txt = 'J’ai fait ' + score + '/' + Q.length + ' au test « Vrai ou cliché ? » de La Boussole 2027, par L’Autre Récit.';
+      boutons.style.visibility = 'hidden'; compte.textContent = '';
+      var txt = 'J’ai fait ' + score + '/' + Q.length + ' à « Vrai, faux ou plus compliqué ? », le test de La Boussole 2027 par L’Autre Récit.';
       pile.innerHTML = '<div class="qz-fin"><span class="qz-k">Votre score</span><span class="qz-fin-score">' + score + ' / ' + Q.length + '</span>' +
-        '<p class="qz-fin-p">' + (score >= 5 ? 'Vous êtes prêt pour le prochain repas de famille.' : 'Les dossiers ci-dessous vous donnent les chiffres pour la prochaine fois.') + '</p>' +
+        '<p class="qz-fin-p">' + (score >= 10 ? 'Vous connaissez bien ces chiffres. Les dossiers ci-dessous vont plus loin.' : 'Personne ne connaît tous ces chiffres. Les dossiers ci-dessous les détaillent, sources à l’appui.') + '</p>' +
         '<div class="qz-fin-actions"><button class="btn btn-or" type="button" id="qz-partage">Copier mon score</button><button class="btn btn-gh" type="button" id="qz-rejouer">Rejouer</button></div></div>';
       document.getElementById('qz-partage').addEventListener('click', function () {
         var bt = this, t = txt + ' ' + location.origin + '/2027/';
@@ -98,22 +98,7 @@ import { quiz } from '../../../data/repliques2027.js';
       });
       document.getElementById('qz-rejouer').addEventListener('click', function () { idx = 0; score = 0; boutons.style.visibility = ''; construire(); });
     }
-    function brancher() {
-      var c = pile.lastElementChild; if (!c) return;
-      var x0 = null, dx = 0, tg = c.querySelector('.qz-tampon.g'), td = c.querySelector('.qz-tampon.d');
-      c.addEventListener('pointerdown', function (e) { if (bloque || e.target.closest('button')) return; x0 = e.clientX; dx = 0; c.classList.add('glisse'); c.setPointerCapture(e.pointerId); });
-      c.addEventListener('pointermove', function (e) {
-        if (x0 === null) return; dx = e.clientX - x0;
-        c.style.transform = 'translateX(' + dx + 'px) rotate(' + dx / 18 + 'deg)';
-        tg.style.opacity = Math.max(0, -dx / 110); td.style.opacity = Math.max(0, dx / 110);
-      });
-      function lacher() {
-        if (x0 === null) return; x0 = null; c.classList.remove('glisse'); tg.style.opacity = 0; td.style.opacity = 0;
-        if (Math.abs(dx) > 110) repondre(dx > 0); else c.style.transform = '';
-      }
-      c.addEventListener('pointerup', lacher); c.addEventListener('pointercancel', lacher);
-    }
-    boutons.querySelectorAll('[data-rep]').forEach(function (b) { b.addEventListener('click', function () { repondre(b.dataset.rep === 'true'); }); });
+    boutons.querySelectorAll('[data-rep]').forEach(function (b) { b.addEventListener('click', function () { repondre(b.dataset.rep); }); });
     construire();
   })();
 </script>

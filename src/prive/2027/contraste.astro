@@ -1,0 +1,184 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import { enjeux } from '../../data/repliques2027.js';
+
+// ============================================================
+// LA BOUSSOLE 2027 — VERRE LIQUIDE ET CONTRASTE (privé, dev seulement).
+// Règle : jamais clair sur clair ni sombre sur sombre. Le fond et la surface s'opposent toujours :
+// fond nuit → verre ivoire ; fond ivoire → verre fumé. Le doré reste en chiffres, filets et reflets.
+// ============================================================
+const n2 = (i) => String(i + 1).padStart(2, '0');
+const trois = enjeux.slice(0, 3).map((e, i) => ({ ...e, n: n2(i) }));
+const exemples = enjeux.flatMap((e) => e.cliches.map((c) => c.exemple)).slice(0, 4);
+
+const versions = [
+  { id: 'nuit-ivoire', l: 'A', t: 'Nuit et ivoire', d: 'Fond nuit animé de lueurs cuivre et or ; cartes en verre ivoire épais, texte encre, chiffres en or foncé.', fond: 'nuit', verre: 'ivoire' },
+  { id: 'ivoire-fume', l: 'B', t: 'Ivoire et fumé', d: 'L’inverse : fond ivoire, cartes en verre fumé presque noir, texte crème, chiffres en or vif.', fond: 'ivoire', verre: 'fume' },
+  { id: 'nuit-or', l: 'C', t: 'Nuit et or liquide', d: 'Comme A, avec un liseré d’or qui coule lentement autour des cartes et un bouton en or poli.', fond: 'nuit', verre: 'ivoire', or: true },
+];
+---
+<Base noVerset noindex title="Verre et contraste — La Boussole 2027" description="Le verre liquide avec un contraste franc entre fond et surface.">
+  <div class="ct">
+    <section class="ct-intro">
+      <div class="container">
+        <p class="ct-sur">La Boussole 2027 · Atelier</p>
+        <h1 class="ct-h1">Verre liquide, <em>contraste franc</em></h1>
+        <p class="ct-lede">Votre effet préféré, avec une règle stricte : jamais clair sur clair ni sombre sur sombre. Le fond et les cartes s’opposent toujours, et le doré reste dans les chiffres, les filets et les reflets. La dernière version alterne les deux sur une même page.</p>
+      </div>
+    </section>
+
+    {versions.map((v) => (
+      <section class="ct-bloc" id={v.id}>
+        <div class="container">
+          <p class="ct-etiquette"><b>{v.l}</b> {v.t}</p>
+          <p class="ct-d">{v.d}</p>
+        </div>
+        <div class:list={['ct-scene', `fond-${v.fond}`, { 'or-liquide': v.or }]}>
+          <div class="ct-lueurs" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="container">
+            <p class="ct-titre">Les vrais enjeux, et de quoi <em>répondre</em>.</p>
+            <div class:list={['ct-moteur', `verre-${v.verre}`]}>
+              <span class="ct-moteur-q">« Les immigrés font baisser les salaires »</span>
+              <span class="ct-moteur-b">Trouver la réplique →</span>
+            </div>
+            <div class="ct-cartes">
+              {trois.map((e) => (
+                <a class:list={['ct-carte', `verre-${v.verre}`]} href={`/2027/${e.id}/`} data-reflet>
+                  <span class="ct-n">Dossier {e.n}</span>
+                  <span class="ct-v">{e.etat[0].valeur}</span>
+                  <span class="ct-t">{e.titre}</span>
+                  <span class="ct-q">{e.question}</span>
+                </a>
+              ))}
+            </div>
+            <a class="ct-cta" href="/2027/quiz/">Quel candidat êtes-vous ? <span>→</span></a>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="ct-bloc" id="alterne">
+      <div class="container">
+        <p class="ct-etiquette"><b>D</b> L’alternance</p>
+        <p class="ct-d">Une page qui alterne : une bande nuit avec des cartes ivoire, puis une bande ivoire avec des cartes fumées. Le rythme vient du contraste lui-même.</p>
+      </div>
+      <div class="ct-scene fond-nuit">
+        <div class="ct-lueurs" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="container">
+          <p class="ct-titre petit">Dix enjeux de la campagne</p>
+          <div class="ct-cartes">
+            {trois.map((e) => (
+              <a class="ct-carte verre-ivoire" href={`/2027/${e.id}/`} data-reflet>
+                <span class="ct-n">Dossier {e.n}</span><span class="ct-v">{e.etat[0].valeur}</span><span class="ct-t">{e.titre}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="ct-scene fond-ivoire">
+        <div class="ct-lueurs" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="container">
+          <p class="ct-titre petit">On vous a dit…</p>
+          <div class="ct-pastilles">{exemples.map((x) => <span class="verre-fume">{x}</span>)}</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style is:global>
+  .ct { background: #F2EDE4; }
+  .ct-intro { padding: 150px 0 30px; }
+  .ct-sur { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #7A5E18; margin: 0; }
+  .ct-h1 { font-family: var(--serif); font-size: clamp(40px, 6vw, 72px); line-height: 1.02; color: #14110D; margin: 12px 0 0; }
+  .ct-h1 em { color: #7A5E18; }
+  .ct-lede { font-size: 18px; line-height: 1.6; color: #2A241D; max-width: 64ch; margin: 18px 0 0; }
+  .ct-bloc { padding: 60px 0 0; }
+  .ct-etiquette { font-family: var(--serif); font-weight: 700; font-size: clamp(26px, 3vw, 36px); color: #14110D; margin: 0; }
+  .ct-etiquette b { font-style: italic; color: #7A5E18; margin-right: 6px; }
+  .ct-d { font-size: 16.5px; line-height: 1.55; color: #2A241D; max-width: 66ch; margin: 6px 0 22px; }
+
+  /* ---------- fonds ---------- */
+  .ct-scene { position: relative; isolation: isolate; overflow: hidden; padding: 70px 0 64px; }
+  .ct-lueurs { position: absolute; inset: 0; z-index: -1; filter: blur(70px); pointer-events: none; }
+  .ct-lueurs span { position: absolute; border-radius: 50%; animation: ctFlotte 20s ease-in-out infinite alternate; }
+  .ct-lueurs span:nth-child(1) { width: 42%; height: 80%; left: -8%; top: -10%; }
+  .ct-lueurs span:nth-child(2) { width: 34%; height: 70%; right: -4%; top: 20%; animation-duration: 25s; }
+  .ct-lueurs span:nth-child(3) { width: 30%; height: 60%; left: 38%; bottom: -30%; animation-duration: 17s; }
+  @keyframes ctFlotte { to { transform: translate(7%, 9%) scale(1.15); } }
+  .fond-nuit { background: radial-gradient(120% 90% at 50% 0%, #241A12, #120E0B 60%, #0C0907); }
+  .fond-nuit .ct-lueurs span:nth-child(1) { background: #8A5A24; opacity: .75; }
+  .fond-nuit .ct-lueurs span:nth-child(2) { background: #C4A24A; opacity: .4; }
+  .fond-nuit .ct-lueurs span:nth-child(3) { background: #6E2632; opacity: .6; }
+  .fond-ivoire { background: #F2EDE4; }
+  .fond-ivoire .ct-lueurs span:nth-child(1) { background: #E2C78E; opacity: .9; }
+  .fond-ivoire .ct-lueurs span:nth-child(2) { background: #C99A62; opacity: .55; }
+  .fond-ivoire .ct-lueurs span:nth-child(3) { background: #D9B98A; opacity: .8; }
+  .ct-titre { font-family: var(--serif); font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; max-width: 17ch; margin: 0; }
+  .ct-titre.petit { font-size: clamp(28px, 3.4vw, 42px); }
+  .fond-nuit .ct-titre { color: #F6F0E6; }
+  .fond-nuit .ct-titre em { color: #E0C27F; }
+  .fond-ivoire .ct-titre { color: #14110D; }
+  .fond-ivoire .ct-titre em { color: #7A5E18; }
+
+  /* ---------- les deux verres ---------- */
+  .verre-ivoire { color: #14110D; background: linear-gradient(150deg, rgba(255, 252, 245, .94), rgba(246, 239, 226, .86));
+    backdrop-filter: blur(24px) saturate(1.5); -webkit-backdrop-filter: blur(24px) saturate(1.5);
+    box-shadow: inset 0 1.5px 0 #fff, inset 0 -1px 0 rgba(122, 94, 24, .25), inset 0 0 0 1px rgba(255, 255, 255, .6), 0 30px 60px -28px rgba(0, 0, 0, .7); }
+  .verre-fume { color: #F6F0E6; background: linear-gradient(150deg, rgba(34, 26, 19, .9), rgba(16, 12, 9, .84));
+    backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    box-shadow: inset 0 1.5px 0 rgba(255, 236, 200, .35), inset 0 0 0 1px rgba(224, 194, 127, .28), 0 30px 60px -28px rgba(60, 40, 20, .55); }
+
+  /* ---------- moteur ---------- */
+  .ct-moteur { display: flex; align-items: center; gap: 10px; max-width: 720px; margin-top: 30px; padding: 8px 8px 8px 24px; border-radius: 999px; }
+  .ct-moteur-q { flex: 1; min-width: 0; font-size: 16px; opacity: .8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ct-moteur-b { flex: none; padding: 13px 20px; border-radius: 999px; font-weight: 700; font-size: 15px; background: #6E2632; color: #FBF3E3; }
+  .verre-fume .ct-moteur-b { background: linear-gradient(180deg, #E8CC86, #C4A24A); color: #14110D; }
+
+  /* ---------- cartes ---------- */
+  .ct-cartes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+  .ct-carte { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 6px; padding: 28px 26px 30px; border-radius: 30px; text-decoration: none; transition: transform .5s var(--ease); }
+  .ct-carte::before { content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; background: radial-gradient(90% 55% at 30% -8%, rgba(255, 255, 255, .6), transparent 70%); }
+  .ct-carte.verre-fume::before { background: radial-gradient(90% 55% at 30% -8%, rgba(255, 236, 200, .16), transparent 70%); }
+  .ct-carte:hover { transform: translateY(-6px); }
+  [data-reflet]::after { content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; opacity: 0; transition: opacity .4s; background: radial-gradient(300px circle at var(--rx, 50%) var(--ry, 0%), rgba(255, 236, 205, .5), transparent 60%); mix-blend-mode: soft-light; }
+  [data-reflet]:hover::after { opacity: 1; }
+  .ct-n { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
+  .ct-v { font-family: var(--serif); font-weight: 700; font-size: clamp(40px, 4.6vw, 58px); line-height: 1; margin-top: 10px; }
+  .verre-ivoire .ct-v { color: #6B5215; }
+  .verre-fume .ct-v { color: #E0C27F; }
+  .ct-t { font-family: var(--serif); font-weight: 700; font-size: 22px; margin-top: 6px; }
+  .ct-q { font-size: 15.5px; line-height: 1.45; opacity: .85; }
+
+  .ct-cta { display: inline-flex; gap: 10px; margin-top: 34px; padding: 15px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; color: #14110D;
+    background: linear-gradient(180deg, #F0D99A, #C4A24A 55%, #A9862F); box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .7), 0 20px 40px -18px rgba(196, 162, 74, .7); transition: transform .3s var(--ease); }
+  .ct-cta:hover { transform: translateY(-2px); }
+  .fond-ivoire .ct-cta { color: #F6F0E6; background: linear-gradient(180deg, #2A2018, #120E0B); box-shadow: inset 0 1px 0 rgba(255, 236, 200, .3), inset 0 0 0 1px rgba(224, 194, 127, .5), 0 20px 40px -20px rgba(0, 0, 0, .6); }
+
+  /* ---------- C : liseré d'or qui coule ---------- */
+  @property --angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+  .or-liquide .ct-carte, .or-liquide .ct-moteur { border: 2.5px solid transparent; background-origin: border-box;
+    background-image: linear-gradient(150deg, #FFFCF5, #F4ECDD), conic-gradient(from var(--angle), #7A5E18, #F3DC9C, #C4A24A, #7A5E18 40%, #F3DC9C 70%, #7A5E18);
+    background-clip: padding-box, border-box; animation: ctOr 6s linear infinite; }
+  @keyframes ctOr { to { --angle: 360deg; } }
+
+  /* ---------- pastilles ---------- */
+  .ct-pastilles { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .ct-pastilles span { padding: 12px 18px; border-radius: 999px; font-size: 15px; font-weight: 600; }
+
+  @media (max-width: 760px) {
+    .ct-cartes { grid-template-columns: 1fr; }
+    .ct-moteur-b { padding: 12px 14px; font-size: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ct-lueurs span, .or-liquide .ct-carte, .or-liquide .ct-moteur { animation: none; } }
+</style>
+
+<script is:inline>
+  document.querySelectorAll('[data-reflet]').forEach(function (c) {
+    c.addEventListener('pointermove', function (e) {
+      var r = c.getBoundingClientRect();
+      c.style.setProperty('--rx', (e.clientX - r.left) + 'px'); c.style.setProperty('--ry', (e.clientY - r.top) + 'px');
+    });
+  });
+</script>

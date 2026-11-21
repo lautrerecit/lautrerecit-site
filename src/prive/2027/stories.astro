@@ -9,7 +9,7 @@ const fiches = enjeux.flatMap((e, i) => e.statut !== 'actif' ? [] : e.cliches.ma
   return { id: c.id, enjeu: e.titre, num: String(i + 1).padStart(2, '0'), cliche: c.cliche, replique: c.replique, valeur: ch.valeur, source: ch.source, url: `/2027/${e.id}/#${c.id}` };
 }));
 ---
-<Base noindex title="Stories — La Boussole 2027" description="Deux modèles de story.">
+<Base noVerset noindex title="Stories — La Boussole 2027" description="Deux modèles de story.">
   <div class="r27">
     <section class="r27-tete">
       <div class="grain"></div>

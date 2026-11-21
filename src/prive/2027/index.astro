@@ -3,14 +3,17 @@ import Base from '../../layouts/Base.astro';
 import '../../styles/repliques2027.css';
 import { enjeux, quiz } from '../../data/repliques2027.js';
 import Quiz from './composants/Quiz.astro';
-import Tiroirs from './composants/Tiroirs.astro';
+import Fichier from './composants/Fichier.astro';
+import Situation from './composants/Situation.astro';
 
 // ============================================================
-// LA BOUSSOLE 2027 — accueil : moteur de réplique, Vrai ou cliché ?, tiroir à fiches des 10 enjeux.
-// Bande sombre courte en tête, tout le reste sur crème.
+// LA BOUSSOLE 2027 — accueil. On entre par les sujets (votre situation, puis le fichier des dix dossiers),
+// les idées reçues viennent ensuite (fiche outils/boussole/GRAMMAIRE-BOUSSOLE.md, F4 et F5).
+// Sur l'accueil : trois idées reçues au plus, de sujets différents, sans groupe nommé.
 // ============================================================
 const actifs = enjeux.filter((e) => e.statut === 'actif');
-const exemples = actifs.flatMap((e) => e.cliches.map((c) => c.exemple));
+const EXEMPLES = ['assistes', 'retraites-faillite'];
+const exemples = EXEMPLES.map((id) => actifs.flatMap((e) => e.cliches).find((c) => c.id === id)?.exemple).filter(Boolean);
 
 // Index de recherche envoyé au navigateur (texte seulement).
 const index = actifs.flatMap((e) =>
@@ -18,45 +21,80 @@ const index = actifs.flatMap((e) =>
     href: `/2027/${e.id}/#${c.id}`,
     enjeu: e.titre,
     cliche: c.cliche,
+    fait: c.replique.split(/(?<=\.)\s/)[0],
     corpus: [c.cliche, ...(c.variantes || []), ...(c.motscles || []), e.titre].join(' '),
   }))
 );
 ---
-<Base
+<Base noVerset
   noindex
   title="La Boussole 2027 — L'Autre Récit"
-  description="Les grands enjeux de la présidentielle 2027 et de quoi répondre aux idées reçues, chiffres et sources à l'appui."
+  description="Les grands enjeux de la présidentielle 2027, chiffres et sources à l’appui, et les réponses aux idées reçues."
 >
   <div class="r27">
     <section class="r27-tete centre">
       <div class="grain"></div>
       <div class="container">
         <p class="eyebrow">Présidentielle 2027 · La Boussole</p>
-        <h1 class="r27-h1">Les vrais enjeux, et de quoi <span class="gold-grad">répondre</span>.</h1>
-        <p class="r27-lede">Salaires, vie chère, services publics, immigration : l'état des lieux chiffré de chaque grand sujet de la campagne, et la réponse sourcée aux idées reçues qui l'accompagnent.</p>
+        <h1 class="r27-h1">Ce qui se joue en 2027, <span class="gold-grad">chiffres</span> à l’appui.</h1>
+        <p class="r27-lede">Salaires, logement, école, santé, retraites : dix sujets qui touchent la vie de chacun, l’état des lieux chiffré de chacun d’eux, et des réponses sourcées aux idées reçues qui circulent. Indépendant de tout parti.</p>
       </div>
     </section>
 
-    <div class="container">
-      <form class="r27-moteur" id="r27-moteur" role="search">
-        <label for="r27-q">On vous a dit…</label>
-        <div class="r27-champ">
-          <input id="r27-q" name="q" type="search" autocomplete="off" placeholder="« Les immigrés font baisser les salaires »" />
-          <button class="btn btn-or" type="submit">Trouver la réplique <span class="ar">→</span></button>
+    <section class="r27-sec r27-sec-premiere">
+      <div class="container">
+        <p class="eyebrow">Ce qui vous concerne</p>
+        <h2 class="r27-h2">Vous êtes plutôt…</h2>
+        <p class="r27-intro">Choisissez votre situation : voici les dossiers qui vous touchent le plus.</p>
+        <Situation />
+        <div class="r27-inscrit">
+          <p><b>Pour voter en 2027, il faut être inscrit sur les listes électorales</b>, au plus tard quelques semaines avant le premier tour. Après un déménagement, l’inscription ne suit pas toute seule.</p>
+          <p class="r27-inscrit-liens"><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/R51788" target="_blank" rel="noopener">Vérifier mon inscription</a><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F1367" target="_blank" rel="noopener">M’inscrire</a></p>
         </div>
-        <div class="r27-pastilles">
-          {exemples.map((x) => <button type="button" class="r27-pastille">{x}</button>)}
-        </div>
-        <div class="r27-resultats" id="r27-resultats" aria-live="polite"></div>
-      </form>
-    </div>
+      </div>
+    </section>
 
     <section class="r27-sec">
       <div class="container">
-        <p class="eyebrow">Échauffement</p>
-        <h2 class="r27-h2">Vrai ou cliché ?</h2>
-        <p class="r27-intro">{quiz.length} phrases qu'on entend partout. Triez-les, chaque carte se retourne avec sa réponse sourcée.</p>
+        <p class="eyebrow">Les dossiers</p>
+        <h2 class="r27-h2">Dix enjeux de la campagne</h2>
+        <p class="r27-intro">Chaque intercalaire est un dossier : un état des lieux chiffré, puis les réponses aux idées reçues qui circulent sur le sujet. {actifs.length === enjeux.length ? 'Tous sont ouverts.' : `${actifs.length} sont ouverts, les suivants arrivent jusqu’au premier tour.`}</p>
+        <Fichier />
+      </div>
+    </section>
+
+    <section class="r27-sec r27-sec-filet">
+      <div class="container">
+        <form class="r27-moteur" id="r27-moteur" role="search">
+          <label for="r27-q">On vous a dit…</label>
+          <div class="r27-champ">
+            <input id="r27-q" name="q" type="search" autocomplete="off" placeholder="Une phrase entendue à la télé, au travail, en famille…" />
+            <button class="btn btn-or" type="submit">Chercher <span class="ar">→</span></button>
+          </div>
+          <div class="r27-pastilles">
+            <span class="r27-pastilles-k">Par exemple</span>
+            {exemples.map((x) => <button type="button" class="r27-pastille">{x}</button>)}
+          </div>
+          <div class="r27-resultats" id="r27-resultats" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="r27-sec">
+      <div class="container">
+        <p class="eyebrow" id="test">Le test</p>
+        <h2 class="r27-h2">Vrai, faux ou plus compliqué ?</h2>
+        <p class="r27-intro">{quiz.length} phrases qu’on entend partout. Donnez votre avis, chaque carte se retourne avec sa réponse sourcée.</p>
         <Quiz />
+      </div>
+    </section>
+
+    <section class="r27-sec">
+      <div class="container">
+        <p class="eyebrow">Quiz</p>
+        <h2 class="r27-h2">Quel candidat êtes-vous ?</h2>
+        <p class="r27-intro">Répondez à 12 ou 25 affirmations tirées des débats de la campagne, et voyez de quels candidats vous êtes le plus proche, position par position, sources à l’appui.</p>
+        <p style="margin-top:22px"><a class="btn btn-or" href="/2027/quiz/">Faire le quiz <span class="ar">→</span></a></p>
       </div>
     </section>
 
@@ -69,18 +107,9 @@ const index = actifs.flatMap((e) =>
       </div>
     </section>
 
-    <section class="r27-sec r27-sec-filet">
-      <div class="container">
-        <p class="eyebrow">La boussole</p>
-        <h2 class="r27-h2">Dix enjeux de la campagne</h2>
-        <p class="r27-intro">Chaque tiroir est un dossier : un état des lieux chiffré, puis les réponses aux idées reçues qui circulent sur le sujet. {actifs.length === enjeux.length ? 'Tous sont ouverts.' : `${actifs.length} sont ouverts, les suivants arrivent jusqu'au premier tour.`}</p>
-        <Tiroirs />
-      </div>
-    </section>
-
     <section class="r27-sec">
       <div class="container">
-        <p class="r27-note">La Boussole 2027 part d’un point de vue assumé, celui des personnes que visent les idées reçues, et reste indépendant de tout parti. Chaque chiffre renvoie à sa source publique. <a href="/2027/methode/">Lire la méthode</a></p>
+        <p class="r27-note">La Boussole 2027 part d’un point de vue assumé, celui des personnes que visent les idées reçues, et reste indépendante de tout parti. Elle ne donne aucune consigne de vote : son seul but est que chacun puisse voter en connaissance de cause. Chaque chiffre renvoie à sa source publique. <a href="/2027/methode/">Lire la méthode</a></p>
       </div>
     </section>
   </div>
@@ -116,8 +145,8 @@ const index = actifs.flatMap((e) =>
       }).filter(function (x) { return x.s > 0; }).sort(function (a, b) { return b.s - a.s; }).slice(0, 4);
       out.innerHTML = res.length ? res.map(function (x) {
         return '<a class="r27-res" href="' + x.it.href + '"><span class="r27-res-enjeu">' + esc(x.it.enjeu) + '</span>' +
-          '<p class="r27-res-cliche">« ' + esc(x.it.cliche) + ' »</p><p class="r27-res-voir">Voir la réplique →</p></a>';
-      }).join('') : '<p class="r27-vide">Aucune fiche ne correspond encore à cette phrase. Les dossiers s’enrichissent chaque semaine jusqu’au premier tour.</p>';
+          '<p class="r27-res-fait">' + esc(x.it.fait) + '</p><p class="r27-res-cliche"><span>On entend dire</span> « ' + esc(x.it.cliche) + ' »</p><p class="r27-res-voir">Lire la réponse complète →</p></a>';
+      }).join('') : '<p class="r27-vide">Aucune fiche ne correspond encore à cette phrase. Les dix dossiers sont mis à jour jusqu’au premier tour.</p>';
     }
     var t;
     q.addEventListener('input', function () { clearTimeout(t); t = setTimeout(lancer, 180); });

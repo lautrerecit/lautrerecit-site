@@ -1,0 +1,227 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import { questions, candidats, positions } from '../../data/quiz2027.js';
+
+// Quel candidat êtes-vous ? — version courte (12 questions) ou complète (25).
+// Proximité = accord moyen entre vos réponses et les positions publiques sourcées, pondéré par l'importance.
+const courtes = questions.filter((q) => q.court).length;
+const data = { questions, candidats, positions };
+---
+<Base noVerset
+  noindex
+  title="Quel candidat êtes-vous ? — La Boussole 2027 | L'Autre Récit"
+  description="Répondez à 12 ou 25 affirmations et découvrez de quels candidats à la présidentielle 2027 vous êtes le plus proche, positions sourcées à l'appui."
+>
+  <div class="r27 qc">
+    <section class="qc-tete">
+      <div class="container">
+        <p class="r27-fil"><a href="/2027/">La Boussole 2027</a> · Quel candidat êtes-vous ?</p>
+        <h1 class="qc-h1">Quel candidat <em>êtes-vous</em> ?</h1>
+        <p class="qc-lede">Dites si vous êtes d’accord avec une série d’affirmations tirées des débats de la campagne. On compare ensuite vos réponses aux positions publiques de onze candidats, chacune avec sa source.</p>
+      </div>
+    </section>
+
+    <section class="qc-zone">
+      <div class="container">
+        <div class="qc-scene" id="qc-scene" aria-live="polite">
+          <div class="qc-depart">
+            <button type="button" class="qc-format" data-format="court">
+              <span class="qc-format-t">Version courte</span>
+              <span class="qc-format-d">{courtes} questions · environ 5 minutes</span>
+            </button>
+            <button type="button" class="qc-format" data-format="long">
+              <span class="qc-format-t">Version complète</span>
+              <span class="qc-format-d">{questions.length} questions · environ 10 minutes</span>
+            </button>
+          </div>
+        </div>
+        <p class="qc-note">Ce quiz mesure une proximité d’idées sur une sélection de sujets. Il ne dit pas pour qui voter : un programme compte bien d’autres mesures, et la confiance qu’on accorde à une personne ne se mesure pas ici. Vos réponses restent dans votre navigateur. <a href="/2027/methode/">Lire la méthode</a></p>
+      </div>
+    </section>
+  </div>
+  <script type="application/json" id="qc-data" set:html={JSON.stringify(data)} />
+</Base>
+
+<style is:global>
+  .qc { position: relative; isolation: isolate; overflow: hidden; }
+
+  .qc-tete { padding: clamp(130px, 14vw, 170px) 0 10px; }
+  .qc-h1 { font-family: var(--serif); font-size: clamp(40px, 6vw, 74px); line-height: 1.02; letter-spacing: -.02em; color: var(--sur-nuit); margin: 8px 0 0; }
+  .qc-h1 em { color: var(--or-nuit); }
+  .qc-lede { font-size: clamp(16px, 1.7vw, 19px); line-height: 1.6; color: var(--sur-nuit-2); max-width: 60ch; margin: 18px 0 0; }
+  .qc-zone { padding: 36px 0 90px; }
+
+  .qc-verre { position: relative; border-radius: 28px; background: linear-gradient(150deg, rgba(255,253,248,.88), rgba(255,253,248,.7));
+    backdrop-filter: blur(22px) saturate(1.5); -webkit-backdrop-filter: blur(22px) saturate(1.5);
+    box-shadow: inset 0 1.5px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(216,204,184,.9), 0 30px 60px -32px rgba(60,40,20,.45); }
+
+  .qc-depart { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 760px; }
+  .qc-format { display: flex; flex-direction: column; gap: 6px; padding: 30px 28px; text-align: left; font: inherit; color: var(--ink); cursor: pointer; border: 0; border-radius: 26px;
+    background: linear-gradient(150deg, rgba(255,253,248,.9), rgba(255,253,248,.72)); backdrop-filter: blur(22px) saturate(1.5); -webkit-backdrop-filter: blur(22px) saturate(1.5);
+    box-shadow: inset 0 1.5px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(216,204,184,.9), 0 24px 50px -30px rgba(60,40,20,.45); transition: transform .35s var(--ease), box-shadow .35s; }
+  .qc-format:hover, .qc-format:focus-visible { transform: translateY(-4px); box-shadow: inset 0 1.5px 0 #fff, inset 0 0 0 1.5px #7A5E18, 0 30px 60px -30px rgba(60,40,20,.55); }
+  .qc-format-t { font-family: var(--serif); font-weight: 700; font-size: 28px; }
+  .qc-format-d { font-size: 15.5px; color: #5A5046; }
+
+  /* question */
+  .qc-carte { max-width: 820px; padding: 34px 38px 30px; animation: qcEntre .45s var(--ease) both; }
+  @keyframes qcEntre { from { opacity: 0; transform: translateY(16px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+  .qc-haut { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .qc-theme { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #7A5E18; }
+  .qc-compte { font-family: var(--mono); font-size: 13px; font-weight: 700; color: #5E554A; }
+  .qc-barre { height: 4px; margin-top: 14px; border-radius: 4px; background: rgba(216,204,184,.8); overflow: hidden; }
+  .qc-barre i { display: block; height: 100%; background: #6E2632; transition: width .4s var(--ease); }
+  .qc-aff { font-family: var(--serif); font-size: clamp(24px, 3vw, 34px); line-height: 1.25; color: var(--ink); margin: 26px 0 0; text-wrap: pretty; }
+  .qc-aide { font-size: 15.5px; line-height: 1.5; color: #4A4238; margin: 12px 0 0; }
+  .qc-reps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 26px; }
+  .qc-rep { padding: 14px 8px; font: inherit; font-size: 14.5px; font-weight: 600; line-height: 1.25; color: var(--ink); background: rgba(255,255,255,.7); border: 1.5px solid #8E7B58; border-radius: 14px; cursor: pointer; transition: background .2s, border-color .2s, transform .2s; }
+  .qc-rep:hover, .qc-rep:focus-visible { background: #fff; border-color: #7A5E18; transform: translateY(-2px); }
+  .qc-rep[aria-pressed="true"] { background: #6E2632; border-color: #6E2632; color: #FBF3E3; }
+  .qc-rep.sans { border-style: dashed; }
+  .qc-bas { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 22px; }
+  .qc-imp { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--ink2); cursor: pointer; }
+  .qc-imp input { width: 20px; height: 20px; accent-color: #6E2632; }
+  .qc-retour { padding: 8px 4px; font: inherit; font-size: 14.5px; font-weight: 600; color: #6B5215; background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  /* résultats */
+  .qc-res { max-width: 880px; padding: 36px 38px; animation: qcEntre .5s var(--ease) both; }
+  .qc-res-t { font-family: var(--serif); font-weight: 700; font-size: clamp(28px, 3.6vw, 40px); color: var(--ink); margin: 6px 0 0; }
+  .qc-res-p { font-size: 16px; line-height: 1.55; color: var(--ink2); margin: 10px 0 0; max-width: 62ch; }
+  .qc-liste { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 10px; }
+  .qc-ligne > button { width: 100%; display: grid; grid-template-columns: 34px minmax(150px, 220px) 1fr 62px; align-items: center; gap: 14px; padding: 12px 14px; font: inherit; text-align: left; color: var(--ink); background: rgba(255,255,255,.62); border: 1px solid rgba(216,204,184,.9); border-radius: 14px; cursor: pointer; }
+  .qc-ligne > button:hover, .qc-ligne > button:focus-visible { background: #fff; }
+  .qc-rang { font-family: var(--serif); font-style: italic; font-size: 20px; color: #7A5E18; }
+  .qc-nom b { display: block; font-family: var(--serif); font-size: 19px; }
+  .qc-nom span { font-size: 13.5px; color: #5A5046; }
+  .qc-jauge { height: 10px; border-radius: 10px; background: rgba(216,204,184,.7); overflow: hidden; }
+  .qc-jauge i { display: block; height: 100%; border-radius: 10px; background: linear-gradient(90deg, #8A6C21, #6E2632); transform-origin: left; animation: qcJauge .9s var(--ease) both; }
+  @keyframes qcJauge { from { transform: scaleX(0); } }
+  .qc-pct { font-family: var(--serif); font-weight: 700; font-size: 22px; text-align: right; }
+  .qc-couv { grid-column: 2 / -1; font-size: 13.5px; color: #5A5046; }
+  .qc-detail { margin: 6px 0 10px; padding: 6px 16px 10px; border-left: 3px solid #7A5E18; }
+  .qc-detail li { list-style: none; padding: 12px 0; border-bottom: 1px solid rgba(216,204,184,.9); font-size: 15px; line-height: 1.5; color: var(--ink2); }
+  .qc-detail li b { color: var(--ink); }
+  .qc-detail .qc-dit { display: block; margin-top: 4px; font-style: italic; color: #3A332B; }
+  .qc-detail a { color: #6B5215; font-weight: 600; }
+  .qc-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .qc-vide { font-family: var(--serif); font-style: italic; font-size: 19px; color: #5E554A; }
+  .qc-note { font-size: 14.5px; line-height: 1.55; color: var(--sur-nuit-2); max-width: 70ch; margin: 30px 0 0; }
+  .qc-note a { color: var(--or-nuit); }
+
+  @media (max-width: 680px) {
+    .qc-depart { grid-template-columns: 1fr; }
+    .qc-carte, .qc-res { padding: 26px 20px; }
+    .qc-reps { grid-template-columns: 1fr; }
+    .qc-ligne > button { grid-template-columns: 26px 1fr 54px; }
+    .qc-jauge { grid-column: 2 / -1; grid-row: 2; }
+    .qc-couv { grid-row: 3; }
+  }
+  @media (prefers-reduced-motion: reduce) { .qc-carte, .qc-res, .qc-jauge i { animation: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var D = JSON.parse(document.getElementById('qc-data').textContent);
+    var scene = document.getElementById('qc-scene');
+    var REPS = [{ v: 2, t: 'Tout à fait d’accord' }, { v: 1, t: 'Plutôt d’accord' }, { v: null, t: 'Sans avis', c: 'sans' }, { v: -1, t: 'Plutôt pas d’accord' }, { v: -2, t: 'Pas du tout d’accord' }];
+    var MOTS = { 2: 'pour', 1: 'plutôt pour', 0: 'position nuancée', '-1': 'plutôt contre', '-2': 'contre' };
+    var Q = [], idx = 0, rep = {}, imp = {};
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    // « citation » ; un texte tout entre crochets est un résumé, affiché sans guillemets.
+    function dit(t) { var m = /^\[(.*)\]$/.exec(t); return m ? esc(m[1].charAt(0).toUpperCase() + m[1].slice(1)) + ' (résumé)' : '« ' + esc(t) + ' »'; }
+    function pos(c, q) { var p = (D.positions[c] || {})[q]; return p && p.v !== null && p.v !== undefined ? p : null; }
+
+    function question() {
+      var q = Q[idx], r = rep[q.id];
+      scene.innerHTML = '<div class="qc-verre qc-carte">' +
+        '<div class="qc-haut"><span class="qc-theme">' + esc(q.theme) + '</span><span class="qc-compte">' + (idx + 1) + ' / ' + Q.length + '</span></div>' +
+        '<div class="qc-barre"><i style="width:' + Math.round(idx / Q.length * 100) + '%"></i></div>' +
+        '<p class="qc-aff">' + esc(q.texte) + '</p>' + (q.aide ? '<p class="qc-aide">' + esc(q.aide) + '</p>' : '') +
+        '<div class="qc-reps">' + REPS.map(function (x, i) {
+          var on = q.id in rep && rep[q.id] === x.v;
+          return '<button type="button" class="qc-rep ' + (x.c || '') + '" data-i="' + i + '" aria-pressed="' + on + '">' + x.t + '</button>';
+        }).join('') + '</div>' +
+        '<div class="qc-bas"><label class="qc-imp"><input type="checkbox" id="qc-imp"' + (imp[q.id] ? ' checked' : '') + '> Ce sujet compte beaucoup pour moi</label>' +
+        (idx > 0 ? '<button type="button" class="qc-retour" id="qc-retour">← Question précédente</button>' : '') + '</div></div>';
+      scene.querySelectorAll('.qc-rep').forEach(function (b) {
+        b.addEventListener('click', function () {
+          rep[q.id] = REPS[+b.dataset.i].v; imp[q.id] = document.getElementById('qc-imp').checked;
+          idx++; idx < Q.length ? question() : resultats();
+        });
+      });
+      document.getElementById('qc-imp').addEventListener('change', function () { imp[q.id] = this.checked; });
+      var rt = document.getElementById('qc-retour'); if (rt) rt.addEventListener('click', function () { idx--; question(); });
+      var f = scene.querySelector('.qc-rep'); if (f) f.focus({ preventScroll: true });
+    }
+
+    function calcul() {
+      return D.candidats.map(function (c) {
+        var som = 0, poids = 0, communes = 0, detail = [];
+        Q.forEach(function (q) {
+          var u = rep[q.id], p = pos(c.id, q.id);
+          if (u === null || u === undefined || !p) { if (u !== null && u !== undefined) detail.push({ q: q, u: u, p: null }); return; }
+          var w = imp[q.id] ? 2 : 1, acc = 1 - Math.abs(u - p.v) / 4;
+          som += w * acc; poids += w; communes++; detail.push({ q: q, u: u, p: p, acc: acc });
+        });
+        return { c: c, pct: poids ? Math.round(som / poids * 100) : null, communes: communes, detail: detail };
+      });
+    }
+    // Un candidat comparé sur moins de la moitié de vos réponses passe après les autres : trop peu de points pour classer.
+    function classer(R, nb) {
+      var seuil = Math.max(3, Math.ceil(nb / 2));
+      R.forEach(function (r) { r.partiel = r.communes < seuil; });
+      return R.sort(function (a, b) {
+        if (a.partiel !== b.partiel) return a.partiel ? 1 : -1;
+        return (b.pct === null ? -1 : b.pct) - (a.pct === null ? -1 : a.pct);
+      });
+    }
+
+    function resultats() {
+      var nb = Q.filter(function (q) { return rep[q.id] !== null && rep[q.id] !== undefined; }).length;
+      var R = classer(calcul(), nb), avecDonnees = R.some(function (r) { return r.pct !== null; });
+      var lignes = R.map(function (r, i) {
+        var couv = r.communes + ' question' + (r.communes > 1 ? 's' : '') + ' comparée' + (r.communes > 1 ? 's' : '') + ' sur ' + nb + (r.partiel ? ' · comparaison partielle, trop peu de positions connues' : '');
+        var det = r.detail.map(function (d) {
+          var uM = MOTS[String(d.u)], cM = d.p ? MOTS[String(d.p.v)] : 'aucune position publique trouvée';
+          return '<li><b>' + esc(d.q.texte) + '</b><br>Vous : ' + uM + ' · ' + esc(r.c.nom) + ' : ' + cM +
+            (d.p && d.p.dit ? '<span class="qc-dit">' + dit(d.p.dit) + '</span>' : '') +
+            (d.p && d.p.url ? ' <a href="' + esc(d.p.url) + '" target="_blank" rel="noopener">' + esc(d.p.source || 'Source') + ' →</a>' : '') + '</li>';
+        }).join('');
+        return '<li class="qc-ligne"><button type="button" aria-expanded="false">' +
+          '<span class="qc-rang">' + (r.partiel ? '·' : (i + 1)) + '</span><span class="qc-nom"><b>' + esc(r.c.nom) + '</b><span>' + esc(r.c.parti) + '</span></span>' +
+          '<span class="qc-jauge"><i style="width:' + (r.pct || 0) + '%"></i></span><span class="qc-pct">' + (r.pct === null ? '–' : r.pct + ' %') + '</span>' +
+          '<span class="qc-couv">' + couv + '</span></button><ul class="qc-detail" hidden>' + det + '</ul></li>';
+      }).join('');
+      var premier = R[0];
+      scene.innerHTML = '<div class="qc-verre qc-res"><span class="qc-theme">Vos résultats</span>' +
+        (avecDonnees ? '<p class="qc-res-t">Vous êtes le plus proche de ' + esc(premier.c.nom) + '</p>' : '<p class="qc-res-t">Vos réponses sont enregistrées</p>') +
+        '<p class="qc-res-p">' + (avecDonnees ? 'Le pourcentage mesure l’accord entre vos réponses et les positions publiques de chaque candidat, sur les questions où cette position est connue. Cliquez sur un nom pour voir le détail, question par question, avec les sources.' : 'Les positions des candidats sont en cours de vérification : les résultats s’afficheront dès qu’elles seront sourcées.') + '</p>' +
+        '<ol class="qc-liste">' + lignes + '</ol>' +
+        '<div class="qc-actions"><button type="button" class="btn btn-or" id="qc-refaire">Recommencer</button>' +
+        (Q.length < D.questions.length ? '<button type="button" class="btn btn-gh" id="qc-long">Passer à la version complète</button>' : '') +
+        (avecDonnees ? '<button type="button" class="btn btn-gh" id="qc-copie">Copier mon résultat</button>' : '') + '</div></div>';
+      scene.querySelectorAll('.qc-ligne > button').forEach(function (b) {
+        b.addEventListener('click', function () { var u = b.nextElementSibling, o = u.hidden; u.hidden = !o; b.setAttribute('aria-expanded', String(o)); });
+      });
+      document.getElementById('qc-refaire').addEventListener('click', function () { demarrer(Q.length < D.questions.length ? 'court' : 'long', true); });
+      var l = document.getElementById('qc-long'); if (l) l.addEventListener('click', function () { demarrer('long', false); });
+      var cp = document.getElementById('qc-copie');
+      if (cp) cp.addEventListener('click', function () {
+        var t = 'Quel candidat êtes-vous ? Mon trio : ' + R.filter(function (r) { return !r.partiel; }).slice(0, 3).map(function (r) { return r.c.nom + ' (' + r.pct + ' %)'; }).join(', ') + '. La Boussole 2027, par L’Autre Récit : ' + location.origin + '/2027/quiz/';
+        if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { cp.textContent = 'Résultat copié'; });
+      });
+      scene.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+
+    // La version complète reprend les réponses déjà données dans la courte.
+    function demarrer(format, effacer) {
+      if (effacer) { rep = {}; imp = {}; }
+      Q = format === 'court' ? D.questions.filter(function (q) { return q.court; }) : D.questions.slice();
+      idx = 0;
+      if (!effacer) { while (idx < Q.length && Q[idx].id in rep) idx++; if (idx >= Q.length) idx = 0; }
+      question();
+    }
+    scene.querySelectorAll('[data-format]').forEach(function (b) { b.addEventListener('click', function () { demarrer(b.dataset.format, true); }); });
+  })();
+</script>

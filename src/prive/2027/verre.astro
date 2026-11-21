@@ -1,0 +1,336 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import { enjeux } from '../../data/repliques2027.js';
+
+// ============================================================
+// LA BOUSSOLE 2027 — VERRE ET FLOU (privé, dev seulement).
+// Cinq traitements inspirés du site de soutien scolaire (en-tête dépoli, lueur qui suit la souris,
+// reflet) poussés vers le « verre liquide ». Règle tenue partout : sous le texte, le verre reste
+// assez opaque pour garder un contraste de lecture ≥ 4,5:1, en clair comme en sombre.
+// ============================================================
+const n2 = (i) => String(i + 1).padStart(2, '0');
+const liste = enjeux.map((e, i) => ({ ...e, n: n2(i) }));
+const trois = liste.slice(0, 3);
+const exemples = liste.flatMap((e) => e.cliches.map((c) => c.exemple)).slice(0, 6);
+
+const props = [
+  { id: 'depoli', l: 'A', t: 'Le dépoli', d: 'La recette du site de soutien scolaire : un en-tête et une barre de dossiers en verre dépoli, collés en haut, sous lesquels le contenu défile en se floutant.', pour: 'Discret, éprouvé, lisible : le flou ne touche que ce qui passe dessous.', contre: 'Seul, il reste un détail. Il faut le combiner avec un autre traitement.' },
+  { id: 'halo', l: 'B', t: 'Le halo', d: 'Une lueur dorée suit la souris sur le fond crème, et chaque carte reçoit un reflet de lumière au survol, comme une vitre qu’on incline.', pour: 'Très premium sans toucher au texte : la lisibilité reste parfaite.', contre: 'Invisible sur téléphone, où il n’y a pas de souris (le reflet suit alors le doigt).' },
+  { id: 'liquide', l: 'C', t: 'Le verre liquide', d: 'Des cartes en verre épais posées sur un fond de couleurs qui bougent lentement : bord lumineux, reflet en haut, légère réfraction sur Chrome.', pour: 'L’effet le plus spectaculaire, dans l’air du temps (iOS 26).', contre: 'Le plus risqué pour le contraste et pour les lunettes teintées : à réserver à l’accueil.' },
+  { id: 'moteur', l: 'D', t: 'Le moteur flottant', d: 'La barre « On vous a dit… » devient une pilule de verre qui flotte au-dessus de taches de couleur floues, avec des suggestions en verre.', pour: 'Met en valeur l’outil principal de La Boussole, l’effet sert l’usage.', contre: 'Le flou d’arrière-plan coûte en performance sur les vieux téléphones.' },
+  { id: 'brume', l: 'E', t: 'La brume', d: 'Les titres et les chiffres sortent du flou en apparaissant au défilement, mot après mot, comme une image qui se fait au point.', pour: 'Donne du rythme à la lecture des dossiers sans aucun décor.', contre: 'À doser : sur chaque paragraphe, cela ralentit la lecture.' },
+];
+---
+<Base noVerset noindex title="Verre et flou — La Boussole 2027" description="Cinq propositions d'effets de verre et de flou.">
+  <div class="vr" id="vr" data-theme="clair">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <filter id="vr-refraction" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.011 0.016" numOctaves="2" seed="7" result="bruit" />
+        <feDisplacementMap in="SourceGraphic" in2="bruit" scale="38" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
+
+    <section class="vr-intro">
+      <div class="container">
+        <p class="vr-sur">La Boussole 2027 · Atelier</p>
+        <h1 class="vr-h1">Verre et flou</h1>
+        <p class="vr-lede">Cinq façons d’ajouter du verre et du flou à La Boussole, sur le vrai contenu. Les trois premières reprennent ce qui a été fait sur le site de soutien scolaire. Passez la souris sur les blocs, et basculez en sombre pour voir le verre de nuit.</p>
+      </div>
+    </section>
+
+    <nav class="vr-nav" aria-label="Propositions">
+      <div class="vr-pilule">
+        {props.map((p) => <a href={`#${p.id}`}><b>{p.l}</b>{p.t}</a>)}
+        <button type="button" class="vr-theme" id="vr-theme" aria-pressed="false">Sombre</button>
+      </div>
+    </nav>
+
+    {props.map((p, k) => (
+      <section class="vr-prop" id={p.id}>
+        <div class="container">
+          <header class="vr-tete">
+            <span class="vr-lettre">{p.l}</span>
+            <div>
+              <h2 class="vr-h2">{p.t}</h2>
+              <p class="vr-d">{p.d}</p>
+            </div>
+          </header>
+
+          {p.id === 'depoli' && (
+            <div class="vr-demo dp">
+              <div class="dp-defile" tabindex="0" aria-label="Exemple à faire défiler">
+                <div class="dp-barre">
+                  <span class="dp-logo">La Boussole <i>2027</i></span>
+                  <span class="dp-pastilles">{trois.map((e) => <span>{e.titre}</span>)}<span>Qui a dit ça ?</span></span>
+                </div>
+                <p class="dp-aide">Faites défiler ce cadre : le contenu passe sous la barre de verre.</p>
+                <ol class="dp-liste">
+                  {liste.map((e) => (
+                    <li>
+                      <span class="dp-n">{e.n}</span>
+                      <span class="dp-t"><b>{e.titre}</b><i>{e.question}</i></span>
+                      <span class="dp-v">{e.etat[0].valeur}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          )}
+
+          {p.id === 'halo' && (
+            <div class="vr-demo ha" data-suit>
+              <p class="ha-sur">Dix enjeux, des réponses sourcées</p>
+              <p class="ha-titre">Les vrais enjeux, et de quoi <em>répondre</em>.</p>
+              <div class="ha-cartes">
+                {trois.map((e) => (
+                  <a class="ha-carte" href={`/2027/${e.id}/`} data-reflet>
+                    <span class="ha-n">Dossier {e.n}</span>
+                    <span class="ha-t">{e.titre}</span>
+                    <span class="ha-v">{e.etat[0].valeur}</span>
+                    <span class="ha-p">{e.etat[0].phrase}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {p.id === 'liquide' && (
+            <div class="vr-demo lq">
+              <div class="lq-fond" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+              <div class="lq-cartes">
+                {trois.map((e) => (
+                  <a class="lq-carte" href={`/2027/${e.id}/`} data-reflet>
+                    <span class="lq-n">Dossier {e.n}</span>
+                    <span class="lq-v">{e.etat[0].valeur}</span>
+                    <span class="lq-t">{e.titre}</span>
+                    <span class="lq-q">{e.question}</span>
+                  </a>
+                ))}
+              </div>
+              <a class="lq-bouton" href="/2027/qui-a-dit/">Jouer à « Qui a dit ça ? » <span>→</span></a>
+            </div>
+          )}
+
+          {p.id === 'moteur' && (
+            <div class="vr-demo mo">
+              <div class="mo-fond" aria-hidden="true"><span></span><span></span><span></span></div>
+              <p class="mo-titre">On vous a dit…</p>
+              <form class="mo-champ" onsubmit="return false">
+                <input type="search" placeholder="« Les immigrés font baisser les salaires »" aria-label="Phrase entendue" />
+                <button type="submit">Trouver la réplique <span>→</span></button>
+              </form>
+              <div class="mo-pastilles">{exemples.map((x) => <span>{x}</span>)}</div>
+            </div>
+          )}
+
+          {p.id === 'brume' && (
+            <div class="vr-demo br">
+              <p class="br-titre" data-brume>Depuis 2017, l’alimentation a pris trente et un pour cent.</p>
+              <p class="br-chiffre" data-brume>+31,1 %</p>
+              <p class="br-p" data-brume>Sur la même période, l’ensemble des prix a augmenté de 19,5 %. Les marges de l’industrie agroalimentaire sont passées de 28,5 % à 31,2 % entre 2019 et 2022.</p>
+              <button type="button" class="br-rejouer" id="br-rejouer">Rejouer</button>
+            </div>
+          )}
+
+          <div class="vr-pc">
+            <p><strong>Pour</strong> {p.pour}</p>
+            <p><strong>Contre</strong> {p.contre}</p>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="vr-prop">
+      <div class="container">
+        <p class="vr-d">Ma recommandation : combiner <b>A</b> (en-tête et barre de dossiers en dépoli, sur tout le site), <b>B</b> (halo et reflets sur les cartes) et <b>D</b> (le moteur en verre sur l’accueil). <b>C</b> se garde pour une seule zone forte, <b>E</b> pour les chiffres-clés des dossiers.</p>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style is:global>
+  /* ---------- thème ---------- */
+  .vr { --f: #F2EDE4; --f2: #EAE2D4; --papier: #FFFDF8; --t: #14110D; --t2: #3A332B; --t3: #5E554A; --or: #7A5E18; --bx: #6E2632; --trait: #D8CCB8;
+    --verre: rgba(255, 253, 248, .66); --verre-fort: rgba(255, 253, 248, .8); --bord: rgba(255, 255, 255, .85); --ombre: 0 24px 50px -24px rgba(60, 40, 20, .38);
+    --halo: rgba(196, 162, 74, .26); --blob1: #E2C78E; --blob2: #B9824E; --blob3: #D9B98A; --blob4: #8E6A3A;
+    background: var(--f); color: var(--t2); transition: background .4s, color .4s; }
+  .vr[data-theme="sombre"] { --f: #17120E; --f2: #211A14; --papier: #241C16; --t: #F6F0E6; --t2: #E6DDCF; --t3: #C2B6A4; --or: #E0C27F; --bx: #E9A9A0; --trait: #3E342B;
+    --verre: rgba(36, 28, 22, .62); --verre-fort: rgba(36, 28, 22, .78); --bord: rgba(255, 240, 220, .22); --ombre: 0 30px 60px -26px rgba(0, 0, 0, .7);
+    --halo: rgba(224, 154, 107, .2); --blob1: #8A5A2B; --blob2: #6E2632; --blob3: #5A4022; --blob4: #A0703A; }
+  .vr .container { position: relative; }
+
+  .vr-intro { padding: 150px 0 40px; }
+  .vr-sur { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--or); margin: 0; }
+  .vr-h1 { font-family: var(--serif); font-size: clamp(42px, 6vw, 76px); line-height: 1; color: var(--t); margin: 12px 0 0; }
+  .vr-lede { font-size: 18px; line-height: 1.6; color: var(--t2); max-width: 62ch; margin: 18px 0 0; }
+
+  /* ---------- barre de navigation en pilule de verre ---------- */
+  .vr-nav { position: sticky; top: 84px; z-index: 30; display: flex; justify-content: center; padding: 10px 16px; }
+  .vr-pilule { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px; padding: 6px; border-radius: 999px;
+    background: var(--verre-fort); backdrop-filter: blur(16px) saturate(1.5); -webkit-backdrop-filter: blur(16px) saturate(1.5);
+    box-shadow: inset 0 1px 0 var(--bord), inset 0 0 0 1px var(--trait), var(--ombre); }
+  .vr-pilule a, .vr-theme { display: inline-flex; align-items: baseline; gap: 6px; padding: 8px 14px; border-radius: 999px; font-size: 14.5px; font-weight: 600; color: var(--t); text-decoration: none; border: 0; background: none; font-family: inherit; cursor: pointer; }
+  .vr-pilule a b { font-family: var(--serif); font-style: italic; color: var(--or); }
+  .vr-pilule a:hover, .vr-pilule a:focus-visible { background: color-mix(in srgb, var(--papier) 70%, transparent); }
+  .vr-theme { border: 1.5px solid var(--trait); }
+
+  /* ---------- une proposition ---------- */
+  .vr-prop { padding: 70px 0 20px; scroll-margin-top: 150px; }
+  .vr-tete { display: flex; gap: 22px; align-items: flex-start; margin-bottom: 26px; }
+  .vr-lettre { flex: none; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 28px; color: var(--or); background: var(--verre-fort); box-shadow: inset 0 1px 0 var(--bord), inset 0 0 0 1px var(--trait); }
+  .vr-h2 { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 40px); color: var(--t); margin: 0; }
+  .vr-d { font-size: 17px; line-height: 1.6; color: var(--t2); max-width: 70ch; margin: 8px 0 0; }
+  .vr-d b { color: var(--t); }
+  .vr-demo { position: relative; isolation: isolate; overflow: hidden; border-radius: 28px; background: var(--f2); box-shadow: inset 0 0 0 1px var(--trait); }
+  .vr-pc { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 30px; margin-top: 18px; }
+  .vr-pc p { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--t2); }
+  .vr-pc strong { display: block; font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--or); margin-bottom: 2px; }
+
+  /* ---------- A · dépoli ---------- */
+  .dp-defile { height: 470px; overflow-y: auto; overscroll-behavior: contain; }
+  .dp-barre { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 24px;
+    background: color-mix(in srgb, var(--f2) 72%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    box-shadow: inset 0 -1px 0 var(--trait), 0 10px 30px -22px rgba(0,0,0,.4); }
+  .dp-logo { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--t); }
+  .dp-logo i { color: var(--or); }
+  .dp-pastilles { display: flex; flex-wrap: wrap; gap: 6px; }
+  .dp-pastilles span { padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--t); background: var(--verre-fort); box-shadow: inset 0 1px 0 var(--bord), inset 0 0 0 1px var(--trait); }
+  .dp-aide { margin: 18px 24px 0; font-size: 14.5px; color: var(--t3); }
+  .dp-liste { list-style: none; margin: 8px 0 0; padding: 0 24px 24px; }
+  .dp-liste li { display: grid; grid-template-columns: 70px 1fr auto; align-items: center; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--trait); }
+  .dp-n { font-family: var(--serif); font-style: italic; font-size: 34px; color: var(--bx); }
+  .dp-t b { display: block; font-family: var(--serif); font-size: 23px; color: var(--t); }
+  .dp-t i { font-size: 15px; color: var(--t3); }
+  .dp-v { font-family: var(--serif); font-weight: 700; font-size: 26px; color: var(--or); text-align: right; }
+
+  /* ---------- B · halo ---------- */
+  .ha { padding: 60px 40px; background: radial-gradient(520px circle at var(--mx, 70%) var(--my, 20%), var(--halo), transparent 65%), var(--f2); transition: background .12s; }
+  .ha-sur { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--or); margin: 0; }
+  .ha-titre { font-family: var(--serif); font-size: clamp(32px, 4.4vw, 56px); line-height: 1.05; color: var(--t); margin: 10px 0 0; max-width: 16ch; }
+  .ha-titre em { color: var(--bx); }
+  .ha-cartes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .ha-carte { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 6px; padding: 24px; border-radius: 20px; text-decoration: none; background: var(--papier); box-shadow: inset 0 0 0 1px var(--trait), var(--ombre); transition: transform .4s var(--ease); }
+  .ha-carte:hover { transform: translateY(-4px); }
+  [data-reflet]::after { content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; opacity: 0; transition: opacity .4s;
+    background: radial-gradient(320px circle at var(--rx, 50%) var(--ry, 0%), rgba(255, 236, 205, .55), transparent 60%); mix-blend-mode: soft-light; }
+  .vr[data-theme="sombre"] [data-reflet]::after { background: radial-gradient(320px circle at var(--rx, 50%) var(--ry, 0%), rgba(255, 226, 203, .14), transparent 60%); mix-blend-mode: normal; }
+  [data-reflet]:hover::after { opacity: 1; }
+  .ha-n { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--t3); }
+  .ha-t { font-family: var(--serif); font-weight: 700; font-size: 24px; color: var(--t); }
+  .ha-v { font-family: var(--serif); font-weight: 700; font-size: 40px; line-height: 1; color: var(--or); margin-top: 8px; }
+  .ha-p { font-size: 15px; line-height: 1.5; color: var(--t2); }
+
+  /* ---------- C · verre liquide ---------- */
+  .lq { padding: 60px 40px 50px; min-height: 520px; }
+  .lq-fond { position: absolute; inset: 0; z-index: -1; filter: blur(50px); }
+  .lq-fond span { position: absolute; border-radius: 50%; animation: lqFlotte 18s ease-in-out infinite alternate; }
+  .lq-fond span:nth-child(1) { width: 46%; height: 70%; left: -6%; top: -10%; background: var(--blob1); }
+  .lq-fond span:nth-child(2) { width: 38%; height: 60%; right: 4%; top: 6%; background: var(--blob2); opacity: .55; animation-duration: 22s; }
+  .lq-fond span:nth-child(3) { width: 40%; height: 55%; left: 30%; bottom: -20%; background: var(--blob3); animation-duration: 26s; }
+  .lq-fond span:nth-child(4) { width: 22%; height: 34%; right: 28%; bottom: 4%; background: var(--blob4); opacity: .45; animation-duration: 15s; }
+  @keyframes lqFlotte { to { transform: translate(8%, 10%) scale(1.15); } }
+  .lq-cartes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .lq-carte { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 6px; padding: 28px 26px 30px; border-radius: 30px; text-decoration: none;
+    background: linear-gradient(150deg, color-mix(in srgb, var(--papier) 82%, transparent), var(--verre));
+    backdrop-filter: blur(22px) saturate(1.6); -webkit-backdrop-filter: blur(22px) saturate(1.6);
+    box-shadow: inset 0 1.5px 0 var(--bord), inset 0 -1px 0 rgba(122, 94, 24, .18), inset 0 0 0 1px color-mix(in srgb, var(--bord) 55%, transparent), var(--ombre);
+    transition: transform .5s var(--ease); }
+  .vr.refracte .lq-carte { backdrop-filter: url(#vr-refraction) blur(16px) saturate(1.6); }
+  .lq-carte::before { content: ''; position: absolute; left: 8%; right: 8%; top: 0; height: 46%; border-radius: 0 0 50% 50%; pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); opacity: .55; }
+  .vr[data-theme="sombre"] .lq-carte::before { opacity: .12; }
+  .lq-carte:hover { transform: translateY(-6px) scale(1.01); }
+  .lq-n { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--t3); }
+  .lq-v { font-family: var(--serif); font-weight: 700; font-size: clamp(40px, 4.6vw, 58px); line-height: 1; color: var(--t); margin-top: 10px; }
+  .lq-t { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--t); margin-top: 6px; }
+  .lq-q { font-size: 15.5px; line-height: 1.45; color: var(--t2); }
+  .lq-bouton { position: relative; display: inline-flex; gap: 10px; margin-top: 34px; padding: 15px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; color: var(--t);
+    background: var(--verre-fort); backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6);
+    box-shadow: inset 0 1.5px 0 var(--bord), inset 0 0 0 1px color-mix(in srgb, var(--bord) 55%, transparent), var(--ombre); transition: transform .3s var(--ease); }
+  .lq-bouton:hover { transform: translateY(-2px); }
+
+  /* ---------- D · moteur flottant ---------- */
+  .mo { padding: 80px 40px; text-align: center; }
+  .mo-fond { position: absolute; inset: 0; z-index: -1; filter: blur(60px); }
+  .mo-fond span { position: absolute; border-radius: 50%; animation: lqFlotte 20s ease-in-out infinite alternate; }
+  .mo-fond span:nth-child(1) { width: 40%; height: 80%; left: 4%; top: 10%; background: var(--blob1); }
+  .mo-fond span:nth-child(2) { width: 30%; height: 60%; left: 40%; top: -20%; background: var(--blob2); opacity: .4; animation-duration: 24s; }
+  .mo-fond span:nth-child(3) { width: 36%; height: 70%; right: 0; top: 30%; background: var(--blob3); animation-duration: 17s; }
+  .mo-titre { font-family: var(--serif); font-style: italic; font-size: clamp(30px, 4vw, 48px); color: var(--t); margin: 0; }
+  .mo-champ { display: flex; gap: 8px; max-width: 720px; margin: 28px auto 0; padding: 8px; border-radius: 999px;
+    background: var(--verre-fort); backdrop-filter: blur(20px) saturate(1.6); -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    box-shadow: inset 0 1.5px 0 var(--bord), inset 0 0 0 1px color-mix(in srgb, var(--bord) 55%, transparent), 0 30px 60px -30px rgba(60,40,20,.5); }
+  .mo-champ input { flex: 1; min-width: 0; padding: 14px 20px; border: 0; border-radius: 999px; font: inherit; font-size: 16px; color: var(--t); background: transparent; }
+  .mo-champ input::placeholder { color: var(--t3); }
+  .mo-champ input:focus { outline: 2px solid var(--or); outline-offset: 0; }
+  .mo-champ button { flex: none; padding: 14px 22px; border: 0; border-radius: 999px; font: inherit; font-weight: 700; font-size: 15px; color: #FBF3E3; background: #6E2632; cursor: pointer; }
+  .mo-pastilles { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 820px; margin: 22px auto 0; }
+  .mo-pastilles span { padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--t);
+    background: var(--verre-fort); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 var(--bord), inset 0 0 0 1px color-mix(in srgb, var(--bord) 50%, transparent); }
+
+  /* ---------- E · brume ---------- */
+  .br { padding: 70px 40px; text-align: center; }
+  .br-titre { font-family: var(--serif); font-size: clamp(26px, 3.4vw, 40px); line-height: 1.2; color: var(--t); max-width: 22ch; margin: 0 auto; }
+  .br-chiffre { font-family: var(--serif); font-weight: 700; font-size: clamp(80px, 13vw, 160px); line-height: 1; color: var(--bx); margin: 22px 0 0; }
+  .br-p { font-size: 17px; line-height: 1.6; color: var(--t2); max-width: 56ch; margin: 18px auto 0; }
+  [data-brume] .m { display: inline-block; filter: blur(12px); opacity: 0; transform: translateY(10px); transition: filter .9s var(--ease), opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--i) * 70ms); }
+  [data-brume].net .m { filter: blur(0); opacity: 1; transform: none; }
+  .br-rejouer { margin-top: 26px; padding: 10px 20px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 14.5px; color: var(--t); background: var(--verre-fort); border: 1.5px solid var(--trait); cursor: pointer; }
+
+  @media (max-width: 760px) {
+    .vr-nav { top: 70px; }
+    .vr-pilule a { padding: 7px 10px; font-size: 13.5px; }
+    .ha, .lq, .mo, .br { padding-left: 18px; padding-right: 18px; }
+    .ha-cartes, .lq-cartes, .vr-pc { grid-template-columns: 1fr; }
+    .dp-liste li { grid-template-columns: 44px 1fr; }
+    .dp-v { grid-column: 2; text-align: left; font-size: 22px; }
+    .mo-champ { flex-direction: column; border-radius: 26px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lq-fond span, .mo-fond span { animation: none; }
+    [data-brume] .m { transition: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var vr = document.getElementById('vr');
+    // thème clair / sombre
+    var bt = document.getElementById('vr-theme');
+    bt.addEventListener('click', function () {
+      var s = vr.dataset.theme !== 'sombre';
+      vr.dataset.theme = s ? 'sombre' : 'clair';
+      bt.textContent = s ? 'Clair' : 'Sombre'; bt.setAttribute('aria-pressed', String(s));
+    });
+    // réfraction SVG : seul Chromium l'applique au flou d'arrière-plan
+    var b = navigator.userAgentData && navigator.userAgentData.brands;
+    if (b && b.some(function (x) { return /Chromium/.test(x.brand); })) vr.classList.add('refracte');
+    // halo qui suit la souris
+    document.querySelectorAll('[data-suit]').forEach(function (z) {
+      z.addEventListener('pointermove', function (e) {
+        var r = z.getBoundingClientRect();
+        z.style.setProperty('--mx', (e.clientX - r.left) + 'px'); z.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+    // reflet sur les cartes
+    document.querySelectorAll('[data-reflet]').forEach(function (c) {
+      c.addEventListener('pointermove', function (e) {
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--rx', (e.clientX - r.left) + 'px'); c.style.setProperty('--ry', (e.clientY - r.top) + 'px');
+      });
+    });
+    // brume : chaque mot sort du flou
+    var brumes = document.querySelectorAll('[data-brume]');
+    brumes.forEach(function (p) {
+      var i = 0;
+      p.innerHTML = p.textContent.split(' ').map(function (m) { return '<span class="m" style="--i:' + (i++) + '">' + m + '</span>'; }).join(' ');
+    });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('net'); }); }, { threshold: .4 });
+    brumes.forEach(function (p) { io.observe(p); });
+    document.getElementById('br-rejouer').addEventListener('click', function () {
+      brumes.forEach(function (p) { p.classList.remove('net'); });
+      setTimeout(function () { brumes.forEach(function (p) { p.classList.add('net'); }); }, 400);
+    });
+  })();
+</script>

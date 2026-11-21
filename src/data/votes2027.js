@@ -29,7 +29,7 @@ export const scrutins = [
   "numero": 43,
   "date": "2022-07-20",
   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/43",
-  "intitule": "Amendement n° 844 de Mme Guetté après l'article 4 du projet de loi portant mesures d'urgence pour la protection du pouvoir d'achat (première lecture)",
+  "intitule": "Amendement n° 844 de Mme Guetté après l’article 4 du projet de loi portant mesures d’urgence pour la protection du pouvoir d’achat (première lecture)",
   "porteur": "LFI-NUPES (Clémence Guetté et le groupe)",
   "resultat": "Rejeté",
   "pour": 121,
@@ -99,7 +99,7 @@ export const scrutins = [
   "numero": 44,
   "date": "2022-07-20",
   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/44",
-  "intitule": "Amendement n° 94 de M. Leseul et amendements identiques après l'article 4 du projet de loi portant mesures d'urgence pour la protection du pouvoir d'achat (première lecture)",
+  "intitule": "Amendement n° 94 de M. Leseul et amendements identiques après l’article 4 du projet de loi portant mesures d’urgence pour la protection du pouvoir d’achat (première lecture)",
   "porteur": "Socialistes (Gérard Leseul) et identiques",
   "resultat": "Rejeté",
   "pour": 121,
@@ -175,7 +175,7 @@ export const scrutins = [
   "numero": 81,
   "date": "2022-07-21",
   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/81",
-  "intitule": "Ensemble du projet de loi portant mesures d'urgence pour la protection du pouvoir d'achat (première lecture)",
+  "intitule": "Ensemble du projet de loi portant mesures d’urgence pour la protection du pouvoir d’achat (première lecture)",
   "porteur": "Gouvernement Borne",
   "resultat": "Adopté",
   "pour": 341,
@@ -252,7 +252,7 @@ export const scrutins = [
   "numero": 103,
   "date": "2022-07-23",
   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/103",
-  "intitule": "Amendement n° 549 de M. Maudet après l'article premier du projet de loi de finances rectificative pour 2022 (première lecture)",
+  "intitule": "Amendement n° 549 de M. Maudet après l’article premier du projet de loi de finances rectificative pour 2022 (première lecture)",
   "porteur": "LFI-NUPES (Damien Maudet et le groupe)",
   "resultat": "Rejeté",
   "pour": 100,
@@ -319,7 +319,7 @@ export const scrutins = [
     "position": "pour"
    }
   },
-  "phrase": "Taxe exceptionnelle de 25 % sur les bénéfices 2022-2023 des groupes pétroliers, gaziers, maritimes et autoroutiers de plus de 999 M€ de chiffre d'affaires.",
+  "phrase": "Taxe exceptionnelle de 25 % sur les bénéfices 2022-2023 des groupes pétroliers, gaziers, maritimes et autoroutiers de plus de 999 M€ de chiffre d’affaires.",
   "confirme": true
  },
  {
@@ -328,7 +328,7 @@ export const scrutins = [
   "numero": 510,
   "date": "2022-11-07",
   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/510",
-  "intitule": "Amendement n° 343 de M. Jean-Philippe Tanguy avant l'article 1er du projet de loi de finances rectificative pour 2022 (première lecture)",
+  "intitule": "Amendement n° 343 de M. Jean-Philippe Tanguy avant l’article 1er du projet de loi de finances rectificative pour 2022 (première lecture)",
   "porteur": "Rassemblement national (Jean-Philippe Tanguy et le groupe)",
   "resultat": "Rejeté",
   "pour": 56,
@@ -389,7 +389,7 @@ export const scrutins = [
     "position": "pour"
    }
   },
-  "phrase": "Aurait baissé la TVA de 20 % à 5,5 % sur le gaz, l'électricité, le fioul et les carburants.",
+  "phrase": "Aurait baissé la TVA de 20 % à 5,5 % sur le gaz, l’électricité, le fioul et les carburants.",
   "confirme": true
  },
  {
@@ -398,12 +398,12 @@ export const scrutins = [
   "numero": 824,
   "date": "2023-01-12",
   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/824",
-  "intitule": "Amendement de suppression n° 1 de M. Guedj et identiques, à l'article premier de la proposition de loi du RN visant à inciter les entreprises à augmenter les salaires nets de 10 %",
+  "intitule": "Amendement de suppression n° 1 de M. Guedj et identiques, à l’article premier de la proposition de loi du RN visant à inciter les entreprises à augmenter les salaires nets de 10 %",
   "porteur": "Texte du RN ; suppression demandée par Jérôme Guedj (PS) et identiques",
   "resultat": "Adopté",
   "pour": 124,
   "contre": 85,
-  "lecture": "Ici, « pour » signifie pour la suppression de l'article, donc contre le texte du RN.",
+  "lecture": "Ici, « pour » signifie pour la suppression de l’article, donc contre le texte du RN.",
   "groupes": {
    "LFI": {
     "pour": 16,
@@ -466,7 +466,7 @@ export const scrutins = [
     "position": "contre"
    }
   },
-  "phrase": "A supprimé l'article 1er du texte RN, qui exonérait de cotisations patronales les hausses de salaires de 10 % (jusqu'à 3 Smic).",
+  "phrase": "A supprimé l’article 1er du texte RN, qui exonérait de cotisations patronales les hausses de salaires de 10 % (jusqu’à 3 Smic).",
   "objetAVerifier": true,
   "confirme": true
  },
@@ -476,7 +476,7 @@ export const scrutins = [
   "numero": 1254,
   "date": "2023-03-22",
   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/1254",
-  "intitule": "Ensemble de la proposition de loi tendant à renforcer l'équilibre dans les relations commerciales entre fournisseurs et distributeurs (texte de la commission mixte paritaire)",
+  "intitule": "Ensemble de la proposition de loi tendant à renforcer l’équilibre dans les relations commerciales entre fournisseurs et distributeurs (texte de la commission mixte paritaire)",
   "porteur": "Frédéric Descrozaille (Renaissance), dite « Egalim 3 »",
   "resultat": "Adopté",
   "pour": 117,
@@ -543,7 +543,7 @@ export const scrutins = [
     "position": "abstention"
    }
   },
-  "phrase": "Prolonge le seuil de revente à perte de 10 % et l'encadrement des promotions, durcit le cadre des négociations entre industriels et grande distribution.",
+  "phrase": "Prolonge le seuil de revente à perte de 10 % et l’encadrement des promotions, durcit le cadre des négociations entre industriels et grande distribution.",
   "objetAVerifier": true,
   "confirme": true
  },
@@ -553,7 +553,7 @@ export const scrutins = [
   "numero": 2012,
   "date": "2023-06-26",
   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/2012",
-  "intitule": "Amendement n° 115 de M. Monnet après l'article premier du projet de loi transposant l'accord national interprofessionnel sur le partage de la valeur",
+  "intitule": "Amendement n° 115 de M. Monnet après l’article premier du projet de loi transposant l’accord national interprofessionnel sur le partage de la valeur",
   "porteur": "GDR-NUPES (Yannick Monnet)",
   "resultat": "Rejeté",
   "pour": 34,
@@ -624,7 +624,7 @@ export const scrutins = [
   "numero": 3101,
   "date": "2023-11-30",
   "url": "https://www.assemblee-nationale.fr/dyn/16/scrutins/3101",
-  "intitule": "Ensemble de la proposition de loi visant à lutter contre l'inflation par l'encadrement des marges des industries agroalimentaires, du raffinage et de la grande distribution et par un prix d'achat plancher des matières premières agricoles (première lecture)",
+  "intitule": "Ensemble de la proposition de loi visant à lutter contre l’inflation par l’encadrement des marges des industries agroalimentaires, du raffinage et de la grande distribution et par un prix d’achat plancher des matières premières agricoles (première lecture)",
   "porteur": "LFI-NUPES (Manuel Bompard)",
   "resultat": "Rejeté",
   "pour": 162,
@@ -691,7 +691,7 @@ export const scrutins = [
     "position": "pour"
    }
   },
-  "phrase": "Aurait encadré les taux de marge de l'agroalimentaire, du raffinage et de la distribution, avec un prix plancher pour les produits agricoles.",
+  "phrase": "Aurait encadré les taux de marge de l’agroalimentaire, du raffinage et de la distribution, avec un prix plancher pour les produits agricoles.",
   "confirme": true
  },
  {
@@ -700,7 +700,7 @@ export const scrutins = [
   "numero": 147,
   "date": "2024-10-26",
   "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/147",
-  "intitule": "Amendement n° I-917 de M. Jean-Philippe Tanguy après l'article 10 du projet de loi de finances pour 2025 (première lecture)",
+  "intitule": "Amendement n° I-917 de M. Jean-Philippe Tanguy après l’article 10 du projet de loi de finances pour 2025 (première lecture)",
   "porteur": "Rassemblement national (Jean-Philippe Tanguy et le groupe)",
   "resultat": "Rejeté",
   "pour": 73,
@@ -782,7 +782,7 @@ export const scrutins = [
   "numero": 148,
   "date": "2024-10-26",
   "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/148",
-  "intitule": "Amendement n° I-2249 de M. Laisney après l'article 10 du projet de loi de finances pour 2025 (première lecture)",
+  "intitule": "Amendement n° I-2249 de M. Laisney après l’article 10 du projet de loi de finances pour 2025 (première lecture)",
   "porteur": "LFI-NFP (Maxime Laisney et le groupe)",
   "resultat": "Adopté, sans effet : la partie recettes du budget a été rejetée",
   "pour": 164,
@@ -855,7 +855,7 @@ export const scrutins = [
     "position": "pour"
    }
   },
-  "phrase": "TVA à 5,5 % sur la part « essentielle » des consommations d'électricité et de gaz des ménages, volume fixé par décret.",
+  "phrase": "TVA à 5,5 % sur la part « essentielle » des consommations d’électricité et de gaz des ménages, volume fixé par décret.",
   "confirme": true
  },
  {
@@ -864,7 +864,7 @@ export const scrutins = [
   "numero": 4038,
   "date": "2025-11-20",
   "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/4038",
-  "intitule": "Amendement n° I-792 de Mme Le Pen après l'article 25 du projet de loi de finances pour 2026 (première lecture)",
+  "intitule": "Amendement n° I-792 de Mme Le Pen après l’article 25 du projet de loi de finances pour 2026 (première lecture)",
   "porteur": "Rassemblement national (Marine Le Pen et le groupe)",
   "resultat": "Rejeté",
   "pour": 97,
@@ -937,7 +937,7 @@ export const scrutins = [
     "position": "pour"
    }
   },
-  "phrase": "Aurait abaissé la TVA de 20 % à 5,5 % sur le gaz, l'électricité, le fioul et les carburants.",
+  "phrase": "Aurait abaissé la TVA de 20 % à 5,5 % sur le gaz, l’électricité, le fioul et les carburants.",
   "confirme": true
  },
  {
@@ -946,7 +946,7 @@ export const scrutins = [
   "numero": 4039,
   "date": "2025-11-20",
   "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/4039",
-  "intitule": "Amendement n° I-2098 de M. Laisney après l'article 25 du projet de loi de finances pour 2026 (première lecture)",
+  "intitule": "Amendement n° I-2098 de M. Laisney après l’article 25 du projet de loi de finances pour 2026 (première lecture)",
   "porteur": "LFI-NFP (Maxime Laisney et le groupe)",
   "resultat": "Rejeté",
   "pour": 38,
@@ -1019,7 +1019,7 @@ export const scrutins = [
     "position": "abstention"
    }
   },
-  "phrase": "TVA à 5,5 % sur l'électricité et le gaz « essentiels » des ménages et sur leurs abonnements, passés à 20 % en août 2025.",
+  "phrase": "TVA à 5,5 % sur l’électricité et le gaz « essentiels » des ménages et sur leurs abonnements, passés à 20 % en août 2025.",
   "confirme": true
  },
  {
@@ -1028,7 +1028,7 @@ export const scrutins = [
   "numero": 8976,
   "date": "2026-10-22",
   "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/8976",
-  "intitule": "Amendement n° 350 de M. Wauquiez et identiques à l'article 7 du projet de loi de financement de la sécurité sociale pour 2027 (première lecture)",
+  "intitule": "Amendement n° 350 de M. Wauquiez et identiques à l’article 7 du projet de loi de financement de la sécurité sociale pour 2027 (première lecture)",
   "porteur": "Droite républicaine (Laurent Wauquiez) et identiques",
   "resultat": "Adopté",
   "pour": 101,

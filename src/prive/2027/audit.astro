@@ -1,0 +1,486 @@
+---
+import Base from '../../layouts/Base.astro';
+import { enjeux } from '../../data/repliques2027.js';
+
+// ============================================================
+// LA BOUSSOLE 2027 — AUDIT CRITIQUE ET ALTERNATIVES (privé, dev seulement).
+// Partie 1 : compte-rendu (fond, forme, marque, ligne éditoriale, abstention, ancrage savant, avis extérieur).
+// Partie 2 : maquettes cliquables pour l'entrée « On vous a dit… » et la carte « Vrai ou cliché ».
+// Les chiffres des maquettes viennent de repliques2027.js (déjà vérifiés). Les pistes historiques et
+// bibliographiques sont marquées « à vérifier » : aucune ne doit partir en ligne sans relecture sur la source.
+// ============================================================
+const n2 = (i) => String(i + 1).padStart(2, '0');
+const themes = enjeux.map((e, i) => ({ id: e.id, n: n2(i), titre: e.titre, question: e.question }));
+const toutes = enjeux.flatMap((e) => e.cliches);
+const nbImmig = toutes.filter((c) => /immigr|étranger|islam|appel d’air/i.test(c.cliche)).length;
+---
+<Base noVerset noindex title="Audit critique — La Boussole 2027" description="Audit critique de La Boussole 2027 et alternatives.">
+  <div class="au" id="au" data-theme="sombre">
+
+    <header class="au-tete">
+      <div class="au-c">
+        <p class="au-sur">La Boussole 2027 · Atelier</p>
+        <h1 class="au-h1">Audit critique</h1>
+        <p class="au-lede">Fond, forme, marque et ligne éditoriale, avec une question en tête : est-ce que La Boussole peut parler à celles et ceux qui ne votent pas ? Puis des maquettes pour les deux écrans examinés.</p>
+        <nav class="au-nav" aria-label="Parties">
+          <a href="#verdict">Verdict</a><a href="#constats">Constats</a><a href="#abstention">Abstention</a><a href="#savant">Ancrage savant</a><a href="#exterieur">Avis extérieur</a><a href="#alternatives">Alternatives</a>
+          <button type="button" class="au-theme" id="au-theme" aria-pressed="true">Clair</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ===================== VERDICT ===================== -->
+    <section class="au-sec" id="verdict">
+      <div class="au-c">
+        <div class="au-carte au-verdict">
+          <p class="au-k">Verdict</p>
+          <p class="au-grand">Les chiffres sont solides et la forme est soignée. Mais La Boussole s’adresse aujourd’hui à des gens déjà convaincus, et elle reprend sans le vouloir les sujets imposés par ceux qu’elle contredit.</p>
+          <div class="au-trois">
+            <div><p class="au-note ok">Solide</p><p>Sources primaires partout, chiffres douteux bloqués, quiz candidats et « Qui a dit ça ? » traités avec la même règle pour tous les camps.</p></div>
+            <div><p class="au-note moy">À reprendre</p><p>Le choix des idées reçues, le mythe mis en vedette, le mot « cliché », l’entrée par la joute plutôt que par la vie des gens.</p></div>
+            <div><p class="au-note manque">Manque</p><p>L’ADN de L’Autre Récit : d’où vient chaque idée reçue, ce qu’en disent les chercheurs, à qui profite le cadrage.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONSTATS ===================== -->
+    <section class="au-sec" id="constats">
+      <div class="au-c">
+        <p class="au-sur">Partie 1</p>
+        <h2 class="au-h2">Huit constats, du plus grave au plus léger</h2>
+
+        <ol class="au-liste">
+          <li class="au-carte">
+            <p class="au-k">Fond · ligne éditoriale</p>
+            <h3>1. La Boussole répond aux idées reçues mais garde leurs sujets</h3>
+            <p>Sur les 20 idées reçues des dossiers, <strong>{nbImmig} portent sur les immigrés, les étrangers ou l’islam</strong>. Sur la première vue de l’accueil, le mot « immigrés » ou « immigration » revient six fois dans les pastilles. La page réfute ces affirmations, mais c’est elle qui les met en avant.</p>
+            <p>C’est le mécanisme décrit par McCombs et Shaw (1972) : les médias ont peu de prise sur ce que le public pense, beaucoup sur ce à quoi il pense. Vincent Tiberj (<em>La Droitisation française. Mythe et réalités</em>, PUF, 2024) montre que les opinions des Français ne se droitisent pas, alors que le débat public, lui, se droitise. Une Boussole qui part des questions de l’extrême droite participe à ce mouvement, même pour le contester.</p>
+            <p class="au-faire"><b>Correction proposée.</b> Entrer par les dix sujets (salaires, logement, santé…) et laisser les idées reçues à l’intérieur des dossiers. Sur l’accueil, montrer au plus trois phrases, d’un sujet différent chacune.</p>
+          </li>
+
+          <li class="au-carte">
+            <p class="au-k">Fond · symétrie</p>
+            <h3>2. Les 20 idées reçues viennent toutes du même côté</h3>
+            <p>Elles viennent toutes de la droite, de l’extrême droite ou du discours libéral. Aucune ne vient de la gauche, alors que la règle maison est la même rigueur pour tous les camps. « Qui a dit ça ? » la respecte, mais pas les dossiers. Pour une personne qui doute ou qui s’abstient, c’est le signal « site de camp », et la page perd sa crédibilité avant même d’être lue.</p>
+            <p>La page Méthode assume un point de vue : celui des personnes visées par les idées reçues. Il faut le garder. Ce qui manque, c’est de montrer qu’on applique la même exigence à son propre bord.</p>
+            <p class="au-faire"><b>Correction proposée.</b> Dans chaque dossier, ajouter une idée reçue venue de l’autre bord, vérifiée avec la même rigueur. Exemples à vérifier : « taxer les plus riches suffit à tout financer », « la dette n’est pas un sujet », « revenir à 60 ans ne coûte rien ».</p>
+          </li>
+
+          <li class="au-carte">
+            <p class="au-k">Fond · psychologie de la correction</p>
+            <h3>3. Le mythe est mis en vedette</h3>
+            <p>La carte « Vrai ou cliché » affiche l’affirmation fausse en grand Playfair italique, et les boutons d’accueil répètent les idées reçues mot pour mot. Or la répétition rend une phrase plus crédible, même chez qui la sait fausse : c’est l’effet de vérité illusoire (Hasher, Goldstein et Toppino, 1977 ; Fazio et al., 2015).</p>
+            <p>Le <em>Debunking Handbook</em> (Lewandowsky et al., 2020) recommande de donner le fait d’abord, puis de signaler le mythe une seule fois, d’expliquer pourquoi il est faux, et de redonner le fait. La crainte d’un « effet boomerang » est très exagérée (Swire-Thompson et al., 2020). On peut donc nommer le mythe, à condition qu’il ne soit pas ce que l’œil retient.</p>
+            <p class="au-faire"><b>Correction proposée.</b> Mettre le fait en grand et l’idée reçue en petit, en citation. Voir les maquettes M3 et C1.</p>
+          </li>
+
+          <li class="au-carte">
+            <p class="au-k">Fond · ton</p>
+            <h3>4. Le mot « cliché » met en tort la personne qui y croit</h3>
+            <p>« Vrai » et « Cliché » ne sont pas deux réponses de même rang : la seconde se moque un peu de qui y croyait. Daniel Gaxie (<em>Le Cens caché</em>, Seuil, 1978) montre que beaucoup d’abstentionnistes se tiennent à l’écart parce qu’ils se sentent incompétents en politique. Un jeu qui les fait échouer devant tout le monde renforce ce sentiment.</p>
+            <p>Le choix binaire pose aussi un problème de fond : plusieurs affirmations ne sont ni vraies ni fausses. Le coût de l’immigration, par exemple, dépend de la méthode retenue (l’OCDE donne entre −0,85 % et +1,02 % du PIB).</p>
+            <p class="au-faire"><b>Correction proposée.</b> Trois réponses : « Vrai », « Faux », « Plus compliqué ». Ou bien un jeu d’estimation où l’on devine un chiffre (voir C2 et C3).</p>
+          </li>
+
+          <li class="au-carte">
+            <p class="au-k">Fond · cible</p>
+            <h3>5. « De quoi répondre » vise les militants, pas les abstentionnistes</h3>
+            <p>Le titre de l’accueil promet des arguments pour un repas de famille, ce qui sert les personnes déjà engagées. Une personne qui s’abstient ne cherche pas à gagner une discussion : elle se demande si l’élection la concerne et si son vote changerait quelque chose. Il faut deux entrées, une pour chaque public. Aujourd’hui, l’accueil n’en propose qu’une.</p>
+            <p class="au-faire"><b>Correction proposée.</b> Ajouter une porte « Ce qui change pour vous », qui part de la situation de chacun (voir M2 et la partie Abstention).</p>
+          </li>
+
+          <li class="au-carte">
+            <p class="au-k">Marque</p>
+            <h3>6. C’est du fact-checking, il manque « l’autre récit »</h3>
+            <p>Aujourd’hui, les dossiers ressemblent à du fact-checking classique. Ce qui fait L’Autre Récit, c’est la généalogie des idées reçues, les auteurs, les structures, et le concept maison d’effet de seuil. Rien de cela n’apparaît dans La Boussole.</p>
+            <p class="au-faire"><b>Correction proposée.</b> Ajouter à chaque dossier une « couche savante » en trois blocs : d’où vient l’idée reçue, ce que montrent les chercheurs, à qui profite le cadrage (voir la partie Ancrage savant).</p>
+          </li>
+
+          <li class="au-carte">
+            <p class="au-k">Forme · écran « On vous a dit… »</p>
+            <h3>7. Un mur de vingt pastilles sans hiérarchie</h3>
+            <ul class="au-puces">
+              <li>Les vingt pastilles ont la même taille, la même couleur et le même poids : l’œil ne sait pas par où commencer.</li>
+              <li>Le texte d’exemple du champ de recherche répète la quatrième pastille mot pour mot.</li>
+              <li>Le bouton « Trouver la réplique » tire vers la joute, ce qui va contre la promesse d’une analyse.</li>
+              <li>Le bloc ivoire posé à plat sur la nuit rappelle un tableau de bord de logiciel plus qu’une revue.</li>
+            </ul>
+          </li>
+
+          <li class="au-carte">
+            <p class="au-k">Forme · carte « Vrai ou cliché »</p>
+            <h3>8. Une carte à moitié vide et un bouton qui souffle la réponse</h3>
+            <ul class="au-puces">
+              <li>Sous la phrase, près de la moitié de la carte reste vide.</li>
+              <li>Le bouton « Vrai » est en or plein et « Cliché » est seulement souligné d’un trait. Le design met « Vrai » en avant, ce qui fausse le jeu.</li>
+              <li>« On entend dire », « Échauffement » et « 1 / 13 » sont écrits en police à chasse fixe, en capitales espacées. Ce code évoque le logiciel ou la console, pas la revue de sciences sociales.</li>
+              <li>Le geste de glisser la carte, comme sur une appli de rencontre, ajoute du jeu là où la marque demande de la sobriété. À réserver à un seul écran.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="au-carte au-bon">
+          <p class="au-k">Ce qui marche et qu’il faut garder</p>
+          <ul class="au-puces">
+            <li>Les contrastes : plus aucun défaut depuis l’audit précédent.</li>
+            <li>Les chiffres non vérifiés, signalés sur la page et bloqués au partage.</li>
+            <li>Le quiz « Quel candidat êtes-vous ? », qui signale les comparaisons partielles au lieu de les cacher. C’est la meilleure porte d’entrée pour les abstentionnistes.</li>
+            <li>« Qui a dit ça ? », avec des candidats de tous les camps et une fausse citation glissée dans le lot : c’est une leçon de méthode qui se joue.</li>
+            <li>Le fichier en 3D : premium, lisible, différent.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABSTENTION ===================== -->
+    <section class="au-sec" id="abstention">
+      <div class="au-c">
+        <p class="au-sur">Partie 2</p>
+        <h2 class="au-h2">Parler à ceux qui ne votent pas</h2>
+        <div class="au-carte">
+          <p class="au-k">Ce que dit la recherche</p>
+          <p>Céline Braconnier et Jean-Yves Dormagen (<em>La Démocratie de l’abstention</em>, Gallimard, 2007) montrent que l’abstention est surtout intermittente et dépend du milieu social. On vote quand son entourage vote, quand quelqu’un de proche vous en parle, quand l’inscription ne fait pas obstacle. La culpabilisation (« c’est un devoir ») marche mal. La mobilisation fonctionne quand elle passe par des proches, qu’elle répond à des intérêts concrets et qu’elle s’accompagne d’une aide pratique.</p>
+          <p>Le but « officieux » n’a rien à cacher. Faire voter, quel que soit le vote, est un but civique que l’on peut afficher. Le problème apparaîtrait si l’on poussait au vote un seul public, en espérant un seul résultat. Mieux vaut l’assumer sur la page Méthode.</p>
+        </div>
+
+        <div class="au-grille">
+          <article class="au-idee"><p class="au-num">01</p><h3>Ce qui change pour vous</h3><p>Une entrée par situation : locataire, étudiant, parent, retraité, au Smic, en outre-mer. Pour chaque situation, les mesures de chaque programme qui la touchent, sourcées, sans consigne de vote.</p><p class="au-pour">Répond à « ça ne me concerne pas ».</p></article>
+          <article class="au-idee"><p class="au-num">02</p><h3>Ceux qui votent décident pour les autres</h3><p>Une page de données sur la participation par âge, diplôme et quartier (enquête Insee sur la participation électorale). Elle montre à qui s’adressent les programmes et pourquoi les retraités pèsent tant.</p><p class="au-pour">Répond à « ça ne change rien », sans faire la morale. Chiffres à relever sur l’Insee.</p></article>
+          <article class="au-idee"><p class="au-num">03</p><h3>Suis-je bien inscrit ?</h3><p>Une story et une page pratique : vérifier son inscription sur service-public.fr, la date limite, la procuration en ligne. C’est l’idée la moins chère et celle qui a le plus d’effet.</p><p class="au-pour">Lève l’obstacle des inscriptions manquantes ou au mauvais endroit. Dates de 2027 à confirmer.</p></article>
+          <article class="au-idee"><p class="au-num">04</p><h3>Pourquoi je ne vote pas</h3><p>Des abstentionnistes expliquent leurs raisons avec leurs propres mots, en audio ou en texte, et un chercheur leur répond, sans leçon. On donne la parole aux personnes concernées au lieu de parler à leur place.</p><p class="au-pour">Le public se reconnaît, ce qui crée la confiance.</p></article>
+          <article class="au-idee"><p class="au-num">05</p><h3>Envoyez-le à quelqu’un</h3><p>La story « message » existe déjà. Il suffit d’ajouter un parcours « envoyer à quelqu’un qui ne vote pas » : un résultat du quiz, un chiffre qui le concerne, un lien vers l’inscription.</p><p class="au-pour">Passe par les proches, le canal que la recherche juge le plus efficace.</p></article>
+          <article class="au-idee"><p class="au-num">06</p><h3>Devinez le chiffre</h3><p>On estime d’abord, on découvre ensuite. Alesina, Miano et Stantcheva (<em>Review of Economic Studies</em>, 2023) montrent que les estimations sur l’immigration sont largement faussées, en France comme ailleurs. Chacun découvre son propre écart, sans être pris en faute.</p><p class="au-pour">Le chiffre s’impose sans que personne ne soit jugé (maquette C3).</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ANCRAGE SAVANT ===================== -->
+    <section class="au-sec" id="savant">
+      <div class="au-c">
+        <p class="au-sur">Partie 3</p>
+        <h2 class="au-h2">La couche savante, dossier par dossier</h2>
+        <p class="au-intro">Le format proposé compte trois blocs par dossier : <b>D’où vient l’idée reçue</b> (histoire), <b>Ce que montrent les chercheurs</b> (sociologie, économie), <b>À qui profite le cadrage</b> (médias, effet de seuil). Les ouvrages ci-dessous sont des pistes de lecture, <span class="au-averti">à vérifier sur le livre avant toute citation</span>.</p>
+        <div class="au-table" role="table">
+          <div class="au-ligne au-entete" role="row"><span role="columnheader">Dossier</span><span role="columnheader">Pistes</span></div>
+          <div class="au-ligne" role="row"><span role="cell">Vie chère · « assistés »</span><span role="cell">Nicolas Duvoux, <em>L’Autonomie des assistés</em> (PUF, 2009) · Vincent Dubois, <em>Contrôler les assistés</em> (Raisons d’agir, 2021) · travaux de l’Odenore sur le non-recours</span></div>
+          <div class="au-ligne" role="row"><span role="cell">Salaires · immigration</span><span role="cell">Gérard Noiriel, <em>Le Creuset français</em> (Seuil, 1988) · le massacre d’Aigues-Mortes (1893) et la loi du 10 août 1932 « protégeant la main-d’œuvre nationale », qui montrent que l’idée reçue a plus d’un siècle</span></div>
+          <div class="au-ligne" role="row"><span role="cell">Immigration</span><span role="cell">Abdelmalek Sayad, <em>La Double Absence</em> (Seuil, 1999) · François Héran, <em>Avec l’immigration</em> (La Découverte, 2017)</span></div>
+          <div class="au-ligne" role="row"><span role="cell">Services publics</span><span role="cell">Pierre Bourdieu, la « main gauche de l’État », dans <em>Contre-feux</em> (Raisons d’agir, 1998) · Luc Rouban sur la fonction publique</span></div>
+          <div class="au-ligne" role="row"><span role="cell">École</span><span role="cell">Bourdieu et Passeron, <em>Les Héritiers</em> (Minuit, 1964) · Felouzis, Liot et Perroton, <em>L’Apartheid scolaire</em> (Seuil, 2005) · Cnesco, rapport sur les inégalités sociales et migratoires (2016)</span></div>
+          <div class="au-ligne" role="row"><span role="cell">Retraites</span><span role="cell">Bruno Palier (Sciences Po) sur les réformes · Bernard Friot, <em>L’Enjeu des retraites</em> (La Dispute, 2010), pour avoir deux écoles</span></div>
+          <div class="au-ligne" role="row"><span role="cell">Sécurité</span><span role="cell">Laurent Mucchielli, <em>L’Invention de la violence</em> (Fayard, 2011) · généalogie du mot « ensauvagement », de son usage en 2020 à ses usages antérieurs</span></div>
+          <div class="au-ligne" role="row"><span role="cell">Laïcité · islam</span><span role="cell">Jean Baubérot, <em>Les 7 laïcités françaises</em> (MSH, 2015) · Hajjat et Mohammed, <em>Islamophobie</em> (La Découverte, 2013) · Stuart Hall sur la représentation</span></div>
+          <div class="au-ligne" role="row"><span role="cell">Quartiers · outre-mer</span><span role="cell">Sylvie Tissot, <em>L’État et les quartiers</em> (Seuil, 2007) · Renaud Epstein, <em>La Rénovation urbaine</em> (Presses de Sciences Po, 2013) · Malcom Ferdinand, <em>Une écologie décoloniale</em> (Seuil, 2019) sur le chlordécone</span></div>
+          <div class="au-ligne" role="row"><span role="cell">Pour tous les dossiers</span><span role="cell">Bourdieu, « L’opinion publique n’existe pas » (<em>Les Temps modernes</em>, 1973) · Gaxie, <em>Le Cens caché</em> (1978) · Tiberj, <em>La Droitisation française</em> (2024) · McCombs et Shaw (1972) · l’effet de seuil (concept L’Autre Récit)</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AVIS EXTÉRIEUR ===================== -->
+    <section class="au-sec" id="exterieur">
+      <div class="au-c">
+        <p class="au-sur">Partie 4</p>
+        <h2 class="au-h2">Un avis extérieur, comme pour les vidéos</h2>
+        <div class="au-grille au-grille-3">
+          <article class="au-idee"><p class="au-num">A</p><h3>Une fiche de règles</h3><p>Un document unique, sur le modèle de la fiche de grammaire vidéo, qui fixe les règles de La Boussole : symétrie entre les camps, fait d’abord, source primaire, ton sans mépris, forme. On le relit avant chaque nouvelle page.</p></article>
+          <article class="au-idee"><p class="au-num">B</p><h3>Un relecteur neuf</h3><p>Un agent <code>auditeur-boussole</code> en lecture seule, comme <code>auditeur-video</code>. Il découvre la page sans connaître la conversation et la note sur environ 16 questions (❌ / ⚠ / ✅), puis donne les trois corrections qui comptent le plus.</p></article>
+          <article class="au-idee"><p class="au-num">C</p><h3>Trois lecteurs types</h3><p>Le même agent lit aussi la page en se mettant à la place de trois lecteurs : une jeune femme de 23 ans qui n’a jamais voté, un électeur qui a voté RN en 2022 et qui hésite, une politiste exigeante. Ces lecteurs simulés trouvent des failles, mais ils ne remplacent pas de vraies personnes.</p></article>
+        </div>
+        <div class="au-carte au-limite">
+          <p class="au-k">Le vrai avis extérieur</p>
+          <p>Faites tester la page par cinq vraies personnes, dont au moins deux qui ne votent pas, avec un protocole de 15 minutes : lire à voix haute, dire ce qu’on a compris, dire ce qui agace. Aucun agent ne vous dira « ça fait site de gauche », et c’est pourtant la phrase qui compte.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ALTERNATIVES ===================== -->
+    <section class="au-sec au-sec-alt" id="alternatives">
+      <div class="au-c">
+        <p class="au-sur">Partie 5</p>
+        <h2 class="au-h2">Alternatives pour l’entrée « On vous a dit… »</h2>
+        <p class="au-intro">Trois façons d’entrer, de la plus proche de la revue à la plus proche des gens. Elles sont cliquables.</p>
+
+        <!-- M1 -->
+        <div class="alt">
+          <div class="alt-tete"><p class="alt-l">M1</p><div><h3>Le sommaire</h3><p>Les dix dossiers présentés comme le sommaire d’une revue de sciences sociales. Pas d’idée reçue à l’accueil : elles attendent dans les dossiers.</p></div></div>
+          <div class="m1">
+            <p class="m1-tit">Sommaire</p>
+            <ol class="m1-liste">
+              {themes.map((t) => (<li><a href={`/2027/${t.id}/`}><span class="m1-n">{t.n}</span><span class="m1-t">{t.titre}</span><span class="m1-q">{t.question}</span></a></li>))}
+            </ol>
+          </div>
+        </div>
+
+        <!-- M2 -->
+        <div class="alt">
+          <div class="alt-tete"><p class="alt-l">M2</p><div><h3>Votre situation</h3><p>L’entrée pour les abstentionnistes : on part de sa vie, pas du débat. Chaque situation renvoie vers les dossiers qui la concernent.</p></div></div>
+          <div class="m2">
+            <p class="m2-q">Vous êtes plutôt…</p>
+            <div class="m2-choix" id="m2-choix" role="group" aria-label="Votre situation">
+              <button type="button" data-d="logement,vie-chere,salaires">Locataire</button>
+              <button type="button" data-d="ecole,logement,services-publics">Aux études</button>
+              <button type="button" data-d="salaires,vie-chere,retraites">Au Smic</button>
+              <button type="button" data-d="ecole,services-publics,securite">Parent</button>
+              <button type="button" data-d="retraites,services-publics,vie-chere">À la retraite</button>
+              <button type="button" data-d="quartiers-outre-mer,vie-chere,services-publics">En outre-mer</button>
+            </div>
+            <div class="m2-res" id="m2-res" aria-live="polite"><p class="m2-vide">Choisissez une situation.</p></div>
+          </div>
+        </div>
+
+        <!-- M3 -->
+        <div class="alt">
+          <div class="alt-tete"><p class="alt-l">M3</p><div><h3>Le fait d’abord</h3><p>Une seule phrase à la fois. Le chiffre est en grand, l’idée reçue apparaît en petit dessous, entre guillemets.</p></div></div>
+          <div class="m3" id="m3">
+            <p class="m3-val" id="m3-val">1,1 % du PIB</p>
+            <p class="m3-fait" id="m3-fait">C’est le poids de l’ensemble des minima sociaux, RSA compris, en 2023.</p>
+            <p class="m3-on"><span>On entend dire</span> <span id="m3-on">« La vie chère, c’est à cause des assistés. »</span></p>
+            <div class="m3-pied"><p class="m3-src" id="m3-src">DREES, Minima sociaux et prestations de solidarité, édition 2025</p><button type="button" id="m3-suiv" class="alt-btn">Phrase suivante</button></div>
+          </div>
+        </div>
+
+        <h2 class="au-h2 au-h2-2">Alternatives pour la carte « Vrai ou cliché »</h2>
+
+        <!-- C1 -->
+        <div class="alt">
+          <div class="alt-tete"><p class="alt-l">C1</p><div><h3>Le sandwich</h3><p>La recette du <em>Debunking Handbook</em> : le fait, le mythe une seule fois, l’explication, puis le fait encore. Le mythe n’est jamais le plus gros texte de la carte.</p></div></div>
+          <div class="c1">
+            <p class="c1-fait">Pour toucher le RSA, un étranger hors UE doit avoir travaillé légalement en France pendant au moins <b>5 ans</b>.</p>
+            <p class="c1-mythe"><span>Idée reçue</span> « Un étranger peut toucher le RSA dès son arrivée. »</p>
+            <p class="c1-expl">La règle exige cinq ans de titre de séjour autorisant à travailler. Elle figure dans le Code de l’action sociale et des familles, à l’article L262-4.</p>
+            <p class="c1-src">CASF, art. L262-4 · Service-public.fr</p>
+          </div>
+        </div>
+
+        <!-- C2 -->
+        <div class="alt">
+          <div class="alt-tete"><p class="alt-l">C2</p><div><h3>Trois verdicts</h3><p>« Vrai », « Faux » et « Plus compliqué », avec trois boutons de même poids, pour que le design ne souffle pas la réponse. La carte remplit tout son espace.</p></div></div>
+          <div class="c2" id="c2">
+            <p class="c2-aff">« Les immigrés coûtent plus qu’ils ne rapportent. »</p>
+            <div class="c2-btns" role="group" aria-label="Votre verdict">
+              <button type="button" data-v="vrai">Vrai</button>
+              <button type="button" data-v="faux">Faux</button>
+              <button type="button" data-v="nuance">Plus compliqué</button>
+            </div>
+            <div class="c2-rep" id="c2-rep" hidden>
+              <p class="c2-verdict">Plus compliqué</p>
+              <div class="c2-jauge" aria-hidden="true"><span class="c2-zero"></span><span class="c2-a" style="left: calc(50% - 0.85 * 20%)">−0,85 %</span><span class="c2-b" style="left: calc(50% + 1.02 * 20%)">+1,02 %</span></div>
+              <p>Tout dépend de ce qu’on leur impute. Sans compter les biens publics, les immigrés rapportent 1,02 % du PIB. Si on leur attribue une part de la défense et de la dette, le solde est de −0,85 %, et dans ce même calcul celui des natifs est de −3,25 %.</p>
+              <p class="c1-src">OCDE, Perspectives des migrations internationales 2021, tableau 4.1 (moyenne 2006-2018)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- C3 -->
+        <div class="alt">
+          <div class="alt-tete"><p class="alt-l">C3</p><div><h3>Devinez le chiffre</h3><p>On estime d’abord, on découvre ensuite. Personne n’est pris en faute : chacun voit l’écart entre son estimation et le chiffre réel.</p></div></div>
+          <div class="c3">
+            <label class="c3-q" for="c3-r">Selon vous, quelle part de la population française est immigrée ?</label>
+            <div class="c3-ligne"><input type="range" id="c3-r" min="0" max="50" value="20" step="1" /><output id="c3-o" for="c3-r">20 %</output></div>
+            <button type="button" class="alt-btn" id="c3-v">Voir le chiffre</button>
+            <div class="c3-rep" id="c3-rep" hidden>
+              <div class="c3-barres"><div><span>Vous</span><i id="c3-bv" style="width:40%"></i><b id="c3-tv">20 %</b></div><div><span>Insee</span><i style="width:23.2%" class="c3-vrai"></i><b>11,6 %</b></div></div>
+              <p>8,0 millions de personnes en 2025, chiffre provisoire. La France est 15e sur 26 dans l’Union européenne pour la part d’habitants nés à l’étranger.</p>
+              <p class="c1-src">Insee, Population immigrée et étrangère en France, 4 juin 2026 · Eurostat, migr_pop3ctb</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- C4 -->
+        <div class="alt">
+          <div class="alt-tete"><p class="alt-l">C4</p><div><h3>La généalogie</h3><p>La couche L’Autre Récit : l’idée reçue a une histoire. On la remonte avant de la réfuter. <span class="au-averti">Dates à vérifier sur les sources avant publication.</span></p></div></div>
+          <div class="c4">
+            <p class="c4-tit">« Les immigrés font baisser les salaires »</p>
+            <ol class="c4-frise">
+              <li><span class="c4-an">1893</span><p>À Aigues-Mortes, des ouvriers italiens des salins sont massacrés, accusés de prendre le travail des ouvriers français.</p></li>
+              <li><span class="c4-an">1932</span><p>La loi du 10 août « protégeant la main-d’œuvre nationale » instaure des quotas d’étrangers dans les entreprises.</p></li>
+              <li><span class="c4-an">2025</span><p>Une méta-analyse du CEPII portant sur 88 études trouve un effet moyen sur les salaires des natifs centré sur zéro.</p></li>
+            </ol>
+            <p class="c4-chute">La cible a changé (les Belges, puis les Italiens, puis les Polonais, puis les Maghrébins), mais la phrase est restée la même.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <style is:global>
+    .au { --f: #14110D; --f2: #1D1813; --t: #F4EEE4; --t2: #D3C9BA; --or: #E0C27F; --carte: #FBF7EF; --ct: #17130F; --ct2: #4A4036; --cor: #6B5215; --trait: #3A3129;
+      --ok: #2F6B45; --moy: #8A5A12; --manque: #8C2F3B;
+      background: radial-gradient(120% 60% at 50% 0%, #2A2016 0%, var(--f) 55%) fixed, var(--f); color: var(--t); font-family: var(--sans); padding-bottom: 96px; }
+    .au[data-theme="clair"] { --f: #F4EEE3; --f2: #EAE2D4; --t: #17130F; --t2: #4A4036; --or: #6B5215; --carte: #1D1813; --ct: #F4EEE4; --ct2: #D3C9BA; --cor: #E0C27F; --trait: #D6CBB8;
+      --ok: #9FD3AE; --moy: #F0C27A; --manque: #F0A3AC; background: var(--f); }
+    .au-c { width: min(100% - 32px, 1040px); margin-inline: auto; }
+    .au-tete { padding: clamp(120px, 14vw, 160px) 0 24px; }
+    .au-sur { font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--or); margin: 0; }
+    .au-h1 { font-family: var(--serif); font-size: clamp(42px, 6vw, 72px); line-height: 1.02; margin: 10px 0 0; color: var(--t); }
+    .au-lede, .au-intro { font-size: 17.5px; line-height: 1.6; color: var(--t2); max-width: 64ch; margin: 18px 0 0; }
+    .au-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .au em { color: inherit; font-family: inherit; font-weight: inherit; }
+    .au .au-nav a, .au-theme { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid var(--trait); color: var(--t); text-decoration: none; font: 600 15px var(--sans); background: none; cursor: pointer; }
+    .au-nav a:hover, .au-theme:hover { border-color: var(--or); }
+    .au-theme { margin-left: auto; }
+    .au :focus-visible { outline: 3px solid var(--or); outline-offset: 3px; }
+    .au-sec { padding-top: clamp(48px, 7vw, 80px); scroll-margin-top: 90px; }
+    .au-h2 { font-family: var(--serif); font-size: clamp(30px, 3.6vw, 44px); line-height: 1.08; margin: 8px 0 26px; color: var(--t); }
+    .au-h2-2 { margin-top: 72px; }
+
+    .au-carte { background: var(--carte); color: var(--ct); border-radius: 18px; padding: clamp(22px, 3vw, 34px); box-shadow: 0 30px 60px -40px rgba(0,0,0,.8); }
+    .au-carte p, .au-carte li { font-size: 16.5px; line-height: 1.62; color: var(--ct); }
+    .au-carte strong, .au-carte b { color: var(--ct); }
+    .au-k { font-size: 13px !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--cor) !important; margin: 0 0 6px; }
+    .au-carte h3 { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 28px); line-height: 1.18; margin: 0 0 12px; color: var(--ct); }
+    .au-grand { font-family: var(--serif); font-size: clamp(24px, 2.8vw, 32px) !important; line-height: 1.3 !important; margin: 4px 0 26px; }
+    .au-trois { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; border-top: 1px solid color-mix(in srgb, var(--ct) 18%, transparent); padding-top: 22px; }
+    .au-trois p { margin: 0; font-size: 15.5px; }
+    .au-note { display: inline-block; font-weight: 700; font-size: 14px !important; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px !important; padding: 3px 10px; border-radius: 999px; color: var(--carte) !important; }
+    .au-note.ok { background: var(--ok); } .au-note.moy { background: var(--moy); } .au-note.manque { background: var(--manque); }
+    .au-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+    .au-faire { margin-top: 14px !important; padding: 14px 16px; border-left: 3px solid var(--cor); background: color-mix(in srgb, var(--cor) 9%, transparent); border-radius: 0 10px 10px 0; }
+    .au-puces { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+    .au-bon { margin-top: 18px; }
+    .au-averti { font-weight: 700; color: inherit; text-decoration: underline; text-decoration-color: var(--moy); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .au-grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
+    .au-idee { background: var(--f2); border: 1.5px solid var(--trait); border-radius: 16px; padding: 22px; }
+    .au-idee h3 { font-family: var(--serif); font-size: 22px; line-height: 1.2; margin: 4px 0 10px; color: var(--t); }
+    .au-idee p { font-size: 15.5px; line-height: 1.58; color: var(--t2); margin: 0; }
+    .au-idee .au-pour { margin-top: 12px; font-weight: 600; color: var(--t); }
+    .au-num { font-family: var(--serif) !important; font-style: italic; font-weight: 700; font-size: 26px !important; color: var(--or) !important; }
+    .au-idee code { font-size: 14px; color: var(--or); }
+    .au-limite { margin-top: 16px; }
+    .au-table { margin-top: 22px; border: 1.5px solid var(--trait); border-radius: 16px; overflow: hidden; }
+    .au-ligne { display: grid; grid-template-columns: 220px 1fr; gap: 20px; padding: 16px 20px; border-top: 1px solid var(--trait); font-size: 15.5px; line-height: 1.55; color: var(--t2); }
+    .au-ligne:first-child { border-top: 0; }
+    .au-ligne span:first-child { font-weight: 700; color: var(--t); }
+    .au-entete { background: var(--f2); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .au-entete span { color: var(--or) !important; }
+
+    /* ---- alternatives ---- */
+    .alt { margin-top: 30px; }
+    .alt-tete { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 16px; }
+    .alt-l { flex: none; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; border: 1.5px solid var(--or); font: italic 700 20px var(--serif); color: var(--or); margin: 0; }
+    .alt-tete h3 { font-family: var(--serif); font-size: 25px; margin: 0; color: var(--t); }
+    .alt-tete p { margin: 4px 0 0; font-size: 15.5px; line-height: 1.55; color: var(--t2); max-width: 70ch; }
+    .alt-btn { min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1.5px solid var(--cor); background: none; color: var(--ct); font: 700 15px var(--sans); cursor: pointer; }
+    .alt-btn:hover { background: color-mix(in srgb, var(--cor) 14%, transparent); }
+    .alt > div:not(.alt-tete) { background: var(--carte); color: var(--ct); border-radius: 20px; padding: clamp(22px, 3.4vw, 40px); box-shadow: 0 30px 60px -40px rgba(0,0,0,.8); }
+    .c1-src { font-size: 14px !important; color: var(--ct2) !important; margin-top: 14px !important; }
+
+    .m1-tit { font: italic 400 22px var(--serif); color: var(--cor); margin: 0 0 8px; border-bottom: 1px solid color-mix(in srgb, var(--ct) 20%, transparent); padding-bottom: 12px; }
+    .m1-liste { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 40px; }
+    .m1-liste li { break-inside: avoid; }
+    .m1-liste a { display: grid; grid-template-columns: 44px 1fr; column-gap: 8px; padding: 14px 0; border-bottom: 1px solid color-mix(in srgb, var(--ct) 12%, transparent); text-decoration: none; color: var(--ct); }
+    .m1-n { grid-row: span 2; font: italic 700 22px var(--serif); color: var(--cor); }
+    .m1-t { font: 700 21px var(--serif); line-height: 1.2; }
+    .m1-q { font-size: 15px; line-height: 1.45; color: var(--ct2); margin-top: 2px; }
+    .m1-liste a:hover .m1-t { text-decoration: underline; text-decoration-color: var(--cor); text-underline-offset: 4px; }
+
+    .m2-q { font: italic 400 clamp(26px, 3vw, 34px) var(--serif); margin: 0 0 18px; color: var(--ct); }
+    .m2-choix { display: flex; flex-wrap: wrap; gap: 10px; }
+    .m2-choix button { min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1.5px solid color-mix(in srgb, var(--ct) 30%, transparent); background: none; color: var(--ct); font: 600 16px var(--sans); cursor: pointer; }
+    .m2-choix button[aria-pressed="true"] { background: var(--ct); color: var(--carte); border-color: var(--ct); }
+    .m2-res { margin-top: 22px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .m2-vide { grid-column: 1 / -1; margin: 0; font-size: 15.5px; color: var(--ct2); }
+    .m2-res a { display: block; padding: 16px; border-radius: 14px; border: 1.5px solid color-mix(in srgb, var(--cor) 50%, transparent); text-decoration: none; color: var(--ct); }
+    .m2-res b { display: block; font: 700 19px var(--serif); }
+    .m2-res span { font-size: 14.5px; line-height: 1.45; color: var(--ct2); }
+
+    .m3-val { font: 700 clamp(56px, 8vw, 96px) var(--serif); line-height: 1; letter-spacing: -.03em; color: var(--cor); margin: 0; }
+    .m3-fait { font: 400 clamp(20px, 2.4vw, 26px) var(--serif); line-height: 1.3; margin: 14px 0 0; max-width: 32ch; color: var(--ct); }
+    .m3-on { margin: 22px 0 0; font-size: 15.5px; color: var(--ct2); }
+    .m3-on span:first-child { font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: 13px; margin-right: 6px; }
+    .m3-pied { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 22px; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--ct) 15%, transparent); }
+    .m3-src { margin: 0; font-size: 14px; color: var(--ct2); }
+
+    .c1-fait { font: 400 clamp(24px, 2.8vw, 32px) var(--serif); line-height: 1.28; margin: 0; max-width: 30ch; }
+    .c1-fait b { color: var(--cor); }
+    .c1-mythe { margin: 20px 0 0; font-size: 16px; color: var(--ct2); font-style: italic; }
+    .c1-mythe span { font-style: normal; font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; margin-right: 6px; }
+    .c1-expl { margin: 14px 0 0; font-size: 16.5px; line-height: 1.6; max-width: 62ch; }
+
+    .c2-aff { font: italic 400 clamp(24px, 2.8vw, 32px) var(--serif); line-height: 1.28; margin: 0; }
+    .c2-btns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; }
+    .c2-btns button { min-height: 52px; border-radius: 14px; border: 1.5px solid color-mix(in srgb, var(--ct) 30%, transparent); background: none; color: var(--ct); font: 700 16px var(--sans); cursor: pointer; }
+    .c2-btns button[aria-pressed="true"] { background: var(--ct); color: var(--carte); }
+    .c2-rep { margin-top: 22px; }
+    .c2-rep p { font-size: 16.5px; line-height: 1.6; margin: 0; }
+    .c2-verdict { font: 700 34px var(--serif) !important; color: var(--cor); margin-bottom: 12px !important; }
+    .c2-jauge { position: relative; height: 54px; margin: 6px 0 16px; border-bottom: 2px solid color-mix(in srgb, var(--ct) 25%, transparent); }
+    .c2-zero { position: absolute; left: 50%; bottom: -8px; width: 2px; height: 16px; background: var(--ct); }
+    .c2-a, .c2-b { position: absolute; bottom: 8px; transform: translateX(-50%); font-weight: 700; font-size: 15px; padding: 4px 10px; border-radius: 8px; background: color-mix(in srgb, var(--cor) 16%, transparent); color: var(--ct); }
+
+    .c3-q { display: block; font: italic 400 clamp(22px, 2.6vw, 28px) var(--serif); line-height: 1.3; }
+    .c3-ligne { display: flex; align-items: center; gap: 18px; margin: 20px 0; }
+    .c3-ligne input { flex: 1; accent-color: var(--cor); height: 44px; }
+    .c3-ligne output { font: 700 30px var(--serif); min-width: 3.4ch; text-align: right; color: var(--cor); }
+    .c3-rep { margin-top: 22px; }
+    .c3-rep p { font-size: 16.5px; line-height: 1.6; margin: 14px 0 0; }
+    .c3-barres { display: grid; gap: 10px; }
+    .c3-barres div { display: grid; grid-template-columns: 60px 1fr 70px; align-items: center; gap: 12px; font-weight: 700; font-size: 15px; }
+    .c3-barres i { display: block; height: 18px; border-radius: 9px; background: color-mix(in srgb, var(--ct) 35%, transparent); transition: width .6s; }
+    .c3-barres i.c3-vrai { background: var(--cor); }
+
+    .c4-tit { font: italic 400 clamp(24px, 2.8vw, 30px) var(--serif); margin: 0; }
+    .c4-frise { list-style: none; padding: 0; margin: 22px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .c4-frise li { border-top: 3px solid var(--cor); padding-top: 12px; }
+    .c4-an { font: 700 28px var(--serif); color: var(--cor); }
+    .c4-frise p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.55; }
+    .c4-chute { margin: 22px 0 0; font: 700 clamp(19px, 2vw, 22px) var(--serif); line-height: 1.35; }
+
+    @media (max-width: 820px) {
+      .au-trois, .au-grille, .m2-res, .c4-frise { grid-template-columns: 1fr; }
+      .m1-liste { columns: 1; }
+      .au-ligne { grid-template-columns: 1fr; gap: 4px; }
+      .au-theme { margin-left: 0; }
+    }
+    @media (max-width: 520px) {
+      .c2-btns { grid-template-columns: 1fr; }
+      .alt-tete { flex-direction: column; gap: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .c3-barres i { transition: none; } }
+  </style>
+
+  <script>
+    const au = document.getElementById('au');
+    const bt = document.getElementById('au-theme');
+    try { const m = localStorage.getItem('au-theme'); if (m) au.dataset.theme = m; } catch (e) {}
+    const maj = () => { const s = au.dataset.theme === 'sombre'; bt.textContent = s ? 'Clair' : 'Sombre'; bt.setAttribute('aria-pressed', String(s)); };
+    maj();
+    bt.addEventListener('click', () => { au.dataset.theme = au.dataset.theme === 'sombre' ? 'clair' : 'sombre'; maj(); try { localStorage.setItem('au-theme', au.dataset.theme); } catch (e) {} });
+
+    // M2 — situation → dossiers
+    const D = { 'vie-chere': ['Vie chère', 'Pourquoi tout augmente'], salaires: ['Salaires', 'Ce que vaut votre paie'], logement: ['Logement', 'Loyers, HLM, APL'], ecole: ['École', 'Ce qui fait réussir'], retraites: ['Retraites', 'Ce que vous toucherez'], 'services-publics': ['Services publics', 'Hôpital, guichets, médecins'], securite: ['Sécurité', 'Ce que disent les chiffres'], 'quartiers-outre-mer': ['Quartiers et outre-mer', 'Vie chère, chlordécone, budgets'] };
+    const res = document.getElementById('m2-res');
+    document.querySelectorAll('#m2-choix button').forEach((b) => b.addEventListener('click', () => {
+      document.querySelectorAll('#m2-choix button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      res.innerHTML = b.dataset.d.split(',').map((id) => `<a href="/2027/${id}/"><b>${D[id][0]}</b><span>${D[id][1]}</span></a>`).join('');
+    }));
+
+    // M3 — le fait d'abord (chiffres repris de repliques2027.js)
+    const F = [
+      ['1,1 % du PIB', 'C’est le poids de l’ensemble des minima sociaux, RSA compris, en 2023.', '« La vie chère, c’est à cause des assistés. »', 'DREES, Minima sociaux et prestations de solidarité, édition 2025'],
+      ['9e sur 27', 'C’est le rang de la France dans l’UE pour les premières demandes d’asile rapportées à la population, en 2025.', '« La France accueille plus que tout le monde. »', 'Eurostat, migr_asyappctza et demo_gind, calcul L’Autre Récit'],
+      ['−0,9 point', 'C’est l’évolution de la part de l’emploi public dans l’emploi total entre 2019 et 2023, quand la moyenne de l’OCDE gagne 0,3 point.', '« Le nombre de fonctionnaires explose. »', 'OCDE, Government at a Glance 2025'],
+    ];
+    let i = 0;
+    document.getElementById('m3-suiv').addEventListener('click', () => {
+      i = (i + 1) % F.length;
+      [['m3-val', 0], ['m3-fait', 1], ['m3-on', 2], ['m3-src', 3]].forEach(([id, k]) => { document.getElementById(id).textContent = F[i][k]; });
+    });
+
+    // C2 — trois verdicts
+    document.querySelectorAll('#c2 [data-v]').forEach((b) => b.addEventListener('click', () => {
+      document.querySelectorAll('#c2 [data-v]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      document.getElementById('c2-rep').hidden = false;
+    }));
+
+    // C3 — devinez le chiffre
+    const r = document.getElementById('c3-r'), o = document.getElementById('c3-o');
+    r.addEventListener('input', () => { o.textContent = r.value + ' %'; });
+    document.getElementById('c3-v').addEventListener('click', () => {
+      document.getElementById('c3-rep').hidden = false;
+      document.getElementById('c3-bv').style.width = (r.value * 2) + '%';
+      document.getElementById('c3-tv').textContent = r.value + ' %';
+    });
+  </script>
+</Base>

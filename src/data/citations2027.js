@@ -11,7 +11,7 @@ export const blocs = {
   gauche: 'Gauche et écologistes',
   centre: 'Bloc présidentiel',
   droite: 'Droite',
-  rn: 'RN et droite radicale',
+  rn: 'RN et Reconquête',
 };
 
 // Statut au 1er novembre 2026. Ruffin n'a aucune citation confirmée : il sert de nom proposé.

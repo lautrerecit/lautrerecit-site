@@ -2,6 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import '../../styles/repliques2027.css';
 import { enjeux } from '../../data/repliques2027.js';
+import { savant } from '../../data/savant2027.js';
+import Savant from './composants/Savant.astro';
 import Caddie from './composants/Caddie.astro';
 import Balance from './composants/Balance.astro';
 import Egal from './composants/Egal.astro';
@@ -29,7 +31,7 @@ const story = (c) => {
   return { id: c.id, enjeu: e.titre, num: n, cliche: c.cliche, replique: c.replique, valeur: ch.valeur, source: ch.source, verifier: !!ch.verifier };
 };
 ---
-<Base
+<Base noVerset
   noindex
   title={`${e.titre} — La Boussole 2027 | L'Autre Récit`}
   description={`${e.question} État des lieux chiffré et réponses sourcées aux idées reçues.`}
@@ -53,7 +55,7 @@ const story = (c) => {
         <div class="r27-heros">
           <div class="r27-heros-chiffre">
             {heros.visuel === 'egal'
-              ? <Egal avant="2021" apres="2025" legende="Pouvoir d'achat du salaire net moyen" />
+              ? <Egal avant="2021" apres="2025" legende="Pouvoir d’achat du salaire net moyen" />
               : <span class="r27-heros-val gold-grad">{heros.valeur}</span>}
           </div>
           <div class="r27-heros-texte">
@@ -82,7 +84,7 @@ const story = (c) => {
         <div class="container">
           <p class="eyebrow">À l'Assemblée</p>
           <h2 class="r27-h2">Qui a voté quoi</h2>
-          <p class="r27-intro">Les principaux votes des députés sur le sujet depuis 2022, groupe par groupe. Suivez un groupe pour voir sa ligne, ou choisissez un scrutin pour le voir dans l'hémicycle.</p>
+          <p class="r27-intro">Les principaux votes des députés sur le sujet depuis 2022, groupe par groupe. Suivez un groupe pour voir sa ligne, ou choisissez un scrutin pour le voir dans l’hémicycle.</p>
           <Votes sujet={e.id} />
         </div>
       </section>
@@ -91,16 +93,16 @@ const story = (c) => {
     <section class="r27-sec r27-sec-filet">
       <div class="container">
         <p class="eyebrow">Les idées reçues</p>
-        <h2 class="r27-h2">Ce qu'on vous dit, et quoi répondre</h2>
+        <h2 class="r27-h2">Les idées reçues, chiffres à l’appui</h2>
         {e.cliches.map((c) => (
           <article class="r27-cliche" id={c.id}>
             <div class="r27-cliche-tete">
-              <p class="r27-label">On vous dit</p>
+              <p class="r27-label">On entend dire</p>
               <p class="r27-cliche-phrase">«&nbsp;{c.cliche}&nbsp;»</p>
             </div>
             <div class="r27-cliche-corps">
               <div class="r27-replique">
-                <p class="r27-label">Vous répondez</p>
+                <p class="r27-label">Ce que disent les chiffres{c.verdict && <span class="r27-verdict">{({ faux: 'Faux', 'vrai-en-partie': 'Vrai en partie', 'plus-complique': 'Plus compliqué', vrai: 'Vrai' })[c.verdict]}</span>}</p>
                 <p class="r27-replique-texte">{c.replique}</p>
               </div>
               <div class="r27-dev">{c.developpement.map((p) => <p>{p}</p>)}</div>
@@ -117,21 +119,31 @@ const story = (c) => {
               {c.visuel === 'balance' && <Balance />}
               {c.objection && (
                 <div class="r27-objection">
-                  <p class="r27-label">Et si on vous répond</p>
+                  <p class="r27-label">Et si l’on objecte</p>
                   <p class="r27-objection-q">«&nbsp;{c.objection.q}&nbsp;»</p>
                   <p class="r27-objection-r">{c.objection.r}</p>
                 </div>
               )}
               <div class="r27-actions">
-                <button class="btn btn-or" type="button" data-copie={`« ${c.cliche} »\n\n${c.replique}`} data-ancre={c.id}>Copier la réplique</button>
+                <button class="btn btn-or" type="button" data-copie={`« ${c.cliche} »\n\n${c.replique}`} data-ancre={c.id}>Copier la réponse</button>
                 <button class="btn btn-gh" type="button" data-lien={c.id}>Copier le lien</button>
                 {story(c).verifier
-                  ? <span class="r27-story-bloque" title="Le chiffre de cette fiche doit d'abord être vérifié sur sa source originale.">Partage : chiffre à vérifier</span>
+                  ? <span class="r27-story-bloque" title="Le chiffre de cette fiche doit d’abord être vérifié sur sa source originale.">Partage : chiffre à vérifier</span>
                   : <button class="btn btn-gh" type="button" data-story={JSON.stringify(story(c))}>Partager <span class="ar">↗</span></button>}
               </div>
             </div>
           </article>
         ))}
+
+        {savant[e.id] && (
+          <div class="r27-savant">
+            <p class="eyebrow">Pour aller plus loin</p>
+            <h2 class="r27-h2">L’histoire et la recherche</h2>
+            <Savant s={savant[e.id]} />
+          </div>
+        )}
+
+        <p class="r27-fin-dossier">Pour voir de quels candidats vous êtes proche sur ce sujet et les autres : <a href="/2027/quiz/">le quiz</a>. Pour tester vos connaissances : <a href="/2027/#test">Vrai, faux ou plus compliqué ?</a></p>
 
         <nav class="r27-suite" aria-label="Autres dossiers">
           <a class="btn btn-gh" href="/2027/"><span class="ar">←</span> Tous les enjeux</a>

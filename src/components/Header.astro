@@ -1,6 +1,8 @@
 ---
 const { pathname } = Astro.url;
 const isActive = (href) => pathname === href || (href !== '/' && pathname.startsWith(href));
+// La Boussole 2027 n'apparaît que là où ses pages existent : en local (npm run dev) ou si PUBLIER_2027=1.
+const boussole = import.meta.env.DEV || process.env.PUBLIER_2027 === '1';
 const nav = [
   { href: '/', label: 'Accueil' },
   { href: '/a-propos/', label: 'À propos', children: [
@@ -8,6 +10,12 @@ const nav = [
     { href: '/grille-de-lecture/', label: 'La grille de lecture' },
     { href: '/architecture/', label: "L'architecture" },
   ] },
+  ...(boussole ? [{ href: '/2027/', label: 'La Boussole', children: [
+    { href: '/2027/', label: 'Les dix dossiers' },
+    { href: '/2027/quiz/', label: 'Quel candidat êtes-vous ?' },
+    { href: '/2027/qui-a-dit/', label: 'Qui a dit ça ?' },
+    { href: '/2027/methode/', label: 'La méthode' },
+  ] }] : []),
   { href: '/formations/', label: 'Formations' },
   { href: '/articles/', label: 'Articles' },
   { href: '/contact/', label: 'Contact' },
@@ -16,7 +24,7 @@ const TUNNEL = '/formations/'; // « Découvrir la formation » → catalogue de
 const SYSTEME_LOGIN = 'https://systeme.io/login'; // TODO: remplacer par l'URL de l'espace membre Systeme.io
 ---
 <!-- Menu 08 · Encadré filet or (double filet doré, verre sombre) + CTA -->
-<div class="lr-header-wrap">
+<div class:list={["lr-header-wrap", { "avec-boussole": boussole }]}>
   <header class="lr-header">
     <a class="lr-wordmark" href="/">L'Autre&nbsp;Récit</a>
     <nav class="lr-nav" aria-label="Navigation principale">
@@ -26,7 +34,7 @@ const SYSTEME_LOGIN = 'https://systeme.io/login'; // TODO: remplacer par l'URL d
             <a href={n.href} class:list={['lr-link', 'lr-link-sub', { active: isActive(n.href) }]}>{n.label}<span class="lr-caret" aria-hidden="true">▾</span></a>
             <div class="lr-sub">
               {n.children.map((c) => (
-                <a href={c.href} class:list={['lr-sublink', { active: isActive(c.href) }]}>{c.label}</a>
+                <a href={c.href} class:list={['lr-sublink', { active: pathname === c.href }]}>{c.label}</a>
               ))}
             </div>
           </div>
@@ -107,6 +115,18 @@ const SYSTEME_LOGIN = 'https://systeme.io/login'; // TODO: remplacer par l'URL d
   .lr-navbtn { padding: 11px 20px; font-size: 12px; letter-spacing: 0.1em; white-space: nowrap; }
   .lr-cta-short { display: none; }
 
+  /* écrans moyens : bouton raccourci pour laisser la place au menu */
+  @media (max-width: 1120px) {
+    .lr-cta-full { display: none; }
+    .lr-cta-short { display: inline; }
+    .lr-header { gap: 12px; }
+    .lr-nav { gap: 14px; }
+    .lr-navbtn { padding-left: 14px; padding-right: 14px; }
+  }
+  /* avec l'entrée La Boussole, le menu a un lien de plus : « Se connecter » passe dans la version mobile plus tôt */
+  @media (max-width: 1000px) {
+    .avec-boussole .lr-navbtn-2nd { display: none; }
+  }
   @media (max-width: 860px) {
     .lr-header { padding: 0 10px 0 16px; gap: 12px; }
     .lr-wordmark { font-size: 18px; }

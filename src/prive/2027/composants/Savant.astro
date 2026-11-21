@@ -1,0 +1,59 @@
+---
+// Couche savante d'un dossier (fiche F7) : d'où vient l'idée reçue, ce que montrent les chercheurs, à qui profite le cadrage.
+// Données : src/data/savant2027.js. Un élément `verifier: true` est signalé et n'est jamais présenté comme acquis.
+interface Props { s: { genealogie?: any[]; chercheurs?: any[]; cadrage?: any } }
+const { s } = Astro.props;
+---
+<div class="sv">
+  {s.genealogie?.length > 0 && (
+    <div class="sv-bloc">
+      <p class="r27-label">D’où vient cette idée</p>
+      <ol class="sv-frise">
+        {s.genealogie.map((g) => (
+          <li>
+            <span class="sv-an">{g.annee}</span>
+            <p>{g.texte}</p>
+            <span class="r27-source">Source : {g.url ? <a href={g.url} target="_blank" rel="noopener">{g.source}</a> : g.source}</span>
+            {g.verifier && <span class="r27-verif">À vérifier avant publication</span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  )}
+  {s.chercheurs?.length > 0 && (
+    <div class="sv-bloc">
+      <p class="r27-label">Ce que montrent les chercheurs</p>
+      <ul class="sv-livres">
+        {s.chercheurs.map((c) => (
+          <li>
+            <p class="sv-ref"><b>{c.auteur}</b>, {c.url ? <a href={c.url} target="_blank" rel="noopener"><cite>{c.titre}</cite></a> : <cite>{c.titre}</cite>}{c.editeur ? `, ${c.editeur}` : ''}{c.annee ? `, ${c.annee}` : ''}</p>
+            <p>{c.apport}</p>
+            {c.verifier && <span class="r27-verif">À vérifier avant publication</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+  {s.cadrage?.texte && (
+    <div class="sv-bloc">
+      <p class="r27-label">À qui profite le cadrage</p>
+      <p class="sv-cadrage">{s.cadrage.texte}</p>
+      <span class="r27-source">Source : {s.cadrage.url ? <a href={s.cadrage.url} target="_blank" rel="noopener">{s.cadrage.source}</a> : s.cadrage.source}</span>
+      {s.cadrage.verifier && <span class="r27-verif">À vérifier avant publication</span>}
+    </div>
+  )}
+</div>
+
+<style is:global>
+  .sv { display: grid; gap: 34px; padding: clamp(24px, 3.4vw, 40px); border-radius: 18px; }
+  .sv-frise { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .sv-frise li { border-top: 3px solid #7A5E18; padding-top: 12px; display: grid; gap: 6px; align-content: start; }
+  .sv-an { font: 700 28px/1 var(--serif); color: #6B5215; }
+  .sv-frise p, .sv-livres p { margin: 0; font-size: 16px; line-height: 1.58; color: var(--ink2); max-width: 62ch; }
+  .sv-livres { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 18px; }
+  .sv-livres li { display: grid; gap: 4px; padding-left: 16px; border-left: 2px solid rgba(122, 94, 24, .4); }
+  .sv .sv-ref { font-size: 16.5px; color: var(--ink); }
+  .sv-ref cite { font-family: var(--serif); font-style: italic; }
+  .sv-ref a { color: var(--ink); text-decoration: underline; text-decoration-color: rgba(122, 94, 24, .55); text-underline-offset: 3px; }
+  .sv-cadrage { margin: 14px 0 8px; font: 400 clamp(19px, 2vw, 22px)/1.45 var(--serif); color: var(--ink); max-width: 60ch; }
+</style>

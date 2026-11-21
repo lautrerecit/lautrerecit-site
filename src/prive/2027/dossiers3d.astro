@@ -1,0 +1,314 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/repliques2027.css';
+import { enjeux } from '../../data/repliques2027.js';
+
+// ============================================================
+// LA BOUSSOLE 2027 — CINQ REMPLAÇANTS AU MEUBLE À TIROIRS (privé, dev seulement).
+// Même contenu (les dix dossiers), thème Nuit et ivoire, 3D en CSS pur + un peu de JS.
+// ============================================================
+const D = enjeux.map((e, i) => ({ id: e.id, n: String(i + 1).padStart(2, '0'), titre: e.titre, question: e.question, valeur: e.etat[0].valeur, phrase: e.etat[0].phrase }));
+const props = [
+  { id: 'anneau', l: 'A', t: 'L’anneau', pour: 'Spectaculaire et ludique : on fait tourner les dix dossiers comme un carrousel en relief, à la souris, au doigt ou au clavier.', contre: 'Un seul dossier lisible à la fois ; on ne voit pas les dix d’un coup d’œil.' },
+  { id: 'fichier', l: 'B', t: 'Le fichier', pour: 'Reprend l’idée des fiches, en bien plus élégant : des intercalaires en verre penchés, qui se redressent au survol.', contre: 'Sur téléphone, l’effet se réduit à une liste qui s’ouvre au toucher.' },
+  { id: 'cadran', l: 'C', t: 'Le cadran', pour: 'Le nom devient l’objet : une boussole en relief dont l’aiguille pivote vers le dossier choisi.', contre: 'Les noms autour du cadran doivent rester courts ; il faut un panneau à côté pour le détail.' },
+  { id: 'rayon', l: 'D', t: 'Le rayon', pour: 'Dix volumes alignés comme dans une bibliothèque ; au survol, le dos s’ouvre sur la couverture et son chiffre-clé.', contre: 'Les titres verticaux se lisent moins vite qu’une liste.' },
+  { id: 'relief', l: 'E', t: 'La mosaïque en relief', pour: 'La plus pratique : les dix dossiers visibles d’emblée, chaque tuile s’incline sous la souris et son chiffre flotte au-dessus.', contre: 'Moins narrative, c’est surtout la matière qui fait le premium.' },
+];
+---
+<Base noVerset noindex title="Dossiers en 3D — La Boussole 2027" description="Cinq alternatives au meuble à tiroirs.">
+  <div class="r27 d3">
+    <section class="r27-tete">
+      <div class="container">
+        <p class="r27-fil"><a href="/2027/">La Boussole 2027</a> · Atelier</p>
+        <p class="eyebrow">Les dix dossiers</p>
+        <h1 class="r27-h1">Cinq façons de <span class="gold-grad">ranger</span> les dossiers.</h1>
+        <p class="r27-lede">Pour remplacer le meuble à tiroirs : cinq objets en relief, sur les dix vrais dossiers. Passez la souris, cliquez, faites tourner.</p>
+      </div>
+    </section>
+
+    <nav class="d3-nav" aria-label="Propositions">
+      {props.map((p) => <a href={`#${p.id}`}><b>{p.l}</b> {p.t}</a>)}
+    </nav>
+
+    {props.map((p) => (
+      <section class="d3-prop" id={p.id}>
+        <div class="container">
+          <h2 class="r27-h2"><b class="d3-l">{p.l}</b> {p.t}</h2>
+
+          {p.id === 'anneau' && (
+            <div class="an" data-anneau>
+              <div class="an-scene">
+                <div class="an-roue">
+                  {D.map((e, i) => (
+                    <a class="an-carte" href={`/2027/${e.id}/`} style={`--i:${i}`}>
+                      <span class="d3-n">Dossier {e.n}</span>
+                      <span class="d3-v">{e.valeur}</span>
+                      <span class="d3-t">{e.titre}</span>
+                      <span class="d3-q">{e.question}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div class="an-ctrl">
+                <button type="button" data-pas="-1" aria-label="Dossier précédent">←</button>
+                <span class="an-titre" aria-live="polite"></span>
+                <button type="button" data-pas="1" aria-label="Dossier suivant">→</button>
+              </div>
+            </div>
+          )}
+
+          {p.id === 'fichier' && (
+            <div class="fi">
+              {D.map((e, i) => (
+                <a class="fi-fiche" href={`/2027/${e.id}/`} style={`--i:${i}`}>
+                  <span class="fi-onglet">{e.n}</span>
+                  <span class="fi-ligne"><span class="d3-t">{e.titre}</span><span class="d3-v">{e.valeur}</span></span>
+                  <span class="fi-corps"><span class="d3-q">{e.question}</span></span>
+                </a>
+              ))}
+            </div>
+          )}
+
+          {p.id === 'cadran' && (
+            <div class="ca" data-cadran>
+              <div class="ca-scene">
+                <div class="ca-disque">
+                  <div class="ca-graduation" aria-hidden="true"></div>
+                  {D.map((e, i) => (
+                    <button type="button" class="ca-repere" style={`--a:${i * 36}deg`} data-i={i}><span>{e.titre}</span></button>
+                  ))}
+                  <div class="ca-aiguille" aria-hidden="true"><i></i></div>
+                  <div class="ca-centre" aria-hidden="true"></div>
+                </div>
+              </div>
+              <div class="ca-fiche" aria-live="polite">
+                <span class="d3-n"></span><span class="d3-v"></span><span class="d3-t"></span><span class="d3-q"></span>
+                <a class="btn btn-or" href="#">Ouvrir le dossier <span class="ar">→</span></a>
+              </div>
+              <script type="application/json" class="ca-data" set:html={JSON.stringify(D)} />
+            </div>
+          )}
+
+          {p.id === 'rayon' && (
+            <div class="ra">
+              <div class="ra-etagere">
+                {D.map((e, i) => (
+                  <a class="ra-livre" href={`/2027/${e.id}/`} style={`--h:${[318, 300, 336][i % 3]}px`}>
+                    <span class="ra-dos"><b>{e.n}</b><span>{e.titre}</span></span>
+                    <span class="ra-couv">
+                      <span class="d3-n">Dossier {e.n}</span>
+                      <span class="d3-v">{e.valeur}</span>
+                      <span class="d3-t">{e.titre}</span>
+                      <span class="d3-q">{e.question}</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
+              <div class="ra-planche" aria-hidden="true"></div>
+            </div>
+          )}
+
+          {p.id === 'relief' && (
+            <div class="re">
+              {D.map((e, i) => (
+                <a class:list={['re-tuile', { grande: i === 0, bandeau: i === D.length - 1 }]} href={`/2027/${e.id}/`} data-incline>
+                  <span class="re-in">
+                    <span class="d3-n">Dossier {e.n}</span>
+                    <span class="d3-v">{e.valeur}</span>
+                    <span class="d3-t">{e.titre}</span>
+                    {i === 0 && <span class="d3-q">{e.phrase}</span>}
+                  </span>
+                </a>
+              ))}
+            </div>
+          )}
+
+          <div class="d3-pc">
+            <p><strong>Pour</strong> {p.pour}</p>
+            <p><strong>Contre</strong> {p.contre}</p>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style is:global>
+  .d3 { padding-bottom: 60px; }
+  .d3-nav { position: sticky; top: 84px; z-index: 20; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; width: fit-content; max-width: calc(100% - 32px); margin: 0 auto; padding: 6px; border-radius: 999px;
+    background: rgba(255, 252, 245, .94); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: inset 0 1px 0 #fff, 0 20px 40px -20px rgba(0,0,0,.7); }
+  .d3-nav a { padding: 8px 14px; border-radius: 999px; font-size: 14.5px; font-weight: 600; color: var(--ink); }
+  .d3-nav a b { font-family: var(--serif); font-style: italic; color: #7A5E18; }
+  .d3-nav a:hover { background: #F1E7D3; color: var(--ink); }
+  .d3-prop { padding: 80px 0 10px; scroll-margin-top: 140px; }
+  .d3-l { font-style: italic; color: var(--or-nuit); margin-right: 6px; }
+  .d3-pc { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 30px; margin-top: 30px; }
+  .d3-pc p { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--sur-nuit-2); }
+  .d3-pc strong { display: block; font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--or-nuit); }
+
+  /* contenu commun d'une carte ivoire */
+  .d3-n { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #5E554A; }
+  .d3-v { font-family: var(--serif); font-weight: 700; font-size: clamp(34px, 3.6vw, 48px); line-height: 1; color: #6B5215; }
+  .d3-t { font-family: var(--serif); font-weight: 700; font-size: 22px; line-height: 1.15; color: var(--ink); }
+  .d3-q { font-size: 15px; line-height: 1.45; color: var(--ink2); }
+  .d3-ivoire { background: linear-gradient(150deg, #FFFCF5, #F1E7D4); box-shadow: inset 0 1.5px 0 #fff, inset 0 -1px 0 rgba(122,94,24,.25), inset 0 0 0 1px rgba(224,194,127,.45), 0 30px 60px -26px rgba(0,0,0,.8); }
+
+  /* ---------- A · l'anneau ---------- */
+  .an { margin-top: 30px; overflow: hidden; }
+  .an-scene { height: 420px; perspective: 1500px; perspective-origin: 50% 30%; display: grid; place-items: center; cursor: grab; touch-action: pan-y; user-select: none; }
+  .an-scene:active { cursor: grabbing; }
+  .an-roue { position: relative; width: 250px; height: 300px; transform-style: preserve-3d; transform: translateZ(-430px) rotateY(var(--rot, 0deg)); transition: transform .8s var(--ease); }
+  .an-roue.glisse { transition: none; }
+  .an-carte { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 6px; padding: 26px 24px; border-radius: 26px; text-decoration: none; backface-visibility: hidden;
+    transform: rotateY(calc(var(--i) * 36deg)) translateZ(430px); background: linear-gradient(150deg, #FFFCF5, #F1E7D4);
+    box-shadow: inset 0 1.5px 0 #fff, inset 0 0 0 1px rgba(224,194,127,.5), 0 40px 60px -30px rgba(0,0,0,.9); transition: opacity .6s, filter .6s; }
+  .an-carte .d3-v { margin-top: 18px; }
+  .an-carte.loin { opacity: .45; filter: saturate(.6); }
+  .an-ctrl { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 8px; }
+  .an-ctrl button { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(224,194,127,.6); background: rgba(255,252,245,.08); color: var(--sur-nuit); font-size: 20px; cursor: pointer; }
+  .an-ctrl button:hover { background: rgba(255,252,245,.16); }
+  .an-titre { min-width: 200px; text-align: center; font-family: var(--serif); font-size: 20px; color: var(--sur-nuit); }
+
+  /* ---------- B · le fichier ---------- */
+  .fi { margin-top: 40px; perspective: 1100px; perspective-origin: 50% -20%; display: grid; justify-items: center; }
+  .fi-fiche { position: relative; display: block; width: min(100%, 720px); height: 150px; margin-top: -92px; padding: 18px 28px; border-radius: 16px; text-decoration: none; transform-origin: 50% 100%;
+    transform: rotateX(-26deg); background: linear-gradient(180deg, #FFFCF5, #ECE1CB); box-shadow: inset 0 1.5px 0 #fff, inset 0 0 0 1px rgba(224,194,127,.55), 0 -14px 26px -14px rgba(0,0,0,.7);
+    transition: transform .55s var(--ease), margin .55s var(--ease), box-shadow .55s; }
+  .fi-fiche:first-child { margin-top: 0; }
+  .fi-onglet { position: absolute; top: -26px; left: calc(28px + var(--i) * 9%); padding: 4px 14px 6px; border-radius: 10px 10px 0 0; background: #FFFCF5; font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 16px; color: #7A5E18; box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(224,194,127,.55); }
+  .fi-ligne { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+  .fi-ligne .d3-t { font-size: 24px; }
+  .fi-ligne .d3-v { font-size: 30px; }
+  .fi-corps { display: block; margin-top: 14px; opacity: 0; transition: opacity .35s; }
+  .fi-fiche:hover, .fi-fiche:focus-visible { transform: rotateX(0deg) translateY(-18px); margin-bottom: 70px; box-shadow: inset 0 1.5px 0 #fff, inset 0 0 0 1.5px #C4A24A, 0 30px 50px -20px rgba(0,0,0,.9); }
+  .fi-fiche:hover .fi-corps, .fi-fiche:focus-visible .fi-corps { opacity: 1; }
+
+  /* ---------- C · le cadran ---------- */
+  .ca { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; margin-top: 20px; }
+  .ca-scene { perspective: 1200px; display: grid; place-items: center; height: 520px; }
+  .ca-disque { position: relative; width: 440px; height: 440px; border-radius: 50%; transform: rotateX(var(--tx, 22deg)) rotateY(var(--ty, 0deg)); transform-style: preserve-3d; transition: transform .3s;
+    background: radial-gradient(circle at 40% 30%, #FFFCF5, #EADFC9 70%, #D9C7A4); box-shadow: inset 0 0 0 10px #F7EEDC, inset 0 0 0 12px rgba(196,162,74,.7), inset 0 2px 0 14px #fff, 0 60px 80px -30px rgba(0,0,0,.9); }
+  .ca-graduation { position: absolute; inset: 26px; border-radius: 50%; background: repeating-conic-gradient(from -1deg, rgba(122,94,24,.55) 0 2deg, transparent 2deg 9deg); -webkit-mask: radial-gradient(circle, transparent 66%, #000 67% 72%, transparent 73%); mask: radial-gradient(circle, transparent 66%, #000 67% 72%, transparent 73%); }
+  .ca-repere { position: absolute; left: 50%; top: 50%; width: 0; height: 0; padding: 0; border: 0; background: none; font: inherit; cursor: pointer; transform: rotate(var(--a)) translateY(-176px); }
+  .ca-repere span { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%) rotate(calc(-1 * var(--a))); white-space: nowrap; padding: 5px 10px; border-radius: 999px; font-size: 13.5px; font-weight: 700; color: var(--ink); background: #FFFCF5; box-shadow: inset 0 0 0 1px rgba(196,162,74,.6); transition: background .3s, color .3s; }
+  .ca-repere.actif span, .ca-repere:hover span, .ca-repere:focus-visible span { background: #6E2632; color: #FBF3E3; box-shadow: none; }
+  .ca-aiguille { position: absolute; left: 50%; top: 50%; width: 22px; height: 300px; margin: -150px 0 0 -11px; transform: rotate(var(--aig, 0deg)) translateZ(12px); transition: transform 1.1s cubic-bezier(.34, 1.56, .64, 1); }
+  .ca-aiguille i { position: absolute; inset: 0; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); background: linear-gradient(90deg, #8A6C21 50%, #E8CC86 50%); }
+  .ca-aiguille i::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 50%; background: linear-gradient(90deg, #4E1A23 50%, #6E2632 50%); }
+  .ca-centre { position: absolute; left: 50%; top: 50%; width: 30px; height: 30px; margin: -15px; border-radius: 50%; transform: translateZ(14px); background: radial-gradient(circle at 35% 30%, #FFF6CE, #C4A24A 60%, #7A5E18); box-shadow: 0 4px 10px rgba(0,0,0,.5); }
+  .ca-fiche { display: flex; flex-direction: column; gap: 8px; padding: 30px; border-radius: 26px; background: linear-gradient(150deg, #FFFCF5, #F1E7D4); box-shadow: inset 0 1.5px 0 #fff, inset 0 0 0 1px rgba(224,194,127,.5), 0 40px 60px -30px rgba(0,0,0,.9); }
+  .ca-fiche .d3-v { font-size: clamp(44px, 5vw, 64px); margin-top: 6px; }
+  .ca-fiche .btn { align-self: flex-start; margin-top: 14px; }
+
+  /* ---------- D · le rayon ---------- */
+  .ra { margin-top: 30px; overflow-x: auto; padding: 20px 4px 0; }
+  .ra-etagere { display: flex; align-items: flex-end; gap: 8px; height: 380px; min-width: max-content; perspective: 1400px; }
+  .ra-livre { position: relative; display: flex; height: var(--h); width: 68px; border-radius: 6px 6px 3px 3px; overflow: hidden; text-decoration: none; transform-origin: 50% 100%;
+    transition: width .6s var(--ease), transform .6s var(--ease), box-shadow .6s; box-shadow: inset 0 0 0 1px rgba(224,194,127,.5), 0 20px 30px -16px rgba(0,0,0,.9); }
+  .ra-dos { flex: none; width: 68px; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 18px 0;
+    background: linear-gradient(90deg, #E9DCC2, #FFFCF5 40%, #E5D6BA); border-right: 1px solid rgba(196,162,74,.4); }
+  .ra-dos::before, .ra-dos::after { content: ''; width: 46px; height: 3px; background: linear-gradient(90deg, #8A6C21, #E8CC86, #8A6C21); }
+  .ra-dos::after { order: 3; margin-top: auto; }
+  .ra-dos b { font-family: var(--serif); font-style: italic; font-size: 20px; color: #7A5E18; }
+  .ra-dos span { writing-mode: vertical-rl; transform: rotate(180deg); font-family: var(--serif); font-weight: 700; font-size: 19px; color: var(--ink); white-space: nowrap; }
+  .ra-couv { flex: none; width: 260px; display: flex; flex-direction: column; gap: 6px; padding: 24px 22px; background: linear-gradient(150deg, #FFFCF5, #F1E7D4); }
+  .ra-couv .d3-v { margin-top: 16px; }
+  .ra-livre:hover, .ra-livre:focus-visible { width: 328px; transform: translateY(-14px) rotateY(-6deg); box-shadow: inset 0 0 0 1px rgba(224,194,127,.7), 0 40px 50px -20px rgba(0,0,0,.95); }
+  .ra-planche { height: 16px; margin-top: -2px; border-radius: 3px; background: linear-gradient(180deg, #C4A24A, #7A5E18); box-shadow: 0 16px 30px -10px rgba(0,0,0,.9); }
+
+  /* ---------- E · la mosaïque en relief ---------- */
+  .re { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 30px; perspective: 1000px; }
+  .re-tuile { position: relative; display: block; min-height: 170px; border-radius: 24px; text-decoration: none; transform-style: preserve-3d; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .25s;
+    background: linear-gradient(150deg, #FFFCF5, #F1E7D4); box-shadow: inset 0 1.5px 0 #fff, inset 0 0 0 1px rgba(224,194,127,.5), 0 30px 50px -26px rgba(0,0,0,.9); }
+  .re-tuile.grande { grid-column: span 2; grid-row: span 2; }
+  .re-tuile.bandeau { grid-column: 1 / -1; min-height: 130px; }
+  .re-tuile.bandeau .re-in { flex-direction: row; align-items: flex-end; gap: 24px; }
+  .re-tuile.bandeau .d3-n { position: absolute; top: 22px; left: 22px; }
+  .re-tuile::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(260px circle at var(--gx, 50%) var(--gy, 0%), rgba(255,255,255,.75), transparent 60%); mix-blend-mode: soft-light; }
+  .re-tuile:hover::after { opacity: 1; }
+  .re-in { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 6px; padding: 22px; transform-style: preserve-3d; }
+  .re-in .d3-v { transform: translateZ(50px); margin-top: auto; }
+  .re-in .d3-t { transform: translateZ(30px); }
+  .re-in .d3-n { transform: translateZ(20px); }
+  .re-tuile.grande .d3-v { font-size: clamp(56px, 7vw, 92px); }
+  .re-tuile.grande .d3-t { font-size: 30px; }
+  .re-tuile.grande .d3-q { transform: translateZ(20px); max-width: 40ch; }
+
+  @media (max-width: 860px) {
+    .ca { grid-template-columns: 1fr; }
+    .ca-scene { height: 360px; }
+    .ca-disque { width: 300px; height: 300px; }
+    .ca-repere { transform: rotate(var(--a)) translateY(-118px); }
+    .ca-repere span { font-size: 11.5px; padding: 3px 7px; }
+    .ca-aiguille { height: 200px; margin-top: -100px; }
+    .re { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .d3-nav { top: 70px; }
+    .d3-pc { grid-template-columns: 1fr; }
+    .an-scene { height: 360px; }
+    .an-roue { width: 200px; height: 260px; transform: translateZ(-330px) rotateY(var(--rot, 0deg)); }
+    .an-carte { transform: rotateY(calc(var(--i) * 36deg)) translateZ(330px); padding: 20px 18px; }
+    .fi-onglet { left: calc(16px + var(--i) * 7%); }
+    .fi-ligne .d3-t { font-size: 19px; }
+    .fi-ligne .d3-v { font-size: 24px; }
+    .re-tuile.grande { grid-column: span 2; grid-row: span 1; min-height: 220px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .an-roue, .fi-fiche, .ca-aiguille, .ra-livre, .re-tuile { transition: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    // A · l'anneau : boutons, flèches du clavier, glisser
+    document.querySelectorAll('[data-anneau]').forEach(function (z) {
+      var roue = z.querySelector('.an-roue'), cartes = z.querySelectorAll('.an-carte'), titre = z.querySelector('.an-titre'), n = cartes.length, k = 0;
+      function aller(i) {
+        k = i; roue.style.setProperty('--rot', (-k * 360 / n) + 'deg');
+        var j = ((k % n) + n) % n;
+        cartes.forEach(function (c, x) { c.classList.toggle('loin', x !== j); c.tabIndex = x === j ? 0 : -1; });
+        titre.textContent = cartes[j].querySelector('.d3-t').textContent;
+      }
+      z.querySelectorAll('[data-pas]').forEach(function (b) { b.addEventListener('click', function () { aller(k + +b.dataset.pas); }); });
+      z.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') aller(k + 1); if (e.key === 'ArrowLeft') aller(k - 1); });
+      var scene = z.querySelector('.an-scene'), x0 = null, dx = 0;
+      scene.addEventListener('pointerdown', function (e) { x0 = e.clientX; dx = 0; });
+      scene.addEventListener('pointermove', function (e) { if (x0 === null) return; dx = e.clientX - x0; roue.classList.add('glisse'); roue.style.setProperty('--rot', (-k * 360 / n + dx / 4) + 'deg'); });
+      function lacher() { if (x0 === null) return; x0 = null; roue.classList.remove('glisse'); aller(k - Math.round(dx / 4 / (360 / n))); }
+      scene.addEventListener('pointerup', lacher); scene.addEventListener('pointerleave', lacher);
+      scene.addEventListener('click', function (e) { if (Math.abs(dx) > 6) e.preventDefault(); }, true);
+      aller(0);
+    });
+
+    // C · le cadran : l'aiguille pivote vers le dossier choisi, le disque suit un peu la souris
+    document.querySelectorAll('[data-cadran]').forEach(function (z) {
+      var D = JSON.parse(z.querySelector('.ca-data').textContent), aig = z.querySelector('.ca-aiguille'), fiche = z.querySelector('.ca-fiche'), disque = z.querySelector('.ca-disque'), tours = 0, cur = 0;
+      function choisir(i) {
+        var delta = ((i - cur) % 10 + 10) % 10; if (delta > 5) delta -= 10; tours += delta; cur = i;
+        aig.style.setProperty('--aig', (tours * 36) + 'deg');
+        z.querySelectorAll('.ca-repere').forEach(function (r, x) { r.classList.toggle('actif', x === i); });
+        var e = D[i];
+        fiche.querySelector('.d3-n').textContent = 'Dossier ' + e.n; fiche.querySelector('.d3-v').textContent = e.valeur;
+        fiche.querySelector('.d3-t').textContent = e.titre; fiche.querySelector('.d3-q').textContent = e.question;
+        fiche.querySelector('a').href = '/2027/' + e.id + '/';
+      }
+      z.querySelectorAll('.ca-repere').forEach(function (r) { r.addEventListener('click', function () { choisir(+r.dataset.i); }); });
+      var scene = z.querySelector('.ca-scene');
+      scene.addEventListener('pointermove', function (e) {
+        var b = scene.getBoundingClientRect(), x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
+        disque.style.setProperty('--tx', (22 - y * 12) + 'deg'); disque.style.setProperty('--ty', (x * 12) + 'deg');
+      });
+      choisir(0);
+    });
+
+    // E · la mosaïque : chaque tuile s'incline vers la souris, le reflet la suit
+    document.querySelectorAll('[data-incline]').forEach(function (t) {
+      t.addEventListener('pointermove', function (e) {
+        var b = t.getBoundingClientRect(), x = (e.clientX - b.left) / b.width, y = (e.clientY - b.top) / b.height;
+        t.style.setProperty('--ry', ((x - .5) * 14) + 'deg'); t.style.setProperty('--rx', ((.5 - y) * 14) + 'deg');
+        t.style.setProperty('--gx', (x * 100) + '%'); t.style.setProperty('--gy', (y * 100) + '%');
+      });
+      t.addEventListener('pointerleave', function () { t.style.setProperty('--rx', '0deg'); t.style.setProperty('--ry', '0deg'); });
+    });
+  })();
+</script>

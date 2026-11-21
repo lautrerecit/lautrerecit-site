@@ -1,0 +1,63 @@
+---
+// Votre situation — la porte des lecteurs éloignés de la politique (fiche §1) : on part de sa vie, pas du débat.
+// Chaque situation renvoie vers les trois dossiers qui la touchent le plus, avec la question du dossier.
+import { enjeux } from '../../../data/repliques2027.js';
+const SITUATIONS = [
+  { t: 'Locataire', d: ['logement', 'vie-chere', 'salaires'] },
+  { t: 'Aux études', d: ['ecole', 'logement', 'services-publics'] },
+  { t: 'Salarié au Smic', d: ['salaires', 'vie-chere', 'retraites'] },
+  { t: 'En recherche d’emploi', d: ['salaires', 'vie-chere', 'services-publics'] },
+  { t: 'Parent', d: ['ecole', 'services-publics', 'vie-chere'] },
+  { t: 'À la retraite', d: ['retraites', 'services-publics', 'vie-chere'] },
+  { t: 'En quartier populaire', d: ['quartiers-outre-mer', 'logement', 'securite'] },
+  { t: 'En outre-mer', d: ['quartiers-outre-mer', 'vie-chere', 'services-publics'] },
+];
+const parId = Object.fromEntries(enjeux.map((e) => [e.id, { titre: e.titre, question: e.question }]));
+---
+<div class="si">
+  <div class="si-choix" role="group" aria-label="Votre situation">
+    {SITUATIONS.map((s, i) => <button type="button" aria-pressed="false" data-i={i}>{s.t}</button>)}
+  </div>
+  {SITUATIONS.map((s, i) => (
+    <div class="si-res" data-i={i} hidden>
+      {s.d.map((id) => (
+        <a href={`/2027/${id}/`}><b>{parId[id].titre}</b><span>{parId[id].question}</span><i>Ouvrir le dossier →</i></a>
+      ))}
+    </div>
+  ))}
+  <p class="si-vide" data-vide>Choisissez une situation pour voir les dossiers qui vous concernent.</p>
+  <p class="si-suite">Pour voir de quels candidats vous êtes proche, sujet par sujet : <a href="/2027/quiz/">le quiz en 5 minutes</a>.</p>
+</div>
+
+<style is:global>
+  .si { margin-top: 26px; padding: clamp(22px, 3.4vw, 36px); border-radius: 20px; }
+  .si-choix { display: flex; flex-wrap: wrap; gap: 10px; }
+  .si-choix button { min-height: 46px; padding: 0 20px; border-radius: 999px; border: 1.5px solid rgba(14, 12, 10, .28); background: none; color: var(--ink); font: 600 16px var(--sans); cursor: pointer; transition: background .2s, color .2s; }
+  .si-choix button:hover { border-color: #7A5E18; }
+  .si-choix button[aria-pressed="true"] { background: var(--ink); color: #FBF8F2; border-color: var(--ink); }
+  .si-res { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+  .si-res[hidden] { display: none; }
+  .si-res a { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; border-radius: 14px; background: #FFFDF8; border: 1.5px solid rgba(122, 94, 24, .35); color: var(--ink); text-decoration: none; transition: border-color .2s, transform .25s var(--ease); }
+  .si-res a:hover { border-color: #7A5E18; transform: translateY(-2px); }
+  .si-res b { font: 700 21px/1.2 var(--serif); }
+  .si-res span { font-size: 15.5px; line-height: 1.45; color: var(--ink3); }
+  .si-res i { margin-top: auto; padding-top: 6px; font-style: normal; font-size: 14px; font-weight: 700; color: #6E2632; }
+  .si-vide { margin: 22px 0 0; font-size: 15.5px; color: var(--ink3); }
+  .si-suite { margin: 20px 0 0; font-size: 15.5px; color: var(--ink3); }
+  .si-suite a { color: #6B5215; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 760px) { .si-res { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .si-res a { transition: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var bs = document.querySelectorAll('.si-choix button'), rs = document.querySelectorAll('.si-res');
+    bs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        bs.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        rs.forEach(function (r) { r.hidden = r.dataset.i !== b.dataset.i; });
+        var v = document.querySelector('[data-vide]'); if (v) v.hidden = true;
+      });
+    });
+  })();
+</script>
