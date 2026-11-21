@@ -1,0 +1,19 @@
+// Configuration Cloudflare Workers du site lautrerecit.com.
+// Le site reste 100 % statique (dist/). Seul /algerie/* passe d'abord par
+// worker/index.js, qui vérifie l'accès avant de servir pages et vidéos.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lautrerecit",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-07-25",
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/algerie", "/algerie/*"]
+  },
+  "r2_buckets": [
+    { "binding": "VIDEOS", "bucket_name": "algerie-videos" }
+  ]
+}

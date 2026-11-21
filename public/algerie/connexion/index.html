@@ -36,8 +36,9 @@ button:hover{transform:translateY(-1px)}
     <div class="eyebrow">L’Algérie a pensé</div>
     <h1>Se <em>connecter</em></h1>
     <p class="lede">Entrez le code reçu par email pour accéder à votre formation.</p>
-    <form id="gate-form" autocomplete="off">
-      <input id="code" type="password" placeholder="Code d’accès" autocapitalize="off" spellcheck="false" required>
+    <form id="gate-form" method="post" action="/algerie/connexion/" autocomplete="off">
+      <input type="hidden" name="redirect" id="redirect" value="/algerie/">
+      <input id="code" name="code" type="password" placeholder="Code d’accès" autocapitalize="off" spellcheck="false" required>
       <button type="submit">Accéder →</button>
       <div class="err" id="err"></div>
     </form>
@@ -46,28 +47,12 @@ button:hover{transform:translateY(-1px)}
 </div>
 <script>
 (function(){
-  var CODE_HASH = "e3a39b09598107bbc407bb25b0484fe2732ef9d21d54414ab3ffb0c32cbcebb8";
-  function sha256(str){
-    // Web Crypto — retourne une Promise<hex>
-    var enc = new TextEncoder().encode(str.trim().toLowerCase());
-    return crypto.subtle.digest('SHA-256', enc).then(function(buf){
-      return Array.prototype.map.call(new Uint8Array(buf), function(b){ return ('00'+b.toString(16)).slice(-2); }).join('');
-    });
-  }
+  // Le code est vérifié par le serveur. Ce script ne fait que garder la page
+  // demandée et afficher l'erreur renvoyée.
   var params = new URLSearchParams(location.search);
-  var redirect = params.get('redirect') || '/algerie/';
-  document.getElementById('gate-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    var val = document.getElementById('code').value;
-    sha256(val).then(function(hash){
-      if (hash === CODE_HASH) {
-        try { localStorage.setItem('algerie_unlocked', '1'); } catch(e){}
-        location.href = redirect;
-      } else {
-        document.getElementById('err').textContent = 'Code incorrect.';
-      }
-    });
-  });
+  var back = params.get('redirect');
+  if (back && back.indexOf('/algerie/') === 0) document.getElementById('redirect').value = back;
+  if (params.get('erreur')) document.getElementById('err').textContent = 'Code incorrect.';
 })();
 </script>
 </body>
